@@ -199,7 +199,6 @@ class TokenGenerationPage(QtWidgets.QWizardPage):
 
     def mark_complete(self):
         """Mark this page as complete."""
-        self.setField("token_generated", True)
         self.opened_github = True
         self.completeChanged.emit()
     
