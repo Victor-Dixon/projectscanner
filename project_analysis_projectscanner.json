@@ -425,13 +425,15 @@
             "launch_github_analysis",
             "launch_skill_tree",
             "launch_organize",
+            "launch_token_wizard",
             "show_help"
         ],
         "classes": {},
         "routes": [],
-        "complexity": 22,
+        "complexity": 25,
         "lint": [
             "Function main >50 lines",
+            "Function show_help >50 lines",
             "High complexity"
         ]
     },
@@ -1143,39 +1145,104 @@
     "src\\wizards\\github_token_wizard.py": {
         "language": ".py",
         "functions": [
-            "load_existing_config",
             "main",
             "__init__",
-            "print_header",
-            "get_username",
-            "open_github_settings",
-            "get_token",
+            "show_help",
+            "on_wizard_finished",
+            "save_token_to_config",
+            "__init__",
+            "__init__",
+            "open_github_token_page",
+            "mark_complete",
+            "__init__",
+            "toggle_token_visibility",
+            "validate_token",
+            "isComplete",
+            "__init__",
             "test_token",
-            "save_token_config",
-            "run_enhanced_scanner",
-            "show_next_steps",
-            "run_wizard"
+            "on_test_result",
+            "__init__",
+            "__init__",
+            "run"
         ],
         "classes": {
             "GitHubTokenWizard": {
                 "methods": [
                     "__init__",
-                    "print_header",
-                    "get_username",
-                    "open_github_settings",
-                    "get_token",
-                    "test_token",
-                    "save_token_config",
-                    "run_enhanced_scanner",
-                    "show_next_steps",
-                    "run_wizard"
+                    "show_help",
+                    "on_wizard_finished",
+                    "save_token_to_config"
                 ],
-                "docstring": "Wizard for setting up GitHub Personal Access Tokens.",
-                "base_classes": []
+                "docstring": "Wizard for generating and setting up GitHub tokens.",
+                "base_classes": [
+                    "QtWidgets.QWizard"
+                ]
+            },
+            "WelcomePage": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": "Welcome page explaining the wizard.",
+                "base_classes": [
+                    "QtWidgets.QWizardPage"
+                ]
+            },
+            "TokenGenerationPage": {
+                "methods": [
+                    "__init__",
+                    "open_github_token_page",
+                    "mark_complete"
+                ],
+                "docstring": "Page for generating the GitHub token.",
+                "base_classes": [
+                    "QtWidgets.QWizardPage"
+                ]
+            },
+            "TokenSetupPage": {
+                "methods": [
+                    "__init__",
+                    "toggle_token_visibility",
+                    "validate_token",
+                    "isComplete"
+                ],
+                "docstring": "Page for entering the generated token.",
+                "base_classes": [
+                    "QtWidgets.QWizardPage"
+                ]
+            },
+            "VerificationPage": {
+                "methods": [
+                    "__init__",
+                    "test_token",
+                    "on_test_result"
+                ],
+                "docstring": "Page for verifying the token works.",
+                "base_classes": [
+                    "QtWidgets.QWizardPage"
+                ]
+            },
+            "CompletionPage": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": "Final completion page.",
+                "base_classes": [
+                    "QtWidgets.QWizardPage"
+                ]
+            },
+            "TokenTestWorker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": "Worker for testing GitHub token.",
+                "base_classes": [
+                    "QThread"
+                ]
             }
         },
         "routes": [],
-        "complexity": 48,
+        "complexity": 52,
         "lint": [
             "High complexity"
         ]
@@ -1203,6 +1270,7 @@
             "process_directory",
             "process_github_repository",
             "process_github_library",
+            "display_cached_analysis",
             "clone_repository",
             "browse_directory",
             "scan_directory",
@@ -1228,6 +1296,15 @@
             "export_library",
             "import_library",
             "save_current_scan",
+            "save_github_token",
+            "load_github_token",
+            "clear_github_token",
+            "get_analysis_cache_path",
+            "save_analysis_results",
+            "load_analysis_results",
+            "update_analysis_results",
+            "launch_token_wizard",
+            "on_wizard_finished",
             "closeEvent",
             "progress_callback",
             "scan_repo_with_progress"
@@ -1270,6 +1347,7 @@
                     "process_directory",
                     "process_github_repository",
                     "process_github_library",
+                    "display_cached_analysis",
                     "clone_repository",
                     "browse_directory",
                     "scan_directory",
@@ -1295,6 +1373,15 @@
                     "export_library",
                     "import_library",
                     "save_current_scan",
+                    "save_github_token",
+                    "load_github_token",
+                    "clear_github_token",
+                    "get_analysis_cache_path",
+                    "save_analysis_results",
+                    "load_analysis_results",
+                    "update_analysis_results",
+                    "launch_token_wizard",
+                    "on_wizard_finished",
                     "closeEvent"
                 ],
                 "docstring": "Enhanced GUI for ProjectScanner with clean organization and prominent start processing button.",
@@ -1304,9 +1391,10 @@
             }
         },
         "routes": [],
-        "complexity": 145,
+        "complexity": 189,
         "lint": [
             "Function setup_styles >50 lines",
+            "Function create_github_configuration >50 lines",
             "Function create_results_panel >50 lines",
             "High complexity"
         ]
@@ -1465,5 +1553,51 @@
         "lint": [
             "High complexity"
         ]
+    },
+    "run_token_wizard.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_token_management.py": {
+        "language": ".py",
+        "functions": [
+            "test_token_management"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": [
+            "Function test_token_management >50 lines"
+        ]
+    },
+    "test_gui_layout.py": {
+        "language": ".py",
+        "functions": [
+            "test_gui_responsive_layout",
+            "test_token_wizard_launch",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test_token_wizard.py": {
+        "language": ".py",
+        "functions": [
+            "test_token_wizard_direct",
+            "test_token_wizard_launcher",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 10,
+        "lint": []
     }
 }
