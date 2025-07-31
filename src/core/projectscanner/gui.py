@@ -152,7 +152,16 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("ProjectScanner - Advanced Analysis Tool")
-        self.setGeometry(100, 100, 1800, 1200)
+        
+        # Get screen size for responsive sizing
+        screen = QtWidgets.QApplication.primaryScreen().geometry()
+        width = min(1800, screen.width() - 100)
+        height = min(1200, screen.height() - 100)
+        x = (screen.width() - width) // 2
+        y = (screen.height() - height) // 2
+        
+        self.setGeometry(x, y, width, height)
+        self.setMinimumSize(1200, 800)  # Minimum size for usability
         
         # Initialize data structures
         self.library_data = {}
@@ -302,11 +311,13 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.setCentralWidget(central_widget)
         main_layout = QtWidgets.QHBoxLayout(central_widget)
         
-        # Left panel - Configuration and controls
+        # Left panel - Configuration and controls (responsive width)
         left_panel = self.create_configuration_panel()
+        left_panel.setMinimumWidth(500)
+        left_panel.setMaximumWidth(800)
         main_layout.addWidget(left_panel, 1)
         
-        # Right panel - Results and progress
+        # Right panel - Results and progress (takes remaining space)
         right_panel = self.create_results_panel()
         main_layout.addWidget(right_panel, 2)
 
@@ -315,17 +326,31 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         panel = QtWidgets.QWidget()
         layout = QtWidgets.QVBoxLayout(panel)
         
-        # Title
-        title = QtWidgets.QLabel("🚀 Project Scanner Configuration")
-        title.setStyleSheet("font-size: 24px; font-weight: bold; color: #007bff; margin: 15px;")
+        # Title - More compact
+        title = QtWidgets.QLabel("🚀 Project Scanner")
+        title.setStyleSheet("font-size: 20px; font-weight: bold; color: #007bff; margin: 10px;")
         layout.addWidget(title)
         
-        # Configuration sections
-        layout.addWidget(self.create_scan_configuration())
-        layout.addWidget(self.create_github_configuration())
-        layout.addWidget(self.create_processing_controls())
+        # Create scrollable configuration area
+        scroll_area = QtWidgets.QScrollArea()
+        scroll_area.setWidgetResizable(True)
+        scroll_area.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         
-        layout.addStretch()
+        # Configuration content widget
+        config_widget = QtWidgets.QWidget()
+        config_layout = QtWidgets.QVBoxLayout(config_widget)
+        
+        # Configuration sections
+        config_layout.addWidget(self.create_scan_configuration())
+        config_layout.addWidget(self.create_github_configuration())
+        config_layout.addWidget(self.create_processing_controls())
+        
+        config_layout.addStretch()
+        
+        # Add configuration to scroll area
+        scroll_area.setWidget(config_widget)
+        layout.addWidget(scroll_area)
+        
         return panel
 
     def create_scan_configuration(self):
@@ -365,61 +390,78 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         group = QtWidgets.QGroupBox("🔗 GitHub Library Scanning")
         layout = QtWidgets.QVBoxLayout(group)
         
-        # GitHub Token Section
+        # Create scrollable area for better responsiveness
+        scroll_area = QtWidgets.QScrollArea()
+        scroll_area.setWidgetResizable(True)
+        scroll_area.setMaximumHeight(400)
+        scroll_area.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        
+        # Main content widget
+        content_widget = QtWidgets.QWidget()
+        content_layout = QtWidgets.QVBoxLayout(content_widget)
+        
+        # GitHub Token Section - Collapsible
         token_group = QtWidgets.QGroupBox("🔐 GitHub Authentication")
+        token_group.setCheckable(True)
+        token_group.setChecked(True)
         token_layout = QtWidgets.QVBoxLayout(token_group)
         
-        # Token input
-        token_layout.addWidget(QtWidgets.QLabel("GitHub Personal Access Token:"))
+        # Token input with better layout
+        token_input_layout = QtWidgets.QHBoxLayout()
+        token_input_layout.addWidget(QtWidgets.QLabel("Token:"))
         self.github_token_edit = QtWidgets.QLineEdit()
-        self.github_token_edit.setPlaceholderText("Enter your GitHub token for private repo access")
+        self.github_token_edit.setPlaceholderText("Enter GitHub token for private repos")
         self.github_token_edit.setEchoMode(QtWidgets.QLineEdit.Password)
-        token_layout.addWidget(self.github_token_edit)
+        token_input_layout.addWidget(self.github_token_edit)
+        token_layout.addLayout(token_input_layout)
         
-        # Token management buttons
-        token_buttons = QtWidgets.QHBoxLayout()
-        self.save_token_btn = QtWidgets.QPushButton("💾 Save Token")
+        # Token management buttons - Compact layout
+        token_buttons = QtWidgets.QGridLayout()
+        self.save_token_btn = QtWidgets.QPushButton("💾 Save")
         self.save_token_btn.clicked.connect(self.save_github_token)
-        self.load_token_btn = QtWidgets.QPushButton("📂 Load Token")
+        self.load_token_btn = QtWidgets.QPushButton("📂 Load")
         self.load_token_btn.clicked.connect(self.load_github_token)
-        self.clear_token_btn = QtWidgets.QPushButton("🗑️ Clear Token")
+        self.clear_token_btn = QtWidgets.QPushButton("🗑️ Clear")
         self.clear_token_btn.clicked.connect(self.clear_github_token)
         
-        token_buttons.addWidget(self.save_token_btn)
-        token_buttons.addWidget(self.load_token_btn)
-        token_buttons.addWidget(self.clear_token_btn)
+        token_buttons.addWidget(self.save_token_btn, 0, 0)
+        token_buttons.addWidget(self.load_token_btn, 0, 1)
+        token_buttons.addWidget(self.clear_token_btn, 0, 2)
         token_layout.addLayout(token_buttons)
         
-        # Wizard button
-        wizard_layout = QtWidgets.QHBoxLayout()
+        # Wizard button - Full width
         self.token_wizard_btn = QtWidgets.QPushButton("🔐 GitHub Token Wizard")
-        self.token_wizard_btn.setStyleSheet("background-color: #28a745; font-weight: bold; padding: 12px;")
+        self.token_wizard_btn.setStyleSheet("background-color: #28a745; font-weight: bold; padding: 8px;")
         self.token_wizard_btn.clicked.connect(self.launch_token_wizard)
-        wizard_layout.addWidget(self.token_wizard_btn)
-        token_layout.addLayout(wizard_layout)
+        token_layout.addWidget(self.token_wizard_btn)
         
-        layout.addWidget(token_group)
+        content_layout.addWidget(token_group)
         
-        # Username section
-        layout.addWidget(QtWidgets.QLabel("GitHub Username:"))
+        # Username and Options - Compact layout
+        basic_group = QtWidgets.QGroupBox("📋 Basic Settings")
+        basic_layout = QtWidgets.QGridLayout(basic_group)
+        
+        basic_layout.addWidget(QtWidgets.QLabel("Username:"), 0, 0)
         self.github_username_edit = QtWidgets.QLineEdit()
         self.github_username_edit.setPlaceholderText("Enter GitHub username")
-        layout.addWidget(self.github_username_edit)
+        basic_layout.addWidget(self.github_username_edit, 0, 1)
         
-        # Options for library scanning
-        options_layout = QtWidgets.QHBoxLayout()
-        self.force_rescan_cb = QtWidgets.QCheckBox("Force Rescan")
+        basic_layout.addWidget(QtWidgets.QLabel("Max Repos:"), 1, 0)
         self.max_repos_spin = QtWidgets.QSpinBox()
         self.max_repos_spin.setRange(1, 1000)
         self.max_repos_spin.setValue(50)
         self.max_repos_spin.setSpecialValueText("No Limit")
-        options_layout.addWidget(QtWidgets.QLabel("Max Repos:"))
-        options_layout.addWidget(self.max_repos_spin)
-        options_layout.addWidget(self.force_rescan_cb)
-        layout.addLayout(options_layout)
+        basic_layout.addWidget(self.max_repos_spin, 1, 1)
         
-        # Analysis persistence options
+        self.force_rescan_cb = QtWidgets.QCheckBox("Force Rescan")
+        basic_layout.addWidget(self.force_rescan_cb, 1, 2)
+        
+        content_layout.addWidget(basic_group)
+        
+        # Analysis persistence options - Collapsible
         persistence_group = QtWidgets.QGroupBox("💾 Analysis Persistence")
+        persistence_group.setCheckable(True)
+        persistence_group.setChecked(True)
         persistence_layout = QtWidgets.QVBoxLayout(persistence_group)
         
         self.save_analysis_cb = QtWidgets.QCheckBox("Save analysis results for reuse")
@@ -430,11 +472,17 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.update_existing_cb.setChecked(True)
         persistence_layout.addWidget(self.update_existing_cb)
         
-        layout.addWidget(persistence_group)
+        content_layout.addWidget(persistence_group)
         
-        self.scan_github_library_btn = QtWidgets.QPushButton("Scan GitHub Library")
+        # Main scan button
+        self.scan_github_library_btn = QtWidgets.QPushButton("🔍 Scan GitHub Library")
+        self.scan_github_library_btn.setStyleSheet("background-color: #007bff; font-weight: bold; padding: 10px;")
         self.scan_github_library_btn.clicked.connect(self.scan_github_library)
-        layout.addWidget(self.scan_github_library_btn)
+        content_layout.addWidget(self.scan_github_library_btn)
+        
+        # Add content to scroll area
+        scroll_area.setWidget(content_widget)
+        layout.addWidget(scroll_area)
         
         return group
 
