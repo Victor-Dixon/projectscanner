@@ -134,6 +134,10 @@ class WelcomePage(QtWidgets.QWizardPage):
         )
         security_note.setStyleSheet("color: #28a745; font-weight: bold;")
         layout.addWidget(security_note)
+    
+    def isComplete(self):
+        """Welcome page is always complete."""
+        return True
 
 
 class TokenGenerationPage(QtWidgets.QWizardPage):
@@ -196,7 +200,12 @@ class TokenGenerationPage(QtWidgets.QWizardPage):
     def mark_complete(self):
         """Mark this page as complete."""
         self.setField("token_generated", True)
-        self.wizard().next()
+        self.opened_github = True
+        self.completeChanged.emit()
+    
+    def isComplete(self):
+        """Page is complete when user has opened GitHub."""
+        return hasattr(self, 'opened_github') and self.opened_github
 
 
 class TokenSetupPage(QtWidgets.QWizardPage):
@@ -332,11 +341,19 @@ class VerificationPage(QtWidgets.QWizardPage):
             token_page = self.wizard().page(2)
             self.wizard().github_token = token_page.token_edit.text().strip()
             self.wizard().github_username = token_page.username_edit.text().strip()
+            
+            # Mark as successful
+            self.test_successful = True
+            self.completeChanged.emit()
         else:
             self.status_label.setText("❌ Token verification failed!")
             self.status_label.setStyleSheet("color: #dc3545; font-weight: bold;")
             self.results_text.append("❌ Token verification failed!")
             self.results_text.append(f"Error: {message}")
+    
+    def isComplete(self):
+        """Page is complete when token has been tested successfully."""
+        return hasattr(self, 'test_successful') and self.test_successful
 
 
 class CompletionPage(QtWidgets.QWizardPage):
@@ -378,6 +395,10 @@ class CompletionPage(QtWidgets.QWizardPage):
             next_steps_layout.addWidget(label)
         
         layout.addWidget(next_steps_group)
+    
+    def isComplete(self):
+        """Completion page is always complete."""
+        return True
 
 
 class TokenTestWorker(QThread):
