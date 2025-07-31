@@ -390,6 +390,14 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         token_buttons.addWidget(self.clear_token_btn)
         token_layout.addLayout(token_buttons)
         
+        # Wizard button
+        wizard_layout = QtWidgets.QHBoxLayout()
+        self.token_wizard_btn = QtWidgets.QPushButton("🔐 GitHub Token Wizard")
+        self.token_wizard_btn.setStyleSheet("background-color: #28a745; font-weight: bold; padding: 12px;")
+        self.token_wizard_btn.clicked.connect(self.launch_token_wizard)
+        wizard_layout.addWidget(self.token_wizard_btn)
+        token_layout.addLayout(wizard_layout)
+        
         layout.addWidget(token_group)
         
         # Username section
@@ -1143,6 +1151,58 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             self.update_progress(f"Analysis results updated for {username}")
         except Exception as e:
             self.update_progress(f"Warning: Could not update analysis results: {e}")
+
+    def launch_token_wizard(self):
+        """Launch the GitHub token wizard."""
+        try:
+            from wizards.github_token_wizard import GitHubTokenWizard
+            
+            wizard = GitHubTokenWizard()
+            wizard.finished.connect(self.on_wizard_finished)
+            wizard.show()
+            
+        except ImportError as e:
+            QtWidgets.QMessageBox.critical(
+                self, "Error",
+                f"Could not launch token wizard: {str(e)}\n\n"
+                "Make sure the wizard module is available."
+            )
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(
+                self, "Error",
+                f"Error launching token wizard: {str(e)}"
+            )
+
+    def on_wizard_finished(self, result):
+        """Handle wizard completion."""
+        if result == QtWidgets.QWizard.Accepted:
+            # Load the token that was saved by the wizard
+            self.load_github_token()
+            
+            # Also load from the new config format
+            config_file = Path("config/github_config.json")
+            if config_file.exists():
+                try:
+                    with open(config_file, 'r', encoding='utf-8') as f:
+                        config = json.load(f)
+                    
+                    # Set the username and token
+                    if 'username' in config:
+                        self.github_username_edit.setText(config['username'])
+                    if 'token' in config:
+                        self.github_token_edit.setText(config['token'])
+                    
+                    QtWidgets.QMessageBox.information(
+                        self, "Setup Complete",
+                        "✅ GitHub token wizard completed successfully!\n\n"
+                        "Your token and username have been loaded into the GUI.\n"
+                        "You can now scan your private repositories."
+                    )
+                except Exception as e:
+                    QtWidgets.QMessageBox.warning(
+                        self, "Warning",
+                        f"Token wizard completed but could not load configuration: {str(e)}"
+                    )
 
     def closeEvent(self, event):
         """Handle application close event."""

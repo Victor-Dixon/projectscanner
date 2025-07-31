@@ -1,340 +1,430 @@
 #!/usr/bin/env python3
 """
-GitHub Token Setup Wizard - Easy setup for private repository scanning.
+GitHub Token Wizard - Easy token generation and setup
 """
 
 import sys
-import json
 import webbrowser
-import subprocess
+import json
 from pathlib import Path
-from typing import Optional
+from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtCore import QThread, pyqtSignal
 
-# Add the project root to the Python path
-project_root = Path(__file__).parent
-sys.path.insert(0, str(project_root))
-
-
-class GitHubTokenWizard:
-    """Wizard for setting up GitHub Personal Access Tokens."""
+class GitHubTokenWizard(QtWidgets.QWizard):
+    """Wizard for generating and setting up GitHub tokens."""
     
     def __init__(self):
-        self.token = None
-        self.username = None
-        self.output_dir = "github_library_enhanced"
+        super().__init__()
+        self.setWindowTitle("🔐 GitHub Token Setup Wizard")
+        self.setGeometry(100, 100, 800, 600)
         
-    def print_header(self):
-        """Print the wizard header."""
-        print("=" * 60)
-        print("🔐 GitHub Token Setup Wizard")
-        print("=" * 60)
-        print("This wizard will help you set up access to your private repositories.")
-        print("Follow the steps below to create a GitHub Personal Access Token.")
-        print()
+        # Configure wizard
+        self.setWizardStyle(QtWidgets.QWizard.ModernStyle)
+        self.setOption(QtWidgets.QWizard.HaveHelpButton, True)
+        self.setOption(QtWidgets.QWizard.HaveFinishButtonOnEarlyPages, False)
+        
+        # Add pages
+        self.addPage(WelcomePage())
+        self.addPage(TokenGenerationPage())
+        self.addPage(TokenSetupPage())
+        self.addPage(VerificationPage())
+        self.addPage(CompletionPage())
+        
+        # Connect signals
+        self.helpRequested.connect(self.show_help)
+        self.finished.connect(self.on_wizard_finished)
+        
+        # Store token
+        self.github_token = None
+        self.github_username = None
+
+    def show_help(self):
+        """Show help information."""
+        QtWidgets.QMessageBox.information(
+            self, "Help",
+            "This wizard will help you create a GitHub Personal Access Token.\n\n"
+            "The token allows the Project Scanner to access your private repositories "
+            "and perform comprehensive analysis of your GitHub portfolio.\n\n"
+            "Your token will be stored securely and only used for repository scanning."
+        )
+
+    def on_wizard_finished(self, result):
+        """Handle wizard completion."""
+        if result == QtWidgets.QWizard.Accepted:
+            # Save token to config
+            self.save_token_to_config()
+            QtWidgets.QMessageBox.information(
+                self, "Setup Complete",
+                "✅ GitHub token setup completed successfully!\n\n"
+                "Your token has been saved and you can now scan private repositories."
+            )
+
+    def save_token_to_config(self):
+        """Save token to configuration file."""
+        if self.github_token and self.github_username:
+            config_dir = Path("config")
+            config_dir.mkdir(exist_ok=True)
+            
+            config_file = config_dir / "github_config.json"
+            config_data = {
+                "username": self.github_username,
+                "token": self.github_token,
+                "setup_date": str(Path().cwd()),
+                "wizard_version": "1.0"
+            }
+            
+            with open(config_file, 'w', encoding='utf-8') as f:
+                json.dump(config_data, f, indent=2)
+
+
+class WelcomePage(QtWidgets.QWizardPage):
+    """Welcome page explaining the wizard."""
     
-    def get_username(self) -> str:
-        """Get the GitHub username from user."""
-        print("Step 1: Enter your GitHub username")
-        print("-" * 40)
+    def __init__(self):
+        super().__init__()
+        self.setTitle("🔐 Welcome to GitHub Token Setup")
+        self.setSubTitle("This wizard will help you create a GitHub Personal Access Token for private repository access.")
         
-        while True:
-            username = input("GitHub username: ").strip()
-            if username:
-                self.username = username
-                print(f"✅ Username set to: {username}")
-                return username
-            else:
-                print("❌ Please enter a valid username.")
+        layout = QtWidgets.QVBoxLayout(self)
+        
+        # Welcome text
+        welcome_text = QtWidgets.QLabel(
+            "This wizard will guide you through:\n\n"
+            "1. 🌐 Opening GitHub token creation page\n"
+            "2. ⚙️ Configuring the correct permissions\n"
+            "3. 🔑 Copying and pasting your token\n"
+            "4. ✅ Verifying the token works\n"
+            "5. 💾 Securely saving the token\n\n"
+            "Your token will be used to access your private repositories "
+            "for comprehensive portfolio analysis."
+        )
+        welcome_text.setWordWrap(True)
+        layout.addWidget(welcome_text)
+        
+        # Benefits section
+        benefits_group = QtWidgets.QGroupBox("🎯 Benefits of Setting Up Your Token:")
+        benefits_layout = QtWidgets.QVBoxLayout(benefits_group)
+        
+        benefits = [
+            "🔍 Scan private repositories",
+            "📊 Complete portfolio analysis",
+            "🔄 Incremental updates",
+            "💾 Persistent analysis cache",
+            "🚀 Faster scanning with authentication"
+        ]
+        
+        for benefit in benefits:
+            label = QtWidgets.QLabel(f"• {benefit}")
+            benefits_layout.addWidget(label)
+        
+        layout.addWidget(benefits_group)
+        
+        # Security note
+        security_note = QtWidgets.QLabel(
+            "🔒 Security: Your token will be stored locally and only used for repository scanning. "
+            "It will never be shared or uploaded."
+        )
+        security_note.setStyleSheet("color: #28a745; font-weight: bold;")
+        layout.addWidget(security_note)
+
+
+class TokenGenerationPage(QtWidgets.QWizardPage):
+    """Page for generating the GitHub token."""
     
-    def open_github_settings(self):
-        """Open GitHub settings page in browser."""
-        print("\nStep 2: Create GitHub Personal Access Token")
-        print("-" * 40)
-        print("I'll open GitHub in your browser to create a token.")
-        print("Follow these steps:")
-        print("1. Click 'Generate new token' → 'Generate new token (classic)'")
-        print("2. Set expiration to 90 days")
-        print("3. Select these scopes:")
-        print("   ✅ repo (Full control of private repositories)")
-        print("   ✅ read:org (Read organization data)")
-        print("   ✅ read:user (Read user data)")
-        print("4. Click 'Generate token'")
-        print("5. Copy the token (you won't see it again!)")
-        print()
+    def __init__(self):
+        super().__init__()
+        self.setTitle("🌐 Generate GitHub Token")
+        self.setSubTitle("Let's create your GitHub Personal Access Token.")
         
-        input("Press Enter to open GitHub settings...")
+        layout = QtWidgets.QVBoxLayout(self)
         
-        # Open GitHub settings page
-        settings_url = "https://github.com/settings/tokens"
-        try:
-            webbrowser.open(settings_url)
-            print(f"🌐 Opened: {settings_url}")
-        except Exception as e:
-            print(f"❌ Could not open browser: {e}")
-            print(f"Please manually visit: {settings_url}")
+        # Instructions
+        instructions = QtWidgets.QLabel(
+            "Follow these steps to create your GitHub token:\n\n"
+            "1. Click 'Open GitHub Token Page' below\n"
+            "2. Sign in to your GitHub account\n"
+            "3. Configure the token settings as shown\n"
+            "4. Generate the token\n"
+            "5. Copy the token (you'll need it in the next step)"
+        )
+        instructions.setWordWrap(True)
+        layout.addWidget(instructions)
+        
+        # Open GitHub button
+        self.open_github_btn = QtWidgets.QPushButton("🌐 Open GitHub Token Page")
+        self.open_github_btn.clicked.connect(self.open_github_token_page)
+        layout.addWidget(self.open_github_btn)
+        
+        # Token settings guide
+        settings_group = QtWidgets.QGroupBox("⚙️ Required Token Settings:")
+        settings_layout = QtWidgets.QVBoxLayout(settings_group)
+        
+        settings = [
+            "📝 Note: 'Project Scanner Token'",
+            "⏰ Expiration: 'No expiration' (or 90 days)",
+            "📋 Scopes: Select these permissions:",
+            "   • repo (Full control of private repositories)",
+            "   • read:user (Read user profile)",
+            "   • read:email (Read email addresses)"
+        ]
+        
+        for setting in settings:
+            label = QtWidgets.QLabel(setting)
+            settings_layout.addWidget(label)
+        
+        layout.addWidget(settings_group)
+        
+        # Continue button
+        self.continue_btn = QtWidgets.QPushButton("✅ I've Generated My Token")
+        self.continue_btn.clicked.connect(self.mark_complete)
+        layout.addWidget(self.continue_btn)
+
+    def open_github_token_page(self):
+        """Open GitHub token generation page."""
+        webbrowser.open("https://github.com/settings/tokens/new")
+        self.open_github_btn.setText("🌐 GitHub Token Page Opened")
+        self.open_github_btn.setEnabled(False)
+
+    def mark_complete(self):
+        """Mark this page as complete."""
+        self.setField("token_generated", True)
+        self.wizard().next()
+
+
+class TokenSetupPage(QtWidgets.QWizardPage):
+    """Page for entering the generated token."""
     
-    def get_token(self) -> Optional[str]:
-        """Get the GitHub token from user."""
-        print("\nStep 3: Enter your GitHub Personal Access Token")
-        print("-" * 40)
-        print("⚠️  IMPORTANT: The token will be hidden when you type it.")
-        print("   This is for security - tokens are sensitive like passwords!")
-        print()
+    def __init__(self):
+        super().__init__()
+        self.setTitle("🔑 Enter Your GitHub Token")
+        self.setSubTitle("Paste your generated token below.")
         
-        while True:
-            try:
-                import getpass
-                token = getpass.getpass("GitHub Personal Access Token: ")
-                
-                if not token:
-                    print("❌ Please enter a valid token.")
-                    continue
-                
-                # Basic validation (GitHub tokens start with ghp_)
-                if not token.startswith('ghp_'):
-                    print("⚠️  Warning: GitHub tokens usually start with 'ghp_'")
-                    response = input("Continue anyway? (y/N): ").lower()
-                    if response != 'y':
-                        continue
-                
-                self.token = token
-                print("✅ Token received!")
-                return token
-                
-            except KeyboardInterrupt:
-                print("\n❌ Setup cancelled.")
-                return None
-            except Exception as e:
-                print(f"❌ Error: {e}")
-                return None
+        layout = QtWidgets.QVBoxLayout(self)
+        
+        # Username field
+        layout.addWidget(QtWidgets.QLabel("GitHub Username:"))
+        self.username_edit = QtWidgets.QLineEdit()
+        self.username_edit.setPlaceholderText("Enter your GitHub username")
+        layout.addWidget(self.username_edit)
+        
+        # Token field
+        layout.addWidget(QtWidgets.QLabel("GitHub Personal Access Token:"))
+        self.token_edit = QtWidgets.QLineEdit()
+        self.token_edit.setPlaceholderText("Paste your token here")
+        self.token_edit.setEchoMode(QtWidgets.QLineEdit.Password)
+        layout.addWidget(self.token_edit)
+        
+        # Show/hide token button
+        self.show_token_btn = QtWidgets.QPushButton("👁️ Show/Hide Token")
+        self.show_token_btn.clicked.connect(self.toggle_token_visibility)
+        layout.addWidget(self.show_token_btn)
+        
+        # Token format validation
+        self.validation_label = QtWidgets.QLabel("")
+        layout.addWidget(self.validation_label)
+        
+        # Connect validation
+        self.token_edit.textChanged.connect(self.validate_token)
+        self.username_edit.textChanged.connect(self.validate_token)
+
+    def toggle_token_visibility(self):
+        """Toggle token visibility."""
+        if self.token_edit.echoMode() == QtWidgets.QLineEdit.Password:
+            self.token_edit.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.show_token_btn.setText("🙈 Hide Token")
+        else:
+            self.token_edit.setEchoMode(QtWidgets.QLineEdit.Password)
+            self.show_token_btn.setText("👁️ Show Token")
+
+    def validate_token(self):
+        """Validate the token format."""
+        token = self.token_edit.text().strip()
+        username = self.username_edit.text().strip()
+        
+        if not username:
+            self.validation_label.setText("❌ Please enter your GitHub username")
+            self.validation_label.setStyleSheet("color: #dc3545;")
+            return False
+        
+        if not token:
+            self.validation_label.setText("❌ Please enter your GitHub token")
+            self.validation_label.setStyleSheet("color: #dc3545;")
+            return False
+        
+        if len(token) < 20:
+            self.validation_label.setText("❌ Token seems too short. Please check your token.")
+            self.validation_label.setStyleSheet("color: #dc3545;")
+            return False
+        
+        if not token.startswith("ghp_"):
+            self.validation_label.setText("⚠️ Token format looks unusual. Please verify your token.")
+            self.validation_label.setStyleSheet("color: #ffc107;")
+            return False
+        
+        self.validation_label.setText("✅ Token format looks good!")
+        self.validation_label.setStyleSheet("color: #28a745;")
+        return True
+
+    def isComplete(self):
+        """Check if page is complete."""
+        return self.validate_token()
+
+
+class VerificationPage(QtWidgets.QWizardPage):
+    """Page for verifying the token works."""
     
-    def test_token(self, username: str, token: str) -> bool:
-        """Test the GitHub token by making an API call."""
-        print("\nStep 4: Testing your GitHub token")
-        print("-" * 40)
+    def __init__(self):
+        super().__init__()
+        self.setTitle("✅ Verify Your Token")
+        self.setSubTitle("Let's test your token to make sure it works.")
         
+        layout = QtWidgets.QVBoxLayout(self)
+        
+        # Status
+        self.status_label = QtWidgets.QLabel("Click 'Test Token' to verify your setup.")
+        layout.addWidget(self.status_label)
+        
+        # Test button
+        self.test_btn = QtWidgets.QPushButton("🧪 Test Token")
+        self.test_btn.clicked.connect(self.test_token)
+        layout.addWidget(self.test_btn)
+        
+        # Results
+        self.results_text = QtWidgets.QTextEdit()
+        self.results_text.setMaximumHeight(200)
+        self.results_text.setReadOnly(True)
+        layout.addWidget(self.results_text)
+
+    def test_token(self):
+        """Test the GitHub token."""
+        self.test_btn.setEnabled(False)
+        self.status_label.setText("Testing token...")
+        
+        # Get token and username from previous page
+        token_page = self.wizard().page(2)  # TokenSetupPage
+        token = token_page.token_edit.text().strip()
+        username = token_page.username_edit.text().strip()
+        
+        # Test the token
+        self.test_token_worker = TokenTestWorker(token, username)
+        self.test_token_worker.result.connect(self.on_test_result)
+        self.test_token_worker.start()
+
+    def on_test_result(self, success, message):
+        """Handle token test result."""
+        self.test_btn.setEnabled(True)
+        
+        if success:
+            self.status_label.setText("✅ Token verification successful!")
+            self.status_label.setStyleSheet("color: #28a745; font-weight: bold;")
+            self.results_text.append("✅ Token is working correctly!")
+            self.results_text.append(f"📊 Found {message} repositories")
+            
+            # Store token in wizard
+            token_page = self.wizard().page(2)
+            self.wizard().github_token = token_page.token_edit.text().strip()
+            self.wizard().github_username = token_page.username_edit.text().strip()
+        else:
+            self.status_label.setText("❌ Token verification failed!")
+            self.status_label.setStyleSheet("color: #dc3545; font-weight: bold;")
+            self.results_text.append("❌ Token verification failed!")
+            self.results_text.append(f"Error: {message}")
+
+
+class CompletionPage(QtWidgets.QWizardPage):
+    """Final completion page."""
+    
+    def __init__(self):
+        super().__init__()
+        self.setTitle("🎉 Setup Complete!")
+        self.setSubTitle("Your GitHub token has been configured successfully.")
+        
+        layout = QtWidgets.QVBoxLayout(self)
+        
+        # Success message
+        success_text = QtWidgets.QLabel(
+            "✅ Your GitHub token has been set up successfully!\n\n"
+            "You can now:\n"
+            "• 🔍 Scan private repositories\n"
+            "• 📊 Get comprehensive portfolio analysis\n"
+            "• 💾 Save analysis results for reuse\n"
+            "• 🔄 Perform incremental updates\n\n"
+            "Click 'Finish' to complete the setup."
+        )
+        success_text.setWordWrap(True)
+        layout.addWidget(success_text)
+        
+        # Next steps
+        next_steps_group = QtWidgets.QGroupBox("🚀 Next Steps:")
+        next_steps_layout = QtWidgets.QVBoxLayout(next_steps_group)
+        
+        steps = [
+            "1. Return to the main Project Scanner GUI",
+            "2. Enter your GitHub username",
+            "3. Click 'Scan GitHub Library'",
+            "4. Enjoy comprehensive analysis of your portfolio!"
+        ]
+        
+        for step in steps:
+            label = QtWidgets.QLabel(step)
+            next_steps_layout.addWidget(label)
+        
+        layout.addWidget(next_steps_group)
+
+
+class TokenTestWorker(QThread):
+    """Worker for testing GitHub token."""
+    result = pyqtSignal(bool, str)
+    
+    def __init__(self, token, username):
+        super().__init__()
+        self.token = token
+        self.username = username
+    
+    def run(self):
+        """Test the GitHub token."""
         try:
             import requests
             
-            # Test the token with a simple API call
-            headers = {'Authorization': f'ttoken {token}'}
-            response = requests.get(f'https://api.github.com/user', headers=headers)
+            headers = {
+                'Authorization': f'token {self.token}',
+                'Accept': 'application/vnd.github.v3+json'
+            }
             
-            if response.status_code == 200:
-                user_data = response.json()
-                print(f"✅ Token is valid!")
-                print(f"   Authenticated as: {user_data.get('login', 'Unknown')}")
-                print(f"   Name: {user_data.get('name', 'Unknown')}")
-                return True
-            else:
-                print(f"❌ Token validation failed: {response.status_code}")
-                print(f"   Response: {response.text}")
-                return False
-                
-        except ImportError:
-            print("❌ Error: requests library not found.")
-            print("   Install with: pip install requests")
-            return False
-        except Exception as e:
-            print(f"❌ Error testing token: {e}")
-            return False
-    
-    def save_token_config(self, username: str, token: str):
-        """Save token configuration securely."""
-        print("\nStep 5: Saving configuration")
-        print("-" * 40)
-        
-        config_dir = Path("config")
-        config_dir.mkdir(exist_ok=True)
-        
-        config_file = config_dir / "github_token.json"
-        
-        # Save configuration (token will be stored locally)
-        config = {
-            'username': username,
-            'token': token,
-            'created_at': str(Path().cwd()),
-            'output_dir': self.output_dir
-        }
-        
-        try:
-            with config_file.open('w') as f:
-                json.dump(config, f, indent=2)
-            print(f"✅ Configuration saved to: {config_file}")
-            print("   ⚠️  Keep this file secure - it contains your token!")
+            # Test public repos
+            public_url = f"https://api.github.com/users/{self.username}/repos"
+            public_response = requests.get(public_url, headers=headers)
+            public_repos = len(public_response.json()) if public_response.status_code == 200 else 0
             
-            # Add to .gitignore if not already there
-            gitignore_file = Path(".gitignore")
-            if gitignore_file.exists():
-                with gitignore_file.open('r') as f:
-                    content = f.read()
-                if "config/github_token.json" not in content:
-                    with gitignore_file.open('a') as f:
-                        f.write("\n# GitHub token configuration\nconfig/github_token.json\n")
-                    print("✅ Added token file to .gitignore")
+            # Test private repos
+            private_url = "https://api.github.com/user/repos"
+            private_response = requests.get(private_url, headers=headers)
+            private_repos = len(private_response.json()) if private_response.status_code == 200 else 0
+            
+            total_repos = public_repos + private_repos
+            
+            if total_repos > 0:
+                self.result.emit(True, f"{total_repos} (Public: {public_repos}, Private: {private_repos})")
             else:
-                with gitignore_file.open('w') as f:
-                    f.write("# GitHub token configuration\nconfig/github_token.json\n")
-                print("✅ Created .gitignore with token protection")
+                self.result.emit(False, "No repositories found or token doesn't have correct permissions")
                 
         except Exception as e:
-            print(f"❌ Error saving configuration: {e}")
-    
-    def run_enhanced_scanner(self, username: str, token: str):
-        """Run the enhanced GitHub library scanner."""
-        print("\nStep 6: Running Enhanced GitHub Scanner")
-        print("-" * 40)
-        print("🚀 Starting scan of your repositories (public + private)...")
-        print()
-        
-        try:
-            # Import and run the enhanced scanner
-            from github_library_scanner_private import EnhancedGitHubLibraryScanner
-            
-            scanner = EnhancedGitHubLibraryScanner(username, token, self.output_dir)
-            scanner.scan_all_repositories()
-            
-            # Generate summary
-            summary = scanner.generate_library_summary()
-            print("\n📊 Scan Summary:")
-            print(json.dumps(summary, indent=2))
-            
-            return True
-            
-        except ImportError:
-            print("❌ Error: Could not import enhanced scanner.")
-            print("   Make sure github_library_scanner_private.py exists.")
-            return False
-        except Exception as e:
-            print(f"❌ Error running scanner: {e}")
-            return False
-    
-    def show_next_steps(self):
-        """Show next steps after successful setup."""
-        print("\n🎉 Setup Complete!")
-        print("=" * 60)
-        print("Your GitHub token is now configured and working!")
-        print()
-        print("📁 Your enhanced library is saved in: github_library_enhanced/")
-        print("🔐 Your token is stored in: config/github_token.json")
-        print()
-        print("🔄 To run future scans:")
-        print("   python github_library_scanner_private.py YOUR_USERNAME --token YOUR_TOKEN")
-        print()
-        print("📊 To analyze your enhanced library:")
-        print("   python deep_github_analysis.py")
-        print()
-        print("🔒 Security reminders:")
-        print("   • Keep your token secure")
-        print("   • Token expires in 90 days")
-        print("   • Don't commit token to Git")
-        print()
-    
-    def run_wizard(self):
-        """Run the complete wizard."""
-        try:
-            self.print_header()
-            
-            # Step 1: Get username
-            username = self.get_username()
-            
-            # Step 2: Open GitHub settings
-            self.open_github_settings()
-            
-            # Step 3: Get token
-            token = self.get_token()
-            if not token:
-                print("❌ Setup cancelled.")
-                return False
-            
-            # Step 4: Test token
-            if not self.test_token(username, token):
-                print("❌ Token validation failed. Please check your token.")
-                return False
-            
-            # Step 5: Save configuration
-            self.save_token_config(username, token)
-            
-            # Step 6: Run enhanced scanner
-            if not self.run_enhanced_scanner(username, token):
-                print("❌ Scanner failed. Check the error messages above.")
-                return False
-            
-            # Show next steps
-            self.show_next_steps()
-            
-            return True
-            
-        except KeyboardInterrupt:
-            print("\n❌ Setup cancelled by user.")
-            return False
-        except Exception as e:
-            print(f"❌ Unexpected error: {e}")
-            return False
-
-
-def load_existing_config() -> Optional[dict]:
-    """Load existing GitHub token configuration."""
-    config_file = Path("config/github_token.json")
-    if config_file.exists():
-        try:
-            with config_file.open('r') as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return None
+            self.result.emit(False, str(e))
 
 
 def main():
-    """Main function for the GitHub token wizard."""
-    print("🔐 GitHub Token Setup Wizard")
-    print("=" * 40)
+    """Run the GitHub token wizard."""
+    app = QtWidgets.QApplication(sys.argv)
     
-    # Check for existing configuration
-    existing_config = load_existing_config()
-    if existing_config:
-        print("📁 Found existing GitHub token configuration!")
-        print(f"   Username: {existing_config.get('username', 'Unknown')}")
-        print(f"   Output directory: {existing_config.get('output_dir', 'Unknown')}")
-        print()
-        
-        response = input("Use existing configuration? (Y/n): ").lower()
-        if response != 'n':
-            # Use existing configuration
-            username = existing_config['username']
-            token = existing_config['token']
-            output_dir = existing_config.get('output_dir', 'github_library_enhanced')
-            
-            print(f"✅ Using existing configuration for: {username}")
-            
-            # Test token
-            wizard = GitHubTokenWizard()
-            if wizard.test_token(username, token):
-                print("✅ Token is still valid!")
-                
-                # Run scanner
-                if wizard.run_enhanced_scanner(username, token):
-                    wizard.show_next_steps()
-                    return True
-                else:
-                    print("❌ Scanner failed with existing configuration.")
-                    print("   You may need to regenerate your token.")
-            else:
-                print("❌ Token is invalid or expired.")
-                print("   You need to create a new token.")
-        
-        print("Starting fresh setup...")
-        print()
+    # Set application style
+    app.setStyle('Fusion')
     
-    # Run the wizard
+    # Create and show wizard
     wizard = GitHubTokenWizard()
-    return wizard.run_wizard()
+    wizard.show()
+    
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
-    success = main()
-    if not success:
-        print("\n❌ Setup failed. Please try again.")
-        sys.exit(1)
-    else:
-        print("\n✅ Setup completed successfully!") 
+    main() 

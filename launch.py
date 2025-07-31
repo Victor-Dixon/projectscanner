@@ -22,12 +22,13 @@ Examples:
   python launch.py github username        # Scan GitHub library
   python launch.py skill-tree             # Generate skill tree
   python launch.py organize               # Organize project structure
+  python launch.py token-wizard           # Setup GitHub token
         """
     )
     
     parser.add_argument(
         'command',
-        choices=['gui', 'scan', 'github', 'skill-tree', 'organize', 'help'],
+        choices=['gui', 'scan', 'github', 'skill-tree', 'organize', 'token-wizard', 'help'],
         help='Command to run'
     )
     
@@ -61,6 +62,8 @@ Examples:
         launch_skill_tree()
     elif args.command == 'organize':
         launch_organize()
+    elif args.command == 'token-wizard':
+        launch_token_wizard()
     elif args.command == 'help':
         show_help()
 
@@ -115,6 +118,15 @@ def launch_organize():
         print(f"Error organizing project: {e}")
         sys.exit(1)
 
+def launch_token_wizard():
+    """Launch the GitHub token wizard."""
+    print("Launching GitHub Token Wizard...")
+    try:
+        subprocess.run([sys.executable, "run_token_wizard.py"], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error launching token wizard: {e}")
+        sys.exit(1)
+
 def show_help():
     """Show detailed help information."""
     help_text = """
@@ -146,6 +158,10 @@ Skill Tree Generation:
 Project Organization:
   python launch.py organize
   Organizes the project structure for better maintainability.
+
+GitHub Token Setup:
+  python launch.py token-wizard
+  Launches the GitHub token setup wizard for private repository access.
 
 Quick Start:
 -----------
