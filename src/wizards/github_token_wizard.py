@@ -17,15 +17,11 @@ class GitHubTokenWizard(QtWidgets.QWizard):
         super().__init__(parent)
         self.setWindowTitle("🔐 GitHub Token Setup Wizard")
         
-        # Center the wizard on screen
-        screen = QtWidgets.QApplication.primaryScreen().geometry()
-        x = (screen.width() - 800) // 2
-        y = (screen.height() - 600) // 2
-        self.setGeometry(x, y, 800, 600)
+        # Set size for popup dialog
+        self.resize(800, 600)
         
-        # Make sure it's on top and modal
-        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
-        self.setModal(True)  # Make it modal so it stays open
+        # Configure as modal dialog within parent application
+        self.setModal(True)
         
         # Configure wizard
         self.setWizardStyle(QtWidgets.QWizard.ModernStyle)

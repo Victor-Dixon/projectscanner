@@ -1151,9 +1151,11 @@
             "on_wizard_finished",
             "save_token_to_config",
             "__init__",
+            "isComplete",
             "__init__",
             "open_github_token_page",
             "mark_complete",
+            "isComplete",
             "__init__",
             "toggle_token_visibility",
             "validate_token",
@@ -1161,7 +1163,9 @@
             "__init__",
             "test_token",
             "on_test_result",
+            "isComplete",
             "__init__",
+            "isComplete",
             "__init__",
             "run"
         ],
@@ -1180,7 +1184,8 @@
             },
             "WelcomePage": {
                 "methods": [
-                    "__init__"
+                    "__init__",
+                    "isComplete"
                 ],
                 "docstring": "Welcome page explaining the wizard.",
                 "base_classes": [
@@ -1191,7 +1196,8 @@
                 "methods": [
                     "__init__",
                     "open_github_token_page",
-                    "mark_complete"
+                    "mark_complete",
+                    "isComplete"
                 ],
                 "docstring": "Page for generating the GitHub token.",
                 "base_classes": [
@@ -1214,7 +1220,8 @@
                 "methods": [
                     "__init__",
                     "test_token",
-                    "on_test_result"
+                    "on_test_result",
+                    "isComplete"
                 ],
                 "docstring": "Page for verifying the token works.",
                 "base_classes": [
@@ -1223,7 +1230,8 @@
             },
             "CompletionPage": {
                 "methods": [
-                    "__init__"
+                    "__init__",
+                    "isComplete"
                 ],
                 "docstring": "Final completion page.",
                 "base_classes": [
@@ -1242,7 +1250,7 @@
             }
         },
         "routes": [],
-        "complexity": 52,
+        "complexity": 60,
         "lint": [
             "High complexity"
         ]
@@ -1599,5 +1607,18 @@
         "routes": [],
         "complexity": 10,
         "lint": []
+    },
+    "test_token_validation.py": {
+        "language": ".py",
+        "functions": [
+            "test_token_validation",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 8,
+        "lint": [
+            "Function test_token_validation >50 lines"
+        ]
     }
 }
