@@ -291,12 +291,10 @@
     },
     "main.py": {
         "language": ".py",
-        "functions": [
-            "main"
-        ],
+        "functions": [],
         "classes": {},
         "routes": [],
-        "complexity": 4,
+        "complexity": 1,
         "lint": []
     },
     "run_gui.py": {
@@ -340,9 +338,7 @@
                     "test_scan_worker_with_custom_output_dir"
                 ],
                 "docstring": "Test the ScanWorker class.",
-                "base_classes": [],
-                "maturity": "Core Asset",
-                "agent_type": "Utility"
+                "base_classes": []
             },
             "TestGitHubScanner": {
                 "methods": [
@@ -350,9 +346,7 @@
                     "test_clone_repository_failure"
                 ],
                 "docstring": "Test the GitHubScanner class.",
-                "base_classes": [],
-                "maturity": "Core Asset",
-                "agent_type": "Utility"
+                "base_classes": []
             },
             "TestProjectScannerGUI": {
                 "methods": [
@@ -361,11 +355,1110 @@
                     "test_populate_tree_item"
                 ],
                 "docstring": "Test the ProjectScannerGUI class.",
-                "base_classes": [],
-                "maturity": "Core Asset",
-                "agent_type": "Utility"
+                "base_classes": []
             }
         },
+        "routes": [],
+        "complexity": 14,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "run_scanner.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "progress_callback"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "run_analysis.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "tests\\test_github_library.py": {
+        "language": ".py",
+        "functions": [
+            "test_github_library_scanner",
+            "test_library_management"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "src\\core\\projectscanner\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\core\\projectscanner\\cli.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": [
+            "Function main >50 lines"
+        ]
+    },
+    "launch.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "launch_gui",
+            "launch_scanner",
+            "launch_github_analysis",
+            "launch_skill_tree",
+            "launch_organize",
+            "show_help"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 22,
+        "lint": [
+            "Function main >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\analyzers\\comprehensive_project_analyzer.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "analyze_project_details",
+            "categorize_project",
+            "detect_technologies",
+            "analyze_development_patterns",
+            "generate_detailed_insights",
+            "create_project_overview",
+            "create_technology_insights",
+            "create_development_insights",
+            "create_skill_insights",
+            "create_recommendations",
+            "generate_comprehensive_report",
+            "save_insights_report",
+            "save_summary_report"
+        ],
+        "classes": {
+            "ComprehensiveProjectAnalyzer": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "analyze_project_details",
+                    "categorize_project",
+                    "detect_technologies",
+                    "analyze_development_patterns",
+                    "generate_detailed_insights",
+                    "create_project_overview",
+                    "create_technology_insights",
+                    "create_development_insights",
+                    "create_skill_insights",
+                    "create_recommendations",
+                    "generate_comprehensive_report",
+                    "save_insights_report",
+                    "save_summary_report"
+                ],
+                "docstring": null,
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 82,
+        "lint": [
+            "Function analyze_project_details >50 lines",
+            "Function save_summary_report >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\analyzers\\deep_project_insights.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "analyze_project_structures",
+            "analyze_single_project_structure",
+            "analyze_file_organization",
+            "analyze_naming_patterns",
+            "analyze_technology_stack",
+            "analyze_code_patterns",
+            "categorize_complexity",
+            "categorize_function",
+            "categorize_class",
+            "analyze_development_practices",
+            "analyze_project_evolution",
+            "generate_deep_insights",
+            "create_insights_visualizations",
+            "generate_comprehensive_report",
+            "save_insights_report",
+            "save_summary_report"
+        ],
+        "classes": {
+            "DeepProjectInsights": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "analyze_project_structures",
+                    "analyze_single_project_structure",
+                    "analyze_file_organization",
+                    "analyze_naming_patterns",
+                    "analyze_technology_stack",
+                    "analyze_code_patterns",
+                    "categorize_complexity",
+                    "categorize_function",
+                    "categorize_class",
+                    "analyze_development_practices",
+                    "analyze_project_evolution",
+                    "generate_deep_insights",
+                    "create_insights_visualizations",
+                    "generate_comprehensive_report",
+                    "save_insights_report",
+                    "save_summary_report"
+                ],
+                "docstring": null,
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 144,
+        "lint": [
+            "Function analyze_technology_stack >50 lines",
+            "Function analyze_code_patterns >50 lines",
+            "Function analyze_development_practices >50 lines",
+            "Function analyze_project_evolution >50 lines",
+            "Function save_summary_report >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\analyzers\\proper_insights_analyzer.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "analyze_project_insights",
+            "extract_project_info",
+            "analyze_analysis_data",
+            "detect_technologies_from_path",
+            "categorize_project",
+            "analyze_technologies",
+            "analyze_development_patterns",
+            "generate_insights_report",
+            "create_project_overview",
+            "create_technology_insights",
+            "create_development_insights",
+            "create_skill_insights",
+            "create_recommendations",
+            "generate_comprehensive_report",
+            "save_insights_report",
+            "save_summary_report"
+        ],
+        "classes": {
+            "ProperInsightsAnalyzer": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "analyze_project_insights",
+                    "extract_project_info",
+                    "analyze_analysis_data",
+                    "detect_technologies_from_path",
+                    "categorize_project",
+                    "analyze_technologies",
+                    "analyze_development_patterns",
+                    "generate_insights_report",
+                    "create_project_overview",
+                    "create_technology_insights",
+                    "create_development_insights",
+                    "create_skill_insights",
+                    "create_recommendations",
+                    "generate_comprehensive_report",
+                    "save_insights_report",
+                    "save_summary_report"
+                ],
+                "docstring": null,
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 91,
+        "lint": [
+            "Function save_summary_report >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\analyzers\\fixed_insights_analyzer.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "analyze_project_details",
+            "categorize_project",
+            "extract_technology_stack",
+            "generate_summary_report",
+            "save_reports",
+            "run_analysis"
+        ],
+        "classes": {
+            "FixedInsightsAnalyzer": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "analyze_project_details",
+                    "categorize_project",
+                    "extract_technology_stack",
+                    "generate_summary_report",
+                    "save_reports",
+                    "run_analysis"
+                ],
+                "docstring": null,
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 57,
+        "lint": [
+            "Function analyze_project_details >50 lines",
+            "Function generate_summary_report >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\analyzers\\enhanced_skill_analyzer.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "analyze_file_extensions",
+            "analyze_project_structure",
+            "analyze_project_categories",
+            "analyze_complexity_distribution",
+            "analyze_function_patterns",
+            "generate_skill_tree",
+            "generate_knowledge_base",
+            "create_visual_skill_tree",
+            "generate_enhanced_report",
+            "save_skill_tree_report",
+            "save_knowledge_base_report",
+            "save_enhanced_summary_report"
+        ],
+        "classes": {
+            "EnhancedSkillAnalyzer": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "analyze_file_extensions",
+                    "analyze_project_structure",
+                    "analyze_project_categories",
+                    "analyze_complexity_distribution",
+                    "analyze_function_patterns",
+                    "generate_skill_tree",
+                    "generate_knowledge_base",
+                    "create_visual_skill_tree",
+                    "generate_enhanced_report",
+                    "save_skill_tree_report",
+                    "save_knowledge_base_report",
+                    "save_enhanced_summary_report"
+                ],
+                "docstring": null,
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 86,
+        "lint": [
+            "Function save_enhanced_summary_report >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\analyzers\\deep_github_analysis.py": {
+        "language": ".py",
+        "functions": [
+            "deep_analyze_github_library",
+            "extract_deep_insights",
+            "display_deep_insights",
+            "generate_deep_report"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 63,
+        "lint": [
+            "Function extract_deep_insights >50 lines",
+            "Function display_deep_insights >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\scanners\\analyze_github_library.py": {
+        "language": ".py",
+        "functions": [
+            "analyze_github_library",
+            "extract_insights",
+            "display_insights",
+            "generate_summary_report"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 27,
+        "lint": [
+            "Function extract_insights >50 lines",
+            "Function display_insights >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\tools\\skill_tree_generator.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "analyze_technology_stack",
+            "analyze_complexity_patterns",
+            "analyze_project_categories",
+            "generate_skill_tree",
+            "generate_knowledge_base",
+            "extract_coding_patterns",
+            "extract_architectural_patterns",
+            "extract_problem_solving_patterns",
+            "extract_best_practices",
+            "analyze_learning_progression",
+            "create_visual_skill_tree",
+            "generate_report",
+            "save_skill_tree_report",
+            "save_knowledge_base_report",
+            "save_summary_report"
+        ],
+        "classes": {
+            "SkillTreeGenerator": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "analyze_technology_stack",
+                    "analyze_complexity_patterns",
+                    "analyze_project_categories",
+                    "generate_skill_tree",
+                    "generate_knowledge_base",
+                    "extract_coding_patterns",
+                    "extract_architectural_patterns",
+                    "extract_problem_solving_patterns",
+                    "extract_best_practices",
+                    "analyze_learning_progression",
+                    "create_visual_skill_tree",
+                    "generate_report",
+                    "save_skill_tree_report",
+                    "save_knowledge_base_report",
+                    "save_summary_report"
+                ],
+                "docstring": null,
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 99,
+        "lint": [
+            "Function save_summary_report >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\tools\\skill_tree_viewer.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_skill_data",
+            "init_ui",
+            "populate_skill_tree",
+            "create_overview_tab",
+            "create_technologies_tab",
+            "create_projects_tab",
+            "create_insights_tab",
+            "generate_overview_content",
+            "generate_technologies_content",
+            "generate_projects_content",
+            "generate_insights_content",
+            "on_skill_selected"
+        ],
+        "classes": {
+            "SkillTreeViewer": {
+                "methods": [
+                    "__init__",
+                    "load_skill_data",
+                    "init_ui",
+                    "populate_skill_tree",
+                    "create_overview_tab",
+                    "create_technologies_tab",
+                    "create_projects_tab",
+                    "create_insights_tab",
+                    "generate_overview_content",
+                    "generate_technologies_content",
+                    "generate_projects_content",
+                    "generate_insights_content",
+                    "on_skill_selected"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QMainWindow"
+                ]
+            }
+        },
+        "routes": [],
+        "complexity": 59,
+        "lint": [
+            "Function init_ui >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\tools\\data_inspector.py": {
+        "language": ".py",
+        "functions": [
+            "inspect_library_data"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 13,
+        "lint": [
+            "Function inspect_library_data >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\core\\projectscanner\\bots.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "run",
+            "__init__",
+            "add_task",
+            "wait_for_completion",
+            "stop_workers"
+        ],
+        "classes": {
+            "BotWorker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": "Background worker processing files from a queue.",
+                "base_classes": [
+                    "threading.Thread"
+                ]
+            },
+            "MultibotManager": {
+                "methods": [
+                    "__init__",
+                    "add_task",
+                    "wait_for_completion",
+                    "stop_workers"
+                ],
+                "docstring": "Manages a pool of BotWorker threads.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 17,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "src\\core\\projectscanner\\report_generator.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_existing_report",
+            "save_report",
+            "generate_init_files",
+            "load_existing_chatgpt_context",
+            "export_chatgpt_context"
+        ],
+        "classes": {
+            "ReportGenerator": {
+                "methods": [
+                    "__init__",
+                    "load_existing_report",
+                    "save_report",
+                    "generate_init_files",
+                    "load_existing_chatgpt_context",
+                    "export_chatgpt_context"
+                ],
+                "docstring": "Handles merging new analysis with old reports.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 25,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "organize_project.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "organize_project",
+            "_create_directories",
+            "_organize_files",
+            "_move_files_to_category",
+            "_cleanup_files",
+            "_create_entry_points",
+            "_create_main_entry",
+            "_create_scanner_entry",
+            "_create_gui_entry",
+            "_create_analysis_entry",
+            "_update_references",
+            "create_readme",
+            "create_requirements"
+        ],
+        "classes": {
+            "ProjectOrganizer": {
+                "methods": [
+                    "__init__",
+                    "organize_project",
+                    "_create_directories",
+                    "_organize_files",
+                    "_move_files_to_category",
+                    "_cleanup_files",
+                    "_create_entry_points",
+                    "_create_main_entry",
+                    "_create_scanner_entry",
+                    "_create_gui_entry",
+                    "_create_analysis_entry",
+                    "_update_references",
+                    "create_readme",
+                    "create_requirements"
+                ],
+                "docstring": "Organizes the project structure for better maintainability.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 59,
+        "lint": [
+            "Function __init__ >50 lines",
+            "Function create_readme >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\core\\projectscanner\\scanner.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_cache",
+            "save_cache",
+            "scan_project",
+            "_process_file",
+            "generate_init_files",
+            "export_chatgpt_context",
+            "categorize_agents",
+            "_maturity_level",
+            "_agent_type"
+        ],
+        "classes": {
+            "ProjectScanner": {
+                "methods": [
+                    "__init__",
+                    "load_cache",
+                    "save_cache",
+                    "scan_project",
+                    "_process_file",
+                    "generate_init_files",
+                    "export_chatgpt_context",
+                    "categorize_agents",
+                    "_maturity_level",
+                    "_agent_type"
+                ],
+                "docstring": "Main orchestrator for analyzing projects.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 47,
+        "lint": [
+            "Function scan_project >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\tools\\debug_analysis_status.py": {
+        "language": ".py",
+        "functions": [
+            "debug_analysis_status"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "Function debug_analysis_status >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\tools\\check_token_permissions.py": {
+        "language": ".py",
+        "functions": [
+            "check_token_permissions"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 8,
+        "lint": [
+            "Function check_token_permissions >50 lines"
+        ]
+    },
+    "src\\core\\projectscanner\\language_analyzer.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_init_tree_sitter_language",
+            "analyze_file",
+            "_analyze_python",
+            "_analyze_rust",
+            "_analyze_javascript",
+            "_traverse",
+            "get_node_text",
+            "_traverse"
+        ],
+        "classes": {
+            "LanguageAnalyzer": {
+                "methods": [
+                    "__init__",
+                    "_init_tree_sitter_language",
+                    "analyze_file",
+                    "_analyze_python",
+                    "_analyze_rust",
+                    "_analyze_javascript"
+                ],
+                "docstring": "Analyze source files by language.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 75,
+        "lint": [
+            "Function _analyze_python >50 lines",
+            "Function _analyze_javascript >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\scanners\\github_library_scanner.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "save_library",
+            "load_scan_log",
+            "save_scan_log",
+            "get_user_repositories",
+            "generate_repo_name",
+            "scan_repository",
+            "scan_all_repositories",
+            "generate_library_summary",
+            "export_library_summary"
+        ],
+        "classes": {
+            "GitHubLibraryScanner": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "save_library",
+                    "load_scan_log",
+                    "save_scan_log",
+                    "get_user_repositories",
+                    "generate_repo_name",
+                    "scan_repository",
+                    "scan_all_repositories",
+                    "generate_library_summary",
+                    "export_library_summary"
+                ],
+                "docstring": "Scans all repositories from a GitHub account and builds a library.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 43,
+        "lint": [
+            "Function scan_repository >50 lines",
+            "Function scan_all_repositories >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\scanners\\github_library_scanner_private.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "load_library",
+            "save_library",
+            "load_scan_log",
+            "save_scan_log",
+            "get_user_repositories",
+            "generate_repo_name",
+            "scan_repository",
+            "scan_all_repositories",
+            "generate_library_summary",
+            "export_library_summary"
+        ],
+        "classes": {
+            "EnhancedGitHubLibraryScanner": {
+                "methods": [
+                    "__init__",
+                    "load_library",
+                    "save_library",
+                    "load_scan_log",
+                    "save_scan_log",
+                    "get_user_repositories",
+                    "generate_repo_name",
+                    "scan_repository",
+                    "scan_all_repositories",
+                    "generate_library_summary",
+                    "export_library_summary"
+                ],
+                "docstring": "Scans all repositories (public and private) from a GitHub account.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 53,
+        "lint": [
+            "Function get_user_repositories >50 lines",
+            "Function scan_repository >50 lines",
+            "Function scan_all_repositories >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\wizards\\github_token_wizard.py": {
+        "language": ".py",
+        "functions": [
+            "load_existing_config",
+            "main",
+            "__init__",
+            "print_header",
+            "get_username",
+            "open_github_settings",
+            "get_token",
+            "test_token",
+            "save_token_config",
+            "run_enhanced_scanner",
+            "show_next_steps",
+            "run_wizard"
+        ],
+        "classes": {
+            "GitHubTokenWizard": {
+                "methods": [
+                    "__init__",
+                    "print_header",
+                    "get_username",
+                    "open_github_settings",
+                    "get_token",
+                    "test_token",
+                    "save_token_config",
+                    "run_enhanced_scanner",
+                    "show_next_steps",
+                    "run_wizard"
+                ],
+                "docstring": "Wizard for setting up GitHub Personal Access Tokens.",
+                "base_classes": []
+            }
+        },
+        "routes": [],
+        "complexity": 48,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "src\\core\\projectscanner\\gui.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "run",
+            "__init__",
+            "run",
+            "__init__",
+            "setup_styles",
+            "setup_ui",
+            "create_configuration_panel",
+            "create_scan_configuration",
+            "create_github_configuration",
+            "create_processing_controls",
+            "create_results_panel",
+            "setup_menu",
+            "start_processing",
+            "stop_processing",
+            "update_processing_controls",
+            "process_directory",
+            "process_github_repository",
+            "process_github_library",
+            "clone_repository",
+            "browse_directory",
+            "scan_directory",
+            "scan_github_repository",
+            "scan_github_library",
+            "start_scan",
+            "update_progress",
+            "scan_finished",
+            "github_library_finished",
+            "scan_error",
+            "display_scan_results",
+            "display_github_library_results",
+            "populate_tree_item",
+            "load_library",
+            "save_library",
+            "update_library_display",
+            "on_library_item_clicked",
+            "on_github_library_item_clicked",
+            "view_library_item",
+            "view_github_repository",
+            "refresh_github_library",
+            "delete_library_item",
+            "export_library",
+            "import_library",
+            "save_current_scan",
+            "closeEvent",
+            "progress_callback",
+            "scan_repo_with_progress"
+        ],
+        "classes": {
+            "ScanWorker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": "Background worker for scanning projects.",
+                "base_classes": [
+                    "QThread"
+                ]
+            },
+            "GitHubLibraryWorker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": "Background worker for scanning GitHub libraries.",
+                "base_classes": [
+                    "QThread"
+                ]
+            },
+            "ProjectScannerGUI": {
+                "methods": [
+                    "__init__",
+                    "setup_styles",
+                    "setup_ui",
+                    "create_configuration_panel",
+                    "create_scan_configuration",
+                    "create_github_configuration",
+                    "create_processing_controls",
+                    "create_results_panel",
+                    "setup_menu",
+                    "start_processing",
+                    "stop_processing",
+                    "update_processing_controls",
+                    "process_directory",
+                    "process_github_repository",
+                    "process_github_library",
+                    "clone_repository",
+                    "browse_directory",
+                    "scan_directory",
+                    "scan_github_repository",
+                    "scan_github_library",
+                    "start_scan",
+                    "update_progress",
+                    "scan_finished",
+                    "github_library_finished",
+                    "scan_error",
+                    "display_scan_results",
+                    "display_github_library_results",
+                    "populate_tree_item",
+                    "load_library",
+                    "save_library",
+                    "update_library_display",
+                    "on_library_item_clicked",
+                    "on_github_library_item_clicked",
+                    "view_library_item",
+                    "view_github_repository",
+                    "refresh_github_library",
+                    "delete_library_item",
+                    "export_library",
+                    "import_library",
+                    "save_current_scan",
+                    "closeEvent"
+                ],
+                "docstring": "Enhanced GUI for ProjectScanner with clean organization and prominent start processing button.",
+                "base_classes": [
+                    "QtWidgets.QMainWindow"
+                ]
+            }
+        },
+        "routes": [],
+        "complexity": 145,
+        "lint": [
+            "Function setup_styles >50 lines",
+            "Function create_results_panel >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\wizards\\github_token_wizard_gui.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "run",
+            "__init__",
+            "run",
+            "__init__",
+            "init_ui",
+            "create_setup_tab",
+            "create_progress_tab",
+            "create_results_tab",
+            "open_github_settings",
+            "toggle_token_visibility",
+            "validate_token",
+            "on_validation_complete",
+            "start_enhanced_scan",
+            "on_scan_complete",
+            "log_progress",
+            "save_configuration",
+            "open_output_directory",
+            "load_existing_config",
+            "scan_repo_with_progress"
+        ],
+        "classes": {
+            "TokenValidationWorker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": "Background worker for token validation.",
+                "base_classes": [
+                    "QThread"
+                ]
+            },
+            "EnhancedScannerWorker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": "Background worker for enhanced GitHub scanning.",
+                "base_classes": [
+                    "QThread"
+                ]
+            },
+            "GitHubTokenWizardGUI": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "create_setup_tab",
+                    "create_progress_tab",
+                    "create_results_tab",
+                    "open_github_settings",
+                    "toggle_token_visibility",
+                    "validate_token",
+                    "on_validation_complete",
+                    "start_enhanced_scan",
+                    "on_scan_complete",
+                    "log_progress",
+                    "save_configuration",
+                    "open_output_directory",
+                    "load_existing_config"
+                ],
+                "docstring": "GUI for GitHub token setup wizard.",
+                "base_classes": [
+                    "QMainWindow"
+                ]
+            }
+        },
+        "routes": [],
+        "complexity": 61,
+        "lint": [
+            "Function create_setup_tab >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\gui\\run_gui.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\gui\\main.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\wizards\\demo_wizard.py": {
+        "language": ".py",
+        "functions": [
+            "demo_wizard_flow"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": [
+            "Function demo_wizard_flow >50 lines"
+        ]
+    },
+    "scripts\\main.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\gui\\demo_gui.py": {
+        "language": ".py",
+        "functions": [
+            "demo_scan_local_directory",
+            "demo_github_cloning",
+            "demo_gui_features",
+            "on_progress",
+            "on_finished",
+            "on_error"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 8,
+        "lint": []
+    },
+    "src\\wizards\\demo_gui_wizard.py": {
+        "language": ".py",
+        "functions": [
+            "demo_gui_features"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": [
+            "Function demo_gui_features >50 lines"
+        ]
+    },
+    "test_gui.py": {
+        "language": ".py",
+        "functions": [
+            "test_gui_launch",
+            "test_launcher",
+            "test_scanner",
+            "main"
+        ],
+        "classes": {},
         "routes": [],
         "complexity": 14,
         "lint": [

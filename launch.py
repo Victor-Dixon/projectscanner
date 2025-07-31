@@ -37,7 +37,11 @@ Examples:
         help='Additional arguments for the command'
     )
     
-    args = parser.parse_args()
+    # Parse known args to allow additional arguments to pass through
+    args, unknown = parser.parse_known_args()
+    
+    # Store unknown args for passing to subcommands
+    sys.unknown_args = unknown
     
     if args.command == 'gui':
         launch_gui()
@@ -62,7 +66,7 @@ Examples:
 
 def launch_gui():
     """Launch the GUI."""
-    print("🚀 Launching Project Scanner GUI...")
+    print("Launching Project Scanner GUI...")
     try:
         subprocess.run([sys.executable, "run_gui.py"], check=True)
     except subprocess.CalledProcessError as e:
@@ -71,16 +75,21 @@ def launch_gui():
 
 def launch_scanner(project_path):
     """Launch the scanner."""
-    print(f"🔍 Scanning project: {project_path}")
+    print(f"Scanning project: {project_path}")
     try:
-        subprocess.run([sys.executable, "run_scanner.py", project_path], check=True)
+        # Pass all additional arguments to the scanner
+        cmd = [sys.executable, "run_scanner.py", project_path]
+        # Add any unknown arguments
+        if hasattr(sys, 'unknown_args'):
+            cmd.extend(sys.unknown_args)
+        subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as e:
         print(f"Error scanning project: {e}")
         sys.exit(1)
 
 def launch_github_analysis(username):
     """Launch GitHub analysis."""
-    print(f"🔗 Analyzing GitHub libraries for user: {username}")
+    print(f"Analyzing GitHub libraries for user: {username}")
     try:
         subprocess.run([sys.executable, "run_analysis.py", "--github-analysis"], check=True)
     except subprocess.CalledProcessError as e:
@@ -89,7 +98,7 @@ def launch_github_analysis(username):
 
 def launch_skill_tree():
     """Launch skill tree generation."""
-    print("🌳 Generating skill tree...")
+    print("Generating skill tree...")
     try:
         subprocess.run([sys.executable, "run_analysis.py", "--skill-tree"], check=True)
     except subprocess.CalledProcessError as e:
@@ -98,7 +107,7 @@ def launch_skill_tree():
 
 def launch_organize():
     """Launch project organization."""
-    print("🔧 Organizing project structure...")
+    print("Organizing project structure...")
     try:
         subprocess.run([sys.executable, "organize_project.py"], check=True)
     except subprocess.CalledProcessError as e:

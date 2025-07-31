@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """
-Launcher script for the ProjectScanner GUI.
+Project Scanner - GUI Entry Point
+
+Launch the graphical user interface.
 """
 
 import sys
 from pathlib import Path
 
-# Add the project root to the Python path
-project_root = Path(__file__).parent
-sys.path.insert(0, str(project_root))
+# Add src to path
+sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from projectscanner.gui import main
+from core.projectscanner.gui import main
 
 if __name__ == "__main__":
-    main() 
+    main()
