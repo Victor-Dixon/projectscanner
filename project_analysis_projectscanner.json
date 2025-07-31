@@ -382,7 +382,7 @@
         ],
         "classes": {},
         "routes": [],
-        "complexity": 5,
+        "complexity": 6,
         "lint": []
     },
     "tests\\test_github_library.py": {
@@ -1055,6 +1055,7 @@
     "src\\scanners\\github_library_scanner.py": {
         "language": ".py",
         "functions": [
+            "clone_repository",
             "main",
             "__init__",
             "load_library",
@@ -1088,7 +1089,7 @@
             }
         },
         "routes": [],
-        "complexity": 43,
+        "complexity": 46,
         "lint": [
             "Function scan_repository >50 lines",
             "Function scan_all_repositories >50 lines",

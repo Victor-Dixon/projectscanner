@@ -25,7 +25,18 @@ def main():
         skill_tree_main()
     elif args.github_analysis:
         from scanners.github_library_scanner import main as github_main
-        github_main()
+        # For GitHub analysis, we need to get the username from command line
+        if len(sys.argv) > 2:
+            username = sys.argv[2]
+            # Create a new sys.argv for the github scanner
+            import os
+            os.environ['GITHUB_USERNAME'] = username
+            # Call the main function with the username
+            github_main()
+        else:
+            print("Error: Please provide a GitHub username")
+            print("Usage: python launch.py github username")
+            sys.exit(1)
     elif args.comprehensive:
         from analyzers.comprehensive_project_analyzer import main as comprehensive_main
         comprehensive_main()

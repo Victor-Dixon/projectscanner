@@ -17,8 +17,7 @@ from datetime import datetime
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from projectscanner.scanner import ProjectScanner
-from projectscanner.gui import GitHubScanner
+from core.projectscanner.scanner import ProjectScanner
 
 
 class EnhancedGitHubLibraryScanner:

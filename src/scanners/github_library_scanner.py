@@ -9,16 +9,38 @@ import tempfile
 import shutil
 import time
 import os
+import subprocess
 from pathlib import Path
 from typing import Dict, List, Optional
 from datetime import datetime
 
-# Add the project root to the Python path
-project_root = Path(__file__).parent
-sys.path.insert(0, str(project_root))
+# Add the src directory to the Python path
+src_path = Path(__file__).parent.parent
+sys.path.insert(0, str(src_path))
 
-from projectscanner.scanner import ProjectScanner
-from projectscanner.gui import GitHubScanner
+from core.projectscanner.scanner import ProjectScanner
+
+
+def clone_repository(repo_url: str, temp_dir: Path) -> Path:
+    """Clone a GitHub repository to a temporary directory."""
+    try:
+        # Extract repo name from URL
+        repo_name = repo_url.split('/')[-1]
+        if repo_name.endswith('.git'):
+            repo_name = repo_name[:-4]
+        
+        clone_path = temp_dir / repo_name
+        
+        # Clone the repository
+        subprocess.run([
+            'git', 'clone', repo_url, str(clone_path)
+        ], check=True, capture_output=True)
+        
+        return clone_path
+    except subprocess.CalledProcessError as e:
+        raise Exception(f"Failed to clone repository: {e.stderr.decode()}")
+    except Exception as e:
+        raise Exception(f"Error cloning repository: {str(e)}")
 
 
 class GitHubLibraryScanner:
@@ -130,7 +152,7 @@ class GitHubLibraryScanner:
         try:
             # Clone the repository
             print(f"   📥 Cloning repository...")
-            clone_path = GitHubScanner.clone_repository(repo_url, temp_dir)
+            clone_path = clone_repository(repo_url, temp_dir)
             
             # Create repository-specific output directory
             repo_output_dir = self.output_dir / unique_name

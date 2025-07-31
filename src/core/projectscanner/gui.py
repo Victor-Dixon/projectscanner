@@ -98,7 +98,7 @@ class GitHubLibraryWorker(QThread):
             self.progress.emit(f"Starting GitHub library scan for user: {self.github_username}")
             
             # Import the GitHub library scanner
-            from github_library_scanner import GitHubLibraryScanner
+            from scanners.github_library_scanner import GitHubLibraryScanner
             
             scanner = GitHubLibraryScanner(self.github_username, self.output_dir)
             
