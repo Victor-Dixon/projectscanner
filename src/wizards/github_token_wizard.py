@@ -16,7 +16,15 @@ class GitHubTokenWizard(QtWidgets.QWizard):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("🔐 GitHub Token Setup Wizard")
-        self.setGeometry(100, 100, 800, 600)
+        
+        # Center the wizard on screen
+        screen = QtWidgets.QApplication.primaryScreen().geometry()
+        x = (screen.width() - 800) // 2
+        y = (screen.height() - 600) // 2
+        self.setGeometry(x, y, 800, 600)
+        
+        # Make sure it's on top
+        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
         
         # Configure wizard
         self.setWizardStyle(QtWidgets.QWizard.ModernStyle)
@@ -414,16 +422,24 @@ class TokenTestWorker(QThread):
 
 def main():
     """Run the GitHub token wizard."""
-    app = QtWidgets.QApplication(sys.argv)
-    
-    # Set application style
-    app.setStyle('Fusion')
-    
-    # Create and show wizard
-    wizard = GitHubTokenWizard()
-    wizard.show()
-    
-    sys.exit(app.exec_())
+    try:
+        app = QtWidgets.QApplication(sys.argv)
+        
+        # Set application style
+        app.setStyle('Fusion')
+        
+        # Create and show wizard
+        wizard = GitHubTokenWizard()
+        wizard.show()
+        
+        # Keep the wizard open
+        return app.exec_()
+        
+    except Exception as e:
+        print(f"Error launching token wizard: {e}")
+        import traceback
+        traceback.print_exc()
+        return 1
 
 
 if __name__ == "__main__":
