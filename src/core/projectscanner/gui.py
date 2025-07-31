@@ -1205,18 +1205,25 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         try:
             from wizards.github_token_wizard import GitHubTokenWizard
             
-            # Create and configure wizard
+            # Create and configure wizard with proper parent
             wizard = GitHubTokenWizard()
+            wizard.setParent(self)  # Set main window as parent
             wizard.finished.connect(self.on_wizard_finished)
             
+            # Center the wizard on screen
+            screen = QtWidgets.QApplication.primaryScreen().geometry()
+            x = (screen.width() - 800) // 2
+            y = (screen.height() - 600) // 2
+            wizard.setGeometry(x, y, 800, 600)
+            
             # Ensure wizard is visible and on top
+            wizard.setWindowFlags(wizard.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+            wizard.show()
             wizard.raise_()
             wizard.activateWindow()
-            wizard.show()
             
-            # Bring to front
-            wizard.setWindowState(wizard.windowState() & ~QtCore.Qt.WindowMinimized)
-            wizard.showNormal()
+            # Keep reference to prevent garbage collection
+            self.token_wizard = wizard
             
         except ImportError as e:
             QtWidgets.QMessageBox.critical(

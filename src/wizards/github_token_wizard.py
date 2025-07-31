@@ -13,8 +13,8 @@ from PyQt5.QtCore import QThread, pyqtSignal
 class GitHubTokenWizard(QtWidgets.QWizard):
     """Wizard for generating and setting up GitHub tokens."""
     
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent=None):
+        super().__init__(parent)
         self.setWindowTitle("🔐 GitHub Token Setup Wizard")
         
         # Center the wizard on screen
@@ -23,8 +23,9 @@ class GitHubTokenWizard(QtWidgets.QWizard):
         y = (screen.height() - 600) // 2
         self.setGeometry(x, y, 800, 600)
         
-        # Make sure it's on top
+        # Make sure it's on top and modal
         self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
+        self.setModal(True)  # Make it modal so it stays open
         
         # Configure wizard
         self.setWizardStyle(QtWidgets.QWizard.ModernStyle)
