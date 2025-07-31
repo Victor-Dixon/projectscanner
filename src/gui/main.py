@@ -8,8 +8,8 @@ Main entry point for the GUI application.
 import sys
 from pathlib import Path
 
-# Add the core module to the path
-sys.path.insert(0, str(Path(__file__).parent.parent / "core"))
+# Add the src directory to the path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from core.projectscanner.gui import main
 

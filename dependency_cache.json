@@ -1,122 +1,122 @@
 {
-    "src\\scanners\\github_library_scanner.py": {
-        "hash": "c524342c2d2f130c6578d0a7cfa8fc5f"
+    "src\\gui\\main.py": {
+        "hash": "ebf5ceba78d34e969d55eabc58e4ca11"
     },
-    "organize_project.py": {
-        "hash": "fe791eebcc6d2324c4fdb11e94dd9b5d"
+    "src\\tools\\skill_tree_generator.py": {
+        "hash": "e7d721a329b35e610291e8ab8f402a3b"
     },
-    "src\\analyzers\\comprehensive_project_analyzer.py": {
-        "hash": "9acb26caad70005677336b8259daa3ff"
-    },
-    "src\\core\\projectscanner\\report_generator.py": {
-        "hash": "1a45c7083f852d26e8b827a1e0f41ebc"
-    },
-    "tests\\test_github_library.py": {
-        "hash": "1033c24e1453c3f2d134bf87d33d41e2"
-    },
-    "src\\analyzers\\deep_project_insights.py": {
-        "hash": "c5abc4edfa747539ac67c6dbb850f49d"
-    },
-    "src\\analyzers\\fixed_insights_analyzer.py": {
-        "hash": "0c31f622eab7901cbdf5e8c37b606d58"
-    },
-    "run_scanner.py": {
-        "hash": "dba176d981d4131c276de2c6c14ce548"
+    "src\\tools\\data_inspector.py": {
+        "hash": "d0a442c21572224b489ba26beed9f48d"
     },
     "src\\scanners\\github_library_scanner_private.py": {
         "hash": "3e28767ee32ca3eda97ddacec919bc45"
     },
-    "launch.py": {
-        "hash": "74e399486bd5f3ba1d1cc556b125ce80"
+    "run_scanner.py": {
+        "hash": "dba176d981d4131c276de2c6c14ce548"
     },
-    "src\\analyzers\\enhanced_skill_analyzer.py": {
-        "hash": "783251aa6163908643369d0afc726f3a"
-    },
-    "src\\analyzers\\deep_github_analysis.py": {
-        "hash": "54329b48950a91432fe53be3fec2d71b"
-    },
-    "src\\core\\projectscanner\\gui.py": {
-        "hash": "0b743c4e9423606dfd3a56a8ac92ed50"
-    },
-    "src\\wizards\\demo_wizard.py": {
-        "hash": "b50a7d49e03a360f2ea1c277d847d752"
+    "run_analysis.py": {
+        "hash": "bec68f397d19a27dad7d195417ce5182"
     },
     "src\\tools\\check_token_permissions.py": {
         "hash": "64a3c564eb8cd39ef39a20d842f9967b"
     },
-    "tests\\test_analyzer.py": {
-        "hash": "b91842f78a61c108f320dbd05d50547e"
+    "src\\wizards\\github_token_wizard.py": {
+        "hash": "c36ebe44e4f60ced16cce57d48d2863a"
     },
-    "src\\wizards\\demo_gui_wizard.py": {
-        "hash": "b3838c800c02d5e678937cbe92a0c1e6"
+    "src\\wizards\\demo_wizard.py": {
+        "hash": "b50a7d49e03a360f2ea1c277d847d752"
+    },
+    "scripts\\main.py": {
+        "hash": "2d6b58685dd1510cc0beeb3b5c85811a"
     },
     "src\\gui\\run_gui.py": {
         "hash": "9101d9417467059adb02a5ba30f5afb6"
     },
-    "src\\core\\projectscanner\\cli.py": {
-        "hash": "aceb7b04e2600e420e870e8b044888b6"
+    "src\\analyzers\\enhanced_skill_analyzer.py": {
+        "hash": "783251aa6163908643369d0afc726f3a"
     },
-    "run_gui.py": {
-        "hash": "f6b029ac2df0b2e462f99474bd016675"
+    "tests\\test_analyzer.py": {
+        "hash": "b91842f78a61c108f320dbd05d50547e"
     },
-    "src\\gui\\main.py": {
-        "hash": "e7ebbea8de5467f1da05800cf32d0004"
+    "organize_project.py": {
+        "hash": "fe791eebcc6d2324c4fdb11e94dd9b5d"
+    },
+    "launch.py": {
+        "hash": "74e399486bd5f3ba1d1cc556b125ce80"
     },
     "src\\core\\projectscanner\\bots.py": {
         "hash": "11ffd479e19e79fd0110b295cabf17ba"
     },
+    "src\\tools\\debug_analysis_status.py": {
+        "hash": "3f9e98a6fcc86d950e595d4f4528f784"
+    },
+    "tests\\test_github_library.py": {
+        "hash": "1033c24e1453c3f2d134bf87d33d41e2"
+    },
+    "src\\scanners\\github_library_scanner.py": {
+        "hash": "c524342c2d2f130c6578d0a7cfa8fc5f"
+    },
+    "run_gui.py": {
+        "hash": "f6b029ac2df0b2e462f99474bd016675"
+    },
+    "src\\wizards\\github_token_wizard_gui.py": {
+        "hash": "900122aa614b76f5d47fb217152b47e6"
+    },
+    "src\\analyzers\\comprehensive_project_analyzer.py": {
+        "hash": "9acb26caad70005677336b8259daa3ff"
+    },
+    "src\\core\\projectscanner\\scanner.py": {
+        "hash": "3543bd48ca30ef5a49e2220d0cffa72d"
+    },
+    "src\\scanners\\analyze_github_library.py": {
+        "hash": "ca2fa3cc2a06de593711e136e09d486b"
+    },
+    "src\\core\\projectscanner\\__init__.py": {
+        "hash": "0102496b2e165505d0cd5ed7c585fecb"
+    },
+    "src\\core\\projectscanner\\report_generator.py": {
+        "hash": "1a45c7083f852d26e8b827a1e0f41ebc"
+    },
+    "src\\analyzers\\deep_github_analysis.py": {
+        "hash": "54329b48950a91432fe53be3fec2d71b"
+    },
+    "src\\gui\\demo_gui.py": {
+        "hash": "f9da053b1f36bbc1da699cef79be12d1"
+    },
+    "src\\analyzers\\deep_project_insights.py": {
+        "hash": "c5abc4edfa747539ac67c6dbb850f49d"
+    },
+    "test_gui.py": {
+        "hash": "37b764eeff3e77f5f097993f8282cec2"
+    },
+    "src\\core\\projectscanner\\gui.py": {
+        "hash": "0b743c4e9423606dfd3a56a8ac92ed50"
+    },
     "src\\tools\\skill_tree_viewer.py": {
         "hash": "168059f7fb737b74ec084be9f4ebf8f0"
+    },
+    "src\\core\\projectscanner\\cli.py": {
+        "hash": "aceb7b04e2600e420e870e8b044888b6"
+    },
+    "src\\wizards\\demo_gui_wizard.py": {
+        "hash": "b3838c800c02d5e678937cbe92a0c1e6"
+    },
+    "src\\analyzers\\fixed_insights_analyzer.py": {
+        "hash": "0c31f622eab7901cbdf5e8c37b606d58"
+    },
+    "tests\\__init__.py": {
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "src\\analyzers\\proper_insights_analyzer.py": {
+        "hash": "66bcb30e63b65702be3457ba29001643"
+    },
+    "tests\\test_gui.py": {
+        "hash": "aeb39085cbf7a90acbbb1c21fa584fb9"
     },
     "src\\core\\projectscanner\\language_analyzer.py": {
         "hash": "da9b339fa43e21ed52f93f10e2c3a6bd"
     },
     "main.py": {
-        "hash": "2d6b58685dd1510cc0beeb3b5c85811a"
-    },
-    "run_analysis.py": {
-        "hash": "bec68f397d19a27dad7d195417ce5182"
-    },
-    "src\\scanners\\analyze_github_library.py": {
-        "hash": "ca2fa3cc2a06de593711e136e09d486b"
-    },
-    "src\\tools\\debug_analysis_status.py": {
-        "hash": "3f9e98a6fcc86d950e595d4f4528f784"
-    },
-    "src\\wizards\\github_token_wizard.py": {
-        "hash": "c36ebe44e4f60ced16cce57d48d2863a"
-    },
-    "src\\analyzers\\proper_insights_analyzer.py": {
-        "hash": "66bcb30e63b65702be3457ba29001643"
-    },
-    "test_gui.py": {
-        "hash": "37b764eeff3e77f5f097993f8282cec2"
-    },
-    "src\\gui\\demo_gui.py": {
-        "hash": "f9da053b1f36bbc1da699cef79be12d1"
-    },
-    "tests\\__init__.py": {
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "tests\\test_gui.py": {
-        "hash": "aeb39085cbf7a90acbbb1c21fa584fb9"
-    },
-    "src\\wizards\\github_token_wizard_gui.py": {
-        "hash": "900122aa614b76f5d47fb217152b47e6"
-    },
-    "src\\core\\projectscanner\\__init__.py": {
-        "hash": "0102496b2e165505d0cd5ed7c585fecb"
-    },
-    "src\\tools\\skill_tree_generator.py": {
-        "hash": "e7d721a329b35e610291e8ab8f402a3b"
-    },
-    "src\\core\\projectscanner\\scanner.py": {
-        "hash": "3543bd48ca30ef5a49e2220d0cffa72d"
-    },
-    "src\\tools\\data_inspector.py": {
-        "hash": "d0a442c21572224b489ba26beed9f48d"
-    },
-    "scripts\\main.py": {
         "hash": "2d6b58685dd1510cc0beeb3b5c85811a"
     }
 }
