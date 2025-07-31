@@ -64,7 +64,7 @@ class GitHubLibraryScanner:
                 with self.library_file.open('r', encoding='utf-8') as f:
                     return json.load(f)
             except Exception as e:
-                print(f"⚠️  Warning: Could not load existing library: {e}")
+                print(f"Warning: Could not load existing library: {e}")
         return {}
     
     def save_library(self):
@@ -73,7 +73,7 @@ class GitHubLibraryScanner:
             with self.library_file.open('w', encoding='utf-8') as f:
                 json.dump(self.library, f, indent=2)
         except Exception as e:
-            print(f"❌ Error saving library: {e}")
+            print(f"Error saving library: {e}")
     
     def load_scan_log(self) -> Dict:
         """Load scan log data."""
@@ -82,7 +82,7 @@ class GitHubLibraryScanner:
                 with self.scan_log_file.open('r', encoding='utf-8') as f:
                     return json.load(f)
             except Exception as e:
-                print(f"⚠️  Warning: Could not load scan log: {e}")
+                print(f"Warning: Could not load scan log: {e}")
         return {"scanned_repos": [], "failed_repos": [], "last_scan": None}
     
     def save_scan_log(self):
@@ -91,7 +91,7 @@ class GitHubLibraryScanner:
             with self.scan_log_file.open('w', encoding='utf-8') as f:
                 json.dump(self.scan_log, f, indent=2)
         except Exception as e:
-            print(f"❌ Error saving scan log: {e}")
+            print(f"Error saving scan log: {e}")
     
     def get_user_repositories(self) -> List[Dict]:
         """Get all repositories for the GitHub user."""
@@ -101,21 +101,21 @@ class GitHubLibraryScanner:
             # GitHub API endpoint for user repositories
             url = f"https://api.github.com/users/{self.github_username}/repos"
             
-            print(f"🔍 Fetching repositories for user: {self.github_username}")
+            print(f"Fetching repositories for user: {self.github_username}")
             
             response = requests.get(url)
             response.raise_for_status()
             
             repos = response.json()
-            print(f"📦 Found {len(repos)} repositories")
+            print(f"Found {len(repos)} repositories")
             
             return repos
             
         except ImportError:
-            print("❌ Error: requests library not found. Install with: pip install requests")
+            print("Error: requests library not found. Install with: pip install requests")
             return []
         except Exception as e:
-            print(f"❌ Error fetching repositories: {e}")
+            print(f"Error fetching repositories: {e}")
             return []
     
     def generate_repo_name(self, repo_data: Dict) -> str:
@@ -137,13 +137,13 @@ class GitHubLibraryScanner:
         repo_url = repo_data['clone_url']
         unique_name = self.generate_repo_name(repo_data)
         
-        print(f"\n🔍 Scanning repository: {repo_name}")
+        print(f"\nScanning repository: {repo_name}")
         print(f"   URL: {repo_url}")
         print(f"   Unique ID: {unique_name}")
         
         # Check if already scanned and not forcing rescan
         if unique_name in self.library and not force_rescan:
-            print(f"   ⏭️  Already scanned, skipping...")
+            print(f"   Already scanned, skipping...")
             return True
         
         # Create temporary directory for cloning
@@ -151,7 +151,7 @@ class GitHubLibraryScanner:
         
         try:
             # Clone the repository
-            print(f"   📥 Cloning repository...")
+            print(f"   Cloning repository...")
             clone_path = clone_repository(repo_url, temp_dir)
             
             # Create repository-specific output directory
@@ -159,7 +159,7 @@ class GitHubLibraryScanner:
             repo_output_dir.mkdir(exist_ok=True)
             
             # Scan the repository
-            print(f"   🔍 Starting analysis...")
+            print(f"   Starting analysis...")
             scanner = ProjectScanner(
                 project_root=str(clone_path),
                 output_dir=str(repo_output_dir)
@@ -216,11 +216,11 @@ class GitHubLibraryScanner:
                 'status': 'success'
             })
             
-            print(f"   ✅ Successfully scanned {len(analysis_data)} files")
+            print(f"   Successfully scanned {len(analysis_data)} files")
             return True
             
         except Exception as e:
-            print(f"   ❌ Error scanning repository: {e}")
+            print(f"   Error scanning repository: {e}")
             
             # Update scan log with failure
             self.scan_log['failed_repos'].append({
@@ -237,26 +237,26 @@ class GitHubLibraryScanner:
             try:
                 shutil.rmtree(temp_dir)
             except Exception as e:
-                print(f"   ⚠️  Warning: Could not clean up temporary directory: {e}")
+                print(f"   Warning: Could not clean up temporary directory: {e}")
     
     def scan_all_repositories(self, force_rescan: bool = False, max_repos: Optional[int] = None):
         """Scan all repositories for the GitHub user."""
-        print(f"🚀 Starting GitHub Library Scanner")
-        print(f"👤 User: {self.github_username}")
-        print(f"📁 Output Directory: {self.output_dir}")
-        print(f"🔄 Force Rescan: {force_rescan}")
+        print(f"Starting GitHub Library Scanner")
+        print(f"User: {self.github_username}")
+        print(f"Output Directory: {self.output_dir}")
+        print(f"Force Rescan: {force_rescan}")
         
         # Get all repositories
         repos = self.get_user_repositories()
         
         if not repos:
-            print("❌ No repositories found or error occurred")
+            print("No repositories found or error occurred")
             return
         
         # Limit repositories if specified
         if max_repos:
             repos = repos[:max_repos]
-            print(f"📊 Limiting scan to {max_repos} repositories")
+            print(f"Limiting scan to {max_repos} repositories")
         
         # Update scan log
         self.scan_log['last_scan'] = datetime.now().isoformat()
@@ -266,7 +266,7 @@ class GitHubLibraryScanner:
         failed_scans = 0
         
         for i, repo in enumerate(repos, 1):
-            print(f"\n📊 Progress: {i}/{len(repos)}")
+            print(f"\nProgress: {i}/{len(repos)}")
             
             if self.scan_repository(repo, force_rescan):
                 successful_scans += 1
@@ -277,7 +277,7 @@ class GitHubLibraryScanner:
             if i % 10 == 0:
                 self.save_library()
                 self.save_scan_log()
-                print(f"💾 Progress saved...")
+                print(f"Progress saved...")
             
             # Small delay to be respectful to GitHub API
             time.sleep(1)
@@ -286,11 +286,11 @@ class GitHubLibraryScanner:
         self.save_library()
         self.save_scan_log()
         
-        print(f"\n🎉 Scan completed!")
-        print(f"✅ Successful scans: {successful_scans}")
-        print(f"❌ Failed scans: {failed_scans}")
-        print(f"📁 Library saved to: {self.library_file}")
-        print(f"📋 Scan log saved to: {self.scan_log_file}")
+        print(f"\nScan completed!")
+        print(f"Successful scans: {successful_scans}")
+        print(f"Failed scans: {failed_scans}")
+        print(f"Library saved to: {self.library_file}")
+        print(f"Scan log saved to: {self.scan_log_file}")
     
     def generate_library_summary(self) -> Dict:
         """Generate a summary of the library."""
@@ -321,7 +321,7 @@ class GitHubLibraryScanner:
         with summary_file.open('w', encoding='utf-8') as f:
             json.dump(summary, f, indent=2)
         
-        print(f"📊 Library summary exported to: {summary_file}")
+        print(f"Library summary exported to: {summary_file}")
         return summary
 
 
@@ -346,7 +346,7 @@ def main():
     if args.summary_only:
         # Only generate summary
         summary = scanner.generate_library_summary()
-        print("📊 Library Summary:")
+        print("Library Summary:")
         print(json.dumps(summary, indent=2))
         scanner.export_library_summary()
     else:
@@ -358,7 +358,7 @@ def main():
         
         # Generate summary
         summary = scanner.generate_library_summary()
-        print("\n📊 Final Library Summary:")
+        print("\nFinal Library Summary:")
         print(json.dumps(summary, indent=2))
         scanner.export_library_summary()
 
