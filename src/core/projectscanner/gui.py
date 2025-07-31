@@ -139,39 +139,13 @@ class GitHubLibraryWorker(QThread):
             self.error.emit(f"GitHub library scan failed: {str(e)}")
 
 
-class GitHubScanner:
-    """Handles GitHub repository cloning and scanning."""
-    
-    @staticmethod
-    def clone_repository(repo_url: str, temp_dir: Path) -> Path:
-        """Clone a GitHub repository to a temporary directory."""
-        try:
-            # Extract repo name from URL
-            repo_name = repo_url.split('/')[-1]
-            if repo_name.endswith('.git'):
-                repo_name = repo_name[:-4]
-            
-            clone_path = temp_dir / repo_name
-            
-            # Clone the repository
-            subprocess.run([
-                'git', 'clone', repo_url, str(clone_path)
-            ], check=True, capture_output=True)
-            
-            return clone_path
-        except subprocess.CalledProcessError as e:
-            raise Exception(f"Failed to clone repository: {e.stderr.decode()}")
-        except Exception as e:
-            raise Exception(f"Error cloning repository: {str(e)}")
-
-
 class ProjectScannerGUI(QtWidgets.QMainWindow):
-    """Enhanced GUI for ProjectScanner with directory, GitHub, and library scanning capabilities."""
+    """Enhanced GUI for ProjectScanner with clean organization and prominent start processing button."""
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("ProjectScanner - Advanced GUI")
-        self.setGeometry(100, 100, 1400, 900)
+        self.setWindowTitle("ProjectScanner - Advanced Analysis Tool")
+        self.setGeometry(100, 100, 1800, 1200)
         
         # Initialize data structures
         self.library_data = {}
@@ -179,6 +153,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.scan_worker = None
         self.github_library_worker = None
         self.temp_dirs = []
+        self.is_processing = False
         
         # Load existing library
         self.library_file = Path("project_library.json")
@@ -186,6 +161,123 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         
         self.setup_ui()
         self.setup_menu()
+        self.setup_styles()
+
+    def setup_styles(self):
+        """Setup modern styling for the application."""
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: #f8f9fa;
+            }
+            QGroupBox {
+                font-weight: bold;
+                border: 2px solid #dee2e6;
+                border-radius: 8px;
+                margin-top: 1ex;
+                padding-top: 15px;
+                background-color: white;
+            }
+            QGroupBox::title {
+                subcontrol-origin: margin;
+                left: 15px;
+                padding: 0 8px 0 8px;
+                color: #495057;
+            }
+            QPushButton {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 6px;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #0056b3;
+            }
+            QPushButton:pressed {
+                background-color: #004085;
+            }
+            QPushButton:disabled {
+                background-color: #6c757d;
+                color: #adb5bd;
+            }
+            QPushButton#startButton {
+                background-color: #28a745;
+                font-size: 16px;
+                padding: 15px 30px;
+                border-radius: 8px;
+                font-weight: bold;
+            }
+            QPushButton#startButton:hover {
+                background-color: #218838;
+            }
+            QPushButton#startButton:pressed {
+                background-color: #1e7e34;
+            }
+            QPushButton#stopButton {
+                background-color: #dc3545;
+                font-size: 14px;
+                padding: 12px 25px;
+            }
+            QPushButton#stopButton:hover {
+                background-color: #c82333;
+            }
+            QLineEdit {
+                padding: 8px;
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                font-size: 12px;
+            }
+            QLineEdit:focus {
+                border-color: #007bff;
+            }
+            QTextEdit {
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                background-color: white;
+                font-family: 'Consolas', 'Monaco', monospace;
+                font-size: 11px;
+            }
+            QProgressBar {
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                text-align: center;
+                font-weight: bold;
+            }
+            QProgressBar::chunk {
+                background-color: #007bff;
+                border-radius: 4px;
+            }
+            QTabWidget::pane {
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                background-color: white;
+            }
+            QTabBar::tab {
+                background-color: #f8f9fa;
+                padding: 8px 16px;
+                margin-right: 2px;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+            }
+            QTabBar::tab:selected {
+                background-color: white;
+                border-bottom: 2px solid #007bff;
+            }
+            QTreeWidget {
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                background-color: white;
+            }
+            QTreeWidget::item {
+                padding: 4px;
+            }
+            QTreeWidget::item:selected {
+                background-color: #007bff;
+                color: white;
+            }
+        """)
 
     def setup_ui(self):
         """Setup the main UI components."""
@@ -194,33 +286,42 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.setCentralWidget(central_widget)
         main_layout = QtWidgets.QHBoxLayout(central_widget)
         
-        # Left panel - Scanning controls
-        left_panel = self.create_scanning_panel()
+        # Left panel - Configuration and controls
+        left_panel = self.create_configuration_panel()
         main_layout.addWidget(left_panel, 1)
         
-        # Right panel - Results and library
+        # Right panel - Results and progress
         right_panel = self.create_results_panel()
         main_layout.addWidget(right_panel, 2)
 
-    def create_scanning_panel(self):
-        """Create the left panel with scanning controls."""
+    def create_configuration_panel(self):
+        """Create the left panel with configuration options."""
         panel = QtWidgets.QWidget()
         layout = QtWidgets.QVBoxLayout(panel)
         
         # Title
-        title = QtWidgets.QLabel("Project Scanner")
-        title.setStyleSheet("font-size: 18px; font-weight: bold; margin: 10px;")
+        title = QtWidgets.QLabel("🚀 Project Scanner Configuration")
+        title.setStyleSheet("font-size: 24px; font-weight: bold; color: #007bff; margin: 15px;")
         layout.addWidget(title)
         
-        # Directory scanning section
-        dir_group = QtWidgets.QGroupBox("Directory Scanning")
-        dir_layout = QtWidgets.QVBoxLayout(dir_group)
+        # Configuration sections
+        layout.addWidget(self.create_scan_configuration())
+        layout.addWidget(self.create_github_configuration())
+        layout.addWidget(self.create_processing_controls())
+        
+        layout.addStretch()
+        return panel
+
+    def create_scan_configuration(self):
+        """Create scan configuration section."""
+        group = QtWidgets.QGroupBox("📁 Project Scanning")
+        layout = QtWidgets.QVBoxLayout(group)
         
         # Directory selection
-        dir_layout.addWidget(QtWidgets.QLabel("Project Directory:"))
+        layout.addWidget(QtWidgets.QLabel("Project Directory:"))
         self.dir_path_edit = QtWidgets.QLineEdit()
         self.dir_path_edit.setPlaceholderText("Select a directory to scan...")
-        dir_layout.addWidget(self.dir_path_edit)
+        layout.addWidget(self.dir_path_edit)
         
         dir_btn_layout = QtWidgets.QHBoxLayout()
         self.browse_btn = QtWidgets.QPushButton("Browse...")
@@ -229,33 +330,29 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.scan_dir_btn.clicked.connect(self.scan_directory)
         dir_btn_layout.addWidget(self.browse_btn)
         dir_btn_layout.addWidget(self.scan_dir_btn)
-        dir_layout.addLayout(dir_btn_layout)
+        layout.addLayout(dir_btn_layout)
         
-        layout.addWidget(dir_group)
-        
-        # GitHub repository scanning section
-        github_group = QtWidgets.QGroupBox("GitHub Repository Scanning")
-        github_layout = QtWidgets.QVBoxLayout(github_group)
-        
-        github_layout.addWidget(QtWidgets.QLabel("GitHub Repository URL:"))
+        # GitHub repository scanning
+        layout.addWidget(QtWidgets.QLabel("GitHub Repository URL:"))
         self.github_url_edit = QtWidgets.QLineEdit()
         self.github_url_edit.setPlaceholderText("https://github.com/username/repository")
-        github_layout.addWidget(self.github_url_edit)
+        layout.addWidget(self.github_url_edit)
         
         self.scan_github_btn = QtWidgets.QPushButton("Scan GitHub Repository")
         self.scan_github_btn.clicked.connect(self.scan_github_repository)
-        github_layout.addWidget(self.scan_github_btn)
+        layout.addWidget(self.scan_github_btn)
         
-        layout.addWidget(github_group)
+        return group
+
+    def create_github_configuration(self):
+        """Create GitHub library configuration section."""
+        group = QtWidgets.QGroupBox("🔗 GitHub Library Scanning")
+        layout = QtWidgets.QVBoxLayout(group)
         
-        # GitHub Library scanning section
-        github_library_group = QtWidgets.QGroupBox("GitHub Library Scanning")
-        github_library_layout = QtWidgets.QVBoxLayout(github_library_group)
-        
-        github_library_layout.addWidget(QtWidgets.QLabel("GitHub Username:"))
+        layout.addWidget(QtWidgets.QLabel("GitHub Username:"))
         self.github_username_edit = QtWidgets.QLineEdit()
         self.github_username_edit.setPlaceholderText("Enter GitHub username")
-        github_library_layout.addWidget(self.github_username_edit)
+        layout.addWidget(self.github_username_edit)
         
         # Options for library scanning
         options_layout = QtWidgets.QHBoxLayout()
@@ -267,51 +364,61 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         options_layout.addWidget(QtWidgets.QLabel("Max Repos:"))
         options_layout.addWidget(self.max_repos_spin)
         options_layout.addWidget(self.force_rescan_cb)
-        github_library_layout.addLayout(options_layout)
+        layout.addLayout(options_layout)
         
         self.scan_github_library_btn = QtWidgets.QPushButton("Scan GitHub Library")
         self.scan_github_library_btn.clicked.connect(self.scan_github_library)
-        github_library_layout.addWidget(self.scan_github_library_btn)
+        layout.addWidget(self.scan_github_library_btn)
         
-        layout.addWidget(github_library_group)
+        return group
+
+    def create_processing_controls(self):
+        """Create the processing controls section with prominent start button."""
+        group = QtWidgets.QGroupBox("⚡ Processing Controls")
+        layout = QtWidgets.QVBoxLayout(group)
+        
+        # Status display
+        self.status_label = QtWidgets.QLabel("Ready to process")
+        self.status_label.setStyleSheet("font-weight: bold; color: #28a745; padding: 15px; font-size: 14px;")
+        layout.addWidget(self.status_label)
+        
+        # Prominent Start Processing Button
+        self.start_processing_btn = QtWidgets.QPushButton("🚀 START PROCESSING")
+        self.start_processing_btn.setObjectName("startButton")
+        self.start_processing_btn.clicked.connect(self.start_processing)
+        self.start_processing_btn.setMinimumHeight(60)
+        layout.addWidget(self.start_processing_btn)
+        
+        # Stop Processing Button
+        self.stop_processing_btn = QtWidgets.QPushButton("⏹️ STOP PROCESSING")
+        self.stop_processing_btn.setObjectName("stopButton")
+        self.stop_processing_btn.clicked.connect(self.stop_processing)
+        self.stop_processing_btn.setEnabled(False)
+        self.stop_processing_btn.setMinimumHeight(50)
+        layout.addWidget(self.stop_processing_btn)
         
         # Progress section
-        progress_group = QtWidgets.QGroupBox("Scan Progress")
-        progress_layout = QtWidgets.QVBoxLayout(progress_group)
-        
+        layout.addWidget(QtWidgets.QLabel("Progress:"))
         self.progress_text = QtWidgets.QTextEdit()
-        self.progress_text.setMaximumHeight(150)
+        self.progress_text.setMaximumHeight(200)
         self.progress_text.setReadOnly(True)
-        progress_layout.addWidget(self.progress_text)
+        layout.addWidget(self.progress_text)
         
         self.progress_bar = QtWidgets.QProgressBar()
         self.progress_bar.setVisible(False)
-        progress_layout.addWidget(self.progress_bar)
+        layout.addWidget(self.progress_bar)
         
-        layout.addWidget(progress_group)
-        
-        # Library management section
-        library_group = QtWidgets.QGroupBox("Library Management")
-        library_layout = QtWidgets.QVBoxLayout(library_group)
-        
-        self.save_to_library_btn = QtWidgets.QPushButton("Save Current Scan to Library")
-        self.save_to_library_btn.clicked.connect(self.save_to_library)
-        self.save_to_library_btn.setEnabled(False)
-        library_layout.addWidget(self.save_to_library_btn)
-        
-        self.export_library_btn = QtWidgets.QPushButton("Export Library")
-        self.export_library_btn.clicked.connect(self.export_library)
-        library_layout.addWidget(self.export_library_btn)
-        
-        layout.addWidget(library_group)
-        
-        layout.addStretch()
-        return panel
+        return group
 
     def create_results_panel(self):
         """Create the right panel with results and library."""
         panel = QtWidgets.QWidget()
         layout = QtWidgets.QVBoxLayout(panel)
+        
+        # Title
+        title = QtWidgets.QLabel("📊 Results & Analysis")
+        title.setStyleSheet("font-size: 24px; font-weight: bold; color: #007bff; margin: 15px;")
+        layout.addWidget(title)
         
         # Tab widget for different views
         self.tabs = QtWidgets.QTabWidget()
@@ -324,7 +431,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.current_scan_tree.setHeaderHidden(True)
         current_scan_layout.addWidget(self.current_scan_tree)
         
-        self.tabs.addTab(self.current_scan_tab, "Current Scan")
+        self.tabs.addTab(self.current_scan_tab, "📊 Current Scan")
         
         # Library tab
         self.library_tab = QtWidgets.QWidget()
@@ -347,7 +454,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         library_btn_layout.addStretch()
         library_layout.addLayout(library_btn_layout)
         
-        self.tabs.addTab(self.library_tab, "Project Library")
+        self.tabs.addTab(self.library_tab, "📚 Project Library")
         
         # GitHub Library tab
         self.github_library_tab = QtWidgets.QWidget()
@@ -368,7 +475,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         github_library_btn_layout.addStretch()
         github_library_layout.addLayout(github_library_btn_layout)
         
-        self.tabs.addTab(self.github_library_tab, "GitHub Library")
+        self.tabs.addTab(self.github_library_tab, "🔗 GitHub Library")
         
         layout.addWidget(self.tabs)
         
@@ -418,35 +525,73 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         scan_library_action.triggered.connect(self.scan_github_library)
         github_menu.addAction(scan_library_action)
 
-    def browse_directory(self):
-        """Open directory browser dialog."""
-        directory = QtWidgets.QFileDialog.getExistingDirectory(
-            self, "Select Project Directory", ""
-        )
-        if directory:
-            self.dir_path_edit.setText(directory)
-
-    def scan_directory(self):
-        """Scan the selected directory."""
-        directory = self.dir_path_edit.text().strip()
-        if not directory:
-            QtWidgets.QMessageBox.warning(self, "Warning", "Please select a directory to scan.")
+    def start_processing(self):
+        """Start the processing workflow."""
+        if self.is_processing:
+            QtWidgets.QMessageBox.warning(self, "Warning", "Processing is already in progress.")
             return
         
+        # Check if we have a valid configuration
+        directory = self.dir_path_edit.text().strip()
+        github_url = self.github_url_edit.text().strip()
+        github_username = self.github_username_edit.text().strip()
+        
+        if not directory and not github_url and not github_username:
+            QtWidgets.QMessageBox.warning(self, "Warning", "Please configure at least one scanning option.")
+            return
+        
+        # Start processing based on configuration
+        self.is_processing = True
+        self.update_processing_controls()
+        
+        if directory:
+            self.process_directory(directory)
+        elif github_url:
+            self.process_github_repository(github_url)
+        elif github_username:
+            self.process_github_library(github_username)
+
+    def stop_processing(self):
+        """Stop the current processing."""
+        if self.scan_worker and self.scan_worker.isRunning():
+            self.scan_worker.terminate()
+            self.scan_worker.wait()
+        
+        if self.github_library_worker and self.github_library_worker.isRunning():
+            self.github_library_worker.terminate()
+            self.github_library_worker.wait()
+        
+        self.is_processing = False
+        self.update_processing_controls()
+        self.status_label.setText("Processing stopped")
+        self.status_bar.showMessage("Processing stopped")
+
+    def update_processing_controls(self):
+        """Update the processing control buttons."""
+        if self.is_processing:
+            self.start_processing_btn.setEnabled(False)
+            self.stop_processing_btn.setEnabled(True)
+            self.status_label.setText("Processing in progress...")
+            self.status_label.setStyleSheet("font-weight: bold; color: #dc3545; padding: 15px; font-size: 14px;")
+        else:
+            self.start_processing_btn.setEnabled(True)
+            self.stop_processing_btn.setEnabled(False)
+            self.status_label.setText("Ready to process")
+            self.status_label.setStyleSheet("font-weight: bold; color: #28a745; padding: 15px; font-size: 14px;")
+
+    def process_directory(self, directory):
+        """Process a local directory."""
         project_path = Path(directory)
         if not project_path.exists():
             QtWidgets.QMessageBox.error(self, "Error", "Selected directory does not exist.")
+            self.is_processing = False
+            self.update_processing_controls()
             return
         
         self.start_scan(project_path)
 
-    def scan_github_repository(self):
-        """Scan a GitHub repository."""
-        repo_url = self.github_url_edit.text().strip()
-        if not repo_url:
-            QtWidgets.QMessageBox.warning(self, "Warning", "Please enter a GitHub repository URL.")
-            return
-        
+    def process_github_repository(self, repo_url):
+        """Process a GitHub repository."""
         if not repo_url.startswith(('http://', 'https://')):
             repo_url = f"https://github.com/{repo_url}"
         
@@ -456,30 +601,21 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             self.temp_dirs.append(temp_dir)
             
             self.progress_text.append(f"Cloning repository: {repo_url}")
-            clone_path = GitHubScanner.clone_repository(repo_url, temp_dir)
+            clone_path = self.clone_repository(repo_url, temp_dir)
             
             self.progress_text.append(f"Repository cloned to: {clone_path}")
             self.start_scan(clone_path)
             
         except Exception as e:
             QtWidgets.QMessageBox.critical(self, "Error", f"Failed to clone repository: {str(e)}")
+            self.is_processing = False
+            self.update_processing_controls()
 
-    def scan_github_library(self):
-        """Scan all repositories from a GitHub user."""
-        username = self.github_username_edit.text().strip()
-        if not username:
-            QtWidgets.QMessageBox.warning(self, "Warning", "Please enter a GitHub username.")
-            return
-        
+    def process_github_library(self, username):
+        """Process a GitHub library."""
         # Get options
         force_rescan = self.force_rescan_cb.isChecked()
         max_repos = self.max_repos_spin.value() if self.max_repos_spin.value() > 0 else None
-        
-        # Disable scan buttons
-        self.scan_dir_btn.setEnabled(False)
-        self.scan_github_btn.setEnabled(False)
-        self.scan_github_library_btn.setEnabled(False)
-        self.save_to_library_btn.setEnabled(False)
         
         # Clear progress
         self.progress_text.clear()
@@ -498,17 +634,67 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.github_library_worker.error.connect(self.scan_error)
         self.github_library_worker.start()
 
+    def clone_repository(self, repo_url: str, temp_dir: Path) -> Path:
+        """Clone a GitHub repository to a temporary directory."""
+        try:
+            # Extract repo name from URL
+            repo_name = repo_url.split('/')[-1]
+            if repo_name.endswith('.git'):
+                repo_name = repo_name[:-4]
+            
+            clone_path = temp_dir / repo_name
+            
+            # Clone the repository
+            subprocess.run([
+                'git', 'clone', repo_url, str(clone_path)
+            ], check=True, capture_output=True)
+            
+            return clone_path
+        except subprocess.CalledProcessError as e:
+            raise Exception(f"Failed to clone repository: {e.stderr.decode()}")
+        except Exception as e:
+            raise Exception(f"Error cloning repository: {str(e)}")
+
+    def browse_directory(self):
+        """Open directory browser dialog."""
+        directory = QtWidgets.QFileDialog.getExistingDirectory(
+            self, "Select Project Directory", ""
+        )
+        if directory:
+            self.dir_path_edit.setText(directory)
+
+    def scan_directory(self):
+        """Scan the selected directory."""
+        directory = self.dir_path_edit.text().strip()
+        if not directory:
+            QtWidgets.QMessageBox.warning(self, "Warning", "Please select a directory to scan.")
+            return
+        
+        self.process_directory(directory)
+
+    def scan_github_repository(self):
+        """Scan a GitHub repository."""
+        repo_url = self.github_url_edit.text().strip()
+        if not repo_url:
+            QtWidgets.QMessageBox.warning(self, "Warning", "Please enter a GitHub repository URL.")
+            return
+        
+        self.process_github_repository(repo_url)
+
+    def scan_github_library(self):
+        """Scan all repositories from a GitHub user."""
+        username = self.github_username_edit.text().strip()
+        if not username:
+            QtWidgets.QMessageBox.warning(self, "Warning", "Please enter a GitHub username.")
+            return
+        
+        self.process_github_library(username)
+
     def start_scan(self, project_path: Path):
         """Start scanning a project."""
         if self.scan_worker and self.scan_worker.isRunning():
             QtWidgets.QMessageBox.warning(self, "Warning", "A scan is already in progress.")
             return
-        
-        # Disable scan buttons
-        self.scan_dir_btn.setEnabled(False)
-        self.scan_github_btn.setEnabled(False)
-        self.scan_github_library_btn.setEnabled(False)
-        self.save_to_library_btn.setEnabled(False)
         
         # Clear progress
         self.progress_text.clear()
@@ -531,11 +717,9 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         """Handle scan completion."""
         self.current_scan_result = result
         
-        # Re-enable buttons
-        self.scan_dir_btn.setEnabled(True)
-        self.scan_github_btn.setEnabled(True)
-        self.scan_github_library_btn.setEnabled(True)
-        self.save_to_library_btn.setEnabled(True)
+        # Re-enable processing
+        self.is_processing = False
+        self.update_processing_controls()
         
         # Hide progress bar
         self.progress_bar.setVisible(False)
@@ -550,11 +734,9 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
 
     def github_library_finished(self, result: Dict):
         """Handle GitHub library scan completion."""
-        # Re-enable buttons
-        self.scan_dir_btn.setEnabled(True)
-        self.scan_github_btn.setEnabled(True)
-        self.scan_github_library_btn.setEnabled(True)
-        self.save_to_library_btn.setEnabled(True)
+        # Re-enable processing
+        self.is_processing = False
+        self.update_processing_controls()
         
         # Hide progress bar
         self.progress_bar.setVisible(False)
@@ -571,10 +753,9 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         """Handle scan errors."""
         QtWidgets.QMessageBox.critical(self, "Scan Error", error_message)
         
-        # Re-enable buttons
-        self.scan_dir_btn.setEnabled(True)
-        self.scan_github_btn.setEnabled(True)
-        self.scan_github_library_btn.setEnabled(True)
+        # Re-enable processing
+        self.is_processing = False
+        self.update_processing_controls()
         
         # Hide progress bar
         self.progress_bar.setVisible(False)
@@ -634,33 +815,6 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         else:
             item = QtWidgets.QTreeWidgetItem([str(data)])
             parent.addChild(item)
-
-    def save_to_library(self):
-        """Save current scan result to library."""
-        if not self.current_scan_result:
-            QtWidgets.QMessageBox.warning(self, "Warning", "No scan result to save.")
-            return
-        
-        project_name = Path(self.current_scan_result['project_path']).name
-        
-        # Generate unique name if project already exists
-        base_name = project_name
-        counter = 1
-        while project_name in self.library_data:
-            project_name = f"{base_name}_{counter}"
-            counter += 1
-        
-        self.library_data[project_name] = {
-            'project_path': self.current_scan_result['project_path'],
-            'scan_date': QtCore.QDateTime.currentDateTime().toString(),
-            'analysis_data': self.current_scan_result['analysis_data'],
-            'context_data': self.current_scan_result['context_data']
-        }
-        
-        self.save_library()
-        self.update_library_display()
-        
-        QtWidgets.QMessageBox.information(self, "Success", f"Project '{project_name}' saved to library!")
 
     def load_library(self):
         """Load the project library from file."""
