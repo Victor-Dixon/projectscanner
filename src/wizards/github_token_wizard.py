@@ -242,6 +242,10 @@ class TokenSetupPage(QtWidgets.QWizardPage):
         # Connect validation
         self.token_edit.textChanged.connect(self.validate_token)
         self.username_edit.textChanged.connect(self.validate_token)
+        
+        # Connect completion check
+        self.token_edit.textChanged.connect(self.completeChanged.emit)
+        self.username_edit.textChanged.connect(self.completeChanged.emit)
 
     def toggle_token_visibility(self):
         """Toggle token visibility."""
@@ -272,10 +276,13 @@ class TokenSetupPage(QtWidgets.QWizardPage):
             self.validation_label.setStyleSheet("color: #dc3545;")
             return False
         
-        if not token.startswith("ghp_"):
+        # Accept various GitHub token formats
+        valid_prefixes = ["ghp_", "gho_", "ghu_", "ghs_", "ghr_"]
+        if not any(token.startswith(prefix) for prefix in valid_prefixes):
             self.validation_label.setText("⚠️ Token format looks unusual. Please verify your token.")
             self.validation_label.setStyleSheet("color: #ffc107;")
-            return False
+            # Don't return False here - just warn but allow continuation
+            return True
         
         self.validation_label.setText("✅ Token format looks good!")
         self.validation_label.setStyleSheet("color: #28a745;")
