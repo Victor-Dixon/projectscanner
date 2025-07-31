@@ -1,0 +1,21 @@
+{
+  "total_repos": 64,
+  "total_files": 4992,
+  "public_repos": 29,
+  "private_repos": 35,
+  "languages": {
+    "Python": 44,
+    "null": 10,
+    "TypeScript": 1,
+    "HTML": 4,
+    "JavaScript": 1,
+    "PHP": 2,
+    "Swift": 1,
+    "Shell": 1
+  },
+  "scan_stats": {
+    "successful_scans": 67,
+    "failed_scans": 2,
+    "last_scan": "2025-07-30T17:45:25.832002"
+  }
+}

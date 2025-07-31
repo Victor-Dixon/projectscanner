@@ -1,0 +1,403 @@
+{
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp2dwm11cl\\IT_help_desk",
+    "num_files_analyzed": 15,
+    "analysis_details": {
+        "check_tables.py": {
+            "language": ".py",
+            "functions": [
+                "check_tables"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "database\\db_manager.py": {
+            "language": ".py",
+            "functions": [
+                "execute_query",
+                "add_user",
+                "get_user_by_username",
+                "get_user_by_id",
+                "delete_user",
+                "add_ticket",
+                "get_ticket_by_id",
+                "get_tickets_by_user_id",
+                "get_all_tickets",
+                "update_ticket_status",
+                "assign_ticket",
+                "resolve_ticket",
+                "delete_ticket"
+            ],
+            "classes": {
+                "DBManager": {
+                    "methods": [
+                        "execute_query",
+                        "add_user",
+                        "get_user_by_username",
+                        "get_user_by_id",
+                        "delete_user",
+                        "add_ticket",
+                        "get_ticket_by_id",
+                        "get_tickets_by_user_id",
+                        "get_all_tickets",
+                        "update_ticket_status",
+                        "assign_ticket",
+                        "resolve_ticket",
+                        "delete_ticket"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 30,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "models\\user_model.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "create_user",
+                "get_user_by_username",
+                "get_user_by_id",
+                "update_user_role",
+                "delete_user",
+                "get_all_users"
+            ],
+            "classes": {
+                "User": {
+                    "methods": [
+                        "__init__",
+                        "create_user",
+                        "get_user_by_username",
+                        "get_user_by_id",
+                        "update_user_role",
+                        "delete_user",
+                        "get_all_users"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 16,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "helpers\\utilities.py": {
+            "language": ".py",
+            "functions": [
+                "setup_logging",
+                "log_message",
+                "format_date",
+                "truncate_text",
+                "ensure_directory",
+                "clear_log_file"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 11,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "config\\initialize_database.py": {
+            "language": ".py",
+            "functions": [
+                "initialize_database"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "models\\ticket_model.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "create_ticket",
+                "get_ticket_by_id",
+                "get_tickets_by_user",
+                "get_all_tickets",
+                "update_ticket_status",
+                "assign_ticket",
+                "resolve_ticket",
+                "delete_ticket"
+            ],
+            "classes": {
+                "Ticket": {
+                    "methods": [
+                        "__init__",
+                        "create_ticket",
+                        "get_ticket_by_id",
+                        "get_tickets_by_user",
+                        "get_all_tickets",
+                        "update_ticket_status",
+                        "assign_ticket",
+                        "resolve_ticket",
+                        "delete_ticket"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 21,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "authenticate_user",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "helpers\\ai_response_thread.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "run"
+            ],
+            "classes": {
+                "AIResponseThread": {
+                    "methods": [
+                        "__init__",
+                        "run"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QThread"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                }
+            },
+            "routes": [],
+            "complexity": 8,
+            "lint": []
+        },
+        "config\\config.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "ui\\ai_assistant_tab.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "ask_ai",
+                "display_response"
+            ],
+            "classes": {
+                "AIAssistantTab": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "ask_ai",
+                        "display_response"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 9,
+            "lint": []
+        },
+        "ui\\main_window.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "init_menu_bar",
+                "close_application",
+                "show_about_dialog",
+                "closeEvent"
+            ],
+            "classes": {
+                "MainWindow": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "init_menu_bar",
+                        "close_application",
+                        "show_about_dialog",
+                        "closeEvent"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 15,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "HelpDeskApp.py": {
+            "language": ".py",
+            "functions": [
+                "login",
+                "__init__",
+                "init_ui",
+                "create_submit_ticket_tab",
+                "create_view_tickets_tab",
+                "create_manage_tickets_tab",
+                "get_user_role",
+                "get_user_id",
+                "submit_ticket",
+                "load_tickets",
+                "load_staff_tickets",
+                "assign_ticket",
+                "resolve_ticket",
+                "handle_login"
+            ],
+            "classes": {
+                "HelpDeskApp": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "create_submit_ticket_tab",
+                        "create_view_tickets_tab",
+                        "create_manage_tickets_tab",
+                        "get_user_role",
+                        "get_user_id",
+                        "submit_ticket",
+                        "load_tickets",
+                        "load_staff_tickets",
+                        "assign_ticket",
+                        "resolve_ticket"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 40,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "ui\\submit_ticket_tab.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "submit_ticket"
+            ],
+            "classes": {
+                "SubmitTicketTab": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "submit_ticket"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 8,
+            "lint": []
+        },
+        "ui\\view_tickets_tab.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "load_tickets",
+                "view_ticket_details"
+            ],
+            "classes": {
+                "ViewTicketsTab": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "load_tickets",
+                        "view_ticket_details"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 11,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "ui\\manage_tickets_tab.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "load_tickets",
+                "open_ticket_details",
+                "assign_ticket"
+            ],
+            "classes": {
+                "ManageTicketsTab": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "load_tickets",
+                        "open_ticket_details",
+                        "assign_ticket"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 16,
+            "lint": [
+                "Function init_ui >50 lines",
+                "High complexity"
+            ]
+        }
+    }
+}

@@ -1,0 +1,771 @@
+{
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpmoeeacv4\\Sims4ModUpdaters",
+    "num_files_analyzed": 39,
+    "analysis_details": {
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\items.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {
+                "ModMetadataItem": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Item"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\pipelines.py": {
+            "language": ".py",
+            "functions": [
+                "process_item"
+            ],
+            "classes": {
+                "ModMetadataPipeline": {
+                    "methods": [
+                        "process_item"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\lanaccfinds_spider.py": {
+            "language": ".py",
+            "functions": [
+                "parse"
+            ],
+            "classes": {
+                "LanaCCFindsSpider": {
+                    "methods": [
+                        "parse"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "auto_commit_push.py": {
+            "language": ".py",
+            "functions": [
+                "auto_commit_push"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\nexusmods_spider.py": {
+            "language": ".py",
+            "functions": [
+                "parse"
+            ],
+            "classes": {
+                "NexusModsSpider": {
+                    "methods": [
+                        "parse"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\loverslab_spider.py": {
+            "language": ".py",
+            "functions": [
+                "parse"
+            ],
+            "classes": {
+                "LoversLabSpider": {
+                    "methods": [
+                        "parse"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "gui_main.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\selenium_login.py": {
+            "language": ".py",
+            "functions": [
+                "get_logged_in_cookies"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\modthesims_spider.py": {
+            "language": ".py",
+            "functions": [
+                "parse"
+            ],
+            "classes": {
+                "ModTheSimsSpider": {
+                    "methods": [
+                        "parse"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\settings.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\middlewares.py": {
+            "language": ".py",
+            "functions": [
+                "from_crawler",
+                "process_spider_input",
+                "process_spider_output",
+                "process_spider_exception",
+                "process_start_requests",
+                "spider_opened",
+                "from_crawler",
+                "process_request",
+                "process_response",
+                "process_exception",
+                "spider_opened"
+            ],
+            "classes": {
+                "ModMetadataSpiderMiddleware": {
+                    "methods": [
+                        "from_crawler",
+                        "process_spider_input",
+                        "process_spider_output",
+                        "process_spider_exception",
+                        "process_start_requests",
+                        "spider_opened"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "ModMetadataDownloaderMiddleware": {
+                    "methods": [
+                        "from_crawler",
+                        "process_request",
+                        "process_response",
+                        "process_exception",
+                        "spider_opened"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 24,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\simsdomination_spider.py": {
+            "language": ".py",
+            "functions": [
+                "parse"
+            ],
+            "classes": {
+                "SimsDominationSpider": {
+                    "methods": [
+                        "parse"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "src\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "src\\core\\mod_updater.py": {
+            "language": ".py",
+            "functions": [
+                "check_mod_update",
+                "scrape_update_sites"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\thesimsresource_spider.py": {
+            "language": ".py",
+            "functions": [
+                "start_requests",
+                "parse",
+                "parse_mod_details"
+            ],
+            "classes": {
+                "TheSimsResourceSpider": {
+                    "methods": [
+                        "start_requests",
+                        "parse",
+                        "parse_mod_details"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 11,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\core\\utils.py": {
+            "language": ".py",
+            "functions": [
+                "log_message",
+                "handle_exceptions",
+                "wrapper"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "src\\gui\\gui_main.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\curseforge_spider.py": {
+            "language": ".py",
+            "functions": [
+                "parse"
+            ],
+            "classes": {
+                "CurseForgeSpider": {
+                    "methods": [
+                        "parse"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "src\\gui\\IncompatibleModsTab.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_ui",
+                "setup_logging",
+                "start_scan",
+                "scan_mods",
+                "update_scan_log",
+                "schedule_scan",
+                "scheduled_task"
+            ],
+            "classes": {
+                "IncompatibleModsTab": {
+                    "methods": [
+                        "__init__",
+                        "setup_ui",
+                        "setup_logging",
+                        "start_scan",
+                        "scan_mods",
+                        "update_scan_log",
+                        "schedule_scan"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QtWidgets.QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 18,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "data_collection\\scrapers\\mod_metadata\\mod_metadata\\spiders\\simsfileshare_spider.py": {
+            "language": ".py",
+            "functions": [
+                "parse"
+            ],
+            "classes": {
+                "SimsFileShareSpider": {
+                    "methods": [
+                        "parse"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "scrapy.Spider"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "src\\gui\\dashboard_tab.py": {
+            "language": ".py",
+            "functions": [
+                "__init__"
+            ],
+            "classes": {
+                "DashboardTab": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "src\\gui\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "src\\utils\\compatibility_checker.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "generate_mod_checksum",
+                "verify_mod",
+                "__init__",
+                "generate_mod_checksum",
+                "verify_mod"
+            ],
+            "classes": {
+                "CompatibilityChecker": {
+                    "methods": [
+                        "__init__",
+                        "generate_mod_checksum",
+                        "verify_mod"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\utils\\error_reporter.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "report_error"
+            ],
+            "classes": {
+                "ErrorReporter": {
+                    "methods": [
+                        "__init__",
+                        "report_error"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "src\\setup\\setup.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "src\\gui\\tab_incompatible.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_ui",
+                "setup_logging",
+                "start_scan",
+                "scan_mods",
+                "update_scan_log",
+                "schedule_scan",
+                "scheduled_task"
+            ],
+            "classes": {
+                "IncompatibleModsTab": {
+                    "methods": [
+                        "__init__",
+                        "setup_ui",
+                        "setup_logging",
+                        "start_scan",
+                        "scan_mods",
+                        "update_scan_log",
+                        "schedule_scan"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QtWidgets.QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 18,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\utils\\get_game_version.py": {
+            "language": ".py",
+            "functions": [
+                "fetch_latest_version",
+                "save_version"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": []
+        },
+        "src\\gui\\tab_update.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_ui",
+                "start_update_check"
+            ],
+            "classes": {
+                "UpdateTab": {
+                    "methods": [
+                        "__init__",
+                        "setup_ui",
+                        "start_update_check"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "src\\utils\\error_handler.py": {
+            "language": ".py",
+            "functions": [
+                "log_error",
+                "show_error_message"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "src\\gui\\tab_scan.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_ui",
+                "start_scan"
+            ],
+            "classes": {
+                "ScanTab": {
+                    "methods": [
+                        "__init__",
+                        "setup_ui",
+                        "start_scan"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "src\\gui\\welcome_page.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "handle_resize",
+                "setup_login_tab",
+                "setup_signup_tab",
+                "create_labeled_input",
+                "create_radio_group",
+                "create_payment_fields",
+                "browse_folder",
+                "login",
+                "signup",
+                "load_credentials",
+                "save_credentials"
+            ],
+            "classes": {
+                "WelcomePage": {
+                    "methods": [
+                        "__init__",
+                        "handle_resize",
+                        "setup_login_tab",
+                        "setup_signup_tab",
+                        "create_labeled_input",
+                        "create_radio_group",
+                        "create_payment_fields",
+                        "browse_folder",
+                        "login",
+                        "signup",
+                        "load_credentials",
+                        "save_credentials"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QtWidgets.QDialog"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 31,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\utils\\mod_checker.py": {
+            "language": ".py",
+            "functions": [
+                "initialize_version_file",
+                "load_game_versions",
+                "get_system_version",
+                "is_incompatible_mod",
+                "check_mod_version",
+                "scan_and_remove_incompatible_mods"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 25,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\utils\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "src\\utils\\mod_pack_manager.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "create_mod_pack",
+                "load_mod_packs"
+            ],
+            "classes": {
+                "ModPackManager": {
+                    "methods": [
+                        "__init__",
+                        "create_mod_pack",
+                        "load_mod_packs"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "src\\utils\\notification_handler.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "send_email_notification"
+            ],
+            "classes": {
+                "NotificationHandler": {
+                    "methods": [
+                        "__init__",
+                        "send_email_notification"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "tests\\test_compatibility.py": {
+            "language": ".py",
+            "functions": [
+                "setUp",
+                "test_scan_and_remove_incompatible_mods",
+                "test_log_feedback"
+            ],
+            "classes": {
+                "TestCompatibility": {
+                    "methods": [
+                        "setUp",
+                        "test_scan_and_remove_incompatible_mods",
+                        "test_log_feedback"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "src\\utils\\user_feedback.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "ensure_feedback_file",
+                "log_feedback"
+            ],
+            "classes": {
+                "UserFeedback": {
+                    "methods": [
+                        "__init__",
+                        "ensure_feedback_file",
+                        "log_feedback"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        }
+    }
+}

@@ -1,0 +1,418 @@
+{
+    "config.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "get_env"
+        ],
+        "classes": {
+            "Config": {
+                "methods": [
+                    "__init__",
+                    "get_env"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "sentiment_analysis_discord_bot.py": {
+        "language": ".py",
+        "functions": [
+            "load_discord_credentials",
+            "classify_sentiment",
+            "get_embed_color",
+            "create_embed"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "docs\\generate_placeholders.py": {
+        "language": ".py",
+        "functions": [
+            "create_placeholder",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "logins\\setup_logging.py": {
+        "language": ".py",
+        "functions": [
+            "setup_logging"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": [
+            "Function setup_logging >50 lines"
+        ]
+    },
+    "logins\\chatgpt_automation.py": {
+        "language": ".py",
+        "functions": [
+            "send_prompt",
+            "get_full_response",
+            "copy_to_clipboard",
+            "paste_into_editor",
+            "run_tests",
+            "deploy_file",
+            "process_file",
+            "__init__",
+            "run",
+            "__init__",
+            "init_ui",
+            "dragEnterEvent",
+            "dropEvent",
+            "log",
+            "start_processing",
+            "closeEvent"
+        ],
+        "classes": {
+            "Worker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QtCore.QThread"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            },
+            "ChatGPTAutomationGUI": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "dragEnterEvent",
+                    "dropEvent",
+                    "log",
+                    "start_processing",
+                    "closeEvent"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QtWidgets.QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 52,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "logins\\openai_login.py": {
+        "language": ".py",
+        "functions": [
+            "get_openai_driver",
+            "save_openai_cookies",
+            "load_openai_cookies",
+            "is_logged_in",
+            "login_openai"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 15,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "db_handler.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "get_connection",
+            "close_connection",
+            "initialize_table",
+            "bulk_insert_sentiment",
+            "save_sentiment",
+            "fetch_sentiment"
+        ],
+        "classes": {
+            "DatabaseHandler": {
+                "methods": [
+                    "__init__",
+                    "get_connection",
+                    "close_connection",
+                    "initialize_table",
+                    "bulk_insert_sentiment",
+                    "save_sentiment",
+                    "fetch_sentiment"
+                ],
+                "docstring": "Handles database operations for storing sentiment data.\nSupports MySQL as the backend.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 23,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\conftest.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "sentiment_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "get_ephemeral_driver",
+            "load_cookies",
+            "get_stocktwits_url",
+            "clean_text",
+            "analyze_sentiments_advanced",
+            "is_spam",
+            "scroll_and_collect",
+            "extract_messages",
+            "append_to_csv_by_ticker_and_sentiment",
+            "bulk_save_sentiment",
+            "cleanup_old_files",
+            "parse_timestamp",
+            "single_ticker_scrape",
+            "get_embed_color"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 58,
+        "lint": [
+            "Function single_ticker_scrape >50 lines",
+            "High complexity"
+        ]
+    },
+    "verify_beta.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "log_result",
+            "save_verification_report",
+            "print_summary"
+        ],
+        "classes": {
+            "BetaVerifier": {
+                "methods": [
+                    "__init__",
+                    "log_result",
+                    "save_verification_report",
+                    "print_summary"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 17,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "logins\\project_config.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_env",
+            "get_env",
+            "validate"
+        ],
+        "classes": {
+            "Config": {
+                "methods": [
+                    "__init__",
+                    "load_env",
+                    "get_env",
+                    "validate"
+                ],
+                "docstring": "Centralized configuration handler for SocialMediaManager.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 17,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "logins\\platform_login_manager.py": {
+        "language": ".py",
+        "functions": [
+            "get_driver",
+            "load_cookies",
+            "save_cookies",
+            "wait_for_manual_login",
+            "login_linkedin",
+            "login_twitter",
+            "login_facebook",
+            "is_logged_in",
+            "login_instagram",
+            "login_reddit",
+            "login_stocktwits",
+            "run_all_logins",
+            "fb_logged_in",
+            "is_logged_in"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 50,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_sentiment_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "fake_driver",
+            "temp_cookie_file",
+            "test_get_stocktwits_url",
+            "test_clean_text",
+            "test_analyze_sentiments_advanced",
+            "test_parse_timestamp",
+            "test_is_spam",
+            "test_scroll_and_collect",
+            "test_extract_messages",
+            "test_append_to_csv_by_ticker_and_sentiment",
+            "test_bulk_save_sentiment",
+            "test_cleanup_old_files",
+            "test_single_ticker_scrape",
+            "bulk_insert_sentiment"
+        ],
+        "classes": {
+            "FakeDB": {
+                "methods": [
+                    "bulk_insert_sentiment"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 20,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_database_handler.py": {
+        "language": ".py",
+        "functions": [
+            "mock_logger",
+            "mock_mysql",
+            "db_handler",
+            "test_initialization",
+            "test_get_connection_success",
+            "test_get_connection_failure",
+            "test_close_connection",
+            "test_initialize_table",
+            "test_bulk_insert_sentiment_success",
+            "test_bulk_insert_sentiment_failure",
+            "test_save_sentiment_success",
+            "test_save_sentiment_failure",
+            "test_fetch_sentiment_success",
+            "test_fetch_sentiment_failure"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 14,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_config.py": {
+        "language": ".py",
+        "functions": [
+            "reload_config",
+            "disable_dotenv_and_clear_env",
+            "reload_config_fixture",
+            "test_correct_type_casting",
+            "test_defaults_for_optional_variables",
+            "test_missing_env_variables",
+            "test_required_variables_set_correctly",
+            "test_validation_error_message"
+        ],
+        "classes": {
+            "TestConfig": {
+                "methods": [
+                    "reload_config_fixture",
+                    "test_correct_type_casting",
+                    "test_defaults_for_optional_variables",
+                    "test_missing_env_variables",
+                    "test_required_variables_set_correctly",
+                    "test_validation_error_message"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 18,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_platform_login_manager.py": {
+        "language": ".py",
+        "functions": [
+            "dummy_driver",
+            "fast_sleep",
+            "test_get_driver",
+            "test_load_cookies_existing",
+            "test_save_cookies",
+            "test_wait_for_manual_login_success",
+            "test_wait_for_manual_login_failure",
+            "test_run_all_logins",
+            "test_instagram_login_success",
+            "test_instagram_login_failure",
+            "test_instagram_manual_login_required",
+            "test_instagram_no_credentials"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_setup_logging.py": {
+        "language": ".py",
+        "functions": [
+            "log_dir",
+            "logger_instance",
+            "test_logger_creation",
+            "test_log_directory_creation",
+            "test_log_file_creation",
+            "test_console_logging",
+            "test_file_logging",
+            "test_log_rotation"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 9,
+        "lint": []
+    }
+}

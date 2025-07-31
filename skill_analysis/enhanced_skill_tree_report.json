@@ -1,0 +1,49 @@
+{
+  "core_technologies": {
+    "languages": {},
+    "file_types": {}
+  },
+  "expertise_areas": {
+    "web_development": 4,
+    "automation": 10,
+    "ai_ml": 5,
+    "gui_development": 0,
+    "data_analysis": 0,
+    "gaming_mods": 2,
+    "utilities": 43,
+    "experimental": 0
+  },
+  "code_quality": {
+    "avg_complexity": 0.0,
+    "max_complexity": 0,
+    "high_complexity_count": 0,
+    "total_files": 0
+  },
+  "development_practices": {
+    "projects_with_tests": 0,
+    "projects_with_docs": 0,
+    "projects_with_config": 0,
+    "projects_with_requirements": 0,
+    "projects_with_readme": 0
+  },
+  "code_architecture": {
+    "total_functions": 0,
+    "total_classes": 0,
+    "maturity_distribution": {},
+    "agent_type_distribution": {}
+  },
+  "project_evolution": {
+    "total_projects": 64,
+    "project_categories": {
+      "web_projects": 4,
+      "automation_projects": 10,
+      "ai_ml_projects": 5,
+      "gui_projects": 0,
+      "data_projects": 0,
+      "gaming_projects": 2,
+      "utility_projects": 43,
+      "experimental_projects": 0
+    },
+    "technology_diversity": 0
+  }
+}

@@ -1,0 +1,1994 @@
+{
+    "__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "main.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "autoblogger\\__main__.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "autoblogger\\main.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "setup.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\cli\\extract_devlogs.py": {
+        "language": ".py",
+        "functions": [
+            "parse_args",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "autoblogger\\core\\logging.py": {
+        "language": ".py",
+        "functions": [
+            "strip_emoji",
+            "get_logger",
+            "emit_without_emoji"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": [
+            "Function get_logger >50 lines"
+        ]
+    },
+    "autoblogger\\models\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\core\\chrome.py": {
+        "language": ".py",
+        "functions": [
+            "kill_chrome_processes",
+            "clean_chromedriver_cache",
+            "ensure_chrome_clean"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "autoblogger\\cli\\generate_blog.py": {
+        "language": ".py",
+        "functions": [
+            "setup_environment",
+            "generate_blog",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "autoblogger\\core\\profile.py": {
+        "language": ".py",
+        "functions": [
+            "get_profile_config_path",
+            "reset_profile",
+            "check_selenium_profile_ready",
+            "save_profile_config",
+            "load_profile_config",
+            "mark_profile_ready"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scrapers\\athlea\\test_athlea.py": {
+        "language": ".py",
+        "functions": [
+            "setup_logging",
+            "test_single_chat",
+            "test_chat_history"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "Function test_single_chat >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scrapers\\athlea\\athlea_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_extract_quest_info",
+            "_create_memory",
+            "generate_devlog",
+            "_extract_chat_content",
+            "process_chat_history"
+        ],
+        "classes": {
+            "AthleaScraper": {
+                "methods": [
+                    "__init__",
+                    "_extract_quest_info",
+                    "_create_memory",
+                    "generate_devlog",
+                    "_extract_chat_content",
+                    "process_chat_history"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "ChatGPTScraper"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 20,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scrapers\\athlea\\memory.py": {
+        "language": ".py",
+        "functions": [
+            "to_json",
+            "from_json",
+            "__init__",
+            "save_memory",
+            "load_memory",
+            "list_memories"
+        ],
+        "classes": {
+            "Quest": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "Memory": {
+                "methods": [
+                    "to_json",
+                    "from_json"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "MemoryBank": {
+                "methods": [
+                    "__init__",
+                    "save_memory",
+                    "load_memory",
+                    "list_memories"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 15,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scripts\\generate_devlogs.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 9,
+        "lint": [
+            "Function main >50 lines"
+        ]
+    },
+    "autoblogger\\scripts\\load_and_test_cookies.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": [
+            "Function main >50 lines"
+        ]
+    },
+    "autoblogger\\scripts\\setup.py": {
+        "language": ".py",
+        "functions": [
+            "parse_args",
+            "signal_handler",
+            "get_chrome_options",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "Function main >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scripts\\login_and_save_cookies.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "autoblogger\\scripts\\test_scrape.py": {
+        "language": ".py",
+        "functions": [
+            "run_quick_test"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 9,
+        "lint": [
+            "Function run_quick_test >50 lines"
+        ]
+    },
+    "autoblogger\\services\\analytics.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_data",
+            "save_data",
+            "add_post",
+            "update_engagement",
+            "get_current_stats",
+            "get_stats",
+            "get_trends"
+        ],
+        "classes": {
+            "BlogStats": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "AnalyticsService": {
+                "methods": [
+                    "__init__",
+                    "load_data",
+                    "save_data",
+                    "add_post",
+                    "update_engagement",
+                    "get_current_stats",
+                    "get_stats",
+                    "get_trends"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 35,
+        "lint": [
+            "Function get_current_stats >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scripts\\ci\\check_profile_ready.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "autoblogger\\agents\\devlog_extractor.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "run",
+            "extract_chat_history",
+            "process_chat",
+            "cleanup"
+        ],
+        "classes": {
+            "ChatHistory": {
+                "methods": [],
+                "docstring": "Data class for chat history entries.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "DevlogExtractor": {
+                "methods": [
+                    "__init__",
+                    "run",
+                    "extract_chat_history",
+                    "process_chat",
+                    "cleanup"
+                ],
+                "docstring": "Agent for extracting devlogs from ChatGPT history.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 22,
+        "lint": [
+            "Function extract_chat_history >50 lines",
+            "High complexity"
+        ]
+    },
+    "verify_beta_gui.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "run",
+            "__init__",
+            "add_result",
+            "__init__",
+            "_init_ui",
+            "run_verification",
+            "update_progress",
+            "add_result",
+            "verification_finished",
+            "show_details",
+            "export_report"
+        ],
+        "classes": {
+            "VerificationWorker": {
+                "methods": [
+                    "run"
+                ],
+                "docstring": "Worker thread for running verification checks.",
+                "base_classes": [
+                    "QThread"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            },
+            "ResultTree": {
+                "methods": [
+                    "__init__",
+                    "add_result"
+                ],
+                "docstring": "Custom tree widget for displaying verification results.",
+                "base_classes": [
+                    "QTreeWidget"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "BetaVerificationGUI": {
+                "methods": [
+                    "__init__",
+                    "_init_ui",
+                    "run_verification",
+                    "update_progress",
+                    "add_result",
+                    "verification_finished",
+                    "show_details",
+                    "export_report"
+                ],
+                "docstring": "Main window for the beta verification GUI.",
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 29,
+        "lint": [
+            "Function _init_ui >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\blog_generator.py": {
+        "language": ".py",
+        "functions": [
+            "load_model",
+            "initialize_faiss",
+            "load_metadata",
+            "save_metadata",
+            "generate_embeddings",
+            "run_ollama",
+            "generate_image",
+            "generate_content",
+            "render_template",
+            "save_output",
+            "get_or_create_term",
+            "post_to_wordpress",
+            "generate_blog",
+            "generate_content",
+            "generate_blog",
+            "__init__",
+            "generate_post",
+            "regenerate_devlog",
+            "close",
+            "__enter__",
+            "__exit__"
+        ],
+        "classes": {
+            "BlogPost": {
+                "methods": [],
+                "docstring": "Data class for blog post content and metadata.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "BlogGenerator": {
+                "methods": [
+                    "__init__",
+                    "generate_post",
+                    "regenerate_devlog",
+                    "close",
+                    "__enter__",
+                    "__exit__"
+                ],
+                "docstring": "Orchestrates the blog post generation pipeline.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 86,
+        "lint": [
+            "Function generate_content >50 lines",
+            "Function post_to_wordpress >50 lines",
+            "Function generate_blog >50 lines",
+            "Function generate_blog >50 lines",
+            "Function generate_post >50 lines",
+            "High complexity"
+        ]
+    },
+    "auto_reply.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "generate_reply",
+            "post_reply",
+            "_post_twitter_reply",
+            "_post_linkedin_reply",
+            "save_reply_history",
+            "load_reply_history"
+        ],
+        "classes": {
+            "AutoReply": {
+                "methods": [
+                    "__init__",
+                    "generate_reply",
+                    "post_reply",
+                    "_post_twitter_reply",
+                    "_post_linkedin_reply",
+                    "save_reply_history",
+                    "load_reply_history"
+                ],
+                "docstring": "Handles automated reply generation and posting to social media platforms.\n\nThis class manages the process of generating AI-powered replies to social\nmedia posts and handles the posting of these replies.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 26,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\models\\blog_post.py": {
+        "language": ".py",
+        "functions": [
+            "__post_init__",
+            "to_wordpress_format",
+            "validate",
+            "add_category",
+            "add_tag",
+            "set_featured_image",
+            "update_metadata",
+            "__str__",
+            "__repr__"
+        ],
+        "classes": {
+            "BlogPost": {
+                "methods": [
+                    "__post_init__",
+                    "to_wordpress_format",
+                    "validate",
+                    "add_category",
+                    "add_tag",
+                    "set_featured_image",
+                    "update_metadata",
+                    "__str__",
+                    "__repr__"
+                ],
+                "docstring": "Represents a blog post in the system.\n\nAttributes:\n    title (str): The title of the blog post\n    content (str): The main content of the blog post\n    author (str): The author of the blog post\n    excerpt (Optional[str]): A short summary of the blog post\n    publish_date (datetime): When the post was/will be published\n    categories (List[str]): Categories the post belongs to\n    tags (List[str]): Tags associated with the post\n    featured_image (Optional[str]): Path to the featured image\n    status (str): Current status of the post (draft, published, etc.)\n    metadata (Dict[str, Any]): Additional metadata about the post",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 39,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scrapers\\chatgpt.py": {
+        "language": ".py",
+        "functions": [
+            "is_real_profile",
+            "__init__",
+            "start",
+            "_is_logged_in",
+            "close",
+            "extract_chat_list",
+            "_extract_chat_metadata",
+            "generate_devlog",
+            "process_chat_history",
+            "save_devlog",
+            "parse_hybrid_response"
+        ],
+        "classes": {
+            "ChatMetadata": {
+                "methods": [],
+                "docstring": "Metadata for a ChatGPT conversation.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ChatGPTScraper": {
+                "methods": [
+                    "__init__",
+                    "start",
+                    "_is_logged_in",
+                    "close",
+                    "extract_chat_list",
+                    "_extract_chat_metadata",
+                    "generate_devlog",
+                    "process_chat_history",
+                    "save_devlog"
+                ],
+                "docstring": "Scrapes ChatGPT conversations and generates devlogs from them.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "HybridResponseHandler": {
+                "methods": [
+                    "parse_hybrid_response"
+                ],
+                "docstring": "Parses a hybrid response that includes both narrative text and a MEMORY_UPDATE JSON block.\nReturns a tuple of (text_part, memory_update_json).",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "DataAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 48,
+        "lint": [
+            "Function _extract_chat_metadata >50 lines",
+            "Function generate_devlog >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\verify_beta.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "to_dict",
+            "__post_init__",
+            "__init__",
+            "check_env_files",
+            "check_env_vars",
+            "check_requirements",
+            "check_structure",
+            "check_pytest",
+            "check_flake8",
+            "_find_python_files",
+            "_check_required_files",
+            "_check_docstring",
+            "_check_type_hints",
+            "_check_error_handling",
+            "_calculate_complexity",
+            "_analyze_file",
+            "_calculate_scores",
+            "analyze_project",
+            "run_all",
+            "generate_markdown"
+        ],
+        "classes": {
+            "CheckResult": {
+                "methods": [
+                    "to_dict"
+                ],
+                "docstring": "Represents the result of a single verification check.\n\nAttributes:\n    name: Name of the check\n    status: Whether the check passed\n    details: Detailed explanation of the result\n    recommendations: List of recommendations if check failed",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "FileAnalysis": {
+                "methods": [
+                    "__post_init__"
+                ],
+                "docstring": "Represents the analysis results for a single file.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AutoBloggerVerifier": {
+                "methods": [
+                    "__init__",
+                    "check_env_files",
+                    "check_env_vars",
+                    "check_requirements",
+                    "check_structure",
+                    "check_pytest",
+                    "check_flake8",
+                    "_find_python_files",
+                    "_check_required_files",
+                    "_check_docstring",
+                    "_check_type_hints",
+                    "_check_error_handling",
+                    "_calculate_complexity",
+                    "_analyze_file",
+                    "_calculate_scores",
+                    "analyze_project",
+                    "run_all",
+                    "generate_markdown"
+                ],
+                "docstring": "Main class for verifying AutoBlogger's beta readiness.\n\nThis class performs various checks on the project structure, code quality,\nand configuration to ensure everything is ready for beta release.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 106,
+        "lint": [
+            "Function analyze_project >50 lines",
+            "High complexity"
+        ]
+    },
+    "1.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "_init_tree_sitter_language",
+            "analyze_file",
+            "_analyze_python",
+            "_analyze_rust",
+            "_analyze_javascript",
+            "__init__",
+            "run",
+            "__init__",
+            "add_task",
+            "wait_for_completion",
+            "stop_workers",
+            "__init__",
+            "hash_file",
+            "should_exclude",
+            "process_file",
+            "__init__",
+            "load_existing_report",
+            "save_report",
+            "generate_init_files",
+            "load_existing_chatgpt_context",
+            "export_chatgpt_context",
+            "__init__",
+            "load_cache",
+            "save_cache",
+            "scan_project",
+            "_process_file",
+            "generate_init_files",
+            "export_chatgpt_context",
+            "categorize_agents",
+            "_maturity_level",
+            "_agent_type",
+            "_traverse",
+            "get_node_text",
+            "_traverse"
+        ],
+        "classes": {
+            "LanguageAnalyzer": {
+                "methods": [
+                    "__init__",
+                    "_init_tree_sitter_language",
+                    "analyze_file",
+                    "_analyze_python",
+                    "_analyze_rust",
+                    "_analyze_javascript"
+                ],
+                "docstring": "Handles language-specific code analysis for different programming languages.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "BotWorker": {
+                "methods": [
+                    "__init__",
+                    "run"
+                ],
+                "docstring": "A background worker that pulls file tasks from a queue,\nprocesses them, and appends results to results_list.",
+                "base_classes": [
+                    "threading.Thread"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            },
+            "MultibotManager": {
+                "methods": [
+                    "__init__",
+                    "add_task",
+                    "wait_for_completion",
+                    "stop_workers"
+                ],
+                "docstring": "Manages a pool of BotWorker threads.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "FileProcessor": {
+                "methods": [
+                    "__init__",
+                    "hash_file",
+                    "should_exclude",
+                    "process_file"
+                ],
+                "docstring": "Handles file hashing, ignoring, caching checks, etc.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ReportGenerator": {
+                "methods": [
+                    "__init__",
+                    "load_existing_report",
+                    "save_report",
+                    "generate_init_files",
+                    "load_existing_chatgpt_context",
+                    "export_chatgpt_context"
+                ],
+                "docstring": "Handles merging new analysis into existing project_analysis.json and chatgpt context.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ProjectScanner": {
+                "methods": [
+                    "__init__",
+                    "load_cache",
+                    "save_cache",
+                    "scan_project",
+                    "_process_file",
+                    "generate_init_files",
+                    "export_chatgpt_context",
+                    "categorize_agents",
+                    "_maturity_level",
+                    "_agent_type"
+                ],
+                "docstring": "A universal project scanner that:\n  - Identifies Python, Rust, JS, TS files.\n  - Extracts functions, classes, routes, complexity.\n  - Caches file hashes to skip unchanged files.\n  - Detects moved files by matching file hashes.\n  - Merges new analysis into existing project_analysis.json (preserving old entries).\n  - Exports a merged ChatGPT context if requested (preserving old context data).\n  - Processes files asynchronously with BotWorker threads.\n  - Auto-generates __init__.py files for Python packages.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 192,
+        "lint": [
+            "Function main >50 lines",
+            "Function _analyze_python >50 lines",
+            "Function _analyze_javascript >50 lines",
+            "Function should_exclude >50 lines",
+            "Function export_chatgpt_context >50 lines",
+            "Function scan_project >50 lines",
+            "Function _traverse >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\scrapers\\chatgpt_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "is_real_profile",
+            "__init__",
+            "start",
+            "_is_logged_in",
+            "close",
+            "extract_chat_list",
+            "_extract_chat_metadata",
+            "generate_devlog",
+            "process_chat_history",
+            "save_devlog",
+            "parse_hybrid_response"
+        ],
+        "classes": {
+            "ChatMetadata": {
+                "methods": [],
+                "docstring": "Metadata for a ChatGPT conversation.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ChatGPTScraper": {
+                "methods": [
+                    "__init__",
+                    "start",
+                    "_is_logged_in",
+                    "close",
+                    "extract_chat_list",
+                    "_extract_chat_metadata",
+                    "generate_devlog",
+                    "process_chat_history",
+                    "save_devlog"
+                ],
+                "docstring": "Scrapes ChatGPT conversations and generates devlogs from them.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "HybridResponseHandler": {
+                "methods": [
+                    "parse_hybrid_response"
+                ],
+                "docstring": "Parses a hybrid response that includes both narrative text and a MEMORY_UPDATE JSON block.\nReturns a tuple of (text_part, memory_update_json).",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "DataAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 48,
+        "lint": [
+            "Function _extract_chat_metadata >50 lines",
+            "Function generate_devlog >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\devlog_harvester.py": {
+        "language": ".py",
+        "functions": [
+            "__post_init__",
+            "to_dict",
+            "from_dict",
+            "__init__",
+            "_load_history",
+            "_save_history",
+            "start",
+            "stop",
+            "get_chat_list",
+            "generate_devlog",
+            "get_history",
+            "mark_as_published",
+            "get_stats"
+        ],
+        "classes": {
+            "DevlogEntry": {
+                "methods": [
+                    "__post_init__",
+                    "to_dict",
+                    "from_dict"
+                ],
+                "docstring": "Represents a generated devlog entry.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "DevlogHarvester": {
+                "methods": [
+                    "__init__",
+                    "_load_history",
+                    "_save_history",
+                    "start",
+                    "stop",
+                    "get_chat_list",
+                    "generate_devlog",
+                    "get_history",
+                    "mark_as_published",
+                    "get_stats"
+                ],
+                "docstring": "Manages the process of harvesting and generating devlogs from ChatGPT conversations.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 44,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\auto_reply.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "generate_reply",
+            "post_reply",
+            "_post_twitter_reply",
+            "_post_linkedin_reply",
+            "save_reply_history",
+            "load_reply_history"
+        ],
+        "classes": {
+            "AutoReply": {
+                "methods": [
+                    "__init__",
+                    "generate_reply",
+                    "post_reply",
+                    "_post_twitter_reply",
+                    "_post_linkedin_reply",
+                    "save_reply_history",
+                    "load_reply_history"
+                ],
+                "docstring": "Service for generating and posting replies.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 23,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\devlog_service.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_build_prompt",
+            "generate_devlog",
+            "save_devlog",
+            "log_generation",
+            "regenerate_entry",
+            "get_entry_by_post_id",
+            "_save_entry"
+        ],
+        "classes": {
+            "DevlogEntry": {
+                "methods": [],
+                "docstring": "Data class for devlog entries.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "DevlogService": {
+                "methods": [
+                    "__init__",
+                    "_build_prompt",
+                    "generate_devlog",
+                    "save_devlog",
+                    "log_generation",
+                    "regenerate_entry",
+                    "get_entry_by_post_id",
+                    "_save_entry"
+                ],
+                "docstring": "Service for generating devlogs about content generation workflows.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 24,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\outline_service.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "generate_outline",
+            "_save_outline"
+        ],
+        "classes": {
+            "Outline": {
+                "methods": [],
+                "docstring": "Data class for blog post outlines.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "OutlineService": {
+                "methods": [
+                    "__init__",
+                    "generate_outline",
+                    "_save_outline"
+                ],
+                "docstring": "Service for generating blog post outlines.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 9,
+        "lint": [
+            "Function generate_outline >50 lines"
+        ]
+    },
+    "autoblogger\\services\\draft_service.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_draft",
+            "_build_draft_prompt",
+            "_parse_draft_response"
+        ],
+        "classes": {
+            "Draft": {
+                "methods": [],
+                "docstring": "Data class for blog post draft.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "DraftService": {
+                "methods": [
+                    "__init__",
+                    "create_draft",
+                    "_build_draft_prompt",
+                    "_parse_draft_response"
+                ],
+                "docstring": "Service for generating blog post drafts from outlines.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 13,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\utils.py": {
+        "language": ".py",
+        "functions": [
+            "extract_title",
+            "extract_introduction"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "autoblogger\\services\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\services\\mistral_client.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "chat",
+            "generate_text"
+        ],
+        "classes": {
+            "MistralClient": {
+                "methods": [
+                    "__init__",
+                    "chat",
+                    "generate_text"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 9,
+        "lint": []
+    },
+    "autoblogger\\services\\polish_service.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "refine",
+            "_build_refine_prompt",
+            "_parse_refine_response"
+        ],
+        "classes": {
+            "PolishedPost": {
+                "methods": [],
+                "docstring": "Data class for polished blog post.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "PolishService": {
+                "methods": [
+                    "__init__",
+                    "refine",
+                    "_build_refine_prompt",
+                    "_parse_refine_response"
+                ],
+                "docstring": "Service for refining and optimizing blog post drafts.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 10,
+        "lint": []
+    },
+    "autoblogger\\services\\wordpress_client.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "post_to_wordpress",
+            "update_settings",
+            "get_or_create_term"
+        ],
+        "classes": {
+            "WordPressClient": {
+                "methods": [
+                    "__init__",
+                    "post_to_wordpress",
+                    "update_settings"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "Function post_to_wordpress >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\vector_db.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_vector_db",
+            "save_metadata",
+            "generate_embeddings",
+            "update_vector_db",
+            "extract_blog_post",
+            "search",
+            "is_initialized",
+            "reload_vector_db"
+        ],
+        "classes": {
+            "VectorDB": {
+                "methods": [
+                    "__init__",
+                    "load_vector_db",
+                    "save_metadata",
+                    "generate_embeddings",
+                    "update_vector_db",
+                    "extract_blog_post",
+                    "search",
+                    "is_initialized",
+                    "reload_vector_db"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 29,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\publishing\\base.py": {
+        "language": ".py",
+        "functions": [
+            "publish",
+            "validate_credentials",
+            "get_publish_status"
+        ],
+        "classes": {
+            "PostPublisher": {
+                "methods": [
+                    "publish",
+                    "validate_credentials",
+                    "get_publish_status"
+                ],
+                "docstring": "Base interface for all platform-specific post publishers.",
+                "base_classes": [
+                    "ABC"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "autoblogger\\services\\publishing\\discord_publisher.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "publish",
+            "validate_credentials",
+            "get_publish_status"
+        ],
+        "classes": {
+            "DiscordPublisher": {
+                "methods": [
+                    "__init__",
+                    "publish",
+                    "validate_credentials",
+                    "get_publish_status"
+                ],
+                "docstring": "Discord implementation of the PostPublisher interface.",
+                "base_classes": [
+                    "PostPublisher"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 13,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\publishing\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\services\\publishing\\wordpress_publisher.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "publish",
+            "validate_credentials",
+            "get_publish_status"
+        ],
+        "classes": {
+            "WordPressPublisher": {
+                "methods": [
+                    "__init__",
+                    "publish",
+                    "validate_credentials",
+                    "get_publish_status"
+                ],
+                "docstring": "WordPress implementation of the PostPublisher interface.",
+                "base_classes": [
+                    "PostPublisher"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 14,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\publishing\\scheduler.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "add_publisher",
+            "schedule_post",
+            "cancel_post",
+            "get_post_status",
+            "run",
+            "_publish_post",
+            "stop"
+        ],
+        "classes": {
+            "ScheduledPost": {
+                "methods": [],
+                "docstring": "Represents a post scheduled for publishing.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "PublishingScheduler": {
+                "methods": [
+                    "__init__",
+                    "add_publisher",
+                    "schedule_post",
+                    "cancel_post",
+                    "get_post_status",
+                    "run",
+                    "_publish_post",
+                    "stop"
+                ],
+                "docstring": "Manages scheduled posts across multiple publishing platforms.\nRuns as a background thread to handle publishing tasks.",
+                "base_classes": [
+                    "WorkerThread"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 32,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "autoblogger\\services\\publishing\\medium_publisher.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "validate_credentials",
+            "publish",
+            "get_publish_status"
+        ],
+        "classes": {
+            "MediumPublisher": {
+                "methods": [
+                    "__init__",
+                    "validate_credentials",
+                    "publish",
+                    "get_publish_status"
+                ],
+                "docstring": "Publishes posts to Medium via the official API.\nRequires an integration token with \"Publish to Medium\" scope.",
+                "base_classes": [
+                    "PostPublisher"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "Function publish >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\ui\\charts.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "init_ui",
+            "show_export_menu",
+            "export_png",
+            "export_chart",
+            "__init__",
+            "setup_controls",
+            "update_data",
+            "update_chart",
+            "get_data_for_export",
+            "__init__",
+            "setup_controls",
+            "update_data",
+            "update_chart",
+            "get_data_for_export",
+            "__init__",
+            "setup_controls",
+            "update_data",
+            "update_chart",
+            "get_data_for_export"
+        ],
+        "classes": {
+            "BaseChart": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "show_export_menu",
+                    "export_png",
+                    "export_chart"
+                ],
+                "docstring": "Base class for all chart widgets.",
+                "base_classes": [
+                    "QWidget"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AnalyticsChart": {
+                "methods": [
+                    "__init__",
+                    "setup_controls",
+                    "update_data",
+                    "update_chart",
+                    "get_data_for_export"
+                ],
+                "docstring": "Chart for displaying analytics data.",
+                "base_classes": [
+                    "BaseChart"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "DistributionChart": {
+                "methods": [
+                    "__init__",
+                    "setup_controls",
+                    "update_data",
+                    "update_chart",
+                    "get_data_for_export"
+                ],
+                "docstring": "Chart for displaying content distribution.",
+                "base_classes": [
+                    "BaseChart"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "EngagementPieChart": {
+                "methods": [
+                    "__init__",
+                    "setup_controls",
+                    "update_data",
+                    "update_chart",
+                    "get_data_for_export"
+                ],
+                "docstring": "Chart for displaying engagement distribution.",
+                "base_classes": [
+                    "BaseChart"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 65,
+        "lint": [
+            "Function update_chart >50 lines",
+            "Function update_chart >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\ui\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\utils\\logging_setup.py": {
+        "language": ".py",
+        "functions": [
+            "setup_logging"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "autoblogger\\ui\\devlog_history_panel.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_init_ui",
+            "_show_context_menu",
+            "_view_in_browser",
+            "_edit_devlog",
+            "_publish_devlog",
+            "load_devlogs",
+            "show_devlog",
+            "apply_filters",
+            "_update_stats"
+        ],
+        "classes": {
+            "DevlogHistoryPanel": {
+                "methods": [
+                    "__init__",
+                    "_init_ui",
+                    "_show_context_menu",
+                    "_view_in_browser",
+                    "_edit_devlog",
+                    "_publish_devlog",
+                    "load_devlogs",
+                    "show_devlog",
+                    "apply_filters",
+                    "_update_stats"
+                ],
+                "docstring": "Panel for viewing and managing generated devlogs.",
+                "base_classes": [
+                    "QWidget"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 30,
+        "lint": [
+            "Function _init_ui >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\ui\\dialogs.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "init_ui",
+            "save_config",
+            "validate_inputs",
+            "__init__",
+            "init_ui",
+            "get_settings"
+        ],
+        "classes": {
+            "SetupWizardDialog": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "save_config",
+                    "validate_inputs"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QDialog"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "SettingsDialog": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "get_settings"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QDialog"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 18,
+        "lint": [
+            "Function init_ui >50 lines",
+            "High complexity"
+        ]
+    },
+    "autoblogger\\worker\\worker_thread.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "set_params",
+            "run"
+        ],
+        "classes": {
+            "WorkerThread": {
+                "methods": [
+                    "__init__",
+                    "set_params",
+                    "run"
+                ],
+                "docstring": "Worker thread for generating devlogs.",
+                "base_classes": [
+                    "QThread"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "data\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\ui\\main_window.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "init_services",
+            "init_ui",
+            "create_toolbar",
+            "setup_dashboard_tab",
+            "update_dashboard",
+            "setup_devlog_tab",
+            "on_date_selected",
+            "schedule_post",
+            "setup_editor_tab",
+            "setup_analytics_tab",
+            "setup_settings_tab",
+            "save_settings",
+            "start_generation",
+            "generation_finished",
+            "update_log",
+            "update_progress",
+            "toggle_buttons",
+            "preview_blog_post",
+            "post_to_blog",
+            "open_settings",
+            "launch_setup_wizard",
+            "generate_post",
+            "setup_services",
+            "_connect_signals",
+            "_on_devlog_selected",
+            "_on_devlog_published"
+        ],
+        "classes": {
+            "MainWindow": {
+                "methods": [
+                    "__init__",
+                    "init_services",
+                    "init_ui",
+                    "create_toolbar",
+                    "setup_dashboard_tab",
+                    "update_dashboard",
+                    "setup_devlog_tab",
+                    "on_date_selected",
+                    "schedule_post",
+                    "setup_editor_tab",
+                    "setup_analytics_tab",
+                    "setup_settings_tab",
+                    "save_settings",
+                    "start_generation",
+                    "generation_finished",
+                    "update_log",
+                    "update_progress",
+                    "toggle_buttons",
+                    "preview_blog_post",
+                    "post_to_blog",
+                    "open_settings",
+                    "launch_setup_wizard",
+                    "generate_post",
+                    "setup_services",
+                    "_connect_signals",
+                    "_on_devlog_selected",
+                    "_on_devlog_published"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 78,
+        "lint": [
+            "Function setup_dashboard_tab >50 lines",
+            "Function setup_devlog_tab >50 lines",
+            "Function setup_editor_tab >50 lines",
+            "Function setup_settings_tab >50 lines",
+            "Function generate_post >50 lines",
+            "High complexity"
+        ]
+    },
+    "scrapers\\linkedin\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "data\\raw\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "autoblogger\\worker\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "data\\processed\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "scrapers\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "scrapers\\linkedin\\processor.py": {
+        "language": ".py",
+        "functions": [
+            "clean_text"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "scrapers\\twitter\\scraper.py": {
+        "language": ".py",
+        "functions": [
+            "load_cookies",
+            "save_cookies",
+            "twitter_login",
+            "search_tweets"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "scrapers\\linkedin\\scraper.py": {
+        "language": ".py",
+        "functions": [
+            "is_logged_in",
+            "manual_login",
+            "load_cookies",
+            "scroll_and_wait",
+            "expand_hidden_content",
+            "get_engagement_count",
+            "fetch_posts"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 21,
+        "lint": [
+            "Function fetch_posts >50 lines",
+            "High complexity"
+        ]
+    },
+    "scrapers\\twitter\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "training\\deepseek\\preprocess.py": {
+        "language": ".py",
+        "functions": [
+            "format_for_ollama"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "tests\\test_verify_beta.py": {
+        "language": ".py",
+        "functions": [
+            "project_root",
+            "verifier",
+            "test_verifier_initialization",
+            "test_check_required_files",
+            "test_find_python_files",
+            "test_analyze_file_with_docstring",
+            "test_analyze_file_without_docstring",
+            "test_check_docstring",
+            "test_check_type_hints",
+            "test_check_error_handling",
+            "test_calculate_complexity",
+            "test_calculate_scores",
+            "test_analyze_project",
+            "test_analyze_project_empty",
+            "test_analyze_project_with_errors"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "tests\\test_blog_post.py": {
+        "language": ".py",
+        "functions": [
+            "test_blog_post_creation",
+            "test_blog_post_with_optional_fields",
+            "test_blog_post_validation",
+            "test_blog_post_methods",
+            "test_wordpress_format",
+            "test_blog_post_equality",
+            "test_blog_post_str_representation"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "tests\\test_autoblogger.py": {
+        "language": ".py",
+        "functions": [
+            "app",
+            "main_window",
+            "test_vector_db_functions",
+            "test_search_dialog",
+            "test_generate_blog_function",
+            "test_post_to_blog",
+            "test_settings_dialog",
+            "test_preview_blog_post"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 9,
+        "lint": []
+    },
+    "training\\deepseek\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "tools\\update_imports_from_move_map.py": {
+        "language": ".py",
+        "functions": [
+            "load_move_map",
+            "find_python_files",
+            "parse_imports",
+            "update_imports",
+            "run_formatter",
+            "run_tests",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 22,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "training\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "tests\\test_auto_reply.py": {
+        "language": ".py",
+        "functions": [
+            "mock_credentials",
+            "auto_reply",
+            "test_auto_reply_initialization",
+            "test_generate_reply",
+            "test_generate_reply_error",
+            "test_post_reply",
+            "test_post_reply_linkedin",
+            "test_post_reply_unsupported_platform",
+            "test_post_reply_error",
+            "test_save_reply_history",
+            "test_load_reply_history",
+            "test_load_reply_history_invalid_file",
+            "test_post_twitter_reply",
+            "test_post_linkedin_reply"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 14,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "training\\deepseek\\train.py": {
+        "language": ".py",
+        "functions": [
+            "tokenize_function"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "training\\reply_ai\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "training\\reply_ai\\preprocess.py": {
+        "language": ".py",
+        "functions": [
+            "generate_reply"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "training\\reply_ai\\train.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    }
+}

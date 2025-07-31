@@ -1,0 +1,894 @@
+{
+    "file_sorter2.py": {
+        "language": ".py",
+        "functions": [
+            "move_processed_files",
+            "move_processed_files"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 10,
+        "lint": []
+    },
+    "backtest.py": {
+        "language": ".py",
+        "functions": [
+            "read_config",
+            "load_config",
+            "backtest_regression",
+            "load_models",
+            "preprocess_data",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "CustomBatchSampler.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "__iter__",
+            "__len__",
+            "set_batch_size"
+        ],
+        "classes": {
+            "CustomBatchSampler": {
+                "methods": [
+                    "__init__",
+                    "__iter__",
+                    "__len__",
+                    "set_batch_size"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "Sampler"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 13,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "async_threaded_data_fetch.py": {
+        "language": ".py",
+        "functions": [
+            "start_async_data_fetch",
+            "run_async_data_fetch"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "data_management.py": {
+        "language": ".py",
+        "functions": [
+            "save_data",
+            "apply_data_transformation",
+            "get_data_sample",
+            "filter_data",
+            "sort_data",
+            "prepare_data_for_visualization",
+            "parallelize_dataframe",
+            "your_processing_function",
+            "__init__",
+            "__init__"
+        ],
+        "classes": {
+            "DataLoadError": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": "Exception raised for errors in the data load process.",
+                "base_classes": [
+                    "Exception"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "config_handling.py": {
+        "language": ".py",
+        "functions": [
+            "get_format_path",
+            "detect_format",
+            "detect_and_transform_format",
+            "handle_nan_in_dataframe",
+            "fetch_csv_files_and_tickers",
+            "read_configuration_settings",
+            "load_user_settings"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 15,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "data_processing2.py": {
+        "language": ".py",
+        "functions": [
+            "get_format2_path",
+            "handle_nan_in_dataframe",
+            "add_moving_average",
+            "add_exponential_moving_average",
+            "add_bollinger_bands",
+            "add_stochastic_oscillator",
+            "add_mae",
+            "add_rvi",
+            "add_pvt",
+            "add_atr",
+            "compute_adl",
+            "add_chaikin_oscillator",
+            "add_dpo",
+            "add_williams_r",
+            "add_elder_ray_index",
+            "add_roc",
+            "add_obv",
+            "add_mfi",
+            "add_ppo",
+            "add_cci",
+            "add_stoch_rsi",
+            "add_ultimate_oscillator",
+            "add_psar",
+            "add_adl",
+            "add_adx",
+            "add_force_index",
+            "add_keltner_channel",
+            "add_coppock_curve",
+            "add_ichimoku",
+            "add_hma",
+            "add_qstick",
+            "add_trix",
+            "add_vortex",
+            "process_data",
+            "select_features"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 76,
+        "lint": [
+            "Function process_data >50 lines",
+            "High complexity"
+        ]
+    },
+    "df_gui.py": {
+        "language": ".py",
+        "functions": [
+            "run_gui",
+            "log_message",
+            "select_directory",
+            "save_preferences",
+            "load_preferences",
+            "fetch_data",
+            "fetch_data_threaded"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 10,
+        "lint": [
+            "Function run_gui >50 lines"
+        ]
+    },
+    "file_sorter3.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "data_fetch.py": {
+        "language": ".py",
+        "functions": [
+            "read_config",
+            "read_api_keys_from_config",
+            "fetch_data_from_api",
+            "load_historical_data_alpha_vantage",
+            "load_historical_data_polygonio",
+            "load_historical_data_nasdaq",
+            "manage_csv_files",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 33,
+        "lint": [
+            "Function fetch_data_from_api >50 lines",
+            "High complexity"
+        ]
+    },
+    "data_processing1.py": {
+        "language": ".py",
+        "functions": [
+            "get_format1_path",
+            "handle_nan_in_dataframe",
+            "add_moving_average",
+            "add_exponential_moving_average",
+            "add_bollinger_bands",
+            "add_stochastic_oscillator",
+            "add_atr",
+            "add_mae",
+            "add_rvi",
+            "add_pvt",
+            "compute_adl",
+            "add_chaikin_oscillator",
+            "add_dpo",
+            "add_williams_r",
+            "add_elder_ray_index",
+            "add_roc",
+            "add_obv",
+            "add_mfi",
+            "add_ppo",
+            "add_cci",
+            "add_stoch_rsi",
+            "add_ultimate_oscillator",
+            "add_psar",
+            "add_adl",
+            "add_adx",
+            "add_force_index",
+            "add_keltner_channel",
+            "add_coppock_curve",
+            "add_ichimoku",
+            "add_hma",
+            "add_qstick",
+            "add_trix",
+            "add_vortex",
+            "process_data",
+            "select_features"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 76,
+        "lint": [
+            "Function process_data >50 lines",
+            "High complexity"
+        ]
+    },
+    "config_wizard.py": {
+        "language": ".py",
+        "functions": [
+            "create_main_window",
+            "update_config",
+            "browse_folder",
+            "show_tooltip"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "Function create_main_window >50 lines",
+            "High complexity"
+        ]
+    },
+    "main.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "init_ui",
+            "create_date_input",
+            "create_label_and_widget",
+            "select_directory",
+            "save_preferences",
+            "load_preferences",
+            "fetch_data",
+            "fetch_data_threaded",
+            "log_message",
+            "show_warning",
+            "show_error",
+            "run_stock_data_app"
+        ],
+        "classes": {
+            "StockDataApp": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "create_date_input",
+                    "create_label_and_widget",
+                    "select_directory",
+                    "save_preferences",
+                    "load_preferences",
+                    "fetch_data",
+                    "fetch_data_threaded",
+                    "log_message",
+                    "show_warning",
+                    "show_error"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 32,
+        "lint": [
+            "Function init_ui >50 lines",
+            "Function fetch_data_threaded >50 lines",
+            "High complexity"
+        ]
+    },
+    "tester.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setUp",
+            "test_save_data",
+            "test_apply_data_transformation",
+            "test_get_data_sample",
+            "test_filter_data",
+            "test_sort_data",
+            "test_prepare_data_for_visualization",
+            "test_parallelize_dataframe",
+            "test_your_processing_function"
+        ],
+        "classes": {
+            "MockAioFilesOpen": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "TestDataManagement": {
+                "methods": [
+                    "setUp",
+                    "test_save_data",
+                    "test_apply_data_transformation",
+                    "test_get_data_sample",
+                    "test_filter_data",
+                    "test_sort_data",
+                    "test_prepare_data_for_visualization",
+                    "test_parallelize_dataframe",
+                    "test_your_processing_function"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "unittest.IsolatedAsyncioTestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 20,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "settings_management.py": {
+        "language": ".py",
+        "functions": [
+            "load_settings",
+            "save_settings",
+            "validate_settings"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "test_technical_indicators.py": {
+        "language": ".py",
+        "functions": [
+            "setUp",
+            "setUp",
+            "test_default_values",
+            "test_custom_values",
+            "test_calculation",
+            "test_default_parameters",
+            "test_error_handling",
+            "test_add_moving_average",
+            "test_add_relative_strength_index",
+            "test_add_bollinger_bands",
+            "test_add_stochastic_oscillator",
+            "test_calculate_macd_components",
+            "test_add_average_true_range",
+            "test_add_chandelier_exit",
+            "test_add_historical_volatility",
+            "test_add_exponential_moving_average"
+        ],
+        "classes": {
+            "TestTechnicalIndicators": {
+                "methods": [
+                    "setUp",
+                    "test_default_values",
+                    "test_custom_values",
+                    "test_calculation",
+                    "test_default_parameters",
+                    "test_error_handling",
+                    "test_add_moving_average",
+                    "test_add_relative_strength_index",
+                    "test_add_bollinger_bands",
+                    "test_add_stochastic_oscillator",
+                    "test_calculate_macd_components",
+                    "test_add_average_true_range",
+                    "test_add_chandelier_exit",
+                    "test_add_historical_volatility",
+                    "test_add_exponential_moving_average"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "unittest.TestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 40,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test.py": {
+        "language": ".py",
+        "functions": [
+            "load_configuration",
+            "load_data_from_folder",
+            "preprocess_data",
+            "split_and_scale_data",
+            "prepare_data_for_lstm",
+            "save_model_with_metadata",
+            "hyperparameter_tuning",
+            "evaluate_and_save",
+            "train_and_evaluate_model",
+            "train_model",
+            "save_trained_model",
+            "interactive_model_selection",
+            "interactive_model_save_format",
+            "user_wants_backup",
+            "main",
+            "__init__",
+            "build"
+        ],
+        "classes": {
+            "CustomHyperModel": {
+                "methods": [
+                    "__init__",
+                    "build"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "HyperModel"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 66,
+        "lint": [
+            "Function preprocess_data >50 lines",
+            "Function interactive_model_save_format >50 lines",
+            "Function main >50 lines",
+            "High complexity"
+        ]
+    },
+    "md_gui.py": {
+        "language": ".py",
+        "functions": [
+            "load_configuration",
+            "get_features_from_csv",
+            "select_features_interactively",
+            "select_model_type",
+            "process_file",
+            "perform_shap_analysis",
+            "browse_file",
+            "load_config",
+            "start_processing",
+            "threaded_processing"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 28,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "model_development.py": {
+        "language": ".py",
+        "functions": [
+            "load_configuration",
+            "get_features_from_csv",
+            "select_features_interactively",
+            "validate_section_keys",
+            "preprocess_data",
+            "standardize_date_column",
+            "convert_and_sort_by_date",
+            "fill_missing_values",
+            "standardize_target_column",
+            "split_and_scale_data",
+            "build",
+            "bayesian_hyperparameter_tuning",
+            "evaluate_model",
+            "train_and_evaluate_model",
+            "train_model",
+            "save_model_with_metadata",
+            "select_best_model_and_save",
+            "calculate_directional_accuracy",
+            "process_file",
+            "perform_shap_analysis",
+            "select_model_type",
+            "compare_models",
+            "main",
+            "__init__"
+        ],
+        "classes": {
+            "CustomHyperModel": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": "Custom HyperModel for Keras Tuner.\nDefines a space of hyperparameters and builds a model for each set of hyperparameters.",
+                "base_classes": [
+                    "HyperModel"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 65,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "technical_indicators.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "true_range",
+            "average_true_range",
+            "add_moving_average",
+            "add_bollinger_bands",
+            "add_stochastic_oscillator",
+            "calculate_macd_components",
+            "add_average_true_range",
+            "add_relative_strength_index",
+            "add_commodity_channel_index",
+            "add_williams_r",
+            "add_rate_of_change",
+            "add_money_flow_index",
+            "add_keltner_channel",
+            "add_standard_deviation",
+            "add_historical_volatility",
+            "add_chandelier_exit",
+            "add_moving_average_envelope",
+            "add_adx",
+            "add_ichimoku_cloud",
+            "add_parabolic_sar",
+            "calculate_historical_volatility",
+            "determine_threshold",
+            "confirm_peak_trough",
+            "add_zigzag_indicator",
+            "add_keltner_channel",
+            "add_on_balance_volume",
+            "add_vwap",
+            "add_accumulation_distribution_line",
+            "add_chaikin_money_flow",
+            "add_volume_oscillator",
+            "add_awesome_oscillator",
+            "add_trix",
+            "add_standard_pivot_points",
+            "add_elders_force_index",
+            "add_hull_moving_average",
+            "add_detrended_price_oscillator",
+            "add_commodity_channel_index",
+            "add_williams_r",
+            "add_rate_of_change",
+            "add_money_flow_index",
+            "add_exponential_moving_average"
+        ],
+        "classes": {
+            "AverageTrueRange": {
+                "methods": [
+                    "__init__",
+                    "true_range",
+                    "average_true_range"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "TechnicalIndicators": {
+                "methods": [
+                    "add_moving_average",
+                    "add_bollinger_bands",
+                    "add_stochastic_oscillator",
+                    "calculate_macd_components",
+                    "add_average_true_range",
+                    "add_relative_strength_index",
+                    "add_commodity_channel_index",
+                    "add_williams_r",
+                    "add_rate_of_change",
+                    "add_money_flow_index",
+                    "add_keltner_channel",
+                    "add_standard_deviation",
+                    "add_historical_volatility",
+                    "add_chandelier_exit",
+                    "add_moving_average_envelope",
+                    "add_adx",
+                    "add_ichimoku_cloud",
+                    "add_parabolic_sar",
+                    "calculate_historical_volatility",
+                    "determine_threshold",
+                    "confirm_peak_trough",
+                    "add_zigzag_indicator",
+                    "add_keltner_channel",
+                    "add_on_balance_volume",
+                    "add_vwap",
+                    "add_accumulation_distribution_line",
+                    "add_chaikin_money_flow",
+                    "add_volume_oscillator",
+                    "add_awesome_oscillator",
+                    "add_trix",
+                    "add_standard_pivot_points",
+                    "add_elders_force_index",
+                    "add_hull_moving_average",
+                    "add_detrended_price_oscillator",
+                    "add_commodity_channel_index",
+                    "add_williams_r",
+                    "add_rate_of_change",
+                    "add_money_flow_index",
+                    "add_exponential_moving_average"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 137,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "tk_main_gui.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "visualization.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_candlestick_chart",
+            "create_line_chart"
+        ],
+        "classes": {
+            "ChartVisualizer": {
+                "methods": [
+                    "__init__",
+                    "create_candlestick_chart",
+                    "create_line_chart"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 8,
+        "lint": []
+    },
+    "__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "ui_components.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_attach_tooltip",
+            "_show_tooltip",
+            "_hide_tooltip"
+        ],
+        "classes": {
+            "Tooltip": {
+                "methods": [
+                    "__init__",
+                    "_attach_tooltip",
+                    "_show_tooltip",
+                    "_hide_tooltip"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 8,
+        "lint": []
+    },
+    "try1.py": {
+        "language": ".py",
+        "functions": [
+            "read_config",
+            "read_api_keys_from_config",
+            "fetch_data",
+            "reset_request_count",
+            "is_rate_limit_exceeded",
+            "fetch_real_time_data",
+            "fetch_real_time_data",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 25,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "Prompt library\\co-coder starter.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "try4.py": {
+        "language": ".py",
+        "functions": [
+            "create_tooltip",
+            "process_and_save_data",
+            "start_async_data_fetch",
+            "run_async_data_fetch",
+            "calculate_delay",
+            "load_model_keras",
+            "load_model_joblib",
+            "load_model",
+            "load_data",
+            "load_stock_data",
+            "process_data",
+            "calculate_backtest_results",
+            "display_backtest_results",
+            "simulate_trading",
+            "run_backtest",
+            "create_stock_chart",
+            "create_line_chart",
+            "create_candlestick_chart",
+            "on_load_data_click",
+            "on_run_backtest_click",
+            "generate_chart",
+            "clear_debug_log",
+            "enter",
+            "leave",
+            "__init__",
+            "load_settings",
+            "save_settings",
+            "validate_input",
+            "create_widgets",
+            "__init__",
+            "emit",
+            "__init__",
+            "emit"
+        ],
+        "classes": {
+            "SettingsDialog": {
+                "methods": [
+                    "__init__",
+                    "load_settings",
+                    "save_settings",
+                    "validate_input",
+                    "create_widgets"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "Toplevel"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "TextHandler": {
+                "methods": [
+                    "__init__",
+                    "emit"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "logging.Handler"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 85,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "try2.py": {
+        "language": ".py",
+        "functions": [
+            "get_format_path",
+            "handle_nan_in_dataframe",
+            "detect_format",
+            "detect_and_transform_format",
+            "add_moving_average",
+            "add_exponential_moving_average",
+            "add_bollinger_bands",
+            "add_relative_strength_index",
+            "add_stochastic_oscillator",
+            "add_macd",
+            "add_commodity_channel_index",
+            "add_williams_r",
+            "add_rate_of_change",
+            "add_money_flow_index",
+            "add_average_true_range",
+            "add_keltner_channel",
+            "add_standard_deviation",
+            "add_historical_volatility",
+            "add_chandelier_exit",
+            "add_moving_average_envelope",
+            "add_adx",
+            "add_ichimoku_cloud",
+            "add_parabolic_sar",
+            "calculate_historical_volatility",
+            "determine_threshold",
+            "confirm_peak_trough",
+            "add_zigzag_indicator",
+            "add_on_balance_volume",
+            "add_vwap",
+            "add_accumulation_distribution_line",
+            "add_chaikin_money_flow",
+            "add_volume_oscillator",
+            "add_awesome_oscillator",
+            "add_trix",
+            "add_standard_pivot_points",
+            "add_elders_force_index",
+            "add_hull_moving_average",
+            "add_detrended_price_oscillator",
+            "add_gann_high_low_activator",
+            "add_fisher_transform",
+            "add_coppock_curve",
+            "add_ultimate_oscillator",
+            "add_supertrend",
+            "add_fibonacci_retracement_levels",
+            "add_macd_histogram",
+            "add_woodie_pivot_points",
+            "add_camarilla_pivot_points",
+            "process_data",
+            "add_relative_volatility_index",
+            "select_features",
+            "select_features"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 127,
+        "lint": [
+            "Function process_data >50 lines",
+            "High complexity"
+        ]
+    }
+}

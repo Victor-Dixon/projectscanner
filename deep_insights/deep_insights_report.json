@@ -1,0 +1,45 @@
+{
+  "project_structures": {
+    "project_types": {},
+    "file_organizations": {},
+    "naming_patterns": {},
+    "architecture_patterns": {},
+    "dependency_patterns": {}
+  },
+  "technology_stack": {
+    "languages": {},
+    "frameworks": {},
+    "libraries": {},
+    "tools": {},
+    "databases": {},
+    "cloud_services": {},
+    "file_extensions": {}
+  },
+  "code_patterns": {
+    "function_patterns": {},
+    "class_patterns": {},
+    "complexity_levels": {},
+    "maturity_distribution": {},
+    "agent_types": {},
+    "code_quality": {
+      "high_complexity_files": [],
+      "well_structured_files": [],
+      "simple_files": []
+    }
+  },
+  "development_practices": {
+    "testing_practices": {},
+    "documentation_practices": {},
+    "configuration_management": {},
+    "deployment_practices": {},
+    "version_control": {},
+    "code_organization": {}
+  },
+  "project_evolution": {
+    "project_sizes": [],
+    "complexity_trends": [],
+    "technology_adoption": {},
+    "project_categories": {},
+    "development_stages": {}
+  }
+}

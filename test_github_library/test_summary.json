@@ -1,0 +1,13 @@
+{
+  "total_repos": 1,
+  "total_files": 75,
+  "languages": {
+    "Python": 1
+  },
+  "topics": {},
+  "scan_stats": {
+    "successful_scans": 1,
+    "failed_scans": 0,
+    "last_scan": null
+  }
+}

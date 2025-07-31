@@ -1,0 +1,13 @@
+{
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp5jirltt5\\TradingRobotPlugWebTheme",
+    "num_files_analyzed": 1,
+    "analysis_details": {
+        "assets\\js\\main.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        }
+    }
+}

@@ -1,0 +1,188 @@
+{
+    "project_root": "D:\\projectscanner",
+    "num_files_analyzed": 5,
+    "analysis_details": {
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "run_gui.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "demo_gui.py": {
+            "language": ".py",
+            "functions": [
+                "demo_scan_local_directory",
+                "demo_github_cloning",
+                "demo_gui_features",
+                "on_progress",
+                "on_finished",
+                "on_error"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 8,
+            "lint": []
+        },
+        "tests\\test_gui.py": {
+            "language": ".py",
+            "functions": [
+                "test_scan_worker_initialization",
+                "test_scan_worker_with_custom_output_dir",
+                "test_clone_repository_success",
+                "test_clone_repository_failure",
+                "test_gui_initialization",
+                "test_library_operations",
+                "test_populate_tree_item"
+            ],
+            "classes": {
+                "TestScanWorker": {
+                    "methods": [
+                        "test_scan_worker_initialization",
+                        "test_scan_worker_with_custom_output_dir"
+                    ],
+                    "docstring": "Test the ScanWorker class.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "TestGitHubScanner": {
+                    "methods": [
+                        "test_clone_repository_success",
+                        "test_clone_repository_failure"
+                    ],
+                    "docstring": "Test the GitHubScanner class.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "TestProjectScannerGUI": {
+                    "methods": [
+                        "test_gui_initialization",
+                        "test_library_operations",
+                        "test_populate_tree_item"
+                    ],
+                    "docstring": "Test the ProjectScannerGUI class.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "projectscanner\\gui.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "__init__",
+                "run",
+                "clone_repository",
+                "__init__",
+                "setup_ui",
+                "create_scanning_panel",
+                "create_results_panel",
+                "setup_menu",
+                "browse_directory",
+                "scan_directory",
+                "scan_github_repository",
+                "start_scan",
+                "update_progress",
+                "scan_finished",
+                "scan_error",
+                "display_scan_results",
+                "populate_tree_item",
+                "save_to_library",
+                "load_library",
+                "save_library",
+                "update_library_display",
+                "on_library_item_clicked",
+                "view_library_item",
+                "delete_library_item",
+                "export_library",
+                "import_library",
+                "save_current_scan",
+                "closeEvent",
+                "progress_callback"
+            ],
+            "classes": {
+                "ScanWorker": {
+                    "methods": [
+                        "__init__",
+                        "run"
+                    ],
+                    "docstring": "Background worker for scanning projects.",
+                    "base_classes": [
+                        "QThread"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                },
+                "GitHubScanner": {
+                    "methods": [
+                        "clone_repository"
+                    ],
+                    "docstring": "Handles GitHub repository cloning and scanning.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "ProjectScannerGUI": {
+                    "methods": [
+                        "__init__",
+                        "setup_ui",
+                        "create_scanning_panel",
+                        "create_results_panel",
+                        "setup_menu",
+                        "browse_directory",
+                        "scan_directory",
+                        "scan_github_repository",
+                        "start_scan",
+                        "update_progress",
+                        "scan_finished",
+                        "scan_error",
+                        "display_scan_results",
+                        "populate_tree_item",
+                        "save_to_library",
+                        "load_library",
+                        "save_library",
+                        "update_library_display",
+                        "on_library_item_clicked",
+                        "view_library_item",
+                        "delete_library_item",
+                        "export_library",
+                        "import_library",
+                        "save_current_scan",
+                        "closeEvent"
+                    ],
+                    "docstring": "Enhanced GUI for ProjectScanner with directory and GitHub scanning capabilities.",
+                    "base_classes": [
+                        "QtWidgets.QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 98,
+            "lint": [
+                "Function create_scanning_panel >50 lines",
+                "High complexity"
+            ]
+        }
+    }
+}

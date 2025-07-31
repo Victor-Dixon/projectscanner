@@ -1,0 +1,356 @@
+{
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp79v_4o_d\\machinelearningproject",
+    "num_files_analyzed": 25,
+    "analysis_details": {
+        "ensemble_utils.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "data_processing1.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "data_processing2.py": {
+            "language": ".py",
+            "functions": [
+                "add_features_and_indicators",
+                "process_csv_file",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "data_fetch_test.py": {
+            "language": ".py",
+            "functions": [
+                "test_fetch_data_from_api_success",
+                "test_load_historical_data_alpha_vantage"
+            ],
+            "classes": {
+                "TestDataFetchingFunctions": {
+                    "methods": [
+                        "test_fetch_data_from_api_success",
+                        "test_load_historical_data_alpha_vantage"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "fetch_data.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": []
+        },
+        "ensemble_training.py": {
+            "language": ".py",
+            "functions": [
+                "save_model",
+                "fine_tune_model",
+                "train_ensemble",
+                "extract_dataset_name",
+                "combine_ensemble"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": []
+        },
+        "data_processing2 copy.py": {
+            "language": ".py",
+            "functions": [
+                "add_features_and_indicators",
+                "process_csv_file",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "data_processing1 copy.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "backtest.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "load_config",
+                "backtest_regression",
+                "load_models",
+                "preprocess_data",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 18,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "bayesianoptimization.py": {
+            "language": ".py",
+            "functions": [
+                "build_model"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "file_sorter1.py": {
+            "language": ".py",
+            "functions": [
+                "manage_csv_files",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "hyper_parameter.py": {
+            "language": ".py",
+            "functions": [
+                "objective"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "monitor_maintainence.py": {
+            "language": ".py",
+            "functions": [
+                "monitor_trading_performance",
+                "update_and_retrain_models"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "model_development.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "read_config",
+                "create_directory",
+                "preprocess_data",
+                "split_data",
+                "save_model_and_predictions",
+                "train_model",
+                "evaluate_model",
+                "main",
+                "build_model",
+                "__init__",
+                "build"
+            ],
+            "classes": {
+                "RegressionHyperModel": {
+                    "methods": [
+                        "__init__",
+                        "build"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "HyperModel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 27,
+            "lint": [
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
+        "model_development2.py": {
+            "language": ".py",
+            "functions": [
+                "read_paths_from_config",
+                "train_model",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 8,
+            "lint": [
+                "Function train_model >50 lines"
+            ]
+        },
+        "data_fetch.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "fetch_data_from_api",
+                "load_historical_data_alpha_vantage",
+                "load_historical_data_polygonio",
+                "load_historical_data_nasdaq",
+                "read_api_keys_from_config",
+                "main",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 26,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "model_utils.py": {
+            "language": ".py",
+            "functions": [
+                "build_model",
+                "train_model",
+                "evaluate_model",
+                "visualize_results",
+                "save_model_and_predictions"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "risk_and_performance_analysis.py": {
+            "language": ".py",
+            "functions": [
+                "analyze_risk_and_performance"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "risk_management.py": {
+            "language": ".py",
+            "functions": [
+                "position_sizing",
+                "stop_loss",
+                "portfolio_diversification"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "real_time.py": {
+            "language": ".py",
+            "functions": [
+                "fetch_data_from_alpha_vantage",
+                "fetch_data_from_yfinance",
+                "fetch_data_from_polygonio",
+                "save_data_to_csv",
+                "load_trained_models",
+                "make_predictions",
+                "get_model_paths",
+                "display_data"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "model_training.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "setup_logging",
+                "load_data",
+                "remove_nan_rows",
+                "preprocess_data",
+                "preprocess_data",
+                "train_model_for_symbol",
+                "split_data",
+                "build_model",
+                "save_best_model_and_metrics",
+                "combined_metric"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 31,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "tests.py": {
+            "language": ".py",
+            "functions": [
+                "load_h5_models",
+                "load_symbol_data"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "rt_prediction.py": {
+            "language": ".py",
+            "functions": [
+                "real_time_prediction"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "try_combined.py": {
+            "language": ".py",
+            "functions": [
+                "load_data",
+                "build_model",
+                "move_accuracy",
+                "train_neural_network",
+                "train_random_forest",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 11,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "vector.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        }
+    }
+}
