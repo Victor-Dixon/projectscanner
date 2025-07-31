@@ -84,12 +84,13 @@ class GitHubLibraryWorker(QThread):
     error = pyqtSignal(str)
     repo_progress = pyqtSignal(str, int, int)  # repo_name, current, total
 
-    def __init__(self, github_username: str, output_dir: str = "github_library", force_rescan: bool = False, max_repos: Optional[int] = None):
+    def __init__(self, github_username: str, output_dir: str = "github_library", force_rescan: bool = False, max_repos: Optional[int] = None, github_token: Optional[str] = None):
         super().__init__()
         self.github_username = github_username
         self.output_dir = output_dir
         self.force_rescan = force_rescan
         self.max_repos = max_repos
+        self.github_token = github_token
         self.library_data = {}
         self.scan_log = {"scanned_repos": [], "failed_repos": [], "last_scan": None}
 
@@ -97,10 +98,15 @@ class GitHubLibraryWorker(QThread):
         try:
             self.progress.emit(f"Starting GitHub library scan for user: {self.github_username}")
             
-            # Import the GitHub library scanner
-            from scanners.github_library_scanner import GitHubLibraryScanner
-            
-            scanner = GitHubLibraryScanner(self.github_username, self.output_dir)
+            # Choose scanner based on token availability
+            if self.github_token:
+                self.progress.emit("Using private repository scanner with token")
+                from scanners.github_library_scanner_private import EnhancedGitHubLibraryScanner
+                scanner = EnhancedGitHubLibraryScanner(self.github_username, self.github_token, self.output_dir)
+            else:
+                self.progress.emit("Using public repository scanner")
+                from scanners.github_library_scanner import GitHubLibraryScanner
+                scanner = GitHubLibraryScanner(self.github_username, self.output_dir)
             
             # Override the scan methods to emit progress
             original_scan_repo = scanner.scan_repository
@@ -129,7 +135,8 @@ class GitHubLibraryWorker(QThread):
                 'output_dir': self.output_dir,
                 'library_data': self.library_data,
                 'scan_log': self.scan_log,
-                'summary': summary
+                'summary': summary,
+                'token_used': bool(self.github_token)
             }
             
             self.progress.emit("GitHub library scan completed successfully!")
@@ -155,6 +162,12 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.temp_dirs = []
         self.is_processing = False
         
+        # Analysis persistence
+        self.analysis_cache_dir = Path("analysis_cache")
+        self.analysis_cache_dir.mkdir(exist_ok=True)
+        self.token_file = Path("config/github_token.txt")
+        self.token_file.parent.mkdir(exist_ok=True)
+        
         # Load existing library
         self.library_file = Path("project_library.json")
         self.load_library()
@@ -162,6 +175,9 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.setup_ui()
         self.setup_menu()
         self.setup_styles()
+        
+        # Load saved token on startup
+        self.load_github_token()
 
     def setup_styles(self):
         """Setup modern styling for the application."""
@@ -349,6 +365,34 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         group = QtWidgets.QGroupBox("🔗 GitHub Library Scanning")
         layout = QtWidgets.QVBoxLayout(group)
         
+        # GitHub Token Section
+        token_group = QtWidgets.QGroupBox("🔐 GitHub Authentication")
+        token_layout = QtWidgets.QVBoxLayout(token_group)
+        
+        # Token input
+        token_layout.addWidget(QtWidgets.QLabel("GitHub Personal Access Token:"))
+        self.github_token_edit = QtWidgets.QLineEdit()
+        self.github_token_edit.setPlaceholderText("Enter your GitHub token for private repo access")
+        self.github_token_edit.setEchoMode(QtWidgets.QLineEdit.Password)
+        token_layout.addWidget(self.github_token_edit)
+        
+        # Token management buttons
+        token_buttons = QtWidgets.QHBoxLayout()
+        self.save_token_btn = QtWidgets.QPushButton("💾 Save Token")
+        self.save_token_btn.clicked.connect(self.save_github_token)
+        self.load_token_btn = QtWidgets.QPushButton("📂 Load Token")
+        self.load_token_btn.clicked.connect(self.load_github_token)
+        self.clear_token_btn = QtWidgets.QPushButton("🗑️ Clear Token")
+        self.clear_token_btn.clicked.connect(self.clear_github_token)
+        
+        token_buttons.addWidget(self.save_token_btn)
+        token_buttons.addWidget(self.load_token_btn)
+        token_buttons.addWidget(self.clear_token_btn)
+        token_layout.addLayout(token_buttons)
+        
+        layout.addWidget(token_group)
+        
+        # Username section
         layout.addWidget(QtWidgets.QLabel("GitHub Username:"))
         self.github_username_edit = QtWidgets.QLineEdit()
         self.github_username_edit.setPlaceholderText("Enter GitHub username")
@@ -365,6 +409,20 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         options_layout.addWidget(self.max_repos_spin)
         options_layout.addWidget(self.force_rescan_cb)
         layout.addLayout(options_layout)
+        
+        # Analysis persistence options
+        persistence_group = QtWidgets.QGroupBox("💾 Analysis Persistence")
+        persistence_layout = QtWidgets.QVBoxLayout(persistence_group)
+        
+        self.save_analysis_cb = QtWidgets.QCheckBox("Save analysis results for reuse")
+        self.save_analysis_cb.setChecked(True)
+        persistence_layout.addWidget(self.save_analysis_cb)
+        
+        self.update_existing_cb = QtWidgets.QCheckBox("Update existing analysis (incremental)")
+        self.update_existing_cb.setChecked(True)
+        persistence_layout.addWidget(self.update_existing_cb)
+        
+        layout.addWidget(persistence_group)
         
         self.scan_github_library_btn = QtWidgets.QPushButton("Scan GitHub Library")
         self.scan_github_library_btn.clicked.connect(self.scan_github_library)
@@ -611,28 +669,44 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             self.is_processing = False
             self.update_processing_controls()
 
-    def process_github_library(self, username):
+    def process_github_library(self, username, force_rescan=False, max_repos=None):
         """Process a GitHub library."""
-        # Get options
-        force_rescan = self.force_rescan_cb.isChecked()
-        max_repos = self.max_repos_spin.value() if self.max_repos_spin.value() > 0 else None
-        
         # Clear progress
         self.progress_text.clear()
         self.progress_bar.setVisible(True)
         self.progress_bar.setRange(0, 0)  # Indeterminate progress
+        
+        # Get GitHub token
+        token = self.github_token_edit.text().strip()
         
         # Create and start GitHub library worker
         self.github_library_worker = GitHubLibraryWorker(
             username, 
             "github_library", 
             force_rescan, 
-            max_repos
+            max_repos,
+            token
         )
         self.github_library_worker.progress.connect(self.update_progress)
         self.github_library_worker.finished.connect(self.github_library_finished)
         self.github_library_worker.error.connect(self.scan_error)
         self.github_library_worker.start()
+
+    def display_cached_analysis(self, username: str, cached_results: Dict):
+        """Display cached analysis results."""
+        self.update_progress(f"Loading cached analysis for {username}...")
+        
+        # Display the cached results
+        self.display_github_library_results(cached_results)
+        
+        # Switch to GitHub library tab
+        self.tabs.setCurrentIndex(2)
+        
+        self.status_bar.showMessage(f"Cached analysis loaded for {username}")
+        QtWidgets.QMessageBox.information(
+            self, "Cached Analysis Loaded",
+            f"Successfully loaded cached analysis for {username} with {len(cached_results.get('repositories', []))} repositories."
+        )
 
     def clone_repository(self, repo_url: str, temp_dir: Path) -> Path:
         """Clone a GitHub repository to a temporary directory."""
@@ -688,7 +762,24 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.warning(self, "Warning", "Please enter a GitHub username.")
             return
         
-        self.process_github_library(username)
+        # Get options
+        force_rescan = self.force_rescan_cb.isChecked()
+        max_repos = self.max_repos_spin.value() if self.max_repos_spin.value() > 0 else None
+        
+        # Check for cached analysis
+        cached_results = self.load_analysis_results(username)
+        if cached_results and not force_rescan:
+            reply = QtWidgets.QMessageBox.question(
+                self, "Cached Analysis Found",
+                f"Found cached analysis for {username}. Use cached results or perform new scan?",
+                QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                QtWidgets.QMessageBox.No
+            )
+            if reply == QtWidgets.QMessageBox.Yes:
+                self.display_cached_analysis(username, cached_results)
+                return
+        
+        self.process_github_library(username, force_rescan, max_repos)
 
     def start_scan(self, project_path: Path):
         """Start scanning a project."""
@@ -740,6 +831,11 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         
         # Hide progress bar
         self.progress_bar.setVisible(False)
+        
+        # Save analysis results if enabled
+        username = self.github_username_edit.text().strip()
+        if username:
+            self.save_analysis_results(username, result)
         
         # Display GitHub library results
         self.display_github_library_results(result)
@@ -963,6 +1059,90 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                 QtWidgets.QMessageBox.information(self, "Success", "Scan result saved successfully!")
             except Exception as e:
                 QtWidgets.QMessageBox.critical(self, "Error", f"Failed to save scan result: {str(e)}")
+
+    # GitHub Token Management Methods
+    def save_github_token(self):
+        """Save GitHub token to secure file."""
+        token = self.github_token_edit.text().strip()
+        if not token:
+            QtWidgets.QMessageBox.warning(self, "Warning", "Please enter a GitHub token first.")
+            return
+        
+        try:
+            with open(self.token_file, 'w', encoding='utf-8') as f:
+                f.write(token)
+            QtWidgets.QMessageBox.information(self, "Success", "GitHub token saved successfully!")
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Failed to save token: {str(e)}")
+
+    def load_github_token(self):
+        """Load GitHub token from secure file."""
+        try:
+            if self.token_file.exists():
+                with open(self.token_file, 'r', encoding='utf-8') as f:
+                    token = f.read().strip()
+                    self.github_token_edit.setText(token)
+        except Exception as e:
+            print(f"Warning: Could not load GitHub token: {e}")
+
+    def clear_github_token(self):
+        """Clear GitHub token from UI and file."""
+        self.github_token_edit.clear()
+        try:
+            if self.token_file.exists():
+                self.token_file.unlink()
+            QtWidgets.QMessageBox.information(self, "Success", "GitHub token cleared successfully!")
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Error", f"Failed to clear token: {str(e)}")
+
+    # Analysis Persistence Methods
+    def get_analysis_cache_path(self, username: str) -> Path:
+        """Get cache path for analysis results."""
+        return self.analysis_cache_dir / f"{username}_analysis.json"
+
+    def save_analysis_results(self, username: str, results: Dict):
+        """Save analysis results to cache."""
+        if not self.save_analysis_cb.isChecked():
+            return
+        
+        try:
+            cache_file = self.get_analysis_cache_path(username)
+            with open(cache_file, 'w', encoding='utf-8') as f:
+                json.dump(results, f, indent=2)
+            self.update_progress(f"Analysis results saved to cache: {cache_file}")
+        except Exception as e:
+            self.update_progress(f"Warning: Could not save analysis results: {e}")
+
+    def load_analysis_results(self, username: str) -> Optional[Dict]:
+        """Load analysis results from cache."""
+        try:
+            cache_file = self.get_analysis_cache_path(username)
+            if cache_file.exists():
+                with open(cache_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+        except Exception as e:
+            self.update_progress(f"Warning: Could not load cached analysis: {e}")
+        return None
+
+    def update_analysis_results(self, username: str, new_results: Dict):
+        """Update existing analysis results incrementally."""
+        if not self.update_existing_cb.isChecked():
+            return
+        
+        try:
+            existing_results = self.load_analysis_results(username) or {}
+            
+            # Merge new results with existing
+            for key, value in new_results.items():
+                if key in existing_results and isinstance(existing_results[key], dict) and isinstance(value, dict):
+                    existing_results[key].update(value)
+                else:
+                    existing_results[key] = value
+            
+            self.save_analysis_results(username, existing_results)
+            self.update_progress(f"Analysis results updated for {username}")
+        except Exception as e:
+            self.update_progress(f"Warning: Could not update analysis results: {e}")
 
     def closeEvent(self, event):
         """Handle application close event."""

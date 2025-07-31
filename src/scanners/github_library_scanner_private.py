@@ -13,9 +13,9 @@ from pathlib import Path
 from typing import Dict, List, Optional
 from datetime import datetime
 
-# Add the project root to the Python path
-project_root = Path(__file__).parent
-sys.path.insert(0, str(project_root))
+# Add the src directory to the Python path
+src_path = Path(__file__).parent.parent
+sys.path.insert(0, str(src_path))
 
 from core.projectscanner.scanner import ProjectScanner
 

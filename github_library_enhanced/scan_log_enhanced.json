@@ -491,7 +491,14 @@
       "is_private": true,
       "scan_date": "2025-07-30T17:56:48.474330",
       "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpx1jxilop\\Digital-dreamscape'...\nerror: invalid path 'Lore/illustrations/images/Preface: The Birth of the Digital Dreamscape.webp'\nfatal: unable to checkout working tree\nwarning: Clone succeeded, but checkout failed.\nYou can inspect what was checked out with 'git status'\nand retry with 'git restore --source=HEAD :/'\n\n"
+    },
+    {
+      "unique_name": "Dadudekc_DreamVault",
+      "repo_name": "DreamVault",
+      "is_private": false,
+      "scan_date": "2025-07-31T16:27:36.890383",
+      "error": "name 'GitHubScanner' is not defined"
     }
   ],
-  "last_scan": "2025-07-30T17:47:14.572282"
+  "last_scan": "2025-07-31T16:27:31.883302"
 }

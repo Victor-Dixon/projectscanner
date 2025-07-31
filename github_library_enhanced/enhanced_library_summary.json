@@ -1,6 +1,6 @@
 {
   "total_repos": 64,
-  "total_files": 4992,
+  "total_files": 4997,
   "public_repos": 29,
   "private_repos": 35,
   "languages": {
@@ -15,7 +15,7 @@
   },
   "scan_stats": {
     "successful_scans": 67,
-    "failed_scans": 2,
-    "last_scan": "2025-07-30T17:45:25.832002"
+    "failed_scans": 4,
+    "last_scan": "2025-07-31T16:27:31.883302"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "total_repos": 28,
-  "total_files": 3744,
-  "total_classes": 3306,
-  "total_functions": 21609,
+  "total_repos": 29,
+  "total_files": 3799,
+  "total_classes": 3336,
+  "total_functions": 21964,
   "total_lines": 0,
   "file_counts": [
     0,
@@ -32,15 +32,16 @@
     805,
     9,
     18,
-    1254
+    1254,
+    55
   ],
   "languages": {
-    "Python": 24,
+    "Python": 25,
     "null": 3,
     "Shell": 1
   },
   "file_types": {
-    ".py": 3385,
+    ".py": 3440,
     ".js": 352,
     ".ts": 3,
     ".rs": 4
@@ -3789,12 +3790,67 @@
     23,
     20,
     54,
-    45
+    45,
+    9,
+    4,
+    15,
+    17,
+    21,
+    21,
+    7,
+    41,
+    31,
+    13,
+    12,
+    7,
+    0,
+    4,
+    32,
+    4,
+    22,
+    53,
+    25,
+    25,
+    36,
+    31,
+    25,
+    31,
+    66,
+    47,
+    55,
+    35,
+    34,
+    0,
+    36,
+    18,
+    51,
+    65,
+    0,
+    28,
+    29,
+    18,
+    66,
+    74,
+    0,
+    91,
+    72,
+    19,
+    3,
+    32,
+    0,
+    45,
+    12,
+    12,
+    9,
+    13,
+    61,
+    9,
+    4
   ],
   "architecture_patterns": {
-    "functional": 1341,
-    "object_oriented": 1884,
-    "web_api": 10
+    "functional": 1367,
+    "object_oriented": 1912,
+    "web_api": 12
   },
   "design_patterns": {
     "singleton": 2,
@@ -7039,7 +7095,91 @@
       "High complexity",
       "High complexity",
       "Function validate_json_against_schema >50 lines",
-      "High complexity"
+      "High complexity",
+      "Function demo_rate_limits >50 lines",
+      "Function debug_conversation_detection >50 lines",
+      "High complexity",
+      "Function debug_with_login >50 lines",
+      "High complexity",
+      "Function main >50 lines",
+      "High complexity",
+      "Function main >50 lines",
+      "High complexity",
+      "Function test_adaptive_system >50 lines",
+      "Function main >50 lines",
+      "High complexity",
+      "Function start_deployment >50 lines",
+      "Function test_deployment >50 lines",
+      "High complexity",
+      "Function diagnose_login >50 lines",
+      "High complexity",
+      "Function main >50 lines",
+      "High complexity",
+      "Function get_full_conversation >50 lines",
+      "High complexity",
+      "High complexity",
+      "Function main >50 lines",
+      "High complexity",
+      "High complexity",
+      "High complexity",
+      "Function train_with_openai >50 lines",
+      "Function train_with_huggingface >50 lines",
+      "High complexity",
+      "Function ingest_conversation >50 lines",
+      "High complexity",
+      "Function _load_config >50 lines",
+      "High complexity",
+      "Function train_with_openai >50 lines",
+      "Function train_with_huggingface >50 lines",
+      "High complexity",
+      "Function _init_database >50 lines",
+      "Function _save_training_data >50 lines",
+      "Function ingest_conversation >50 lines",
+      "Function _store_processed_conversation >50 lines",
+      "High complexity",
+      "Function build_embedding >50 lines",
+      "High complexity",
+      "Function _init_index_db >50 lines",
+      "High complexity",
+      "High complexity",
+      "High complexity",
+      "Function _process_conversation >50 lines",
+      "Function run_batch >50 lines",
+      "High complexity",
+      "High complexity",
+      "Function __init__ >50 lines",
+      "High complexity",
+      "Function wait_for_tokens >50 lines",
+      "High complexity",
+      "High complexity",
+      "Function _render_main_interface >50 lines",
+      "High complexity",
+      "High complexity",
+      "Function __init__ >50 lines",
+      "High complexity",
+      "Function load_model >50 lines",
+      "High complexity",
+      "Function _register_routes >50 lines",
+      "Function _handle_agent_request >50 lines",
+      "High complexity",
+      "Function extract_all_conversations >50 lines",
+      "High complexity",
+      "High complexity",
+      "High complexity",
+      "Function get_conversation_list >50 lines",
+      "Function get_conversation_content >50 lines",
+      "High complexity",
+      "Function create_sample_training_data >50 lines",
+      "High complexity",
+      "High complexity",
+      "Function main >50 lines",
+      "Function main >50 lines",
+      "High complexity",
+      "Function _extract_conversations_with_scrolling >50 lines",
+      "Function get_conversation_list >50 lines",
+      "High complexity",
+      "Function test_resume_functionality >50 lines",
+      "Function main >50 lines"
     ]
   },
   "project_categories": {
@@ -7125,6 +7265,14 @@
       "language": "Python",
       "description": null,
       "url": "https://github.com/Dadudekc/Auto_Blogger.git"
+    },
+    {
+      "name": "DreamVault",
+      "files": 55,
+      "stars": 0,
+      "language": "Python",
+      "description": null,
+      "url": "https://github.com/Dadudekc/DreamVault.git"
     },
     {
       "name": "gpt_automation",
@@ -7328,6 +7476,13 @@
       "files": 127,
       "classes": 96,
       "functions": 682
+    },
+    {
+      "name": "DreamVault",
+      "complexity": 1490,
+      "files": 55,
+      "classes": 30,
+      "functions": 355
     },
     {
       "name": "Auto_Blogger",
@@ -7728,6 +7883,13 @@
         "repo": "victor.os",
         "file": "logins\\chatgpt_scraper.py",
         "methods": 15,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py",
+        "methods": 20,
         "maturity": "Core Asset",
         "agent_type": "Utility"
       }
@@ -8526,6 +8688,13 @@
         "file": "src\\dreamos\\core\\config.py",
         "methods": 0,
         "maturity": "Prototype",
+        "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py",
+        "methods": 9,
+        "maturity": "Core Asset",
         "agent_type": "Utility"
       }
     ],
@@ -10219,6 +10388,13 @@
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\cookie_manager.py",
         "methods": 6,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\cookie_manager.py",
+        "methods": 5,
         "maturity": "Core Asset",
         "agent_type": "Utility"
       }
@@ -19123,6 +19299,13 @@
         "methods": 2,
         "maturity": "Prototype",
         "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py",
+        "methods": 11,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
       }
     ],
     "SocialFormatter": [
@@ -20966,6 +21149,13 @@
         "methods": 5,
         "maturity": "Core Asset",
         "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\login_handler.py",
+        "methods": 6,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
       }
     ],
     "StealthBrowser": [
@@ -21305,6 +21495,13 @@
         "repo": "thea",
         "file": "demos\\agent_training\\agent_deployment.py",
         "methods": 0,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py",
+        "methods": 16,
         "maturity": "Core Asset",
         "agent_type": "Utility"
       }
@@ -28669,6 +28866,13 @@
         "methods": 5,
         "maturity": "Core Asset",
         "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\conversation_extractor.py",
+        "methods": 5,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
       }
     ],
     "CLIHandler": [
@@ -28764,6 +28968,13 @@
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\browser_manager.py",
         "methods": 3,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\browser_manager.py",
+        "methods": 5,
         "maturity": "Core Asset",
         "agent_type": "Utility"
       }
@@ -29982,6 +30193,13 @@
         "repo": "victor.os",
         "file": "basicbot\\model_training_utils.py",
         "methods": 5,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py",
+        "methods": 18,
         "maturity": "Core Asset",
         "agent_type": "Utility"
       }
@@ -35280,6 +35498,195 @@
         "maturity": "Core Asset",
         "agent_type": "Utility"
       }
+    ],
+    "EmbeddingAgentTrainer": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\embedding_agent.py",
+        "methods": 6,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "DatabaseQuery": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py",
+        "methods": 7,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "QAAgentTrainer": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\qa_agent.py",
+        "methods": 6,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "InstructionAgentTrainer": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\instruction_agent.py",
+        "methods": 6,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "ConversationAgentTrainer": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py",
+        "methods": 8,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "SimpleIngester": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py",
+        "methods": 8,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "SummarizationAgentTrainer": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py",
+        "methods": 7,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "IntegratedIngester": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py",
+        "methods": 14,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "EmbeddingBuilder": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py",
+        "methods": 9,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "IndexBuilder": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py",
+        "methods": 16,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "JobStatus": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py",
+        "methods": 0,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "JobQueue": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py",
+        "methods": 11,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "Redactor": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py",
+        "methods": 9,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "BatchRunner": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py",
+        "methods": 11,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "SummarySchema": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\schema.py",
+        "methods": 4,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "LeakyBucket": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py",
+        "methods": 5,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "Summarizer": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py",
+        "methods": 11,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "AgentWebInterface": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py",
+        "methods": 9,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "IPExtractor": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py",
+        "methods": 10,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "AgentAPIServer": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py",
+        "methods": 19,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
+    ],
+    "AdaptiveExtractor": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py",
+        "methods": 10,
+        "maturity": "Core Asset",
+        "agent_type": "Utility"
+      }
     ]
   },
   "function_analysis": {
@@ -37239,6 +37646,58 @@
       {
         "repo": "victor.os",
         "file": "tools\\validate_json_schema.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_integrated_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_deployment.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\get_full_conversation.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_agent_training.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_deployment_system.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_integrated_system.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_ip_with_sample_data.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_ip_resurrection.py"
       }
     ],
     "parse_args": [
@@ -37627,6 +38086,42 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\tools\\agent_bootstrap_runner\\__main__.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "test_browser_simple.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "debug_conversation_detection.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "debug_with_login.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_integrated_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "test_adaptive_system.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_deployment.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "diagnose_login.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_scraper.py"
       }
     ],
     "test_single_chat": [
@@ -45577,6 +46072,118 @@
       {
         "repo": "victor.os",
         "file": "tests\\integration\\test_loop_error_recovery.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\embedding_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\qa_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\instruction_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\browser_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\cookie_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\login_handler.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\conversation_extractor.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
       }
     ],
     "_extract_quest_info": [
@@ -45959,6 +46566,26 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\mmorpg\\skills\\skill_tracker.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
       }
     ],
     "get_trends": [
@@ -46425,6 +47052,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\core\\validate_checkpoint_resilience.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
       }
     ],
     "add_result": [
@@ -46621,6 +47252,14 @@
       {
         "repo": "victor.os",
         "file": "basicbot\\model_training_utils.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
       }
     ],
     "initialize_faiss": [
@@ -47015,6 +47654,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\integrations\\social\\social_scout.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
       }
     ],
     "__exit__": [
@@ -47097,6 +47740,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\integrations\\social\\social_scout.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
       }
     ],
     "generate_reply": [
@@ -47539,6 +48186,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\coordination\\registry\\component_schema.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\schema.py"
       }
     ],
     "add_category": [
@@ -47859,6 +48510,14 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\tools\\message_processor.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
       }
     ],
     "_is_logged_in": [
@@ -47881,6 +48540,10 @@
       {
         "repo": "swarm",
         "file": "tools\\core\\bridge\\openai_client.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\login_handler.py"
       }
     ],
     "extract_chat_list": [
@@ -49771,6 +50434,14 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\tools\\agent_resume\\agent_resume.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
       }
     ],
     "get_chat_list": [
@@ -51069,6 +51740,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\integrations\\social\\login_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\cookie_manager.py"
       }
     ],
     "save_cookies": [
@@ -51135,6 +51810,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\integrations\\social\\login_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\cookie_manager.py"
       }
     ],
     "twitter_login": [
@@ -51779,6 +52458,14 @@
       {
         "repo": "auto_blogger",
         "file": "training\\deepseek\\train.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
       }
     ],
     "initialize_game": [
@@ -51861,6 +52548,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\browser_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\browser_manager.py"
       }
     ],
     "_get_cached_driver": [
@@ -52053,6 +52744,14 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\utils\\config.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
       }
     ],
     "ensure_directories": [
@@ -52075,6 +52774,10 @@
       {
         "repo": "victor.os",
         "file": "archive\\orphans\\py\\simple_resume.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
       }
     ],
     "_should_exclude": [
@@ -52175,6 +52878,14 @@
       {
         "repo": "victor.os",
         "file": "archive\\orphans\\src\\dreamos\\core\\tasks\\monitoring\\task_monitoring_service.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
       }
     ],
     "uptime": [
@@ -53051,6 +53762,14 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\core\\config.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
       }
     ],
     "_start_workers": [
@@ -53467,6 +54186,10 @@
       {
         "repo": "swarm",
         "file": "tools\\swarm\\analyzers\\analyze_logs.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
       }
     ],
     "export_summary_report": [
@@ -53627,6 +54350,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\utils\\config.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
       }
     ],
     "get_all": [
@@ -54511,6 +55238,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\memory\\api\\memory_api.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
       }
     ],
     "_load_memory": [
@@ -55461,6 +56192,10 @@
       {
         "repo": "dream.os",
         "file": "chat_mate\\core\\PromptCycleManager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\login_handler.py"
       }
     ],
     "attempt_relogin": [
@@ -56633,6 +57368,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\agents\\restored\\src\\dreamos\\agents\\utils\\agent_identity.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
       }
     ],
     "watch_config": [
@@ -60067,6 +60806,10 @@
       {
         "repo": "dream.os",
         "file": "chat_mate\\social\\strategies\\context_db.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
       }
     ],
     "update_rate_limit": [
@@ -62681,6 +63424,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\intelligence\\models\\intelligence_result.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
       }
     ],
     "get_time_analysis": [
@@ -63549,6 +64296,10 @@
       {
         "repo": "victor.os",
         "file": "archive\\orphans\\py\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
       }
     ],
     "deploy_file": [
@@ -68317,6 +69068,10 @@
       {
         "repo": "streamertools",
         "file": "MeTuber\\src\\config\\settings_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
       }
     ],
     "validate_settings": [
@@ -74539,6 +75294,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\tools\\launch_all_agents.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
       }
     ],
     "run_basic_functionality_tests": [
@@ -79643,6 +80402,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\coordination\\messaging.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
       }
     ],
     "acknowledge_message": [
@@ -82235,6 +82998,10 @@
       {
         "repo": "swarm",
         "file": "dreamos\\core\\logging\\unified_logger.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
       }
     ],
     "_get_template": [
@@ -84901,6 +85668,10 @@
       {
         "repo": "swarm",
         "file": "dreamos\\core\\monitoring\\health\\base.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
       }
     ],
     "_is_valid_message_type": [
@@ -85101,6 +85872,10 @@
       {
         "repo": "swarm",
         "file": "dreamos\\core\\messaging\\request_queue.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
       }
     ],
     "safe_read": [
@@ -88657,6 +89432,10 @@
       {
         "repo": "thea",
         "file": "tests\\integration\\test_training_data_extraction.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_scraper.py"
       }
     ],
     "test_calibration_init": [
@@ -91511,6 +92290,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\content\\response_processor.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
       }
     ],
     "_format_task_summary": [
@@ -92917,6 +93700,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\tools\\status_all_agents.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_ingest.py"
       }
     ],
     "save_devlog_file": [
@@ -92951,6 +93738,10 @@
       {
         "repo": "thea",
         "file": "start_discord_bot.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "run_deployment.py"
       }
     ],
     "test_connection": [
@@ -93649,6 +94440,14 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\mmorpg\\resume\\resume_system.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
       }
     ],
     "prepare_training_data": [
@@ -93659,6 +94458,26 @@
       {
         "repo": "victor.os",
         "file": "basicbot\\ml_models\\regime_detector.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\embedding_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\qa_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\instruction_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
       }
     ],
     "_is_high_quality_conversation": [
@@ -93835,6 +94654,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\bridge\\module1_injector.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
       }
     ],
     "deploy_model": [
@@ -93981,6 +94804,10 @@
       {
         "repo": "victor.os",
         "file": "archive\\orphans\\src\\dreamos\\core\\predictive_model.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
       }
     ],
     "_calculate_accuracy": [
@@ -94163,6 +94990,26 @@
       {
         "repo": "thea",
         "file": "demos\\agent_training\\training_gui.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\embedding_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\qa_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\instruction_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
       }
     ],
     "generate_sample_data": [
@@ -98109,6 +98956,10 @@
       {
         "repo": "victor.os",
         "file": "logins\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\conversation_extractor.py"
       }
     ],
     "get_all_conversations": [
@@ -100603,6 +101454,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\chatgpt_api_client.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
       }
     ],
     "sha256": [
@@ -101431,6 +102286,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\memory\\storage\\conversation_operations.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
       }
     ],
     "_initialize_sample_data": [
@@ -102413,6 +103272,14 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\legacy\\model_config_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
       }
     ],
     "add_agent": [
@@ -103109,6 +103976,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\discord\\management\\config_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
       }
     ],
     "test_discord_import": [
@@ -103797,6 +104668,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\unified_workflow_engine.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
       }
     ],
     "validate_input_data": [
@@ -104767,6 +105642,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\analytics\\expanded\\analytics_database.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
       }
     ],
     "get_component": [
@@ -106997,6 +107876,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\intelligence\\integration.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
       }
     ],
     "clear_all_data": [
@@ -107791,6 +108674,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\legacy\\model_config_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
       }
     ],
     "add_model": [
@@ -108413,6 +109300,14 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\memory\\search\\search_storage.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
       }
     ],
     "advanced_search": [
@@ -108805,6 +109700,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\memory\\storage\\index_operations.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
       }
     ],
     "search_by_content_type": [
@@ -109447,6 +110346,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\mmorpg\\llm_summarization_pipeline.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
       }
     ],
     "_generate_ai_summary": [
@@ -110913,6 +111816,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\core\\mmorpg\\tracking\\progress_tracker.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
       }
     ],
     "_initialize_progress": [
@@ -111935,6 +112842,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\core\\agents\\scraper\\scraper_integration.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\conversation_extractor.py"
       }
     ],
     "load_prompt_config": [
@@ -119653,6 +120564,18 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\scrolling\\jquery_scroll_improved.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\conversation_extractor.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
       }
     ],
     "_scrollport_scroll": [
@@ -119673,6 +120596,10 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\conversation_extractor.py"
       }
     ],
     "create_parser": [
@@ -119797,12 +120724,24 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\browser_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
       }
     ],
     "start_driver": [
       {
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
       }
     ],
     "navigate_to_chatgpt": [
@@ -119871,6 +120810,14 @@
       {
         "repo": "thea",
         "file": "src\\dreamscape\\scrapers\\scrolling\\jquery_scroll_improved.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\login_handler.py"
       }
     ],
     "ensure_login_with_fallback": [
@@ -123893,6 +124840,10 @@
       {
         "repo": "trading-leads-bot",
         "file": "dashboard.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
       }
     ],
     "calculate_max_drawdown": [
@@ -127637,6 +128588,10 @@
       {
         "repo": "victor.os",
         "file": "archive\\orphans\\py\\driver_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\cookie_manager.py"
       }
     ],
     "scroll_page": [
@@ -142705,6 +143660,10 @@
       {
         "repo": "victor.os",
         "file": "src\\dreamos\\tools\\agent_resume\\agent_resume.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
       }
     ],
     "archive_message": [
@@ -145081,6 +146040,1268 @@
       {
         "repo": "victor.os",
         "file": "tools\\validate_json_schema.py"
+      }
+    ],
+    "demo_rate_limits": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\demo_rate_limits.py"
+      }
+    ],
+    "test_browser_simple": [
+      {
+        "repo": "dreamvault",
+        "file": "test_browser_simple.py"
+      }
+    ],
+    "debug_conversation_detection": [
+      {
+        "repo": "dreamvault",
+        "file": "debug_conversation_detection.py"
+      }
+    ],
+    "debug_with_login": [
+      {
+        "repo": "dreamvault",
+        "file": "debug_with_login.py"
+      }
+    ],
+    "generate_mock_conversation_ids": [
+      {
+        "repo": "dreamvault",
+        "file": "run_ingest.py"
+      }
+    ],
+    "cleanup_data": [
+      {
+        "repo": "dreamvault",
+        "file": "run_ingest.py"
+      }
+    ],
+    "rebuild_indexes": [
+      {
+        "repo": "dreamvault",
+        "file": "run_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
+      }
+    ],
+    "generate_mock_data": [
+      {
+        "repo": "dreamvault",
+        "file": "run_ingest.py"
+      }
+    ],
+    "run_batch_processing": [
+      {
+        "repo": "dreamvault",
+        "file": "run_ingest.py"
+      }
+    ],
+    "load_conversation_from_file": [
+      {
+        "repo": "dreamvault",
+        "file": "run_integrated_ingest.py"
+      }
+    ],
+    "test_adaptive_system": [
+      {
+        "repo": "dreamvault",
+        "file": "test_adaptive_system.py"
+      }
+    ],
+    "train_conversation_agent": [
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      }
+    ],
+    "train_summarization_agent": [
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      }
+    ],
+    "train_qa_agent": [
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      }
+    ],
+    "train_instruction_agent": [
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      }
+    ],
+    "train_embedding_agent": [
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      }
+    ],
+    "show_training_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      }
+    ],
+    "test_agents": [
+      {
+        "repo": "dreamvault",
+        "file": "run_agent_training.py"
+      }
+    ],
+    "start_deployment": [
+      {
+        "repo": "dreamvault",
+        "file": "run_deployment.py"
+      }
+    ],
+    "test_deployment": [
+      {
+        "repo": "dreamvault",
+        "file": "run_deployment.py"
+      }
+    ],
+    "diagnose_login": [
+      {
+        "repo": "dreamvault",
+        "file": "diagnose_login.py"
+      }
+    ],
+    "demo_search": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\demo_search.py"
+      }
+    ],
+    "get_full_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\get_full_conversation.py"
+      }
+    ],
+    "train_with_sentence_transformers": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\embedding_agent.py"
+      }
+    ],
+    "generate_embedding": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\embedding_agent.py"
+      }
+    ],
+    "get_training_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\embedding_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\qa_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\instruction_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "print_conversation_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
+      }
+    ],
+    "list_conversations": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
+      }
+    ],
+    "search_by_tag": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\query_db.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "train_with_openai": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\qa_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\instruction_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
+      }
+    ],
+    "answer_question": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\qa_agent.py"
+      }
+    ],
+    "follow_instruction": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\instruction_agent.py"
+      }
+    ],
+    "train_with_huggingface": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
+      }
+    ],
+    "train_with_local_llm": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      }
+    ],
+    "generate_response": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      }
+    ],
+    "format_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\conversation_agent.py"
+      }
+    ],
+    "ingest_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "ingest_all_conversations": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      }
+    ],
+    "query_conversations": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      }
+    ],
+    "get_conversation_messages": [
+      {
+        "repo": "dreamvault",
+        "file": "scripts\\simple_ingest.py"
+      }
+    ],
+    "_deep_merge": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
+      }
+    ],
+    "get_batch_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
+      }
+    ],
+    "get_llm_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
+      }
+    ],
+    "get_redaction_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\config.py"
+      }
+    ],
+    "generate_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\agents\\summarization_agent.py"
+      }
+    ],
+    "_save_training_data": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "_create_conversation_pairs": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "_create_summary_pairs": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "_create_qa_pairs": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "_create_instruction_pairs": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "_create_embedding_pairs": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "_store_processed_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\integrated_ingester.py"
+      }
+    ],
+    "generate_embedding_id": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "build_embedding": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "save_embedding": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "load_embedding": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "process_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "batch_process": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "get_embedding_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "generate_summary_embeddings": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\embed.py"
+      }
+    ],
+    "_init_index_db": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "build_index_from_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "_index_topics": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "_index_templates": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "_index_tags": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "_index_entities": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "_index_sentiment": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "search_by_topic": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "search_by_template": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "search_by_entity": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "search_by_sentiment": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "remove_conversation_from_index": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "rebuild_index": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\index.py"
+      }
+    ],
+    "_init_db": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "add_job": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "get_next_job": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "start_job": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "complete_job": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "fail_job": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "get_job_status": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "clear_completed_jobs": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "reset_failed_jobs": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\queue.py"
+      }
+    ],
+    "_compile_patterns": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "redact_text": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "_get_placeholder": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "redact_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "detect_pii": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "get_redaction_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "add_custom_pattern": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "remove_pattern": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\redact.py"
+      }
+    ],
+    "add_conversations_to_queue": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
+      }
+    ],
+    "_fetch_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
+      }
+    ],
+    "_process_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_save_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\runner.py"
+      }
+    ],
+    "create_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\schema.py"
+      }
+    ],
+    "save_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\schema.py"
+      }
+    ],
+    "load_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\schema.py"
+      }
+    ],
+    "get_api_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "get_web_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "get_model_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "get_security_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "get_performance_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "get_logging_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "export_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "import_config": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\deployment_config.py"
+      }
+    ],
+    "_leak_tokens": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "try_acquire": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "wait_for_tokens": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "_init_chatgpt_buckets": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "_get_chatgpt_bucket": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "_get_host_bucket": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "_calculate_wait_time": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "acquire_with_backoff": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "reset_host_bucket": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "get_all_hosts": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\rate_limit.py"
+      }
+    ],
+    "_get_prompt_template": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "_generate_content_hash": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "_generate_prompt_hash": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "_mock_llm_call": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "_prepare_conversation_text": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "_create_summary_object": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "validate_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "get_summarization_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "update_prompt_template": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\core\\summarize.py"
+      }
+    ],
+    "_register_routes": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_render_main_interface": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      }
+    ],
+    "_proxy_api_request": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      }
+    ],
+    "_serve_static_file": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      }
+    ],
+    "_run_server": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "api_proxy": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      }
+    ],
+    "static_files": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\web_interface.py"
+      }
+    ],
+    "_create_undetected_driver": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\browser_manager.py"
+      }
+    ],
+    "_create_standard_driver": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\browser_manager.py"
+      }
+    ],
+    "extract_ip_from_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      }
+    ],
+    "_extract_conversation_text": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      }
+    ],
+    "_calculate_potential_value": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      }
+    ],
+    "_generate_ip_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      }
+    ],
+    "save_extracted_ip": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      }
+    ],
+    "load_extracted_ip": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      }
+    ],
+    "get_lost_inventions_summary": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\resurrection\\ip_extractor.py"
+      }
+    ],
+    "discover_models": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_get_model_info": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_detect_model_type": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_load_openai_model": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_load_huggingface_model": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_load_sentence_transformers_model": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "unload_model": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "get_model_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "update_model_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "start_health_check": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "stop_health_check": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_health_check_loop": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_perform_health_check": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\model_manager.py"
+      }
+    ],
+    "_handle_agent_request": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_process_summarization": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_process_qa": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_process_instruction": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_process_embedding": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_call_openai_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_call_huggingface_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_call_openai_summarization": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_call_huggingface_summarization": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_call_openai_qa": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_call_openai_instruction": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_call_sentence_transformers_embedding": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "qa": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "instruction": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "embed": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "generic_agent": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\deployment\\api_server.py"
+      }
+    ],
+    "_rate_limit": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "extract_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "extract_all_conversations": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "get_adaptive_health_status": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "_save_progress": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "_get_conversation_hash": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "_is_conversation_processed": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "_mark_conversation_processed": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "reset_progress": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "get_progress_stats": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\chatgpt_scraper.py"
+      }
+    ],
+    "has_valid_cookies": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\cookie_manager.py"
+      }
+    ],
+    "_automated_login": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\login_handler.py"
+      }
+    ],
+    "_handle_2fa": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\login_handler.py"
+      }
+    ],
+    "create_sample_training_data": [
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_agent_training.py"
+      }
+    ],
+    "test_agent_trainers": [
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_agent_training.py"
+      }
+    ],
+    "test_model_manager": [
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_deployment_system.py"
+      }
+    ],
+    "test_deployment_config": [
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_deployment_system.py"
+      }
+    ],
+    "test_deployment_integration": [
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_deployment_system.py"
+      }
+    ],
+    "create_sample_conversation": [
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_integrated_system.py"
+      },
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_ip_with_sample_data.py"
+      }
+    ],
+    "_load_selector_cache": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
+      }
+    ],
+    "_save_selector_cache": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
+      }
+    ],
+    "_test_selector": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
+      }
+    ],
+    "_discover_working_url": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
+      }
+    ],
+    "_extract_conversations_from_elements": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
+      }
+    ],
+    "_extract_conversations_with_scrolling": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
+      }
+    ],
+    "_fallback_extraction": [
+      {
+        "repo": "dreamvault",
+        "file": "src\\dreamvault\\scrapers\\adaptive_extractor.py"
+      }
+    ],
+    "test_resume_functionality": [
+      {
+        "repo": "dreamvault",
+        "file": "tests\\test_resume_functionality.py"
       }
     ]
   },
