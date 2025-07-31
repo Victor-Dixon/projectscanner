@@ -86,11 +86,11 @@ class EnhancedGitHubLibraryScanner:
             headers = {}
             if self.github_token:
                 headers['Authorization'] = f'token {self.github_token}'
-                print(f"🔐 Using GitHub token for private repository access")
+                print(f"Using GitHub token for private repository access")
             else:
-                print(f"⚠️  No GitHub token provided - only public repositories will be scanned")
+                print(f"No GitHub token provided - only public repositories will be scanned")
             
-            print(f"🔍 Fetching repositories for user: {self.github_username}")
+            print(f"Fetching repositories for user: {self.github_username}")
             
             all_repos = []
             page = 1
@@ -111,9 +111,9 @@ class EnhancedGitHubLibraryScanner:
                 if 'X-RateLimit-Remaining' in response.headers:
                     remaining = int(response.headers['X-RateLimit-Remaining'])
                     if remaining < 10:
-                        print(f"⚠️  Rate limit warning: {remaining} requests remaining")
+                        print(f"Rate limit warning: {remaining} requests remaining")
             
-            print(f"📦 Found {len(all_repos)} repositories")
+            print(f"Found {len(all_repos)} repositories")
             
             # Count public vs private
             public_count = sum(1 for repo in all_repos if not repo.get('private', False))
@@ -125,10 +125,10 @@ class EnhancedGitHubLibraryScanner:
             return all_repos
             
         except ImportError:
-            print("❌ Error: requests library not found. Install with: pip install requests")
+            print("Error: requests library not found. Install with: pip install requests")
             return []
         except Exception as e:
-            print(f"❌ Error fetching repositories: {e}")
+            print(f"Error fetching repositories: {e}")
             return []
     
     def generate_repo_name(self, repo_data: Dict) -> str:
@@ -154,15 +154,15 @@ class EnhancedGitHubLibraryScanner:
         is_private = repo_data.get('private', False)
         unique_name = self.generate_repo_name(repo_data)
         
-        print(f"\n🔍 Scanning repository: {repo_name}")
+        print(f"\nScanning repository: {repo_name}")
         if is_private:
-            print(f"   🔒 PRIVATE REPOSITORY")
+            print(f"   PRIVATE REPOSITORY")
         print(f"   URL: {repo_url}")
         print(f"   Unique ID: {unique_name}")
         
         # Check if already scanned and not forcing rescan
         if unique_name in self.library and not force_rescan:
-            print(f"   ⏭️  Already scanned, skipping...")
+            print(f"   Already scanned, skipping...")
             return True
         
         # Create temporary directory for cloning
@@ -170,7 +170,7 @@ class EnhancedGitHubLibraryScanner:
         
         try:
             # Clone the repository
-            print(f"   📥 Cloning repository...")
+            print(f"   Cloning repository...")
             
             # Use SSH URL for private repos if token is provided
             if is_private and self.github_token:
@@ -186,7 +186,7 @@ class EnhancedGitHubLibraryScanner:
             repo_output_dir.mkdir(exist_ok=True)
             
             # Scan the repository
-            print(f"   🔍 Starting analysis...")
+            print(f"   Starting analysis...")
             scanner = ProjectScanner(
                 project_root=str(clone_path),
                 output_dir=str(repo_output_dir)
@@ -245,11 +245,11 @@ class EnhancedGitHubLibraryScanner:
                 'status': 'success'
             })
             
-            print(f"   ✅ Successfully scanned {len(analysis_data)} files")
+            print(f"   Successfully scanned {len(analysis_data)} files")
             return True
             
         except Exception as e:
-            print(f"   ❌ Error scanning repository: {e}")
+            print(f"   Error scanning repository: {e}")
             
             # Update scan log with failure
             self.scan_log['failed_repos'].append({
@@ -267,27 +267,27 @@ class EnhancedGitHubLibraryScanner:
             try:
                 shutil.rmtree(temp_dir)
             except Exception as e:
-                print(f"   ⚠️  Warning: Could not clean up temporary directory: {e}")
+                print(f"   Warning: Could not clean up temporary directory: {e}")
     
     def scan_all_repositories(self, force_rescan: bool = False, max_repos: Optional[int] = None):
         """Scan all repositories for the GitHub user."""
-        print(f"🚀 Starting Enhanced GitHub Library Scanner")
-        print(f"👤 User: {self.github_username}")
-        print(f"🔐 Token provided: {'Yes' if self.github_token else 'No'}")
-        print(f"📁 Output Directory: {self.output_dir}")
-        print(f"🔄 Force Rescan: {force_rescan}")
+        print(f"Starting Enhanced GitHub Library Scanner")
+        print(f"User: {self.github_username}")
+        print(f"Token provided: {'Yes' if self.github_token else 'No'}")
+        print(f"Output Directory: {self.output_dir}")
+        print(f"Force Rescan: {force_rescan}")
         
         # Get all repositories
         repos = self.get_user_repositories()
         
         if not repos:
-            print("❌ No repositories found or error occurred")
+            print("No repositories found or error occurred")
             return
         
         # Limit repositories if specified
         if max_repos:
             repos = repos[:max_repos]
-            print(f"📊 Limiting scan to {max_repos} repositories")
+            print(f"Limiting scan to {max_repos} repositories")
         
         # Update scan log
         self.scan_log['last_scan'] = datetime.now().isoformat()
@@ -299,7 +299,7 @@ class EnhancedGitHubLibraryScanner:
         private_scans = 0
         
         for i, repo in enumerate(repos, 1):
-            print(f"\n📊 Progress: {i}/{len(repos)}")
+            print(f"\nProgress: {i}/{len(repos)}")
             
             if self.scan_repository(repo, force_rescan):
                 successful_scans += 1
@@ -314,7 +314,7 @@ class EnhancedGitHubLibraryScanner:
             if i % 10 == 0:
                 self.save_library()
                 self.save_scan_log()
-                print(f"💾 Progress saved...")
+                print(f"Progress saved...")
             
             # Small delay to be respectful to GitHub API
             time.sleep(1)
@@ -323,13 +323,13 @@ class EnhancedGitHubLibraryScanner:
         self.save_library()
         self.save_scan_log()
         
-        print(f"\n🎉 Enhanced scan completed!")
-        print(f"✅ Successful scans: {successful_scans}")
-        print(f"❌ Failed scans: {failed_scans}")
-        print(f"🌐 Public repositories: {public_scans}")
-        print(f"🔒 Private repositories: {private_scans}")
-        print(f"📁 Library saved to: {self.library_file}")
-        print(f"📋 Scan log saved to: {self.scan_log_file}")
+        print(f"\nEnhanced scan completed!")
+        print(f"Successful scans: {successful_scans}")
+        print(f"Failed scans: {failed_scans}")
+        print(f"Public repositories: {public_scans}")
+        print(f"Private repositories: {private_scans}")
+        print(f"Library saved to: {self.library_file}")
+        print(f"Scan log saved to: {self.scan_log_file}")
     
     def generate_library_summary(self) -> Dict:
         """Generate a summary of the library."""
@@ -361,7 +361,7 @@ class EnhancedGitHubLibraryScanner:
         with summary_file.open('w', encoding='utf-8') as f:
             json.dump(summary, f, indent=2)
         
-        print(f"📊 Enhanced library summary exported to: {summary_file}")
+        print(f"Enhanced library summary exported to: {summary_file}")
         return summary
 
 
