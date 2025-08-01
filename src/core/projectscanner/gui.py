@@ -843,27 +843,42 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             self.update_processing_controls()
 
     def process_github_library(self, username, force_rescan=False, max_repos=None):
-        """Process a GitHub library."""
-        # Clear progress
-        self.progress_text.clear()
-        self.progress_bar.setVisible(True)
-        self.progress_bar.setRange(0, 0)  # Indeterminate progress
+        """Process GitHub library scan."""
+        if self.github_library_worker and self.github_library_worker.isRunning():
+            QtWidgets.QMessageBox.warning(self, "Warning", "A GitHub library scan is already in progress.")
+            return
+        
+        # Clear current scan tab
+        self.current_scan_tree.clear()
+        root_item = QtWidgets.QTreeWidgetItem(["GitHub Library Scan"])
+        self.current_scan_tree.addTopLevelItem(root_item)
+        root_item.setExpanded(True)
+        
+        # Add initial status
+        status_item = QtWidgets.QTreeWidgetItem(["Status: Starting scan..."])
+        root_item.addChild(status_item)
         
         # Get GitHub token
-        token = self.github_token_edit.text().strip()
+        github_token = self.github_token_edit.text().strip() if self.github_token_edit.text().strip() else None
         
         # Create and start GitHub library worker
         self.github_library_worker = GitHubLibraryWorker(
             username, 
-            "github_library", 
-            force_rescan, 
-            max_repos,
-            token
+            force_rescan=force_rescan, 
+            max_repos=max_repos,
+            github_token=github_token
         )
-        self.github_library_worker.progress.connect(self.update_progress)
+        self.github_library_worker.progress.connect(self.update_github_scan_progress)
+        self.github_library_worker.repo_progress.connect(self.update_repo_progress)
         self.github_library_worker.finished.connect(self.github_library_finished)
         self.github_library_worker.error.connect(self.scan_error)
         self.github_library_worker.start()
+        
+        # Switch to current scan tab
+        self.tabs.setCurrentIndex(0)
+        
+        self.is_processing = True
+        self.update_processing_controls()
 
     def display_cached_analysis(self, username: str, cached_results: Dict):
         """Display cached analysis results."""
@@ -1002,38 +1017,67 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             self.is_processing = False
             self.update_processing_controls()
             
-            if result.get('success', False):
-                # Update GitHub library display
-                self.display_github_library_results(result)
+            # Update current scan tab with final results
+            if self.current_scan_tree.topLevelItemCount() > 0:
+                root_item = self.current_scan_tree.topLevelItem(0)
                 
-                # Update portfolio statistics
-                github_data = self.load_github_library_data()
-                if github_data:
-                    self.update_portfolio_statistics(github_data)
+                # Clear existing items
+                root_item.takeChildren()
                 
-                # Switch to portfolio stats tab
-                self.tabs.setCurrentIndex(1)  # Portfolio Stats tab
-                
-                self.update_progress("GitHub library scan completed successfully!")
-                self.status_bar.showMessage("GitHub library scan completed")
-                
-                # Show completion message
-                QtWidgets.QMessageBox.information(
-                    self, "Scan Complete",
-                    f"GitHub library scan completed successfully!\n\n"
-                    f"Found {result.get('total_repos', 0)} repositories\n"
-                    f"Analyzed {result.get('total_files', 0)} files\n\n"
-                    f"Check the Portfolio Stats tab for detailed statistics."
-                )
-            else:
-                error_msg = result.get('error', 'Unknown error occurred')
-                self.update_progress(f"GitHub library scan failed: {error_msg}")
-                self.status_bar.showMessage("GitHub library scan failed")
-                
-                QtWidgets.QMessageBox.critical(
-                    self, "Scan Failed",
-                    f"GitHub library scan failed:\n{error_msg}"
-                )
+                if result.get('success', False):
+                    # Add success status
+                    status_item = QtWidgets.QTreeWidgetItem(["Status: Scan completed successfully!"])
+                    root_item.addChild(status_item)
+                    
+                    # Add summary
+                    summary_item = QtWidgets.QTreeWidgetItem(["Summary"])
+                    root_item.addChild(summary_item)
+                    
+                    total_repos = result.get('total_repos', 0)
+                    successful_scans = result.get('successful_scans', 0)
+                    failed_scans = result.get('failed_scans', 0)
+                    public_scans = result.get('public_scans', 0)
+                    private_scans = result.get('private_scans', 0)
+                    
+                    summary_item.addChild(QtWidgets.QTreeWidgetItem([f"Total repositories: {total_repos}"]))
+                    summary_item.addChild(QtWidgets.QTreeWidgetItem([f"Successful scans: {successful_scans}"]))
+                    summary_item.addChild(QtWidgets.QTreeWidgetItem([f"Failed scans: {failed_scans}"]))
+                    summary_item.addChild(QtWidgets.QTreeWidgetItem([f"Public repositories: {public_scans}"]))
+                    summary_item.addChild(QtWidgets.QTreeWidgetItem([f"Private repositories: {private_scans}"]))
+                    
+                    # Update GitHub library display
+                    self.display_github_library_results(result)
+                    
+                    # Update portfolio statistics
+                    github_data = self.load_github_library_data()
+                    if github_data:
+                        self.update_portfolio_statistics(github_data)
+                    
+                    self.update_progress("GitHub library scan completed successfully!")
+                    self.status_bar.showMessage("GitHub library scan completed")
+                    
+                    # Show completion message
+                    QtWidgets.QMessageBox.information(
+                        self, "Scan Complete",
+                        f"GitHub library scan completed successfully!\n\n"
+                        f"Found {total_repos} repositories\n"
+                        f"Successful scans: {successful_scans}\n"
+                        f"Failed scans: {failed_scans}\n\n"
+                        f"Check the Portfolio Stats tab for detailed statistics."
+                    )
+                else:
+                    # Add error status
+                    error_msg = result.get('error', 'Unknown error occurred')
+                    status_item = QtWidgets.QTreeWidgetItem([f"Status: Scan failed - {error_msg}"])
+                    root_item.addChild(status_item)
+                    
+                    self.update_progress(f"GitHub library scan failed: {error_msg}")
+                    self.status_bar.showMessage("GitHub library scan failed")
+                    
+                    QtWidgets.QMessageBox.critical(
+                        self, "Scan Failed",
+                        f"GitHub library scan failed:\n{error_msg}"
+                    )
                 
         except Exception as e:
             self.update_progress(f"Error handling GitHub library completion: {e}")
@@ -1041,6 +1085,22 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
 
     def scan_error(self, error_message: str):
         """Handle scan errors."""
+        # Update current scan tab with error
+        if self.current_scan_tree.topLevelItemCount() > 0:
+            root_item = self.current_scan_tree.topLevelItem(0)
+            
+            # Clear existing items
+            root_item.takeChildren()
+            
+            # Add error status
+            status_item = QtWidgets.QTreeWidgetItem([f"Status: Scan failed"])
+            root_item.addChild(status_item)
+            
+            # Add error details
+            error_item = QtWidgets.QTreeWidgetItem(["Error Details"])
+            root_item.addChild(error_item)
+            error_item.addChild(QtWidgets.QTreeWidgetItem([error_message]))
+        
         QtWidgets.QMessageBox.critical(self, "Scan Error", error_message)
         
         # Re-enable processing
@@ -1631,6 +1691,50 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         except Exception as e:
             self.update_progress(f"Error loading GitHub library data: {e}")
             return None
+
+    def update_github_scan_progress(self, message: str):
+        """Update GitHub scan progress in current scan tab."""
+        self.update_progress(message)
+        
+        # Update current scan tree
+        if self.current_scan_tree.topLevelItemCount() > 0:
+            root_item = self.current_scan_tree.topLevelItem(0)
+            if root_item.childCount() > 0:
+                status_item = root_item.child(0)
+                status_item.setText(0, f"Status: {message}")
+            else:
+                status_item = QtWidgets.QTreeWidgetItem([f"Status: {message}"])
+                root_item.addChild(status_item)
+
+    def update_repo_progress(self, repo_name: str, current: int, total: int):
+        """Update repository progress in current scan tab."""
+        # Update current scan tree
+        if self.current_scan_tree.topLevelItemCount() > 0:
+            root_item = self.current_scan_tree.topLevelItem(0)
+            
+            # Find or create progress item
+            progress_item = None
+            for i in range(root_item.childCount()):
+                child = root_item.child(i)
+                if child.text(0).startswith("Progress:"):
+                    progress_item = child
+                    break
+            
+            if not progress_item:
+                progress_item = QtWidgets.QTreeWidgetItem([f"Progress: {current}/{total}"])
+                root_item.addChild(progress_item)
+            else:
+                progress_item.setText(0, f"Progress: {current}/{total}")
+            
+            # Add current repository
+            repo_item = QtWidgets.QTreeWidgetItem([f"Scanning: {repo_name}"])
+            root_item.addChild(repo_item)
+            
+            # Keep only last 10 repository items to avoid clutter
+            repo_items = [child for child in root_item.children() if child.text(0).startswith("Scanning:")]
+            if len(repo_items) > 10:
+                for item in repo_items[:-10]:
+                    root_item.removeChild(item)
 
 
 def main():

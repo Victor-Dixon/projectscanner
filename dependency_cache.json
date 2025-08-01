@@ -1,167 +1,98 @@
 {
-    "debug_conversation_detection.py": {
-        "hash": "4a58f7521dd830ae1de74eee45965e6a"
+    "core\\engine\\__init__.py": {
+        "hash": "1838a45050f4a0afcf8ed98aa706efaf"
     },
-    "debug_with_login.py": {
-        "hash": "9e099d3ebb6de09fadd7dbfc3ae7e919"
+    "core\\engine\\train_rl.py": {
+        "hash": "879f5104ccaa434b8712d1f5b8bc8cf8"
     },
-    "test_adaptive_system.py": {
-        "hash": "50902551e1bde33a5bf18f98df957ac8"
+    "core\\engine\\focus_env.py": {
+        "hash": "ae551507af6a77e6f80348ee269666fc"
     },
-    "run_agent_training.py": {
-        "hash": "d9231e05c388ec3ebfc4a33d406c9215"
+    "core\\trackers\\distraction_logger.py": {
+        "hash": "46a01b87d76ee4e4668706f7a335419d"
     },
-    "test_browser_simple.py": {
-        "hash": "7a22cff2292d32d5c6b0b7e39cad5ce1"
+    "core\\__init__.py": {
+        "hash": "c8e3fadc9a6a294a9b1859011b05703a"
     },
-    "scripts\\demo_search.py": {
-        "hash": "d4f1b534fad295b611f9e61b1ba99552"
+    "core\\analytics\\focus_report.py": {
+        "hash": "041a28c943af8263a4d4bf20ec630271"
     },
-    "diagnose_login.py": {
-        "hash": "46c168cbb472420df9736ed1c72cbd12"
+    "core\\engine\\decision_engine.py": {
+        "hash": "415ee1851704641b06e8358403917c05"
     },
-    "run_ingest.py": {
-        "hash": "8ec38046d2ac96b88272f3189827a376"
+    "core\\trackers\\activity_monitor.py": {
+        "hash": "fc658209461da69f803d298bb541f8c0"
     },
-    "run_integrated_ingest.py": {
-        "hash": "95e6cd9185b3fd8fa61b46ad7093f308"
+    "main.py": {
+        "hash": "92c09358e66d5ca42fc62b6c881f2dce"
     },
-    "scripts\\demo_rate_limits.py": {
-        "hash": "6dbd8a1694df4604b7cb5a8887628bdb"
+    "core\\trackers\\advanced_distraction.py": {
+        "hash": "12219ad4d47a3f6c229554d48033616d"
     },
-    "run_scraper.py": {
-        "hash": "cac13f287a197f3b66778b2894ac9f83"
+    "core\\analytics\\__init__.py": {
+        "hash": "e07f1fd2fc327114c69277e54fa497d7"
     },
-    "scripts\\get_full_conversation.py": {
-        "hash": "b8feb8a755c4e7c88af08056ac12c8a3"
+    "core\\trackers\\__init__.py": {
+        "hash": "dffd1cb3f9d85db9d8158cf3f3fbbb6c"
     },
-    "run_deployment.py": {
-        "hash": "60c3febd4fc2e2383da915d91dae603b"
+    "core\\utils\\__init__.py": {
+        "hash": "ccf94c3ddb33240a6c83ef32ac305878"
     },
-    "scripts\\show_db.py": {
-        "hash": "52deb1c6e77518a0d0ab7341b84321d8"
+    "gui\\__init__.py": {
+        "hash": "e3495c19ba5397c40b830e1fa6a1c2b0"
     },
-    "scripts\\simple_ingest.py": {
-        "hash": "2dcf606d42803674142819b8da76bd12"
+    "gui\\components\\kantu_board.py": {
+        "hash": "c2dd0c48e870c2b39d5c6f298af89954"
     },
-    "scripts\\query_db.py": {
-        "hash": "84d36b4aca6a80c8004176733d581dd2"
+    "core\\utils\\database.py": {
+        "hash": "3e62f7756ff3be03d7f231e1e72bc6ea"
     },
-    "src\\dreamvault\\__init__.py": {
-        "hash": "27399349a6849d8fc3582a3e1217f43e"
+    "gui\\components\\skill_animations.py": {
+        "hash": "57014575da731fb0493cada559808c6b"
     },
-    "scripts\\simple_ip_test.py": {
-        "hash": "7ddfcc40db1208c2f4450fc3d64cc4d7"
+    "gui\\components\\__init__.py": {
+        "hash": "15e68be42c373614d288c65a5736dbda"
     },
-    "src\\dreamvault\\agents\\conversation_agent.py": {
-        "hash": "df4b7532eb6737ba47c81a125e1c5d76"
+    "gui\\dialogs\\__init__.py": {
+        "hash": "7946c257caf726d65c79e9f06cf15434"
     },
-    "src\\dreamvault\\agents\\embedding_agent.py": {
-        "hash": "7284d089a79906402227542c952c5ba1"
+    "gui\\components\\main_window.py": {
+        "hash": "6fcd4c06b02ffbfa428ed2977cc4f017"
     },
-    "src\\dreamvault\\agents\\instruction_agent.py": {
-        "hash": "7ac1dcc22b58a7e7895516bfe73341ab"
+    "gui\\components\\modern_window.py": {
+        "hash": "430004a4dec10470f49cadd06499e29e"
     },
-    "src\\dreamvault\\agents\\qa_agent.py": {
-        "hash": "5847d4afefdc0e657e1c3d644611b1ad"
+    "meta_skills\\levels\\meta_skills.py": {
+        "hash": "114fac3f6084ef79d74726941a552ddf"
     },
-    "src\\dreamvault\\core\\embed.py": {
-        "hash": "92cb5022ec88a0706267e75f040e3fba"
+    "gui\\themes\\__init__.py": {
+        "hash": "da855166128c8980acd0bcfa57b91bec"
     },
-    "src\\dreamvault\\agents\\summarization_agent.py": {
-        "hash": "39af2004cdd220934bf4eef9aef887cb"
+    "gui\\components\\splash_screen.py": {
+        "hash": "11cc4db7c066f6d741228ae0c834c8bf"
     },
-    "src\\dreamvault\\core\\config.py": {
-        "hash": "f1355bd885cd207a87fa0aa9c62b866a"
+    "meta_skills\\animations\\__init__.py": {
+        "hash": "ae8131ebf59557edf65852cc90df5d87"
     },
-    "src\\dreamvault\\core\\integrated_ingester.py": {
-        "hash": "6240d356c6e9fe5911df2ebcee08e4e7"
+    "meta_skills\\__init__.py": {
+        "hash": "60c8ddd93a539f2372caee3df7437e06"
     },
-    "src\\dreamvault\\core\\runner.py": {
-        "hash": "c1cd1ac61337935622095a907ea4d161"
+    "gui\\dialogs\\settings_dialog.py": {
+        "hash": "c7be364d90433f4191f595a7b7a0f391"
     },
-    "src\\dreamvault\\core\\index.py": {
-        "hash": "b8732b9709021dfbf68ac9278b0a2944"
+    "meta_skills\\levels\\__init__.py": {
+        "hash": "178d57dfdd43f3a5fa28e3f28aff512a"
     },
-    "src\\dreamvault\\core\\redact.py": {
-        "hash": "d57cdc03101491d9c53338d345287b53"
+    "tests\\integration\\__init__.py": {
+        "hash": "2ed72cb8fa675bd558b861c49a434455"
     },
-    "src\\dreamvault\\core\\schema.py": {
-        "hash": "9525257d12689f22687ee8b88e703021"
+    "tests\\__init__.py": {
+        "hash": "35a804da57361a49cef4593675669239"
     },
-    "src\\dreamvault\\core\\rate_limit.py": {
-        "hash": "ce72178af7930a77c52a3f56d07de3db"
+    "tests\\unit\\test_skill_system.py": {
+        "hash": "10ca4e6207942e39dc46499813c18592"
     },
-    "src\\dreamvault\\core\\__init__.py": {
-        "hash": "aad24727cc52c679a651c46813346ad2"
-    },
-    "src\\dreamvault\\core\\queue.py": {
-        "hash": "6105e8ccfc6339e27badc293a524cf9a"
-    },
-    "src\\dreamvault\\core\\summarize.py": {
-        "hash": "dc808873753917ccceb905e47742a36e"
-    },
-    "src\\dreamvault\\deployment\\deployment_config.py": {
-        "hash": "683ebd49d6f7a01c443823f02e0cf963"
-    },
-    "src\\dreamvault\\deployment\\web_interface.py": {
-        "hash": "a412497c644c5ca3d2a07475e940bde9"
-    },
-    "src\\dreamvault\\deployment\\model_manager.py": {
-        "hash": "d560cabea88e43a5e974f4bd9b25e2f6"
-    },
-    "src\\dreamvault\\deployment\\api_server.py": {
-        "hash": "bd93ef51b82627157d726f70d5c863b8"
-    },
-    "src\\dreamvault\\resurrection\\__init__.py": {
-        "hash": "264d5696f21c9a10728192f486edf2a7"
-    },
-    "src\\dreamvault\\scrapers\\adaptive_extractor.py": {
-        "hash": "9a64b490572c1e4aec8faef7149f2afa"
-    },
-    "src\\dreamvault\\deployment\\__init__.py": {
-        "hash": "ba88804af0a60bbda86cf8a64a3735e6"
-    },
-    "src\\dreamvault\\resurrection\\ip_extractor.py": {
-        "hash": "d90f226de0b3a9c4127b8b61e1f741ef"
-    },
-    "src\\dreamvault\\scrapers\\conversation_extractor.py": {
-        "hash": "1c8e88abdf8a61ce2e74ccf69fb1fd1a"
-    },
-    "src\\dreamvault\\scrapers\\login_handler.py": {
-        "hash": "226d1db18cc1cfdbc55778640dc4f539"
-    },
-    "src\\dreamvault\\scrapers\\cookie_manager.py": {
-        "hash": "503677baffd5b6726098b9ba5d250fa8"
-    },
-    "src\\dreamvault\\scrapers\\browser_manager.py": {
-        "hash": "0b3b379eeac3630a3f570d015fc6bf5d"
-    },
-    "src\\dreamvault\\scrapers\\chatgpt_scraper.py": {
-        "hash": "68ac9a3ce283ade06a7e3b01ee3657ca"
-    },
-    "tests\\test_agent_training.py": {
-        "hash": "809519021c7cfdcf08e377979cff9006"
-    },
-    "tests\\test_resume_functionality.py": {
-        "hash": "b40765af04bf953aaaeb733b29786751"
-    },
-    "src\\dreamvault\\scrapers\\__init__.py": {
-        "hash": "c9c3b5ce56d7a5b92280c216a5121cee"
-    },
-    "tests\\test_integrated_system.py": {
-        "hash": "3cb9eebc44051c80c0cc440952860ba0"
-    },
-    "tests\\test_deployment_system.py": {
-        "hash": "c0ea1dd77b2e87bb5f2995a1f6e3b484"
-    },
-    "tests\\test_ip_with_sample_data.py": {
-        "hash": "32b5af14cfe9d0f89693232525545950"
-    },
-    "tests\\test_db.py": {
-        "hash": "aff194a27857ab01de1141905f829ed3"
-    },
-    "tests\\test_ip_resurrection.py": {
-        "hash": "f276863c0a18aadba5a7a5ff26e769fe"
+    "tests\\unit\\__init__.py": {
+        "hash": "f559a14c9903c61fc4cd69e86e215ae8"
     }
 }
