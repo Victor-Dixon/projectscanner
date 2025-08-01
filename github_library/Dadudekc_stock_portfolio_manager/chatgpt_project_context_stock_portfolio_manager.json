@@ -1,7 +1,33 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp2tpq87b1\\stock_portfolio_manager",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpkbm0irai\\stock_portfolio_manager",
     "num_files_analyzed": 2,
     "analysis_details": {
+        "test_stock_portfolio_manager.py": {
+            "language": ".py",
+            "functions": [
+                "setUp",
+                "test_fetch_stock_data_multiple_symbols",
+                "test_fetch_stock_data_api_failure"
+            ],
+            "classes": {
+                "TestStockPortfolioManager": {
+                    "methods": [
+                        "setUp",
+                        "test_fetch_stock_data_multiple_symbols",
+                        "test_fetch_stock_data_api_failure"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
         "stock_portfolio_manager.py": {
             "language": ".py",
             "functions": [
@@ -33,32 +59,6 @@
             "lint": [
                 "High complexity"
             ]
-        },
-        "test_stock_portfolio_manager.py": {
-            "language": ".py",
-            "functions": [
-                "setUp",
-                "test_fetch_stock_data_multiple_symbols",
-                "test_fetch_stock_data_api_failure"
-            ],
-            "classes": {
-                "TestStockPortfolioManager": {
-                    "methods": [
-                        "setUp",
-                        "test_fetch_stock_data_multiple_symbols",
-                        "test_fetch_stock_data_api_failure"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "unittest.TestCase"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 7,
-            "lint": []
         }
     }
 }

@@ -56,6 +56,9 @@ tmp/
 analysis_cache/
 dependency_cache.json
 
+# Temporary repositories
+temp_repos/
+
 # Data files
 data/analysis/
 data/reports/ 

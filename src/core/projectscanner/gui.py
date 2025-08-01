@@ -171,6 +171,10 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.temp_dirs = []
         self.is_processing = False
         
+        # Create local temp directory within project
+        self.temp_dir = Path("temp_repos")
+        self.temp_dir.mkdir(exist_ok=True)
+        
         # Analysis persistence
         self.analysis_cache_dir = Path("analysis_cache")
         self.analysis_cache_dir.mkdir(exist_ok=True)
@@ -834,12 +838,20 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             repo_url = f"https://github.com/{repo_url}"
         
         try:
-            # Create temporary directory for cloning
-            temp_dir = Path(tempfile.mkdtemp())
-            self.temp_dirs.append(temp_dir)
+            # Extract repo name for temp directory
+            repo_name = repo_url.split('/')[-1]
+            if repo_name.endswith('.git'):
+                repo_name = repo_name[:-4]
+            
+            # Create repository-specific temp directory within project
+            repo_temp_dir = self.temp_dir / repo_name
+            if repo_temp_dir.exists():
+                shutil.rmtree(repo_temp_dir)
+            repo_temp_dir.mkdir(parents=True, exist_ok=True)
+            self.temp_dirs.append(repo_temp_dir)
             
             self.progress_text.append(f"Cloning repository: {repo_url}")
-            clone_path = self.clone_repository(repo_url, temp_dir)
+            clone_path = self.clone_repository(repo_url, repo_temp_dir)
             
             self.progress_text.append(f"Repository cloned to: {clone_path}")
             self.start_scan(clone_path)

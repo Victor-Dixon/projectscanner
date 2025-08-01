@@ -1,1 +1,383 @@
-{}
+{
+    "MeTuber\\__main__.py": {
+        "hash": "2e896d0657ca0b6b8490775b809be366"
+    },
+    "MeTuber\\run_v2.py": {
+        "hash": "0ff600c6fc32dfd465feb2671d1c11f5"
+    },
+    "MeTuber\\__init__.py": {
+        "hash": "297953f4467d395da303a38ee4316712"
+    },
+    "MeTuber\\test_v2_style_integration.py": {
+        "hash": "140eb642587aa8632e76d43deec76617"
+    },
+    "MeTuber\\test_v2_components.py": {
+        "hash": "c240ea95829bfa5f571fd649158797f3"
+    },
+    "MeTuber\\gui_components\\parameter_controls.py": {
+        "hash": "e8cd55960b90474b050c0cb7a7b16529"
+    },
+    "setup.py": {
+        "hash": "256051e323e697271ee7ed068c3d3e99"
+    },
+    "MeTuber\\gui_components\\__init__.py": {
+        "hash": "5e0a7a71237c0749a5e4ff652742c075"
+    },
+    "MeTuber\\src\\main.py": {
+        "hash": "116186cb9a320a5cede14a5af38a0037"
+    },
+    "MeTuber\\gui_components\\action_buttons.py": {
+        "hash": "def0ef914259ec78b3eeeb9d291d483e"
+    },
+    "MeTuber\\gui_components\\style_tab_manager.py": {
+        "hash": "4c33462cf95d53055d5ee1ba3538cb27"
+    },
+    "MeTuber\\webcam_threading.py": {
+        "hash": "342efb799533954dc8c1d82ada8dd3e6"
+    },
+    "MeTuber\\webcam_filter_pyqt5.py": {
+        "hash": "37c48f471eea7e73c5ee0f790f7c9cc4"
+    },
+    "MeTuber\\gui_components\\device_selector.py": {
+        "hash": "35d5583c1248d419461fa941cc3a6c4f"
+    },
+    "MeTuber\\src\\config\\settings.py": {
+        "hash": "dc90179f591a42e0510ee129ff384be2"
+    },
+    "MeTuber\\src\\config\\settings_manager.py": {
+        "hash": "01e25242f178498a6cb220e4fd1d8258"
+    },
+    "MeTuber\\src\\core\\device_manager.py": {
+        "hash": "0a0da755c29e5087f169f0618b367699"
+    },
+    "MeTuber\\src\\gui\\main_window.py": {
+        "hash": "4a8ac8e0d909f34314372fb748326ed1"
+    },
+    "MeTuber\\src\\core\\style_manager.py": {
+        "hash": "98051de4c64c68c0e4d7ac0e0c42e8d3"
+    },
+    "MeTuber\\src\\gui\\components\\accessibility_manager.py": {
+        "hash": "35cedca747535d36cddfefa56b36fc39"
+    },
+    "MeTuber\\src\\gui\\v2_main_window.py": {
+        "hash": "3c36981d06b1cd217c2abd378873679a"
+    },
+    "MeTuber\\src\\gui\\components\\action_buttons.py": {
+        "hash": "634e37550714705da817115ce899c1a8"
+    },
+    "MeTuber\\src\\gui\\components\\help_about.py": {
+        "hash": "ca3b19b4e9b935e34cd08f1ac3f59b57"
+    },
+    "MeTuber\\src\\gui\\components\\device_selector.py": {
+        "hash": "9c13584d4fd30d6bf95281fdbe42d2d4"
+    },
+    "MeTuber\\styles\\bitwise_ops.py": {
+        "hash": "b0defc6f17da6cdd07ef54b1a18558d9"
+    },
+    "MeTuber\\src\\gui\\components\\v2_style_selector.py": {
+        "hash": "e684105f012311a08ddd7139a2abfe12"
+    },
+    "MeTuber\\src\\gui\\components\\preview_area.py": {
+        "hash": "87586e1af464f5b27c79307b7f119769"
+    },
+    "MeTuber\\src\\services\\webcam_service.py": {
+        "hash": "816b4a4563afdc86ce44e0a854acc25a"
+    },
+    "MeTuber\\styles\\adjustments\\brightness_contrast.py": {
+        "hash": "d6bbe139fe380ce20f5aab525f5b4e02"
+    },
+    "MeTuber\\styles\\adjustments\\blur.py": {
+        "hash": "589764649c21fa89c4b9159cfff6f6d2"
+    },
+    "MeTuber\\src\\gui\\components\\parameter_controls.py": {
+        "hash": "0257fabdba9687f9ea57b64800c7855d"
+    },
+    "MeTuber\\src\\gui\\components\\style_tab_manager.py": {
+        "hash": "692ca64fe1c2626cdbcb350b36d583e3"
+    },
+    "MeTuber\\styles\\__init__.py": {
+        "hash": "2bd6c8c72330aacd4434ed5e0ec2d19c"
+    },
+    "MeTuber\\styles\\base.py": {
+        "hash": "17a7dde33fb87500fb424fcb6af57543"
+    },
+    "MeTuber\\styles\\adjustments\\gamma_correction.py": {
+        "hash": "a10bfd36217cd4f2c72efacf01adcf51"
+    },
+    "MeTuber\\styles\\adjustments\\emboss.py": {
+        "hash": "aecf8b3613db43c86e7eb3b52bb604bf"
+    },
+    "MeTuber\\styles\\adjustments\\threshold.py": {
+        "hash": "1c60131dd61d267be10ea30d2e3dc89b"
+    },
+    "MeTuber\\styles\\adjustments\\hue_saturation.py": {
+        "hash": "b67cacbe7158eb6324f65373bd470464"
+    },
+    "MeTuber\\styles\\adjustments\\solarize.py": {
+        "hash": "3e4b4134fce110cc0d5e5d6a86493620"
+    },
+    "MeTuber\\styles\\adjustments\\posterize.py": {
+        "hash": "24ab047ca9a60c44fcd2c7964d8da68e"
+    },
+    "MeTuber\\styles\\adjustments\\sharpen.py": {
+        "hash": "334c55c6edd677d146583bbdd79ee9e6"
+    },
+    "MeTuber\\styles\\adjustments\\vibrance.py": {
+        "hash": "8c9625bbfbe86b0dccd4dcc18def1335"
+    },
+    "MeTuber\\styles\\artistic\\advanced_cartoon.py": {
+        "hash": "4335c93ea53758eafe7c825008b11c9e"
+    },
+    "MeTuber\\styles\\adjustments\\__init__.py": {
+        "hash": "2e82f580ffcab980725b6ace2e1f6763"
+    },
+    "MeTuber\\styles\\artistic\\cartoon.py": {
+        "hash": "22b3b7194cd1cf8a6e7215887adbc875"
+    },
+    "MeTuber\\styles\\artistic\\advanced_pencil_sketch.py": {
+        "hash": "dd6079cabefbf7d7af7cd34f80c9e329"
+    },
+    "MeTuber\\styles\\adjustments\\vintage.py": {
+        "hash": "227f46c35f7b54d1d2855d3f48cdcd2f"
+    },
+    "MeTuber\\styles\\artistic\\advanced_cartoon2.py": {
+        "hash": "45d515eee563cb6f2697b9c20371b271"
+    },
+    "MeTuber\\styles\\artistic\\edge_detection.py": {
+        "hash": "fa4c62913576e84fba5cbfbef67b7405"
+    },
+    "MeTuber\\styles\\artistic\\advanced_edge_detection.py": {
+        "hash": "01975fc190e08631c6bd5e08ab98f409"
+    },
+    "MeTuber\\styles\\artistic\\oil_painting.py": {
+        "hash": "7b4dfbd205bf277a4a1d25dd76db51a7"
+    },
+    "MeTuber\\styles\\artistic\\catoonwholeimage.py": {
+        "hash": "947f3c40d98f0cf7bc614f31f288461c"
+    },
+    "MeTuber\\styles\\artistic\\pencil_sketch.py": {
+        "hash": "c03ecda0458055e3c2e39d28d52b2cd8"
+    },
+    "MeTuber\\styles\\artistic\\line_art.py": {
+        "hash": "8cc21b6ee940050774f906388c59eca4"
+    },
+    "MeTuber\\styles\\artistic\\stippling.py": {
+        "hash": "7beb8fab7087f6f4ef3fc0c109c7f4ff"
+    },
+    "MeTuber\\styles\\artistic\\__init__.py": {
+        "hash": "e9a200b017b9a7bcaeaffb1ff4d25102"
+    },
+    "MeTuber\\styles\\basic\\sepia_vibrant.py": {
+        "hash": "85fcad8d9337fde21097157ef669e213"
+    },
+    "MeTuber\\styles\\artistic\\unified_sketch.py": {
+        "hash": "82ea2f87f6f27568a0882d65f028f887"
+    },
+    "MeTuber\\styles\\artistic\\sketch_and_color.py": {
+        "hash": "e131eca43fa16c32188651d0f51c48d4"
+    },
+    "MeTuber\\styles\\basic\\brightness_only.py": {
+        "hash": "4523e67e30cc04a2a3c7caae69f8c296"
+    },
+    "MeTuber\\styles\\basic\\contrast_only.py": {
+        "hash": "decf0f848784df1dc4e08a2e2e65fd00"
+    },
+    "MeTuber\\styles\\basic\\color_balance.py": {
+        "hash": "6f4ace3d67c276ed82f637a4ccc4ed09"
+    },
+    "MeTuber\\styles\\artistic\\watercolor.py": {
+        "hash": "d7e95bfc91b24bc680409beb9ae12384"
+    },
+    "MeTuber\\styles\\artistic\\unified_cartoon.py": {
+        "hash": "e86576e93b371ccfef7a012fc28c16c3"
+    },
+    "MeTuber\\styles\\basic\\vibrant_color.py": {
+        "hash": "3aa32e0c8e2037e512e259dc13e96dcc"
+    },
+    "MeTuber\\styles\\color_filters\\negative.py": {
+        "hash": "3228e844cfcebac0937fcfe2cf02e05c"
+    },
+    "MeTuber\\styles\\color_filters\\invert_colors.py": {
+        "hash": "675aff36c872b231500bd1ba6af5aa96"
+    },
+    "MeTuber\\styles\\basic\\__init__.py": {
+        "hash": "7ba1e21f3880f9806256e1f9b76c82a1"
+    },
+    "MeTuber\\styles\\distortions\\glitch.py": {
+        "hash": "7673c84a01b279f9dc9347c3c19e4fbc"
+    },
+    "MeTuber\\styles\\color_filters\\__init__.py": {
+        "hash": "eca588b28efcf06c17b65bd9e57b6165"
+    },
+    "MeTuber\\styles\\color_filters\\unified_invert.py": {
+        "hash": "de5c612fc49be5b47aec90833938e68e"
+    },
+    "MeTuber\\styles\\distortions\\mosaic.py": {
+        "hash": "cf7efd768455765f38243ff90a5b7fbc"
+    },
+    "MeTuber\\styles\\color_filters\\invert_filter.py": {
+        "hash": "bf52da94806a05bdf3dce7f8d6896d00"
+    },
+    "MeTuber\\styles\\distortions\\light_leak.py": {
+        "hash": "3fb4612f3a4b78f29a3cf19c96dc3cc0"
+    },
+    "MeTuber\\styles\\distortions\\advanced_halftone.py": {
+        "hash": "6b1dd3fc410318c0c660261c5ba38fd6"
+    },
+    "MeTuber\\styles\\effects\\black_white.py": {
+        "hash": "aa23f7d1637e795c5910fb64e0a96949"
+    },
+    "MeTuber\\styles\\distortions\\__init__.py": {
+        "hash": "b134ded649bb4f2d1b742d4c77523873"
+    },
+    "MeTuber\\styles\\effects\\color_quantization.py": {
+        "hash": "243cec8cb0c6ffbb8e473ddb3f50715e"
+    },
+    "MeTuber\\styles\\effects\\blur_motion.py": {
+        "hash": "7995364f309e331f244bd6926e82ba7e"
+    },
+    "MeTuber\\styles\\distortions\\halftone.py": {
+        "hash": "164cf0c6c585066cb485b3d651890801"
+    },
+    "MeTuber\\styles\\effects\\buffer_test.py": {
+        "hash": "9446005594af750d1bd307165d086fb3"
+    },
+    "MeTuber\\styles\\effects\\emboss_contrast.py": {
+        "hash": "792bc85b3e58414305ed1207a15c1064"
+    },
+    "MeTuber\\styles\\effects\\lines.py": {
+        "hash": "70f67dd66f9243cac7150ed7eefc4c63"
+    },
+    "MeTuber\\styles\\effects\\glowing_edges.py": {
+        "hash": "774ec58b9a974fa395ad77e9ab4e4e3b"
+    },
+    "MeTuber\\styles\\effects\\negative_vintage.py": {
+        "hash": "f122bd8d715f14abb800507443373860"
+    },
+    "MeTuber\\tests\\test_all_filters.py": {
+        "hash": "b1d4fc09097d70d77cb73442a9b772f4"
+    },
+    "MeTuber\\styles\\effects\\__init__.py": {
+        "hash": "038063582058c9f4b20e5d9f4a77f550"
+    },
+    "MeTuber\\styles\\effects\\original.py": {
+        "hash": "70375f5a2f48bdba43c486f088af6f65"
+    },
+    "MeTuber\\tests\\test_black_white.py": {
+        "hash": "16c870bd22ba5e1573dbf40f6e9121a9"
+    },
+    "MeTuber\\tests\\test_blur_motion.py": {
+        "hash": "c9f5f2ffe79e93f8a008617b10404ead"
+    },
+    "MeTuber\\tests\\test_bitwise_ops.py": {
+        "hash": "eac0a9f6e7375e26d318c82b518f6dce"
+    },
+    "MeTuber\\tests\\test_base_style.py": {
+        "hash": "9f3cd56aa8bbb01e5d4bd92dfc40ac87"
+    },
+    "MeTuber\\tests\\test_color_balance.py": {
+        "hash": "fbfffef8f14c81c3ea18b8076624ec56"
+    },
+    "MeTuber\\tests\\test_consolidated_styles.py": {
+        "hash": "bcd589d266c9d19cfefe731de153ef07"
+    },
+    "MeTuber\\tests\\test_edge_detection.py": {
+        "hash": "0a2cdec850845a9291f9ef9d9d5a38a1"
+    },
+    "MeTuber\\tests\\test_cartoon.py": {
+        "hash": "e8c2b7c24260d2c2191a564b5e671bee"
+    },
+    "MeTuber\\tests\\test_brightness_only.py": {
+        "hash": "41ed9cebd7fe4a66778987ac713edd8a"
+    },
+    "MeTuber\\tests\\test_glitch.py": {
+        "hash": "42e375d249448f21afb459ed965bada7"
+    },
+    "MeTuber\\tests\\test_contrast_only.py": {
+        "hash": "702a28043a9e4751d8eb31ef1e4c6887"
+    },
+    "MeTuber\\tests\\test_color_filters.py": {
+        "hash": "7637b7685adb882525bd343828c57f46"
+    },
+    "MeTuber\\tests\\test_halftone.py": {
+        "hash": "a3d79be35c3e2b3706df5e14fa0ccff6"
+    },
+    "MeTuber\\tests\\test_gui_components.py": {
+        "hash": "c3977d90d0ebcf9e85c5b963a25c0c84"
+    },
+    "MeTuber\\tests\\test_line_art.py": {
+        "hash": "34123dd690001a9cc8483f9f22c5c863"
+    },
+    "MeTuber\\tests\\test_sepia_vibrant.py": {
+        "hash": "b2b23a641bc7f44a087ec9554bca2d4f"
+    },
+    "MeTuber\\tests\\test_lines.py": {
+        "hash": "1ec7fa1e6edf7f56d935ae722a409e4b"
+    },
+    "MeTuber\\tests\\test_stippling.py": {
+        "hash": "83caa5a62a368f0a9023ee6b674bcb7d"
+    },
+    "MeTuber\\tests\\test_sketch_and_color.py": {
+        "hash": "13256aa123d5dd900c55fb149afc765a"
+    },
+    "MeTuber\\tests\\test_solarize.py": {
+        "hash": "d6578704052ba9c2dec3478693bcdfa5"
+    },
+    "MeTuber\\tests\\test_vibrance.py": {
+        "hash": "094d6893cef92b7a04e7183ba53e86f5"
+    },
+    "MeTuber\\tests\\__init__.py": {
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "MeTuber\\tests\\test_style_initialization.py": {
+        "hash": "b291f37f642bf67b91b139e26a3841c0"
+    },
+    "MeTuber\\tests\\test_vibrant_color.py": {
+        "hash": "75ce9105834fe84997ffe7d51ee0c31e"
+    },
+    "MeTuber\\tests\\test_virtual_pencil_sketch.py": {
+        "hash": "958061671e94867679c891a1f195c342"
+    },
+    "MeTuber\\tests\\test_webcam_pencil_sketch.py": {
+        "hash": "a00dd16a5fc60b2b8b60fdca72b6344e"
+    },
+    "MeTuber\\tests\\config\\test_settings_manager.py": {
+        "hash": "1982a456129ca51ddb351c3791dac302"
+    },
+    "MeTuber\\tests\\test_webcam_filter_pyqt5.py": {
+        "hash": "9d57d74c90d1ede70d4ed070e28ea6dc"
+    },
+    "MeTuber\\tests\\test_watercolor.py": {
+        "hash": "3a625ac3a06d3ec7fe6e1d446523d230"
+    },
+    "MeTuber\\tests\\core\\test_device_manager.py": {
+        "hash": "c4150c5262ebee47f7ef62cf01226cfe"
+    },
+    "MeTuber\\tests\\core\\test_style_manager.py": {
+        "hash": "54a56c6924347aaa03c08d19f7b65c67"
+    },
+    "MeTuber\\tests\\test_webcam_threading.py": {
+        "hash": "930ee71e34c176f301b8d22c38269797"
+    },
+    "MeTuber\\tests\\gui\\test_main_window.py": {
+        "hash": "b437660855feb67147ae8c1213bca67e"
+    },
+    "MeTuber\\tests\\integration\\test_style_webcam_integration.py": {
+        "hash": "186004000283f72ccd1b4c8f6b1eba6c"
+    },
+    "MeTuber\\tests\\gui\\test_device_selector.py": {
+        "hash": "b9a4d79bebbfcb36b2852debb1e9f3e6"
+    },
+    "MeTuber\\tests\\integration\\test_gui_integration.py": {
+        "hash": "1b2eeecaea970c2da30980dceb3b5e03"
+    },
+    "MeTuber\\tests\\integration\\test_settings_device_integration.py": {
+        "hash": "012d83fd5dcffd8734943c72d16600e9"
+    },
+    "MeTuber\\tests\\gui\\test_style_tab_manager.py": {
+        "hash": "28b82cef36c2ef51f43c30bda21a85c8"
+    },
+    "MeTuber\\tests\\services\\test_webcam_service.py": {
+        "hash": "ab2a0cfddece6810f85d68136a91147d"
+    }
+}

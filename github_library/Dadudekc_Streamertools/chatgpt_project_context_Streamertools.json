@@ -1,7 +1,40 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpzonhaxp0\\Streamertools",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpal_37ko1\\Streamertools",
     "num_files_analyzed": 127,
     "analysis_details": {
+        "MeTuber\\__main__.py": {
+            "language": ".py",
+            "functions": [
+                "_get_webcam_module",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "MeTuber\\run_v2.py": {
+            "language": ".py",
+            "functions": [
+                "setup_environment",
+                "check_dependencies",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 11,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
         "MeTuber\\test_v2_style_integration.py": {
             "language": ".py",
             "functions": [
@@ -17,46 +50,6 @@
             "lint": [
                 "Function test_v2_style_selector_integration >50 lines",
                 "Function test_parameter_controls_integration >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "MeTuber\\webcam_threading.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "run",
-                "update_params",
-                "stop"
-            ],
-            "classes": {
-                "WebcamThread": {
-                    "methods": [
-                        "__init__",
-                        "run",
-                        "update_params",
-                        "stop"
-                    ],
-                    "docstring": "A QThread that captures video frames using PyAV, applies the chosen style,\nand publishes them to a virtual camera with pyvirtualcam.",
-                    "base_classes": [
-                        "QThread"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "ActionAgent"
-                }
-            },
-            "routes": [],
-            "complexity": 26,
-            "lint": [
-                "Function __init__ >50 lines",
-                "Function run >50 lines",
                 "High complexity"
             ]
         },
@@ -76,99 +69,6 @@
                 "Function test_component_instantiation >50 lines",
                 "High complexity"
             ]
-        },
-        "setup.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "MeTuber\\__main__.py": {
-            "language": ".py",
-            "functions": [
-                "_get_webcam_module",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "MeTuber\\gui_components\\style_tab_manager.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_tabs",
-                "on_item_clicked",
-                "get_current_style"
-            ],
-            "classes": {
-                "StyleTabManager": {
-                    "methods": [
-                        "__init__",
-                        "init_tabs",
-                        "on_item_clicked",
-                        "get_current_style"
-                    ],
-                    "docstring": "A GUI component that manages style selection with categorization using tabs.",
-                    "base_classes": [
-                        "QTabWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 11,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\gui_components\\action_buttons.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "create"
-            ],
-            "classes": {
-                "ActionButtons": {
-                    "methods": [
-                        "__init__",
-                        "create"
-                    ],
-                    "docstring": "A GUI component for creating Start, Stop, and Snapshot buttons.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "MeTuber\\gui_components\\device_selector.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "create"
-            ],
-            "classes": {
-                "DeviceSelector": {
-                    "methods": [
-                        "__init__",
-                        "create"
-                    ],
-                    "docstring": "A GUI component for selecting input devices.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
         },
         "MeTuber\\gui_components\\parameter_controls.py": {
             "language": ".py",
@@ -215,17 +115,114 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\run_v2.py": {
+        "setup.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "MeTuber\\gui_components\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "MeTuber\\src\\main.py": {
             "language": ".py",
             "functions": [
-                "setup_environment",
-                "check_dependencies",
+                "setup_logging",
                 "main"
             ],
             "classes": {},
             "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "MeTuber\\gui_components\\action_buttons.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "create"
+            ],
+            "classes": {
+                "ActionButtons": {
+                    "methods": [
+                        "__init__",
+                        "create"
+                    ],
+                    "docstring": "A GUI component for creating Start, Stop, and Snapshot buttons.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "MeTuber\\gui_components\\style_tab_manager.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_tabs",
+                "on_item_clicked",
+                "get_current_style"
+            ],
+            "classes": {
+                "StyleTabManager": {
+                    "methods": [
+                        "__init__",
+                        "init_tabs",
+                        "on_item_clicked",
+                        "get_current_style"
+                    ],
+                    "docstring": "A GUI component that manages style selection with categorization using tabs.",
+                    "base_classes": [
+                        "QTabWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
             "complexity": 11,
             "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\webcam_threading.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "run",
+                "update_params",
+                "stop"
+            ],
+            "classes": {
+                "WebcamThread": {
+                    "methods": [
+                        "__init__",
+                        "run",
+                        "update_params",
+                        "stop"
+                    ],
+                    "docstring": "A QThread that captures video frames using PyAV, applies the chosen style,\nand publishes them to a virtual camera with pyvirtualcam.",
+                    "base_classes": [
+                        "QThread"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                }
+            },
+            "routes": [],
+            "complexity": 26,
+            "lint": [
+                "Function __init__ >50 lines",
+                "Function run >50 lines",
                 "High complexity"
             ]
         },
@@ -285,6 +282,60 @@
                 "High complexity"
             ]
         },
+        "MeTuber\\gui_components\\device_selector.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "create"
+            ],
+            "classes": {
+                "DeviceSelector": {
+                    "methods": [
+                        "__init__",
+                        "create"
+                    ],
+                    "docstring": "A GUI component for selecting input devices.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\src\\config\\settings.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "load",
+                "save",
+                "_validate_settings",
+                "get",
+                "set"
+            ],
+            "classes": {
+                "SettingsManager": {
+                    "methods": [
+                        "__init__",
+                        "load",
+                        "save",
+                        "_validate_settings",
+                        "get",
+                        "set"
+                    ],
+                    "docstring": "Manages application settings with validation and error handling.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 19,
+            "lint": [
+                "High complexity"
+            ]
+        },
         "MeTuber\\src\\config\\settings_manager.py": {
             "language": ".py",
             "functions": [
@@ -320,161 +371,6 @@
             "routes": [],
             "complexity": 31,
             "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\gui_components\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "MeTuber\\src\\main.py": {
-            "language": ".py",
-            "functions": [
-                "setup_logging",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "MeTuber\\src\\core\\style_manager.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_load_styles",
-                "get_style",
-                "get_style_with_variant",
-                "get_style_parameters",
-                "get_categories",
-                "get_styles_in_category",
-                "get_style_variants",
-                "get_styles_with_variants",
-                "validate_style_parameters",
-                "get_default_parameters",
-                "refresh_styles",
-                "get_style_info",
-                "get_consolidated_style_mapping",
-                "migrate_old_style_name",
-                "get_style_complexity"
-            ],
-            "classes": {
-                "StyleManager": {
-                    "methods": [
-                        "__init__",
-                        "_load_styles",
-                        "get_style",
-                        "get_style_with_variant",
-                        "get_style_parameters",
-                        "get_categories",
-                        "get_styles_in_category",
-                        "get_style_variants",
-                        "get_styles_with_variants",
-                        "validate_style_parameters",
-                        "get_default_parameters",
-                        "refresh_styles",
-                        "get_style_info",
-                        "get_consolidated_style_mapping",
-                        "migrate_old_style_name",
-                        "get_style_complexity"
-                    ],
-                    "docstring": "Manages style loading and instantiation with variant support and proper error handling.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 65,
-            "lint": [
-                "Function _load_styles >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\src\\config\\settings.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "load",
-                "save",
-                "_validate_settings",
-                "get",
-                "set"
-            ],
-            "classes": {
-                "SettingsManager": {
-                    "methods": [
-                        "__init__",
-                        "load",
-                        "save",
-                        "_validate_settings",
-                        "get",
-                        "set"
-                    ],
-                    "docstring": "Manages application settings with validation and error handling.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 19,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\src\\gui\\main_window.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_ui",
-                "load_settings",
-                "save_settings",
-                "on_device_changed",
-                "on_style_changed",
-                "on_parameters_changed",
-                "start_virtual_camera",
-                "stop_virtual_camera",
-                "take_snapshot",
-                "update_preview",
-                "display_error",
-                "display_info",
-                "closeEvent"
-            ],
-            "classes": {
-                "MainWindow": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "load_settings",
-                        "save_settings",
-                        "on_device_changed",
-                        "on_style_changed",
-                        "on_parameters_changed",
-                        "start_virtual_camera",
-                        "stop_virtual_camera",
-                        "take_snapshot",
-                        "update_preview",
-                        "display_error",
-                        "display_info",
-                        "closeEvent"
-                    ],
-                    "docstring": "Main application window that integrates all components.",
-                    "base_classes": [
-                        "QMainWindow"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 65,
-            "lint": [
-                "Function init_ui >50 lines",
                 "High complexity"
             ]
         },
@@ -538,6 +434,110 @@
                 "High complexity"
             ]
         },
+        "MeTuber\\src\\gui\\main_window.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "load_settings",
+                "save_settings",
+                "on_device_changed",
+                "on_style_changed",
+                "on_parameters_changed",
+                "start_virtual_camera",
+                "stop_virtual_camera",
+                "take_snapshot",
+                "update_preview",
+                "display_error",
+                "display_info",
+                "closeEvent"
+            ],
+            "classes": {
+                "MainWindow": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "load_settings",
+                        "save_settings",
+                        "on_device_changed",
+                        "on_style_changed",
+                        "on_parameters_changed",
+                        "start_virtual_camera",
+                        "stop_virtual_camera",
+                        "take_snapshot",
+                        "update_preview",
+                        "display_error",
+                        "display_info",
+                        "closeEvent"
+                    ],
+                    "docstring": "Main application window that integrates all components.",
+                    "base_classes": [
+                        "QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 65,
+            "lint": [
+                "Function init_ui >50 lines",
+                "High complexity"
+            ]
+        },
+        "MeTuber\\src\\core\\style_manager.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_load_styles",
+                "get_style",
+                "get_style_with_variant",
+                "get_style_parameters",
+                "get_categories",
+                "get_styles_in_category",
+                "get_style_variants",
+                "get_styles_with_variants",
+                "validate_style_parameters",
+                "get_default_parameters",
+                "refresh_styles",
+                "get_style_info",
+                "get_consolidated_style_mapping",
+                "migrate_old_style_name",
+                "get_style_complexity"
+            ],
+            "classes": {
+                "StyleManager": {
+                    "methods": [
+                        "__init__",
+                        "_load_styles",
+                        "get_style",
+                        "get_style_with_variant",
+                        "get_style_parameters",
+                        "get_categories",
+                        "get_styles_in_category",
+                        "get_style_variants",
+                        "get_styles_with_variants",
+                        "validate_style_parameters",
+                        "get_default_parameters",
+                        "refresh_styles",
+                        "get_style_info",
+                        "get_consolidated_style_mapping",
+                        "migrate_old_style_name",
+                        "get_style_complexity"
+                    ],
+                    "docstring": "Manages style loading and instantiation with variant support and proper error handling.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 65,
+            "lint": [
+                "Function _load_styles >50 lines",
+                "High complexity"
+            ]
+        },
         "MeTuber\\src\\gui\\components\\accessibility_manager.py": {
             "language": ".py",
             "functions": [
@@ -596,40 +596,6 @@
             "complexity": 73,
             "lint": [
                 "Function _setup_accessibility_menu >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\src\\gui\\components\\style_tab_manager.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_tabs",
-                "get_current_style",
-                "set_current_style",
-                "update_styles",
-                "_on_style_changed"
-            ],
-            "classes": {
-                "StyleTabManager": {
-                    "methods": [
-                        "__init__",
-                        "init_tabs",
-                        "get_current_style",
-                        "set_current_style",
-                        "update_styles",
-                        "_on_style_changed"
-                    ],
-                    "docstring": "Widget for managing style tabs and parameters.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 24,
-            "lint": [
                 "High complexity"
             ]
         },
@@ -722,6 +688,42 @@
                 "High complexity"
             ]
         },
+        "MeTuber\\src\\gui\\components\\action_buttons.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_init_ui",
+                "_on_start_clicked",
+                "_on_stop_clicked",
+                "_on_snapshot_clicked",
+                "_reset_button_states",
+                "set_enabled"
+            ],
+            "classes": {
+                "ActionButtons": {
+                    "methods": [
+                        "__init__",
+                        "_init_ui",
+                        "_on_start_clicked",
+                        "_on_stop_clicked",
+                        "_on_snapshot_clicked",
+                        "_reset_button_states",
+                        "set_enabled"
+                    ],
+                    "docstring": "Widget containing action buttons for controlling the webcam and taking snapshots.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 20,
+            "lint": [
+                "High complexity"
+            ]
+        },
         "MeTuber\\src\\gui\\components\\help_about.py": {
             "language": ".py",
             "functions": [
@@ -789,130 +791,6 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\src\\gui\\components\\parameter_controls.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_ui",
-                "set_style",
-                "_create_int_control",
-                "_create_float_control",
-                "_create_option_control",
-                "_on_parameter_changed",
-                "clear_controls",
-                "get_parameters",
-                "set_parameters"
-            ],
-            "classes": {
-                "ParameterControls": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "set_style",
-                        "_create_int_control",
-                        "_create_float_control",
-                        "_create_option_control",
-                        "_on_parameter_changed",
-                        "clear_controls",
-                        "get_parameters",
-                        "set_parameters"
-                    ],
-                    "docstring": "Component for managing style parameters.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 49,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\src\\gui\\components\\action_buttons.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_init_ui",
-                "_on_start_clicked",
-                "_on_stop_clicked",
-                "_on_snapshot_clicked",
-                "_reset_button_states",
-                "set_enabled"
-            ],
-            "classes": {
-                "ActionButtons": {
-                    "methods": [
-                        "__init__",
-                        "_init_ui",
-                        "_on_start_clicked",
-                        "_on_stop_clicked",
-                        "_on_snapshot_clicked",
-                        "_reset_button_states",
-                        "set_enabled"
-                    ],
-                    "docstring": "Widget containing action buttons for controlling the webcam and taking snapshots.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 20,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\styles\\base.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "define_parameters",
-                "define_variant_parameters",
-                "get_available_variants",
-                "validate_variant",
-                "get_variant_parameters",
-                "set_variant",
-                "get_current_variant",
-                "apply",
-                "validate_params",
-                "describe",
-                "get_style_info"
-            ],
-            "classes": {
-                "Style": {
-                    "methods": [
-                        "__init__",
-                        "define_parameters",
-                        "define_variant_parameters",
-                        "get_available_variants",
-                        "validate_variant",
-                        "get_variant_parameters",
-                        "set_variant",
-                        "get_current_variant",
-                        "apply",
-                        "validate_params",
-                        "describe",
-                        "get_style_info"
-                    ],
-                    "docstring": "Abstract base class for all styles with variant/mode support.",
-                    "base_classes": [
-                        "ABC"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 44,
-            "lint": [
-                "High complexity"
-            ]
-        },
         "MeTuber\\src\\gui\\components\\device_selector.py": {
             "language": ".py",
             "functions": [
@@ -944,261 +822,6 @@
             "lint": [
                 "High complexity"
             ]
-        },
-        "MeTuber\\src\\services\\webcam_service.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "start",
-                "stop",
-                "_process_frames",
-                "update_parameters",
-                "get_last_frame",
-                "is_running"
-            ],
-            "classes": {
-                "WebcamService": {
-                    "methods": [
-                        "__init__",
-                        "start",
-                        "stop",
-                        "_process_frames",
-                        "update_parameters",
-                        "get_last_frame",
-                        "is_running"
-                    ],
-                    "docstring": "Service for managing webcam input and virtual camera output.",
-                    "base_classes": [
-                        "QObject"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 30,
-            "lint": [
-                "Function start >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\styles\\adjustments\\blur.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "BlurStyle": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "A style that applies a Gaussian blur to the image.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
-        "MeTuber\\styles\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "MeTuber\\src\\gui\\components\\v2_style_selector.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_ui",
-                "_create_category_tabs",
-                "_create_category_tab",
-                "set_available_styles",
-                "set_style_variants",
-                "_update_variants_for_style",
-                "_on_style_changed",
-                "_on_variant_changed",
-                "get_current_selection",
-                "set_current_selection",
-                "get_style_parameters"
-            ],
-            "classes": {
-                "V2StyleSelector": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "_create_category_tabs",
-                        "_create_category_tab",
-                        "set_available_styles",
-                        "set_style_variants",
-                        "_update_variants_for_style",
-                        "_on_style_changed",
-                        "_on_variant_changed",
-                        "get_current_selection",
-                        "set_current_selection",
-                        "get_style_parameters"
-                    ],
-                    "docstring": "V2 Style Selector with broader tabs and dropdown variants.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 51,
-            "lint": [
-                "Function _create_category_tab >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\styles\\adjustments\\emboss.py": {
-            "language": ".py",
-            "functions": [
-                "apply"
-            ],
-            "classes": {
-                "Emboss": {
-                    "methods": [
-                        "apply"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 3,
-            "lint": []
-        },
-        "MeTuber\\styles\\adjustments\\gamma_correction.py": {
-            "language": ".py",
-            "functions": [
-                "apply"
-            ],
-            "classes": {
-                "GammaCorrection": {
-                    "methods": [
-                        "apply"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 3,
-            "lint": []
-        },
-        "MeTuber\\styles\\adjustments\\brightness_contrast.py": {
-            "language": ".py",
-            "functions": [
-                "apply"
-            ],
-            "classes": {
-                "BrightnessContrast": {
-                    "methods": [
-                        "apply"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 3,
-            "lint": []
-        },
-        "MeTuber\\src\\gui\\components\\preview_area.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_ui",
-                "_set_placeholder_preview",
-                "update_preview",
-                "set_playing_state",
-                "update_performance_metrics",
-                "_update_fps",
-                "_on_preview_clicked",
-                "_on_snapshot_clicked",
-                "get_preview_size",
-                "set_preview_size",
-                "show_error",
-                "show_info",
-                "clear_messages"
-            ],
-            "classes": {
-                "PreviewArea": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "_set_placeholder_preview",
-                        "update_preview",
-                        "set_playing_state",
-                        "update_performance_metrics",
-                        "_update_fps",
-                        "_on_preview_clicked",
-                        "_on_snapshot_clicked",
-                        "get_preview_size",
-                        "set_preview_size",
-                        "show_error",
-                        "show_info",
-                        "clear_messages"
-                    ],
-                    "docstring": "Real-time preview area for webcam feed with style effects.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 49,
-            "lint": [
-                "Function init_ui >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\styles\\adjustments\\hue_saturation.py": {
-            "language": ".py",
-            "functions": [
-                "apply"
-            ],
-            "classes": {
-                "HueSaturation": {
-                    "methods": [
-                        "apply"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 3,
-            "lint": []
         },
         "MeTuber\\styles\\bitwise_ops.py": {
             "language": ".py",
@@ -1269,19 +892,176 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\adjustments\\solarize.py": {
+        "MeTuber\\src\\gui\\components\\v2_style_selector.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "_create_category_tabs",
+                "_create_category_tab",
+                "set_available_styles",
+                "set_style_variants",
+                "_update_variants_for_style",
+                "_on_style_changed",
+                "_on_variant_changed",
+                "get_current_selection",
+                "set_current_selection",
+                "get_style_parameters"
+            ],
+            "classes": {
+                "V2StyleSelector": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "_create_category_tabs",
+                        "_create_category_tab",
+                        "set_available_styles",
+                        "set_style_variants",
+                        "_update_variants_for_style",
+                        "_on_style_changed",
+                        "_on_variant_changed",
+                        "get_current_selection",
+                        "set_current_selection",
+                        "get_style_parameters"
+                    ],
+                    "docstring": "V2 Style Selector with broader tabs and dropdown variants.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 51,
+            "lint": [
+                "Function _create_category_tab >50 lines",
+                "High complexity"
+            ]
+        },
+        "MeTuber\\src\\gui\\components\\preview_area.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "_set_placeholder_preview",
+                "update_preview",
+                "set_playing_state",
+                "update_performance_metrics",
+                "_update_fps",
+                "_on_preview_clicked",
+                "_on_snapshot_clicked",
+                "get_preview_size",
+                "set_preview_size",
+                "show_error",
+                "show_info",
+                "clear_messages"
+            ],
+            "classes": {
+                "PreviewArea": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "_set_placeholder_preview",
+                        "update_preview",
+                        "set_playing_state",
+                        "update_performance_metrics",
+                        "_update_fps",
+                        "_on_preview_clicked",
+                        "_on_snapshot_clicked",
+                        "get_preview_size",
+                        "set_preview_size",
+                        "show_error",
+                        "show_info",
+                        "clear_messages"
+                    ],
+                    "docstring": "Real-time preview area for webcam feed with style effects.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 49,
+            "lint": [
+                "Function init_ui >50 lines",
+                "High complexity"
+            ]
+        },
+        "MeTuber\\src\\services\\webcam_service.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "start",
+                "stop",
+                "_process_frames",
+                "update_parameters",
+                "get_last_frame",
+                "is_running"
+            ],
+            "classes": {
+                "WebcamService": {
+                    "methods": [
+                        "__init__",
+                        "start",
+                        "stop",
+                        "_process_frames",
+                        "update_parameters",
+                        "get_last_frame",
+                        "is_running"
+                    ],
+                    "docstring": "Service for managing webcam input and virtual camera output.",
+                    "base_classes": [
+                        "QObject"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 30,
+            "lint": [
+                "Function start >50 lines",
+                "High complexity"
+            ]
+        },
+        "MeTuber\\styles\\adjustments\\brightness_contrast.py": {
+            "language": ".py",
+            "functions": [
+                "apply"
+            ],
+            "classes": {
+                "BrightnessContrast": {
+                    "methods": [
+                        "apply"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "MeTuber\\styles\\adjustments\\blur.py": {
             "language": ".py",
             "functions": [
                 "define_parameters",
                 "apply"
             ],
             "classes": {
-                "Solarize": {
+                "BlurStyle": {
                     "methods": [
                         "define_parameters",
                         "apply"
                     ],
-                    "docstring": "A style that applies a solarize effect to the input image.",
+                    "docstring": "A style that applies a Gaussian blur to the image.",
                     "base_classes": [
                         "Style"
                     ],
@@ -1290,16 +1070,146 @@
                 }
             },
             "routes": [],
-            "complexity": 7,
+            "complexity": 6,
             "lint": []
         },
-        "MeTuber\\styles\\adjustments\\sharpen.py": {
+        "MeTuber\\src\\gui\\components\\parameter_controls.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "set_style",
+                "_create_int_control",
+                "_create_float_control",
+                "_create_option_control",
+                "_on_parameter_changed",
+                "clear_controls",
+                "get_parameters",
+                "set_parameters"
+            ],
+            "classes": {
+                "ParameterControls": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "set_style",
+                        "_create_int_control",
+                        "_create_float_control",
+                        "_create_option_control",
+                        "_on_parameter_changed",
+                        "clear_controls",
+                        "get_parameters",
+                        "set_parameters"
+                    ],
+                    "docstring": "Component for managing style parameters.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 49,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\src\\gui\\components\\style_tab_manager.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_tabs",
+                "get_current_style",
+                "set_current_style",
+                "update_styles",
+                "_on_style_changed"
+            ],
+            "classes": {
+                "StyleTabManager": {
+                    "methods": [
+                        "__init__",
+                        "init_tabs",
+                        "get_current_style",
+                        "set_current_style",
+                        "update_styles",
+                        "_on_style_changed"
+                    ],
+                    "docstring": "Widget for managing style tabs and parameters.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 24,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\styles\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "MeTuber\\styles\\base.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "define_parameters",
+                "define_variant_parameters",
+                "get_available_variants",
+                "validate_variant",
+                "get_variant_parameters",
+                "set_variant",
+                "get_current_variant",
+                "apply",
+                "validate_params",
+                "describe",
+                "get_style_info"
+            ],
+            "classes": {
+                "Style": {
+                    "methods": [
+                        "__init__",
+                        "define_parameters",
+                        "define_variant_parameters",
+                        "get_available_variants",
+                        "validate_variant",
+                        "get_variant_parameters",
+                        "set_variant",
+                        "get_current_variant",
+                        "apply",
+                        "validate_params",
+                        "describe",
+                        "get_style_info"
+                    ],
+                    "docstring": "Abstract base class for all styles with variant/mode support.",
+                    "base_classes": [
+                        "ABC"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 44,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\styles\\adjustments\\gamma_correction.py": {
             "language": ".py",
             "functions": [
                 "apply"
             ],
             "classes": {
-                "Sharpen": {
+                "GammaCorrection": {
                     "methods": [
                         "apply"
                     ],
@@ -1315,57 +1225,13 @@
             "complexity": 3,
             "lint": []
         },
-        "MeTuber\\styles\\adjustments\\posterize.py": {
+        "MeTuber\\styles\\adjustments\\emboss.py": {
             "language": ".py",
             "functions": [
                 "apply"
             ],
             "classes": {
-                "Posterize": {
-                    "methods": [
-                        "apply"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 3,
-            "lint": []
-        },
-        "MeTuber\\styles\\adjustments\\vibrance.py": {
-            "language": ".py",
-            "functions": [
-                "apply"
-            ],
-            "classes": {
-                "Vibrance": {
-                    "methods": [
-                        "apply"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "MeTuber\\styles\\adjustments\\vintage.py": {
-            "language": ".py",
-            "functions": [
-                "apply"
-            ],
-            "classes": {
-                "Vintage": {
+                "Emboss": {
                     "methods": [
                         "apply"
                     ],
@@ -1405,12 +1271,116 @@
             "complexity": 8,
             "lint": []
         },
-        "MeTuber\\styles\\adjustments\\__init__.py": {
+        "MeTuber\\styles\\adjustments\\hue_saturation.py": {
             "language": ".py",
-            "functions": [],
-            "classes": {},
+            "functions": [
+                "apply"
+            ],
+            "classes": {
+                "HueSaturation": {
+                    "methods": [
+                        "apply"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 0,
+            "complexity": 3,
+            "lint": []
+        },
+        "MeTuber\\styles\\adjustments\\solarize.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "Solarize": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "A style that applies a solarize effect to the input image.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "MeTuber\\styles\\adjustments\\posterize.py": {
+            "language": ".py",
+            "functions": [
+                "apply"
+            ],
+            "classes": {
+                "Posterize": {
+                    "methods": [
+                        "apply"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "MeTuber\\styles\\adjustments\\sharpen.py": {
+            "language": ".py",
+            "functions": [
+                "apply"
+            ],
+            "classes": {
+                "Sharpen": {
+                    "methods": [
+                        "apply"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "MeTuber\\styles\\adjustments\\vibrance.py": {
+            "language": ".py",
+            "functions": [
+                "apply"
+            ],
+            "classes": {
+                "Vibrance": {
+                    "methods": [
+                        "apply"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
             "lint": []
         },
         "MeTuber\\styles\\artistic\\advanced_cartoon.py": {
@@ -1455,77 +1425,13 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\artistic\\advanced_cartoon2.py": {
+        "MeTuber\\styles\\adjustments\\__init__.py": {
             "language": ".py",
-            "functions": [
-                "__init__",
-                "define_parameters",
-                "apply",
-                "quantize_colors",
-                "apply_color_palette",
-                "boost_anime_colors",
-                "sharpen_image",
-                "posterize_image",
-                "apply_bloom",
-                "apply_texture"
-            ],
-            "classes": {
-                "AdvancedCartoonAnime": {
-                    "methods": [
-                        "__init__",
-                        "define_parameters",
-                        "apply",
-                        "quantize_colors",
-                        "apply_color_palette",
-                        "boost_anime_colors",
-                        "sharpen_image",
-                        "posterize_image",
-                        "apply_bloom",
-                        "apply_texture"
-                    ],
-                    "docstring": "An extended style that applies a stylized anime/isekai effect by enhancing edges,\nboosting colors, posterizing the image, and optionally applying bloom and texture overlays.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
+            "functions": [],
+            "classes": {},
             "routes": [],
-            "complexity": 38,
-            "lint": [
-                "Function apply >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\styles\\artistic\\advanced_edge_detection.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "get_edge_color",
-                "apply"
-            ],
-            "classes": {
-                "AdvancedEdgeDetection": {
-                    "methods": [
-                        "define_parameters",
-                        "get_edge_color",
-                        "apply"
-                    ],
-                    "docstring": "A style that applies advanced edge detection with color customization and glow effects.\nSupports Canny, Sobel, and Laplacian methods.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 23,
-            "lint": [
-                "Function apply >50 lines",
-                "High complexity"
-            ]
+            "complexity": 0,
+            "lint": []
         },
         "MeTuber\\styles\\artistic\\cartoon.py": {
             "language": ".py",
@@ -1617,22 +1523,17 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\artistic\\pencil_sketch.py": {
+        "MeTuber\\styles\\adjustments\\vintage.py": {
             "language": ".py",
             "functions": [
-                "process_webcam_feed",
-                "__init__",
-                "define_parameters",
                 "apply"
             ],
             "classes": {
-                "PencilSketch": {
+                "Vintage": {
                     "methods": [
-                        "__init__",
-                        "define_parameters",
                         "apply"
                     ],
-                    "docstring": "A style that creates a pencil sketch effect on live webcam feeds.",
+                    "docstring": null,
                     "base_classes": [
                         "Style"
                     ],
@@ -1641,10 +1542,128 @@
                 }
             },
             "routes": [],
-            "complexity": 16,
+            "complexity": 3,
+            "lint": []
+        },
+        "MeTuber\\styles\\artistic\\advanced_cartoon2.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "define_parameters",
+                "apply",
+                "quantize_colors",
+                "apply_color_palette",
+                "boost_anime_colors",
+                "sharpen_image",
+                "posterize_image",
+                "apply_bloom",
+                "apply_texture"
+            ],
+            "classes": {
+                "AdvancedCartoonAnime": {
+                    "methods": [
+                        "__init__",
+                        "define_parameters",
+                        "apply",
+                        "quantize_colors",
+                        "apply_color_palette",
+                        "boost_anime_colors",
+                        "sharpen_image",
+                        "posterize_image",
+                        "apply_bloom",
+                        "apply_texture"
+                    ],
+                    "docstring": "An extended style that applies a stylized anime/isekai effect by enhancing edges,\nboosting colors, posterizing the image, and optionally applying bloom and texture overlays.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 38,
             "lint": [
+                "Function apply >50 lines",
                 "High complexity"
             ]
+        },
+        "MeTuber\\styles\\artistic\\edge_detection.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "EdgeDetection": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "A style that applies edge detection using the Canny method.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "MeTuber\\styles\\artistic\\advanced_edge_detection.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "get_edge_color",
+                "apply"
+            ],
+            "classes": {
+                "AdvancedEdgeDetection": {
+                    "methods": [
+                        "define_parameters",
+                        "get_edge_color",
+                        "apply"
+                    ],
+                    "docstring": "A style that applies advanced edge detection with color customization and glow effects.\nSupports Canny, Sobel, and Laplacian methods.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 23,
+            "lint": [
+                "Function apply >50 lines",
+                "High complexity"
+            ]
+        },
+        "MeTuber\\styles\\artistic\\oil_painting.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "OilPainting": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Applies an oil painting effect to the image.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 6,
+            "lint": []
         },
         "MeTuber\\styles\\artistic\\catoonwholeimage.py": {
             "language": ".py",
@@ -1681,19 +1700,22 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\artistic\\oil_painting.py": {
+        "MeTuber\\styles\\artistic\\pencil_sketch.py": {
             "language": ".py",
             "functions": [
+                "process_webcam_feed",
+                "__init__",
                 "define_parameters",
                 "apply"
             ],
             "classes": {
-                "OilPainting": {
+                "PencilSketch": {
                     "methods": [
+                        "__init__",
                         "define_parameters",
                         "apply"
                     ],
-                    "docstring": "Applies an oil painting effect to the image.",
+                    "docstring": "A style that creates a pencil sketch effect on live webcam feeds.",
                     "base_classes": [
                         "Style"
                     ],
@@ -1702,8 +1724,10 @@
                 }
             },
             "routes": [],
-            "complexity": 6,
-            "lint": []
+            "complexity": 16,
+            "lint": [
+                "High complexity"
+            ]
         },
         "MeTuber\\styles\\artistic\\line_art.py": {
             "language": ".py",
@@ -1733,32 +1757,6 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\artistic\\sketch_and_color.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "SketchAndColor": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "A style that combines a pencil sketch effect with color blending.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 7,
-            "lint": [
-                "Function apply >50 lines"
-            ]
-        },
         "MeTuber\\styles\\artistic\\stippling.py": {
             "language": ".py",
             "functions": [
@@ -1785,19 +1783,195 @@
             "complexity": 10,
             "lint": []
         },
-        "MeTuber\\styles\\artistic\\edge_detection.py": {
+        "MeTuber\\styles\\artistic\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "MeTuber\\styles\\basic\\sepia_vibrant.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "SepiaVibrant": {
+                    "methods": [
+                        "__init__",
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Applies a sepia filter and enhances the vibrancy of colors in the image.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 8,
+            "lint": [
+                "Function apply >50 lines"
+            ]
+        },
+        "MeTuber\\styles\\artistic\\unified_sketch.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "define_parameters",
+                "define_variant_parameters",
+                "apply",
+                "_apply_pencil_sketch",
+                "_apply_advanced_sketch",
+                "_apply_color_sketch",
+                "_create_pencil_texture",
+                "_apply_texture_overlay"
+            ],
+            "classes": {
+                "SketchStyle": {
+                    "methods": [
+                        "__init__",
+                        "define_parameters",
+                        "define_variant_parameters",
+                        "apply",
+                        "_apply_pencil_sketch",
+                        "_apply_advanced_sketch",
+                        "_apply_color_sketch",
+                        "_create_pencil_texture",
+                        "_apply_texture_overlay"
+                    ],
+                    "docstring": "Unified Sketch style that consolidates multiple sketch variants into a single class.\nSupports Pencil, Advanced, and Color modes.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 30,
+            "lint": [
+                "Function define_variant_parameters >50 lines",
+                "Function _apply_color_sketch >50 lines",
+                "High complexity"
+            ]
+        },
+        "MeTuber\\styles\\artistic\\sketch_and_color.py": {
             "language": ".py",
             "functions": [
                 "define_parameters",
                 "apply"
             ],
             "classes": {
-                "EdgeDetection": {
+                "SketchAndColor": {
                     "methods": [
                         "define_parameters",
                         "apply"
                     ],
-                    "docstring": "A style that applies edge detection using the Canny method.",
+                    "docstring": "A style that combines a pencil sketch effect with color blending.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 7,
+            "lint": [
+                "Function apply >50 lines"
+            ]
+        },
+        "MeTuber\\styles\\basic\\brightness_only.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "BrightnessOnly": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Adjusts the brightness of the image.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\styles\\basic\\contrast_only.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "ContrastOnly": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Adjusts the contrast of the image.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\styles\\basic\\color_balance.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "ColorBalance": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Adjusts the color balance of an image by modifying the blue, green, and red channels.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\styles\\artistic\\watercolor.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "Watercolor": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Applies a watercolor effect to the image.",
                     "base_classes": [
                         "Style"
                     ],
@@ -1850,188 +2024,6 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\artistic\\watercolor.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "Watercolor": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Applies a watercolor effect to the image.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 7,
-            "lint": []
-        },
-        "MeTuber\\styles\\basic\\color_balance.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "ColorBalance": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Adjusts the color balance of an image by modifying the blue, green, and red channels.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "MeTuber\\styles\\basic\\contrast_only.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "ContrastOnly": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Adjusts the contrast of the image.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "MeTuber\\styles\\artistic\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "MeTuber\\styles\\basic\\brightness_only.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "BrightnessOnly": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Adjusts the brightness of the image.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "MeTuber\\styles\\artistic\\unified_sketch.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "define_parameters",
-                "define_variant_parameters",
-                "apply",
-                "_apply_pencil_sketch",
-                "_apply_advanced_sketch",
-                "_apply_color_sketch",
-                "_create_pencil_texture",
-                "_apply_texture_overlay"
-            ],
-            "classes": {
-                "SketchStyle": {
-                    "methods": [
-                        "__init__",
-                        "define_parameters",
-                        "define_variant_parameters",
-                        "apply",
-                        "_apply_pencil_sketch",
-                        "_apply_advanced_sketch",
-                        "_apply_color_sketch",
-                        "_create_pencil_texture",
-                        "_apply_texture_overlay"
-                    ],
-                    "docstring": "Unified Sketch style that consolidates multiple sketch variants into a single class.\nSupports Pencil, Advanced, and Color modes.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 30,
-            "lint": [
-                "Function define_variant_parameters >50 lines",
-                "Function _apply_color_sketch >50 lines",
-                "High complexity"
-            ]
-        },
-        "MeTuber\\styles\\basic\\sepia_vibrant.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "SepiaVibrant": {
-                    "methods": [
-                        "__init__",
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Applies a sepia filter and enhances the vibrancy of colors in the image.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 8,
-            "lint": [
-                "Function apply >50 lines"
-            ]
-        },
-        "MeTuber\\styles\\basic\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
         "MeTuber\\styles\\basic\\vibrant_color.py": {
             "language": ".py",
             "functions": [
@@ -2054,78 +2046,6 @@
             },
             "routes": [],
             "complexity": 8,
-            "lint": []
-        },
-        "MeTuber\\styles\\color_filters\\invert_colors.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "InvertColors": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Inverts the colors of an image.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "MeTuber\\styles\\color_filters\\invert_filter.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "InvertFilter": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Inverts the colors of the image, creating a negative effect.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
-        "MeTuber\\styles\\distortions\\glitch.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "Glitch": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Applies a glitch effect by randomly shifting color channels.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 9,
             "lint": []
         },
         "MeTuber\\styles\\color_filters\\negative.py": {
@@ -2152,7 +2072,31 @@
             "complexity": 6,
             "lint": []
         },
-        "MeTuber\\styles\\color_filters\\__init__.py": {
+        "MeTuber\\styles\\color_filters\\invert_colors.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "InvertColors": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Inverts the colors of an image.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\styles\\basic\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -2160,19 +2104,19 @@
             "complexity": 0,
             "lint": []
         },
-        "MeTuber\\styles\\distortions\\advanced_halftone.py": {
+        "MeTuber\\styles\\distortions\\glitch.py": {
             "language": ".py",
             "functions": [
                 "define_parameters",
                 "apply"
             ],
             "classes": {
-                "AdvancedHalftone": {
+                "Glitch": {
                     "methods": [
                         "define_parameters",
                         "apply"
                     ],
-                    "docstring": "Applies a halftone effect to the image with adjustable dot size and threshold.",
+                    "docstring": "Applies a glitch effect by randomly shifting color channels.",
                     "base_classes": [
                         "Style"
                     ],
@@ -2181,31 +2125,15 @@
                 }
             },
             "routes": [],
-            "complexity": 8,
+            "complexity": 9,
             "lint": []
         },
-        "MeTuber\\styles\\distortions\\mosaic.py": {
+        "MeTuber\\styles\\color_filters\\__init__.py": {
             "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "Mosaic": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "A style that applies a mosaic effect to the image by resizing down and back up.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
+            "functions": [],
+            "classes": {},
             "routes": [],
-            "complexity": 8,
+            "complexity": 0,
             "lint": []
         },
         "MeTuber\\styles\\color_filters\\unified_invert.py": {
@@ -2248,19 +2176,43 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\effects\\blur_motion.py": {
+        "MeTuber\\styles\\distortions\\mosaic.py": {
             "language": ".py",
             "functions": [
                 "define_parameters",
                 "apply"
             ],
             "classes": {
-                "BlurMotion": {
+                "Mosaic": {
                     "methods": [
                         "define_parameters",
                         "apply"
                     ],
-                    "docstring": "Applies a motion blur effect to the image.",
+                    "docstring": "A style that applies a mosaic effect to the image by resizing down and back up.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 8,
+            "lint": []
+        },
+        "MeTuber\\styles\\color_filters\\invert_filter.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "InvertFilter": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Inverts the colors of the image, creating a negative effect.",
                     "base_classes": [
                         "Style"
                     ],
@@ -2270,6 +2222,56 @@
             },
             "routes": [],
             "complexity": 6,
+            "lint": []
+        },
+        "MeTuber\\styles\\distortions\\light_leak.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "LightLeak": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Adds a customizable light leak effect to the image with adjustable intensity and color.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": [
+                "Function apply >50 lines"
+            ]
+        },
+        "MeTuber\\styles\\distortions\\advanced_halftone.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "AdvancedHalftone": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Applies a halftone effect to the image with adjustable dot size and threshold.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 8,
             "lint": []
         },
         "MeTuber\\styles\\effects\\black_white.py": {
@@ -2304,56 +2306,6 @@
             "complexity": 0,
             "lint": []
         },
-        "MeTuber\\styles\\distortions\\light_leak.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "LightLeak": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Adds a customizable light leak effect to the image with adjustable intensity and color.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": [
-                "Function apply >50 lines"
-            ]
-        },
-        "MeTuber\\styles\\effects\\emboss_contrast.py": {
-            "language": ".py",
-            "functions": [
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "EmbossContrast": {
-                    "methods": [
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Applies an emboss effect and adjusts the contrast of the image.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
         "MeTuber\\styles\\effects\\color_quantization.py": {
             "language": ".py",
             "functions": [
@@ -2378,17 +2330,19 @@
             "complexity": 5,
             "lint": []
         },
-        "MeTuber\\styles\\effects\\buffer_test.py": {
+        "MeTuber\\styles\\effects\\blur_motion.py": {
             "language": ".py",
             "functions": [
+                "define_parameters",
                 "apply"
             ],
             "classes": {
-                "BufferTestStyle": {
+                "BlurMotion": {
                     "methods": [
+                        "define_parameters",
                         "apply"
                     ],
-                    "docstring": null,
+                    "docstring": "Applies a motion blur effect to the image.",
                     "base_classes": [
                         "Style"
                     ],
@@ -2397,7 +2351,7 @@
                 }
             },
             "routes": [],
-            "complexity": 5,
+            "complexity": 6,
             "lint": []
         },
         "MeTuber\\styles\\distortions\\halftone.py": {
@@ -2429,19 +2383,17 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\styles\\effects\\glowing_edges.py": {
+        "MeTuber\\styles\\effects\\buffer_test.py": {
             "language": ".py",
             "functions": [
-                "define_parameters",
                 "apply"
             ],
             "classes": {
-                "GlowingEdges": {
+                "BufferTestStyle": {
                     "methods": [
-                        "define_parameters",
                         "apply"
                     ],
-                    "docstring": "Enhances edges in the image and adds a glowing effect.",
+                    "docstring": null,
                     "base_classes": [
                         "Style"
                     ],
@@ -2450,7 +2402,31 @@
                 }
             },
             "routes": [],
-            "complexity": 6,
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\styles\\effects\\emboss_contrast.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "EmbossContrast": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Applies an emboss effect and adjusts the contrast of the image.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
             "lint": []
         },
         "MeTuber\\styles\\effects\\lines.py": {
@@ -2493,6 +2469,30 @@
                 "High complexity"
             ]
         },
+        "MeTuber\\styles\\effects\\glowing_edges.py": {
+            "language": ".py",
+            "functions": [
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "GlowingEdges": {
+                    "methods": [
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Enhances edges in the image and adds a glowing effect.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
         "MeTuber\\styles\\effects\\negative_vintage.py": {
             "language": ".py",
             "functions": [
@@ -2515,6 +2515,28 @@
             },
             "routes": [],
             "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_all_filters.py": {
+            "language": ".py",
+            "functions": [
+                "get_test_image",
+                "load_all_styles",
+                "test_filter"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 15,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\styles\\effects\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
             "lint": []
         },
         "MeTuber\\styles\\effects\\original.py": {
@@ -2541,12 +2563,18 @@
             "complexity": 4,
             "lint": []
         },
-        "MeTuber\\styles\\effects\\__init__.py": {
+        "MeTuber\\tests\\test_black_white.py": {
             "language": ".py",
-            "functions": [],
+            "functions": [
+                "dummy_image",
+                "test_black_white_default",
+                "test_black_white_invalid_params",
+                "test_black_white_custom_threshold",
+                "test_black_white_performance"
+            ],
             "classes": {},
             "routes": [],
-            "complexity": 0,
+            "complexity": 6,
             "lint": []
         },
         "MeTuber\\tests\\test_blur_motion.py": {
@@ -2564,14 +2592,15 @@
             "complexity": 6,
             "lint": []
         },
-        "MeTuber\\tests\\test_black_white.py": {
+        "MeTuber\\tests\\test_bitwise_ops.py": {
             "language": ".py",
             "functions": [
                 "dummy_image",
-                "test_black_white_default",
-                "test_black_white_invalid_params",
-                "test_black_white_custom_threshold",
-                "test_black_white_performance"
+                "test_bitwise_and",
+                "test_bitwise_invalid_image",
+                "test_bitwise_or",
+                "test_bitwise_xor",
+                "test_bitwise_default_params"
             ],
             "classes": {},
             "routes": [],
@@ -2626,93 +2655,6 @@
             "complexity": 7,
             "lint": []
         },
-        "MeTuber\\tests\\test_all_filters.py": {
-            "language": ".py",
-            "functions": [
-                "get_test_image",
-                "load_all_styles",
-                "test_filter"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 15,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\tests\\test_cartoon.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_cartoon_default_params",
-                "test_cartoon_custom_params",
-                "test_cartoon_invalid_params",
-                "test_cartoon_performance"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_brightness_only.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_brightness_only_default_params",
-                "test_brightness_only_increase_brightness",
-                "test_brightness_only_decrease_brightness",
-                "test_brightness_only_invalid_image",
-                "test_brightness_only_out_of_range_params"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_bitwise_ops.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_bitwise_and",
-                "test_bitwise_invalid_image",
-                "test_bitwise_or",
-                "test_bitwise_xor",
-                "test_bitwise_default_params"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_contrast_only.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_contrast_only_default_params",
-                "test_contrast_only_custom_params",
-                "test_contrast_only_invalid_params",
-                "test_contrast_only_invalid_image",
-                "test_contrast_only_no_change"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_edge_detection.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_edge_detection_default_params",
-                "test_edge_detection_custom_params",
-                "test_edge_detection_invalid_image",
-                "test_edge_detection_invalid_params"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
         "MeTuber\\tests\\test_consolidated_styles.py": {
             "language": ".py",
             "functions": [
@@ -2759,6 +2701,108 @@
                 "High complexity"
             ]
         },
+        "MeTuber\\tests\\test_edge_detection.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_edge_detection_default_params",
+                "test_edge_detection_custom_params",
+                "test_edge_detection_invalid_image",
+                "test_edge_detection_invalid_params"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_cartoon.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_cartoon_default_params",
+                "test_cartoon_custom_params",
+                "test_cartoon_invalid_params",
+                "test_cartoon_performance"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_brightness_only.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_brightness_only_default_params",
+                "test_brightness_only_increase_brightness",
+                "test_brightness_only_decrease_brightness",
+                "test_brightness_only_invalid_image",
+                "test_brightness_only_out_of_range_params"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_glitch.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_glitch_default_params",
+                "test_glitch_custom_params",
+                "test_glitch_invalid_image",
+                "test_glitch_invalid_params"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_contrast_only.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_contrast_only_default_params",
+                "test_contrast_only_custom_params",
+                "test_contrast_only_invalid_params",
+                "test_contrast_only_invalid_image",
+                "test_contrast_only_no_change"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_color_filters.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_invert_colors_default_params",
+                "test_invert_colors_full_inversion",
+                "test_invert_colors_partial_inversion",
+                "test_negative",
+                "test_invert_filter",
+                "test_invalid_image_input"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_halftone.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_halftone_default_params",
+                "test_halftone_custom_params",
+                "test_halftone_invalid_image",
+                "test_halftone_boundary_threshold"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
         "MeTuber\\tests\\test_gui_components.py": {
             "language": ".py",
             "functions": [
@@ -2785,51 +2829,6 @@
             "complexity": 6,
             "lint": []
         },
-        "MeTuber\\tests\\test_color_filters.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_invert_colors_default_params",
-                "test_invert_colors_full_inversion",
-                "test_invert_colors_partial_inversion",
-                "test_negative",
-                "test_invert_filter",
-                "test_invalid_image_input"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 7,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_glitch.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_glitch_default_params",
-                "test_glitch_custom_params",
-                "test_glitch_invalid_image",
-                "test_glitch_invalid_params"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_lines.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_hough_lines_default_params",
-                "test_hough_lines_invalid_image",
-                "test_canny_edge_default_params",
-                "test_canny_edge_invalid_image",
-                "test_canny_edge_invalid_aperture_size"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
         "MeTuber\\tests\\test_line_art.py": {
             "language": ".py",
             "functions": [
@@ -2840,20 +2839,6 @@
             "classes": {},
             "routes": [],
             "complexity": 3,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_halftone.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_halftone_default_params",
-                "test_halftone_custom_params",
-                "test_halftone_invalid_image",
-                "test_halftone_boundary_threshold"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
             "lint": []
         },
         "MeTuber\\tests\\test_sepia_vibrant.py": {
@@ -2871,40 +2856,39 @@
             "complexity": 6,
             "lint": []
         },
-        "MeTuber\\tests\\test_sketch_and_color.py": {
+        "MeTuber\\tests\\test_lines.py": {
             "language": ".py",
             "functions": [
                 "dummy_image",
-                "test_sketch_and_color_default",
-                "test_sketch_and_color_custom"
+                "test_hough_lines_default_params",
+                "test_hough_lines_invalid_image",
+                "test_canny_edge_default_params",
+                "test_canny_edge_invalid_image",
+                "test_canny_edge_invalid_aperture_size"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "MeTuber\\tests\\test_stippling.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_stippling_default",
+                "test_stippling_custom_params"
             ],
             "classes": {},
             "routes": [],
             "complexity": 3,
             "lint": []
         },
-        "MeTuber\\tests\\test_vibrant_color.py": {
+        "MeTuber\\tests\\test_sketch_and_color.py": {
             "language": ".py",
             "functions": [
                 "dummy_image",
-                "test_vibrant_color_default_params",
-                "test_vibrant_color_custom_params",
-                "test_vibrant_color_zero_intensity",
-                "test_vibrant_color_max_intensity",
-                "test_vibrant_color_invalid_image",
-                "test_vibrant_color_edge_case_image"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 8,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_vibrance.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_threshold_default",
-                "test_threshold_custom"
+                "test_sketch_and_color_default",
+                "test_sketch_and_color_custom"
             ],
             "classes": {},
             "routes": [],
@@ -2926,16 +2910,24 @@
             "complexity": 6,
             "lint": []
         },
-        "MeTuber\\tests\\test_stippling.py": {
+        "MeTuber\\tests\\test_vibrance.py": {
             "language": ".py",
             "functions": [
                 "dummy_image",
-                "test_stippling_default",
-                "test_stippling_custom_params"
+                "test_threshold_default",
+                "test_threshold_custom"
             ],
             "classes": {},
             "routes": [],
             "complexity": 3,
+            "lint": []
+        },
+        "MeTuber\\tests\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
             "lint": []
         },
         "MeTuber\\tests\\test_style_initialization.py": {
@@ -2974,62 +2966,18 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\tests\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_webcam_pencil_sketch.py": {
+        "MeTuber\\tests\\test_vibrant_color.py": {
             "language": ".py",
             "functions": [
                 "dummy_image",
-                "test_webcam_pencil_sketch"
+                "test_vibrant_color_default_params",
+                "test_vibrant_color_custom_params",
+                "test_vibrant_color_zero_intensity",
+                "test_vibrant_color_max_intensity",
+                "test_vibrant_color_invalid_image",
+                "test_vibrant_color_edge_case_image"
             ],
             "classes": {},
-            "routes": [],
-            "complexity": 2,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_watercolor.py": {
-            "language": ".py",
-            "functions": [
-                "dummy_image",
-                "test_watercolor_default_params",
-                "test_watercolor_custom_params",
-                "test_watercolor_invalid_image",
-                "test_watercolor_invalid_dtype",
-                "test_watercolor_invalid_params",
-                "test_watercolor_no_params"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 7,
-            "lint": []
-        },
-        "MeTuber\\tests\\test_webcam_threading.py": {
-            "language": ".py",
-            "functions": [
-                "webcam_thread",
-                "setup_test",
-                "test_thread_initialization",
-                "cleanup"
-            ],
-            "classes": {
-                "TestWebcamThreading": {
-                    "methods": [
-                        "webcam_thread",
-                        "setup_test",
-                        "test_thread_initialization"
-                    ],
-                    "docstring": "Test cases for WebcamThread class.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
             "routes": [],
             "complexity": 8,
             "lint": []
@@ -3050,6 +2998,17 @@
             "complexity": 7,
             "lint": []
         },
+        "MeTuber\\tests\\test_webcam_pencil_sketch.py": {
+            "language": ".py",
+            "functions": [
+                "dummy_image",
+                "test_webcam_pencil_sketch"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
         "MeTuber\\tests\\config\\test_settings_manager.py": {
             "language": ".py",
             "functions": [
@@ -3066,42 +3025,6 @@
             "routes": [],
             "complexity": 8,
             "lint": []
-        },
-        "MeTuber\\tests\\core\\test_style_manager.py": {
-            "language": ".py",
-            "functions": [
-                "style_manager",
-                "test_style_manager_initialization",
-                "test_style_manager_get_style",
-                "test_style_manager_get_categories",
-                "test_style_manager_get_styles_in_category",
-                "test_style_manager_validate_style_parameters",
-                "test_style_manager_get_default_parameters",
-                "test_style_manager_get_style_info",
-                "__init__",
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "MockStyle": {
-                    "methods": [
-                        "__init__",
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Mock style class for testing.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 14,
-            "lint": [
-                "High complexity"
-            ]
         },
         "MeTuber\\tests\\test_webcam_filter_pyqt5.py": {
             "language": ".py",
@@ -3197,64 +3120,98 @@
                 "High complexity"
             ]
         },
-        "MeTuber\\tests\\gui\\test_style_tab_manager.py": {
+        "MeTuber\\tests\\test_watercolor.py": {
             "language": ".py",
             "functions": [
-                "style_tab_manager",
-                "test_style_tab_manager_initialization",
-                "test_style_tab_manager_get_current_style",
-                "test_style_tab_manager_set_current_style",
-                "test_style_tab_manager_update_styles",
-                "test_style_tab_manager_error_handling",
-                "test_style_tab_manager_style_changed_signal",
+                "dummy_image",
+                "test_watercolor_default_params",
+                "test_watercolor_custom_params",
+                "test_watercolor_invalid_image",
+                "test_watercolor_invalid_dtype",
+                "test_watercolor_invalid_params",
+                "test_watercolor_no_params"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "MeTuber\\tests\\core\\test_device_manager.py": {
+            "language": ".py",
+            "functions": [
+                "device_manager",
+                "test_device_manager_initialization",
+                "test_device_manager_refresh_devices",
+                "test_device_manager_get_devices",
+                "test_device_manager_get_default_device",
+                "test_device_manager_validate_device",
+                "test_device_manager_get_device_info",
+                "test_device_manager_factory"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 8,
+            "lint": []
+        },
+        "MeTuber\\tests\\core\\test_style_manager.py": {
+            "language": ".py",
+            "functions": [
+                "style_manager",
+                "test_style_manager_initialization",
+                "test_style_manager_get_style",
+                "test_style_manager_get_categories",
+                "test_style_manager_get_styles_in_category",
+                "test_style_manager_validate_style_parameters",
+                "test_style_manager_get_default_parameters",
+                "test_style_manager_get_style_info",
                 "__init__",
+                "define_parameters",
                 "apply"
             ],
             "classes": {
                 "MockStyle": {
                     "methods": [
                         "__init__",
+                        "define_parameters",
                         "apply"
                     ],
                     "docstring": "Mock style class for testing.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\tests\\test_webcam_threading.py": {
+            "language": ".py",
+            "functions": [
+                "webcam_thread",
+                "setup_test",
+                "test_thread_initialization",
+                "cleanup"
+            ],
+            "classes": {
+                "TestWebcamThreading": {
+                    "methods": [
+                        "webcam_thread",
+                        "setup_test",
+                        "test_thread_initialization"
+                    ],
+                    "docstring": "Test cases for WebcamThread class.",
                     "base_classes": [],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 11,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\tests\\gui\\test_device_selector.py": {
-            "language": ".py",
-            "functions": [
-                "device_selector",
-                "test_device_selector_initialization",
-                "test_device_selector_get_selected_device",
-                "test_device_selector_set_available_devices",
-                "test_device_selector_refresh_devices",
-                "test_device_selector_error_handling"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
-        "MeTuber\\tests\\integration\\test_settings_device_integration.py": {
-            "language": ".py",
-            "functions": [
-                "settings_manager",
-                "device_manager",
-                "test_settings_device_integration",
-                "test_settings_device_error_handling",
-                "test_settings_device_persistence"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 7,
+            "complexity": 8,
             "lint": []
         },
         "MeTuber\\tests\\gui\\test_main_window.py": {
@@ -3276,60 +3233,6 @@
             "classes": {},
             "routes": [],
             "complexity": 12,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "MeTuber\\tests\\core\\test_device_manager.py": {
-            "language": ".py",
-            "functions": [
-                "device_manager",
-                "test_device_manager_initialization",
-                "test_device_manager_refresh_devices",
-                "test_device_manager_get_devices",
-                "test_device_manager_get_default_device",
-                "test_device_manager_validate_device",
-                "test_device_manager_get_device_info",
-                "test_device_manager_factory"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 8,
-            "lint": []
-        },
-        "MeTuber\\tests\\services\\test_webcam_service.py": {
-            "language": ".py",
-            "functions": [
-                "webcam_service",
-                "mock_frame",
-                "test_webcam_service_initialization",
-                "test_webcam_service_start",
-                "test_webcam_service_stop",
-                "test_webcam_service_update_parameters",
-                "test_webcam_service_get_last_frame",
-                "test_webcam_service_is_running",
-                "test_webcam_service_error_handling",
-                "__init__",
-                "define_parameters",
-                "apply"
-            ],
-            "classes": {
-                "MockStyle": {
-                    "methods": [
-                        "__init__",
-                        "define_parameters",
-                        "apply"
-                    ],
-                    "docstring": "Mock style for testing.",
-                    "base_classes": [
-                        "Style"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 15,
             "lint": [
                 "High complexity"
             ]
@@ -3380,6 +3283,21 @@
                 "High complexity"
             ]
         },
+        "MeTuber\\tests\\gui\\test_device_selector.py": {
+            "language": ".py",
+            "functions": [
+                "device_selector",
+                "test_device_selector_initialization",
+                "test_device_selector_get_selected_device",
+                "test_device_selector_set_available_devices",
+                "test_device_selector_refresh_devices",
+                "test_device_selector_error_handling"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
         "MeTuber\\tests\\integration\\test_gui_integration.py": {
             "language": ".py",
             "functions": [
@@ -3411,6 +3329,88 @@
             },
             "routes": [],
             "complexity": 26,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\tests\\integration\\test_settings_device_integration.py": {
+            "language": ".py",
+            "functions": [
+                "settings_manager",
+                "device_manager",
+                "test_settings_device_integration",
+                "test_settings_device_error_handling",
+                "test_settings_device_persistence"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "MeTuber\\tests\\gui\\test_style_tab_manager.py": {
+            "language": ".py",
+            "functions": [
+                "style_tab_manager",
+                "test_style_tab_manager_initialization",
+                "test_style_tab_manager_get_current_style",
+                "test_style_tab_manager_set_current_style",
+                "test_style_tab_manager_update_styles",
+                "test_style_tab_manager_error_handling",
+                "test_style_tab_manager_style_changed_signal",
+                "__init__",
+                "apply"
+            ],
+            "classes": {
+                "MockStyle": {
+                    "methods": [
+                        "__init__",
+                        "apply"
+                    ],
+                    "docstring": "Mock style class for testing.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 11,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "MeTuber\\tests\\services\\test_webcam_service.py": {
+            "language": ".py",
+            "functions": [
+                "webcam_service",
+                "mock_frame",
+                "test_webcam_service_initialization",
+                "test_webcam_service_start",
+                "test_webcam_service_stop",
+                "test_webcam_service_update_parameters",
+                "test_webcam_service_get_last_frame",
+                "test_webcam_service_is_running",
+                "test_webcam_service_error_handling",
+                "__init__",
+                "define_parameters",
+                "apply"
+            ],
+            "classes": {
+                "MockStyle": {
+                    "methods": [
+                        "__init__",
+                        "define_parameters",
+                        "apply"
+                    ],
+                    "docstring": "Mock style for testing.",
+                    "base_classes": [
+                        "Style"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 15,
             "lint": [
                 "High complexity"
             ]
