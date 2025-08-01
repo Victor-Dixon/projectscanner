@@ -1,7 +1,103 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp6uosb09p\\FocusForge",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp08ceqik7\\FocusForge",
     "num_files_analyzed": 32,
     "analysis_details": {
+        "core\\trackers\\activity_monitor.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "start_monitoring",
+                "stop_monitoring",
+                "on_activity",
+                "monitor",
+                "get_distractions",
+                "reset_distractions"
+            ],
+            "classes": {
+                "ActivityMonitor": {
+                    "methods": [
+                        "__init__",
+                        "start_monitoring",
+                        "stop_monitoring",
+                        "on_activity",
+                        "monitor",
+                        "get_distractions",
+                        "reset_distractions"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 16,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "core\\analytics\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "core\\trackers\\advanced_distraction.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "on_activity",
+                "is_inactive",
+                "get_active_window",
+                "detect_off_task_window",
+                "detect_distraction_in_text",
+                "start_monitoring",
+                "stop_monitoring",
+                "monitor",
+                "get_distraction_count",
+                "reset_distractions"
+            ],
+            "classes": {
+                "AdvancedDistractionDetector": {
+                    "methods": [
+                        "__init__",
+                        "on_activity",
+                        "is_inactive",
+                        "get_active_window",
+                        "detect_off_task_window",
+                        "detect_distraction_in_text",
+                        "start_monitoring",
+                        "stop_monitoring",
+                        "monitor",
+                        "get_distraction_count",
+                        "reset_distractions"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 26,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "launch",
+                "generate_focus_report"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
         "core\\engine\\__init__.py": {
             "language": ".py",
             "functions": [],
@@ -10,25 +106,20 @@
             "complexity": 0,
             "lint": []
         },
-        "core\\engine\\train_rl.py": {
+        "core\\trackers\\__init__.py": {
             "language": ".py",
-            "functions": [
-                "main",
-                "reset_distractions"
-            ],
-            "classes": {
-                "_StubDistractionDetector": {
-                    "methods": [
-                        "reset_distractions"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Kiddie Script",
-                    "agent_type": "Utility"
-                }
-            },
+            "functions": [],
+            "classes": {},
             "routes": [],
-            "complexity": 4,
+            "complexity": 0,
+            "lint": []
+        },
+        "core\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
             "lint": []
         },
         "core\\engine\\focus_env.py": {
@@ -61,78 +152,6 @@
             },
             "routes": [],
             "complexity": 18,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "core\\trackers\\distraction_logger.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "load_logs",
-                "log_event",
-                "get_logs",
-                "get_summary"
-            ],
-            "classes": {
-                "DistractionLogger": {
-                    "methods": [
-                        "__init__",
-                        "load_logs",
-                        "log_event",
-                        "get_logs",
-                        "get_summary"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 12,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "core\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "core\\analytics\\focus_report.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "load_logs",
-                "generate_report",
-                "get_summary",
-                "get_time_analysis",
-                "get_recommendations",
-                "export_csv"
-            ],
-            "classes": {
-                "FocusReport": {
-                    "methods": [
-                        "__init__",
-                        "load_logs",
-                        "generate_report",
-                        "get_summary",
-                        "get_time_analysis",
-                        "get_recommendations",
-                        "export_csv"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 25,
             "lint": [
                 "High complexity"
             ]
@@ -181,81 +200,44 @@
                 "High complexity"
             ]
         },
-        "core\\trackers\\activity_monitor.py": {
+        "core\\engine\\train_rl.py": {
             "language": ".py",
             "functions": [
-                "__init__",
-                "start_monitoring",
-                "stop_monitoring",
-                "on_activity",
-                "monitor",
-                "get_distractions",
+                "main",
                 "reset_distractions"
             ],
             "classes": {
-                "ActivityMonitor": {
+                "_StubDistractionDetector": {
                     "methods": [
-                        "__init__",
-                        "start_monitoring",
-                        "stop_monitoring",
-                        "on_activity",
-                        "monitor",
-                        "get_distractions",
                         "reset_distractions"
                     ],
                     "docstring": null,
                     "base_classes": [],
-                    "maturity": "Core Asset",
+                    "maturity": "Kiddie Script",
                     "agent_type": "Utility"
                 }
             },
-            "routes": [],
-            "complexity": 16,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "launch",
-                "generate_focus_report"
-            ],
-            "classes": {},
             "routes": [],
             "complexity": 4,
             "lint": []
         },
-        "core\\trackers\\advanced_distraction.py": {
+        "core\\trackers\\distraction_logger.py": {
             "language": ".py",
             "functions": [
                 "__init__",
-                "on_activity",
-                "is_inactive",
-                "get_active_window",
-                "detect_off_task_window",
-                "detect_distraction_in_text",
-                "start_monitoring",
-                "stop_monitoring",
-                "monitor",
-                "get_distraction_count",
-                "reset_distractions"
+                "load_logs",
+                "log_event",
+                "get_logs",
+                "get_summary"
             ],
             "classes": {
-                "AdvancedDistractionDetector": {
+                "DistractionLogger": {
                     "methods": [
                         "__init__",
-                        "on_activity",
-                        "is_inactive",
-                        "get_active_window",
-                        "detect_off_task_window",
-                        "detect_distraction_in_text",
-                        "start_monitoring",
-                        "stop_monitoring",
-                        "monitor",
-                        "get_distraction_count",
-                        "reset_distractions"
+                        "load_logs",
+                        "log_event",
+                        "get_logs",
+                        "get_summary"
                     ],
                     "docstring": null,
                     "base_classes": [],
@@ -264,160 +246,41 @@
                 }
             },
             "routes": [],
-            "complexity": 26,
+            "complexity": 12,
             "lint": [
                 "High complexity"
             ]
         },
-        "core\\analytics\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "core\\trackers\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "core\\utils\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "gui\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "gui\\components\\kantu_board.py": {
+        "core\\analytics\\focus_report.py": {
             "language": ".py",
             "functions": [
-                "main",
                 "__init__",
-                "to_dict",
-                "from_dict",
-                "__init__",
-                "__init__",
-                "init_ui",
-                "update_progress",
-                "__init__",
-                "init_ui",
-                "log_xp",
-                "update_skills",
-                "__init__",
-                "dragEnterEvent",
-                "dropEvent",
-                "open_context_menu",
-                "__init__",
-                "init_ui",
-                "add_task",
-                "award_xp",
-                "_current_state",
-                "save_tasks",
-                "load_tasks",
-                "get_items",
-                "closeEvent"
+                "load_logs",
+                "generate_report",
+                "get_summary",
+                "get_time_analysis",
+                "get_recommendations",
+                "export_csv"
             ],
             "classes": {
-                "TaskCard": {
+                "FocusReport": {
                     "methods": [
                         "__init__",
-                        "to_dict",
-                        "from_dict"
+                        "load_logs",
+                        "generate_report",
+                        "get_summary",
+                        "get_time_analysis",
+                        "get_recommendations",
+                        "export_csv"
                     ],
                     "docstring": null,
-                    "base_classes": [
-                        "QListWidgetItem"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "SkillProgressBar": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QProgressBar"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "SkillWidget": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "update_progress"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QFrame"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "SkillOverlay": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "log_xp",
-                        "update_skills"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "KantuColumn": {
-                    "methods": [
-                        "__init__",
-                        "dragEnterEvent",
-                        "dropEvent",
-                        "open_context_menu"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QListWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "KantuBoard": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "add_task",
-                        "award_xp",
-                        "_current_state",
-                        "save_tasks",
-                        "load_tasks",
-                        "get_items",
-                        "closeEvent"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QMainWindow"
-                    ],
+                    "base_classes": [],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 74,
+            "complexity": 25,
             "lint": [
                 "High complexity"
             ]
@@ -472,64 +335,7 @@
                 "High complexity"
             ]
         },
-        "gui\\components\\skill_animations.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "show_animation",
-                "__init__",
-                "setup_animations",
-                "show_level_up",
-                "show_xp_gain",
-                "animate_progress_bar",
-                "__init__",
-                "log_xp_event",
-                "pulse_color"
-            ],
-            "classes": {
-                "AnimatedLabel": {
-                    "methods": [
-                        "__init__",
-                        "show_animation"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QLabel"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "XPAnimation": {
-                    "methods": [
-                        "__init__",
-                        "setup_animations",
-                        "show_level_up",
-                        "show_xp_gain",
-                        "animate_progress_bar"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "DevlogWriter": {
-                    "methods": [
-                        "__init__",
-                        "log_xp_event"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 21,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "gui\\components\\__init__.py": {
+        "core\\utils\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -537,7 +343,7 @@
             "complexity": 0,
             "lint": []
         },
-        "gui\\dialogs\\__init__.py": {
+        "gui\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -670,6 +476,274 @@
                 "High complexity"
             ]
         },
+        "gui\\components\\splash_screen.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "launch"
+            ],
+            "classes": {
+                "SplashScreen": {
+                    "methods": [
+                        "__init__",
+                        "launch"
+                    ],
+                    "docstring": "Lightweight splash screen with an indeterminate progress bar.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "gui\\dialogs\\settings_dialog.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "toggle_dark_mode",
+                "save_settings"
+            ],
+            "classes": {
+                "SettingsDialog": {
+                    "methods": [
+                        "__init__",
+                        "toggle_dark_mode",
+                        "save_settings"
+                    ],
+                    "docstring": "Modal dialog that allows users to tweak Pomodoro and UI settings.",
+                    "base_classes": [
+                        "QDialog"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "gui\\components\\kantu_board.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "__init__",
+                "to_dict",
+                "from_dict",
+                "__init__",
+                "__init__",
+                "init_ui",
+                "update_progress",
+                "__init__",
+                "init_ui",
+                "log_xp",
+                "update_skills",
+                "__init__",
+                "dragEnterEvent",
+                "dropEvent",
+                "open_context_menu",
+                "__init__",
+                "init_ui",
+                "add_task",
+                "award_xp",
+                "_current_state",
+                "save_tasks",
+                "load_tasks",
+                "get_items",
+                "closeEvent"
+            ],
+            "classes": {
+                "TaskCard": {
+                    "methods": [
+                        "__init__",
+                        "to_dict",
+                        "from_dict"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QListWidgetItem"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "SkillProgressBar": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QProgressBar"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "SkillWidget": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "update_progress"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QFrame"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "SkillOverlay": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "log_xp",
+                        "update_skills"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "KantuColumn": {
+                    "methods": [
+                        "__init__",
+                        "dragEnterEvent",
+                        "dropEvent",
+                        "open_context_menu"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QListWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "KantuBoard": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "add_task",
+                        "award_xp",
+                        "_current_state",
+                        "save_tasks",
+                        "load_tasks",
+                        "get_items",
+                        "closeEvent"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 74,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "gui\\themes\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "gui\\components\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "gui\\components\\skill_animations.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "show_animation",
+                "__init__",
+                "setup_animations",
+                "show_level_up",
+                "show_xp_gain",
+                "animate_progress_bar",
+                "__init__",
+                "log_xp_event",
+                "pulse_color"
+            ],
+            "classes": {
+                "AnimatedLabel": {
+                    "methods": [
+                        "__init__",
+                        "show_animation"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QLabel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "XPAnimation": {
+                    "methods": [
+                        "__init__",
+                        "setup_animations",
+                        "show_level_up",
+                        "show_xp_gain",
+                        "animate_progress_bar"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "DevlogWriter": {
+                    "methods": [
+                        "__init__",
+                        "log_xp_event"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 21,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "gui\\dialogs\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "meta_skills\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "meta_skills\\animations\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
         "meta_skills\\levels\\meta_skills.py": {
             "language": ".py",
             "functions": [
@@ -738,97 +812,15 @@
                 "High complexity"
             ]
         },
-        "gui\\themes\\__init__.py": {
+        "tests\\unit\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
             "routes": [],
             "complexity": 0,
-            "lint": []
-        },
-        "gui\\components\\splash_screen.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "launch"
-            ],
-            "classes": {
-                "SplashScreen": {
-                    "methods": [
-                        "__init__",
-                        "launch"
-                    ],
-                    "docstring": "Lightweight splash screen with an indeterminate progress bar.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "meta_skills\\animations\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "meta_skills\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "gui\\dialogs\\settings_dialog.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "toggle_dark_mode",
-                "save_settings"
-            ],
-            "classes": {
-                "SettingsDialog": {
-                    "methods": [
-                        "__init__",
-                        "toggle_dark_mode",
-                        "save_settings"
-                    ],
-                    "docstring": "Modal dialog that allows users to tweak Pomodoro and UI settings.",
-                    "base_classes": [
-                        "QDialog"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 10,
             "lint": []
         },
         "meta_skills\\levels\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "tests\\integration\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "tests\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -913,7 +905,15 @@
                 "High complexity"
             ]
         },
-        "tests\\unit\\__init__.py": {
+        "tests\\integration\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "tests\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},

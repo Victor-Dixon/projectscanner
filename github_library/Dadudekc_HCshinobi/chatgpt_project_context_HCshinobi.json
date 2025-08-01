@@ -1,34 +1,32 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpg3gilbvl\\HCshinobi",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpu2ec9cc_\\HCshinobi",
     "num_files_analyzed": 116,
     "analysis_details": {
-        "setup.py": {
+        "manual_test_commands.py": {
             "language": ".py",
-            "functions": [],
+            "functions": [
+                "print_testing_checklist",
+                "create_test_scenarios"
+            ],
             "classes": {},
             "routes": [],
-            "complexity": 0,
-            "lint": []
+            "complexity": 5,
+            "lint": [
+                "Function print_testing_checklist >50 lines",
+                "Function create_test_scenarios >50 lines"
+            ]
         },
-        "demo_shinobios_mission.py": {
+        "discord_integration.py": {
             "language": ".py",
-            "functions": [],
+            "functions": [
+                "run_bot"
+            ],
             "classes": {},
             "routes": [],
             "complexity": 14,
             "lint": [
                 "High complexity"
             ]
-        },
-        "start_hcshinobi.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 6,
-            "lint": []
         },
         "launch_bot.py": {
             "language": ".py",
@@ -50,42 +48,6 @@
             "routes": [],
             "complexity": 10,
             "lint": []
-        },
-        "discord_integration.py": {
-            "language": ".py",
-            "functions": [
-                "run_bot"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 14,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "mission_gpt_interface.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "set_model"
-            ],
-            "classes": {
-                "MissionGPTInterface": {
-                    "methods": [
-                        "__init__",
-                        "set_model"
-                    ],
-                    "docstring": "Interface combining the MissionSystem and OpenAIClient.\nDecides if user input is a mission command or a general GPT question, then routes accordingly.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 26,
-            "lint": [
-                "High complexity"
-            ]
         },
         "create_character.py": {
             "language": ".py",
@@ -123,43 +85,13 @@
                 "High complexity"
             ]
         },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "setup_logging",
-                "load_env",
-                "require_env",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 43,
-            "lint": [
-                "Function require_env >50 lines",
-                "High complexity"
-            ]
-        },
-        "sitecustomize.py": {
+        "setup.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
             "routes": [],
-            "complexity": 1,
+            "complexity": 0,
             "lint": []
-        },
-        "manual_test_commands.py": {
-            "language": ".py",
-            "functions": [
-                "print_testing_checklist",
-                "create_test_scenarios"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": [
-                "Function print_testing_checklist >50 lines",
-                "Function create_test_scenarios >50 lines"
-            ]
         },
         "run.py": {
             "language": ".py",
@@ -176,6 +108,82 @@
             "lint": [
                 "High complexity"
             ]
+        },
+        "demo_shinobios_mission.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "start_hcshinobi.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "mission_gpt_interface.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "set_model"
+            ],
+            "classes": {
+                "MissionGPTInterface": {
+                    "methods": [
+                        "__init__",
+                        "set_model"
+                    ],
+                    "docstring": "Interface combining the MissionSystem and OpenAIClient.\nDecides if user input is a mission command or a general GPT question, then routes accordingly.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 26,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "setup_logging",
+                "load_env",
+                "require_env",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 43,
+            "lint": [
+                "Function require_env >50 lines",
+                "High complexity"
+            ]
+        },
+        "test_discord_bot.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
+        },
+        "sitecustomize.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 1,
+            "lint": []
         },
         "test_actual_commands.py": {
             "language": ".py",
@@ -213,7 +221,7 @@
             "complexity": 4,
             "lint": []
         },
-        "__init__.py": {
+        "HCshinobi\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -221,38 +229,7 @@
             "complexity": 0,
             "lint": []
         },
-        "HCshinobi\\bot\\bot.py": {
-            "language": ".py",
-            "functions": [
-                "register_commands_command",
-                "__init__"
-            ],
-            "classes": {
-                "HCBot": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "commands.Bot"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 10,
-            "lint": []
-        },
-        "test_discord_bot.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 1,
-            "lint": []
-        },
-        "HCshinobi\\__init__.py": {
+        "__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -289,12 +266,24 @@
             "complexity": 0,
             "lint": []
         },
-        "HCshinobi\\bot\\__init__.py": {
+        "HCshinobi\\bot\\services.py": {
             "language": ".py",
-            "functions": [],
-            "classes": {},
+            "functions": [
+                "__init__"
+            ],
+            "classes": {
+                "ServiceContainer": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 0,
+            "complexity": 3,
             "lint": []
         },
         "verify_beta.py": {
@@ -335,25 +324,60 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\bot\\services.py": {
+        "HCshinobi\\bot\\bot.py": {
+            "language": ".py",
+            "functions": [
+                "register_commands_command",
+                "__init__"
+            ],
+            "classes": {
+                "HCBot": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "commands.Bot"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "HCshinobi\\bot\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "HCshinobi\\bot\\cogs\\announcements.py": {
             "language": ".py",
             "functions": [
                 "__init__"
             ],
             "classes": {
-                "ServiceContainer": {
+                "AnnouncementCommands": {
                     "methods": [
                         "__init__"
                     ],
                     "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
+                    "base_classes": [
+                        "commands.Cog"
+                    ],
+                    "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 3,
-            "lint": []
+            "complexity": 12,
+            "lint": [
+                "High complexity"
+            ]
         },
         "HCshinobi\\bot\\cogs\\currency.py": {
             "language": ".py",
@@ -379,25 +403,17 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\bot\\cogs\\character_commands.py": {
+        "HCshinobi\\bot\\cogs\\clan_mission_commands.py": {
             "language": ".py",
             "functions": [
-                "__init__",
-                "_create_progress_bar",
-                "_get_element_emoji",
-                "_get_rarity_color",
-                "_calculate_rank"
+                "__init__"
             ],
             "classes": {
-                "CharacterCommands": {
+                "ClanMissionCommands": {
                     "methods": [
-                        "__init__",
-                        "_create_progress_bar",
-                        "_get_element_emoji",
-                        "_get_rarity_color",
-                        "_calculate_rank"
+                        "__init__"
                     ],
-                    "docstring": "Enhanced character commands with jutsu system integration.",
+                    "docstring": null,
                     "base_classes": [
                         "commands.Cog"
                     ],
@@ -406,7 +422,7 @@
                 }
             },
             "routes": [],
-            "complexity": 78,
+            "complexity": 12,
             "lint": [
                 "High complexity"
             ]
@@ -441,30 +457,6 @@
             },
             "routes": [],
             "complexity": 21,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "HCshinobi\\bot\\cogs\\clan_mission_commands.py": {
-            "language": ".py",
-            "functions": [
-                "__init__"
-            ],
-            "classes": {
-                "ClanMissionCommands": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "commands.Cog"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 12,
             "lint": [
                 "High complexity"
             ]
@@ -593,73 +585,21 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\bot\\cogs\\boss_commands.py": {
+        "HCshinobi\\bot\\cogs\\shop_commands.py": {
             "language": ".py",
             "functions": [
                 "__init__",
-                "__init__",
-                "__init__",
-                "__init__",
-                "load_boss_data",
-                "load_jutsu_data",
-                "load_character_data",
-                "save_character_data",
-                "create_battle_embed",
-                "get_current_phase",
-                "calculate_boss_damage",
-                "create_interactive_battle_embed",
-                "get_jutsu_multiplier",
-                "update_battle_phase"
+                "_load_shop_data",
+                "_get_rarity_color"
             ],
             "classes": {
-                "SolomonBattleView": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": "Interactive view for Solomon battles with buttons.",
-                    "base_classes": [
-                        "discord.ui.View"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "JutsuSelectionView": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": "View for selecting jutsu during battle.",
-                    "base_classes": [
-                        "discord.ui.View"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "FleeConfirmationView": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": "View for confirming flee action.",
-                    "base_classes": [
-                        "discord.ui.View"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "BossCommands": {
+                "ShopCommands": {
                     "methods": [
                         "__init__",
-                        "load_boss_data",
-                        "load_jutsu_data",
-                        "load_character_data",
-                        "save_character_data",
-                        "create_battle_embed",
-                        "get_current_phase",
-                        "calculate_boss_damage",
-                        "create_interactive_battle_embed",
-                        "get_jutsu_multiplier",
-                        "update_battle_phase"
+                        "_load_shop_data",
+                        "_get_rarity_color"
                     ],
-                    "docstring": "Commands for the ultimate boss battle system.",
+                    "docstring": "Commands for shopping and purchasing items.",
                     "base_classes": [
                         "commands.Cog"
                     ],
@@ -668,25 +608,30 @@
                 }
             },
             "routes": [],
-            "complexity": 104,
+            "complexity": 40,
             "lint": [
-                "Function load_boss_data >50 lines",
-                "Function create_battle_embed >50 lines",
-                "Function create_interactive_battle_embed >50 lines",
                 "High complexity"
             ]
         },
-        "HCshinobi\\bot\\cogs\\announcements.py": {
+        "HCshinobi\\bot\\cogs\\character_commands.py": {
             "language": ".py",
             "functions": [
-                "__init__"
+                "__init__",
+                "_create_progress_bar",
+                "_get_element_emoji",
+                "_get_rarity_color",
+                "_calculate_rank"
             ],
             "classes": {
-                "AnnouncementCommands": {
+                "CharacterCommands": {
                     "methods": [
-                        "__init__"
+                        "__init__",
+                        "_create_progress_bar",
+                        "_get_element_emoji",
+                        "_get_rarity_color",
+                        "_calculate_rank"
                     ],
-                    "docstring": null,
+                    "docstring": "Enhanced character commands with jutsu system integration.",
                     "base_classes": [
                         "commands.Cog"
                     ],
@@ -695,7 +640,7 @@
                 }
             },
             "routes": [],
-            "complexity": 12,
+            "complexity": 78,
             "lint": [
                 "High complexity"
             ]
@@ -782,73 +727,73 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\core\\battle_system.py": {
-            "language": ".py",
-            "functions": [
-                "start_battle"
-            ],
-            "classes": {
-                "BattleSystem": {
-                    "methods": [
-                        "start_battle"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 2,
-            "lint": []
-        },
-        "HCshinobi\\core\\character_system.py": {
+        "HCshinobi\\bot\\cogs\\boss_commands.py": {
             "language": ".py",
             "functions": [
                 "__init__",
-                "_load_existing_characters",
-                "_load_character_from_file",
-                "_save_character_to_file",
-                "_character_to_dict",
-                "_dict_to_character"
+                "__init__",
+                "__init__",
+                "__init__",
+                "load_boss_data",
+                "load_jutsu_data",
+                "load_character_data",
+                "save_character_data",
+                "create_battle_embed",
+                "get_current_phase",
+                "calculate_boss_damage",
+                "create_interactive_battle_embed",
+                "get_jutsu_multiplier",
+                "update_battle_phase"
             ],
             "classes": {
-                "CharacterSystem": {
+                "SolomonBattleView": {
                     "methods": [
-                        "__init__",
-                        "_load_existing_characters",
-                        "_load_character_from_file",
-                        "_save_character_to_file",
-                        "_character_to_dict",
-                        "_dict_to_character"
+                        "__init__"
                     ],
-                    "docstring": null,
-                    "base_classes": [],
+                    "docstring": "Interactive view for Solomon battles with buttons.",
+                    "base_classes": [
+                        "discord.ui.View"
+                    ],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 23,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "HCshinobi\\bot\\cogs\\shop_commands.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_load_shop_data",
-                "_get_rarity_color"
-            ],
-            "classes": {
-                "ShopCommands": {
+                },
+                "JutsuSelectionView": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": "View for selecting jutsu during battle.",
+                    "base_classes": [
+                        "discord.ui.View"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "FleeConfirmationView": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": "View for confirming flee action.",
+                    "base_classes": [
+                        "discord.ui.View"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "BossCommands": {
                     "methods": [
                         "__init__",
-                        "_load_shop_data",
-                        "_get_rarity_color"
+                        "load_boss_data",
+                        "load_jutsu_data",
+                        "load_character_data",
+                        "save_character_data",
+                        "create_battle_embed",
+                        "get_current_phase",
+                        "calculate_boss_damage",
+                        "create_interactive_battle_embed",
+                        "get_jutsu_multiplier",
+                        "update_battle_phase"
                     ],
-                    "docstring": "Commands for shopping and purchasing items.",
+                    "docstring": "Commands for the ultimate boss battle system.",
                     "base_classes": [
                         "commands.Cog"
                     ],
@@ -857,31 +802,20 @@
                 }
             },
             "routes": [],
-            "complexity": 40,
+            "complexity": 104,
             "lint": [
+                "Function load_boss_data >50 lines",
+                "Function create_battle_embed >50 lines",
+                "Function create_interactive_battle_embed >50 lines",
                 "High complexity"
             ]
         },
-        "HCshinobi\\core\\clan_assignment_engine.py": {
+        "HCshinobi\\bot\\cogs\\__init__.py": {
             "language": ".py",
-            "functions": [
-                "__init__",
-                "get_player_clan"
-            ],
-            "classes": {
-                "ClanAssignmentEngine": {
-                    "methods": [
-                        "__init__",
-                        "get_player_clan"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
+            "functions": [],
+            "classes": {},
             "routes": [],
-            "complexity": 4,
+            "complexity": 0,
             "lint": []
         },
         "HCshinobi\\bot\\cogs\\training_commands.py": {
@@ -907,6 +841,64 @@
             "lint": [
                 "High complexity"
             ]
+        },
+        "HCshinobi\\core\\character.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {
+                "Character": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "HCshinobi\\core\\battle_system.py": {
+            "language": ".py",
+            "functions": [
+                "start_battle"
+            ],
+            "classes": {
+                "BattleSystem": {
+                    "methods": [
+                        "start_battle"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "HCshinobi\\core\\clan_assignment_engine.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "get_player_clan"
+            ],
+            "classes": {
+                "ClanAssignmentEngine": {
+                    "methods": [
+                        "__init__",
+                        "get_player_clan"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
         },
         "HCshinobi\\core\\battle_log_templates.py": {
             "language": ".py",
@@ -956,48 +948,10 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\core\\clan_data.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "create_default_clans"
-            ],
-            "classes": {
-                "ClanData": {
-                    "methods": [
-                        "__init__",
-                        "create_default_clans"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "HCshinobi\\bot\\cogs\\__init__.py": {
+        "HCshinobi\\core\\constants.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "HCshinobi\\core\\character.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {
-                "Character": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
             "routes": [],
             "complexity": 0,
             "lint": []
@@ -1097,6 +1051,108 @@
                 "High complexity"
             ]
         },
+        "HCshinobi\\core\\clan_data.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "create_default_clans"
+            ],
+            "classes": {
+                "ClanData": {
+                    "methods": [
+                        "__init__",
+                        "create_default_clans"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "HCshinobi\\core\\clan_system.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_load_clans",
+                "get_clan",
+                "list_clans"
+            ],
+            "classes": {
+                "ClanSystem": {
+                    "methods": [
+                        "__init__",
+                        "_load_clans",
+                        "get_clan",
+                        "list_clans"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "HCshinobi\\core\\character_system.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_load_existing_characters",
+                "_load_character_from_file",
+                "_save_character_to_file",
+                "_character_to_dict",
+                "_dict_to_character"
+            ],
+            "classes": {
+                "CharacterSystem": {
+                    "methods": [
+                        "__init__",
+                        "_load_existing_characters",
+                        "_load_character_from_file",
+                        "_save_character_to_file",
+                        "_character_to_dict",
+                        "_dict_to_character"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 23,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "HCshinobi\\core\\currency_system.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "add_balance_and_save"
+            ],
+            "classes": {
+                "CurrencySystem": {
+                    "methods": [
+                        "__init__",
+                        "add_balance_and_save"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
         "HCshinobi\\core\\boss_battle_system.py": {
             "language": ".py",
             "functions": [
@@ -1162,86 +1218,6 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\core\\clan_system.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_load_clans",
-                "get_clan",
-                "list_clans"
-            ],
-            "classes": {
-                "ClanSystem": {
-                    "methods": [
-                        "__init__",
-                        "_load_clans",
-                        "get_clan",
-                        "list_clans"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 10,
-            "lint": []
-        },
-        "HCshinobi\\core\\constants.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "HCshinobi\\core\\currency_system.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "add_balance_and_save"
-            ],
-            "classes": {
-                "CurrencySystem": {
-                    "methods": [
-                        "__init__",
-                        "add_balance_and_save"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "HCshinobi\\core\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "HCshinobi\\core\\battle\\effects.py": {
-            "language": ".py",
-            "functions": [
-                "_get_participant",
-                "add_status_effect",
-                "apply_status_effects",
-                "tick_status_durations",
-                "can_player_act"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 18,
-            "lint": [
-                "High complexity"
-            ]
-        },
         "HCshinobi\\core\\mission_system.py": {
             "language": ".py",
             "functions": [
@@ -1264,130 +1240,47 @@
             "complexity": 9,
             "lint": []
         },
-        "HCshinobi\\core\\token_system.py": {
+        "HCshinobi\\core\\training_system.py": {
             "language": ".py",
             "functions": [
-                "__init__"
+                "get_multipliers",
+                "__init__",
+                "_get_training_cost",
+                "get_training_status",
+                "get_training_status_embed"
             ],
             "classes": {
-                "TokenSystem": {
+                "TrainingIntensity": {
                     "methods": [
-                        "__init__"
+                        "get_multipliers"
                     ],
                     "docstring": null,
                     "base_classes": [],
                     "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 2,
-            "lint": []
-        },
-        "HCshinobi\\core\\jutsu_system.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_load_jutsu_database",
-                "get_available_jutsu",
-                "_can_learn_jutsu",
-                "get_unlockable_jutsu",
-                "unlock_jutsu_for_character",
-                "get_jutsu_info",
-                "get_jutsu_by_element",
-                "get_jutsu_by_rarity"
-            ],
-            "classes": {
-                "Jutsu": {
-                    "methods": [],
-                    "docstring": "Jutsu definition with comprehensive properties.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
                     "agent_type": "Utility"
                 },
-                "JutsuSystem": {
-                    "methods": [
-                        "__init__",
-                        "_load_jutsu_database",
-                        "get_available_jutsu",
-                        "_can_learn_jutsu",
-                        "get_unlockable_jutsu",
-                        "unlock_jutsu_for_character",
-                        "get_jutsu_info",
-                        "get_jutsu_by_element",
-                        "get_jutsu_by_rarity"
-                    ],
-                    "docstring": "Comprehensive jutsu system for character progression.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 45,
-            "lint": [
-                "Function _load_jutsu_database >50 lines",
-                "High complexity"
-            ]
-        },
-        "HCshinobi\\core\\progression_engine.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "calculate_exp_for_level",
-                "calculate_level_from_exp",
-                "check_level_up",
-                "_update_stats_for_level",
-                "_calculate_rank",
-                "_check_jutsu_unlocks",
-                "get_progression_info",
-                "get_level_rewards"
-            ],
-            "classes": {
-                "ShinobiProgressionEngine": {
-                    "methods": [
-                        "__init__",
-                        "calculate_exp_for_level",
-                        "calculate_level_from_exp",
-                        "check_level_up",
-                        "_update_stats_for_level",
-                        "_calculate_rank",
-                        "_check_jutsu_unlocks",
-                        "get_progression_info",
-                        "get_level_rewards"
-                    ],
-                    "docstring": "Enhanced progression engine with level-up and jutsu unlocking.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 31,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "HCshinobi\\core\\battle\\lifecycle.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_calculate_exp_gain"
-            ],
-            "classes": {
-                "BattleLifecycle": {
-                    "methods": [
-                        "__init__",
-                        "_calculate_exp_gain"
-                    ],
+                "TrainingSession": {
+                    "methods": [],
                     "docstring": null,
                     "base_classes": [],
                     "maturity": "Prototype",
                     "agent_type": "Utility"
+                },
+                "TrainingSystem": {
+                    "methods": [
+                        "__init__",
+                        "_get_training_cost",
+                        "get_training_status",
+                        "get_training_status_embed"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 12,
+            "complexity": 22,
             "lint": [
                 "High complexity"
             ]
@@ -1501,6 +1394,203 @@
                 "High complexity"
             ]
         },
+        "HCshinobi\\core\\progression_engine.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "calculate_exp_for_level",
+                "calculate_level_from_exp",
+                "check_level_up",
+                "_update_stats_for_level",
+                "_calculate_rank",
+                "_check_jutsu_unlocks",
+                "get_progression_info",
+                "get_level_rewards"
+            ],
+            "classes": {
+                "ShinobiProgressionEngine": {
+                    "methods": [
+                        "__init__",
+                        "calculate_exp_for_level",
+                        "calculate_level_from_exp",
+                        "check_level_up",
+                        "_update_stats_for_level",
+                        "_calculate_rank",
+                        "_check_jutsu_unlocks",
+                        "get_progression_info",
+                        "get_level_rewards"
+                    ],
+                    "docstring": "Enhanced progression engine with level-up and jutsu unlocking.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 31,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "HCshinobi\\core\\battle\\state.py": {
+            "language": ".py",
+            "functions": [
+                "from_character"
+            ],
+            "classes": {
+                "BattleParticipant": {
+                    "methods": [
+                        "from_character"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                },
+                "BattleState": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "HCshinobi\\core\\battle\\persistence.py": {
+            "language": ".py",
+            "functions": [
+                "__init__"
+            ],
+            "classes": {
+                "BattlePersistence": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "HCshinobi\\core\\battle\\effects.py": {
+            "language": ".py",
+            "functions": [
+                "_get_participant",
+                "add_status_effect",
+                "apply_status_effects",
+                "tick_status_durations",
+                "can_player_act"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 18,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "HCshinobi\\core\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "HCshinobi\\core\\jutsu_system.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_load_jutsu_database",
+                "get_available_jutsu",
+                "_can_learn_jutsu",
+                "get_unlockable_jutsu",
+                "unlock_jutsu_for_character",
+                "get_jutsu_info",
+                "get_jutsu_by_element",
+                "get_jutsu_by_rarity"
+            ],
+            "classes": {
+                "Jutsu": {
+                    "methods": [],
+                    "docstring": "Jutsu definition with comprehensive properties.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "JutsuSystem": {
+                    "methods": [
+                        "__init__",
+                        "_load_jutsu_database",
+                        "get_available_jutsu",
+                        "_can_learn_jutsu",
+                        "get_unlockable_jutsu",
+                        "unlock_jutsu_for_character",
+                        "get_jutsu_info",
+                        "get_jutsu_by_element",
+                        "get_jutsu_by_rarity"
+                    ],
+                    "docstring": "Comprehensive jutsu system for character progression.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 45,
+            "lint": [
+                "Function _load_jutsu_database >50 lines",
+                "High complexity"
+            ]
+        },
+        "HCshinobi\\core\\token_system.py": {
+            "language": ".py",
+            "functions": [
+                "__init__"
+            ],
+            "classes": {
+                "TokenSystem": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "HCshinobi\\core\\battle\\types.py": {
+            "language": ".py",
+            "functions": [
+                "to_dict",
+                "from_dict"
+            ],
+            "classes": {
+                "StatusEffect": {
+                    "methods": [
+                        "to_dict",
+                        "from_dict"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
         "HCshinobi\\core\\unified_jutsu_system.py": {
             "language": ".py",
             "functions": [
@@ -1562,17 +1652,47 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\core\\battle\\types.py": {
+        "HCshinobi\\core\\battle\\lifecycle.py": {
             "language": ".py",
             "functions": [
-                "to_dict",
-                "from_dict"
+                "__init__",
+                "_calculate_exp_gain"
             ],
             "classes": {
-                "StatusEffect": {
+                "BattleLifecycle": {
                     "methods": [
-                        "to_dict",
-                        "from_dict"
+                        "__init__",
+                        "_calculate_exp_gain"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 12,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "HCshinobi\\core\\battle\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "HCshinobi\\core\\missions\\generator.py": {
+            "language": ".py",
+            "functions": [
+                "__init__"
+            ],
+            "classes": {
+                "MissionGenerator": {
+                    "methods": [
+                        "__init__"
                     ],
                     "docstring": null,
                     "base_classes": [],
@@ -1584,38 +1704,81 @@
             "complexity": 5,
             "lint": []
         },
-        "HCshinobi\\core\\training_system.py": {
+        "HCshinobi\\utils\\battle_ui.py": {
             "language": ".py",
             "functions": [
-                "get_multipliers",
+                "render_battle_view",
                 "__init__",
-                "_get_training_cost",
-                "get_training_status",
-                "get_training_status_embed"
+                "__init__"
             ],
             "classes": {
-                "TrainingIntensity": {
+                "BattleView": {
                     "methods": [
-                        "get_multipliers"
+                        "__init__"
                     ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
+                    "docstring": "Minimal view presenting basic battle actions.",
+                    "base_classes": [
+                        "discord.ui.View"
+                    ],
+                    "maturity": "Core Asset",
                     "agent_type": "Utility"
                 },
-                "TrainingSession": {
+                "AttackButton": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": "Simple attack button used in placeholder battles.",
+                    "base_classes": [
+                        "discord.ui.Button"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "HCshinobi\\core\\missions\\mission.py": {
+            "language": ".py",
+            "functions": [
+                "start",
+                "complete",
+                "fail",
+                "check_expired",
+                "update_progress",
+                "to_dict",
+                "from_dict",
+                "get_val"
+            ],
+            "classes": {
+                "MissionStatus": {
                     "methods": [],
                     "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
+                    "base_classes": [
+                        "Enum"
+                    ],
+                    "maturity": "Core Asset",
                     "agent_type": "Utility"
                 },
-                "TrainingSystem": {
+                "MissionDifficulty": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [
+                        "Enum"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "Mission": {
                     "methods": [
-                        "__init__",
-                        "_get_training_cost",
-                        "get_training_status",
-                        "get_training_status_embed"
+                        "start",
+                        "complete",
+                        "fail",
+                        "check_expired",
+                        "update_progress",
+                        "to_dict",
+                        "from_dict"
                     ],
                     "docstring": null,
                     "base_classes": [],
@@ -1624,32 +1787,12 @@
                 }
             },
             "routes": [],
-            "complexity": 22,
+            "complexity": 23,
             "lint": [
                 "High complexity"
             ]
         },
-        "HCshinobi\\core\\battle\\persistence.py": {
-            "language": ".py",
-            "functions": [
-                "__init__"
-            ],
-            "classes": {
-                "BattlePersistence": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 2,
-            "lint": []
-        },
-        "HCshinobi\\core\\battle\\__init__.py": {
+        "HCshinobi\\utils\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -1758,24 +1901,22 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\core\\missions\\generator.py": {
+        "HCshinobi\\utils\\discord_ui.py": {
             "language": ".py",
             "functions": [
-                "__init__"
+                "get_rarity_color"
             ],
-            "classes": {
-                "MissionGenerator": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
+            "classes": {},
             "routes": [],
-            "complexity": 5,
+            "complexity": 1,
+            "lint": []
+        },
+        "HCshinobi\\core\\missions\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
             "lint": []
         },
         "HCshinobi\\core\\missions\\discord_interface.py": {
@@ -1800,32 +1941,52 @@
             "complexity": 8,
             "lint": []
         },
-        "HCshinobi\\core\\battle\\state.py": {
+        "HCshinobi\\utils\\embeds.py": {
             "language": ".py",
             "functions": [
-                "from_character"
+                "create_error_embed",
+                "create_success_embed",
+                "create_info_embed",
+                "create_character_embed",
+                "create_clan_embed"
             ],
-            "classes": {
-                "BattleParticipant": {
-                    "methods": [
-                        "from_character"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                },
-                "BattleState": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
+            "classes": {},
             "routes": [],
-            "complexity": 2,
+            "complexity": 8,
             "lint": []
+        },
+        "scripts\\check_imports.py": {
+            "language": ".py",
+            "functions": [
+                "validate_import",
+                "find_python_files",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 15,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "scripts\\cleanup_legacy_content.py": {
+            "language": ".py",
+            "functions": [
+                "cleanup_battle_logs",
+                "cleanup_character_data",
+                "update_mission_definitions",
+                "create_modern_battle_template",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 36,
+            "lint": [
+                "Function cleanup_battle_logs >50 lines",
+                "Function cleanup_character_data >50 lines",
+                "Function create_modern_battle_template >50 lines",
+                "High complexity"
+            ]
         },
         "HCshinobi\\core\\missions\\shinobios_mission.py": {
             "language": ".py",
@@ -1904,134 +2065,6 @@
                 "High complexity"
             ]
         },
-        "HCshinobi\\utils\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "HCshinobi\\utils\\discord_ui.py": {
-            "language": ".py",
-            "functions": [
-                "get_rarity_color"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 1,
-            "lint": []
-        },
-        "HCshinobi\\core\\missions\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "HCshinobi\\core\\missions\\mission.py": {
-            "language": ".py",
-            "functions": [
-                "start",
-                "complete",
-                "fail",
-                "check_expired",
-                "update_progress",
-                "to_dict",
-                "from_dict",
-                "get_val"
-            ],
-            "classes": {
-                "MissionStatus": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [
-                        "Enum"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "MissionDifficulty": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [
-                        "Enum"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "Mission": {
-                    "methods": [
-                        "start",
-                        "complete",
-                        "fail",
-                        "check_expired",
-                        "update_progress",
-                        "to_dict",
-                        "from_dict"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 23,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "HCshinobi\\utils\\battle_ui.py": {
-            "language": ".py",
-            "functions": [
-                "render_battle_view",
-                "__init__",
-                "__init__"
-            ],
-            "classes": {
-                "BattleView": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": "Minimal view presenting basic battle actions.",
-                    "base_classes": [
-                        "discord.ui.View"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "AttackButton": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": "Simple attack button used in placeholder battles.",
-                    "base_classes": [
-                        "discord.ui.Button"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "HCshinobi\\utils\\embeds.py": {
-            "language": ".py",
-            "functions": [
-                "create_error_embed",
-                "create_success_embed",
-                "create_info_embed",
-                "create_character_embed",
-                "create_clan_embed"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 8,
-            "lint": []
-        },
         "tests\\fixtures.py": {
             "language": ".py",
             "functions": [
@@ -2044,20 +2077,6 @@
             "routes": [],
             "complexity": 4,
             "lint": []
-        },
-        "scripts\\check_imports.py": {
-            "language": ".py",
-            "functions": [
-                "validate_import",
-                "find_python_files",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 15,
-            "lint": [
-                "High complexity"
-            ]
         },
         "scripts\\consolidate_jutsu.py": {
             "language": ".py",
@@ -2118,24 +2137,24 @@
                 "High complexity"
             ]
         },
-        "scripts\\cleanup_legacy_content.py": {
+        "tests\\test_command_coverage.py": {
             "language": ".py",
             "functions": [
-                "cleanup_battle_logs",
-                "cleanup_character_data",
-                "update_mission_definitions",
-                "create_modern_battle_template",
-                "main"
+                "get_all_commands",
+                "get_all_test_functions"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 36,
-            "lint": [
-                "Function cleanup_battle_logs >50 lines",
-                "Function cleanup_character_data >50 lines",
-                "Function create_modern_battle_template >50 lines",
-                "High complexity"
-            ]
+            "complexity": 10,
+            "lint": []
+        },
+        "tests\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
         },
         "tests\\test_bot.py": {
             "language": ".py",
@@ -2147,20 +2166,41 @@
             "complexity": 1,
             "lint": []
         },
-        "tests\\test_bot_commands.py": {
+        "tests\\battle\\test_effects.py": {
             "language": ".py",
             "functions": [
-                "mock_config",
-                "mock_services",
-                "mock_user",
-                "mock_channel",
-                "mock_guild",
-                "mock_bot",
-                "mock_message"
+                "sample_character",
+                "attacker",
+                "defender",
+                "battle_state",
+                "battle_log_callback",
+                "test_status_effect_creation",
+                "test_status_effect_serialization",
+                "test_add_status_effect",
+                "test_add_status_effect_refresh",
+                "test_apply_status_effects",
+                "test_apply_regeneration_effect",
+                "test_tick_status_durations",
+                "test_tick_status_durations_expiration",
+                "test_can_player_act",
+                "test_can_player_act_not_stunned",
+                "callback"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 10,
+            "complexity": 16,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "tests\\test_bot_loader.py": {
+            "language": ".py",
+            "functions": [
+                "bot_config"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
             "lint": []
         },
         "tests\\conftest.py": {
@@ -2180,29 +2220,16 @@
                 "High complexity"
             ]
         },
-        "tests\\test_bot_loader.py": {
+        "tests\\test_bot_commands.py": {
             "language": ".py",
             "functions": [
-                "bot_config"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 7,
-            "lint": []
-        },
-        "tests\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "tests\\test_command_coverage.py": {
-            "language": ".py",
-            "functions": [
-                "get_all_commands",
-                "get_all_test_functions"
+                "mock_config",
+                "mock_services",
+                "mock_user",
+                "mock_channel",
+                "mock_guild",
+                "mock_bot",
+                "mock_message"
             ],
             "classes": {},
             "routes": [],
@@ -2248,46 +2275,92 @@
                 "High complexity"
             ]
         },
-        "tests\\battle\\test_effects.py": {
+        "tests\\cogs\\test_missions.py": {
             "language": ".py",
             "functions": [
-                "sample_character",
-                "attacker",
-                "defender",
-                "battle_state",
-                "battle_log_callback",
-                "test_status_effect_creation",
-                "test_status_effect_serialization",
-                "test_add_status_effect",
-                "test_add_status_effect_refresh",
-                "test_apply_status_effects",
-                "test_apply_regeneration_effect",
-                "test_tick_status_durations",
-                "test_tick_status_durations_expiration",
-                "test_can_player_act",
-                "test_can_player_act_not_stunned",
-                "callback"
+                "mock_bot",
+                "missions_cog",
+                "mock_interaction_missions"
             ],
-            "classes": {},
+            "classes": {
+                "TestMissionCommands": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 16,
-            "lint": [
-                "High complexity"
-            ]
+            "complexity": 3,
+            "lint": []
         },
-        "tests\\battle\\test_persistence.py": {
+        "tests\\commands\\test_clan_commands.py": {
             "language": ".py",
             "functions": [
-                "temp_data_dir",
-                "persistence",
-                "sample_character",
-                "attacker",
-                "defender",
-                "battle_state"
+                "mock_interaction",
+                "mock_bot",
+                "clan_commands_cog"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 6,
+            "complexity": 3,
+            "lint": []
+        },
+        "tests\\cogs\\test_training.py": {
+            "language": ".py",
+            "functions": [
+                "mock_bot_training",
+                "training_cog",
+                "mock_interaction_training",
+                "mock_character"
+            ],
+            "classes": {
+                "TrainingType": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [
+                        "Enum"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "TestTrainingCommands": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "tests\\commands\\test_clan_mission_commands.py": {
+            "language": ".py",
+            "functions": [
+                "mock_clan_data_service",
+                "mock_character_system",
+                "mock_mission_system",
+                "mock_currency_system"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "tests\\commands\\test_devlog_commands.py": {
+            "language": ".py",
+            "functions": [
+                "mock_bot",
+                "devlog_commands_cog",
+                "mock_devlog_file",
+                "mock_interaction"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 8,
             "lint": []
         },
         "tests\\cogs\\test_character_commands_cog.py": {
@@ -2331,36 +2404,6 @@
             "complexity": 3,
             "lint": []
         },
-        "tests\\cogs\\test_training.py": {
-            "language": ".py",
-            "functions": [
-                "mock_bot_training",
-                "training_cog",
-                "mock_interaction_training",
-                "mock_character"
-            ],
-            "classes": {
-                "TrainingType": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [
-                        "Enum"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "TestTrainingCommands": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
         "tests\\commands\\test_announcement_commands.py": {
             "language": ".py",
             "functions": [
@@ -2372,6 +2415,21 @@
             "complexity": 3,
             "lint": []
         },
+        "tests\\battle\\test_persistence.py": {
+            "language": ".py",
+            "functions": [
+                "temp_data_dir",
+                "persistence",
+                "sample_character",
+                "attacker",
+                "defender",
+                "battle_state"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
         "tests\\commands\\test_basic_commands.py": {
             "language": ".py",
             "functions": [
@@ -2381,31 +2439,6 @@
             "classes": {},
             "routes": [],
             "complexity": 2,
-            "lint": []
-        },
-        "tests\\commands\\test_clan_mission_commands.py": {
-            "language": ".py",
-            "functions": [
-                "mock_clan_data_service",
-                "mock_character_system",
-                "mock_mission_system",
-                "mock_currency_system"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "tests\\commands\\test_clan_commands.py": {
-            "language": ".py",
-            "functions": [
-                "mock_interaction",
-                "mock_bot",
-                "clan_commands_cog"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 3,
             "lint": []
         },
         "tests\\commands\\test_help.py": {
@@ -2432,24 +2465,25 @@
             "complexity": 4,
             "lint": []
         },
-        "tests\\cogs\\test_missions.py": {
+        "tests\\commands\\test_loot_commands.py": {
             "language": ".py",
             "functions": [
-                "mock_bot",
-                "missions_cog",
-                "mock_interaction_missions"
+                "mock_interaction",
+                "mock_character_system",
+                "mock_loot_system",
+                "loot_commands_cog"
             ],
-            "classes": {
-                "TestMissionCommands": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
+            "classes": {},
             "routes": [],
-            "complexity": 3,
+            "complexity": 4,
+            "lint": []
+        },
+        "tests\\core\\test_mission_system_rewards.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
             "lint": []
         },
         "tests\\commands\\test_mission_commands.py": {
@@ -2488,53 +2522,59 @@
             "complexity": 6,
             "lint": []
         },
-        "tests\\core\\test_mission_system_rewards.py": {
+        "tests\\e2e\\test_character_commands.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
             "routes": [],
-            "complexity": 0,
+            "complexity": 3,
             "lint": []
         },
-        "tests\\commands\\test_devlog_commands.py": {
+        "tests\\core\\test_solomon_boss_battle.py": {
             "language": ".py",
             "functions": [
+                "sample_character_data",
+                "sample_boss_data",
                 "mock_bot",
-                "devlog_commands_cog",
-                "mock_devlog_file",
-                "mock_interaction"
+                "boss_system",
+                "test_load_boss_data",
+                "test_get_current_phase",
+                "test_calculate_boss_damage",
+                "test_get_boss_jutsu",
+                "test_check_boss_requirements",
+                "test_create_battle_embed",
+                "test_boss_phases_progression",
+                "test_boss_damage_scaling",
+                "test_boss_requirements_validation"
             ],
-            "classes": {},
+            "classes": {
+                "TestSolomonBossBattle": {
+                    "methods": [
+                        "sample_character_data",
+                        "sample_boss_data",
+                        "mock_bot",
+                        "boss_system",
+                        "test_load_boss_data",
+                        "test_get_current_phase",
+                        "test_calculate_boss_damage",
+                        "test_get_boss_jutsu",
+                        "test_check_boss_requirements",
+                        "test_create_battle_embed",
+                        "test_boss_phases_progression",
+                        "test_boss_damage_scaling",
+                        "test_boss_requirements_validation"
+                    ],
+                    "docstring": "Test cases for Solomon boss battle system.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 8,
-            "lint": []
-        },
-        "tests\\e2e\\conftest.py": {
-            "language": ".py",
-            "functions": [
-                "test_config",
-                "temp_data_dir"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 13,
+            "complexity": 30,
             "lint": [
-                "Function temp_data_dir >50 lines",
                 "High complexity"
             ]
-        },
-        "tests\\commands\\test_loot_commands.py": {
-            "language": ".py",
-            "functions": [
-                "mock_interaction",
-                "mock_character_system",
-                "mock_loot_system",
-                "loot_commands_cog"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
         },
         "tests\\commands\\test_quest_commands.py": {
             "language": ".py",
@@ -2543,14 +2583,6 @@
                 "mock_bot",
                 "quest_commands_cog"
             ],
-            "classes": {},
-            "routes": [],
-            "complexity": 3,
-            "lint": []
-        },
-        "tests\\e2e\\test_character_commands.py": {
-            "language": ".py",
-            "functions": [],
             "classes": {},
             "routes": [],
             "complexity": 3,
@@ -2656,52 +2688,6 @@
                 "High complexity"
             ]
         },
-        "tests\\core\\test_solomon_boss_battle.py": {
-            "language": ".py",
-            "functions": [
-                "sample_character_data",
-                "sample_boss_data",
-                "mock_bot",
-                "boss_system",
-                "test_load_boss_data",
-                "test_get_current_phase",
-                "test_calculate_boss_damage",
-                "test_get_boss_jutsu",
-                "test_check_boss_requirements",
-                "test_create_battle_embed",
-                "test_boss_phases_progression",
-                "test_boss_damage_scaling",
-                "test_boss_requirements_validation"
-            ],
-            "classes": {
-                "TestSolomonBossBattle": {
-                    "methods": [
-                        "sample_character_data",
-                        "sample_boss_data",
-                        "mock_bot",
-                        "boss_system",
-                        "test_load_boss_data",
-                        "test_get_current_phase",
-                        "test_calculate_boss_damage",
-                        "test_get_boss_jutsu",
-                        "test_check_boss_requirements",
-                        "test_create_battle_embed",
-                        "test_boss_phases_progression",
-                        "test_boss_damage_scaling",
-                        "test_boss_requirements_validation"
-                    ],
-                    "docstring": "Test cases for Solomon boss battle system.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 30,
-            "lint": [
-                "High complexity"
-            ]
-        },
         "tests\\e2e\\test_character_jutsu_commands.py": {
             "language": ".py",
             "functions": [
@@ -2713,89 +2699,6 @@
             "routes": [],
             "complexity": 3,
             "lint": []
-        },
-        "tests\\e2e\\test_npc_battle_mechanics.py": {
-            "language": ".py",
-            "functions": [
-                "battle_system",
-                "mock_interaction",
-                "test_character"
-            ],
-            "classes": {
-                "TestNPCBattleMechanics": {
-                    "methods": [
-                        "battle_system",
-                        "mock_interaction",
-                        "test_character"
-                    ],
-                    "docstring": "Test NPC battle mechanics and special abilities.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 12,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "tests\\e2e\\test_training_commands.py": {
-            "language": ".py",
-            "functions": [
-                "create_mock_interaction"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "tests\\e2e\\test_training_flow.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "tests\\utils\\interaction_trace.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "get_last_response",
-                "clear",
-                "create_mock_ctx",
-                "_match_content",
-                "_match_embed",
-                "assert_interaction_sequence",
-                "assert_defer_called",
-                "assert_followup_send_called"
-            ],
-            "classes": {
-                "InteractionTrace": {
-                    "methods": [
-                        "__init__",
-                        "get_last_response",
-                        "clear",
-                        "create_mock_ctx",
-                        "_match_content",
-                        "_match_embed",
-                        "assert_interaction_sequence",
-                        "assert_defer_called",
-                        "assert_followup_send_called"
-                    ],
-                    "docstring": "Tracks the history of interactions and responses for testing.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 39,
-            "lint": [
-                "Function assert_interaction_sequence >50 lines",
-                "High complexity"
-            ]
         },
         "tests\\e2e\\test_solomon_boss_battle.py": {
             "language": ".py",
@@ -2831,14 +2734,6 @@
                 "High complexity"
             ]
         },
-        "_discord\\extensions.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
         "tests\\e2e\\test_profile_command.py": {
             "language": ".py",
             "functions": [],
@@ -2847,7 +2742,7 @@
             "complexity": 2,
             "lint": []
         },
-        "tests\\utils\\__init__.py": {
+        "tests\\e2e\\test_training_flow.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -2855,21 +2750,45 @@
             "complexity": 0,
             "lint": []
         },
-        "tests\\missions\\test_mission.py": {
+        "tests\\e2e\\test_npc_battle_mechanics.py": {
             "language": ".py",
             "functions": [
-                "sample_mission",
-                "test_mission_creation",
-                "test_mission_serialization",
-                "test_mission_lifecycle",
-                "test_mission_expiration",
-                "test_mission_progress",
-                "test_mission_validation"
+                "battle_system",
+                "mock_interaction",
+                "test_character"
+            ],
+            "classes": {
+                "TestNPCBattleMechanics": {
+                    "methods": [
+                        "battle_system",
+                        "mock_interaction",
+                        "test_character"
+                    ],
+                    "docstring": "Test NPC battle mechanics and special abilities.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 12,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "tests\\e2e\\conftest.py": {
+            "language": ".py",
+            "functions": [
+                "test_config",
+                "temp_data_dir"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 7,
-            "lint": []
+            "complexity": 13,
+            "lint": [
+                "Function temp_data_dir >50 lines",
+                "High complexity"
+            ]
         },
         "tests\\missions\\test_mission_stress.py": {
             "language": ".py",
@@ -2912,6 +2831,40 @@
                 "High complexity"
             ]
         },
+        "tests\\e2e\\test_training_commands.py": {
+            "language": ".py",
+            "functions": [
+                "create_mock_interaction"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "tests\\utils\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "tests\\missions\\test_mission.py": {
+            "language": ".py",
+            "functions": [
+                "sample_mission",
+                "test_mission_creation",
+                "test_mission_serialization",
+                "test_mission_lifecycle",
+                "test_mission_expiration",
+                "test_mission_progress",
+                "test_mission_validation"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
         "tests\\utils\\time_utils.py": {
             "language": ".py",
             "functions": [
@@ -2923,6 +2876,53 @@
             "classes": {},
             "routes": [],
             "complexity": 4,
+            "lint": []
+        },
+        "tests\\utils\\interaction_trace.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "get_last_response",
+                "clear",
+                "create_mock_ctx",
+                "_match_content",
+                "_match_embed",
+                "assert_interaction_sequence",
+                "assert_defer_called",
+                "assert_followup_send_called"
+            ],
+            "classes": {
+                "InteractionTrace": {
+                    "methods": [
+                        "__init__",
+                        "get_last_response",
+                        "clear",
+                        "create_mock_ctx",
+                        "_match_content",
+                        "_match_embed",
+                        "assert_interaction_sequence",
+                        "assert_defer_called",
+                        "assert_followup_send_called"
+                    ],
+                    "docstring": "Tracks the history of interactions and responses for testing.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 39,
+            "lint": [
+                "Function assert_interaction_sequence >50 lines",
+                "High complexity"
+            ]
+        },
+        "_discord\\extensions.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
             "lint": []
         },
         "_discord\\__init__.py": {

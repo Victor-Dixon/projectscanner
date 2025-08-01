@@ -1,7 +1,75 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpn2fl11oo\\LSTMmodel_trainer",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmprtx_oko1\\LSTMmodel_trainer",
     "num_files_analyzed": 5,
     "analysis_details": {
+        "src\\utils.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "plot_confusion_matrix"
+            ],
+            "classes": {
+                "PlotCanvas": {
+                    "methods": [
+                        "__init__",
+                        "plot_confusion_matrix"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "FigureCanvas"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "src\\model_trainer.py": {
+            "language": ".py",
+            "functions": [
+                "load_data_from_folder",
+                "preprocess_lstm_data",
+                "train_lstm_model",
+                "main",
+                "__init__",
+                "load_data",
+                "preprocess_data",
+                "select_model",
+                "train",
+                "evaluate",
+                "cross_validate_model",
+                "save_model",
+                "load_model",
+                "run"
+            ],
+            "classes": {
+                "ModelTrainer": {
+                    "methods": [
+                        "__init__",
+                        "load_data",
+                        "preprocess_data",
+                        "select_model",
+                        "train",
+                        "evaluate",
+                        "cross_validate_model",
+                        "save_model",
+                        "load_model",
+                        "run"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                }
+            },
+            "routes": [],
+            "complexity": 56,
+            "lint": [
+                "High complexity"
+            ]
+        },
         "tests\\test_model_trainer_core.py": {
             "language": ".py",
             "functions": [
@@ -69,30 +137,6 @@
                 "High complexity"
             ]
         },
-        "src\\utils.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "plot_confusion_matrix"
-            ],
-            "classes": {
-                "PlotCanvas": {
-                    "methods": [
-                        "__init__",
-                        "plot_confusion_matrix"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "FigureCanvas"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
         "src\\main.py": {
             "language": ".py",
             "functions": [
@@ -147,50 +191,6 @@
             "complexity": 49,
             "lint": [
                 "Function init_ui >50 lines",
-                "High complexity"
-            ]
-        },
-        "src\\model_trainer.py": {
-            "language": ".py",
-            "functions": [
-                "load_data_from_folder",
-                "preprocess_lstm_data",
-                "train_lstm_model",
-                "main",
-                "__init__",
-                "load_data",
-                "preprocess_data",
-                "select_model",
-                "train",
-                "evaluate",
-                "cross_validate_model",
-                "save_model",
-                "load_model",
-                "run"
-            ],
-            "classes": {
-                "ModelTrainer": {
-                    "methods": [
-                        "__init__",
-                        "load_data",
-                        "preprocess_data",
-                        "select_model",
-                        "train",
-                        "evaluate",
-                        "cross_validate_model",
-                        "save_model",
-                        "load_model",
-                        "run"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "ActionAgent"
-                }
-            },
-            "routes": [],
-            "complexity": 56,
-            "lint": [
                 "High complexity"
             ]
         },

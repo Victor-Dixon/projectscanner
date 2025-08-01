@@ -420,12 +420,13 @@
         "language": ".py",
         "functions": [
             "setup_logging",
+            "initialize_plugin_system",
             "main",
             "show_main_window"
         ],
         "classes": {},
         "routes": [],
-        "complexity": 6,
+        "complexity": 9,
         "lint": [
             "Function main >50 lines"
         ]
@@ -524,7 +525,8 @@
             "load_all_styles",
             "pre_load_styles_lazy",
             "_load_single_style",
-            "pre_load_styles"
+            "pre_load_styles",
+            "get_available_styles"
         ],
         "classes": {
             "StyleManager": {
@@ -549,7 +551,8 @@
                     "load_all_styles",
                     "pre_load_styles_lazy",
                     "_load_single_style",
-                    "pre_load_styles"
+                    "pre_load_styles",
+                    "get_available_styles"
                 ],
                 "docstring": "Manages style loading and instantiation with variant support and proper error handling.",
                 "base_classes": [],
@@ -558,7 +561,7 @@
             }
         },
         "routes": [],
-        "complexity": 84,
+        "complexity": 87,
         "lint": [
             "Function _load_styles >50 lines",
             "High complexity"
@@ -570,23 +573,35 @@
             "main",
             "__init__",
             "init_managers",
+            "integrate_plugin_system",
+            "setup_plugin_parameter_handling",
             "_expose_ui_components",
             "init_ui",
             "setup_connections",
             "pre_load_everything",
-            "start_instant_preview_minimal",
+            "pre_load_camera_and_styles_async",
+            "_pre_load_camera_and_styles",
             "load_remaining_components_async",
             "_load_remaining_components",
+            "start_instant_preview_minimal",
+            "start_ai_optimization",
+            "stop_ai_optimization",
             "start_instant_preview",
+            "update_processing_status",
             "on_start_stop_clicked",
             "on_snapshot_clicked",
             "on_reset_clicked",
             "on_fullscreen_clicked",
             "on_record_clicked",
             "on_stream_clicked",
+            "on_ai_optimization_toggled",
+            "on_virtual_camera_toggled",
             "on_camera_parameter_changed",
             "on_performance_changed",
             "on_effect_applied",
+            "on_captioner_enabled",
+            "on_audio_device_changed",
+            "on_captioner_config_changed",
             "get_manager",
             "get_all_managers",
             "orchestrate_effect_application",
@@ -595,30 +610,43 @@
             "on_preview_size_changed",
             "on_variant_changed",
             "update_status",
-            "closeEvent"
+            "closeEvent",
+            "on_plugin_parameter_changed"
         ],
         "classes": {
             "ProfessionalV2MainWindow": {
                 "methods": [
                     "__init__",
                     "init_managers",
+                    "integrate_plugin_system",
+                    "setup_plugin_parameter_handling",
                     "_expose_ui_components",
                     "init_ui",
                     "setup_connections",
                     "pre_load_everything",
-                    "start_instant_preview_minimal",
+                    "pre_load_camera_and_styles_async",
+                    "_pre_load_camera_and_styles",
                     "load_remaining_components_async",
                     "_load_remaining_components",
+                    "start_instant_preview_minimal",
+                    "start_ai_optimization",
+                    "stop_ai_optimization",
                     "start_instant_preview",
+                    "update_processing_status",
                     "on_start_stop_clicked",
                     "on_snapshot_clicked",
                     "on_reset_clicked",
                     "on_fullscreen_clicked",
                     "on_record_clicked",
                     "on_stream_clicked",
+                    "on_ai_optimization_toggled",
+                    "on_virtual_camera_toggled",
                     "on_camera_parameter_changed",
                     "on_performance_changed",
                     "on_effect_applied",
+                    "on_captioner_enabled",
+                    "on_audio_device_changed",
+                    "on_captioner_config_changed",
                     "get_manager",
                     "get_all_managers",
                     "orchestrate_effect_application",
@@ -638,9 +666,11 @@
             }
         },
         "routes": [],
-        "complexity": 121,
+        "complexity": 181,
         "lint": [
+            "Function __init__ >50 lines",
             "Function setup_connections >50 lines",
+            "Function start_instant_preview_minimal >50 lines",
             "Function start_instant_preview >50 lines",
             "Function orchestrate_processing_toggle >50 lines",
             "High complexity"
@@ -908,7 +938,7 @@
                     "update_message",
                     "show_error"
                 ],
-                "docstring": "Professional splash screen for Dream.OS Stream Software.",
+                "docstring": "Professional splash screen for Dreamscape Stream Software.",
                 "base_classes": [
                     "QSplashScreen"
                 ],
@@ -917,7 +947,7 @@
             }
         },
         "routes": [],
-        "complexity": 18,
+        "complexity": 17,
         "lint": [
             "High complexity"
         ]
@@ -1356,7 +1386,11 @@
             "update_variant_combo",
             "load_and_apply_style",
             "add_to_favorites",
-            "update_status"
+            "update_status",
+            "add_plugin_effect",
+            "apply_plugin_effect",
+            "create_plugin_effect_ui",
+            "on_plugin_parameter_changed"
         ],
         "classes": {
             "EffectManager": {
@@ -1368,7 +1402,11 @@
                     "update_variant_combo",
                     "load_and_apply_style",
                     "add_to_favorites",
-                    "update_status"
+                    "update_status",
+                    "add_plugin_effect",
+                    "apply_plugin_effect",
+                    "create_plugin_effect_ui",
+                    "on_plugin_parameter_changed"
                 ],
                 "docstring": "Manages all effect-related functionality.",
                 "base_classes": [],
@@ -1377,7 +1415,7 @@
             }
         },
         "routes": [],
-        "complexity": 47,
+        "complexity": 70,
         "lint": [
             "Function create_effect_buttons >50 lines",
             "Function embed_widget_content_into_panel >50 lines",
@@ -1393,6 +1431,7 @@
             "create_central_preview",
             "create_effects_dock",
             "create_controls_dock",
+            "create_audio_captioner_dock",
             "create_properties_dock",
             "create_timeline_dock",
             "create_menu_bar",
@@ -1408,6 +1447,7 @@
                     "create_central_preview",
                     "create_effects_dock",
                     "create_controls_dock",
+                    "create_audio_captioner_dock",
                     "create_properties_dock",
                     "create_timeline_dock",
                     "create_menu_bar",
@@ -1422,7 +1462,7 @@
             }
         },
         "routes": [],
-        "complexity": 24,
+        "complexity": 26,
         "lint": [
             "Function setup_professional_theme >50 lines",
             "Function create_central_preview >50 lines",
@@ -1450,9 +1490,18 @@
             "on_embedded_parameter_changed",
             "apply_embedded_effect",
             "create_fallback_parameters",
+            "update_parameter_controls",
+            "get_style_instance",
+            "convert_style_parameters_to_ui_format",
+            "_create_nice_label",
             "get_widget_type",
             "hide_old_parameter_controls",
-            "show_old_parameter_controls"
+            "show_old_parameter_controls",
+            "update_value",
+            "update_from_slider",
+            "update_from_spinbox",
+            "update_from_slider",
+            "update_from_spinbox"
         ],
         "classes": {
             "ParameterManager": {
@@ -1464,6 +1513,10 @@
                     "on_embedded_parameter_changed",
                     "apply_embedded_effect",
                     "create_fallback_parameters",
+                    "update_parameter_controls",
+                    "get_style_instance",
+                    "convert_style_parameters_to_ui_format",
+                    "_create_nice_label",
                     "get_widget_type",
                     "hide_old_parameter_controls",
                     "show_old_parameter_controls"
@@ -1475,10 +1528,14 @@
             }
         },
         "routes": [],
-        "complexity": 66,
+        "complexity": 112,
         "lint": [
             "Function create_embedded_parameter_widget >50 lines",
+            "Function apply_embedded_effect >50 lines",
             "Function create_fallback_parameters >50 lines",
+            "Function get_style_instance >50 lines",
+            "Function convert_style_parameters_to_ui_format >50 lines",
+            "Function _create_nice_label >50 lines",
             "High complexity"
         ]
     },
@@ -1494,6 +1551,7 @@
         "language": ".py",
         "functions": [
             "__init__",
+            "pre_load_styles_lazy",
             "pre_load_styles",
             "pre_load_specific_styles",
             "get_style",
@@ -1515,6 +1573,7 @@
             "StyleManager": {
                 "methods": [
                     "__init__",
+                    "pre_load_styles_lazy",
                     "pre_load_styles",
                     "pre_load_specific_styles",
                     "get_style",
@@ -1539,7 +1598,7 @@
             }
         },
         "routes": [],
-        "complexity": 114,
+        "complexity": 117,
         "lint": [
             "High complexity"
         ]
@@ -1552,7 +1611,9 @@
             "pre_initialize_timer",
             "update_preview",
             "get_current_frame",
+            "_generate_test_frame",
             "apply_camera_adjustments",
+            "apply_captioner_overlay",
             "update_preview_display",
             "get_preview_size",
             "update_performance_indicators",
@@ -1563,7 +1624,8 @@
             "start_preview",
             "stop_preview",
             "toggle_performance_graph",
-            "cleanup"
+            "cleanup",
+            "open_camera"
         ],
         "classes": {
             "PreviewManager": {
@@ -1573,7 +1635,9 @@
                     "pre_initialize_timer",
                     "update_preview",
                     "get_current_frame",
+                    "_generate_test_frame",
                     "apply_camera_adjustments",
+                    "apply_captioner_overlay",
                     "update_preview_display",
                     "get_preview_size",
                     "update_performance_indicators",
@@ -1593,8 +1657,10 @@
             }
         },
         "routes": [],
-        "complexity": 86,
+        "complexity": 119,
         "lint": [
+            "Function update_preview >50 lines",
+            "Function get_current_frame >50 lines",
             "High complexity"
         ]
     },
@@ -1603,30 +1669,41 @@
         "functions": [
             "__init__",
             "start",
+            "_initialize_camera_async",
             "stop",
             "_process_frames",
+            "_generate_test_frame",
             "update_parameters",
             "update_style",
             "get_last_frame",
             "is_running",
+            "get_available_styles",
+            "check_virtual_camera_availability",
             "start_processing",
             "stop_processing",
-            "error_occurred"
+            "error_occurred",
+            "info_message",
+            "open_camera"
         ],
         "classes": {
             "WebcamService": {
                 "methods": [
                     "__init__",
                     "start",
+                    "_initialize_camera_async",
                     "stop",
                     "_process_frames",
+                    "_generate_test_frame",
                     "update_parameters",
                     "update_style",
                     "get_last_frame",
                     "is_running",
+                    "get_available_styles",
+                    "check_virtual_camera_availability",
                     "start_processing",
                     "stop_processing",
-                    "error_occurred"
+                    "error_occurred",
+                    "info_message"
                 ],
                 "docstring": "Service for managing webcam input and virtual camera output.",
                 "base_classes": [
@@ -1637,9 +1714,9 @@
             }
         },
         "routes": [],
-        "complexity": 49,
+        "complexity": 83,
         "lint": [
-            "Function start >50 lines",
+            "Function _initialize_camera_async >50 lines",
             "Function _process_frames >50 lines",
             "High complexity"
         ]
@@ -1648,54 +1725,46 @@
         "language": ".py",
         "functions": [
             "__init__",
-            "init_webcam_service",
-            "pre_load_camera",
-            "on_frame_ready",
-            "on_webcam_error",
-            "on_webcam_info",
-            "start_processing_minimal",
             "start_processing",
             "stop_processing",
-            "toggle_processing",
             "update_style",
-            "on_device_changed",
-            "get_available_devices",
             "get_current_frame",
-            "is_processing_active",
+            "get_performance_stats",
+            "_update_ui_for_processing",
+            "_update_ui_for_stopped",
             "cleanup",
-            "get_service_status"
+            "get_webcam_info",
+            "init_webcam_service",
+            "start_processing_minimal",
+            "pre_load_camera_async",
+            "_pre_load_camera"
         ],
         "classes": {
             "WebcamManager": {
                 "methods": [
                     "__init__",
-                    "init_webcam_service",
-                    "pre_load_camera",
-                    "on_frame_ready",
-                    "on_webcam_error",
-                    "on_webcam_info",
-                    "start_processing_minimal",
                     "start_processing",
                     "stop_processing",
-                    "toggle_processing",
                     "update_style",
-                    "on_device_changed",
-                    "get_available_devices",
                     "get_current_frame",
-                    "is_processing_active",
+                    "get_performance_stats",
+                    "_update_ui_for_processing",
+                    "_update_ui_for_stopped",
                     "cleanup",
-                    "get_service_status"
+                    "get_webcam_info",
+                    "init_webcam_service",
+                    "start_processing_minimal",
+                    "pre_load_camera_async"
                 ],
-                "docstring": "Manages all webcam-related functionality.",
+                "docstring": "Webcam manager with high-performance service integration.\nAutomatically uses the high-performance service when available.",
                 "base_classes": [],
                 "maturity": "Core Asset",
                 "agent_type": "Utility"
             }
         },
         "routes": [],
-        "complexity": 87,
+        "complexity": 56,
         "lint": [
-            "Function start_processing >50 lines",
             "High complexity"
         ]
     },
@@ -1865,7 +1934,7 @@
             }
         },
         "routes": [],
-        "complexity": 44,
+        "complexity": 45,
         "lint": [
             "High complexity"
         ]
@@ -2115,7 +2184,7 @@
             }
         },
         "routes": [],
-        "complexity": 8,
+        "complexity": 7,
         "lint": []
     },
     "styles\\adjustments\\__init__.py": {
@@ -2332,14 +2401,16 @@
             "process_webcam_feed",
             "__init__",
             "define_parameters",
-            "apply"
+            "apply",
+            "get_default_params"
         ],
         "classes": {
             "PencilSketch": {
                 "methods": [
                     "__init__",
                     "define_parameters",
-                    "apply"
+                    "apply",
+                    "get_default_params"
                 ],
                 "docstring": "A style that creates a pencil sketch effect on live webcam feeds.",
                 "base_classes": [
@@ -2350,7 +2421,7 @@
             }
         },
         "routes": [],
-        "complexity": 16,
+        "complexity": 18,
         "lint": [
             "High complexity"
         ]
@@ -2385,13 +2456,15 @@
         "language": ".py",
         "functions": [
             "define_parameters",
-            "apply"
+            "apply",
+            "get_default_params"
         ],
         "classes": {
             "OilPainting": {
                 "methods": [
                     "define_parameters",
-                    "apply"
+                    "apply",
+                    "get_default_params"
                 ],
                 "docstring": "Applies an oil painting effect to the image.",
                 "base_classes": [
@@ -2467,7 +2540,7 @@
             }
         },
         "routes": [],
-        "complexity": 10,
+        "complexity": 6,
         "lint": []
     },
     "styles\\artistic\\edge_detection.py": {
@@ -2622,13 +2695,11 @@
     "styles\\basic\\color_balance.py": {
         "language": ".py",
         "functions": [
-            "define_parameters",
             "apply"
         ],
         "classes": {
             "ColorBalance": {
                 "methods": [
-                    "define_parameters",
                     "apply"
                 ],
                 "docstring": "Adjusts the color balance of an image by modifying the blue, green, and red channels.",
@@ -2640,7 +2711,7 @@
             }
         },
         "routes": [],
-        "complexity": 5,
+        "complexity": 3,
         "lint": []
     },
     "styles\\color_filters\\invert_colors.py": {
@@ -2991,13 +3062,15 @@
         "language": ".py",
         "functions": [
             "define_parameters",
-            "apply"
+            "apply",
+            "get_default_params"
         ],
         "classes": {
             "Glitch": {
                 "methods": [
                     "define_parameters",
-                    "apply"
+                    "apply",
+                    "get_default_params"
                 ],
                 "docstring": "Applies a glitch effect by randomly shifting color channels.",
                 "base_classes": [
@@ -3008,7 +3081,7 @@
             }
         },
         "routes": [],
-        "complexity": 9,
+        "complexity": 8,
         "lint": []
     },
     "styles\\distortions\\halftone.py": {
@@ -3196,13 +3269,15 @@
         "language": ".py",
         "functions": [
             "define_parameters",
-            "apply"
+            "apply",
+            "get_default_params"
         ],
         "classes": {
             "Original": {
                 "methods": [
                     "define_parameters",
-                    "apply"
+                    "apply",
+                    "get_default_params"
                 ],
                 "docstring": "The Original style applies no changes to the frame.",
                 "base_classes": [
@@ -3213,7 +3288,7 @@
             }
         },
         "routes": [],
-        "complexity": 4,
+        "complexity": 6,
         "lint": []
     },
     "styles\\effects\\glowing_edges.py": {
@@ -4359,5 +4434,1889 @@
         "lint": [
             "High complexity"
         ]
+    },
+    "create_dreamscape_logo.py": {
+        "language": ".py",
+        "functions": [
+            "create_dreamscape_logo"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": [
+            "Function create_dreamscape_logo >50 lines"
+        ]
+    },
+    "diagnose_virtual_camera.py": {
+        "language": ".py",
+        "functions": [
+            "diagnose_virtual_camera"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 10,
+        "lint": [
+            "Function diagnose_virtual_camera >50 lines"
+        ]
+    },
+    "simple_camera_test.py": {
+        "language": ".py",
+        "functions": [
+            "test_camera_direct",
+            "test_generated_frames"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 10,
+        "lint": []
+    },
+    "test_camera_simple.py": {
+        "language": ".py",
+        "functions": [
+            "test_camera"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_available_styles.py": {
+        "language": ".py",
+        "functions": [
+            "test_available_styles"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "Function test_available_styles >50 lines",
+            "High complexity"
+        ]
+    },
+    "test_button_debug.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "on_start_clicked",
+            "on_stop_clicked",
+            "on_snapshot_clicked",
+            "update_test"
+        ],
+        "classes": {
+            "ButtonTestWindow": {
+                "methods": [
+                    "__init__",
+                    "on_start_clicked",
+                    "on_stop_clicked",
+                    "on_snapshot_clicked",
+                    "update_test"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 13,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "debug_plugin_loading.py": {
+        "language": ".py",
+        "functions": [
+            "test_module_loading",
+            "test_plugin_manager"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test_captioner.py": {
+        "language": ".py",
+        "functions": [
+            "setup_logging",
+            "create_test_frame",
+            "main",
+            "on_text_update",
+            "on_error",
+            "on_status_change"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 17,
+        "lint": [
+            "Function main >50 lines",
+            "High complexity"
+        ]
+    },
+    "test_camera.py": {
+        "language": ".py",
+        "functions": [
+            "test_camera"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "test_audio_captioner_integration.py": {
+        "language": ".py",
+        "functions": [
+            "test_audio_captioner_integration",
+            "close_app"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": [
+            "Function test_audio_captioner_integration >50 lines"
+        ]
+    },
+    "compare_versions.py": {
+        "language": ".py",
+        "functions": [
+            "show_version_options",
+            "test_original_version"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "test_frame_flow.py": {
+        "language": ".py",
+        "functions": [
+            "test_frame_flow"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "test_import.py": {
+        "language": ".py",
+        "functions": [
+            "test_direct_import"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "test_effects_fix.py": {
+        "language": ".py",
+        "functions": [
+            "test_effects"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "Function test_effects >50 lines",
+            "High complexity"
+        ]
+    },
+    "test_effects_and_sliders.py": {
+        "language": ".py",
+        "functions": [
+            "test_effects_and_sliders",
+            "filter"
+        ],
+        "classes": {
+            "FocusedFilter": {
+                "methods": [
+                    "filter"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "logging.Filter"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "test_fast_startup.py": {
+        "language": ".py",
+        "functions": [
+            "test_fast_startup"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_original_version.py": {
+        "language": ".py",
+        "functions": [
+            "test_original_version"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "test_parameter_debug.py": {
+        "language": ".py",
+        "functions": [
+            "test_parameter_debug"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_parameter_sliders.py": {
+        "language": ".py",
+        "functions": [
+            "test_parameter_sliders"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 8,
+        "lint": [
+            "Function test_parameter_sliders >50 lines"
+        ]
+    },
+    "test_slider_fix.py": {
+        "language": ".py",
+        "functions": [
+            "test_slider_fix"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_parameter_system.py": {
+        "language": ".py",
+        "functions": [
+            "test_parameter_system",
+            "test_parameter_update"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "test_preview_debug.py": {
+        "language": ".py",
+        "functions": [
+            "test_preview"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_slider_functionality.py": {
+        "language": ".py",
+        "functions": [
+            "test_slider_functionality"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_simple_plugin.py": {
+        "language": ".py",
+        "functions": [
+            "test_plugin_system"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 10,
+        "lint": [
+            "Function test_plugin_system >50 lines"
+        ]
+    },
+    "test_slider_verification.py": {
+        "language": ".py",
+        "functions": [
+            "test_sliders"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_parameter_fix.py": {
+        "language": ".py",
+        "functions": [
+            "test_parameter_fix"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "test_plugin_system.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "setup_ui",
+            "setup_camera",
+            "update_frame",
+            "display_frame",
+            "on_effect_changed",
+            "update_controls",
+            "closeEvent"
+        ],
+        "classes": {
+            "PluginTestWindow": {
+                "methods": [
+                    "__init__",
+                    "setup_ui",
+                    "setup_camera",
+                    "update_frame",
+                    "display_frame",
+                    "on_effect_changed",
+                    "update_controls",
+                    "closeEvent"
+                ],
+                "docstring": "Test window for demonstrating the plugin system.",
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 34,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test_working_v2.py": {
+        "language": ".py",
+        "functions": [
+            "test_working_v2"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "version_summary.py": {
+        "language": ".py",
+        "functions": [
+            "show_all_versions"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "src\\captioner\\audio_capture.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "get_available_devices",
+            "start_recording",
+            "stop_recording",
+            "_audio_callback",
+            "_process_audio",
+            "_reduce_noise",
+            "_has_speech",
+            "set_audio_callback",
+            "cleanup",
+            "__del__"
+        ],
+        "classes": {
+            "AudioCapture": {
+                "methods": [
+                    "__init__",
+                    "get_available_devices",
+                    "start_recording",
+                    "stop_recording",
+                    "_audio_callback",
+                    "_process_audio",
+                    "_reduce_noise",
+                    "_has_speech",
+                    "set_audio_callback",
+                    "cleanup",
+                    "__del__"
+                ],
+                "docstring": "Real-time audio capture from microphone.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 44,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "src\\captioner\\text_renderer.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "set_style",
+            "set_animation",
+            "update_text",
+            "render_overlay",
+            "_update_animation_state",
+            "_get_display_text",
+            "_calculate_position",
+            "_create_text_image",
+            "_get_font",
+            "_apply_fade_effect",
+            "_overlay_text",
+            "clear_text",
+            "get_text_history",
+            "cleanup",
+            "__del__"
+        ],
+        "classes": {
+            "TextStyle": {
+                "methods": [],
+                "docstring": "Text styling configuration.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AnimationConfig": {
+                "methods": [],
+                "docstring": "Animation configuration.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "TextRenderer": {
+                "methods": [
+                    "__init__",
+                    "set_style",
+                    "set_animation",
+                    "update_text",
+                    "render_overlay",
+                    "_update_animation_state",
+                    "_get_display_text",
+                    "_calculate_position",
+                    "_create_text_image",
+                    "_get_font",
+                    "_apply_fade_effect",
+                    "_overlay_text",
+                    "clear_text",
+                    "get_text_history",
+                    "cleanup",
+                    "__del__"
+                ],
+                "docstring": "Renders text overlays on video frames.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 64,
+        "lint": [
+            "Function _create_text_image >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\captioner\\captioner_manager.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "initialize",
+            "_setup_callbacks",
+            "start",
+            "stop",
+            "_manager_loop",
+            "_handle_recognition_error",
+            "render_frame",
+            "update_config",
+            "get_available_devices",
+            "get_available_engines",
+            "get_text_history",
+            "clear_text",
+            "set_text_callback",
+            "set_error_callback",
+            "set_status_callback",
+            "get_status",
+            "cleanup",
+            "__del__"
+        ],
+        "classes": {
+            "CaptionerConfig": {
+                "methods": [],
+                "docstring": "Configuration for the captioner system.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "CaptionerManager": {
+                "methods": [
+                    "__init__",
+                    "initialize",
+                    "_setup_callbacks",
+                    "start",
+                    "stop",
+                    "_manager_loop",
+                    "_handle_recognition_error",
+                    "render_frame",
+                    "update_config",
+                    "get_available_devices",
+                    "get_available_engines",
+                    "get_text_history",
+                    "clear_text",
+                    "set_text_callback",
+                    "set_error_callback",
+                    "set_status_callback",
+                    "get_status",
+                    "cleanup",
+                    "__del__"
+                ],
+                "docstring": "Main manager for the speech-to-text captioner system.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 90,
+        "lint": [
+            "Function initialize >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\captioner\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "src\\captioner\\speech_recognition.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_init_engine",
+            "start_listening",
+            "stop_listening",
+            "process_audio",
+            "_recognition_loop",
+            "_recognize_speech",
+            "_recognize_whisper",
+            "_recognize_google",
+            "_recognize_dummy",
+            "_numpy_to_audio_bytes",
+            "set_transcription_callback",
+            "set_error_callback",
+            "set_language",
+            "set_engine",
+            "get_available_engines",
+            "cleanup",
+            "__del__"
+        ],
+        "classes": {
+            "SpeechRecognition": {
+                "methods": [
+                    "__init__",
+                    "_init_engine",
+                    "start_listening",
+                    "stop_listening",
+                    "process_audio",
+                    "_recognition_loop",
+                    "_recognize_speech",
+                    "_recognize_whisper",
+                    "_recognize_google",
+                    "_recognize_dummy",
+                    "_numpy_to_audio_bytes",
+                    "set_transcription_callback",
+                    "set_error_callback",
+                    "set_language",
+                    "set_engine",
+                    "get_available_engines",
+                    "cleanup",
+                    "__del__"
+                ],
+                "docstring": "Speech recognition engine with multiple backends.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 75,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "src\\gui\\v2_main_window_working.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "setup_professional_theme",
+            "init_ui",
+            "create_central_preview",
+            "create_controls_panel",
+            "create_status_bar",
+            "setup_connections",
+            "setup_animations",
+            "pre_load_camera",
+            "pre_load_styles",
+            "pre_initialize_timer",
+            "on_start_stop_clicked",
+            "on_snapshot_clicked",
+            "on_reset_clicked",
+            "on_effect_selected",
+            "update_preview",
+            "update_status",
+            "closeEvent"
+        ],
+        "classes": {
+            "ProfessionalV2MainWindow": {
+                "methods": [
+                    "__init__",
+                    "setup_professional_theme",
+                    "init_ui",
+                    "create_central_preview",
+                    "create_controls_panel",
+                    "create_status_bar",
+                    "setup_connections",
+                    "setup_animations",
+                    "pre_load_camera",
+                    "pre_load_styles",
+                    "pre_initialize_timer",
+                    "on_start_stop_clicked",
+                    "on_snapshot_clicked",
+                    "on_reset_clicked",
+                    "on_effect_selected",
+                    "update_preview",
+                    "update_status",
+                    "closeEvent"
+                ],
+                "docstring": "Professional V2 main window with working camera preview.",
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 53,
+        "lint": [
+            "Function setup_professional_theme >50 lines",
+            "Function on_start_stop_clicked >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\gui\\components\\audio_captioner_controls.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "init_ui",
+            "setup_connections",
+            "initialize_captioner",
+            "start_captioner",
+            "stop_captioner",
+            "on_captioner_enabled",
+            "on_audio_device_changed",
+            "on_captioner_config_changed",
+            "update_captioner_config",
+            "refresh_audio_devices",
+            "test_captioner",
+            "update_audio_level",
+            "on_text_update",
+            "on_captioner_error",
+            "on_captioner_status",
+            "update_status",
+            "get_captioner_manager",
+            "is_active",
+            "cleanup",
+            "__init__",
+            "__init__"
+        ],
+        "classes": {
+            "AudioCaptionerControls": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "setup_connections",
+                    "initialize_captioner",
+                    "start_captioner",
+                    "stop_captioner",
+                    "on_captioner_enabled",
+                    "on_audio_device_changed",
+                    "on_captioner_config_changed",
+                    "update_captioner_config",
+                    "refresh_audio_devices",
+                    "test_captioner",
+                    "update_audio_level",
+                    "on_text_update",
+                    "on_captioner_error",
+                    "on_captioner_status",
+                    "update_status",
+                    "get_captioner_manager",
+                    "is_active",
+                    "cleanup"
+                ],
+                "docstring": "Audio and captioner control panel.",
+                "base_classes": [
+                    "QWidget"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "CaptionerConfig": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "CaptionerManager": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 71,
+        "lint": [
+            "Function init_ui >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\gui\\modules\\ai_parameter_optimizer.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "analyze_frame",
+            "optimize_parameters",
+            "_optimize_cartoon_parameters",
+            "_optimize_sketch_parameters",
+            "_optimize_edge_detection_parameters",
+            "_optimize_watercolor_parameters",
+            "_optimize_oil_painting_parameters",
+            "_generic_parameter_optimization",
+            "_analyze_motion",
+            "_analyze_detail",
+            "_analyze_saturation",
+            "_analyze_edge_density",
+            "_analyze_noise",
+            "_classify_content",
+            "_get_default_analysis",
+            "start_continuous_optimization",
+            "stop_continuous_optimization",
+            "_optimization_loop",
+            "_parameters_changed_significantly"
+        ],
+        "classes": {
+            "ContentType": {
+                "methods": [],
+                "docstring": "Types of video content for parameter optimization.",
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ContentAnalysis": {
+                "methods": [],
+                "docstring": "Results of content analysis for parameter optimization.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AIParameterOptimizer": {
+                "methods": [
+                    "__init__",
+                    "analyze_frame",
+                    "optimize_parameters",
+                    "_optimize_cartoon_parameters",
+                    "_optimize_sketch_parameters",
+                    "_optimize_edge_detection_parameters",
+                    "_optimize_watercolor_parameters",
+                    "_optimize_oil_painting_parameters",
+                    "_generic_parameter_optimization",
+                    "_analyze_motion",
+                    "_analyze_detail",
+                    "_analyze_saturation",
+                    "_analyze_edge_density",
+                    "_analyze_noise",
+                    "_classify_content",
+                    "_get_default_analysis",
+                    "start_continuous_optimization",
+                    "stop_continuous_optimization",
+                    "_optimization_loop",
+                    "_parameters_changed_significantly"
+                ],
+                "docstring": "AI-powered parameter optimization for video effects.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 82,
+        "lint": [
+            "Function analyze_frame >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\plugin_manager.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_setup_callbacks",
+            "initialize",
+            "_get_default_plugin_directories",
+            "get_effect",
+            "get_effect_ui",
+            "get_all_effects",
+            "get_effects_by_category",
+            "get_categories",
+            "search_effects",
+            "set_current_effect",
+            "get_current_effect",
+            "get_current_effect_id",
+            "set_parameter",
+            "get_parameter",
+            "get_all_parameters",
+            "reset_parameters",
+            "apply_effect",
+            "enable_effect",
+            "disable_effect",
+            "reload_effect",
+            "load_plugin_from_path",
+            "get_effect_metadata",
+            "get_statistics",
+            "_on_plugin_registered",
+            "_on_plugin_unregistered",
+            "cleanup",
+            "__enter__",
+            "__exit__"
+        ],
+        "classes": {
+            "PluginManager": {
+                "methods": [
+                    "__init__",
+                    "_setup_callbacks",
+                    "initialize",
+                    "_get_default_plugin_directories",
+                    "get_effect",
+                    "get_effect_ui",
+                    "get_all_effects",
+                    "get_effects_by_category",
+                    "get_categories",
+                    "search_effects",
+                    "set_current_effect",
+                    "get_current_effect",
+                    "get_current_effect_id",
+                    "set_parameter",
+                    "get_parameter",
+                    "get_all_parameters",
+                    "reset_parameters",
+                    "apply_effect",
+                    "enable_effect",
+                    "disable_effect",
+                    "reload_effect",
+                    "load_plugin_from_path",
+                    "get_effect_metadata",
+                    "get_statistics",
+                    "_on_plugin_registered",
+                    "_on_plugin_unregistered",
+                    "cleanup",
+                    "__enter__",
+                    "__exit__"
+                ],
+                "docstring": "Main plugin manager that coordinates the plugin system.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 77,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\plugin_base.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply",
+            "apply_effect",
+            "get_parameters",
+            "set_parameters",
+            "get_metadata",
+            "cleanup",
+            "enable",
+            "disable",
+            "__init__",
+            "__init__",
+            "init_ui",
+            "create_parameter_controls",
+            "group_parameters",
+            "create_group_box",
+            "create_parameter_widget",
+            "create_slider_control",
+            "create_float_control",
+            "create_checkbox_control",
+            "create_combo_control",
+            "create_file_picker_control",
+            "create_color_picker_control",
+            "create_spin_control",
+            "browse_file",
+            "pick_color",
+            "on_parameter_changed",
+            "update_dependent_parameters",
+            "evaluate_condition",
+            "set_parameter_visibility",
+            "add_dependency",
+            "apply_professional_styling",
+            "update_color"
+        ],
+        "classes": {
+            "EffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply",
+                    "apply_effect",
+                    "get_parameters",
+                    "set_parameters",
+                    "get_metadata",
+                    "cleanup",
+                    "enable",
+                    "disable"
+                ],
+                "docstring": "Base class for all effect plugins.",
+                "base_classes": [
+                    "ABC"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "EffectParameter": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": "Represents a parameter for an effect.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "EffectUI": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "create_parameter_controls",
+                    "group_parameters",
+                    "create_group_box",
+                    "create_parameter_widget",
+                    "create_slider_control",
+                    "create_float_control",
+                    "create_checkbox_control",
+                    "create_combo_control",
+                    "create_file_picker_control",
+                    "create_color_picker_control",
+                    "create_spin_control",
+                    "browse_file",
+                    "pick_color",
+                    "on_parameter_changed",
+                    "update_dependent_parameters",
+                    "evaluate_condition",
+                    "set_parameter_visibility",
+                    "add_dependency",
+                    "apply_professional_styling"
+                ],
+                "docstring": "Base class for effect UI components with professional styling and advanced controls.\nSupports all parameter types: sliders, dropdowns, checkboxes, file pickers, color pickers,\ngrouped controls, and dynamic show/hide logic.",
+                "base_classes": [
+                    "QWidget"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 96,
+        "lint": [
+            "Function apply_professional_styling >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\plugin_loader.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "add_plugin_directory",
+            "load_plugins",
+            "load_plugin_from_path",
+            "_find_plugin_directories",
+            "_is_plugin_directory",
+            "_load_plugin_from_directory",
+            "_load_plugin_from_file",
+            "_load_metadata",
+            "_load_module_from_directory",
+            "_load_module_from_file",
+            "_find_plugin_class",
+            "_find_ui_class",
+            "_get_plugin_id",
+            "reload_plugin",
+            "get_loaded_modules",
+            "cleanup"
+        ],
+        "classes": {
+            "PluginLoader": {
+                "methods": [
+                    "__init__",
+                    "add_plugin_directory",
+                    "load_plugins",
+                    "load_plugin_from_path",
+                    "_find_plugin_directories",
+                    "_is_plugin_directory",
+                    "_load_plugin_from_directory",
+                    "_load_plugin_from_file",
+                    "_load_metadata",
+                    "_load_module_from_directory",
+                    "_load_module_from_file",
+                    "_find_plugin_class",
+                    "_find_ui_class",
+                    "_get_plugin_id",
+                    "reload_plugin",
+                    "get_loaded_modules",
+                    "cleanup"
+                ],
+                "docstring": "Loads plugins from directories and registers them.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 86,
+        "lint": [
+            "Function _load_plugin_from_directory >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\effects\\adjustments\\brightness_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_ui_components"
+        ],
+        "classes": {
+            "BrightnessEffectUI": {
+                "methods": [
+                    "__init__",
+                    "create_ui_components"
+                ],
+                "docstring": "UI component for the brightness effect plugin with automatic styling.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "src\\plugins\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "src\\plugins\\effects\\adjustments\\brightness_contrast_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_dependencies"
+        ],
+        "classes": {
+            "BrightnessContrastEffectUI": {
+                "methods": [
+                    "__init__",
+                    "setup_dependencies"
+                ],
+                "docstring": "UI for Brightness & Contrast Effect Plugin.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "src\\plugins\\effects\\adjustments\\brightness_contrast_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\adjustments\\brightness_contrast_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply",
+            "_auto_adjust_brightness_contrast",
+            "_apply_gamma_correction",
+            "_preserve_details"
+        ],
+        "classes": {
+            "BrightnessContrastEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply",
+                    "_auto_adjust_brightness_contrast",
+                    "_apply_gamma_correction",
+                    "_preserve_details"
+                ],
+                "docstring": "Brightness and contrast effect converted to plugin format.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "Function __init__ >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\plugin_registry.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "register_plugin",
+            "unregister_plugin",
+            "get_plugin",
+            "get_ui_component",
+            "get_plugins_by_category",
+            "get_all_plugins",
+            "get_all_categories",
+            "get_plugin_metadata",
+            "search_plugins",
+            "get_enabled_plugins",
+            "enable_plugin",
+            "disable_plugin",
+            "_generate_plugin_id",
+            "clear",
+            "get_statistics"
+        ],
+        "classes": {
+            "PluginRegistry": {
+                "methods": [
+                    "__init__",
+                    "register_plugin",
+                    "unregister_plugin",
+                    "get_plugin",
+                    "get_ui_component",
+                    "get_plugins_by_category",
+                    "get_all_plugins",
+                    "get_all_categories",
+                    "get_plugin_metadata",
+                    "search_plugins",
+                    "get_enabled_plugins",
+                    "enable_plugin",
+                    "disable_plugin",
+                    "_generate_plugin_id",
+                    "clear",
+                    "get_statistics"
+                ],
+                "docstring": "Registry for managing effect plugins.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 56,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\effects\\adjustments\\brightness_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply"
+        ],
+        "classes": {
+            "BrightnessEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply"
+                ],
+                "docstring": "Brightness adjustment effect plugin.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\cartoon_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply"
+        ],
+        "classes": {
+            "CartoonEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply"
+                ],
+                "docstring": "Cartoon effect plugin that creates a cartoon-like appearance.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "src\\plugins\\effects\\adjustments\\brightness_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\advanced_cartoon_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\cartoon_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\advanced_cartoon_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_dependencies",
+            "init_ui"
+        ],
+        "classes": {
+            "AdvancedCartoonEffectUI": {
+                "methods": [
+                    "__init__",
+                    "setup_dependencies",
+                    "init_ui"
+                ],
+                "docstring": "Advanced cartoon effect UI with dynamic dependencies and professional styling.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\cartoon_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_ui_components",
+            "_on_edge_strength_changed",
+            "_on_color_reduction_changed",
+            "_on_blur_strength_changed",
+            "update_parameter_widget"
+        ],
+        "classes": {
+            "CartoonEffectUI": {
+                "methods": [
+                    "__init__",
+                    "create_ui_components",
+                    "_on_edge_strength_changed",
+                    "_on_color_reduction_changed",
+                    "_on_blur_strength_changed",
+                    "update_parameter_widget"
+                ],
+                "docstring": "UI component for the cartoon effect plugin with automatic styling.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "Function create_ui_components >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\effects\\artistic\\advanced_cartoon_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply",
+            "_apply_cartoon_effect",
+            "_apply_texture_overlay"
+        ],
+        "classes": {
+            "AdvancedCartoonEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply",
+                    "_apply_cartoon_effect",
+                    "_apply_texture_overlay"
+                ],
+                "docstring": "Advanced cartoon effect with comprehensive parameter support.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 15,
+        "lint": [
+            "Function __init__ >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\effects\\artistic\\legacy_cartoon_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply"
+        ],
+        "classes": {
+            "LegacyCartoonEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply"
+                ],
+                "docstring": "Legacy cartoon effect converted to plugin format.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 5,
+        "lint": [
+            "Function __init__ >50 lines"
+        ]
+    },
+    "src\\plugins\\effects\\artistic\\legacy_cartoon_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_dependencies"
+        ],
+        "classes": {
+            "LegacyCartoonEffectUI": {
+                "methods": [
+                    "__init__",
+                    "setup_dependencies"
+                ],
+                "docstring": "UI for Legacy Cartoon Effect Plugin.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\edge_detection_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_dependencies"
+        ],
+        "classes": {
+            "EdgeDetectionEffectUI": {
+                "methods": [
+                    "__init__",
+                    "setup_dependencies"
+                ],
+                "docstring": "UI for Edge Detection Effect Plugin.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\neural_style_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_dependencies"
+        ],
+        "classes": {
+            "NeuralStyleEffectUI": {
+                "methods": [
+                    "__init__",
+                    "setup_dependencies"
+                ],
+                "docstring": "UI for Neural Style Effect Plugin.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\edge_detection_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply",
+            "_apply_sobel",
+            "_apply_laplacian",
+            "_apply_scharr",
+            "_create_colored_edges"
+        ],
+        "classes": {
+            "EdgeDetectionEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply",
+                    "_apply_sobel",
+                    "_apply_laplacian",
+                    "_apply_scharr",
+                    "_create_colored_edges"
+                ],
+                "docstring": "Edge detection effect converted to plugin format.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 23,
+        "lint": [
+            "Function __init__ >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\effects\\artistic\\edge_detection_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\legacy_cartoon_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\pencil_sketch_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply",
+            "_add_paper_texture"
+        ],
+        "classes": {
+            "PencilSketchEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply",
+                    "_add_paper_texture"
+                ],
+                "docstring": "Pencil sketch effect converted to plugin format.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 10,
+        "lint": [
+            "Function __init__ >50 lines"
+        ]
+    },
+    "src\\plugins\\effects\\artistic\\neural_style_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply",
+            "_apply_neural_style",
+            "_apply_van_gogh_style",
+            "_apply_monet_style",
+            "_apply_picasso_style",
+            "_apply_watercolor_style",
+            "_apply_oil_painting_style",
+            "_apply_sketch_style",
+            "_apply_color_palette",
+            "_apply_texture_overlay",
+            "_preserve_details",
+            "_apply_ai_enhancement"
+        ],
+        "classes": {
+            "NeuralStyleEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply",
+                    "_apply_neural_style",
+                    "_apply_van_gogh_style",
+                    "_apply_monet_style",
+                    "_apply_picasso_style",
+                    "_apply_watercolor_style",
+                    "_apply_oil_painting_style",
+                    "_apply_sketch_style",
+                    "_apply_color_palette",
+                    "_apply_texture_overlay",
+                    "_preserve_details",
+                    "_apply_ai_enhancement"
+                ],
+                "docstring": "Neural style transfer effect with artistic filters.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 51,
+        "lint": [
+            "Function __init__ >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\effects\\artistic\\neural_style_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\pencil_sketch_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\pencil_sketch_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_dependencies"
+        ],
+        "classes": {
+            "PencilSketchEffectUI": {
+                "methods": [
+                    "__init__",
+                    "setup_dependencies"
+                ],
+                "docstring": "UI for Pencil Sketch Effect Plugin.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\watercolor_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\plugins\\effects\\filters\\blur_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply"
+        ],
+        "classes": {
+            "BlurEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply"
+                ],
+                "docstring": "Blur effect plugin that applies different types of blur.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 10,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\watercolor_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_dependencies"
+        ],
+        "classes": {
+            "WatercolorEffectUI": {
+                "methods": [
+                    "__init__",
+                    "setup_dependencies"
+                ],
+                "docstring": "UI for Watercolor Effect Plugin.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "src\\plugins\\effects\\artistic\\watercolor_effect\\effect.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "apply",
+            "_preserve_edges",
+            "_add_watercolor_texture"
+        ],
+        "classes": {
+            "WatercolorEffectPlugin": {
+                "methods": [
+                    "__init__",
+                    "apply",
+                    "_preserve_edges",
+                    "_add_watercolor_texture"
+                ],
+                "docstring": "Watercolor effect converted to plugin format.",
+                "base_classes": [
+                    "EffectPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "Function __init__ >50 lines",
+            "High complexity"
+        ]
+    },
+    "src\\plugins\\effects\\filters\\blur_effect\\ui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_ui_components"
+        ],
+        "classes": {
+            "BlurEffectUI": {
+                "methods": [
+                    "__init__",
+                    "create_ui_components"
+                ],
+                "docstring": "UI component for the blur effect plugin with automatic styling.",
+                "base_classes": [
+                    "EffectUI"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "src\\plugins\\effects\\filters\\blur_effect\\__init__.py": {
+        "language": ".py",
+        "functions": [
+            "register_plugin"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "src\\services\\high_performance_webcam_service.py": {
+        "language": ".py",
+        "functions": [
+            "match",
+            "__init__",
+            "initialize_camera",
+            "start_processing",
+            "stop_processing",
+            "update_style",
+            "get_last_frame",
+            "_optimized_processing_loop",
+            "_apply_optimized_effect",
+            "_apply_optimized_cartoon",
+            "_apply_optimized_sketch",
+            "_apply_optimized_edge_detection",
+            "_apply_optimized_watercolor",
+            "get_performance_stats",
+            "cleanup"
+        ],
+        "classes": {
+            "HighPerformanceWebcamService": {
+                "methods": [
+                    "__init__",
+                    "initialize_camera",
+                    "start_processing",
+                    "stop_processing",
+                    "update_style",
+                    "get_last_frame",
+                    "_optimized_processing_loop",
+                    "_apply_optimized_effect",
+                    "_apply_optimized_cartoon",
+                    "_apply_optimized_sketch",
+                    "_apply_optimized_edge_detection",
+                    "_apply_optimized_watercolor",
+                    "get_performance_stats",
+                    "cleanup"
+                ],
+                "docstring": "High-performance webcam service with optimized Python implementation.\nImplements the same optimizations we'd get with Rust:\n- Zero-copy frame processing\n- SIMD-optimized operations\n- Reduced memory allocations\n- Optimized camera initialization",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 61,
+        "lint": [
+            "Function _optimized_processing_loop >50 lines",
+            "High complexity"
+        ]
+    },
+    "styles\\artistic\\sketch.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "tests\\test_filter_logic.py": {
+        "language": ".py",
+        "functions": [
+            "get_test_image",
+            "load_all_styles",
+            "test_filter_logic"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 17,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "tests\\integration\\test_v2_window_creation.py": {
+        "language": ".py",
+        "functions": [
+            "qapp",
+            "test_main_window_creation"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
     }
 }

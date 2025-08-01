@@ -247,7 +247,6 @@ class EnhancedGitHubLibraryScanner:
             })
             
             print(f"   Successfully scanned {len(analysis_data)} files")
-            return True
             
         except Exception as e:
             print(f"   Error scanning repository: {e}")
@@ -258,17 +257,31 @@ class EnhancedGitHubLibraryScanner:
                 'repo_name': repo_name,
                 'is_private': is_private,
                 'scan_date': datetime.now().isoformat(),
-                'error': str(e)
+                'error': str(e),
+                'status': 'failed'
             })
             
             return False
             
         finally:
-            # Clean up temporary directory
+            # Clean up temporary directory with better error handling
             try:
-                shutil.rmtree(temp_dir)
-            except Exception as e:
-                print(f"   Warning: Could not clean up temporary directory: {e}")
+                if temp_dir.exists():
+                    # On Windows, git objects might be locked - try to remove them first
+                    git_objects = temp_dir / ".git" / "objects"
+                    if git_objects.exists():
+                        try:
+                            import shutil
+                            shutil.rmtree(git_objects, ignore_errors=True)
+                        except Exception:
+                            pass  # Ignore cleanup errors for git objects
+                    
+                    # Remove the temp directory
+                    shutil.rmtree(temp_dir, ignore_errors=True)
+            except Exception as cleanup_error:
+                # Don't fail the scan due to cleanup issues
+                print(f"   Note: Could not clean up temporary directory: {cleanup_error}")
+                pass
     
     def scan_all_repositories(self, force_rescan: bool = False, max_repos: Optional[int] = None):
         """Scan all repositories for the GitHub user."""

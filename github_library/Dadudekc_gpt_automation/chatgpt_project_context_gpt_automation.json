@@ -1,7 +1,26 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp854p50hc\\gpt_automation",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmphv1qu7be\\gpt_automation",
     "num_files_analyzed": 35,
     "analysis_details": {
+        "config.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "bulk_conversation_query.py": {
+            "language": ".py",
+            "functions": [
+                "parse_args",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
         "local_llm_engine.py": {
             "language": ".py",
             "functions": [
@@ -25,144 +44,6 @@
             "routes": [],
             "complexity": 7,
             "lint": []
-        },
-        "bulk_conversation_query.py": {
-            "language": ".py",
-            "functions": [
-                "parse_args",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "config.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "automation_engine.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "get_chatgpt_response",
-                "switch_model",
-                "shutdown",
-                "process_file",
-                "self_heal_file",
-                "select_model",
-                "run_tests",
-                "deploy_file",
-                "prioritize_files",
-                "batch_process_files",
-                "process_all_files",
-                "ask_question_in_history"
-            ],
-            "classes": {
-                "AutomationEngine": {
-                    "methods": [
-                        "__init__",
-                        "get_chatgpt_response",
-                        "switch_model",
-                        "shutdown",
-                        "process_file",
-                        "self_heal_file",
-                        "select_model",
-                        "run_tests",
-                        "deploy_file",
-                        "prioritize_files",
-                        "batch_process_files",
-                        "process_all_files",
-                        "ask_question_in_history"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 75,
-            "lint": [
-                "Function __init__ >50 lines",
-                "Function process_file >50 lines",
-                "Function batch_process_files >50 lines",
-                "High complexity"
-            ]
-        },
-        "setup_chromedriver.py": {
-            "language": ".py",
-            "functions": [
-                "get_chrome_version",
-                "download_chromedriver",
-                "update_config"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 24,
-            "lint": [
-                "Function download_chromedriver >50 lines",
-                "High complexity"
-            ]
-        },
-        "setup_logging.py": {
-            "language": ".py",
-            "functions": [
-                "setup_logging"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": [
-                "Function setup_logging >50 lines"
-            ]
-        },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "__init__",
-                "init_ui",
-                "load_file_into_preview",
-                "process_file",
-                "self_heal",
-                "run_tests",
-                "send_prompt",
-                "process_batch_files",
-                "closeEvent"
-            ],
-            "classes": {
-                "GUIMain": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "load_file_into_preview",
-                        "process_file",
-                        "self_heal",
-                        "run_tests",
-                        "send_prompt",
-                        "process_batch_files",
-                        "closeEvent"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QtWidgets.QMainWindow"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 37,
-            "lint": [
-                "Function main >50 lines",
-                "Function init_ui >50 lines",
-                "High complexity"
-            ]
         },
         "PostProcessValidator.py": {
             "language": ".py",
@@ -233,6 +114,83 @@
                 "High complexity"
             ]
         },
+        "ModelRegistry.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "find_project_root",
+                "load_models",
+                "_load_single_model",
+                "reload_models",
+                "get_registry",
+                "__str__"
+            ],
+            "classes": {
+                "ModelRegistry": {
+                    "methods": [
+                        "__init__",
+                        "find_project_root",
+                        "load_models",
+                        "_load_single_model",
+                        "reload_models",
+                        "get_registry",
+                        "__str__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 27,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "__init__",
+                "init_ui",
+                "load_file_into_preview",
+                "process_file",
+                "self_heal",
+                "run_tests",
+                "send_prompt",
+                "process_batch_files",
+                "closeEvent"
+            ],
+            "classes": {
+                "GUIMain": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "load_file_into_preview",
+                        "process_file",
+                        "self_heal",
+                        "run_tests",
+                        "send_prompt",
+                        "process_batch_files",
+                        "closeEvent"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QtWidgets.QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 37,
+            "lint": [
+                "Function main >50 lines",
+                "Function init_ui >50 lines",
+                "High complexity"
+            ]
+        },
         "OpenAIClient.py": {
             "language": ".py",
             "functions": [
@@ -281,27 +239,39 @@
                 "High complexity"
             ]
         },
-        "ModelRegistry.py": {
+        "automation_engine.py": {
             "language": ".py",
             "functions": [
                 "__init__",
-                "find_project_root",
-                "load_models",
-                "_load_single_model",
-                "reload_models",
-                "get_registry",
-                "__str__"
+                "get_chatgpt_response",
+                "switch_model",
+                "shutdown",
+                "process_file",
+                "self_heal_file",
+                "select_model",
+                "run_tests",
+                "deploy_file",
+                "prioritize_files",
+                "batch_process_files",
+                "process_all_files",
+                "ask_question_in_history"
             ],
             "classes": {
-                "ModelRegistry": {
+                "AutomationEngine": {
                     "methods": [
                         "__init__",
-                        "find_project_root",
-                        "load_models",
-                        "_load_single_model",
-                        "reload_models",
-                        "get_registry",
-                        "__str__"
+                        "get_chatgpt_response",
+                        "switch_model",
+                        "shutdown",
+                        "process_file",
+                        "self_heal_file",
+                        "select_model",
+                        "run_tests",
+                        "deploy_file",
+                        "prioritize_files",
+                        "batch_process_files",
+                        "process_all_files",
+                        "ask_question_in_history"
                     ],
                     "docstring": null,
                     "base_classes": [],
@@ -310,8 +280,38 @@
                 }
             },
             "routes": [],
-            "complexity": 27,
+            "complexity": 75,
             "lint": [
+                "Function __init__ >50 lines",
+                "Function process_file >50 lines",
+                "Function batch_process_files >50 lines",
+                "High complexity"
+            ]
+        },
+        "setup_logging.py": {
+            "language": ".py",
+            "functions": [
+                "setup_logging"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": [
+                "Function setup_logging >50 lines"
+            ]
+        },
+        "setup_chromedriver.py": {
+            "language": ".py",
+            "functions": [
+                "get_chrome_version",
+                "download_chromedriver",
+                "update_config"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 24,
+            "lint": [
+                "Function download_chromedriver >50 lines",
                 "High complexity"
             ]
         },
@@ -396,6 +396,78 @@
                 "High complexity"
             ]
         },
+        "controllers\\automation_controller.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "process_file",
+                "self_heal_file",
+                "run_tests_on_file",
+                "shutdown"
+            ],
+            "classes": {
+                "AutomationController": {
+                    "methods": [
+                        "__init__",
+                        "process_file",
+                        "self_heal_file",
+                        "run_tests_on_file",
+                        "shutdown"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "GUI\\FileTableWidget.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "dragEnterEvent",
+                "dropEvent",
+                "add_folder_files",
+                "add_file",
+                "preview_prompt",
+                "get_selected_files",
+                "get_all_files",
+                "start_processing",
+                "log"
+            ],
+            "classes": {
+                "FileTableWidget": {
+                    "methods": [
+                        "__init__",
+                        "dragEnterEvent",
+                        "dropEvent",
+                        "add_folder_files",
+                        "add_file",
+                        "preview_prompt",
+                        "get_selected_files",
+                        "get_all_files",
+                        "start_processing",
+                        "log"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QtWidgets.QTableWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 36,
+            "lint": [
+                "High complexity"
+            ]
+        },
         "GUI\\GuiHelpers.py": {
             "language": ".py",
             "functions": [
@@ -472,88 +544,59 @@
                 "High complexity"
             ]
         },
-        "controllers\\automation_controller.py": {
+        "GUI\\TestAgentWidget.py": {
             "language": ".py",
             "functions": [
                 "__init__",
-                "process_file",
-                "self_heal_file",
-                "run_tests_on_file",
-                "shutdown"
-            ],
-            "classes": {
-                "AutomationController": {
-                    "methods": [
-                        "__init__",
-                        "process_file",
-                        "self_heal_file",
-                        "run_tests_on_file",
-                        "shutdown"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 14,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "GUI\\FileTableWidget.py": {
-            "language": ".py",
-            "functions": [
+                "init_ui",
+                "browse_files",
+                "on_files_dropped",
+                "add_files",
+                "run_tests",
+                "log",
                 "__init__",
                 "dragEnterEvent",
                 "dropEvent",
-                "add_folder_files",
-                "add_file",
-                "preview_prompt",
-                "get_selected_files",
-                "get_all_files",
-                "start_processing",
-                "log"
+                "_has_valid_files"
             ],
             "classes": {
-                "FileTableWidget": {
+                "TestAgentWidget": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "browse_files",
+                        "on_files_dropped",
+                        "add_files",
+                        "run_tests",
+                        "log"
+                    ],
+                    "docstring": "Widget to select one or more Python files (or folders), generate tests using ChatGPT (or LLM),\nand run those tests.\n\nNOW WITH MULTI-FILE & FOLDER DRAG-AND-DROP SUPPORT!",
+                    "base_classes": [
+                        "QtWidgets.QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "FileDropListWidget": {
                     "methods": [
                         "__init__",
                         "dragEnterEvent",
                         "dropEvent",
-                        "add_folder_files",
-                        "add_file",
-                        "preview_prompt",
-                        "get_selected_files",
-                        "get_all_files",
-                        "start_processing",
-                        "log"
+                        "_has_valid_files"
                     ],
-                    "docstring": null,
+                    "docstring": "QListWidget subclass that accepts drag-and-drop file/folder paths.\nEmits files_dropped signal with a list of the dropped paths.",
                     "base_classes": [
-                        "QtWidgets.QTableWidget"
+                        "QtWidgets.QListWidget"
                     ],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 36,
+            "complexity": 44,
             "lint": [
                 "High complexity"
             ]
-        },
-        "models\\model_gpt4o.py": {
-            "language": ".py",
-            "functions": [
-                "process_with_gpt4o",
-                "register"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 2,
-            "lint": []
         },
         "GUI\\MultibotManager.py": {
             "language": ".py",
@@ -593,6 +636,113 @@
             },
             "routes": [],
             "complexity": 37,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "GUI\\TestAgent.py": {
+            "language": ".py",
+            "functions": [
+                "validate_test_code",
+                "__init__",
+                "run_full_test_cycle",
+                "generate_and_run",
+                "create_tests_for_file",
+                "validate_test_file",
+                "run_tests",
+                "repair_tests",
+                "get_test_file_path",
+                "find_project_root"
+            ],
+            "classes": {
+                "TestAgent": {
+                    "methods": [
+                        "__init__",
+                        "run_full_test_cycle",
+                        "generate_and_run",
+                        "create_tests_for_file",
+                        "validate_test_file",
+                        "run_tests",
+                        "repair_tests",
+                        "get_test_file_path",
+                        "find_project_root"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 43,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "GUI\\SelfHealRunner.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "run_and_validate",
+                "read_file",
+                "save_file",
+                "__init__",
+                "init_ui",
+                "add_files",
+                "start_self_heal",
+                "cancel_self_heal",
+                "log",
+                "update_progress_bar",
+                "__init__",
+                "run",
+                "_update_progress"
+            ],
+            "classes": {
+                "SelfHealController": {
+                    "methods": [
+                        "__init__",
+                        "run_and_validate",
+                        "read_file",
+                        "save_file"
+                    ],
+                    "docstring": "Controller class encapsulating the self-healing logic.\nContains methods for running and validating a file, reading/saving files,\nand executing auto-retry logic.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "SelfHealRunner": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "add_files",
+                        "start_self_heal",
+                        "cancel_self_heal",
+                        "log",
+                        "update_progress_bar"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QtWidgets.QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "SelfHealWorker": {
+                    "methods": [
+                        "__init__",
+                        "run",
+                        "_update_progress"
+                    ],
+                    "docstring": "QRunnable to process self-healing of a single file in the background.\nChecks for cancellation requests before and during processing.",
+                    "base_classes": [
+                        "QtCore.QRunnable"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                }
+            },
+            "routes": [],
+            "complexity": 43,
             "lint": [
                 "High complexity"
             ]
@@ -676,132 +826,10 @@
                 "High complexity"
             ]
         },
-        "GUI\\TestAgentWidget.py": {
+        "models\\model_gpt4.py": {
             "language": ".py",
             "functions": [
-                "__init__",
-                "init_ui",
-                "browse_files",
-                "on_files_dropped",
-                "add_files",
-                "run_tests",
-                "log",
-                "__init__",
-                "dragEnterEvent",
-                "dropEvent",
-                "_has_valid_files"
-            ],
-            "classes": {
-                "TestAgentWidget": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "browse_files",
-                        "on_files_dropped",
-                        "add_files",
-                        "run_tests",
-                        "log"
-                    ],
-                    "docstring": "Widget to select one or more Python files (or folders), generate tests using ChatGPT (or LLM),\nand run those tests.\n\nNOW WITH MULTI-FILE & FOLDER DRAG-AND-DROP SUPPORT!",
-                    "base_classes": [
-                        "QtWidgets.QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "FileDropListWidget": {
-                    "methods": [
-                        "__init__",
-                        "dragEnterEvent",
-                        "dropEvent",
-                        "_has_valid_files"
-                    ],
-                    "docstring": "QListWidget subclass that accepts drag-and-drop file/folder paths.\nEmits files_dropped signal with a list of the dropped paths.",
-                    "base_classes": [
-                        "QtWidgets.QListWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 44,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "GUI\\SelfHealRunner.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "run_and_validate",
-                "read_file",
-                "save_file",
-                "__init__",
-                "init_ui",
-                "add_files",
-                "start_self_heal",
-                "cancel_self_heal",
-                "log",
-                "update_progress_bar",
-                "__init__",
-                "run",
-                "_update_progress"
-            ],
-            "classes": {
-                "SelfHealController": {
-                    "methods": [
-                        "__init__",
-                        "run_and_validate",
-                        "read_file",
-                        "save_file"
-                    ],
-                    "docstring": "Controller class encapsulating the self-healing logic.\nContains methods for running and validating a file, reading/saving files,\nand executing auto-retry logic.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "SelfHealRunner": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "add_files",
-                        "start_self_heal",
-                        "cancel_self_heal",
-                        "log",
-                        "update_progress_bar"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QtWidgets.QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "SelfHealWorker": {
-                    "methods": [
-                        "__init__",
-                        "run",
-                        "_update_progress"
-                    ],
-                    "docstring": "QRunnable to process self-healing of a single file in the background.\nChecks for cancellation requests before and during processing.",
-                    "base_classes": [
-                        "QtCore.QRunnable"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "ActionAgent"
-                }
-            },
-            "routes": [],
-            "complexity": 43,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "models\\model_gpt4o_mini.py": {
-            "language": ".py",
-            "functions": [
-                "process_with_gpt4o_mini",
+                "process_with_gpt4",
                 "register"
             ],
             "classes": {},
@@ -809,10 +837,21 @@
             "complexity": 2,
             "lint": []
         },
-        "models\\model_gpt4_5.py": {
+        "models\\model_gpt4o.py": {
             "language": ".py",
             "functions": [
-                "process_with_gpt4_5",
+                "process_with_gpt4o",
+                "register"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "models\\model_gpt4o_mini.py": {
+            "language": ".py",
+            "functions": [
+                "process_with_gpt4o_mini",
                 "register"
             ],
             "classes": {},
@@ -829,78 +868,6 @@
             "classes": {},
             "routes": [],
             "complexity": 3,
-            "lint": []
-        },
-        "GUI\\TestAgent.py": {
-            "language": ".py",
-            "functions": [
-                "validate_test_code",
-                "__init__",
-                "run_full_test_cycle",
-                "generate_and_run",
-                "create_tests_for_file",
-                "validate_test_file",
-                "run_tests",
-                "repair_tests",
-                "get_test_file_path",
-                "find_project_root"
-            ],
-            "classes": {
-                "TestAgent": {
-                    "methods": [
-                        "__init__",
-                        "run_full_test_cycle",
-                        "generate_and_run",
-                        "create_tests_for_file",
-                        "validate_test_file",
-                        "run_tests",
-                        "repair_tests",
-                        "get_test_file_path",
-                        "find_project_root"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 43,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "models\\model_gpt4.py": {
-            "language": ".py",
-            "functions": [
-                "process_with_gpt4",
-                "register"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 2,
-            "lint": []
-        },
-        "models\\model_template.py": {
-            "language": ".py",
-            "functions": [
-                "process_with_template",
-                "register"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "models\\model_o3_mini_high.py": {
-            "language": ".py",
-            "functions": [
-                "process_with_o3_mini_high",
-                "register"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 2,
             "lint": []
         },
         "performance\\ModelPerformanceTracker.py": {
@@ -935,6 +902,28 @@
                 "High complexity"
             ]
         },
+        "models\\model_o3_mini_high.py": {
+            "language": ".py",
+            "functions": [
+                "process_with_o3_mini_high",
+                "register"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "models\\model_gpt4_5.py": {
+            "language": ".py",
+            "functions": [
+                "process_with_gpt4_5",
+                "register"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
         "models\\model_o1.py": {
             "language": ".py",
             "functions": [
@@ -944,6 +933,35 @@
             "classes": {},
             "routes": [],
             "complexity": 2,
+            "lint": []
+        },
+        "views\\main_window.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "__init__",
+                "init_ui",
+                "load_file_into_preview",
+                "closeEvent"
+            ],
+            "classes": {
+                "MainWindow": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "load_file_into_preview",
+                        "closeEvent"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QtWidgets.QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 10,
             "lint": []
         },
         "views\\preview_panel.py": {
@@ -980,71 +998,15 @@
                 "High complexity"
             ]
         },
-        "watchers\\ModelFolderWatcher.py": {
+        "models\\model_template.py": {
             "language": ".py",
             "functions": [
-                "__init__",
-                "_debounced_reload",
-                "on_modified",
-                "on_created",
-                "on_deleted",
-                "start",
-                "_watch_loop",
-                "stop"
+                "process_with_template",
+                "register"
             ],
-            "classes": {
-                "ModelFolderWatcher": {
-                    "methods": [
-                        "__init__",
-                        "_debounced_reload",
-                        "on_modified",
-                        "on_created",
-                        "on_deleted",
-                        "start",
-                        "_watch_loop",
-                        "stop"
-                    ],
-                    "docstring": "Watches the models directory for changes and triggers a model registry reload,\ndebouncing rapid events to avoid redundant reloads.",
-                    "base_classes": [
-                        "FileSystemEventHandler"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
+            "classes": {},
             "routes": [],
-            "complexity": 26,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "views\\main_window.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "__init__",
-                "init_ui",
-                "load_file_into_preview",
-                "closeEvent"
-            ],
-            "classes": {
-                "MainWindow": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "load_file_into_preview",
-                        "closeEvent"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QtWidgets.QMainWindow"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 10,
+            "complexity": 4,
             "lint": []
         },
         "views\\file_browser_widget.py": {
@@ -1115,6 +1077,44 @@
             },
             "routes": [],
             "complexity": 73,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "watchers\\ModelFolderWatcher.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_debounced_reload",
+                "on_modified",
+                "on_created",
+                "on_deleted",
+                "start",
+                "_watch_loop",
+                "stop"
+            ],
+            "classes": {
+                "ModelFolderWatcher": {
+                    "methods": [
+                        "__init__",
+                        "_debounced_reload",
+                        "on_modified",
+                        "on_created",
+                        "on_deleted",
+                        "start",
+                        "_watch_loop",
+                        "stop"
+                    ],
+                    "docstring": "Watches the models directory for changes and triggers a model registry reload,\ndebouncing rapid events to avoid redundant reloads.",
+                    "base_classes": [
+                        "FileSystemEventHandler"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 26,
             "lint": [
                 "High complexity"
             ]

@@ -69,6 +69,139 @@
       "is_private": false,
       "scan_date": "2025-07-31T19:16:37.069657",
       "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_Dreamos",
+      "repo_name": "Dream.os",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:32:43.321273",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_DreamVault",
+      "repo_name": "DreamVault",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:32:47.700858",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_FocusForge",
+      "repo_name": "FocusForge",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:32:50.595956",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_FreeRideInvestor_private",
+      "repo_name": "FreeRideInvestor",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:32:54.834812",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_FreeWork_private",
+      "repo_name": "FreeWork",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:43:32.838283",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_gpt_automation",
+      "repo_name": "gpt_automation",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:43:46.849202",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_HCshinobi",
+      "repo_name": "HCshinobi",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:43:52.325266",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_Hive-Mind",
+      "repo_name": "Hive-Mind",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:43:54.713282",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_ideas_private",
+      "repo_name": "ideas",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:44:01.972631",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_IT_help_desk",
+      "repo_name": "IT_help_desk",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:44:06.847768",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_LSTMmodel_trainer",
+      "repo_name": "LSTMmodel_trainer",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:44:08.994373",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_machinelearningmodelmaker_private",
+      "repo_name": "machinelearningmodelmaker",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:44:12.515604",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_machinelearningproject_private",
+      "repo_name": "machinelearningproject",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:44:32.488973",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_MeTuber",
+      "repo_name": "MeTuber",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:45:04.766231",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_MLRobotmaker_private",
+      "repo_name": "MLRobotmaker",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:45:41.273829",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_my-personal-templates_private",
+      "repo_name": "my-personal-templates",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:45:44.648841",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_my-resume_private",
+      "repo_name": "my-resume",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:45:46.781808",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_network-scanner",
+      "repo_name": "network-scanner",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:45:50.358028",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_NewSims4ModProject_private",
+      "repo_name": "NewSims4ModProject",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:45:52.741444",
+      "status": "success"
     }
   ],
   "failed_repos": [
@@ -540,7 +673,14 @@
       "is_private": true,
       "scan_date": "2025-07-31T17:23:02.500908",
       "error": "name 'GitHubScanner' is not defined"
+    },
+    {
+      "unique_name": "Dadudekc_FreerideinvestorWebsite_private",
+      "repo_name": "FreerideinvestorWebsite",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:43:26.034317",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpvbr_z3sd\\FreerideinvestorWebsite'...\nerror: unable to create file freerideinvestor-theme/assets/images/DALL\u00b7E 2024-12-10 11.20.26 - A visually striking image representing innovative financial tools for a day trading website. The composition features sleek, modern elements such as a.webp: Filename too long\nUpdating files:   9% (1209/12529)\rUpdating files:  10% (1253/12529)\rUpdating files:  11% (1379/12529)\rUpdating files:  12% (1504/12529)\rUpdating files:  13% (1629/12529)\rUpdating files:  14% (1755/12529)\rUpdating files:  15% (1880/12529)\rUpdating files:  16% (2005/12529)\rUpdating files:  17% (2130/12529)\rUpdating files:  18% (2256/12529)\rUpdating files:  19% (2381/12529)\rUpdating files:  19% (2435/12529)\rUpdating files:  20% (2506/12529)\rUpdating files:  21% (2632/12529)\rUpdating files:  22% (2757/12529)\rUpdating files:  23% (2882/12529)\rUpdating files:  24% (3007/12529)\rUpdating files:  25% (3133/12529)\rUpdating files:  26% (3258/12529)\rUpdating files:  27% (3383/12529)\rUpdating files:  28% (3509/12529)\rUpdating files:  29% (3634/12529)\rUpdating files:  29% (3733/12529)\rUpdating files:  30% (3759/12529)\rUpdating files:  31% (3884/12529)\rUpdating files:  32% (4010/12529)\rUpdating files:  33% (4135/12529)\rUpdating files:  34% (4260/12529)\rUpdating files:  35% (4386/12529)\rUpdating files:  36% (4511/12529)\rUpdating files:  37% (4636/12529)\rUpdating files:  38% (4762/12529)\rUpdating files:  39% (4887/12529)\rUpdating files:  40% (5012/12529)\rUpdating files:  41% (5137/12529)\rUpdating files:  42% (5263/12529)\rUpdating files:  43% (5388/12529)\rUpdating files:  43% (5409/12529)\rUpdating files:  44% (5513/12529)\rUpdating files:  45% (5639/12529)\rUpdating files:  46% (5764/12529)\rUpdating files:  47% (5889/12529)\rUpdating files:  48% (6014/12529)\rUpdating files:  49% (6140/12529)\rUpdating files:  50% (6265/12529)\rUpdating files:  51% (6390/12529)\rUpdating files:  52% (6516/12529)\rUpdating files:  53% (6641/12529)\rUpdating files:  54% (6766/12529)\rUpdating files:  55% (6891/12529)\rUpdating files:  56% (7017/12529)\rUpdating files:  56% (7135/12529)\rUpdating files:  57% (7142/12529)\rUpdating files:  58% (7267/12529)\rUpdating files:  59% (7393/12529)\rUpdating files:  60% (7518/12529)\rUpdating files:  61% (7643/12529)\rUpdating files:  62% (7768/12529)\rUpdating files:  63% (7894/12529)\rUpdating files:  64% (8019/12529)\rUpdating files:  65% (8144/12529)\rUpdating files:  66% (8270/12529)\rUpdating files:  67% (8395/12529)\rUpdating files:  67% (8457/12529)\rUpdating files:  68% (8520/12529)\rUpdating files:  69% (8646/12529)\rUpdating files:  70% (8771/12529)\rUpdating files:  71% (8896/12529)\rUpdating files:  72% (9021/12529)\rUpdating files:  73% (9147/12529)\rUpdating files:  74% (9272/12529)\rUpdating files:  75% (9397/12529)\rUpdating files:  76% (9523/12529)\rUpdating files:  77% (9648/12529)\rUpdating files:  78% (9773/12529)\rUpdating files:  78% (9827/12529)\rUpdating files:  79% (9898/12529)\rUpdating files:  80% (10024/12529)\rUpdating files:  81% (10149/12529)\rUpdating files:  82% (10274/12529)\rUpdating files:  83% (10400/12529)\rUpdating files:  84% (10525/12529)\rUpdating files:  85% (10650/12529)\rUpdating files:  86% (10775/12529)\rUpdating files:  87% (10901/12529)\rUpdating files:  88% (11026/12529)\rUpdating files:  89% (11151/12529)\rUpdating files:  89% (11229/12529)\rUpdating files:  90% (11277/12529)\rUpdating files:  91% (11402/12529)\rUpdating files:  92% (11527/12529)\rUpdating files:  93% (11652/12529)\rUpdating files:  94% (11778/12529)\rUpdating files:  95% (11903/12529)\rUpdating files:  96% (12028/12529)\rUpdating files:  97% (12154/12529)\rUpdating files:  98% (12279/12529)\rUpdating files:  99% (12404/12529)\rUpdating files: 100% (12529/12529)\rUpdating files: 100% (12529/12529), done.\nfatal: unable to checkout working tree\nwarning: Clone succeeded, but checkout failed.\nYou can inspect what was checked out with 'git status'\nand retry with 'git restore --source=HEAD :/'\n\n"
     }
   ],
-  "last_scan": "2025-07-31T19:25:11.741862"
+  "last_scan": "2025-07-31T19:30:59.072018"
 }

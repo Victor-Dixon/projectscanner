@@ -50,7 +50,7 @@ class ProjectScanner:
 
     # --- Main scanning ---
     def scan_project(self, progress_callback: Optional[callable] = None):
-        logger.info("🔍 Scanning project: %s ...", self.project_root)
+        logger.info("Scanning project: %s ...", self.project_root)
         file_extensions = {".py", ".rs", ".js", ".ts"}
         valid_files = []
         for root, dirs, files in os.walk(self.project_root):
@@ -63,7 +63,7 @@ class ProjectScanner:
                     valid_files.append(file_path)
 
         total_files = len(valid_files)
-        logger.info("📝 Found %s valid files for analysis.", total_files)
+        logger.info("Found %s valid files for analysis.", total_files)
 
         previous_files = set(self.cache.keys())
         current_files = {str(f.relative_to(self.project_root)) for f in valid_files}
@@ -89,12 +89,12 @@ class ProjectScanner:
             with self.cache_lock:
                 self.cache[new_path] = self.cache.pop(old_path)
 
-        logger.info("⏱️  Processing files asynchronously...")
+        logger.info("Processing files asynchronously...")
         num_workers = os.cpu_count() or 4
         manager = MultibotManager(
             scanner=self,
             num_workers=num_workers,
-            status_callback=lambda fp, res: logger.info("Processed: %s", fp),
+            status_callback=lambda fp, res: logger.debug("Processed: %s", fp),
         )
         for file_path in valid_files:
             manager.add_task(file_path)

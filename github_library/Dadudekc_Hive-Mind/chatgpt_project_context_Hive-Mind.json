@@ -1,21 +1,36 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpswmf_kl5\\Hive-Mind",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpzgzlftqy\\Hive-Mind",
     "num_files_analyzed": 18,
     "analysis_details": {
-        "backend\\debugger\\service.py": {
+        "backend\\codegen\\main.py": {
             "language": ".py",
             "functions": [
-                "debug_code"
+                "codegen_endpoint"
             ],
             "classes": {},
-            "routes": [],
-            "complexity": 3,
+            "routes": [
+                {
+                    "function": "codegen_endpoint",
+                    "method": "POST",
+                    "path": "/codegen/generate"
+                }
+            ],
+            "complexity": 1,
             "lint": []
         },
-        "backend\\review\\models.py": {
+        "backend\\codegen\\models.py": {
             "language": ".py",
             "functions": [],
             "classes": {
+                "Blueprint": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [
+                        "BaseModel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
                 "CodeSnippet": {
                     "methods": [],
                     "docstring": null,
@@ -39,20 +54,22 @@
             "complexity": 0,
             "lint": []
         },
-        "backend\\codegen\\main.py": {
+        "backend\\architect\\models.py": {
             "language": ".py",
-            "functions": [
-                "codegen_endpoint"
-            ],
-            "classes": {},
-            "routes": [
-                {
-                    "function": "codegen_endpoint",
-                    "method": "POST",
-                    "path": "/codegen/generate"
+            "functions": [],
+            "classes": {
+                "Blueprint": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [
+                        "BaseModel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
                 }
-            ],
-            "complexity": 1,
+            },
+            "routes": [],
+            "complexity": 0,
             "lint": []
         },
         "backend\\review\\main.py": {
@@ -126,30 +143,42 @@
             "complexity": 0,
             "lint": []
         },
-        "test_services.py": {
+        "backend\\architect\\service.py": {
             "language": ".py",
             "functions": [
-                "test_architect",
-                "test_codegen",
-                "test_review",
-                "test_debugger",
-                "test_tests",
-                "main"
+                "generate_blueprint"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 17,
-            "lint": [
-                "High complexity"
-            ]
+            "complexity": 1,
+            "lint": []
         },
-        "backend\\architect\\models.py": {
+        "backend\\debugger\\service.py": {
+            "language": ".py",
+            "functions": [
+                "debug_code"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 3,
+            "lint": []
+        },
+        "backend\\review\\models.py": {
             "language": ".py",
             "functions": [],
             "classes": {
-                "Blueprint": {
+                "CodeSnippet": {
                     "methods": [],
                     "docstring": null,
+                    "base_classes": [
+                        "BaseModel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "CodeGenerationResult": {
+                    "methods": [],
+                    "docstring": "Represents the full code generation result as a list of code snippets.",
                     "base_classes": [
                         "BaseModel"
                     ],
@@ -161,13 +190,29 @@
             "complexity": 0,
             "lint": []
         },
-        "backend\\architect\\service.py": {
+        "backend\\codegen\\service.py": {
             "language": ".py",
             "functions": [
-                "generate_blueprint"
+                "generate_code"
             ],
             "classes": {},
             "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "backend\\debugger\\main.py": {
+            "language": ".py",
+            "functions": [
+                "analyze_endpoint"
+            ],
+            "classes": {},
+            "routes": [
+                {
+                    "function": "analyze_endpoint",
+                    "method": "POST",
+                    "path": "/debugger/analyze"
+                }
+            ],
             "complexity": 1,
             "lint": []
         },
@@ -197,30 +242,31 @@
             "complexity": 1,
             "lint": []
         },
-        "backend\\codegen\\service.py": {
+        "test_services.py": {
             "language": ".py",
             "functions": [
-                "generate_code"
+                "test_architect",
+                "test_codegen",
+                "test_review",
+                "test_debugger",
+                "test_tests",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 17,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "backend\\review\\service.py": {
+            "language": ".py",
+            "functions": [
+                "analyze_code"
             ],
             "classes": {},
             "routes": [],
             "complexity": 2,
-            "lint": []
-        },
-        "backend\\debugger\\main.py": {
-            "language": ".py",
-            "functions": [
-                "analyze_endpoint"
-            ],
-            "classes": {},
-            "routes": [
-                {
-                    "function": "analyze_endpoint",
-                    "method": "POST",
-                    "path": "/debugger/analyze"
-                }
-            ],
-            "complexity": 1,
             "lint": []
         },
         "backend\\tests\\main.py": {
@@ -239,51 +285,24 @@
             "complexity": 1,
             "lint": []
         },
-        "backend\\review\\service.py": {
+        "frontend\\dashboard\\App.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "backend\\tests\\service.py": {
             "language": ".py",
             "functions": [
-                "analyze_code"
+                "generate_tests"
             ],
             "classes": {},
             "routes": [],
             "complexity": 2,
-            "lint": []
-        },
-        "backend\\codegen\\models.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {
-                "Blueprint": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [
-                        "BaseModel"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "CodeSnippet": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [
-                        "BaseModel"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "CodeGenerationResult": {
-                    "methods": [],
-                    "docstring": "Represents the full code generation result as a list of code snippets.",
-                    "base_classes": [
-                        "BaseModel"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 0,
-            "lint": []
+            "lint": [
+                "Function generate_tests >50 lines"
+            ]
         },
         "backend\\tests\\models.py": {
             "language": ".py",
@@ -330,31 +349,12 @@
             "complexity": 0,
             "lint": []
         },
-        "frontend\\dashboard\\App.js": {
-            "language": ".js",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0
-        },
         "frontend\\dashboard\\index.js": {
             "language": ".js",
             "functions": [],
             "classes": {},
             "routes": [],
             "complexity": 0
-        },
-        "backend\\tests\\service.py": {
-            "language": ".py",
-            "functions": [
-                "generate_tests"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 2,
-            "lint": [
-                "Function generate_tests >50 lines"
-            ]
         }
     }
 }

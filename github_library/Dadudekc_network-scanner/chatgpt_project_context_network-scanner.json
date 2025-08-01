@@ -1,7 +1,181 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpllczq_c_\\network-scanner",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpfwgr8due\\network-scanner",
     "num_files_analyzed": 14,
     "analysis_details": {
+        "setup.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "anomaly_detection.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "train",
+                "predict"
+            ],
+            "classes": {
+                "AnomalyDetectionModel": {
+                    "methods": [
+                        "__init__",
+                        "train",
+                        "predict"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "SignalAgent"
+                }
+            },
+            "routes": [],
+            "complexity": 17,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "vulnerability_assessment.py": {
+            "language": ".py",
+            "functions": [
+                "initialize_database",
+                "fetch_vulnerability_data",
+                "assess_vulnerabilities",
+                "version_is_vulnerable"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "scan_network",
+                "scan_ports_on_device",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "tests\\test_check_ip_abuseipdb.py": {
+            "language": ".py",
+            "functions": [
+                "test_valid_ip",
+                "test_invalid_ip",
+                "test_api_key_missing",
+                "test_server_error",
+                "test_no_response"
+            ],
+            "classes": {
+                "TestCheckIPAbuseIPDB": {
+                    "methods": [
+                        "test_valid_ip",
+                        "test_invalid_ip",
+                        "test_api_key_missing",
+                        "test_server_error",
+                        "test_no_response"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 11,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "tests\\test_deep_anomaly_detection.py": {
+            "language": ".py",
+            "functions": [
+                "test_build_autoencoder",
+                "test_train_autoencoder",
+                "test_detect_anomalies",
+                "test_load_preprocess_data",
+                "test_detect_anomalies_with_empty_data",
+                "test_load_preprocess_data_with_empty_file",
+                "test_detect_anomalies_with_invalid_shape"
+            ],
+            "classes": {
+                "TestDeepAnomalyDetection": {
+                    "methods": [
+                        "test_build_autoencoder",
+                        "test_train_autoencoder",
+                        "test_detect_anomalies",
+                        "test_load_preprocess_data",
+                        "test_detect_anomalies_with_empty_data",
+                        "test_load_preprocess_data_with_empty_file",
+                        "test_detect_anomalies_with_invalid_shape"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 15,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "threat_intelligence.py": {
+            "language": ".py",
+            "functions": [
+                "check_ip_abuseipdb",
+                "assess_vulnerabilities"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "tests\\test_threat_intelligence.py": {
+            "language": ".py",
+            "functions": [
+                "test_valid_ip",
+                "test_invalid_ip",
+                "test_missing_api_key",
+                "test_server_error",
+                "test_connection_error",
+                "test_empty_response"
+            ],
+            "classes": {
+                "TestThreatIntelligence": {
+                    "methods": [
+                        "test_valid_ip",
+                        "test_invalid_ip",
+                        "test_missing_api_key",
+                        "test_server_error",
+                        "test_connection_error",
+                        "test_empty_response"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 13,
+            "lint": [
+                "High complexity"
+            ]
+        },
         "tests\\test_anomaly_detection.py": {
             "language": ".py",
             "functions": [
@@ -46,6 +220,83 @@
             },
             "routes": [],
             "complexity": 28,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "tests\\test_vulnerability_assessment.py": {
+            "language": ".py",
+            "functions": [
+                "test_initialize_database",
+                "test_fetch_vulnerability_data",
+                "test_assess_vulnerabilities",
+                "test_version_is_vulnerable"
+            ],
+            "classes": {
+                "TestVulnerabilityAssessment": {
+                    "methods": [
+                        "test_initialize_database",
+                        "test_fetch_vulnerability_data",
+                        "test_assess_vulnerabilities",
+                        "test_version_is_vulnerable"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 9,
+            "lint": []
+        },
+        "deep_anomaly_detection.py": {
+            "language": ".py",
+            "functions": [
+                "load_preprocess_data",
+                "build_autoencoder",
+                "train_autoencoder",
+                "detect_anomalies"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": []
+        },
+        "tests\\test_utils.py": {
+            "language": ".py",
+            "functions": [
+                "test_get_host_name_valid_ip",
+                "test_get_host_name_invalid_ip",
+                "test_format_scan_results",
+                "test_format_scan_results_empty",
+                "test_analyze_encrypted_traffic",
+                "test_detect_tls_handshake_valid",
+                "test_detect_tls_handshake_invalid"
+            ],
+            "classes": {
+                "TestUtils": {
+                    "methods": [
+                        "test_get_host_name_valid_ip",
+                        "test_get_host_name_invalid_ip",
+                        "test_format_scan_results",
+                        "test_format_scan_results_empty",
+                        "test_analyze_encrypted_traffic",
+                        "test_detect_tls_handshake_valid",
+                        "test_detect_tls_handshake_invalid"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "unittest.TestCase"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 16,
             "lint": [
                 "High complexity"
             ]
@@ -100,257 +351,6 @@
             "lint": [
                 "High complexity"
             ]
-        },
-        "setup.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "anomaly_detection.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "train",
-                "predict"
-            ],
-            "classes": {
-                "AnomalyDetectionModel": {
-                    "methods": [
-                        "__init__",
-                        "train",
-                        "predict"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "SignalAgent"
-                }
-            },
-            "routes": [],
-            "complexity": 17,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "scan_network",
-                "scan_ports_on_device",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 14,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "tests\\test_check_ip_abuseipdb.py": {
-            "language": ".py",
-            "functions": [
-                "test_valid_ip",
-                "test_invalid_ip",
-                "test_api_key_missing",
-                "test_server_error",
-                "test_no_response"
-            ],
-            "classes": {
-                "TestCheckIPAbuseIPDB": {
-                    "methods": [
-                        "test_valid_ip",
-                        "test_invalid_ip",
-                        "test_api_key_missing",
-                        "test_server_error",
-                        "test_no_response"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "unittest.TestCase"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 11,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "vulnerability_assessment.py": {
-            "language": ".py",
-            "functions": [
-                "initialize_database",
-                "fetch_vulnerability_data",
-                "assess_vulnerabilities",
-                "version_is_vulnerable"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 10,
-            "lint": []
-        },
-        "threat_intelligence.py": {
-            "language": ".py",
-            "functions": [
-                "check_ip_abuseipdb",
-                "assess_vulnerabilities"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 10,
-            "lint": []
-        },
-        "tests\\test_deep_anomaly_detection.py": {
-            "language": ".py",
-            "functions": [
-                "test_build_autoencoder",
-                "test_train_autoencoder",
-                "test_detect_anomalies",
-                "test_load_preprocess_data",
-                "test_detect_anomalies_with_empty_data",
-                "test_load_preprocess_data_with_empty_file",
-                "test_detect_anomalies_with_invalid_shape"
-            ],
-            "classes": {
-                "TestDeepAnomalyDetection": {
-                    "methods": [
-                        "test_build_autoencoder",
-                        "test_train_autoencoder",
-                        "test_detect_anomalies",
-                        "test_load_preprocess_data",
-                        "test_detect_anomalies_with_empty_data",
-                        "test_load_preprocess_data_with_empty_file",
-                        "test_detect_anomalies_with_invalid_shape"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "unittest.TestCase"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 15,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "deep_anomaly_detection.py": {
-            "language": ".py",
-            "functions": [
-                "load_preprocess_data",
-                "build_autoencoder",
-                "train_autoencoder",
-                "detect_anomalies"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 9,
-            "lint": []
-        },
-        "tests\\test_threat_intelligence.py": {
-            "language": ".py",
-            "functions": [
-                "test_valid_ip",
-                "test_invalid_ip",
-                "test_missing_api_key",
-                "test_server_error",
-                "test_connection_error",
-                "test_empty_response"
-            ],
-            "classes": {
-                "TestThreatIntelligence": {
-                    "methods": [
-                        "test_valid_ip",
-                        "test_invalid_ip",
-                        "test_missing_api_key",
-                        "test_server_error",
-                        "test_connection_error",
-                        "test_empty_response"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "unittest.TestCase"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 13,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "tests\\test_utils.py": {
-            "language": ".py",
-            "functions": [
-                "test_get_host_name_valid_ip",
-                "test_get_host_name_invalid_ip",
-                "test_format_scan_results",
-                "test_format_scan_results_empty",
-                "test_analyze_encrypted_traffic",
-                "test_detect_tls_handshake_valid",
-                "test_detect_tls_handshake_invalid"
-            ],
-            "classes": {
-                "TestUtils": {
-                    "methods": [
-                        "test_get_host_name_valid_ip",
-                        "test_get_host_name_invalid_ip",
-                        "test_format_scan_results",
-                        "test_format_scan_results_empty",
-                        "test_analyze_encrypted_traffic",
-                        "test_detect_tls_handshake_valid",
-                        "test_detect_tls_handshake_invalid"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "unittest.TestCase"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 16,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "tests\\test_vulnerability_assessment.py": {
-            "language": ".py",
-            "functions": [
-                "test_initialize_database",
-                "test_fetch_vulnerability_data",
-                "test_assess_vulnerabilities",
-                "test_version_is_vulnerable"
-            ],
-            "classes": {
-                "TestVulnerabilityAssessment": {
-                    "methods": [
-                        "test_initialize_database",
-                        "test_fetch_vulnerability_data",
-                        "test_assess_vulnerabilities",
-                        "test_version_is_vulnerable"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "unittest.TestCase"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 9,
-            "lint": []
         }
     }
 }

@@ -1,8 +1,8 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpxl5w8imw\\FreeRideInvestor",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpeutkgqcq\\FreeRideInvestor",
     "num_files_analyzed": 9,
     "analysis_details": {
-        "__init__.py": {
+        "Auto_blogger\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -10,7 +10,7 @@
             "complexity": 0,
             "lint": []
         },
-        "Auto_blogger\\__init__.py": {
+        "__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -28,6 +28,79 @@
             "complexity": 14,
             "lint": [
                 "Function fetch_stock_data >50 lines",
+                "High complexity"
+            ]
+        },
+        "ui\\autoblogger.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "__init__",
+                "setup_ui",
+                "get_settings",
+                "run",
+                "__init__",
+                "ensure_output_directory",
+                "setup_ui",
+                "start_generation",
+                "update_log",
+                "update_progress",
+                "generation_finished",
+                "open_output_folder",
+                "preview_blog_post",
+                "post_to_blog",
+                "open_settings"
+            ],
+            "classes": {
+                "SettingsDialog": {
+                    "methods": [
+                        "__init__",
+                        "setup_ui",
+                        "get_settings"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QDialog"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "WorkerThread": {
+                    "methods": [
+                        "run"
+                    ],
+                    "docstring": "Worker thread for generating the blog post.",
+                    "base_classes": [
+                        "QThread"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                },
+                "AutoBloggerApp": {
+                    "methods": [
+                        "__init__",
+                        "ensure_output_directory",
+                        "setup_ui",
+                        "start_generation",
+                        "update_log",
+                        "update_progress",
+                        "generation_finished",
+                        "open_output_folder",
+                        "preview_blog_post",
+                        "post_to_blog",
+                        "open_settings"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 44,
+            "lint": [
                 "High complexity"
             ]
         },
@@ -90,54 +163,6 @@
             "lint": [
                 "Function generate_content >50 lines",
                 "Function init_ui >50 lines",
-                "High complexity"
-            ]
-        },
-        "Auto_blogger\\ui\\generate_blog.py": {
-            "language": ".py",
-            "functions": [
-                "initialize_faiss",
-                "load_metadata",
-                "save_metadata",
-                "generate_embeddings",
-                "run_ollama",
-                "generate_content",
-                "render_template",
-                "save_output",
-                "post_to_wordpress",
-                "generate_blog",
-                "initialize_faiss",
-                "load_metadata",
-                "save_metadata",
-                "get_or_create_term"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 44,
-            "lint": [
-                "Function generate_content >50 lines",
-                "Function post_to_wordpress >50 lines",
-                "Function generate_blog >50 lines",
-                "High complexity"
-            ]
-        },
-        "ui\\generate_blog.py": {
-            "language": ".py",
-            "functions": [
-                "run_ollama",
-                "generate_content",
-                "render_template",
-                "save_output",
-                "post_to_wordpress",
-                "generate_blog",
-                "get_or_create_term"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 23,
-            "lint": [
-                "Function generate_content >50 lines",
-                "Function post_to_wordpress >50 lines",
                 "High complexity"
             ]
         },
@@ -242,76 +267,51 @@
             "routes": [],
             "complexity": 0
         },
-        "ui\\autoblogger.py": {
+        "Auto_blogger\\ui\\generate_blog.py": {
             "language": ".py",
             "functions": [
-                "main",
-                "__init__",
-                "setup_ui",
-                "get_settings",
-                "run",
-                "__init__",
-                "ensure_output_directory",
-                "setup_ui",
-                "start_generation",
-                "update_log",
-                "update_progress",
-                "generation_finished",
-                "open_output_folder",
-                "preview_blog_post",
-                "post_to_blog",
-                "open_settings"
+                "initialize_faiss",
+                "load_metadata",
+                "save_metadata",
+                "generate_embeddings",
+                "run_ollama",
+                "generate_content",
+                "render_template",
+                "save_output",
+                "post_to_wordpress",
+                "generate_blog",
+                "initialize_faiss",
+                "load_metadata",
+                "save_metadata",
+                "get_or_create_term"
             ],
-            "classes": {
-                "SettingsDialog": {
-                    "methods": [
-                        "__init__",
-                        "setup_ui",
-                        "get_settings"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QDialog"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "WorkerThread": {
-                    "methods": [
-                        "run"
-                    ],
-                    "docstring": "Worker thread for generating the blog post.",
-                    "base_classes": [
-                        "QThread"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "ActionAgent"
-                },
-                "AutoBloggerApp": {
-                    "methods": [
-                        "__init__",
-                        "ensure_output_directory",
-                        "setup_ui",
-                        "start_generation",
-                        "update_log",
-                        "update_progress",
-                        "generation_finished",
-                        "open_output_folder",
-                        "preview_blog_post",
-                        "post_to_blog",
-                        "open_settings"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QMainWindow"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
+            "classes": {},
             "routes": [],
             "complexity": 44,
             "lint": [
+                "Function generate_content >50 lines",
+                "Function post_to_wordpress >50 lines",
+                "Function generate_blog >50 lines",
+                "High complexity"
+            ]
+        },
+        "ui\\generate_blog.py": {
+            "language": ".py",
+            "functions": [
+                "run_ollama",
+                "generate_content",
+                "render_template",
+                "save_output",
+                "post_to_wordpress",
+                "generate_blog",
+                "get_or_create_term"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 23,
+            "lint": [
+                "Function generate_content >50 lines",
+                "Function post_to_wordpress >50 lines",
                 "High complexity"
             ]
         }

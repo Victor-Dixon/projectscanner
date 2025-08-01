@@ -83,6 +83,15 @@ class FileProcessor:
             with self.cache_lock:
                 self.cache[relative_path] = {"hash": file_hash_val}
             return (relative_path, analysis_result)
+        except SyntaxError as exc:
+            # Handle syntax errors more gracefully - these are expected in real projects
+            logger.debug("⚠️ Syntax error in %s: %s", file_path.name, exc.msg)
+            return None
+        except UnicodeDecodeError as exc:
+            # Handle encoding issues gracefully
+            logger.debug("⚠️ Encoding issue in %s: %s", file_path.name, exc.reason)
+            return None
         except Exception as exc:  # pragma: no cover
-            logger.error("❌ Error analyzing %s: %s", file_path, exc)
+            # Only log unexpected errors
+            logger.error("❌ Unexpected error analyzing %s: %s", file_path, exc)
             return None

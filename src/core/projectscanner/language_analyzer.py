@@ -20,8 +20,8 @@ class LanguageAnalyzer:
 
     def _init_tree_sitter_language(self, lang_name: str) -> Optional[Parser]:
         if not Language or not Parser:
-            logger.warning(
-                "⚠️ tree-sitter not installed. Rust/JS/TS AST parsing will be partially disabled."
+            logger.debug(
+                "Tree-sitter not installed. Rust/JS/TS AST parsing will be partially disabled."
             )
             return None
 
@@ -30,12 +30,12 @@ class LanguageAnalyzer:
             "javascript": "path/to/tree-sitter-javascript.so",
         }
         if lang_name not in grammar_paths:
-            logger.warning("⚠️ No grammar path for %s. Skipping.", lang_name)
+            logger.debug("No grammar path for %s. Skipping.", lang_name)
             return None
 
         grammar_path = grammar_paths[lang_name]
         if not Path(grammar_path).exists():
-            logger.warning("⚠️ %s grammar not found at %s", lang_name, grammar_path)
+            logger.debug("%s grammar not found at %s (optional)", lang_name, grammar_path)
             return None
 
         try:
@@ -44,7 +44,7 @@ class LanguageAnalyzer:
             parser.set_language(lang_lib)
             return parser
         except Exception as exc:  # pragma: no cover - seldom triggered
-            logger.error("⚠️ Failed to initialize tree-sitter %s parser: %s", lang_name, exc)
+            logger.debug("Failed to initialize tree-sitter %s parser: %s", lang_name, exc)
             return None
 
     def analyze_file(self, file_path: Path, source_code: str) -> Dict:
