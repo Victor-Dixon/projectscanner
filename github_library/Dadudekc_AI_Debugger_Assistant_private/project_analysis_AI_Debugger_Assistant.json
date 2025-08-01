@@ -1,0 +1,1287 @@
+{
+    "ai_agent_project\\src\\agents\\core\\DebuggerAgent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "solve_task",
+            "analyze_error",
+            "run_diagnostics",
+            "describe_capabilities",
+            "shutdown"
+        ],
+        "classes": {
+            "DebuggerAgent": {
+                "methods": [
+                    "__init__",
+                    "solve_task",
+                    "analyze_error",
+                    "run_diagnostics",
+                    "describe_capabilities",
+                    "shutdown"
+                ],
+                "docstring": "DebuggerAgent Class\n\nA specialized agent responsible for executing various debugging tasks, such as analyzing errors\nand running system diagnostics. This class provides a structured approach to handling common\ndebugging scenarios with flexible, extensible methods.",
+                "base_classes": [
+                    "AgentBase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\AgentPlanner.py": {
+        "language": ".py",
+        "functions": [
+            "solve_task",
+            "divide_task",
+            "generate_milestones"
+        ],
+        "classes": {
+            "AgentPlanner": {
+                "methods": [
+                    "solve_task",
+                    "divide_task",
+                    "generate_milestones"
+                ],
+                "docstring": "The AgentPlanner class organizes tasks by dividing them into prioritized subtasks and creating milestones\nbased on customizable criteria or predefined intervals.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 8,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\agent_actor.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "solve_task",
+            "_execute_python_task",
+            "_execute_shell_task",
+            "utilize_tool"
+        ],
+        "classes": {
+            "AgentActor": {
+                "methods": [
+                    "__init__",
+                    "solve_task",
+                    "_execute_python_task",
+                    "_execute_shell_task",
+                    "utilize_tool"
+                ],
+                "docstring": "Executes tasks and manages tool operations via ToolServer.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 14,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\example_usage.py": {
+        "language": ".py",
+        "functions": [
+            "log_performance",
+            "analyze_performance",
+            "__init__",
+            "solve_task"
+        ],
+        "classes": {
+            "PerformanceMonitor": {
+                "methods": [
+                    "log_performance",
+                    "analyze_performance"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "SampleAgent": {
+                "methods": [
+                    "__init__",
+                    "solve_task"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "RobustAgent"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\journal_agent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_journal_entry",
+            "retrieve_journal_entry",
+            "update_journal_entry",
+            "delete_journal_entry",
+            "list_journal_entries",
+            "perform_task"
+        ],
+        "classes": {
+            "JournalAgent": {
+                "methods": [
+                    "__init__",
+                    "create_journal_entry",
+                    "retrieve_journal_entry",
+                    "update_journal_entry",
+                    "delete_journal_entry",
+                    "list_journal_entries",
+                    "perform_task"
+                ],
+                "docstring": "An agent specialized in creating and managing journal entries.\nProvides functions for saving logs, reflections, and summaries\nrelated to debugging and development tasks.",
+                "base_classes": [
+                    "AgentBase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 29,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\main.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "ai_agent_project\\src\\run_dispatcher.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\CustomAgent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "solve_task",
+            "perform_task_logic",
+            "describe_capabilities",
+            "shutdown"
+        ],
+        "classes": {
+            "CustomAgent": {
+                "methods": [
+                    "__init__",
+                    "solve_task",
+                    "perform_task_logic",
+                    "describe_capabilities",
+                    "shutdown"
+                ],
+                "docstring": "CustomAgent Class\n\nThis class provides a customizable agent with flexible task-solving capabilities.\nIt can handle user-defined tasks with an extensible architecture, inheriting from the\nbase `AgentBase` class.",
+                "base_classes": [
+                    "AgentBase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "codecrafter.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_projects",
+            "initUI",
+            "update_project_context",
+            "select_save_location",
+            "generate_project_code",
+            "run_ai_generation",
+            "build_project",
+            "write_multifile_project",
+            "write_file",
+            "extract_ascii_tree",
+            "install_dependencies",
+            "debug_or_execute_code",
+            "iterative_debug",
+            "run_ai_debug_suggestions",
+            "run_code_inline",
+            "run_ollama"
+        ],
+        "classes": {
+            "AdvancedAICodeBuilder": {
+                "methods": [
+                    "__init__",
+                    "load_projects",
+                    "initUI",
+                    "update_project_context",
+                    "select_save_location",
+                    "generate_project_code",
+                    "run_ai_generation",
+                    "build_project",
+                    "write_multifile_project",
+                    "write_file",
+                    "extract_ascii_tree",
+                    "install_dependencies",
+                    "debug_or_execute_code",
+                    "iterative_debug",
+                    "run_ai_debug_suggestions",
+                    "run_code_inline",
+                    "run_ollama"
+                ],
+                "docstring": "An advanced code builder/debugger app with:\n  1. Logging for transparency.\n  2. User-selected save location for generated projects.\n  3. ASCII directory structure display for clarity.\n  4. AI-driven multi-file generation and iterative debugging.",
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 61,
+        "lint": [
+            "Function initUI >50 lines",
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\AIAgentWithMemory.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "run_query",
+            "chat",
+            "self_improve",
+            "take_action_based_on_failure",
+            "suggest_improvements"
+        ],
+        "classes": {
+            "AIAgentWithMemory": {
+                "methods": [
+                    "__init__",
+                    "run_query",
+                    "chat",
+                    "self_improve",
+                    "take_action_based_on_failure",
+                    "suggest_improvements"
+                ],
+                "docstring": "AIAgentWithMemory Class\n\nRepresents an AI agent that can interact with users, retain memory of past\nconversations, provide context-aware responses, and improve itself based on feedback.\nIntegrates with the MemoryManager and PerformanceMonitor to handle memory and performance operations.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 24,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\run_dispatcher.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\ai_model.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {
+            "AIModel": {
+                "methods": [],
+                "docstring": "Abstract base class for AI models.",
+                "base_classes": [
+                    "ABC"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\AgentDispatcher.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "release",
+            "__init__",
+            "load_agents",
+            "add_agent",
+            "remove_agent",
+            "list_agents",
+            "_send_alert",
+            "__init__",
+            "describe_capabilities",
+            "self_improve",
+            "take_action_based_on_failure",
+            "suggest_improvements"
+        ],
+        "classes": {
+            "RateLimiter": {
+                "methods": [
+                    "__init__",
+                    "release"
+                ],
+                "docstring": "Custom rate limiter using asyncio with a token bucket algorithm.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AgentDispatcher": {
+                "methods": [
+                    "__init__",
+                    "load_agents",
+                    "add_agent",
+                    "remove_agent",
+                    "list_agents",
+                    "_send_alert"
+                ],
+                "docstring": "Dispatches tasks to agents, supporting chain-of-thought reasoning,\ndynamic agent loading via plugins, and persistent task management.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AIAgentWithMemory": {
+                "methods": [
+                    "__init__",
+                    "describe_capabilities",
+                    "self_improve",
+                    "take_action_based_on_failure",
+                    "suggest_improvements"
+                ],
+                "docstring": "AIAgentWithMemory Class\n\nRepresents an AI agent that can interact with users, retain memory of past\nconversations, provide context-aware responses, and improve itself based on feedback.\nIntegrates with the MemoryManager and PerformanceMonitor to handle memory and performance operations.",
+                "base_classes": [
+                    "AgentPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 67,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\ai_cache.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_cache",
+            "set_fix",
+            "save_cache"
+        ],
+        "classes": {
+            "AICache": {
+                "methods": [
+                    "__init__",
+                    "load_cache",
+                    "set_fix",
+                    "save_cache"
+                ],
+                "docstring": "Simple JSON-based cache for AI-generated fix suggestions.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\ai_agent_utils.py": {
+        "language": ".py",
+        "functions": [
+            "track_performance",
+            "log_memory_usage",
+            "load_config",
+            "classify_severity",
+            "capture_traceback",
+            "__init__",
+            "log_performance",
+            "__init__",
+            "_initialize_memory_file",
+            "save_memory",
+            "retrieve_memory",
+            "_load_memory_data",
+            "_save_memory_data",
+            "__init__",
+            "execute_code",
+            "_apply_loop_limit",
+            "set_state",
+            "get_state",
+            "reset_state",
+            "wrapper",
+            "execute_command",
+            "__init__",
+            "execute_command",
+            "execute_code"
+        ],
+        "classes": {
+            "PerformanceMonitor": {
+                "methods": [
+                    "__init__",
+                    "log_performance"
+                ],
+                "docstring": "Tracks and analyzes the performance of agents.\nLogs successes and failures to identify areas for improvement.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "MemoryManager": {
+                "methods": [
+                    "__init__",
+                    "_initialize_memory_file",
+                    "save_memory",
+                    "retrieve_memory",
+                    "_load_memory_data",
+                    "_save_memory_data"
+                ],
+                "docstring": "Manages memory storage and retrieval for AI interactions.\nStores conversations in a JSON file.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "PythonNotebook": {
+                "methods": [
+                    "__init__",
+                    "execute_code",
+                    "_apply_loop_limit",
+                    "set_state",
+                    "get_state",
+                    "reset_state"
+                ],
+                "docstring": "Executes Python code snippets within a restricted environment.\nOffers sandboxed code execution to enhance security.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "Shell": {
+                "methods": [
+                    "execute_command"
+                ],
+                "docstring": "Executes shell commands directly on the host system.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ToolServer": {
+                "methods": [
+                    "__init__",
+                    "execute_command",
+                    "execute_code"
+                ],
+                "docstring": "A centralized server to manage various tools like shell commands and code execution.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 62,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\agent_base.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_setup_logger",
+            "log",
+            "log_json",
+            "log_error",
+            "load_plugins",
+            "execute_plugin_task",
+            "ai_diagnose_and_resolve",
+            "handle_task_with_error_handling",
+            "handle_error_resolution",
+            "prompt_user_for_manual_resolution",
+            "_extract_error_messages",
+            "_execute_with_retry",
+            "save_task_state",
+            "update_task_state",
+            "save_resolution_history",
+            "check_resolution_history",
+            "get_cached_user_decision",
+            "cache_user_decision",
+            "_manage_cache_size",
+            "schedule_task",
+            "update_scheduled_task",
+            "remove_scheduled_task",
+            "introduce",
+            "describe_capabilities",
+            "shutdown",
+            "run_query",
+            "chat",
+            "_handle_error",
+            "self_improve",
+            "take_action_based_on_failure",
+            "suggest_improvements",
+            "solve_task"
+        ],
+        "classes": {
+            "TaskState": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "enum.Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "Task": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Base"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ResolutionHistory": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Base"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "UserDecisionCache": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Base"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "RobustAgent": {
+                "methods": [
+                    "__init__",
+                    "_setup_logger",
+                    "log",
+                    "log_json",
+                    "log_error",
+                    "load_plugins",
+                    "execute_plugin_task",
+                    "ai_diagnose_and_resolve",
+                    "handle_task_with_error_handling",
+                    "handle_error_resolution",
+                    "prompt_user_for_manual_resolution",
+                    "_extract_error_messages",
+                    "_execute_with_retry",
+                    "save_task_state",
+                    "update_task_state",
+                    "save_resolution_history",
+                    "check_resolution_history",
+                    "get_cached_user_decision",
+                    "cache_user_decision",
+                    "_manage_cache_size",
+                    "schedule_task",
+                    "update_scheduled_task",
+                    "remove_scheduled_task",
+                    "introduce",
+                    "describe_capabilities",
+                    "shutdown",
+                    "run_query",
+                    "chat",
+                    "_handle_error",
+                    "self_improve",
+                    "take_action_based_on_failure",
+                    "suggest_improvements",
+                    "solve_task"
+                ],
+                "docstring": "RobustAgent Class\n\nRepresents a comprehensive AI agent with task management, error handling,\nmemory management, performance monitoring, and self-improvement capabilities.\nIntegrates with MemoryManager, PerformanceMonitor, and ChainOfThoughtReasoner to handle\nmemory, performance, and advanced reasoning operations.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 123,
+        "lint": [
+            "Function run_query >50 lines",
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\agent_gui.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "init_ui",
+            "add_task",
+            "refresh_tasks",
+            "delete_task",
+            "refresh_logs",
+            "update_logs",
+            "refresh_resolutions",
+            "update_resolutions",
+            "run_scheduler"
+        ],
+        "classes": {
+            "AgentGUI": {
+                "methods": [
+                    "__init__",
+                    "init_ui",
+                    "add_task",
+                    "refresh_tasks",
+                    "delete_task",
+                    "refresh_logs",
+                    "update_logs",
+                    "refresh_resolutions",
+                    "update_resolutions"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 36,
+        "lint": [
+            "Function init_ui >50 lines",
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\plugins\\plugin_interface.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "describe_capabilities"
+        ],
+        "classes": {
+            "AgentPlugin": {
+                "methods": [
+                    "__init__",
+                    "describe_capabilities"
+                ],
+                "docstring": "Abstract base class for all agent plugins.",
+                "base_classes": [
+                    "ABC"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\mistral_model.py": {
+        "language": ".py",
+        "functions": [
+            "__init__"
+        ],
+        "classes": {
+            "MistralModel": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": "AI model integration for Mistral.",
+                "base_classes": [
+                    "AIModel"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\ollama_model.py": {
+        "language": ".py",
+        "functions": [
+            "__init__"
+        ],
+        "classes": {
+            "OllamaModel": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": "AI model integration for Ollama.",
+                "base_classes": [
+                    "AIModel"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\error_detection.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "detect_syntax_errors",
+            "detect_runtime_errors",
+            "detect_logic_errors",
+            "detect_all_errors",
+            "quick_fix_syntax_errors",
+            "detect_errors_in_output",
+            "classify_severity",
+            "capture_traceback"
+        ],
+        "classes": {
+            "ErrorDetection": {
+                "methods": [
+                    "__init__",
+                    "detect_syntax_errors",
+                    "detect_runtime_errors",
+                    "detect_logic_errors",
+                    "detect_all_errors",
+                    "quick_fix_syntax_errors",
+                    "detect_errors_in_output",
+                    "classify_severity",
+                    "capture_traceback"
+                ],
+                "docstring": "Detects and categorizes errors in Python code. Supports syntax, runtime,\nand static (logic) error detection, with basic syntax error auto-fix.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 37,
+        "lint": [
+            "Function detect_errors_in_output >50 lines",
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\ChainOfThoughtReasoner.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "parse_decomposition_output",
+            "build_reasoning_graph",
+            "enrich_step_with_memory",
+            "update_memory"
+        ],
+        "classes": {
+            "ChainOfThoughtReasoner": {
+                "methods": [
+                    "__init__",
+                    "parse_decomposition_output",
+                    "build_reasoning_graph",
+                    "enrich_step_with_memory",
+                    "update_memory"
+                ],
+                "docstring": "Implements advanced chain-of-thought reasoning by decomposing tasks into semantic steps,\nsupporting hierarchical reasoning, contextual memory, and dynamic step adjustment.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 34,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\tasks\\debugger_agent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "describe_capabilities"
+        ],
+        "classes": {
+            "DebuggerAgent": {
+                "methods": [
+                    "__init__",
+                    "describe_capabilities"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "AgentPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\plugins\\example_plugin.py": {
+        "language": ".py",
+        "functions": [
+            "run_task",
+            "__init__",
+            "describe_capabilities"
+        ],
+        "classes": {
+            "ExampleAgent": {
+                "methods": [
+                    "__init__",
+                    "describe_capabilities"
+                ],
+                "docstring": "Example agent plugin implementing the AgentPlugin interface.",
+                "base_classes": [
+                    "AgentPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\core\\utilities\\memory_manager.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_initialize_database",
+            "_get_connection",
+            "save_memory",
+            "retrieve_memory",
+            "delete_memory_older_than",
+            "summarize_memories",
+            "close"
+        ],
+        "classes": {
+            "MemoryManager": {
+                "methods": [
+                    "__init__",
+                    "_initialize_database",
+                    "_get_connection",
+                    "save_memory",
+                    "retrieve_memory",
+                    "delete_memory_older_than",
+                    "summarize_memories",
+                    "close"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 21,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\core\\reasoner_controller.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "handle_task"
+        ],
+        "classes": {
+            "ReasonerController": {
+                "methods": [
+                    "__init__",
+                    "handle_task"
+                ],
+                "docstring": "Controller for managing interaction between the GUI and ChainOfThoughtReasoner.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "ai_agent_project\\src\\core\\debugger_agent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_logging",
+            "load_config",
+            "initialize_ai_models",
+            "export_report"
+        ],
+        "classes": {
+            "DebuggerAgent": {
+                "methods": [
+                    "__init__",
+                    "setup_logging",
+                    "load_config",
+                    "initialize_ai_models",
+                    "export_report"
+                ],
+                "docstring": "An agent specialized in debugging code by detecting syntax, runtime, \nand logical errors. Uses both internal methods and external tools to \nidentify issues in code snippets.\n\nAttributes:\n    name (str): The name of the agent.\n    description (str): A brief description of the agent's purpose.",
+                "base_classes": [
+                    "AgentBase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 41,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\core\\plugins\\example_plugin.py": {
+        "language": ".py",
+        "functions": [
+            "run_task",
+            "__init__",
+            "describe_capabilities"
+        ],
+        "classes": {
+            "ExampleAgent": {
+                "methods": [
+                    "__init__",
+                    "describe_capabilities"
+                ],
+                "docstring": "Example agent plugin implementing the AgentPlugin interface.",
+                "base_classes": [
+                    "AgentPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "ai_agent_project\\src\\core\\task_manager.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "run_task_sync"
+        ],
+        "classes": {
+            "TaskManager": {
+                "methods": [
+                    "__init__",
+                    "run_task_sync"
+                ],
+                "docstring": "Manages task execution for the ChainOfThoughtReasoner, including asynchronous processing.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "ai_agent_project\\src\\agents\\plugins\\sandboxed_python_agent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "describe_capabilities"
+        ],
+        "classes": {
+            "SandboxedPythonAgent": {
+                "methods": [
+                    "__init__",
+                    "describe_capabilities"
+                ],
+                "docstring": "Python agent that executes code within a Docker container for sandboxing.",
+                "base_classes": [
+                    "AgentPlugin"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "ai_agent_project\\src\\gui\\ai_agent_gui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "detect_syntax_errors",
+            "detect_runtime_errors",
+            "detect_logic_errors",
+            "detect_all_errors"
+        ],
+        "classes": {
+            "ErrorDetector": {
+                "methods": [
+                    "__init__",
+                    "detect_syntax_errors",
+                    "detect_runtime_errors",
+                    "detect_logic_errors",
+                    "detect_all_errors"
+                ],
+                "docstring": "Class for detecting and classifying errors in Python code.\nSupports syntax error detection, runtime error handling, \nand logic error identification through static analysis.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 14,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\core\\trading_robot.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_data",
+            "run_analysis"
+        ],
+        "classes": {
+            "TradingRobot": {
+                "methods": [
+                    "__init__",
+                    "load_data",
+                    "run_analysis"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "ai_agent_project\\src\\tests\\test_ai_agent.py": {
+        "language": ".py",
+        "functions": [
+            "setUp",
+            "tearDown",
+            "test_chat_response",
+            "test_run_query_subprocess_error",
+            "test_run_query_unexpected_error"
+        ],
+        "classes": {
+            "TestAIAgentWithMemory": {
+                "methods": [
+                    "setUp",
+                    "tearDown",
+                    "test_chat_response",
+                    "test_run_query_subprocess_error",
+                    "test_run_query_unexpected_error"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "unittest.TestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\tests\\test_agent_dispatcher.py": {
+        "language": ".py",
+        "functions": [
+            "dispatcher",
+            "test_list_agents"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "config\\logger.py": {
+        "language": ".py",
+        "functions": [
+            "setup_logger"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "config\\config.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "ai_agent_project\\src\\tests\\test_memory_manager.py": {
+        "language": ".py",
+        "functions": [
+            "setUp",
+            "tearDown",
+            "test_save_and_retrieve_memory",
+            "test_retrieve_memory_limit",
+            "test_delete_memory_older_than",
+            "test_retrieve_memory_no_entries"
+        ],
+        "classes": {
+            "TestMemoryManager": {
+                "methods": [
+                    "setUp",
+                    "tearDown",
+                    "test_save_and_retrieve_memory",
+                    "test_retrieve_memory_limit",
+                    "test_delete_memory_older_than",
+                    "test_retrieve_memory_no_entries"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "unittest.TestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\tests\\test_api.py": {
+        "language": ".py",
+        "functions": [
+            "setup_agents",
+            "test_submit_task",
+            "test_list_agents",
+            "test_add_remove_agent"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "ai_agent_project\\src\\gui\\gui.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "send_message",
+            "get_ai_response",
+            "display_message",
+            "scroll_to_bottom",
+            "clear_chat",
+            "save_chat",
+            "run"
+        ],
+        "classes": {
+            "AIAgentGUI": {
+                "methods": [
+                    "__init__",
+                    "send_message",
+                    "get_ai_response",
+                    "display_message",
+                    "scroll_to_bottom",
+                    "clear_chat",
+                    "save_chat",
+                    "run"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 27,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "ai_agent_project\\src\\tools\\migrate.py": {
+        "language": ".py",
+        "functions": [
+            "migrate_sqlite_to_postgresql"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 6,
+        "lint": [
+            "Function migrate_sqlite_to_postgresql >50 lines"
+        ]
+    },
+    "ai_agent_project\\src\\tools\\file_editor.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "db\\models.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {
+            "Agent": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Base"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "Task": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Base"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "db\\database.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    }
+}

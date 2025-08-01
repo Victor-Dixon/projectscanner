@@ -1,5 +1,76 @@
 {
-  "scanned_repos": [],
+  "scanned_repos": [
+    {
+      "unique_name": "Dadudekc_agentproject_private",
+      "repo_name": "agentproject",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:15:36.525690",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_Agent_Cellphone",
+      "repo_name": "Agent_Cellphone",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:15:41.467175",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_AI_Debugger_Assistant_private",
+      "repo_name": "AI_Debugger_Assistant",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:15:48.525571",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_Auto_Blogger",
+      "repo_name": "Auto_Blogger",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:15:52.790430",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_basicbot",
+      "repo_name": "basicbot",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:15:54.448935",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_bolt-project_private",
+      "repo_name": "bolt-project",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:15:56.650911",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_content_private",
+      "repo_name": "content",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:15:59.390391",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_DaDudekC_private",
+      "repo_name": "DaDudekC",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:16:01.905676",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_DaDudeKC-Website_private",
+      "repo_name": "DaDudeKC-Website",
+      "is_private": true,
+      "scan_date": "2025-07-31T19:16:04.205765",
+      "status": "success"
+    },
+    {
+      "unique_name": "Dadudekc_DigitalDreamscape",
+      "repo_name": "DigitalDreamscape",
+      "is_private": false,
+      "scan_date": "2025-07-31T19:16:37.069657",
+      "status": "success"
+    }
+  ],
   "failed_repos": [
     {
       "unique_name": "Dadudekc_agentproject_private",
@@ -471,5 +542,5 @@
       "error": "name 'GitHubScanner' is not defined"
     }
   ],
-  "last_scan": "2025-07-31T17:21:56.314225"
+  "last_scan": "2025-07-31T19:20:25.915525"
 }

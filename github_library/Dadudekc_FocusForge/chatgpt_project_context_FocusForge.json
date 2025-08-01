@@ -1,5 +1,5 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpnyencqnh\\FocusForge",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpgtl4c179\\FocusForge",
     "num_files_analyzed": 32,
     "analysis_details": {
         "core\\analytics\\__init__.py": {
@@ -10,6 +10,125 @@
             "complexity": 0,
             "lint": []
         },
+        "core\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "core\\engine\\focus_env.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_initialize_state",
+                "reset",
+                "step",
+                "render",
+                "close"
+            ],
+            "classes": {
+                "FocusEnv": {
+                    "methods": [
+                        "__init__",
+                        "_initialize_state",
+                        "reset",
+                        "step",
+                        "render",
+                        "close"
+                    ],
+                    "docstring": "Custom Environment for Focus Forge AI Agent.",
+                    "base_classes": [
+                        "gym.Env"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 18,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "core\\engine\\decision_engine.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "get_optimal_durations",
+                "apply_rules",
+                "save_model",
+                "train_model",
+                "reset",
+                "step"
+            ],
+            "classes": {
+                "DecisionEngine": {
+                    "methods": [
+                        "__init__",
+                        "get_optimal_durations",
+                        "apply_rules",
+                        "save_model",
+                        "train_model"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "ObservationOnlyWrapper": {
+                    "methods": [
+                        "reset",
+                        "step"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "Wrapper"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 18,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "launch",
+                "generate_focus_report"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "core\\engine\\train_rl.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "reset_distractions"
+            ],
+            "classes": {
+                "_StubDistractionDetector": {
+                    "methods": [
+                        "reset_distractions"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Kiddie Script",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
         "core\\trackers\\__init__.py": {
             "language": ".py",
             "functions": [],
@@ -18,13 +137,35 @@
             "complexity": 0,
             "lint": []
         },
-        "core\\engine\\__init__.py": {
+        "core\\trackers\\distraction_logger.py": {
             "language": ".py",
-            "functions": [],
-            "classes": {},
+            "functions": [
+                "__init__",
+                "load_logs",
+                "log_event",
+                "get_logs",
+                "get_summary"
+            ],
+            "classes": {
+                "DistractionLogger": {
+                    "methods": [
+                        "__init__",
+                        "load_logs",
+                        "log_event",
+                        "get_logs",
+                        "get_summary"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 0,
-            "lint": []
+            "complexity": 12,
+            "lint": [
+                "High complexity"
+            ]
         },
         "core\\trackers\\advanced_distraction.py": {
             "language": ".py",
@@ -102,81 +243,7 @@
                 "High complexity"
             ]
         },
-        "core\\trackers\\distraction_logger.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "load_logs",
-                "log_event",
-                "get_logs",
-                "get_summary"
-            ],
-            "classes": {
-                "DistractionLogger": {
-                    "methods": [
-                        "__init__",
-                        "load_logs",
-                        "log_event",
-                        "get_logs",
-                        "get_summary"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 12,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "core\\engine\\decision_engine.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "get_optimal_durations",
-                "apply_rules",
-                "save_model",
-                "train_model",
-                "reset",
-                "step"
-            ],
-            "classes": {
-                "DecisionEngine": {
-                    "methods": [
-                        "__init__",
-                        "get_optimal_durations",
-                        "apply_rules",
-                        "save_model",
-                        "train_model"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "ObservationOnlyWrapper": {
-                    "methods": [
-                        "reset",
-                        "step"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "Wrapper"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 18,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "core\\__init__.py": {
+        "core\\engine\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -217,81 +284,6 @@
             "lint": [
                 "High complexity"
             ]
-        },
-        "core\\engine\\train_rl.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "reset_distractions"
-            ],
-            "classes": {
-                "_StubDistractionDetector": {
-                    "methods": [
-                        "reset_distractions"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Kiddie Script",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "core\\engine\\focus_env.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_initialize_state",
-                "reset",
-                "step",
-                "render",
-                "close"
-            ],
-            "classes": {
-                "FocusEnv": {
-                    "methods": [
-                        "__init__",
-                        "_initialize_state",
-                        "reset",
-                        "step",
-                        "render",
-                        "close"
-                    ],
-                    "docstring": "Custom Environment for Focus Forge AI Agent.",
-                    "base_classes": [
-                        "gym.Env"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 18,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "launch",
-                "generate_focus_report"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "core\\utils\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
         },
         "core\\utils\\database.py": {
             "language": ".py",
@@ -343,13 +335,57 @@
                 "High complexity"
             ]
         },
-        "gui\\components\\__init__.py": {
+        "gui\\components\\modern_window.py": {
             "language": ".py",
-            "functions": [],
-            "classes": {},
+            "functions": [
+                "__init__",
+                "init_ui",
+                "init_dashboard_page",
+                "init_tasks_page",
+                "init_analytics_page",
+                "init_placeholder_page",
+                "show_settings",
+                "format_time",
+                "update_timer_label",
+                "start_timer",
+                "pause_timer",
+                "reset_timer",
+                "update_timer",
+                "add_task",
+                "apply_styles"
+            ],
+            "classes": {
+                "MainWindow": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "init_dashboard_page",
+                        "init_tasks_page",
+                        "init_analytics_page",
+                        "init_placeholder_page",
+                        "show_settings",
+                        "format_time",
+                        "update_timer_label",
+                        "start_timer",
+                        "pause_timer",
+                        "reset_timer",
+                        "update_timer",
+                        "add_task",
+                        "apply_styles"
+                    ],
+                    "docstring": "Redesigned main window with sidebar navigation.",
+                    "base_classes": [
+                        "QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 0,
-            "lint": []
+            "complexity": 37,
+            "lint": [
+                "High complexity"
+            ]
         },
         "gui\\components\\splash_screen.py": {
             "language": ".py",
@@ -375,6 +411,30 @@
             "complexity": 4,
             "lint": []
         },
+        "gui\\components\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "core\\utils\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "gui\\themes\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
         "gui\\__init__.py": {
             "language": ".py",
             "functions": [],
@@ -389,6 +449,89 @@
             "classes": {},
             "routes": [],
             "complexity": 0,
+            "lint": []
+        },
+        "gui\\components\\skill_animations.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "show_animation",
+                "__init__",
+                "setup_animations",
+                "show_level_up",
+                "show_xp_gain",
+                "animate_progress_bar",
+                "__init__",
+                "log_xp_event",
+                "pulse_color"
+            ],
+            "classes": {
+                "AnimatedLabel": {
+                    "methods": [
+                        "__init__",
+                        "show_animation"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QLabel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "XPAnimation": {
+                    "methods": [
+                        "__init__",
+                        "setup_animations",
+                        "show_level_up",
+                        "show_xp_gain",
+                        "animate_progress_bar"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "DevlogWriter": {
+                    "methods": [
+                        "__init__",
+                        "log_xp_event"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 21,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "gui\\dialogs\\settings_dialog.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "toggle_dark_mode",
+                "save_settings"
+            ],
+            "classes": {
+                "SettingsDialog": {
+                    "methods": [
+                        "__init__",
+                        "toggle_dark_mode",
+                        "save_settings"
+                    ],
+                    "docstring": "Modal dialog that allows users to tweak Pomodoro and UI settings.",
+                    "base_classes": [
+                        "QDialog"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 10,
             "lint": []
         },
         "gui\\components\\kantu_board.py": {
@@ -512,149 +655,6 @@
                 "High complexity"
             ]
         },
-        "gui\\components\\modern_window.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_ui",
-                "init_dashboard_page",
-                "init_tasks_page",
-                "init_analytics_page",
-                "init_placeholder_page",
-                "show_settings",
-                "format_time",
-                "update_timer_label",
-                "start_timer",
-                "pause_timer",
-                "reset_timer",
-                "update_timer",
-                "add_task",
-                "apply_styles"
-            ],
-            "classes": {
-                "MainWindow": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "init_dashboard_page",
-                        "init_tasks_page",
-                        "init_analytics_page",
-                        "init_placeholder_page",
-                        "show_settings",
-                        "format_time",
-                        "update_timer_label",
-                        "start_timer",
-                        "pause_timer",
-                        "reset_timer",
-                        "update_timer",
-                        "add_task",
-                        "apply_styles"
-                    ],
-                    "docstring": "Redesigned main window with sidebar navigation.",
-                    "base_classes": [
-                        "QMainWindow"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 37,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "gui\\dialogs\\settings_dialog.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "toggle_dark_mode",
-                "save_settings"
-            ],
-            "classes": {
-                "SettingsDialog": {
-                    "methods": [
-                        "__init__",
-                        "toggle_dark_mode",
-                        "save_settings"
-                    ],
-                    "docstring": "Modal dialog that allows users to tweak Pomodoro and UI settings.",
-                    "base_classes": [
-                        "QDialog"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 10,
-            "lint": []
-        },
-        "gui\\themes\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "gui\\components\\skill_animations.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "show_animation",
-                "__init__",
-                "setup_animations",
-                "show_level_up",
-                "show_xp_gain",
-                "animate_progress_bar",
-                "__init__",
-                "log_xp_event",
-                "pulse_color"
-            ],
-            "classes": {
-                "AnimatedLabel": {
-                    "methods": [
-                        "__init__",
-                        "show_animation"
-                    ],
-                    "docstring": null,
-                    "base_classes": [
-                        "QLabel"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "XPAnimation": {
-                    "methods": [
-                        "__init__",
-                        "setup_animations",
-                        "show_level_up",
-                        "show_xp_gain",
-                        "animate_progress_bar"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "DevlogWriter": {
-                    "methods": [
-                        "__init__",
-                        "log_xp_event"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 21,
-            "lint": [
-                "High complexity"
-            ]
-        },
         "gui\\components\\main_window.py": {
             "language": ".py",
             "functions": [
@@ -728,14 +728,6 @@
                 "High complexity"
             ]
         },
-        "meta_skills\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
         "meta_skills\\animations\\__init__.py": {
             "language": ".py",
             "functions": [],
@@ -744,75 +736,7 @@
             "complexity": 0,
             "lint": []
         },
-        "meta_skills\\levels\\meta_skills.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_calculate_xp_for_level",
-                "add_xp",
-                "to_dict",
-                "from_dict",
-                "__init__",
-                "load_skills",
-                "save_skills",
-                "add_xp",
-                "get_skill",
-                "get_all_skills",
-                "get_skill_progress",
-                "__init__",
-                "total_xp",
-                "average_level"
-            ],
-            "classes": {
-                "MetaSkill": {
-                    "methods": [
-                        "__init__",
-                        "_calculate_xp_for_level",
-                        "add_xp",
-                        "to_dict",
-                        "from_dict"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "MetaSkillManager": {
-                    "methods": [
-                        "__init__",
-                        "load_skills",
-                        "save_skills",
-                        "add_xp",
-                        "get_skill",
-                        "get_all_skills",
-                        "get_skill_progress"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "MetaSkills": {
-                    "methods": [
-                        "__init__",
-                        "total_xp",
-                        "average_level"
-                    ],
-                    "docstring": "Concrete wrapper that exposes MetaSkillManager's functionality under the\nhistorical `MetaSkills` name expected by UI code (KantuBoard).\n\nInherits all CRUD/XP logic from `MetaSkillManager` and just wires the\ndatabase handle if we later want to sync skill analytics there.",
-                    "base_classes": [
-                        "MetaSkillManager"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 36,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "tests\\integration\\__init__.py": {
+        "meta_skills\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -820,7 +744,15 @@
             "complexity": 0,
             "lint": []
         },
-        "tests\\unit\\__init__.py": {
+        "meta_skills\\levels\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "tests\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -905,7 +837,7 @@
                 "High complexity"
             ]
         },
-        "tests\\__init__.py": {
+        "tests\\integration\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -913,13 +845,81 @@
             "complexity": 0,
             "lint": []
         },
-        "meta_skills\\levels\\__init__.py": {
+        "tests\\unit\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
             "routes": [],
             "complexity": 0,
             "lint": []
+        },
+        "meta_skills\\levels\\meta_skills.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_calculate_xp_for_level",
+                "add_xp",
+                "to_dict",
+                "from_dict",
+                "__init__",
+                "load_skills",
+                "save_skills",
+                "add_xp",
+                "get_skill",
+                "get_all_skills",
+                "get_skill_progress",
+                "__init__",
+                "total_xp",
+                "average_level"
+            ],
+            "classes": {
+                "MetaSkill": {
+                    "methods": [
+                        "__init__",
+                        "_calculate_xp_for_level",
+                        "add_xp",
+                        "to_dict",
+                        "from_dict"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "MetaSkillManager": {
+                    "methods": [
+                        "__init__",
+                        "load_skills",
+                        "save_skills",
+                        "add_xp",
+                        "get_skill",
+                        "get_all_skills",
+                        "get_skill_progress"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "MetaSkills": {
+                    "methods": [
+                        "__init__",
+                        "total_xp",
+                        "average_level"
+                    ],
+                    "docstring": "Concrete wrapper that exposes MetaSkillManager's functionality under the\nhistorical `MetaSkills` name expected by UI code (KantuBoard).\n\nInherits all CRUD/XP logic from `MetaSkillManager` and just wires the\ndatabase handle if we later want to sync skill analytics there.",
+                    "base_classes": [
+                        "MetaSkillManager"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 36,
+            "lint": [
+                "High complexity"
+            ]
         }
     }
 }

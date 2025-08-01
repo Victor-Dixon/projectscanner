@@ -547,6 +547,123 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         
         self.tabs.addTab(self.current_scan_tab, "📊 Current Scan")
         
+        # Portfolio Statistics tab
+        self.portfolio_stats_tab = QtWidgets.QWidget()
+        portfolio_stats_layout = QtWidgets.QVBoxLayout(self.portfolio_stats_tab)
+        
+        # Statistics display
+        self.stats_group = QtWidgets.QGroupBox("📈 Portfolio Statistics")
+        stats_layout = QtWidgets.QGridLayout(self.stats_group)
+        
+        # Repository stats
+        self.total_repos_label = QtWidgets.QLabel("Total Repositories: 0")
+        self.public_repos_label = QtWidgets.QLabel("Public Repositories: 0")
+        self.private_repos_label = QtWidgets.QLabel("Private Repositories: 0")
+        self.total_files_label = QtWidgets.QLabel("Total Files Analyzed: 0")
+        
+        stats_layout.addWidget(self.total_repos_label, 0, 0)
+        stats_layout.addWidget(self.public_repos_label, 0, 1)
+        stats_layout.addWidget(self.private_repos_label, 1, 0)
+        stats_layout.addWidget(self.total_files_label, 1, 1)
+        
+        portfolio_stats_layout.addWidget(self.stats_group)
+        
+        # Language breakdown
+        self.languages_group = QtWidgets.QGroupBox("💻 Programming Languages")
+        languages_layout = QtWidgets.QVBoxLayout(self.languages_group)
+        self.languages_tree = QtWidgets.QTreeWidget()
+        self.languages_tree.setHeaderLabels(["Language", "Repositories", "Files"])
+        languages_layout.addWidget(self.languages_tree)
+        portfolio_stats_layout.addWidget(self.languages_group)
+        
+        # Top repositories
+        self.top_repos_group = QtWidgets.QGroupBox("⭐ Top Repositories")
+        top_repos_layout = QtWidgets.QVBoxLayout(self.top_repos_group)
+        self.top_repos_tree = QtWidgets.QTreeWidget()
+        self.top_repos_tree.setHeaderLabels(["Repository", "Stars", "Language", "Files"])
+        top_repos_layout.addWidget(self.top_repos_tree)
+        portfolio_stats_layout.addWidget(self.top_repos_group)
+        
+        self.tabs.addTab(self.portfolio_stats_tab, "📈 Portfolio Stats")
+        
+        # Skill Tree tab
+        self.skill_tree_tab = QtWidgets.QWidget()
+        skill_tree_layout = QtWidgets.QVBoxLayout(self.skill_tree_tab)
+        
+        # Skill tree controls
+        skill_controls = QtWidgets.QHBoxLayout()
+        self.generate_skill_tree_btn = QtWidgets.QPushButton("🌳 Generate Skill Tree")
+        self.generate_skill_tree_btn.clicked.connect(self.generate_skill_tree)
+        self.export_skill_tree_btn = QtWidgets.QPushButton("📤 Export Skill Tree")
+        self.export_skill_tree_btn.clicked.connect(self.export_skill_tree)
+        skill_controls.addWidget(self.generate_skill_tree_btn)
+        skill_controls.addWidget(self.export_skill_tree_btn)
+        skill_controls.addStretch()
+        skill_tree_layout.addLayout(skill_controls)
+        
+        # Skill tree display
+        self.skill_tree_group = QtWidgets.QGroupBox("🌳 Developer Skill Tree")
+        skill_tree_display_layout = QtWidgets.QVBoxLayout(self.skill_tree_group)
+        self.skill_tree_display = QtWidgets.QTextEdit()
+        self.skill_tree_display.setReadOnly(True)
+        self.skill_tree_display.setStyleSheet("font-family: 'Courier New'; font-size: 12px;")
+        skill_tree_display_layout.addWidget(self.skill_tree_display)
+        skill_tree_layout.addWidget(self.skill_tree_group)
+        
+        self.tabs.addTab(self.skill_tree_tab, "🌳 Skill Tree")
+        
+        # Resume Builder tab
+        self.resume_builder_tab = QtWidgets.QWidget()
+        resume_builder_layout = QtWidgets.QVBoxLayout(self.resume_builder_tab)
+        
+        # Resume controls
+        resume_controls = QtWidgets.QHBoxLayout()
+        self.generate_resume_btn = QtWidgets.QPushButton("📄 Generate Resume")
+        self.generate_resume_btn.clicked.connect(self.generate_resume)
+        self.export_resume_btn = QtWidgets.QPushButton("📤 Export Resume")
+        self.export_resume_btn.clicked.connect(self.export_resume)
+        resume_controls.addWidget(self.generate_resume_btn)
+        resume_controls.addWidget(self.export_resume_btn)
+        resume_controls.addStretch()
+        resume_builder_layout.addLayout(resume_controls)
+        
+        # Resume display
+        self.resume_group = QtWidgets.QGroupBox("📄 Developer Resume")
+        resume_display_layout = QtWidgets.QVBoxLayout(self.resume_group)
+        self.resume_display = QtWidgets.QTextEdit()
+        self.resume_display.setReadOnly(True)
+        self.resume_display.setStyleSheet("font-family: 'Arial'; font-size: 12px;")
+        resume_display_layout.addWidget(self.resume_display)
+        resume_builder_layout.addWidget(self.resume_group)
+        
+        self.tabs.addTab(self.resume_builder_tab, "📄 Resume Builder")
+        
+        # Insights tab
+        self.insights_tab = QtWidgets.QWidget()
+        insights_layout = QtWidgets.QVBoxLayout(self.insights_tab)
+        
+        # Insights controls
+        insights_controls = QtWidgets.QHBoxLayout()
+        self.generate_insights_btn = QtWidgets.QPushButton("🔍 Generate Insights")
+        self.generate_insights_btn.clicked.connect(self.generate_insights)
+        self.export_insights_btn = QtWidgets.QPushButton("📤 Export Insights")
+        self.export_insights_btn.clicked.connect(self.export_insights)
+        insights_controls.addWidget(self.generate_insights_btn)
+        insights_controls.addWidget(self.export_insights_btn)
+        insights_controls.addStretch()
+        insights_layout.addLayout(insights_controls)
+        
+        # Insights display
+        self.insights_group = QtWidgets.QGroupBox("🔍 Portfolio Insights")
+        insights_display_layout = QtWidgets.QVBoxLayout(self.insights_group)
+        self.insights_display = QtWidgets.QTextEdit()
+        self.insights_display.setReadOnly(True)
+        self.insights_display.setStyleSheet("font-family: 'Arial'; font-size: 12px;")
+        insights_display_layout.addWidget(self.insights_display)
+        insights_layout.addWidget(self.insights_group)
+        
+        self.tabs.addTab(self.insights_tab, "🔍 Insights")
+        
         # Library tab
         self.library_tab = QtWidgets.QWidget()
         library_layout = QtWidgets.QVBoxLayout(self.library_tab)
@@ -881,25 +998,46 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
 
     def github_library_finished(self, result: Dict):
         """Handle GitHub library scan completion."""
-        # Re-enable processing
-        self.is_processing = False
-        self.update_processing_controls()
-        
-        # Hide progress bar
-        self.progress_bar.setVisible(False)
-        
-        # Save analysis results if enabled
-        username = self.github_username_edit.text().strip()
-        if username:
-            self.save_analysis_results(username, result)
-        
-        # Display GitHub library results
-        self.display_github_library_results(result)
-        
-        # Switch to GitHub library tab
-        self.tabs.setCurrentIndex(2)
-        
-        self.status_bar.showMessage("GitHub library scan completed successfully!")
+        try:
+            self.is_processing = False
+            self.update_processing_controls()
+            
+            if result.get('success', False):
+                # Update GitHub library display
+                self.display_github_library_results(result)
+                
+                # Update portfolio statistics
+                github_data = self.load_github_library_data()
+                if github_data:
+                    self.update_portfolio_statistics(github_data)
+                
+                # Switch to portfolio stats tab
+                self.tabs.setCurrentIndex(1)  # Portfolio Stats tab
+                
+                self.update_progress("GitHub library scan completed successfully!")
+                self.status_bar.showMessage("GitHub library scan completed")
+                
+                # Show completion message
+                QtWidgets.QMessageBox.information(
+                    self, "Scan Complete",
+                    f"GitHub library scan completed successfully!\n\n"
+                    f"Found {result.get('total_repos', 0)} repositories\n"
+                    f"Analyzed {result.get('total_files', 0)} files\n\n"
+                    f"Check the Portfolio Stats tab for detailed statistics."
+                )
+            else:
+                error_msg = result.get('error', 'Unknown error occurred')
+                self.update_progress(f"GitHub library scan failed: {error_msg}")
+                self.status_bar.showMessage("GitHub library scan failed")
+                
+                QtWidgets.QMessageBox.critical(
+                    self, "Scan Failed",
+                    f"GitHub library scan failed:\n{error_msg}"
+                )
+                
+        except Exception as e:
+            self.update_progress(f"Error handling GitHub library completion: {e}")
+            self.status_bar.showMessage("Error processing results")
 
     def scan_error(self, error_message: str):
         """Handle scan errors."""
@@ -1291,6 +1429,208 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             self.github_library_worker.wait()
         
         event.accept()
+
+    def update_portfolio_statistics(self, github_data: Dict):
+        """Update portfolio statistics from GitHub data."""
+        try:
+            # Calculate statistics
+            total_repos = len(github_data.get('repositories', []))
+            public_repos = sum(1 for repo in github_data.get('repositories', []) if not repo.get('is_private', False))
+            private_repos = total_repos - public_repos
+            total_files = sum(repo.get('file_count', 0) for repo in github_data.get('repositories', []))
+            
+            # Update labels
+            self.total_repos_label.setText(f"Total Repositories: {total_repos}")
+            self.public_repos_label.setText(f"Public Repositories: {public_repos}")
+            self.private_repos_label.setText(f"Private Repositories: {private_repos}")
+            self.total_files_label.setText(f"Total Files Analyzed: {total_files}")
+            
+            # Update language breakdown
+            self.languages_tree.clear()
+            language_stats = {}
+            for repo in github_data.get('repositories', []):
+                lang = repo.get('language', 'Unknown')
+                if lang not in language_stats:
+                    language_stats[lang] = {'repos': 0, 'files': 0}
+                language_stats[lang]['repos'] += 1
+                language_stats[lang]['files'] += repo.get('file_count', 0)
+            
+            for lang, stats in sorted(language_stats.items(), key=lambda x: x[1]['files'], reverse=True):
+                item = QtWidgets.QTreeWidgetItem([lang, str(stats['repos']), str(stats['files'])])
+                self.languages_tree.addTopLevelItem(item)
+            
+            # Update top repositories
+            self.top_repos_tree.clear()
+            sorted_repos = sorted(github_data.get('repositories', []), 
+                                key=lambda x: x.get('stars', 0), reverse=True)
+            
+            for repo in sorted_repos[:10]:  # Top 10
+                item = QtWidgets.QTreeWidgetItem([
+                    repo.get('repo_name', 'Unknown'),
+                    str(repo.get('stars', 0)),
+                    repo.get('language', 'Unknown'),
+                    str(repo.get('file_count', 0))
+                ])
+                self.top_repos_tree.addTopLevelItem(item)
+                
+        except Exception as e:
+            self.update_progress(f"Error updating portfolio statistics: {e}")
+
+    def generate_skill_tree(self):
+        """Generate skill tree from portfolio data."""
+        try:
+            self.update_progress("Generating skill tree...")
+            
+            # Import skill tree generator
+            sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
+            from analyzers.enhanced_skill_analyzer import generate_skill_tree
+            
+            # Get current GitHub data
+            github_data = self.load_github_library_data()
+            if not github_data:
+                QtWidgets.QMessageBox.warning(self, "Warning", "No GitHub data available. Please scan your repositories first.")
+                return
+            
+            # Generate skill tree
+            skill_tree_text = generate_skill_tree(github_data)
+            self.skill_tree_display.setPlainText(skill_tree_text)
+            
+            self.update_progress("Skill tree generated successfully!")
+            
+        except Exception as e:
+            self.update_progress(f"Error generating skill tree: {e}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Failed to generate skill tree: {str(e)}")
+
+    def export_skill_tree(self):
+        """Export skill tree to file."""
+        try:
+            skill_tree_text = self.skill_tree_display.toPlainText()
+            if not skill_tree_text:
+                QtWidgets.QMessageBox.warning(self, "Warning", "No skill tree to export. Generate one first.")
+                return
+            
+            file_path, _ = QtWidgets.QFileDialog.getSaveFileName(
+                self, "Export Skill Tree", "skill_tree.txt", "Text Files (*.txt)"
+            )
+            
+            if file_path:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(skill_tree_text)
+                self.update_progress(f"Skill tree exported to: {file_path}")
+                
+        except Exception as e:
+            self.update_progress(f"Error exporting skill tree: {e}")
+
+    def generate_resume(self):
+        """Generate developer resume from portfolio data."""
+        try:
+            self.update_progress("Generating developer resume...")
+            
+            # Import resume generator
+            sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
+            from analyzers.comprehensive_project_analyzer import generate_resume
+            
+            # Get current GitHub data
+            github_data = self.load_github_library_data()
+            if not github_data:
+                QtWidgets.QMessageBox.warning(self, "Warning", "No GitHub data available. Please scan your repositories first.")
+                return
+            
+            # Generate resume
+            resume_text = generate_resume(github_data)
+            self.resume_display.setPlainText(resume_text)
+            
+            self.update_progress("Resume generated successfully!")
+            
+        except Exception as e:
+            self.update_progress(f"Error generating resume: {e}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Failed to generate resume: {str(e)}")
+
+    def export_resume(self):
+        """Export resume to file."""
+        try:
+            resume_text = self.resume_display.toPlainText()
+            if not resume_text:
+                QtWidgets.QMessageBox.warning(self, "Warning", "No resume to export. Generate one first.")
+                return
+            
+            file_path, _ = QtWidgets.QFileDialog.getSaveFileName(
+                self, "Export Resume", "developer_resume.md", "Markdown Files (*.md);;Text Files (*.txt)"
+            )
+            
+            if file_path:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(resume_text)
+                self.update_progress(f"Resume exported to: {file_path}")
+                
+        except Exception as e:
+            self.update_progress(f"Error exporting resume: {e}")
+
+    def generate_insights(self):
+        """Generate portfolio insights."""
+        try:
+            self.update_progress("Generating portfolio insights...")
+            
+            # Import insights generator
+            sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
+            from analyzers.deep_project_insights import generate_insights
+            
+            # Get current GitHub data
+            github_data = self.load_github_library_data()
+            if not github_data:
+                QtWidgets.QMessageBox.warning(self, "Warning", "No GitHub data available. Please scan your repositories first.")
+                return
+            
+            # Generate insights
+            insights_text = generate_insights(github_data)
+            self.insights_display.setPlainText(insights_text)
+            
+            self.update_progress("Insights generated successfully!")
+            
+        except Exception as e:
+            self.update_progress(f"Error generating insights: {e}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"Failed to generate insights: {str(e)}")
+
+    def export_insights(self):
+        """Export insights to file."""
+        try:
+            insights_text = self.insights_display.toPlainText()
+            if not insights_text:
+                QtWidgets.QMessageBox.warning(self, "Warning", "No insights to export. Generate them first.")
+                return
+            
+            file_path, _ = QtWidgets.QFileDialog.getSaveFileName(
+                self, "Export Insights", "portfolio_insights.md", "Markdown Files (*.md);;Text Files (*.txt)"
+            )
+            
+            if file_path:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(insights_text)
+                self.update_progress(f"Insights exported to: {file_path}")
+                
+        except Exception as e:
+            self.update_progress(f"Error exporting insights: {e}")
+
+    def load_github_library_data(self) -> Optional[Dict]:
+        """Load GitHub library data for analysis."""
+        try:
+            # Try to load from enhanced library
+            library_file = Path("github_library/github_library_enhanced.json")
+            if library_file.exists():
+                with open(library_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            
+            # Fall back to regular library
+            library_file = Path("github_library/github_library.json")
+            if library_file.exists():
+                with open(library_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            
+            return None
+            
+        except Exception as e:
+            self.update_progress(f"Error loading GitHub library data: {e}")
+            return None
 
 
 def main():

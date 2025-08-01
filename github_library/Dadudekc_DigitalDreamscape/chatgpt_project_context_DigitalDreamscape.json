@@ -1,16 +1,8 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpt33qv_gw\\DigitalDreamscape",
-    "num_files_analyzed": 20,
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmphg6ndc6k\\DigitalDreamscape",
+    "num_files_analyzed": 19,
     "analysis_details": {
-        "game_core\\dynamic_missions.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "ai_dm\\prompts.py": {
+        "ai_dm\\dm_interaction.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -26,7 +18,7 @@
             "complexity": 0,
             "lint": []
         },
-        "ai_dm\\__init__.py": {
+        "ai_dm\\conversation_memory.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -58,7 +50,23 @@
             "complexity": 0,
             "lint": []
         },
-        "ai_dm\\conversation_memory.py": {
+        "ai_dm\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "ai_dm\\prompts.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "game_core\\dynamic_missions.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -74,6 +82,17 @@
             "complexity": 0,
             "lint": []
         },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "initialize_game",
+                "game_loop"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
         "game_core\\events.py": {
             "language": ".py",
             "functions": [],
@@ -82,31 +101,31 @@
             "complexity": 0,
             "lint": []
         },
-        "game_core\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "ai_dm\\dm_interaction.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "game_core\\event_manager.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
         "game_core\\state.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "game_core\\abilities\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "game_core\\abilities\\dark_code_deflection.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "game_core\\abilities\\digital_transformation.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -130,39 +149,12 @@
             "complexity": 0,
             "lint": []
         },
-        "game_core\\abilities\\digital_transformation.py": {
+        "game_core\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
             "routes": [],
             "complexity": 0,
-            "lint": []
-        },
-        "game_core\\abilities\\dark_code_deflection.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "game_core\\abilities\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "initialize_game",
-                "game_loop"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 7,
             "lint": []
         }
     }

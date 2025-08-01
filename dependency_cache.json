@@ -1,227 +1,167 @@
 {
-    "test_standardization.py": {
-        "hash": "b3aa3aca37f7a754f0549fd8dbe27d7e"
+    "debug_conversation_detection.py": {
+        "hash": "4a58f7521dd830ae1de74eee45965e6a"
     },
-    "examples\\real_agent_messages.py": {
-        "hash": "32715390dc267c7f496241f8104c9659"
+    "debug_with_login.py": {
+        "hash": "9e099d3ebb6de09fadd7dbfc3ae7e919"
     },
-    "examples\\agent_conversation_demo.py": {
-        "hash": "4d07894cf8e2ea4473911694ebbf83e4"
+    "test_adaptive_system.py": {
+        "hash": "50902551e1bde33a5bf18f98df957ac8"
     },
-    "dream_os_splash_gui.py": {
-        "hash": "4109335bcae3d8fcd6ee091b9b4a4d3c"
+    "run_agent_training.py": {
+        "hash": "d9231e05c388ec3ebfc4a33d406c9215"
     },
-    "agent_workspaces\\onboarding\\status_manager.py": {
-        "hash": "51105442e83a8675cd70ce38892c6ad8"
+    "test_browser_simple.py": {
+        "hash": "7a22cff2292d32d5c6b0b7e39cad5ce1"
     },
-    "agent_workspaces\\onboarding\\status_standardizer.py": {
-        "hash": "019fd18370926514f4ab20f1ab9eb5e9"
+    "scripts\\demo_search.py": {
+        "hash": "d4f1b534fad295b611f9e61b1ba99552"
     },
-    "test_harness.py": {
-        "hash": "7ba1fd2b409d4d281d7c00294235f1ee"
+    "diagnose_login.py": {
+        "hash": "46c168cbb472420df9736ed1c72cbd12"
     },
-    "main.py": {
-        "hash": "0cb1ca0a45a75490cb633c2da8a4873b"
+    "run_ingest.py": {
+        "hash": "8ec38046d2ac96b88272f3189827a376"
     },
-    "commit_changes.py": {
-        "hash": "b99861d43e1ceda76c71f46a8710fe8f"
+    "run_integrated_ingest.py": {
+        "hash": "95e6cd9185b3fd8fa61b46ad7093f308"
     },
-    "agent_workspaces\\onboarding\\onboarding_manager.py": {
-        "hash": "1b6ab8dfb07417e4ab51f1d059f97979"
+    "scripts\\demo_rate_limits.py": {
+        "hash": "6dbd8a1694df4604b7cb5a8887628bdb"
     },
-    "agent_workspaces\\onboarding\\onboarding_verifier.py": {
-        "hash": "cb3cd384661483d7a3cf5a3be947bf90"
+    "run_scraper.py": {
+        "hash": "cac13f287a197f3b66778b2894ac9f83"
     },
-    "run_two_agent_gui.py": {
-        "hash": "9384cffefcf52b2a87bec9fe654b1c0c"
+    "scripts\\get_full_conversation.py": {
+        "hash": "b8feb8a755c4e7c88af08056ac12c8a3"
     },
-    "gui\\dream_os_gui_v2.py": {
-        "hash": "dd00ed559c4542ed64ead465c5bc7cfb"
+    "run_deployment.py": {
+        "hash": "60c3febd4fc2e2383da915d91dae603b"
     },
-    "gui\\run_two_agent_gui.py": {
-        "hash": "7b3f08e22c2412bd9b801d476e1423db"
+    "scripts\\show_db.py": {
+        "hash": "52deb1c6e77518a0d0ab7341b84321d8"
     },
-    "gui\\components\\splash_screen.py": {
-        "hash": "db5963a852afc790beea2a26db66071e"
+    "scripts\\simple_ingest.py": {
+        "hash": "2dcf606d42803674142819b8da76bd12"
     },
-    "project_repository\\orchestrator\\orchestrator.py": {
-        "hash": "4c1d126f7b0f805665c63bc469b58ea9"
+    "scripts\\query_db.py": {
+        "hash": "84d36b4aca6a80c8004176733d581dd2"
     },
-    "gui\\four_agent_horizontal_gui.py": {
-        "hash": "ce5ec0fb0b38c53e8f8892e9ba19b29d"
+    "src\\dreamvault\\__init__.py": {
+        "hash": "27399349a6849d8fc3582a3e1217f43e"
     },
-    "project_repository\\orchestrator\\prd_watcher.py": {
-        "hash": "68e178b6a6874041b98b7d122ec18c70"
+    "scripts\\simple_ip_test.py": {
+        "hash": "7ddfcc40db1208c2f4450fc3d64cc4d7"
     },
-    "gui\\components\\onboarding_integration.py": {
-        "hash": "39618c39c7cb049809ba94f81daeae89"
+    "src\\dreamvault\\agents\\conversation_agent.py": {
+        "hash": "df4b7532eb6737ba47c81a125e1c5d76"
     },
-    "gui\\components\\agent_panel.py": {
-        "hash": "56990520f271e1e627bfbf95e0162502"
+    "src\\dreamvault\\agents\\embedding_agent.py": {
+        "hash": "7284d089a79906402227542c952c5ba1"
     },
-    "gui\\two_agent_horizontal_gui.py": {
-        "hash": "16ba55d1f5ec63bfbf2351955ba77385"
+    "src\\dreamvault\\agents\\instruction_agent.py": {
+        "hash": "7ac1dcc22b58a7e7895516bfe73341ab"
     },
-    "scripts\\agent_messenger.py": {
-        "hash": "ffe06034977984cc0b7f946ee622e5b2"
+    "src\\dreamvault\\agents\\qa_agent.py": {
+        "hash": "5847d4afefdc0e657e1c3d644611b1ad"
     },
-    "project_repository\\orchestrator\\task_router.py": {
-        "hash": "f6f825de6e4419dbb7547af08b360228"
+    "src\\dreamvault\\core\\embed.py": {
+        "hash": "92cb5022ec88a0706267e75f040e3fba"
     },
-    "project_repository\\orchestrator\\__init__.py": {
-        "hash": "826cc255fa010e3aee02f9114b10dc46"
+    "src\\dreamvault\\agents\\summarization_agent.py": {
+        "hash": "39af2004cdd220934bf4eef9aef887cb"
     },
-    "scripts\\cleanup_duplicates.py": {
-        "hash": "4bb135aa5491fc6a0c53ae1138cf1cb8"
+    "src\\dreamvault\\core\\config.py": {
+        "hash": "f1355bd885cd207a87fa0aa9c62b866a"
     },
-    "scripts\\agent_onboarding_sequence.py": {
-        "hash": "610a099036459fc85b4f0ffa4e08c1ae"
+    "src\\dreamvault\\core\\integrated_ingester.py": {
+        "hash": "6240d356c6e9fe5911df2ebcee08e4e7"
     },
-    "scripts\\comprehensive_onboarding_message.py": {
-        "hash": "9f0058d123d9f7d83338a8f7cc2a39c8"
+    "src\\dreamvault\\core\\runner.py": {
+        "hash": "c1cd1ac61337935622095a907ea4d161"
     },
-    "scripts\\automated_onboarding.py": {
-        "hash": "7707b270267fde784c884b169ea1b87b"
+    "src\\dreamvault\\core\\index.py": {
+        "hash": "b8732b9709021dfbf68ac9278b0a2944"
     },
-    "scripts\\demo_chunk_vs_comprehensive_gui.py": {
-        "hash": "b7caae6ebc5d97720a269d21f4762521"
+    "src\\dreamvault\\core\\redact.py": {
+        "hash": "d57cdc03101491d9c53338d345287b53"
     },
-    "scripts\\comprehensive_onboarding_message_simple.py": {
-        "hash": "55d03ec6415d9fedc75f008839eb677a"
+    "src\\dreamvault\\core\\schema.py": {
+        "hash": "9525257d12689f22687ee8b88e703021"
     },
-    "scripts\\consolidated_onboarding.py": {
-        "hash": "19b8e147714b2d64d7bcfc2787523711"
+    "src\\dreamvault\\core\\rate_limit.py": {
+        "hash": "ce72178af7930a77c52a3f56d07de3db"
     },
-    "scripts\\comprehensive_onboarding_message_ascii.py": {
-        "hash": "de99293e46943b2e6f686474c0d2b524"
+    "src\\dreamvault\\core\\__init__.py": {
+        "hash": "aad24727cc52c679a651c46813346ad2"
     },
-    "scripts\\onboarding_messages.py": {
-        "hash": "8b65b6253d55483cf202e6c3b80b269a"
+    "src\\dreamvault\\core\\queue.py": {
+        "hash": "6105e8ccfc6339e27badc293a524cf9a"
     },
-    "scripts\\demo_onboarding_comparison.py": {
-        "hash": "74cf3a21c6e17eebf16861744d1efd45"
+    "src\\dreamvault\\core\\summarize.py": {
+        "hash": "dc808873753917ccceb905e47742a36e"
     },
-    "scripts\\dream_os_demo_gui.py": {
-        "hash": "dd65eea9ae0710de0a813e51f26610f9"
+    "src\\dreamvault\\deployment\\deployment_config.py": {
+        "hash": "683ebd49d6f7a01c443823f02e0cf963"
     },
-    "scripts\\onboard_all_agents.py": {
-        "hash": "63ee82db4406717712ef94a78527240b"
+    "src\\dreamvault\\deployment\\web_interface.py": {
+        "hash": "a412497c644c5ca3d2a07475e940bde9"
     },
-    "scripts\\run_onboarding.py": {
-        "hash": "e2f4ceec719527c0295d76a0175f2acb"
+    "src\\dreamvault\\deployment\\model_manager.py": {
+        "hash": "d560cabea88e43a5e974f4bd9b25e2f6"
     },
-    "scripts\\onboarding_approach_comparison.py": {
-        "hash": "1a11f55e131876d740529b783a1a0811"
+    "src\\dreamvault\\deployment\\api_server.py": {
+        "hash": "bd93ef51b82627157d726f70d5c863b8"
     },
-    "scripts\\send_onboarding.py": {
-        "hash": "6e613355d646e22c9d70e4080962d295"
+    "src\\dreamvault\\resurrection\\__init__.py": {
+        "hash": "264d5696f21c9a10728192f486edf2a7"
     },
-    "scripts\\send_onboarding_message.py": {
-        "hash": "df9db634d86bb58025dca675b2e53d9b"
+    "src\\dreamvault\\scrapers\\adaptive_extractor.py": {
+        "hash": "9a64b490572c1e4aec8faef7149f2afa"
     },
-    "scripts\\full_featured_2_agent_demo.py": {
-        "hash": "682e2cab81b1de648542aa8e141b0adb"
+    "src\\dreamvault\\deployment\\__init__.py": {
+        "hash": "ba88804af0a60bbda86cf8a64a3735e6"
     },
-    "scripts\\send_specific_onboarding.py": {
-        "hash": "3ebadcd53d8f5174e8560fe5c8d818e2"
+    "src\\dreamvault\\resurrection\\ip_extractor.py": {
+        "hash": "d90f226de0b3a9c4127b8b61e1f741ef"
     },
-    "scripts\\onboarding_utils.py": {
-        "hash": "44284cfcd8a354de2201bfaa2955a4bc"
+    "src\\dreamvault\\scrapers\\conversation_extractor.py": {
+        "hash": "1c8e88abdf8a61ce2e74ccf69fb1fd1a"
     },
-    "src\\agent_cell_phone.py": {
-        "hash": "f93d747a0b867153220bc7677227af9b"
+    "src\\dreamvault\\scrapers\\login_handler.py": {
+        "hash": "226d1db18cc1cfdbc55778640dc4f539"
     },
-    "scripts\\send_single_onboarding.py": {
-        "hash": "1087978ddb81bb0e3f0093149533026b"
+    "src\\dreamvault\\scrapers\\cookie_manager.py": {
+        "hash": "503677baffd5b6726098b9ba5d250fa8"
     },
-    "src\\framework\\agent_autonomy_framework.py": {
-        "hash": "45c90d503f40017cd3f42104b8c14212"
+    "src\\dreamvault\\scrapers\\browser_manager.py": {
+        "hash": "0b3b379eeac3630a3f570d015fc6bf5d"
     },
-    "src\\__init__.py": {
-        "hash": "650d098fdb578cbec48d096c50eb034f"
+    "src\\dreamvault\\scrapers\\chatgpt_scraper.py": {
+        "hash": "68ac9a3ce283ade06a7e3b01ee3657ca"
     },
-    "src\\framework\\__init__.py": {
-        "hash": "ddc3fb972051e3e90202ee681822e576"
+    "tests\\test_agent_training.py": {
+        "hash": "809519021c7cfdcf08e377979cff9006"
     },
-    "src\\main.py": {
-        "hash": "0e1ac2817da70f37561dc40f8f2371a4"
+    "tests\\test_resume_functionality.py": {
+        "hash": "b40765af04bf953aaaeb733b29786751"
     },
-    "src\\gui\\__init__.py": {
-        "hash": "f1b10dda8660ef7e89ac534de24bf32e"
+    "src\\dreamvault\\scrapers\\__init__.py": {
+        "hash": "c9c3b5ce56d7a5b92280c216a5121cee"
     },
-    "src\\inter_agent_framework.py": {
-        "hash": "43957ff6e7563956502f592913e64d08"
+    "tests\\test_integrated_system.py": {
+        "hash": "3cb9eebc44051c80c0cc440952860ba0"
     },
-    "src\\gui\\components\\custom_message_widget_qt.py": {
-        "hash": "0407c6cda625d38c3e7823a4e3f2491c"
+    "tests\\test_deployment_system.py": {
+        "hash": "c0ea1dd77b2e87bb5f2995a1f6e3b484"
     },
-    "src\\gui\\components\\onboarding_dashboard.py": {
-        "hash": "0e2c394104f3f9f4937d5cbec2e439bf"
+    "tests\\test_ip_with_sample_data.py": {
+        "hash": "32b5af14cfe9d0f89693232525545950"
     },
-    "src\\gui\\components\\onboarding_components_qt.py": {
-        "hash": "84743707503d23630a43188d573aa34b"
+    "tests\\test_db.py": {
+        "hash": "aff194a27857ab01de1141905f829ed3"
     },
-    "src\\gui\\components\\onboarding_components.py": {
-        "hash": "d68dae78d750a7480ec8b6124af68b8e"
-    },
-    "src\\gui\\utils\\messaging_utils.py": {
-        "hash": "df99146c765ed1793f5c033d5bcaf5e2"
-    },
-    "src\\gui\\tabs\\__init__.py": {
-        "hash": "a75b9f2116ced81a151bdf3ce07f77fb"
-    },
-    "src\\gui\\tabs\\onboarding_tab.py": {
-        "hash": "548e3845c8afe3685e4d4d955259ff04"
-    },
-    "src\\gui\\components\\custom_message_widget.py": {
-        "hash": "949248d1b29b412eec460461c31f3121"
-    },
-    "src\\gui\\utils\\base_gui_controller.py": {
-        "hash": "a1bc5c1ee03f35f922476b3fc08fa7c7"
-    },
-    "src\\gui\\tabs\\agent_messenger_tab.py": {
-        "hash": "16744c6a1371acab01af9e67a770ed1b"
-    },
-    "src\\gui\\utils\\shared_classes.py": {
-        "hash": "fc2631b82c0504d0cf3c60bd3e3cb5db"
-    },
-    "src\\gui\\utils\\coordination_utils.py": {
-        "hash": "0fb0665ae88b544bccdef4c6d12e3e45"
-    },
-    "src\\gui\\utils\\onboarding_utils.py": {
-        "hash": "48a947668c07a02f0c7b8e247a74b8bc"
-    },
-    "src\\gui\\tabs\\coordinator_tab.py": {
-        "hash": "da2185eed5484fd2e5cbc337a74e7a53"
-    },
-    "src\\gui\\utils\\unified_broadcast_service.py": {
-        "hash": "a0be194ae42aba6b952f2f75605c9771"
-    },
-    "src\\utils\\__init__.py": {
-        "hash": "5f0b857e62da8f8e98e2898b1f0c5ef2"
-    },
-    "src\\gui\\utils\\__init__.py": {
-        "hash": "16e6062d617ee4310b567f7cd5fea66a"
-    },
-    "src\\gui\\utils\\shared_operations.py": {
-        "hash": "0c263b204bc994b5790ca626d811e9e6"
-    },
-    "tests\\test_8_agent_coordinates.py": {
-        "hash": "e49228420b35154e707faaa5df361bd9"
-    },
-    "tests\\test_special_chars.py": {
-        "hash": "e98a76aa1ab02b9fd7b061c40a207466"
-    },
-    "src\\utils\\coordinate_finder.py": {
-        "hash": "ec93d4f4bbd36ff9c8dc627574f9c3ea"
-    },
-    "tests\\diagnostic_test.py": {
-        "hash": "ac02e63c3d50a8edd3a10b795e86ffd0"
-    },
-    "tests\\test_harness.py": {
-        "hash": "37e37c915b86d12164f7a7c184549c8f"
-    },
-    "tests\\test_inter_agent_framework.py": {
-        "hash": "24f23a3f8372c3f18dc47bc508251819"
+    "tests\\test_ip_resurrection.py": {
+        "hash": "f276863c0a18aadba5a7a5ff26e769fe"
     }
 }

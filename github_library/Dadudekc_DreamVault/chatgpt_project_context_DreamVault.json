@@ -1,30 +1,7 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpcw_1gv5e\\DreamVault",
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp2g5vm3r1\\DreamVault",
     "num_files_analyzed": 55,
     "analysis_details": {
-        "scripts\\demo_rate_limits.py": {
-            "language": ".py",
-            "functions": [
-                "demo_rate_limits"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 9,
-            "lint": [
-                "Function demo_rate_limits >50 lines"
-            ]
-        },
-        "test_browser_simple.py": {
-            "language": ".py",
-            "functions": [
-                "setup_logging",
-                "test_browser_simple"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
         "debug_conversation_detection.py": {
             "language": ".py",
             "functions": [
@@ -50,40 +27,6 @@
             "complexity": 17,
             "lint": [
                 "Function debug_with_login >50 lines",
-                "High complexity"
-            ]
-        },
-        "run_ingest.py": {
-            "language": ".py",
-            "functions": [
-                "generate_mock_conversation_ids",
-                "main",
-                "show_status",
-                "cleanup_data",
-                "rebuild_indexes",
-                "generate_mock_data",
-                "run_batch_processing"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 21,
-            "lint": [
-                "Function main >50 lines",
-                "High complexity"
-            ]
-        },
-        "run_integrated_ingest.py": {
-            "language": ".py",
-            "functions": [
-                "setup_logging",
-                "load_conversation_from_file",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 21,
-            "lint": [
-                "Function main >50 lines",
                 "High complexity"
             ]
         },
@@ -121,6 +64,116 @@
                 "High complexity"
             ]
         },
+        "test_browser_simple.py": {
+            "language": ".py",
+            "functions": [
+                "setup_logging",
+                "test_browser_simple"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "scripts\\demo_search.py": {
+            "language": ".py",
+            "functions": [
+                "demo_search"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
+            "lint": []
+        },
+        "diagnose_login.py": {
+            "language": ".py",
+            "functions": [
+                "setup_logging",
+                "diagnose_login"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 13,
+            "lint": [
+                "Function diagnose_login >50 lines",
+                "High complexity"
+            ]
+        },
+        "run_ingest.py": {
+            "language": ".py",
+            "functions": [
+                "generate_mock_conversation_ids",
+                "main",
+                "show_status",
+                "cleanup_data",
+                "rebuild_indexes",
+                "generate_mock_data",
+                "run_batch_processing"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 21,
+            "lint": [
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
+        "run_integrated_ingest.py": {
+            "language": ".py",
+            "functions": [
+                "setup_logging",
+                "load_conversation_from_file",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 21,
+            "lint": [
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
+        "scripts\\demo_rate_limits.py": {
+            "language": ".py",
+            "functions": [
+                "demo_rate_limits"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": [
+                "Function demo_rate_limits >50 lines"
+            ]
+        },
+        "run_scraper.py": {
+            "language": ".py",
+            "functions": [
+                "setup_logging",
+                "progress_callback",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 12,
+            "lint": [
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
+        "scripts\\get_full_conversation.py": {
+            "language": ".py",
+            "functions": [
+                "get_full_conversation",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 32,
+            "lint": [
+                "Function get_full_conversation >50 lines",
+                "High complexity"
+            ]
+        },
         "run_deployment.py": {
             "language": ".py",
             "functions": [
@@ -139,75 +192,6 @@
                 "High complexity"
             ]
         },
-        "diagnose_login.py": {
-            "language": ".py",
-            "functions": [
-                "setup_logging",
-                "diagnose_login"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 13,
-            "lint": [
-                "Function diagnose_login >50 lines",
-                "High complexity"
-            ]
-        },
-        "run_scraper.py": {
-            "language": ".py",
-            "functions": [
-                "setup_logging",
-                "progress_callback",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 12,
-            "lint": [
-                "Function main >50 lines",
-                "High complexity"
-            ]
-        },
-        "scripts\\demo_search.py": {
-            "language": ".py",
-            "functions": [
-                "demo_search"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 7,
-            "lint": []
-        },
-        "src\\dreamvault\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "scripts\\simple_ip_test.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "scripts\\get_full_conversation.py": {
-            "language": ".py",
-            "functions": [
-                "get_full_conversation",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 32,
-            "lint": [
-                "Function get_full_conversation >50 lines",
-                "High complexity"
-            ]
-        },
         "scripts\\show_db.py": {
             "language": ".py",
             "functions": [],
@@ -216,35 +200,41 @@
             "complexity": 4,
             "lint": []
         },
-        "src\\dreamvault\\agents\\embedding_agent.py": {
+        "scripts\\simple_ingest.py": {
             "language": ".py",
             "functions": [
+                "main",
                 "__init__",
-                "load_training_data",
-                "prepare_training_data",
-                "train_with_sentence_transformers",
-                "generate_embedding",
-                "get_training_stats"
+                "_init_database",
+                "ingest_conversation",
+                "ingest_all_conversations",
+                "query_conversations",
+                "get_conversation_by_id",
+                "get_conversation_messages",
+                "get_stats"
             ],
             "classes": {
-                "EmbeddingAgentTrainer": {
+                "SimpleIngester": {
                     "methods": [
                         "__init__",
-                        "load_training_data",
-                        "prepare_training_data",
-                        "train_with_sentence_transformers",
-                        "generate_embedding",
-                        "get_training_stats"
+                        "_init_database",
+                        "ingest_conversation",
+                        "ingest_all_conversations",
+                        "query_conversations",
+                        "get_conversation_by_id",
+                        "get_conversation_messages",
+                        "get_stats"
                     ],
-                    "docstring": "Trains custom embedding models.",
+                    "docstring": "Simple conversation ingester that stores data in SQLite.",
                     "base_classes": [],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 22,
+            "complexity": 31,
             "lint": [
+                "Function ingest_conversation >50 lines",
                 "High complexity"
             ]
         },
@@ -285,69 +275,21 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\agents\\qa_agent.py": {
+        "src\\dreamvault\\__init__.py": {
             "language": ".py",
-            "functions": [
-                "__init__",
-                "load_training_data",
-                "prepare_training_data",
-                "train_with_openai",
-                "answer_question",
-                "get_training_stats"
-            ],
-            "classes": {
-                "QAAgentTrainer": {
-                    "methods": [
-                        "__init__",
-                        "load_training_data",
-                        "prepare_training_data",
-                        "train_with_openai",
-                        "answer_question",
-                        "get_training_stats"
-                    ],
-                    "docstring": "Trains Q&A agents on question-answer pairs.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
+            "functions": [],
+            "classes": {},
             "routes": [],
-            "complexity": 25,
-            "lint": [
-                "High complexity"
-            ]
+            "complexity": 0,
+            "lint": []
         },
-        "src\\dreamvault\\agents\\instruction_agent.py": {
+        "scripts\\simple_ip_test.py": {
             "language": ".py",
-            "functions": [
-                "__init__",
-                "load_training_data",
-                "prepare_training_data",
-                "train_with_openai",
-                "follow_instruction",
-                "get_training_stats"
-            ],
-            "classes": {
-                "InstructionAgentTrainer": {
-                    "methods": [
-                        "__init__",
-                        "load_training_data",
-                        "prepare_training_data",
-                        "train_with_openai",
-                        "follow_instruction",
-                        "get_training_stats"
-                    ],
-                    "docstring": "Trains instruction-following agents.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
+            "functions": [],
+            "classes": {},
             "routes": [],
-            "complexity": 25,
-            "lint": [
-                "High complexity"
-            ]
+            "complexity": 4,
+            "lint": []
         },
         "src\\dreamvault\\agents\\conversation_agent.py": {
             "language": ".py",
@@ -389,32 +331,165 @@
                 "High complexity"
             ]
         },
-        "scripts\\simple_ingest.py": {
+        "src\\dreamvault\\agents\\embedding_agent.py": {
             "language": ".py",
             "functions": [
-                "main",
                 "__init__",
-                "_init_database",
-                "ingest_conversation",
-                "ingest_all_conversations",
-                "query_conversations",
-                "get_conversation_by_id",
-                "get_conversation_messages",
-                "get_stats"
+                "load_training_data",
+                "prepare_training_data",
+                "train_with_sentence_transformers",
+                "generate_embedding",
+                "get_training_stats"
             ],
             "classes": {
-                "SimpleIngester": {
+                "EmbeddingAgentTrainer": {
                     "methods": [
                         "__init__",
-                        "_init_database",
-                        "ingest_conversation",
-                        "ingest_all_conversations",
-                        "query_conversations",
-                        "get_conversation_by_id",
-                        "get_conversation_messages",
-                        "get_stats"
+                        "load_training_data",
+                        "prepare_training_data",
+                        "train_with_sentence_transformers",
+                        "generate_embedding",
+                        "get_training_stats"
                     ],
-                    "docstring": "Simple conversation ingester that stores data in SQLite.",
+                    "docstring": "Trains custom embedding models.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 22,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\agents\\instruction_agent.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "load_training_data",
+                "prepare_training_data",
+                "train_with_openai",
+                "follow_instruction",
+                "get_training_stats"
+            ],
+            "classes": {
+                "InstructionAgentTrainer": {
+                    "methods": [
+                        "__init__",
+                        "load_training_data",
+                        "prepare_training_data",
+                        "train_with_openai",
+                        "follow_instruction",
+                        "get_training_stats"
+                    ],
+                    "docstring": "Trains instruction-following agents.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 25,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\agents\\qa_agent.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "load_training_data",
+                "prepare_training_data",
+                "train_with_openai",
+                "answer_question",
+                "get_training_stats"
+            ],
+            "classes": {
+                "QAAgentTrainer": {
+                    "methods": [
+                        "__init__",
+                        "load_training_data",
+                        "prepare_training_data",
+                        "train_with_openai",
+                        "answer_question",
+                        "get_training_stats"
+                    ],
+                    "docstring": "Trains Q&A agents on question-answer pairs.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 25,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\core\\embed.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "generate_embedding_id",
+                "build_embedding",
+                "save_embedding",
+                "load_embedding",
+                "process_summary",
+                "batch_process",
+                "get_embedding_stats",
+                "generate_summary_embeddings"
+            ],
+            "classes": {
+                "EmbeddingBuilder": {
+                    "methods": [
+                        "__init__",
+                        "generate_embedding_id",
+                        "build_embedding",
+                        "save_embedding",
+                        "load_embedding",
+                        "process_summary",
+                        "batch_process",
+                        "get_embedding_stats",
+                        "generate_summary_embeddings"
+                    ],
+                    "docstring": "Builds embeddings for conversation summaries.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 47,
+            "lint": [
+                "Function build_embedding >50 lines",
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\agents\\summarization_agent.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "load_training_data",
+                "prepare_training_data",
+                "train_with_openai",
+                "train_with_huggingface",
+                "generate_summary",
+                "get_training_stats",
+                "tokenize_function"
+            ],
+            "classes": {
+                "SummarizationAgentTrainer": {
+                    "methods": [
+                        "__init__",
+                        "load_training_data",
+                        "prepare_training_data",
+                        "train_with_openai",
+                        "train_with_huggingface",
+                        "generate_summary",
+                        "get_training_stats"
+                    ],
+                    "docstring": "Trains summarization agents on conversation-summary pairs.\n\nLearns your summarization style, preferred level of detail, and key focus areas.",
                     "base_classes": [],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
@@ -423,7 +498,8 @@
             "routes": [],
             "complexity": 31,
             "lint": [
-                "Function ingest_conversation >50 lines",
+                "Function train_with_openai >50 lines",
+                "Function train_with_huggingface >50 lines",
                 "High complexity"
             ]
         },
@@ -463,43 +539,6 @@
             "complexity": 25,
             "lint": [
                 "Function _load_config >50 lines",
-                "High complexity"
-            ]
-        },
-        "src\\dreamvault\\agents\\summarization_agent.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "load_training_data",
-                "prepare_training_data",
-                "train_with_openai",
-                "train_with_huggingface",
-                "generate_summary",
-                "get_training_stats",
-                "tokenize_function"
-            ],
-            "classes": {
-                "SummarizationAgentTrainer": {
-                    "methods": [
-                        "__init__",
-                        "load_training_data",
-                        "prepare_training_data",
-                        "train_with_openai",
-                        "train_with_huggingface",
-                        "generate_summary",
-                        "get_training_stats"
-                    ],
-                    "docstring": "Trains summarization agents on conversation-summary pairs.\n\nLearns your summarization style, preferred level of detail, and key focus areas.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 31,
-            "lint": [
-                "Function train_with_openai >50 lines",
-                "Function train_with_huggingface >50 lines",
                 "High complexity"
             ]
         },
@@ -555,42 +594,47 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\core\\embed.py": {
+        "src\\dreamvault\\core\\runner.py": {
             "language": ".py",
             "functions": [
                 "__init__",
-                "generate_embedding_id",
-                "build_embedding",
-                "save_embedding",
-                "load_embedding",
-                "process_summary",
-                "batch_process",
-                "get_embedding_stats",
-                "generate_summary_embeddings"
+                "_setup_logging",
+                "add_conversations_to_queue",
+                "_fetch_conversation",
+                "_process_conversation",
+                "run_batch",
+                "_save_stats",
+                "get_queue_status",
+                "cleanup_old_data",
+                "rebuild_indexes",
+                "get_system_stats"
             ],
             "classes": {
-                "EmbeddingBuilder": {
+                "BatchRunner": {
                     "methods": [
                         "__init__",
-                        "generate_embedding_id",
-                        "build_embedding",
-                        "save_embedding",
-                        "load_embedding",
-                        "process_summary",
-                        "batch_process",
-                        "get_embedding_stats",
-                        "generate_summary_embeddings"
+                        "_setup_logging",
+                        "add_conversations_to_queue",
+                        "_fetch_conversation",
+                        "_process_conversation",
+                        "run_batch",
+                        "_save_stats",
+                        "get_queue_status",
+                        "cleanup_old_data",
+                        "rebuild_indexes",
+                        "get_system_stats"
                     ],
-                    "docstring": "Builds embeddings for conversation summaries.",
+                    "docstring": "Batch processor for conversation ingestion pipeline.",
                     "base_classes": [],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 47,
+            "complexity": 36,
             "lint": [
-                "Function build_embedding >50 lines",
+                "Function _process_conversation >50 lines",
+                "Function run_batch >50 lines",
                 "High complexity"
             ]
         },
@@ -647,57 +691,6 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\core\\queue.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_init_db",
-                "add_job",
-                "get_next_job",
-                "start_job",
-                "complete_job",
-                "fail_job",
-                "get_job_status",
-                "get_queue_stats",
-                "clear_completed_jobs",
-                "reset_failed_jobs"
-            ],
-            "classes": {
-                "JobStatus": {
-                    "methods": [],
-                    "docstring": "Job status enumeration.",
-                    "base_classes": [
-                        "Enum"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "JobQueue": {
-                    "methods": [
-                        "__init__",
-                        "_init_db",
-                        "add_job",
-                        "get_next_job",
-                        "start_job",
-                        "complete_job",
-                        "fail_job",
-                        "get_job_status",
-                        "get_queue_stats",
-                        "clear_completed_jobs",
-                        "reset_failed_jobs"
-                    ],
-                    "docstring": "Async-safe SQLite job queue for conversation processing.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 35,
-            "lint": [
-                "High complexity"
-            ]
-        },
         "src\\dreamvault\\core\\redact.py": {
             "language": ".py",
             "functions": [
@@ -736,58 +729,6 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\core\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "src\\dreamvault\\core\\runner.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_setup_logging",
-                "add_conversations_to_queue",
-                "_fetch_conversation",
-                "_process_conversation",
-                "run_batch",
-                "_save_stats",
-                "get_queue_status",
-                "cleanup_old_data",
-                "rebuild_indexes",
-                "get_system_stats"
-            ],
-            "classes": {
-                "BatchRunner": {
-                    "methods": [
-                        "__init__",
-                        "_setup_logging",
-                        "add_conversations_to_queue",
-                        "_fetch_conversation",
-                        "_process_conversation",
-                        "run_batch",
-                        "_save_stats",
-                        "get_queue_status",
-                        "cleanup_old_data",
-                        "rebuild_indexes",
-                        "get_system_stats"
-                    ],
-                    "docstring": "Batch processor for conversation ingestion pipeline.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 36,
-            "lint": [
-                "Function _process_conversation >50 lines",
-                "Function run_batch >50 lines",
-                "High complexity"
-            ]
-        },
         "src\\dreamvault\\core\\schema.py": {
             "language": ".py",
             "functions": [
@@ -813,59 +754,6 @@
             "routes": [],
             "complexity": 18,
             "lint": [
-                "High complexity"
-            ]
-        },
-        "src\\dreamvault\\deployment\\deployment_config.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_load_config",
-                "_save_config",
-                "get",
-                "set",
-                "get_api_config",
-                "get_web_config",
-                "get_model_config",
-                "get_security_config",
-                "get_performance_config",
-                "get_logging_config",
-                "validate_config",
-                "reset_to_defaults",
-                "export_config",
-                "import_config",
-                "get_summary"
-            ],
-            "classes": {
-                "DeploymentConfig": {
-                    "methods": [
-                        "__init__",
-                        "_load_config",
-                        "_save_config",
-                        "get",
-                        "set",
-                        "get_api_config",
-                        "get_web_config",
-                        "get_model_config",
-                        "get_security_config",
-                        "get_performance_config",
-                        "get_logging_config",
-                        "validate_config",
-                        "reset_to_defaults",
-                        "export_config",
-                        "import_config",
-                        "get_summary"
-                    ],
-                    "docstring": "Manages deployment configuration for DreamVault agents.\n\nHandles settings for:\n- API server configuration\n- Web interface configuration\n- Model management settings\n- Security and authentication\n- Performance tuning",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 51,
-            "lint": [
-                "Function __init__ >50 lines",
                 "High complexity"
             ]
         },
@@ -930,13 +818,64 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\deployment\\__init__.py": {
+        "src\\dreamvault\\core\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
             "routes": [],
             "complexity": 0,
             "lint": []
+        },
+        "src\\dreamvault\\core\\queue.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_init_db",
+                "add_job",
+                "get_next_job",
+                "start_job",
+                "complete_job",
+                "fail_job",
+                "get_job_status",
+                "get_queue_stats",
+                "clear_completed_jobs",
+                "reset_failed_jobs"
+            ],
+            "classes": {
+                "JobStatus": {
+                    "methods": [],
+                    "docstring": "Job status enumeration.",
+                    "base_classes": [
+                        "Enum"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "JobQueue": {
+                    "methods": [
+                        "__init__",
+                        "_init_db",
+                        "add_job",
+                        "get_next_job",
+                        "start_job",
+                        "complete_job",
+                        "fail_job",
+                        "get_job_status",
+                        "get_queue_stats",
+                        "clear_completed_jobs",
+                        "reset_failed_jobs"
+                    ],
+                    "docstring": "Async-safe SQLite job queue for conversation processing.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 35,
+            "lint": [
+                "High complexity"
+            ]
         },
         "src\\dreamvault\\core\\summarize.py": {
             "language": ".py",
@@ -977,6 +916,59 @@
             "routes": [],
             "complexity": 28,
             "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\deployment\\deployment_config.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_load_config",
+                "_save_config",
+                "get",
+                "set",
+                "get_api_config",
+                "get_web_config",
+                "get_model_config",
+                "get_security_config",
+                "get_performance_config",
+                "get_logging_config",
+                "validate_config",
+                "reset_to_defaults",
+                "export_config",
+                "import_config",
+                "get_summary"
+            ],
+            "classes": {
+                "DeploymentConfig": {
+                    "methods": [
+                        "__init__",
+                        "_load_config",
+                        "_save_config",
+                        "get",
+                        "set",
+                        "get_api_config",
+                        "get_web_config",
+                        "get_model_config",
+                        "get_security_config",
+                        "get_performance_config",
+                        "get_logging_config",
+                        "validate_config",
+                        "reset_to_defaults",
+                        "export_config",
+                        "import_config",
+                        "get_summary"
+                    ],
+                    "docstring": "Manages deployment configuration for DreamVault agents.\n\nHandles settings for:\n- API server configuration\n- Web interface configuration\n- Model management settings\n- Security and authentication\n- Performance tuning",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 51,
+            "lint": [
+                "Function __init__ >50 lines",
                 "High complexity"
             ]
         },
@@ -1043,77 +1035,6 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\scrapers\\browser_manager.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "create_driver",
-                "_create_undetected_driver",
-                "_create_standard_driver",
-                "close_driver"
-            ],
-            "classes": {
-                "BrowserManager": {
-                    "methods": [
-                        "__init__",
-                        "create_driver",
-                        "_create_undetected_driver",
-                        "_create_standard_driver",
-                        "close_driver"
-                    ],
-                    "docstring": "Manages browser driver creation and configuration.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 18,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "src\\dreamvault\\resurrection\\ip_extractor.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "extract_ip_from_conversation",
-                "_extract_conversation_text",
-                "_calculate_confidence",
-                "_calculate_potential_value",
-                "_generate_tags",
-                "_generate_ip_summary",
-                "save_extracted_ip",
-                "load_extracted_ip",
-                "get_lost_inventions_summary"
-            ],
-            "classes": {
-                "IPExtractor": {
-                    "methods": [
-                        "__init__",
-                        "extract_ip_from_conversation",
-                        "_extract_conversation_text",
-                        "_calculate_confidence",
-                        "_calculate_potential_value",
-                        "_generate_tags",
-                        "_generate_ip_summary",
-                        "save_extracted_ip",
-                        "load_extracted_ip",
-                        "get_lost_inventions_summary"
-                    ],
-                    "docstring": "Extracts abandoned intellectual property from conversations.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 66,
-            "lint": [
-                "Function __init__ >50 lines",
-                "High complexity"
-            ]
-        },
         "src\\dreamvault\\deployment\\model_manager.py": {
             "language": ".py",
             "functions": [
@@ -1170,14 +1091,6 @@
                 "Function load_model >50 lines",
                 "High complexity"
             ]
-        },
-        "src\\dreamvault\\resurrection\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
         },
         "src\\dreamvault\\deployment\\api_server.py": {
             "language": ".py",
@@ -1306,6 +1219,229 @@
                 "High complexity"
             ]
         },
+        "src\\dreamvault\\resurrection\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "src\\dreamvault\\scrapers\\adaptive_extractor.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_load_selector_cache",
+                "_save_selector_cache",
+                "_test_selector",
+                "_discover_working_url",
+                "_extract_conversations_from_elements",
+                "_extract_conversations_with_scrolling",
+                "get_conversation_list",
+                "_fallback_extraction",
+                "get_health_status"
+            ],
+            "classes": {
+                "AdaptiveExtractor": {
+                    "methods": [
+                        "__init__",
+                        "_load_selector_cache",
+                        "_save_selector_cache",
+                        "_test_selector",
+                        "_discover_working_url",
+                        "_extract_conversations_from_elements",
+                        "_extract_conversations_with_scrolling",
+                        "get_conversation_list",
+                        "_fallback_extraction",
+                        "get_health_status"
+                    ],
+                    "docstring": "Self-healing conversation extractor that adapts to interface changes.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 61,
+            "lint": [
+                "Function _extract_conversations_with_scrolling >50 lines",
+                "Function get_conversation_list >50 lines",
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\deployment\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "src\\dreamvault\\resurrection\\ip_extractor.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "extract_ip_from_conversation",
+                "_extract_conversation_text",
+                "_calculate_confidence",
+                "_calculate_potential_value",
+                "_generate_tags",
+                "_generate_ip_summary",
+                "save_extracted_ip",
+                "load_extracted_ip",
+                "get_lost_inventions_summary"
+            ],
+            "classes": {
+                "IPExtractor": {
+                    "methods": [
+                        "__init__",
+                        "extract_ip_from_conversation",
+                        "_extract_conversation_text",
+                        "_calculate_confidence",
+                        "_calculate_potential_value",
+                        "_generate_tags",
+                        "_generate_ip_summary",
+                        "save_extracted_ip",
+                        "load_extracted_ip",
+                        "get_lost_inventions_summary"
+                    ],
+                    "docstring": "Extracts abandoned intellectual property from conversations.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 66,
+            "lint": [
+                "Function __init__ >50 lines",
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\scrapers\\conversation_extractor.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "get_conversation_list",
+                "enter_conversation",
+                "get_conversation_content",
+                "save_conversation"
+            ],
+            "classes": {
+                "ConversationExtractor": {
+                    "methods": [
+                        "__init__",
+                        "get_conversation_list",
+                        "enter_conversation",
+                        "get_conversation_content",
+                        "save_conversation"
+                    ],
+                    "docstring": "Handles conversation extraction and content retrieval from ChatGPT.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 45,
+            "lint": [
+                "Function get_conversation_list >50 lines",
+                "Function get_conversation_content >50 lines",
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\scrapers\\login_handler.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "ensure_login",
+                "_is_logged_in",
+                "_automated_login",
+                "_handle_2fa",
+                "_manual_login"
+            ],
+            "classes": {
+                "LoginHandler": {
+                    "methods": [
+                        "__init__",
+                        "ensure_login",
+                        "_is_logged_in",
+                        "_automated_login",
+                        "_handle_2fa",
+                        "_manual_login"
+                    ],
+                    "docstring": "Handles ChatGPT login with various methods.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 32,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\scrapers\\cookie_manager.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "save_cookies",
+                "load_cookies",
+                "has_valid_cookies",
+                "clear_cookies"
+            ],
+            "classes": {
+                "CookieManager": {
+                    "methods": [
+                        "__init__",
+                        "save_cookies",
+                        "load_cookies",
+                        "has_valid_cookies",
+                        "clear_cookies"
+                    ],
+                    "docstring": "Manages cookie persistence and session management.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 19,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\dreamvault\\scrapers\\browser_manager.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "create_driver",
+                "_create_undetected_driver",
+                "_create_standard_driver",
+                "close_driver"
+            ],
+            "classes": {
+                "BrowserManager": {
+                    "methods": [
+                        "__init__",
+                        "create_driver",
+                        "_create_undetected_driver",
+                        "_create_standard_driver",
+                        "close_driver"
+                    ],
+                    "docstring": "Manages browser driver creation and configuration.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 18,
+            "lint": [
+                "High complexity"
+            ]
+        },
         "src\\dreamvault\\scrapers\\chatgpt_scraper.py": {
             "language": ".py",
             "functions": [
@@ -1367,116 +1503,6 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\scrapers\\cookie_manager.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "save_cookies",
-                "load_cookies",
-                "has_valid_cookies",
-                "clear_cookies"
-            ],
-            "classes": {
-                "CookieManager": {
-                    "methods": [
-                        "__init__",
-                        "save_cookies",
-                        "load_cookies",
-                        "has_valid_cookies",
-                        "clear_cookies"
-                    ],
-                    "docstring": "Manages cookie persistence and session management.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 19,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "tests\\test_db.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 3,
-            "lint": []
-        },
-        "src\\dreamvault\\scrapers\\login_handler.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "ensure_login",
-                "_is_logged_in",
-                "_automated_login",
-                "_handle_2fa",
-                "_manual_login"
-            ],
-            "classes": {
-                "LoginHandler": {
-                    "methods": [
-                        "__init__",
-                        "ensure_login",
-                        "_is_logged_in",
-                        "_automated_login",
-                        "_handle_2fa",
-                        "_manual_login"
-                    ],
-                    "docstring": "Handles ChatGPT login with various methods.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 32,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "src\\dreamvault\\scrapers\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "src\\dreamvault\\scrapers\\conversation_extractor.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "get_conversation_list",
-                "enter_conversation",
-                "get_conversation_content",
-                "save_conversation"
-            ],
-            "classes": {
-                "ConversationExtractor": {
-                    "methods": [
-                        "__init__",
-                        "get_conversation_list",
-                        "enter_conversation",
-                        "get_conversation_content",
-                        "save_conversation"
-                    ],
-                    "docstring": "Handles conversation extraction and content retrieval from ChatGPT.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 45,
-            "lint": [
-                "Function get_conversation_list >50 lines",
-                "Function get_conversation_content >50 lines",
-                "High complexity"
-            ]
-        },
         "tests\\test_agent_training.py": {
             "language": ".py",
             "functions": [
@@ -1490,6 +1516,39 @@
             "lint": [
                 "Function create_sample_training_data >50 lines",
                 "High complexity"
+            ]
+        },
+        "tests\\test_resume_functionality.py": {
+            "language": ".py",
+            "functions": [
+                "test_resume_functionality"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": [
+                "Function test_resume_functionality >50 lines"
+            ]
+        },
+        "src\\dreamvault\\scrapers\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "tests\\test_integrated_system.py": {
+            "language": ".py",
+            "functions": [
+                "create_sample_conversation",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": [
+                "Function main >50 lines"
             ]
         },
         "tests\\test_deployment_system.py": {
@@ -1507,19 +1566,6 @@
                 "High complexity"
             ]
         },
-        "tests\\test_integrated_system.py": {
-            "language": ".py",
-            "functions": [
-                "create_sample_conversation",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 9,
-            "lint": [
-                "Function main >50 lines"
-            ]
-        },
         "tests\\test_ip_with_sample_data.py": {
             "language": ".py",
             "functions": [
@@ -1534,59 +1580,13 @@
                 "High complexity"
             ]
         },
-        "src\\dreamvault\\scrapers\\adaptive_extractor.py": {
+        "tests\\test_db.py": {
             "language": ".py",
-            "functions": [
-                "__init__",
-                "_load_selector_cache",
-                "_save_selector_cache",
-                "_test_selector",
-                "_discover_working_url",
-                "_extract_conversations_from_elements",
-                "_extract_conversations_with_scrolling",
-                "get_conversation_list",
-                "_fallback_extraction",
-                "get_health_status"
-            ],
-            "classes": {
-                "AdaptiveExtractor": {
-                    "methods": [
-                        "__init__",
-                        "_load_selector_cache",
-                        "_save_selector_cache",
-                        "_test_selector",
-                        "_discover_working_url",
-                        "_extract_conversations_from_elements",
-                        "_extract_conversations_with_scrolling",
-                        "get_conversation_list",
-                        "_fallback_extraction",
-                        "get_health_status"
-                    ],
-                    "docstring": "Self-healing conversation extractor that adapts to interface changes.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 61,
-            "lint": [
-                "Function _extract_conversations_with_scrolling >50 lines",
-                "Function get_conversation_list >50 lines",
-                "High complexity"
-            ]
-        },
-        "tests\\test_resume_functionality.py": {
-            "language": ".py",
-            "functions": [
-                "test_resume_functionality"
-            ],
+            "functions": [],
             "classes": {},
             "routes": [],
-            "complexity": 9,
-            "lint": [
-                "Function test_resume_functionality >50 lines"
-            ]
+            "complexity": 3,
+            "lint": []
         },
         "tests\\test_ip_resurrection.py": {
             "language": ".py",

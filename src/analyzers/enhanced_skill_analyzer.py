@@ -458,6 +458,88 @@ class EnhancedSkillAnalyzer:
             f.write("- Increase code quality and testing practices\n")
             f.write("- Document your knowledge for future reference\n\n")
 
+def generate_skill_tree(github_data: Dict) -> str:
+    """Generate a skill tree from GitHub portfolio data."""
+    try:
+        skill_tree = []
+        skill_tree.append("# 🌳 Developer Skill Tree")
+        skill_tree.append("")
+        skill_tree.append("## 📊 Portfolio Overview")
+        
+        # Calculate basic stats
+        repos = github_data.get('repositories', [])
+        total_repos = len(repos)
+        total_files = sum(repo.get('file_count', 0) for repo in repos)
+        languages = {}
+        
+        for repo in repos:
+            lang = repo.get('language', 'Unknown')
+            if lang not in languages:
+                languages[lang] = {'repos': 0, 'files': 0}
+            languages[lang]['repos'] += 1
+            languages[lang]['files'] += repo.get('file_count', 0)
+        
+        skill_tree.append(f"- **Total Repositories:** {total_repos}")
+        skill_tree.append(f"- **Total Files Analyzed:** {total_files}")
+        skill_tree.append(f"- **Programming Languages:** {len(languages)}")
+        skill_tree.append("")
+        
+        # Language skills
+        skill_tree.append("## 💻 Programming Languages")
+        skill_tree.append("")
+        
+        sorted_languages = sorted(languages.items(), key=lambda x: x[1]['files'], reverse=True)
+        for lang, stats in sorted_languages:
+            skill_level = "Expert" if stats['files'] > 100 else "Advanced" if stats['files'] > 50 else "Intermediate" if stats['files'] > 20 else "Beginner"
+            skill_tree.append(f"### {lang} - {skill_level}")
+            skill_tree.append(f"- **Repositories:** {stats['repos']}")
+            skill_tree.append(f"- **Files:** {stats['files']}")
+            skill_tree.append("")
+        
+        # Project categories
+        skill_tree.append("## 🚀 Project Categories")
+        skill_tree.append("")
+        
+        categories = {
+            'Web Development': ['HTML', 'CSS', 'JavaScript', 'React', 'Vue', 'Angular'],
+            'Backend Development': ['Python', 'Java', 'C#', 'Node.js', 'PHP', 'Ruby'],
+            'Mobile Development': ['Swift', 'Kotlin', 'React Native', 'Flutter'],
+            'Data Science': ['Python', 'R', 'Jupyter', 'TensorFlow', 'PyTorch'],
+            'DevOps': ['Docker', 'Kubernetes', 'AWS', 'Azure', 'CI/CD'],
+            'Game Development': ['Unity', 'Unreal', 'C++', 'C#'],
+            'System Programming': ['C', 'C++', 'Rust', 'Go']
+        }
+        
+        for category, techs in categories.items():
+            category_repos = []
+            for repo in repos:
+                repo_lang = repo.get('language', '').lower()
+                if any(tech.lower() in repo_lang for tech in techs):
+                    category_repos.append(repo)
+            
+            if category_repos:
+                skill_tree.append(f"### {category}")
+                skill_tree.append(f"- **Projects:** {len(category_repos)}")
+                skill_tree.append(f"- **Total Files:** {sum(repo.get('file_count', 0) for repo in category_repos)}")
+                skill_tree.append("")
+        
+        # Top projects
+        skill_tree.append("## ⭐ Top Projects")
+        skill_tree.append("")
+        
+        sorted_repos = sorted(repos, key=lambda x: x.get('stars', 0), reverse=True)
+        for i, repo in enumerate(sorted_repos[:5], 1):
+            skill_tree.append(f"{i}. **{repo.get('repo_name', 'Unknown')}**")
+            skill_tree.append(f"   - Language: {repo.get('language', 'Unknown')}")
+            skill_tree.append(f"   - Stars: {repo.get('stars', 0)}")
+            skill_tree.append(f"   - Files: {repo.get('file_count', 0)}")
+            skill_tree.append("")
+        
+        return "\n".join(skill_tree)
+        
+    except Exception as e:
+        return f"Error generating skill tree: {str(e)}"
+
 def main():
     """Main function to run the enhanced skill analyzer."""
     print("🌳 Generating Enhanced Skill Tree & Knowledge Base...")

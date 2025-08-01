@@ -203,6 +203,103 @@ class ComprehensiveProjectAnalyzer:
         else:
             analysis['development_patterns']['size']['micro_project'] += 1
     
+    def generate_resume(self, github_data: Dict) -> str:
+        """Generate a developer resume from GitHub portfolio data."""
+        try:
+            resume = []
+            resume.append("# 📄 Developer Resume")
+            resume.append("")
+            
+            # Calculate basic stats
+            repos = github_data.get('repositories', [])
+            total_repos = len(repos)
+            total_files = sum(repo.get('file_count', 0) for repo in repos)
+            languages = {}
+            
+            for repo in repos:
+                lang = repo.get('language', 'Unknown')
+                if lang not in languages:
+                    languages[lang] = {'repos': 0, 'files': 0}
+                languages[lang]['repos'] += 1
+                languages[lang]['files'] += repo.get('file_count', 0)
+            
+            # Professional Summary
+            resume.append("## 🎯 Professional Summary")
+            resume.append("")
+            resume.append(f"Experienced software developer with expertise in {len(languages)} programming languages. ")
+            resume.append(f"Demonstrated ability to deliver high-quality code across {total_repos} repositories ")
+            resume.append(f"with {total_files} files analyzed. Strong problem-solving skills and ")
+            resume.append("commitment to writing clean, maintainable code.")
+            resume.append("")
+            
+            # Technical Skills
+            resume.append("## 💻 Technical Skills")
+            resume.append("")
+            
+            # Programming Languages
+            resume.append("### Programming Languages")
+            sorted_languages = sorted(languages.items(), key=lambda x: x[1]['files'], reverse=True)
+            for lang, stats in sorted_languages[:5]:  # Top 5 languages
+                skill_level = "Expert" if stats['files'] > 100 else "Advanced" if stats['files'] > 50 else "Intermediate" if stats['files'] > 20 else "Beginner"
+                resume.append(f"- **{lang}** ({skill_level}) - {stats['repos']} projects, {stats['files']} files")
+            resume.append("")
+            
+            # Technologies and Frameworks
+            resume.append("### Technologies & Frameworks")
+            tech_categories = {
+                'Web Development': ['HTML', 'CSS', 'JavaScript', 'React', 'Vue', 'Angular', 'Node.js'],
+                'Backend': ['Python', 'Java', 'C#', 'PHP', 'Ruby', 'Go'],
+                'Databases': ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis'],
+                'DevOps': ['Docker', 'Kubernetes', 'AWS', 'Azure', 'Git', 'CI/CD'],
+                'Mobile': ['React Native', 'Flutter', 'Swift', 'Kotlin']
+            }
+            
+            for category, techs in tech_categories.items():
+                category_repos = []
+                for repo in repos:
+                    repo_lang = repo.get('language', '').lower()
+                    if any(tech.lower() in repo_lang for tech in techs):
+                        category_repos.append(repo)
+                
+                if category_repos:
+                    resume.append(f"- **{category}:** {len(category_repos)} projects")
+            resume.append("")
+            
+            # Project Experience
+            resume.append("## 🚀 Project Experience")
+            resume.append("")
+            
+            sorted_repos = sorted(repos, key=lambda x: x.get('stars', 0), reverse=True)
+            for i, repo in enumerate(sorted_repos[:5], 1):
+                resume.append(f"### {i}. {repo.get('repo_name', 'Unknown')}")
+                resume.append(f"**Language:** {repo.get('language', 'Unknown')} | **Stars:** {repo.get('stars', 0)} | **Files:** {repo.get('file_count', 0)}")
+                if repo.get('description'):
+                    resume.append(f"**Description:** {repo.get('description')}")
+                resume.append("")
+            
+            # Achievements
+            resume.append("## 🏆 Key Achievements")
+            resume.append("")
+            resume.append(f"- Developed and maintained {total_repos} repositories across multiple programming languages")
+            resume.append(f"- Analyzed and optimized {total_files} files of code")
+            resume.append(f"- Expertise in {len(languages)} programming languages")
+            resume.append("- Strong focus on code quality and maintainability")
+            resume.append("- Experience with both public and private repository management")
+            resume.append("")
+            
+            # Education & Certifications
+            resume.append("## 🎓 Education & Certifications")
+            resume.append("")
+            resume.append("- Self-taught developer with extensive practical experience")
+            resume.append("- Continuous learning through open-source contributions")
+            resume.append("- Strong portfolio demonstrating real-world project experience")
+            resume.append("")
+            
+            return "\n".join(resume)
+            
+        except Exception as e:
+            return f"Error generating resume: {str(e)}"
+    
     def generate_detailed_insights(self) -> Dict[str, Any]:
         """Generate detailed insights from the analysis."""
         analysis = self.analyze_project_details()

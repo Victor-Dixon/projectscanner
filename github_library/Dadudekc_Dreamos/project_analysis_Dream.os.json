@@ -6433,5 +6433,13 @@
         "lint": [
             "High complexity"
         ]
+    },
+    "chat_mate\\core\\OptimizedMemoryManager.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
     }
 }

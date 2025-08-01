@@ -595,6 +595,111 @@ class DeepProjectInsights:
             f.write("- Improve testing and documentation practices\n")
             f.write("- Consider larger, more complex projects\n")
 
+def generate_insights(github_data: Dict) -> str:
+    """Generate portfolio insights from GitHub data."""
+    try:
+        insights = []
+        insights.append("# 🔍 Portfolio Insights")
+        insights.append("")
+        
+        # Calculate basic stats
+        repos = github_data.get('repositories', [])
+        total_repos = len(repos)
+        total_files = sum(repo.get('file_count', 0) for repo in repos)
+        languages = {}
+        
+        for repo in repos:
+            lang = repo.get('language', 'Unknown')
+            if lang not in languages:
+                languages[lang] = {'repos': 0, 'files': 0}
+            languages[lang]['repos'] += 1
+            languages[lang]['files'] += repo.get('file_count', 0)
+        
+        # Portfolio Overview
+        insights.append("## 📊 Portfolio Overview")
+        insights.append("")
+        insights.append(f"Your portfolio contains **{total_repos} repositories** with **{total_files} files** analyzed.")
+        insights.append(f"You work with **{len(languages)} different programming languages**.")
+        insights.append("")
+        
+        # Language Analysis
+        insights.append("## 💻 Language Analysis")
+        insights.append("")
+        
+        sorted_languages = sorted(languages.items(), key=lambda x: x[1]['files'], reverse=True)
+        primary_language = sorted_languages[0][0] if sorted_languages else "Unknown"
+        
+        insights.append(f"**Primary Language:** {primary_language}")
+        insights.append(f"**Language Diversity:** {len(languages)} languages")
+        insights.append("")
+        
+        insights.append("### Language Distribution:")
+        for lang, stats in sorted_languages[:5]:
+            percentage = (stats['files'] / total_files * 100) if total_files > 0 else 0
+            insights.append(f"- **{lang}:** {stats['files']} files ({percentage:.1f}%)")
+        insights.append("")
+        
+        # Project Analysis
+        insights.append("## 🚀 Project Analysis")
+        insights.append("")
+        
+        # Project sizes
+        small_projects = sum(1 for repo in repos if repo.get('file_count', 0) < 50)
+        medium_projects = sum(1 for repo in repos if 50 <= repo.get('file_count', 0) < 200)
+        large_projects = sum(1 for repo in repos if repo.get('file_count', 0) >= 200)
+        
+        insights.append(f"**Project Size Distribution:**")
+        insights.append(f"- Small projects (< 50 files): {small_projects}")
+        insights.append(f"- Medium projects (50-200 files): {medium_projects}")
+        insights.append(f"- Large projects (≥ 200 files): {large_projects}")
+        insights.append("")
+        
+        # Top repositories
+        insights.append("### Top Repositories by Stars:")
+        sorted_repos = sorted(repos, key=lambda x: x.get('stars', 0), reverse=True)
+        for i, repo in enumerate(sorted_repos[:3], 1):
+            insights.append(f"{i}. **{repo.get('repo_name', 'Unknown')}** - {repo.get('stars', 0)} stars")
+        insights.append("")
+        
+        # Development Patterns
+        insights.append("## 🔄 Development Patterns")
+        insights.append("")
+        
+        # Repository types
+        public_repos = sum(1 for repo in repos if not repo.get('is_private', False))
+        private_repos = total_repos - public_repos
+        
+        insights.append(f"**Repository Visibility:**")
+        insights.append(f"- Public repositories: {public_repos} ({public_repos/total_repos*100:.1f}%)")
+        insights.append(f"- Private repositories: {private_repos} ({private_repos/total_repos*100:.1f}%)")
+        insights.append("")
+        
+        # Recommendations
+        insights.append("## 💡 Recommendations")
+        insights.append("")
+        
+        if len(languages) < 3:
+            insights.append("- **Diversify your skills:** Consider learning additional programming languages")
+        else:
+            insights.append("- **Great language diversity:** You have a well-rounded skill set")
+        
+        if large_projects == 0:
+            insights.append("- **Build larger projects:** Consider working on more complex applications")
+        else:
+            insights.append("- **Strong complex project experience:** You handle large-scale development well")
+        
+        if public_repos < total_repos * 0.3:
+            insights.append("- **Increase open source contributions:** Share more of your work publicly")
+        else:
+            insights.append("- **Good open source presence:** You actively contribute to the community")
+        
+        insights.append("")
+        
+        return "\n".join(insights)
+        
+    except Exception as e:
+        return f"Error generating insights: {str(e)}"
+
 def main():
     """Main function to run the deep insights analyzer."""
     print("🔍 Generating Deep Project Insights...")
