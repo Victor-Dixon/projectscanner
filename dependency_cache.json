@@ -1,137 +1,227 @@
 {
-    "src\\wizards\\github_token_wizard.py": {
-        "hash": "c9272093cbdea15accf810fb0c0ced01"
+    "test_standardization.py": {
+        "hash": "b3aa3aca37f7a754f0549fd8dbe27d7e"
     },
-    "src\\core\\projectscanner\\gui.py": {
-        "hash": "d947a552b845ea65ed47647312fec4d5"
+    "examples\\real_agent_messages.py": {
+        "hash": "32715390dc267c7f496241f8104c9659"
     },
-    "src\\wizards\\demo_gui_wizard.py": {
-        "hash": "b3838c800c02d5e678937cbe92a0c1e6"
+    "examples\\agent_conversation_demo.py": {
+        "hash": "4d07894cf8e2ea4473911694ebbf83e4"
     },
-    "src\\scanners\\github_library_scanner_private.py": {
-        "hash": "e44043f72c99be41993114953890617f"
+    "dream_os_splash_gui.py": {
+        "hash": "4109335bcae3d8fcd6ee091b9b4a4d3c"
     },
-    "run_token_wizard.py": {
-        "hash": "b8ff00bb55087d632d147e16edbdb0ac"
+    "agent_workspaces\\onboarding\\status_manager.py": {
+        "hash": "51105442e83a8675cd70ce38892c6ad8"
     },
-    "src\\tools\\debug_analysis_status.py": {
-        "hash": "3f9e98a6fcc86d950e595d4f4528f784"
+    "agent_workspaces\\onboarding\\status_standardizer.py": {
+        "hash": "019fd18370926514f4ab20f1ab9eb5e9"
     },
-    "src\\tools\\check_token_permissions.py": {
-        "hash": "64a3c564eb8cd39ef39a20d842f9967b"
-    },
-    "src\\analyzers\\fixed_insights_analyzer.py": {
-        "hash": "0c31f622eab7901cbdf5e8c37b606d58"
-    },
-    "organize_project.py": {
-        "hash": "fe791eebcc6d2324c4fdb11e94dd9b5d"
-    },
-    "test_token_wizard.py": {
-        "hash": "b8cd0cd57f281100a83e788067e343b5"
-    },
-    "src\\core\\projectscanner\\bots.py": {
-        "hash": "11ffd479e19e79fd0110b295cabf17ba"
-    },
-    "tests\\test_analyzer.py": {
-        "hash": "b91842f78a61c108f320dbd05d50547e"
-    },
-    "src\\tools\\data_inspector.py": {
-        "hash": "d0a442c21572224b489ba26beed9f48d"
-    },
-    "src\\core\\projectscanner\\cli.py": {
-        "hash": "aceb7b04e2600e420e870e8b044888b6"
-    },
-    "scripts\\main.py": {
-        "hash": "2d6b58685dd1510cc0beeb3b5c85811a"
-    },
-    "src\\tools\\skill_tree_viewer.py": {
-        "hash": "168059f7fb737b74ec084be9f4ebf8f0"
-    },
-    "src\\gui\\run_gui.py": {
-        "hash": "9101d9417467059adb02a5ba30f5afb6"
-    },
-    "tests\\test_gui.py": {
-        "hash": "aeb39085cbf7a90acbbb1c21fa584fb9"
-    },
-    "src\\core\\projectscanner\\language_analyzer.py": {
-        "hash": "da9b339fa43e21ed52f93f10e2c3a6bd"
-    },
-    "src\\tools\\skill_tree_generator.py": {
-        "hash": "e7d721a329b35e610291e8ab8f402a3b"
-    },
-    "test_gui.py": {
-        "hash": "37b764eeff3e77f5f097993f8282cec2"
-    },
-    "src\\scanners\\analyze_github_library.py": {
-        "hash": "ca2fa3cc2a06de593711e136e09d486b"
-    },
-    "test_gui_layout.py": {
-        "hash": "b3148b8406228b58297f94488c7f6e24"
-    },
-    "tests\\test_github_library.py": {
-        "hash": "1033c24e1453c3f2d134bf87d33d41e2"
-    },
-    "src\\analyzers\\deep_project_insights.py": {
-        "hash": "c5abc4edfa747539ac67c6dbb850f49d"
-    },
-    "src\\analyzers\\deep_github_analysis.py": {
-        "hash": "54329b48950a91432fe53be3fec2d71b"
-    },
-    "tests\\__init__.py": {
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "src\\core\\projectscanner\\report_generator.py": {
-        "hash": "1a45c7083f852d26e8b827a1e0f41ebc"
-    },
-    "src\\analyzers\\enhanced_skill_analyzer.py": {
-        "hash": "783251aa6163908643369d0afc726f3a"
-    },
-    "src\\analyzers\\comprehensive_project_analyzer.py": {
-        "hash": "9acb26caad70005677336b8259daa3ff"
-    },
-    "test_token_management.py": {
-        "hash": "092daab90945346e756db397351ad2fb"
-    },
-    "src\\gui\\demo_gui.py": {
-        "hash": "f9da053b1f36bbc1da699cef79be12d1"
-    },
-    "launch.py": {
-        "hash": "e7b530cdd0176855ff36358251157baf"
-    },
-    "src\\core\\projectscanner\\__init__.py": {
-        "hash": "0102496b2e165505d0cd5ed7c585fecb"
-    },
-    "run_scanner.py": {
-        "hash": "dba176d981d4131c276de2c6c14ce548"
-    },
-    "src\\gui\\main.py": {
-        "hash": "ebf5ceba78d34e969d55eabc58e4ca11"
-    },
-    "run_gui.py": {
-        "hash": "f6b029ac2df0b2e462f99474bd016675"
-    },
-    "run_analysis.py": {
-        "hash": "bec68f397d19a27dad7d195417ce5182"
-    },
-    "src\\wizards\\github_token_wizard_gui.py": {
-        "hash": "900122aa614b76f5d47fb217152b47e6"
-    },
-    "src\\core\\projectscanner\\scanner.py": {
-        "hash": "3543bd48ca30ef5a49e2220d0cffa72d"
-    },
-    "src\\wizards\\demo_wizard.py": {
-        "hash": "b50a7d49e03a360f2ea1c277d847d752"
-    },
-    "src\\scanners\\github_library_scanner.py": {
-        "hash": "c524342c2d2f130c6578d0a7cfa8fc5f"
-    },
-    "src\\analyzers\\proper_insights_analyzer.py": {
-        "hash": "66bcb30e63b65702be3457ba29001643"
+    "test_harness.py": {
+        "hash": "7ba1fd2b409d4d281d7c00294235f1ee"
     },
     "main.py": {
-        "hash": "357a1c9130fca92c04d126deb2d1a6cd"
+        "hash": "0cb1ca0a45a75490cb633c2da8a4873b"
     },
-    "test_token_validation.py": {
-        "hash": "47fd7a1c85d4927586cc282f641856fd"
+    "commit_changes.py": {
+        "hash": "b99861d43e1ceda76c71f46a8710fe8f"
+    },
+    "agent_workspaces\\onboarding\\onboarding_manager.py": {
+        "hash": "1b6ab8dfb07417e4ab51f1d059f97979"
+    },
+    "agent_workspaces\\onboarding\\onboarding_verifier.py": {
+        "hash": "cb3cd384661483d7a3cf5a3be947bf90"
+    },
+    "run_two_agent_gui.py": {
+        "hash": "9384cffefcf52b2a87bec9fe654b1c0c"
+    },
+    "gui\\dream_os_gui_v2.py": {
+        "hash": "dd00ed559c4542ed64ead465c5bc7cfb"
+    },
+    "gui\\run_two_agent_gui.py": {
+        "hash": "7b3f08e22c2412bd9b801d476e1423db"
+    },
+    "gui\\components\\splash_screen.py": {
+        "hash": "db5963a852afc790beea2a26db66071e"
+    },
+    "project_repository\\orchestrator\\orchestrator.py": {
+        "hash": "4c1d126f7b0f805665c63bc469b58ea9"
+    },
+    "gui\\four_agent_horizontal_gui.py": {
+        "hash": "ce5ec0fb0b38c53e8f8892e9ba19b29d"
+    },
+    "project_repository\\orchestrator\\prd_watcher.py": {
+        "hash": "68e178b6a6874041b98b7d122ec18c70"
+    },
+    "gui\\components\\onboarding_integration.py": {
+        "hash": "39618c39c7cb049809ba94f81daeae89"
+    },
+    "gui\\components\\agent_panel.py": {
+        "hash": "56990520f271e1e627bfbf95e0162502"
+    },
+    "gui\\two_agent_horizontal_gui.py": {
+        "hash": "16ba55d1f5ec63bfbf2351955ba77385"
+    },
+    "scripts\\agent_messenger.py": {
+        "hash": "ffe06034977984cc0b7f946ee622e5b2"
+    },
+    "project_repository\\orchestrator\\task_router.py": {
+        "hash": "f6f825de6e4419dbb7547af08b360228"
+    },
+    "project_repository\\orchestrator\\__init__.py": {
+        "hash": "826cc255fa010e3aee02f9114b10dc46"
+    },
+    "scripts\\cleanup_duplicates.py": {
+        "hash": "4bb135aa5491fc6a0c53ae1138cf1cb8"
+    },
+    "scripts\\agent_onboarding_sequence.py": {
+        "hash": "610a099036459fc85b4f0ffa4e08c1ae"
+    },
+    "scripts\\comprehensive_onboarding_message.py": {
+        "hash": "9f0058d123d9f7d83338a8f7cc2a39c8"
+    },
+    "scripts\\automated_onboarding.py": {
+        "hash": "7707b270267fde784c884b169ea1b87b"
+    },
+    "scripts\\demo_chunk_vs_comprehensive_gui.py": {
+        "hash": "b7caae6ebc5d97720a269d21f4762521"
+    },
+    "scripts\\comprehensive_onboarding_message_simple.py": {
+        "hash": "55d03ec6415d9fedc75f008839eb677a"
+    },
+    "scripts\\consolidated_onboarding.py": {
+        "hash": "19b8e147714b2d64d7bcfc2787523711"
+    },
+    "scripts\\comprehensive_onboarding_message_ascii.py": {
+        "hash": "de99293e46943b2e6f686474c0d2b524"
+    },
+    "scripts\\onboarding_messages.py": {
+        "hash": "8b65b6253d55483cf202e6c3b80b269a"
+    },
+    "scripts\\demo_onboarding_comparison.py": {
+        "hash": "74cf3a21c6e17eebf16861744d1efd45"
+    },
+    "scripts\\dream_os_demo_gui.py": {
+        "hash": "dd65eea9ae0710de0a813e51f26610f9"
+    },
+    "scripts\\onboard_all_agents.py": {
+        "hash": "63ee82db4406717712ef94a78527240b"
+    },
+    "scripts\\run_onboarding.py": {
+        "hash": "e2f4ceec719527c0295d76a0175f2acb"
+    },
+    "scripts\\onboarding_approach_comparison.py": {
+        "hash": "1a11f55e131876d740529b783a1a0811"
+    },
+    "scripts\\send_onboarding.py": {
+        "hash": "6e613355d646e22c9d70e4080962d295"
+    },
+    "scripts\\send_onboarding_message.py": {
+        "hash": "df9db634d86bb58025dca675b2e53d9b"
+    },
+    "scripts\\full_featured_2_agent_demo.py": {
+        "hash": "682e2cab81b1de648542aa8e141b0adb"
+    },
+    "scripts\\send_specific_onboarding.py": {
+        "hash": "3ebadcd53d8f5174e8560fe5c8d818e2"
+    },
+    "scripts\\onboarding_utils.py": {
+        "hash": "44284cfcd8a354de2201bfaa2955a4bc"
+    },
+    "src\\agent_cell_phone.py": {
+        "hash": "f93d747a0b867153220bc7677227af9b"
+    },
+    "scripts\\send_single_onboarding.py": {
+        "hash": "1087978ddb81bb0e3f0093149533026b"
+    },
+    "src\\framework\\agent_autonomy_framework.py": {
+        "hash": "45c90d503f40017cd3f42104b8c14212"
+    },
+    "src\\__init__.py": {
+        "hash": "650d098fdb578cbec48d096c50eb034f"
+    },
+    "src\\framework\\__init__.py": {
+        "hash": "ddc3fb972051e3e90202ee681822e576"
+    },
+    "src\\main.py": {
+        "hash": "0e1ac2817da70f37561dc40f8f2371a4"
+    },
+    "src\\gui\\__init__.py": {
+        "hash": "f1b10dda8660ef7e89ac534de24bf32e"
+    },
+    "src\\inter_agent_framework.py": {
+        "hash": "43957ff6e7563956502f592913e64d08"
+    },
+    "src\\gui\\components\\custom_message_widget_qt.py": {
+        "hash": "0407c6cda625d38c3e7823a4e3f2491c"
+    },
+    "src\\gui\\components\\onboarding_dashboard.py": {
+        "hash": "0e2c394104f3f9f4937d5cbec2e439bf"
+    },
+    "src\\gui\\components\\onboarding_components_qt.py": {
+        "hash": "84743707503d23630a43188d573aa34b"
+    },
+    "src\\gui\\components\\onboarding_components.py": {
+        "hash": "d68dae78d750a7480ec8b6124af68b8e"
+    },
+    "src\\gui\\utils\\messaging_utils.py": {
+        "hash": "df99146c765ed1793f5c033d5bcaf5e2"
+    },
+    "src\\gui\\tabs\\__init__.py": {
+        "hash": "a75b9f2116ced81a151bdf3ce07f77fb"
+    },
+    "src\\gui\\tabs\\onboarding_tab.py": {
+        "hash": "548e3845c8afe3685e4d4d955259ff04"
+    },
+    "src\\gui\\components\\custom_message_widget.py": {
+        "hash": "949248d1b29b412eec460461c31f3121"
+    },
+    "src\\gui\\utils\\base_gui_controller.py": {
+        "hash": "a1bc5c1ee03f35f922476b3fc08fa7c7"
+    },
+    "src\\gui\\tabs\\agent_messenger_tab.py": {
+        "hash": "16744c6a1371acab01af9e67a770ed1b"
+    },
+    "src\\gui\\utils\\shared_classes.py": {
+        "hash": "fc2631b82c0504d0cf3c60bd3e3cb5db"
+    },
+    "src\\gui\\utils\\coordination_utils.py": {
+        "hash": "0fb0665ae88b544bccdef4c6d12e3e45"
+    },
+    "src\\gui\\utils\\onboarding_utils.py": {
+        "hash": "48a947668c07a02f0c7b8e247a74b8bc"
+    },
+    "src\\gui\\tabs\\coordinator_tab.py": {
+        "hash": "da2185eed5484fd2e5cbc337a74e7a53"
+    },
+    "src\\gui\\utils\\unified_broadcast_service.py": {
+        "hash": "a0be194ae42aba6b952f2f75605c9771"
+    },
+    "src\\utils\\__init__.py": {
+        "hash": "5f0b857e62da8f8e98e2898b1f0c5ef2"
+    },
+    "src\\gui\\utils\\__init__.py": {
+        "hash": "16e6062d617ee4310b567f7cd5fea66a"
+    },
+    "src\\gui\\utils\\shared_operations.py": {
+        "hash": "0c263b204bc994b5790ca626d811e9e6"
+    },
+    "tests\\test_8_agent_coordinates.py": {
+        "hash": "e49228420b35154e707faaa5df361bd9"
+    },
+    "tests\\test_special_chars.py": {
+        "hash": "e98a76aa1ab02b9fd7b061c40a207466"
+    },
+    "src\\utils\\coordinate_finder.py": {
+        "hash": "ec93d4f4bbd36ff9c8dc627574f9c3ea"
+    },
+    "tests\\diagnostic_test.py": {
+        "hash": "ac02e63c3d50a8edd3a10b795e86ffd0"
+    },
+    "tests\\test_harness.py": {
+        "hash": "37e37c915b86d12164f7a7c184549c8f"
+    },
+    "tests\\test_inter_agent_framework.py": {
+        "hash": "24f23a3f8372c3f18dc47bc508251819"
     }
 }
