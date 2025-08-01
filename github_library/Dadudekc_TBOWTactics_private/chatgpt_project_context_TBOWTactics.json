@@ -1,0 +1,13 @@
+{
+    "project_root": "D:\\projectscanner\\temp_repos\\Dadudekc_TBOWTactics_private\\TBOWTactics",
+    "num_files_analyzed": 1,
+    "analysis_details": {
+        "overview.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        }
+    }
+}

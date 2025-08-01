@@ -283,7 +283,16 @@ class EnhancedGitHubLibraryScanner:
             # Clean up temporary directory
             try:
                 if repo_temp_dir.exists():
-                    shutil.rmtree(repo_temp_dir)
+                    # On Windows, git objects might be locked - try to remove them first
+                    git_objects = repo_temp_dir / ".git" / "objects"
+                    if git_objects.exists():
+                        try:
+                            shutil.rmtree(git_objects, ignore_errors=True)
+                        except Exception:
+                            pass  # Ignore cleanup errors for git objects
+                    
+                    # Remove the temp directory
+                    shutil.rmtree(repo_temp_dir, ignore_errors=True)
             except Exception as e:
                 print(f"   Warning: Could not clean up temporary directory: {e}")
     

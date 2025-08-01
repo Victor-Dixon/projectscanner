@@ -1,32 +1,5 @@
 {
-    "arc_loader.py": {
-        "hash": "e09b653373429e8d497236a748b4f27b"
-    },
-    "main.py": {
-        "hash": "a531be89f5e02810f0451275d372f336"
-    },
-    "dm_interface.py": {
-        "hash": "d11083e97587ecce0f07e72ea236968c"
-    },
-    "world.py": {
-        "hash": "27c073c215faecc3578614f3575607b2"
-    },
-    "combat_ai.py": {
-        "hash": "4b3d5ac9737a63b5ffa34d3407e426e6"
-    },
-    "combat.py": {
-        "hash": "cdaf8117deaf1192879b672e54619231"
-    },
-    "game_engine.py": {
-        "hash": "c45f5c19434cf94f847845b0a12fa4d0"
-    },
-    "game_data_loader.py": {
-        "hash": "fedcbe0e60e77ccaf379c02283be5b08"
-    },
-    "utils.py": {
-        "hash": "9c3ffeffdf604378665bbb3900789bdf"
-    },
-    "character.py": {
-        "hash": "503ba50af870df712aeaf278a1eebffb"
+    "overview.js": {
+        "hash": "6d953e5569b255ad5ae2bdd269e0418c"
     }
 }
