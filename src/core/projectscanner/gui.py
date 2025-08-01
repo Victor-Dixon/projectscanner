@@ -1052,6 +1052,9 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                     github_data = self.load_github_library_data()
                     if github_data:
                         self.update_portfolio_statistics(github_data)
+                        
+                        # Automatically generate all analysis
+                        self.generate_all_analysis(github_data)
                     
                     self.update_progress("GitHub library scan completed successfully!")
                     self.status_bar.showMessage("GitHub library scan completed")
@@ -1063,7 +1066,11 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                         f"Found {total_repos} repositories\n"
                         f"Successful scans: {successful_scans}\n"
                         f"Failed scans: {failed_scans}\n\n"
-                        f"Check the Portfolio Stats tab for detailed statistics."
+                        f"✅ Portfolio statistics updated\n"
+                        f"✅ Skill tree generated\n"
+                        f"✅ Resume generated\n"
+                        f"✅ Insights generated\n\n"
+                        f"Check the tabs for detailed analysis."
                     )
                 else:
                     # Add error status
@@ -1082,6 +1089,74 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         except Exception as e:
             self.update_progress(f"Error handling GitHub library completion: {e}")
             self.status_bar.showMessage("Error processing results")
+
+    def generate_all_analysis(self, github_data: Dict):
+        """Automatically generate all analysis after GitHub scan completion."""
+        try:
+            # Show analysis generation in progress
+            self.status_bar.showMessage("Generating portfolio analysis...")
+            self.update_progress("🔄 Generating portfolio analysis...")
+            
+            # Update current scan tab to show analysis progress
+            if self.current_scan_tree.topLevelItemCount() > 0:
+                root_item = self.current_scan_tree.topLevelItem(0)
+                
+                # Add analysis progress section
+                analysis_item = QtWidgets.QTreeWidgetItem(["Analysis Generation"])
+                root_item.addChild(analysis_item)
+                
+                # Generate skill tree
+                try:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem(["🔄 Generating skill tree..."]))
+                    from analyzers.enhanced_skill_analyzer import generate_skill_tree
+                    skill_tree_content = generate_skill_tree(github_data)
+                    self.skill_tree_display.setPlainText(skill_tree_content)
+                    
+                    # Update progress item
+                    analysis_item.child(analysis_item.childCount() - 1).setText(0, "✅ Skill tree generated")
+                    self.update_progress("✅ Skill tree generated")
+                except Exception as e:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem([f"❌ Skill tree failed: {str(e)}"]))
+                    self.update_progress(f"⚠️ Skill tree generation failed: {e}")
+            
+                # Generate resume
+                try:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem(["🔄 Generating resume..."]))
+                    from analyzers.comprehensive_project_analyzer import ComprehensiveProjectAnalyzer
+                    analyzer = ComprehensiveProjectAnalyzer()
+                    resume_content = analyzer.generate_resume(github_data)
+                    self.resume_display.setPlainText(resume_content)
+                    
+                    # Update progress item
+                    analysis_item.child(analysis_item.childCount() - 1).setText(0, "✅ Resume generated")
+                    self.update_progress("✅ Resume generated")
+                except Exception as e:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem([f"❌ Resume failed: {str(e)}"]))
+                    self.update_progress(f"⚠️ Resume generation failed: {e}")
+            
+                # Generate insights
+                try:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem(["🔄 Generating insights..."]))
+                    from analyzers.deep_project_insights import generate_insights
+                    insights_content = generate_insights(github_data)
+                    self.insights_display.setPlainText(insights_content)
+                    
+                    # Update progress item
+                    analysis_item.child(analysis_item.childCount() - 1).setText(0, "✅ Insights generated")
+                    self.update_progress("✅ Insights generated")
+                except Exception as e:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem([f"❌ Insights failed: {str(e)}"]))
+                    self.update_progress(f"⚠️ Insights generation failed: {e}")
+            
+            self.update_progress("✅ All analysis generated successfully!")
+            self.status_bar.showMessage("Analysis generation completed")
+            
+            # Switch to Portfolio Stats tab to show the results
+            self.tabs.setCurrentIndex(1)  # Portfolio Stats tab
+            
+        except Exception as e:
+            self.update_progress(f"❌ Error generating analysis: {e}")
+            self.status_bar.showMessage("Error generating analysis")
 
     def scan_error(self, error_message: str):
         """Handle scan errors."""
