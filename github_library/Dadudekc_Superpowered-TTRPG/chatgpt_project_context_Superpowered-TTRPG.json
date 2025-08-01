@@ -1,7 +1,31 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpl0y833qs\\Superpowered-TTRPG",
+    "project_root": "D:\\projectscanner\\temp_repos\\Dadudekc_Superpowered-TTRPG\\Superpowered-TTRPG",
     "num_files_analyzed": 10,
     "analysis_details": {
+        "arc_loader.py": {
+            "language": ".py",
+            "functions": [
+                "load_arc",
+                "list_available_arcs"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 4,
+            "lint": []
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 29,
+            "lint": [
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
         "dm_interface.py": {
             "language": ".py",
             "functions": [
@@ -19,26 +43,42 @@
                 "High complexity"
             ]
         },
-        "game_data_loader.py": {
+        "world.py": {
             "language": ".py",
             "functions": [
-                "ensure_json_exists",
-                "load_json",
-                "save_json",
-                "get_locations",
+                "get_core_locations",
+                "get_global_locations",
                 "get_organizations",
                 "get_npcs",
-                "get_arcs",
-                "update_json",
-                "add_entry",
-                "remove_entry"
+                "evolve_npc",
+                "adjust_faction_influence"
             ],
-            "classes": {},
+            "classes": {
+                "Location": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                },
+                "Organization": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                },
+                "NPC": {
+                    "methods": [],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 17,
-            "lint": [
-                "High complexity"
-            ]
+            "complexity": 10,
+            "lint": []
         },
         "combat_ai.py": {
             "language": ".py",
@@ -71,30 +111,6 @@
             "routes": [],
             "complexity": 35,
             "lint": [
-                "High complexity"
-            ]
-        },
-        "arc_loader.py": {
-            "language": ".py",
-            "functions": [
-                "load_arc",
-                "list_available_arcs"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 4,
-            "lint": []
-        },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 29,
-            "lint": [
-                "Function main >50 lines",
                 "High complexity"
             ]
         },
@@ -189,42 +205,26 @@
                 "High complexity"
             ]
         },
-        "world.py": {
+        "game_data_loader.py": {
             "language": ".py",
             "functions": [
-                "get_core_locations",
-                "get_global_locations",
+                "ensure_json_exists",
+                "load_json",
+                "save_json",
+                "get_locations",
                 "get_organizations",
                 "get_npcs",
-                "evolve_npc",
-                "adjust_faction_influence"
+                "get_arcs",
+                "update_json",
+                "add_entry",
+                "remove_entry"
             ],
-            "classes": {
-                "Location": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                },
-                "Organization": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                },
-                "NPC": {
-                    "methods": [],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
+            "classes": {},
             "routes": [],
-            "complexity": 10,
-            "lint": []
+            "complexity": 17,
+            "lint": [
+                "High complexity"
+            ]
         },
         "utils.py": {
             "language": ".py",

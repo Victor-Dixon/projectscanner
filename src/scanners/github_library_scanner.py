@@ -219,7 +219,7 @@ class GitHubLibraryScanner:
                 'scanned_at': datetime.now().isoformat()
             })
             
-            print(f"   Successfully scanned {len(scanner.file_processor.files)} files")
+            print(f"   Successfully scanned {len(scanner.analysis)} files")
             
             return True
             
