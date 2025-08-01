@@ -1,11 +1,14 @@
 import builtins
 import json
+import json
+import sys
 import threading
 from pathlib import Path
 
-from projectscanner.language_analyzer import LanguageAnalyzer
-from projectscanner.file_processor import FileProcessor
-from projectscanner.scanner import ProjectScanner
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from core.projectscanner.language_analyzer import LanguageAnalyzer
+from core.projectscanner.file_processor import FileProcessor
+from core.projectscanner.scanner import ProjectScanner
 
 
 def test_analyze_python_extracts_functions_classes_and_routes():
