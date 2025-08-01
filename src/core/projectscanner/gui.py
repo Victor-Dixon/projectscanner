@@ -1069,7 +1069,9 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                         f"✅ Portfolio statistics updated\n"
                         f"✅ Skill tree generated\n"
                         f"✅ Resume generated\n"
-                        f"✅ Insights generated\n\n"
+                        f"✅ Insights generated\n"
+                        f"✅ Developer knowledge profile generated\n"
+                        f"✅ Complexity analysis generated\n\n"
                         f"Check the tabs for detailed analysis."
                     )
                 else:
@@ -1147,6 +1149,42 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                 except Exception as e:
                     analysis_item.addChild(QtWidgets.QTreeWidgetItem([f"❌ Insights failed: {str(e)}"]))
                     self.update_progress(f"⚠️ Insights generation failed: {e}")
+                
+                # Generate developer knowledge profile
+                try:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem(["🔄 Generating developer profile..."]))
+                    from analyzers.developer_knowledge_analyzer import generate_developer_profile
+                    developer_profile_content = generate_developer_profile(github_data)
+                    
+                    # Add developer profile to insights tab
+                    current_insights = self.insights_display.toPlainText()
+                    enhanced_insights = f"{current_insights}\n\n# Developer Knowledge Profile\n\n{developer_profile_content}"
+                    self.insights_display.setPlainText(enhanced_insights)
+                    
+                    # Update progress item
+                    analysis_item.child(analysis_item.childCount() - 1).setText(0, "✅ Developer profile generated")
+                    self.update_progress("✅ Developer profile generated")
+                except Exception as e:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem([f"❌ Developer profile failed: {str(e)}"]))
+                    self.update_progress(f"⚠️ Developer profile generation failed: {e}")
+                
+                # Generate complexity analysis
+                try:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem(["🔄 Generating complexity analysis..."]))
+                    from analyzers.project_complexity_analyzer import generate_complexity_analysis
+                    complexity_content = generate_complexity_analysis(github_data)
+                    
+                    # Add complexity analysis to insights tab
+                    current_insights = self.insights_display.toPlainText()
+                    enhanced_insights = f"{current_insights}\n\n# Project Complexity Analysis\n\n{complexity_content}"
+                    self.insights_display.setPlainText(enhanced_insights)
+                    
+                    # Update progress item
+                    analysis_item.child(analysis_item.childCount() - 1).setText(0, "✅ Complexity analysis generated")
+                    self.update_progress("✅ Complexity analysis generated")
+                except Exception as e:
+                    analysis_item.addChild(QtWidgets.QTreeWidgetItem([f"❌ Complexity analysis failed: {str(e)}"]))
+                    self.update_progress(f"⚠️ Complexity analysis generation failed: {e}")
             
             self.update_progress("✅ All analysis generated successfully!")
             self.status_bar.showMessage("Analysis generation completed")

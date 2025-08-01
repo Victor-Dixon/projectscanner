@@ -1,0 +1,85 @@
+{
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpra4j07j3\\DaDudekC",
+    "num_files_analyzed": 2,
+    "analysis_details": {
+        "AI agent\\main.py": {
+            "language": ".py",
+            "functions": [
+                "train_batch",
+                "save_model",
+                "choose_action",
+                "__init__",
+                "forward"
+            ],
+            "classes": {
+                "QNetwork": {
+                    "methods": [
+                        "__init__",
+                        "forward"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "nn.Module"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "AI agent\\AI\\Digital dreamscape\\main.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_world",
+                "interact_with_npc",
+                "generate_response_with_opensource_ai",
+                "move_to_location",
+                "describe_location",
+                "pick_up_item",
+                "use_item",
+                "save_game",
+                "load_game",
+                "auto_save",
+                "display_help",
+                "process_command",
+                "check_inventory",
+                "run"
+            ],
+            "classes": {
+                "Game": {
+                    "methods": [
+                        "__init__",
+                        "setup_world",
+                        "interact_with_npc",
+                        "generate_response_with_opensource_ai",
+                        "move_to_location",
+                        "describe_location",
+                        "pick_up_item",
+                        "use_item",
+                        "save_game",
+                        "load_game",
+                        "auto_save",
+                        "display_help",
+                        "process_command",
+                        "check_inventory",
+                        "run"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                }
+            },
+            "routes": [],
+            "complexity": 56,
+            "lint": [
+                "High complexity"
+            ]
+        }
+    }
+}

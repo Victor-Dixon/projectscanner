@@ -1,0 +1,304 @@
+{
+    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmp8xmnmx_6\\machinelearningmodelmaker",
+    "num_files_analyzed": 11,
+    "analysis_details": {
+        "file_sorter2.py": {
+            "language": ".py",
+            "functions": [
+                "move_processed_files",
+                "move_processed_files"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "file_sorter3.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "file_sorter1.py": {
+            "language": ".py",
+            "functions": [
+                "manage_csv_files",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "model_development.py": {
+            "language": ".py",
+            "functions": [
+                "create_parser",
+                "load_configuration",
+                "get_features_from_csv",
+                "select_features_interactively",
+                "validate_section_keys",
+                "preprocess_data",
+                "standardize_date_column",
+                "convert_and_sort_by_date",
+                "fill_missing_values",
+                "standardize_target_column",
+                "split_and_scale_data",
+                "bayesian_hyperparameter_tuning",
+                "evaluate_model",
+                "train_and_evaluate_model",
+                "train_model",
+                "save_model_with_metadata",
+                "select_best_model_and_save",
+                "calculate_directional_accuracy",
+                "process_file",
+                "select_model_type",
+                "compare_models",
+                "main",
+                "__init__",
+                "build"
+            ],
+            "classes": {
+                "CustomHyperModel": {
+                    "methods": [
+                        "__init__",
+                        "build"
+                    ],
+                    "docstring": "Custom HyperModel for Keras Tuner.\nDefines a space of hyperparameters and builds a model for each set of hyperparameters.",
+                    "base_classes": [
+                        "HyperModel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 60,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "consolidated_try.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "read_api_keys_from_config",
+                "fetch_data",
+                "reset_request_count",
+                "is_rate_limit_exceeded",
+                "fetch_real_time_data",
+                "run_data_fetch_menu",
+                "run_model_development",
+                "run_backtesting",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 33,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "backtest.py": {
+            "language": ".py",
+            "functions": [
+                "load_config",
+                "backtest_regression",
+                "load_models",
+                "process_data",
+                "train_model",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 34,
+            "lint": [
+                "Function backtest_regression >50 lines",
+                "Function train_model >50 lines",
+                "High complexity"
+            ]
+        },
+        "data_fetch.py": {
+            "language": ".py",
+            "functions": [
+                "read_config",
+                "read_api_keys_from_config",
+                "fetch_data_from_api",
+                "load_historical_data_alpha_vantage",
+                "load_historical_data_polygonio",
+                "load_historical_data_nasdaq",
+                "manage_csv_files",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 30,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "shap_model_development.py": {
+            "language": ".py",
+            "functions": [
+                "load_configuration",
+                "get_features_from_csv",
+                "select_features_interactively",
+                "validate_section_keys",
+                "preprocess_data",
+                "standardize_date_column",
+                "convert_and_sort_by_date",
+                "fill_missing_values",
+                "standardize_target_column",
+                "split_and_scale_data",
+                "build",
+                "bayesian_hyperparameter_tuning",
+                "evaluate_model",
+                "train_and_evaluate_model",
+                "train_model",
+                "save_model_with_metadata",
+                "select_best_model_and_save",
+                "calculate_directional_accuracy",
+                "process_file",
+                "perform_shap_analysis",
+                "select_model_type",
+                "compare_models",
+                "main",
+                "__init__"
+            ],
+            "classes": {
+                "CustomHyperModel": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": "Custom HyperModel for Keras Tuner.\nDefines a space of hyperparameters and builds a model for each set of hyperparameters.",
+                    "base_classes": [
+                        "HyperModel"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 65,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "data_processing2.py": {
+            "language": ".py",
+            "functions": [
+                "get_format2_path",
+                "handle_nan_in_dataframe",
+                "add_moving_average",
+                "add_exponential_moving_average",
+                "add_bollinger_bands",
+                "add_stochastic_oscillator",
+                "add_mae",
+                "add_rvi",
+                "add_pvt",
+                "add_atr",
+                "compute_adl",
+                "add_chaikin_oscillator",
+                "add_dpo",
+                "add_williams_r",
+                "add_elder_ray_index",
+                "add_roc",
+                "add_obv",
+                "add_mfi",
+                "add_ppo",
+                "add_cci",
+                "add_stoch_rsi",
+                "add_ultimate_oscillator",
+                "add_psar",
+                "add_adl",
+                "add_adx",
+                "add_force_index",
+                "add_keltner_channel",
+                "add_coppock_curve",
+                "add_ichimoku",
+                "add_hma",
+                "add_qstick",
+                "add_trix",
+                "add_vortex",
+                "process_data",
+                "select_features"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 76,
+            "lint": [
+                "Function process_data >50 lines",
+                "High complexity"
+            ]
+        },
+        "data_processing1.py": {
+            "language": ".py",
+            "functions": [
+                "get_format1_path",
+                "get_format1_path",
+                "handle_nan_in_dataframe",
+                "add_moving_average",
+                "add_exponential_moving_average",
+                "add_bollinger_bands",
+                "add_stochastic_oscillator",
+                "add_atr",
+                "add_mae",
+                "add_rvi",
+                "add_pvt",
+                "compute_adl",
+                "add_chaikin_oscillator",
+                "add_dpo",
+                "add_williams_r",
+                "add_elder_ray_index",
+                "add_roc",
+                "add_obv",
+                "add_mfi",
+                "add_ppo",
+                "add_cci",
+                "add_stoch_rsi",
+                "add_ultimate_oscillator",
+                "add_psar",
+                "add_adl",
+                "add_adx",
+                "add_force_index",
+                "add_keltner_channel",
+                "add_coppock_curve",
+                "add_ichimoku",
+                "add_hma",
+                "add_qstick",
+                "add_trix",
+                "add_vortex",
+                "process_data",
+                "select_features"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 77,
+            "lint": [
+                "Function process_data >50 lines",
+                "High complexity"
+            ]
+        },
+        "gui.py": {
+            "language": ".py",
+            "functions": [
+                "select_all_features",
+                "unselect_all_features",
+                "load_configuration",
+                "browse_file",
+                "load_config_gui",
+                "start_processing",
+                "threaded_processing",
+                "load_csv_and_update_features"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 23,
+            "lint": [
+                "High complexity"
+            ]
+        }
+    }
+}

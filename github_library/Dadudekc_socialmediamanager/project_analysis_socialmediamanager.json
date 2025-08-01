@@ -1,0 +1,1334 @@
+{
+    "main.py": {
+        "language": ".py",
+        "functions": [
+            "signal_handler",
+            "main",
+            "__init__",
+            "get_status"
+        ],
+        "classes": {
+            "SentimentAnalysisApp": {
+                "methods": [
+                    "__init__",
+                    "get_status"
+                ],
+                "docstring": "Main application class that orchestrates all components.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 36,
+        "lint": [
+            "Function main >50 lines",
+            "High complexity"
+        ]
+    },
+    "predictive_models.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_models",
+            "save_models",
+            "prepare_features",
+            "train_sentiment_model",
+            "train_stock_movement_model",
+            "predict_sentiment_trend",
+            "predict_stock_movement",
+            "get_model_performance"
+        ],
+        "classes": {
+            "SentimentPredictor": {
+                "methods": [
+                    "__init__",
+                    "load_models",
+                    "save_models",
+                    "prepare_features",
+                    "train_sentiment_model",
+                    "train_stock_movement_model",
+                    "predict_sentiment_trend",
+                    "predict_stock_movement",
+                    "get_model_performance"
+                ],
+                "docstring": "Predictive models for sentiment analysis and stock movement forecasting.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 46,
+        "lint": [
+            "Function train_sentiment_model >50 lines",
+            "Function train_stock_movement_model >50 lines",
+            "Function predict_stock_movement >50 lines",
+            "High complexity"
+        ]
+    },
+    "multi_platform_streamer.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 14,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "project_config.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_env",
+            "get_env",
+            "validate"
+        ],
+        "classes": {
+            "Config": {
+                "methods": [
+                    "__init__",
+                    "load_env",
+                    "get_env",
+                    "validate"
+                ],
+                "docstring": "Centralized configuration handler for SocialMediaManager.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 18,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "calendar_widget.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_ui",
+            "on_date_selected",
+            "schedule_post"
+        ],
+        "classes": {
+            "SocialMediaCalendar": {
+                "methods": [
+                    "__init__",
+                    "setup_ui",
+                    "on_date_selected",
+                    "schedule_post"
+                ],
+                "docstring": "Custom calendar widget for social media scheduling.",
+                "base_classes": [
+                    "QWidget"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "Function setup_ui >50 lines",
+            "High complexity"
+        ]
+    },
+    "notification_system.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_load_email_config",
+            "_load_webhook_config",
+            "check_sentiment_alert",
+            "_format_sentiment_alert",
+            "send_email_notification",
+            "_get_priority_color",
+            "_get_priority_color_hex"
+        ],
+        "classes": {
+            "NotificationType": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AlertThreshold": {
+                "methods": [],
+                "docstring": "Configuration for alert thresholds.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "NotificationMessage": {
+                "methods": [],
+                "docstring": "Represents a notification message.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "NotificationSystem": {
+                "methods": [
+                    "__init__",
+                    "_load_email_config",
+                    "_load_webhook_config",
+                    "check_sentiment_alert",
+                    "_format_sentiment_alert",
+                    "send_email_notification",
+                    "_get_priority_color",
+                    "_get_priority_color_hex"
+                ],
+                "docstring": "Handles sending notifications for significant sentiment changes.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 50,
+        "lint": [
+            "Function check_sentiment_alert >50 lines",
+            "High complexity"
+        ]
+    },
+    "cloud_deployment.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_dockerfile",
+            "create_docker_compose",
+            "create_kubernetes_configs",
+            "create_terraform_config",
+            "create_github_actions",
+            "build_docker_image",
+            "deploy_to_kubernetes",
+            "create_deployment_script"
+        ],
+        "classes": {
+            "CloudDeployment": {
+                "methods": [
+                    "__init__",
+                    "create_dockerfile",
+                    "create_docker_compose",
+                    "create_kubernetes_configs",
+                    "create_terraform_config",
+                    "create_github_actions",
+                    "build_docker_image",
+                    "deploy_to_kubernetes",
+                    "create_deployment_script"
+                ],
+                "docstring": "Handles cloud deployment and infrastructure management.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 24,
+        "lint": [
+            "Function create_dockerfile >50 lines",
+            "Function create_docker_compose >50 lines",
+            "Function create_kubernetes_configs >50 lines",
+            "Function create_terraform_config >50 lines",
+            "Function create_github_actions >50 lines",
+            "High complexity"
+        ]
+    },
+    "content_manager.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_templates",
+            "save_template",
+            "create_template",
+            "generate_content_from_template",
+            "create_campaign",
+            "add_post_to_campaign",
+            "save_campaign",
+            "load_campaigns",
+            "schedule_campaign",
+            "optimize_content_for_platform",
+            "make_professional",
+            "make_community_focused",
+            "generate_content_ideas",
+            "is_idea_suitable_for_platforms",
+            "get_content_analytics",
+            "export_campaign",
+            "import_campaign"
+        ],
+        "classes": {
+            "ContentCategory": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ContentStatus": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ContentTemplate": {
+                "methods": [],
+                "docstring": "Template for creating consistent content.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ContentCampaign": {
+                "methods": [],
+                "docstring": "Represents a content campaign across multiple platforms.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ContentManager": {
+                "methods": [
+                    "__init__",
+                    "load_templates",
+                    "save_template",
+                    "create_template",
+                    "generate_content_from_template",
+                    "create_campaign",
+                    "add_post_to_campaign",
+                    "save_campaign",
+                    "load_campaigns",
+                    "schedule_campaign",
+                    "optimize_content_for_platform",
+                    "make_professional",
+                    "make_community_focused",
+                    "generate_content_ideas",
+                    "is_idea_suitable_for_platforms",
+                    "get_content_analytics",
+                    "export_campaign",
+                    "import_campaign"
+                ],
+                "docstring": "Manages content creation, scheduling, and optimization.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 81,
+        "lint": [
+            "Function generate_content_ideas >50 lines",
+            "High complexity"
+        ]
+    },
+    "enhanced_gui.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "setup_ui",
+            "create_header",
+            "create_dashboard_tab",
+            "create_calendar_tab",
+            "create_posting_tab",
+            "create_campaigns_tab",
+            "create_analytics_tab",
+            "create_automation_tab",
+            "setup_dark_theme",
+            "setup_timer",
+            "update_char_counter",
+            "on_date_selected",
+            "schedule_post",
+            "process_messages",
+            "log_message",
+            "post_content",
+            "post_to_all",
+            "clear_posting_form",
+            "update_status",
+            "closeEvent",
+            "post_thread",
+            "post_thread"
+        ],
+        "classes": {
+            "EnhancedSocialMediaGUI": {
+                "methods": [
+                    "__init__",
+                    "setup_ui",
+                    "create_header",
+                    "create_dashboard_tab",
+                    "create_calendar_tab",
+                    "create_posting_tab",
+                    "create_campaigns_tab",
+                    "create_analytics_tab",
+                    "create_automation_tab",
+                    "setup_dark_theme",
+                    "setup_timer",
+                    "update_char_counter",
+                    "on_date_selected",
+                    "schedule_post",
+                    "process_messages",
+                    "log_message",
+                    "post_content",
+                    "post_to_all",
+                    "clear_posting_form",
+                    "update_status",
+                    "closeEvent"
+                ],
+                "docstring": "Enhanced GUI with calendar and additional features.",
+                "base_classes": [
+                    "QMainWindow"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 63,
+        "lint": [
+            "Function setup_ui >50 lines",
+            "Function create_dashboard_tab >50 lines",
+            "Function create_calendar_tab >50 lines",
+            "Function create_posting_tab >50 lines",
+            "Function setup_dark_theme >50 lines",
+            "High complexity"
+        ]
+    },
+    "platform_login_manager.py": {
+        "language": ".py",
+        "functions": [
+            "get_driver",
+            "load_cookies",
+            "save_cookies",
+            "wait_for_manual_login",
+            "login_linkedin",
+            "login_twitter",
+            "login_facebook",
+            "is_logged_in",
+            "login_instagram",
+            "login_reddit",
+            "login_discord",
+            "login_stocktwits",
+            "run_all_logins",
+            "fb_logged_in",
+            "is_logged_in"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 54,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "db_handler.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "get_connection",
+            "close_connection",
+            "initialize_table",
+            "bulk_insert_sentiment",
+            "bulk_insert_posts",
+            "save_sentiment",
+            "save_post",
+            "fetch_sentiment",
+            "get_available_tickers",
+            "get_summary_stats"
+        ],
+        "classes": {
+            "DatabaseHandler": {
+                "methods": [
+                    "__init__",
+                    "get_connection",
+                    "close_connection",
+                    "initialize_table",
+                    "bulk_insert_sentiment",
+                    "bulk_insert_posts",
+                    "save_sentiment",
+                    "save_post",
+                    "fetch_sentiment",
+                    "get_available_tickers",
+                    "get_summary_stats"
+                ],
+                "docstring": "Handles database operations for storing sentiment data and raw posts.\nSupports MySQL as the backend.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 34,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "dashboard.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_routes",
+            "get_dashboard_html",
+            "run"
+        ],
+        "classes": {
+            "Dashboard": {
+                "methods": [
+                    "__init__",
+                    "setup_routes",
+                    "get_dashboard_html",
+                    "run"
+                ],
+                "docstring": "Web dashboard for sentiment analysis visualization.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 15,
+        "lint": [
+            "Function setup_routes >50 lines",
+            "Function get_dashboard_html >50 lines",
+            "High complexity"
+        ]
+    },
+    "sentiment_analysis_discord_bot.py": {
+        "language": ".py",
+        "functions": [
+            "load_discord_credentials",
+            "classify_sentiment",
+            "get_embed_color",
+            "create_embed"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "setup_logging.py": {
+        "language": ".py",
+        "functions": [
+            "setup_logging"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": [
+            "Function setup_logging >50 lines"
+        ]
+    },
+    "social_media_automation.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "initialize_driver",
+            "close_driver",
+            "post_to_platform",
+            "post_to_all_platforms",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "schedule_posts",
+            "get_post_history",
+            "__init__",
+            "wait_for_element",
+            "wait_for_clickable",
+            "safe_click",
+            "human_like_delay",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics",
+            "post_content",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics"
+        ],
+        "classes": {
+            "PlatformType": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "ContentType": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "PostContent": {
+                "methods": [],
+                "docstring": "Represents content to be posted on social media.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AutomationConfig": {
+                "methods": [],
+                "docstring": "Configuration for automation behavior.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "SocialMediaAutomation": {
+                "methods": [
+                    "__init__",
+                    "initialize_driver",
+                    "close_driver",
+                    "post_to_platform",
+                    "post_to_all_platforms",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics",
+                    "schedule_posts",
+                    "get_post_history"
+                ],
+                "docstring": "Main automation class for all social media platforms.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "BasePlatformAutomation": {
+                "methods": [
+                    "__init__",
+                    "wait_for_element",
+                    "wait_for_clickable",
+                    "safe_click",
+                    "human_like_delay",
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "Base class for platform-specific automation.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "LinkedInAutomation": {
+                "methods": [
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "LinkedIn-specific automation.",
+                "base_classes": [
+                    "BasePlatformAutomation"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "TwitterAutomation": {
+                "methods": [
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "Twitter-specific automation.",
+                "base_classes": [
+                    "BasePlatformAutomation"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "FacebookAutomation": {
+                "methods": [
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "Facebook-specific automation.",
+                "base_classes": [
+                    "BasePlatformAutomation"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "InstagramAutomation": {
+                "methods": [
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "Instagram-specific automation.",
+                "base_classes": [
+                    "BasePlatformAutomation"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "RedditAutomation": {
+                "methods": [
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "Reddit-specific automation.",
+                "base_classes": [
+                    "BasePlatformAutomation"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "DiscordAutomation": {
+                "methods": [
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "Discord-specific automation.",
+                "base_classes": [
+                    "BasePlatformAutomation"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "StocktwitsAutomation": {
+                "methods": [
+                    "post_content",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics"
+                ],
+                "docstring": "Stocktwits-specific automation.",
+                "base_classes": [
+                    "BasePlatformAutomation"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 191,
+        "lint": [
+            "Function post_content >50 lines",
+            "High complexity"
+        ]
+    },
+    "test_notification_system.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "check_sentiment_alert",
+            "_format_sentiment_alert"
+        ],
+        "classes": {
+            "NotificationType": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "AlertThreshold": {
+                "methods": [],
+                "docstring": "Configuration for alert thresholds.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "NotificationMessage": {
+                "methods": [],
+                "docstring": "Represents a notification message.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "TestNotificationSystem": {
+                "methods": [
+                    "__init__",
+                    "check_sentiment_alert",
+                    "_format_sentiment_alert"
+                ],
+                "docstring": "Simplified notification system for testing without database dependencies.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 19,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test_dashboard.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "setup_routes",
+            "generate_sample_sentiment_data",
+            "get_dashboard_html",
+            "run"
+        ],
+        "classes": {
+            "TestDashboard": {
+                "methods": [
+                    "__init__",
+                    "setup_routes",
+                    "generate_sample_sentiment_data",
+                    "get_dashboard_html",
+                    "run"
+                ],
+                "docstring": "Simplified web dashboard for sentiment analysis visualization.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "ActionAgent"
+            }
+        },
+        "routes": [],
+        "complexity": 21,
+        "lint": [
+            "Function setup_routes >50 lines",
+            "Function get_dashboard_html >50 lines",
+            "High complexity"
+        ]
+    },
+    "social_cli.py": {
+        "language": ".py",
+        "functions": [
+            "parse_platforms",
+            "print_json",
+            "post_command",
+            "campaign_command",
+            "engage_command",
+            "follow_command",
+            "analytics_command",
+            "templates_command",
+            "status_command",
+            "auto_command",
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 55,
+        "lint": [
+            "Function campaign_command >50 lines",
+            "Function templates_command >50 lines",
+            "Function main >50 lines",
+            "High complexity"
+        ]
+    },
+    "test_predictive_models.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_models",
+            "save_models",
+            "generate_sample_data",
+            "prepare_features",
+            "train_sentiment_model",
+            "train_stock_movement_model",
+            "predict_sentiment_trend",
+            "predict_stock_movement",
+            "get_model_performance"
+        ],
+        "classes": {
+            "TestSentimentPredictor": {
+                "methods": [
+                    "__init__",
+                    "load_models",
+                    "save_models",
+                    "generate_sample_data",
+                    "prepare_features",
+                    "train_sentiment_model",
+                    "train_stock_movement_model",
+                    "predict_sentiment_trend",
+                    "predict_stock_movement",
+                    "get_model_performance"
+                ],
+                "docstring": "Simplified predictive models for testing without database dependencies.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 34,
+        "lint": [
+            "Function train_stock_movement_model >50 lines",
+            "High complexity"
+        ]
+    },
+    "sentiment_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "get_ephemeral_driver",
+            "load_cookies",
+            "get_stocktwits_url",
+            "clean_text",
+            "analyze_sentiments_advanced",
+            "is_spam",
+            "scroll_and_collect",
+            "extract_messages",
+            "append_to_csv_by_ticker_and_sentiment",
+            "bulk_save_sentiment",
+            "cleanup_old_files",
+            "parse_timestamp",
+            "single_ticker_scrape",
+            "get_embed_color"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 56,
+        "lint": [
+            "Function single_ticker_scrape >50 lines",
+            "High complexity"
+        ]
+    },
+    "test_run.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "get_status"
+        ],
+        "classes": {
+            "TestApp": {
+                "methods": [
+                    "__init__",
+                    "get_status"
+                ],
+                "docstring": "Test application without database dependencies.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 10,
+        "lint": []
+    },
+    "test\\test_config.py": {
+        "language": ".py",
+        "functions": [
+            "reload_config",
+            "disable_dotenv_and_clear_env",
+            "reload_config_fixture",
+            "test_correct_type_casting",
+            "test_defaults_for_optional_variables",
+            "test_missing_env_variables",
+            "test_required_variables_set_correctly",
+            "test_validation_error_message"
+        ],
+        "classes": {
+            "TestConfig": {
+                "methods": [
+                    "reload_config_fixture",
+                    "test_correct_type_casting",
+                    "test_defaults_for_optional_variables",
+                    "test_missing_env_variables",
+                    "test_required_variables_set_correctly",
+                    "test_validation_error_message"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 18,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\conftest.py": {
+        "language": ".py",
+        "functions": [
+            "ensure_module",
+            "get",
+            "__init__",
+            "sentiment",
+            "install",
+            "red",
+            "green",
+            "light_gray",
+            "__init__",
+            "add_field",
+            "set_footer"
+        ],
+        "classes": {
+            "DummyAioSession": {
+                "methods": [
+                    "get"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "DummyTextBlob": {
+                "methods": [
+                    "__init__",
+                    "sentiment"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "DummyCDM": {
+                "methods": [
+                    "install"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "DummyColor": {
+                "methods": [
+                    "red",
+                    "green",
+                    "light_gray"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            },
+            "DummyEmbed": {
+                "methods": [
+                    "__init__",
+                    "add_field",
+                    "set_footer"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 24,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "trading_api.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "generate_signal",
+            "__init__",
+            "generate_signal",
+            "__init__",
+            "get_account_info",
+            "get_positions",
+            "get_market_data",
+            "calculate_rsi",
+            "place_order",
+            "get_sentiment_signal",
+            "execute_sentiment_trade",
+            "get_trading_history",
+            "get_performance_metrics"
+        ],
+        "classes": {
+            "OrderType": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "OrderSide": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "Enum"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "TradingSignal": {
+                "methods": [],
+                "docstring": "Represents a trading signal based on sentiment analysis.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "TradingStrategy": {
+                "methods": [
+                    "__init__",
+                    "generate_signal"
+                ],
+                "docstring": "Base class for trading strategies.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "SentimentBasedStrategy": {
+                "methods": [
+                    "__init__",
+                    "generate_signal"
+                ],
+                "docstring": "Trading strategy based on sentiment analysis.",
+                "base_classes": [
+                    "TradingStrategy"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            },
+            "TradingAPI": {
+                "methods": [
+                    "__init__",
+                    "get_account_info",
+                    "get_positions",
+                    "get_market_data",
+                    "calculate_rsi",
+                    "place_order",
+                    "get_sentiment_signal",
+                    "execute_sentiment_trade",
+                    "get_trading_history",
+                    "get_performance_metrics"
+                ],
+                "docstring": "Handles trading operations through Alpaca API.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 51,
+        "lint": [
+            "Function execute_sentiment_trade >50 lines",
+            "High complexity"
+        ]
+    },
+    "test\\test_multi_platform_streamer.py": {
+        "language": ".py",
+        "functions": [
+            "test_fetch_reddit",
+            "test_stream_posts_aggregates",
+            "test_stream_and_store_posts",
+            "__init__"
+        ],
+        "classes": {
+            "DummyResponse": {
+                "methods": [
+                    "__init__"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "test\\test_database_handler.py": {
+        "language": ".py",
+        "functions": [
+            "mock_logger",
+            "mock_mysql",
+            "db_handler",
+            "test_initialization",
+            "test_get_connection_success",
+            "test_get_connection_failure",
+            "test_close_connection",
+            "test_initialize_table",
+            "test_bulk_insert_sentiment_success",
+            "test_bulk_insert_sentiment_failure",
+            "test_save_sentiment_success",
+            "test_save_sentiment_failure",
+            "test_fetch_sentiment_success",
+            "test_fetch_sentiment_failure",
+            "test_bulk_insert_posts_success",
+            "test_bulk_insert_posts_failure"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_platform_login_manager.py": {
+        "language": ".py",
+        "functions": [
+            "dummy_driver",
+            "fast_sleep",
+            "test_get_driver",
+            "test_load_cookies_existing",
+            "test_save_cookies",
+            "test_wait_for_manual_login_success",
+            "test_wait_for_manual_login_failure",
+            "test_run_all_logins",
+            "test_instagram_login_success",
+            "test_instagram_login_failure",
+            "test_instagram_manual_login_required",
+            "test_instagram_no_credentials"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "unified_social_manager.py": {
+        "language": ".py",
+        "functions": [
+            "main",
+            "__init__",
+            "initialize_all_platforms",
+            "post_to_all_platforms",
+            "post_to_specific_platforms",
+            "create_and_schedule_campaign",
+            "engage_with_content",
+            "follow_users",
+            "get_analytics_for_all_platforms",
+            "generate_content_ideas",
+            "create_content_template",
+            "generate_content_from_template",
+            "optimize_content_for_platforms",
+            "get_content_analytics",
+            "get_platform_status",
+            "export_campaign",
+            "import_campaign",
+            "run_automated_engagement",
+            "schedule_recurring_posts",
+            "get_performance_summary",
+            "cleanup"
+        ],
+        "classes": {
+            "UnifiedSocialManager": {
+                "methods": [
+                    "__init__",
+                    "initialize_all_platforms",
+                    "post_to_all_platforms",
+                    "post_to_specific_platforms",
+                    "create_and_schedule_campaign",
+                    "engage_with_content",
+                    "follow_users",
+                    "get_analytics_for_all_platforms",
+                    "generate_content_ideas",
+                    "create_content_template",
+                    "generate_content_from_template",
+                    "optimize_content_for_platforms",
+                    "get_content_analytics",
+                    "get_platform_status",
+                    "export_campaign",
+                    "import_campaign",
+                    "run_automated_engagement",
+                    "schedule_recurring_posts",
+                    "get_performance_summary",
+                    "cleanup"
+                ],
+                "docstring": "Unified manager for all social media platforms.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 78,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_sentiment_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "fake_driver",
+            "temp_cookie_file",
+            "test_get_stocktwits_url",
+            "test_clean_text",
+            "test_analyze_sentiments_advanced",
+            "test_parse_timestamp",
+            "test_is_spam",
+            "test_scroll_and_collect",
+            "test_extract_messages",
+            "test_append_to_csv_by_ticker_and_sentiment",
+            "test_bulk_save_sentiment",
+            "test_cleanup_old_files",
+            "test_single_ticker_scrape",
+            "test_run_multi_ticker_scraper",
+            "bulk_insert_sentiment"
+        ],
+        "classes": {
+            "FakeDB": {
+                "methods": [
+                    "bulk_insert_sentiment"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 21,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "test\\test_setup_logging.py": {
+        "language": ".py",
+        "functions": [
+            "log_dir",
+            "logger_instance",
+            "test_logger_creation",
+            "test_log_directory_creation",
+            "test_log_file_creation",
+            "test_console_logging",
+            "test_file_logging",
+            "test_log_rotation"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 9,
+        "lint": []
+    }
+}
