@@ -1052,6 +1052,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                     github_data = self.load_github_library_data()
                     if github_data:
                         self.update_portfolio_statistics(github_data)
+                        self.update_github_library_display(github_data)
                         
                         # Automatically generate all analysis
                         self.generate_all_analysis(github_data)
@@ -1606,11 +1607,31 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
     def update_portfolio_statistics(self, github_data: Dict):
         """Update portfolio statistics from GitHub data."""
         try:
-            # Calculate statistics
-            total_repos = len(github_data.get('repositories', []))
-            public_repos = sum(1 for repo in github_data.get('repositories', []) if not repo.get('is_private', False))
-            private_repos = total_repos - public_repos
-            total_files = sum(repo.get('file_count', 0) for repo in github_data.get('repositories', []))
+            # Calculate statistics from the actual data structure
+            total_repos = len(github_data)
+            public_repos = 0
+            private_repos = 0
+            total_files = 0
+            language_stats = {}
+            
+            for repo_name, repo_data in github_data.items():
+                if isinstance(repo_data, dict):
+                    # Check if it's private
+                    if repo_data.get('is_private', False):
+                        private_repos += 1
+                    else:
+                        public_repos += 1
+                    
+                    # Count files
+                    file_count = repo_data.get('file_count', 0)
+                    total_files += file_count
+                    
+                    # Language statistics
+                    language = repo_data.get('language', 'Unknown')
+                    if language not in language_stats:
+                        language_stats[language] = {'repos': 0, 'files': 0}
+                    language_stats[language]['repos'] += 1
+                    language_stats[language]['files'] += file_count
             
             # Update labels
             self.total_repos_label.setText(f"Total Repositories: {total_repos}")
@@ -1620,34 +1641,31 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             
             # Update language breakdown
             self.languages_tree.clear()
-            language_stats = {}
-            for repo in github_data.get('repositories', []):
-                lang = repo.get('language', 'Unknown')
-                if lang not in language_stats:
-                    language_stats[lang] = {'repos': 0, 'files': 0}
-                language_stats[lang]['repos'] += 1
-                language_stats[lang]['files'] += repo.get('file_count', 0)
-            
             for lang, stats in sorted(language_stats.items(), key=lambda x: x[1]['files'], reverse=True):
                 item = QtWidgets.QTreeWidgetItem([lang, str(stats['repos']), str(stats['files'])])
                 self.languages_tree.addTopLevelItem(item)
             
             # Update top repositories
             self.top_repos_tree.clear()
-            sorted_repos = sorted(github_data.get('repositories', []), 
-                                key=lambda x: x.get('stars', 0), reverse=True)
+            # Sort by file count for now (since we don't have star data in this structure)
+            sorted_repos = sorted(github_data.items(), 
+                                key=lambda x: x[1].get('file_count', 0) if isinstance(x[1], dict) else 0, 
+                                reverse=True)
             
-            for repo in sorted_repos[:10]:  # Top 10
-                item = QtWidgets.QTreeWidgetItem([
-                    repo.get('repo_name', 'Unknown'),
-                    str(repo.get('stars', 0)),
-                    repo.get('language', 'Unknown'),
-                    str(repo.get('file_count', 0))
-                ])
-                self.top_repos_tree.addTopLevelItem(item)
+            for repo_name, repo_data in sorted_repos[:10]:  # Top 10
+                if isinstance(repo_data, dict):
+                    item = QtWidgets.QTreeWidgetItem([
+                        repo_name,
+                        str(repo_data.get('stars', 0)),
+                        repo_data.get('language', 'Unknown'),
+                        str(repo_data.get('file_count', 0))
+                    ])
+                    self.top_repos_tree.addTopLevelItem(item)
                 
         except Exception as e:
             self.update_progress(f"Error updating portfolio statistics: {e}")
+            print(f"Debug - github_data keys: {list(github_data.keys()) if github_data else 'None'}")
+            print(f"Debug - github_data type: {type(github_data)}")
 
     def generate_skill_tree(self):
         """Generate skill tree from portfolio data."""
@@ -1783,6 +1801,45 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                 
         except Exception as e:
             self.update_progress(f"Error exporting insights: {e}")
+
+    def update_github_library_display(self, github_data: Dict):
+        """Update the GitHub library tab with scanned repositories."""
+        try:
+            # Clear existing items
+            self.github_library_tree.clear()
+            
+            # Add repositories to the tree
+            for repo_name, repo_data in github_data.items():
+                if isinstance(repo_data, dict):
+                    # Create repository item
+                    repo_item = QtWidgets.QTreeWidgetItem([
+                        repo_name,
+                        "Private" if repo_data.get('is_private', False) else "Public",
+                        repo_data.get('language', 'Unknown'),
+                        str(repo_data.get('file_count', 0)),
+                        repo_data.get('description', 'No description')
+                    ])
+                    self.github_library_tree.addTopLevelItem(repo_item)
+                    
+                    # Add file details as sub-items
+                    if 'analysis_data' in repo_data:
+                        files_item = QtWidgets.QTreeWidgetItem(["Files"])
+                        repo_item.addChild(files_item)
+                        
+                        for file_path, file_data in repo_data['analysis_data'].items():
+                            if isinstance(file_data, dict):
+                                file_item = QtWidgets.QTreeWidgetItem([
+                                    file_path,
+                                    file_data.get('language', 'Unknown'),
+                                    str(file_data.get('complexity', 0)),
+                                    str(len(file_data.get('functions', [])))
+                                ])
+                                files_item.addChild(file_item)
+            
+            self.update_progress(f"Updated GitHub library display with {len(github_data)} repositories")
+            
+        except Exception as e:
+            self.update_progress(f"Error updating GitHub library display: {e}")
 
     def load_github_library_data(self) -> Optional[Dict]:
         """Load GitHub library data for analysis."""
