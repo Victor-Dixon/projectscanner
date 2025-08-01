@@ -18,6 +18,7 @@ src_path = Path(__file__).parent.parent
 sys.path.insert(0, str(src_path))
 
 from core.projectscanner.scanner import ProjectScanner
+from scanners.github_library_scanner import clone_repository
 
 
 class EnhancedGitHubLibraryScanner:
@@ -179,7 +180,7 @@ class EnhancedGitHubLibraryScanner:
             else:
                 clone_url = repo_url
             
-            clone_path = GitHubScanner.clone_repository(clone_url, temp_dir)
+            clone_path = clone_repository(clone_url, temp_dir)
             
             # Create repository-specific output directory
             repo_output_dir = self.output_dir / unique_name
