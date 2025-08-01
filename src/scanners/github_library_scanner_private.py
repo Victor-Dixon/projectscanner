@@ -404,7 +404,10 @@ class EnhancedGitHubLibraryScanner:
             
             # Count files
             analysis = repo_data.get('analysis', {})
-            files_scanned = analysis.get('file_count', 0)
+            if isinstance(analysis, dict):
+                files_scanned = analysis.get('file_count', len(analysis))
+            else:
+                files_scanned = 0
             summary['total_files_scanned'] += files_scanned
             
             # Add repository info

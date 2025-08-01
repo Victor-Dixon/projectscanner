@@ -3,10 +3,18 @@ Tests for the enhanced GUI functionality.
 """
 
 import pytest
+import sys
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from projectscanner.gui import ScanWorker, GitHubScanner, ProjectScannerGUI
+try:  # pragma: no cover - GUI deps may be missing
+    import PyQt5  # noqa: F401
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+    from core.projectscanner.gui import ScanWorker, ProjectScannerGUI
+except Exception:  # pragma: no cover
+    pytest.skip("PyQt5 not available", allow_module_level=True)
+
+from scanners.github_library_scanner import clone_repository
 
 
 class TestScanWorker:
@@ -28,10 +36,10 @@ class TestScanWorker:
         assert worker.output_dir == output_dir
 
 
-class TestGitHubScanner:
-    """Test the GitHubScanner class."""
+class TestCloneRepository:
+    """Test the repository cloning helper."""
     
-    @patch('subprocess.run')
+    @patch('scanners.github_library_scanner.subprocess.run')
     def test_clone_repository_success(self, mock_run):
         """Test successful repository cloning."""
         mock_run.return_value = Mock(returncode=0)
@@ -39,13 +47,13 @@ class TestGitHubScanner:
         temp_dir = Path("/tmp/test")
         repo_url = "https://github.com/testuser/testrepo"
         
-        result = GitHubScanner.clone_repository(repo_url, temp_dir)
+        result = clone_repository(repo_url, temp_dir)
         
         expected_path = temp_dir / "testrepo"
         assert result == expected_path
         mock_run.assert_called_once()
 
-    @patch('subprocess.run')
+    @patch('scanners.github_library_scanner.subprocess.run')
     def test_clone_repository_failure(self, mock_run):
         """Test repository cloning failure."""
         mock_run.side_effect = Exception("Git not found")
@@ -54,7 +62,7 @@ class TestGitHubScanner:
         repo_url = "https://github.com/testuser/testrepo"
         
         with pytest.raises(Exception, match="Failed to clone repository"):
-            GitHubScanner.clone_repository(repo_url, temp_dir)
+            clone_repository(repo_url, temp_dir)
 
 
 class TestProjectScannerGUI:
