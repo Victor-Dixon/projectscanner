@@ -1,0 +1,214 @@
+{
+    "project_root": "D:\\projectscanner\\temp_repos\\Dadudekc_FreeWork_private\\FreeWork",
+    "num_files_analyzed": 23,
+    "analysis_details": {
+        "jest.config.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "swaggerOptions.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "middleware\\validateMiddleware.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "middleware\\authMiddleware.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "server.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "project_scanner.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_init_tree_sitter_language",
+                "load_cache",
+                "save_cache",
+                "hash_file",
+                "scan_project",
+                "_should_exclude",
+                "_process_file",
+                "_analyze_file_by_language",
+                "_analyze_python",
+                "_analyze_rust",
+                "_analyze_javascript",
+                "_save_report",
+                "_traverse",
+                "get_node_text",
+                "_traverse",
+                "method_upper"
+            ],
+            "classes": {
+                "ProjectScanner": {
+                    "methods": [
+                        "__init__",
+                        "_init_tree_sitter_language",
+                        "load_cache",
+                        "save_cache",
+                        "hash_file",
+                        "scan_project",
+                        "_should_exclude",
+                        "_process_file",
+                        "_analyze_file_by_language",
+                        "_analyze_python",
+                        "_analyze_rust",
+                        "_analyze_javascript",
+                        "_save_report"
+                    ],
+                    "docstring": "A universal project scanner that:\n  - Identifies Python, Rust, JavaScript, and TypeScript files.\n  - Extracts functions, classes, and naive route definitions.\n  - Caches file hashes to skip unchanged files.\n  - Detects moved files by matching file hashes.\n  - Writes a single JSON report (project_analysis.json) at the end.\n\nExtend or refactor `_save_report()` for modular outputs (e.g., routes.json, summary.md, etc.).",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 96,
+            "lint": [
+                "Function scan_project >50 lines",
+                "Function _analyze_python >50 lines",
+                "Function _analyze_javascript >50 lines",
+                "Function _traverse >50 lines",
+                "High complexity"
+            ]
+        },
+        "controllers\\authController.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "middleware\\errorMiddleware.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "controllers\\emailController.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "config\\db.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "models\\Email.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "config\\google.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "tests\\email.e2e.test.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "routes\\emailRoutes.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "models\\User.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "validations\\emailValidation.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "routes\\authRoutes.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "validations\\authValidation.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "tests\\setup.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "tests\\auth.e2e.test.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "tests\\jest.setup.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "routes\\oauthRoutes.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        },
+        "tests\\jest.teardown.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        }
+    }
+}

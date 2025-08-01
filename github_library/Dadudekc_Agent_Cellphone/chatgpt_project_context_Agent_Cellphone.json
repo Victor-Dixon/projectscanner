@@ -1,18 +1,124 @@
 {
-    "project_root": "C:\\Users\\USER\\AppData\\Local\\Temp\\tmpvb7ghz6r\\Agent_Cellphone",
+    "project_root": "D:\\projectscanner\\temp_repos\\Dadudekc_Agent_Cellphone\\Agent_Cellphone",
     "num_files_analyzed": 75,
     "analysis_details": {
-        "test_standardization.py": {
+        "run_two_agent_gui.py": {
             "language": ".py",
             "functions": [
-                "load_status_template",
-                "standardize_agent_status",
-                "standardize_all_agents"
+                "main"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 15,
+            "complexity": 3,
+            "lint": []
+        },
+        "test_harness.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 7,
             "lint": [
+                "Function main >50 lines"
+            ]
+        },
+        "commit_changes.py": {
+            "language": ".py",
+            "functions": [
+                "run_command",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 13,
+            "lint": [
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
+        "main.py": {
+            "language": ".py",
+            "functions": [
+                "print_banner",
+                "print_menu",
+                "run_command",
+                "launch_gui",
+                "show_project_status",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 42,
+            "lint": [
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
+        "examples\\agent_conversation_demo.py": {
+            "language": ".py",
+            "functions": [
+                "agent_1_behavior",
+                "agent_3_behavior",
+                "agent_4_behavior",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 10,
+            "lint": []
+        },
+        "agent_workspaces\\onboarding\\onboarding_manager.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "load_status_template",
+                "standardize_agent_status",
+                "standardize_all_agents",
+                "get_agent_onboarding_status",
+                "update_agent_onboarding_progress",
+                "verify_onboarding_completion",
+                "get_all_agents_onboarding_status",
+                "discover_onboarding_docs",
+                "generate_checklist",
+                "load_state",
+                "save_state",
+                "mark_item_complete",
+                "get_checklist",
+                "get_progress",
+                "reset_checklist"
+            ],
+            "classes": {
+                "OnboardingManager": {
+                    "methods": [
+                        "__init__",
+                        "load_status_template",
+                        "standardize_agent_status",
+                        "standardize_all_agents",
+                        "get_agent_onboarding_status",
+                        "update_agent_onboarding_progress",
+                        "verify_onboarding_completion",
+                        "get_all_agents_onboarding_status",
+                        "discover_onboarding_docs",
+                        "generate_checklist",
+                        "load_state",
+                        "save_state",
+                        "mark_item_complete",
+                        "get_checklist",
+                        "get_progress",
+                        "reset_checklist"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 66,
+            "lint": [
+                "Function update_agent_onboarding_progress >50 lines",
                 "High complexity"
             ]
         },
@@ -29,30 +135,63 @@
                 "Function main >50 lines"
             ]
         },
-        "examples\\agent_conversation_demo.py": {
+        "test_standardization.py": {
             "language": ".py",
             "functions": [
-                "agent_1_behavior",
-                "agent_3_behavior",
-                "agent_4_behavior",
+                "load_status_template",
+                "standardize_agent_status",
+                "standardize_all_agents"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 15,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "gui\\run_two_agent_gui.py": {
+            "language": ".py",
+            "functions": [
                 "main"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 10,
+            "complexity": 3,
             "lint": []
         },
-        "commit_changes.py": {
+        "project_repository\\orchestrator\\__init__.py": {
             "language": ".py",
-            "functions": [
-                "run_command",
-                "main"
-            ],
+            "functions": [],
             "classes": {},
             "routes": [],
-            "complexity": 13,
+            "complexity": 0,
+            "lint": []
+        },
+        "project_repository\\orchestrator\\orchestrator.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "stop",
+                "get_status",
+                "create_sample_prd"
+            ],
+            "classes": {
+                "Orchestrator": {
+                    "methods": [
+                        "__init__",
+                        "stop",
+                        "get_status",
+                        "create_sample_prd"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 17,
             "lint": [
-                "Function main >50 lines",
                 "High complexity"
             ]
         },
@@ -127,69 +266,6 @@
                 "High complexity"
             ]
         },
-        "run_two_agent_gui.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 3,
-            "lint": []
-        },
-        "agent_workspaces\\onboarding\\onboarding_manager.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "load_status_template",
-                "standardize_agent_status",
-                "standardize_all_agents",
-                "get_agent_onboarding_status",
-                "update_agent_onboarding_progress",
-                "verify_onboarding_completion",
-                "get_all_agents_onboarding_status",
-                "discover_onboarding_docs",
-                "generate_checklist",
-                "load_state",
-                "save_state",
-                "mark_item_complete",
-                "get_checklist",
-                "get_progress",
-                "reset_checklist"
-            ],
-            "classes": {
-                "OnboardingManager": {
-                    "methods": [
-                        "__init__",
-                        "load_status_template",
-                        "standardize_agent_status",
-                        "standardize_all_agents",
-                        "get_agent_onboarding_status",
-                        "update_agent_onboarding_progress",
-                        "verify_onboarding_completion",
-                        "get_all_agents_onboarding_status",
-                        "discover_onboarding_docs",
-                        "generate_checklist",
-                        "load_state",
-                        "save_state",
-                        "mark_item_complete",
-                        "get_checklist",
-                        "get_progress",
-                        "reset_checklist"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 66,
-            "lint": [
-                "Function update_agent_onboarding_progress >50 lines",
-                "High complexity"
-            ]
-        },
         "agent_workspaces\\onboarding\\status_standardizer.py": {
             "language": ".py",
             "functions": [
@@ -231,73 +307,6 @@
                 "Function get_default_template >50 lines",
                 "Function migrate_status >50 lines",
                 "High complexity"
-            ]
-        },
-        "main.py": {
-            "language": ".py",
-            "functions": [
-                "print_banner",
-                "print_menu",
-                "run_command",
-                "launch_gui",
-                "show_project_status",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 42,
-            "lint": [
-                "Function main >50 lines",
-                "High complexity"
-            ]
-        },
-        "agent_workspaces\\onboarding\\onboarding_verifier.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "__init__",
-                "get_agent_directories",
-                "load_agent_status",
-                "verify_onboarding_completion",
-                "verify_all_agents",
-                "generate_verification_report",
-                "update_verification_status"
-            ],
-            "classes": {
-                "OnboardingVerifier": {
-                    "methods": [
-                        "__init__",
-                        "get_agent_directories",
-                        "load_agent_status",
-                        "verify_onboarding_completion",
-                        "verify_all_agents",
-                        "generate_verification_report",
-                        "update_verification_status"
-                    ],
-                    "docstring": "Enhanced onboarding verification system",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 46,
-            "lint": [
-                "Function verify_onboarding_completion >50 lines",
-                "Function generate_verification_report >50 lines",
-                "High complexity"
-            ]
-        },
-        "test_harness.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 7,
-            "lint": [
-                "Function main >50 lines"
             ]
         },
         "agent_workspaces\\onboarding\\status_manager.py": {
@@ -383,15 +392,161 @@
                 "High complexity"
             ]
         },
-        "gui\\run_two_agent_gui.py": {
+        "gui\\components\\onboarding_integration.py": {
             "language": ".py",
             "functions": [
-                "main"
+                "__init__",
+                "get_agent_onboarding_status",
+                "get_all_agents_onboarding_status",
+                "update_agent_onboarding_progress",
+                "get_onboarding_summary",
+                "format_onboarding_status_for_display"
             ],
-            "classes": {},
+            "classes": {
+                "OnboardingIntegration": {
+                    "methods": [
+                        "__init__",
+                        "get_agent_onboarding_status",
+                        "get_all_agents_onboarding_status",
+                        "update_agent_onboarding_progress",
+                        "get_onboarding_summary",
+                        "format_onboarding_status_for_display"
+                    ],
+                    "docstring": "Handles onboarding status integration with GUI components.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
             "routes": [],
-            "complexity": 3,
-            "lint": []
+            "complexity": 33,
+            "lint": [
+                "Function update_agent_onboarding_progress >50 lines",
+                "High complexity"
+            ]
+        },
+        "gui\\components\\agent_panel.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "init_ui",
+                "update_status",
+                "__init__",
+                "init_ui",
+                "update_status",
+                "update_onboarding_status",
+                "load_onboarding_status",
+                "ping_agent",
+                "get_status",
+                "resume_agent",
+                "pause_agent",
+                "assign_task"
+            ],
+            "classes": {
+                "AgentStatusWidget": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "update_status"
+                    ],
+                    "docstring": "Individual agent status widget with modern design.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "AgentPanel": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "update_status",
+                        "update_onboarding_status",
+                        "load_onboarding_status",
+                        "ping_agent",
+                        "get_status",
+                        "resume_agent",
+                        "pause_agent",
+                        "assign_task"
+                    ],
+                    "docstring": "Individual agent panel with status and controls.",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 44,
+            "lint": [
+                "Function init_ui >50 lines",
+                "Function init_ui >50 lines",
+                "High complexity"
+            ]
+        },
+        "agent_workspaces\\onboarding\\onboarding_verifier.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "__init__",
+                "get_agent_directories",
+                "load_agent_status",
+                "verify_onboarding_completion",
+                "verify_all_agents",
+                "generate_verification_report",
+                "update_verification_status"
+            ],
+            "classes": {
+                "OnboardingVerifier": {
+                    "methods": [
+                        "__init__",
+                        "get_agent_directories",
+                        "load_agent_status",
+                        "verify_onboarding_completion",
+                        "verify_all_agents",
+                        "generate_verification_report",
+                        "update_verification_status"
+                    ],
+                    "docstring": "Enhanced onboarding verification system",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 46,
+            "lint": [
+                "Function verify_onboarding_completion >50 lines",
+                "Function generate_verification_report >50 lines",
+                "High complexity"
+            ]
+        },
+        "project_repository\\orchestrator\\prd_watcher.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "_parse_prd",
+                "create_sample_prd"
+            ],
+            "classes": {
+                "PRDWatcher": {
+                    "methods": [
+                        "__init__",
+                        "_parse_prd",
+                        "create_sample_prd"
+                    ],
+                    "docstring": "Watches for new PRDs and converts them to project roadmaps.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 14,
+            "lint": [
+                "High complexity"
+            ]
         },
         "gui\\dream_os_gui_v2.py": {
             "language": ".py",
@@ -480,185 +635,6 @@
                 "High complexity"
             ]
         },
-        "gui\\components\\agent_panel.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "init_ui",
-                "update_status",
-                "__init__",
-                "init_ui",
-                "update_status",
-                "update_onboarding_status",
-                "load_onboarding_status",
-                "ping_agent",
-                "get_status",
-                "resume_agent",
-                "pause_agent",
-                "assign_task"
-            ],
-            "classes": {
-                "AgentStatusWidget": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "update_status"
-                    ],
-                    "docstring": "Individual agent status widget with modern design.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "AgentPanel": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "update_status",
-                        "update_onboarding_status",
-                        "load_onboarding_status",
-                        "ping_agent",
-                        "get_status",
-                        "resume_agent",
-                        "pause_agent",
-                        "assign_task"
-                    ],
-                    "docstring": "Individual agent panel with status and controls.",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 44,
-            "lint": [
-                "Function init_ui >50 lines",
-                "Function init_ui >50 lines",
-                "High complexity"
-            ]
-        },
-        "gui\\four_agent_horizontal_gui.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "__init__",
-                "init_ui",
-                "create_header",
-                "create_shared_controls",
-                "create_log_area",
-                "setup_status_updates",
-                "log_message",
-                "update_agent_statuses",
-                "onboard_agents",
-                "restart_system",
-                "test_coordinates",
-                "send_message",
-                "broadcast_command",
-                "get_system_status",
-                "clear_log",
-                "save_log",
-                "run_onboarding",
-                "__init__",
-                "get_all_coordinates",
-                "get_coordinates",
-                "__init__"
-            ],
-            "classes": {
-                "FourAgentHorizontalGUI": {
-                    "methods": [
-                        "__init__",
-                        "init_ui",
-                        "create_header",
-                        "create_shared_controls",
-                        "create_log_area",
-                        "setup_status_updates",
-                        "log_message",
-                        "update_agent_statuses",
-                        "onboard_agents",
-                        "restart_system",
-                        "test_coordinates",
-                        "send_message",
-                        "broadcast_command",
-                        "get_system_status",
-                        "clear_log",
-                        "save_log"
-                    ],
-                    "docstring": "Modern four-agent horizontal GUI.",
-                    "base_classes": [
-                        "QMainWindow"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                },
-                "CoordinateFinder": {
-                    "methods": [
-                        "__init__",
-                        "get_all_coordinates",
-                        "get_coordinates"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                },
-                "AgentAutonomyFramework": {
-                    "methods": [
-                        "__init__"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Prototype",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 75,
-            "lint": [
-                "Function create_header >50 lines",
-                "Function create_shared_controls >50 lines",
-                "Function create_log_area >50 lines",
-                "High complexity"
-            ]
-        },
-        "project_repository\\orchestrator\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "project_repository\\orchestrator\\orchestrator.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "stop",
-                "get_status",
-                "create_sample_prd"
-            ],
-            "classes": {
-                "Orchestrator": {
-                    "methods": [
-                        "__init__",
-                        "stop",
-                        "get_status",
-                        "create_sample_prd"
-                    ],
-                    "docstring": null,
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 17,
-            "lint": [
-                "High complexity"
-            ]
-        },
         "project_repository\\orchestrator\\task_router.py": {
             "language": ".py",
             "functions": [
@@ -690,80 +666,6 @@
             "routes": [],
             "complexity": 25,
             "lint": [
-                "High complexity"
-            ]
-        },
-        "project_repository\\orchestrator\\prd_watcher.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "_parse_prd",
-                "create_sample_prd"
-            ],
-            "classes": {
-                "PRDWatcher": {
-                    "methods": [
-                        "__init__",
-                        "_parse_prd",
-                        "create_sample_prd"
-                    ],
-                    "docstring": "Watches for new PRDs and converts them to project roadmaps.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 14,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "scripts\\agent_messenger.py": {
-            "language": ".py",
-            "functions": [
-                "main",
-                "interactive_mode"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 19,
-            "lint": [
-                "Function main >50 lines",
-                "Function interactive_mode >50 lines",
-                "High complexity"
-            ]
-        },
-        "gui\\components\\onboarding_integration.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "get_agent_onboarding_status",
-                "get_all_agents_onboarding_status",
-                "update_agent_onboarding_progress",
-                "get_onboarding_summary",
-                "format_onboarding_status_for_display"
-            ],
-            "classes": {
-                "OnboardingIntegration": {
-                    "methods": [
-                        "__init__",
-                        "get_agent_onboarding_status",
-                        "get_all_agents_onboarding_status",
-                        "update_agent_onboarding_progress",
-                        "get_onboarding_summary",
-                        "format_onboarding_status_for_display"
-                    ],
-                    "docstring": "Handles onboarding status integration with GUI components.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 33,
-            "lint": [
-                "Function update_agent_onboarding_progress >50 lines",
                 "High complexity"
             ]
         },
@@ -850,6 +752,89 @@
                 "High complexity"
             ]
         },
+        "gui\\four_agent_horizontal_gui.py": {
+            "language": ".py",
+            "functions": [
+                "main",
+                "__init__",
+                "init_ui",
+                "create_header",
+                "create_shared_controls",
+                "create_log_area",
+                "setup_status_updates",
+                "log_message",
+                "update_agent_statuses",
+                "onboard_agents",
+                "restart_system",
+                "test_coordinates",
+                "send_message",
+                "broadcast_command",
+                "get_system_status",
+                "clear_log",
+                "save_log",
+                "run_onboarding",
+                "__init__",
+                "get_all_coordinates",
+                "get_coordinates",
+                "__init__"
+            ],
+            "classes": {
+                "FourAgentHorizontalGUI": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "create_header",
+                        "create_shared_controls",
+                        "create_log_area",
+                        "setup_status_updates",
+                        "log_message",
+                        "update_agent_statuses",
+                        "onboard_agents",
+                        "restart_system",
+                        "test_coordinates",
+                        "send_message",
+                        "broadcast_command",
+                        "get_system_status",
+                        "clear_log",
+                        "save_log"
+                    ],
+                    "docstring": "Modern four-agent horizontal GUI.",
+                    "base_classes": [
+                        "QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "CoordinateFinder": {
+                    "methods": [
+                        "__init__",
+                        "get_all_coordinates",
+                        "get_coordinates"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                },
+                "AgentAutonomyFramework": {
+                    "methods": [
+                        "__init__"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 75,
+            "lint": [
+                "Function create_header >50 lines",
+                "Function create_shared_controls >50 lines",
+                "Function create_log_area >50 lines",
+                "High complexity"
+            ]
+        },
         "scripts\\agent_onboarding_sequence.py": {
             "language": ".py",
             "functions": [
@@ -870,21 +855,22 @@
             "complexity": 5,
             "lint": []
         },
-        "scripts\\cleanup_duplicates.py": {
+        "scripts\\agent_messenger.py": {
             "language": ".py",
             "functions": [
-                "create_redirect_script",
-                "main"
+                "main",
+                "interactive_mode"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 8,
+            "complexity": 19,
             "lint": [
-                "Function create_redirect_script >50 lines",
-                "Function main >50 lines"
+                "Function main >50 lines",
+                "Function interactive_mode >50 lines",
+                "High complexity"
             ]
         },
-        "scripts\\comprehensive_onboarding_message_ascii.py": {
+        "scripts\\demo_chunk_vs_comprehensive_gui.py": {
             "language": ".py",
             "functions": [
                 "main"
@@ -893,19 +879,6 @@
             "routes": [],
             "complexity": 5,
             "lint": []
-        },
-        "scripts\\consolidated_onboarding.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 18,
-            "lint": [
-                "Function main >50 lines",
-                "High complexity"
-            ]
         },
         "scripts\\automated_onboarding.py": {
             "language": ".py",
@@ -938,27 +911,31 @@
                 "High complexity"
             ]
         },
+        "scripts\\cleanup_duplicates.py": {
+            "language": ".py",
+            "functions": [
+                "create_redirect_script",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 8,
+            "lint": [
+                "Function create_redirect_script >50 lines",
+                "Function main >50 lines"
+            ]
+        },
+        "scripts\\comprehensive_onboarding_message_ascii.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
         "scripts\\comprehensive_onboarding_message_simple.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "scripts\\demo_chunk_vs_comprehensive_gui.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "scripts\\demo_onboarding_comparison.py": {
             "language": ".py",
             "functions": [
                 "main"
@@ -986,59 +963,20 @@
                 "High complexity"
             ]
         },
-        "scripts\\onboarding_approach_comparison.py": {
+        "scripts\\consolidated_onboarding.py": {
             "language": ".py",
             "functions": [
                 "main"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "scripts\\run_onboarding.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 6,
-            "lint": []
-        },
-        "scripts\\onboarding_utils.py": {
-            "language": ".py",
-            "functions": [
-                "run_cli_command",
-                "load_agent_coordinates",
-                "get_agent_info",
-                "create_comprehensive_onboarding_message",
-                "create_simple_onboarding_message",
-                "send_onboarding_message",
-                "send_onboarding_to_all_agents",
-                "get_chunked_vs_comprehensive_comparison",
-                "print_onboarding_summary"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 34,
+            "complexity": 18,
             "lint": [
-                "Function create_comprehensive_onboarding_message >50 lines",
-                "Function get_chunked_vs_comprehensive_comparison >50 lines",
+                "Function main >50 lines",
                 "High complexity"
             ]
         },
-        "scripts\\onboarding_messages.py": {
-            "language": ".py",
-            "functions": [
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": []
-        },
-        "scripts\\send_single_onboarding.py": {
+        "scripts\\demo_onboarding_comparison.py": {
             "language": ".py",
             "functions": [
                 "main"
@@ -1049,6 +987,26 @@
             "lint": []
         },
         "scripts\\onboard_all_agents.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "scripts\\onboarding_approach_comparison.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "scripts\\send_onboarding_message.py": {
             "language": ".py",
             "functions": [
                 "main"
@@ -1129,6 +1087,16 @@
                 "High complexity"
             ]
         },
+        "scripts\\onboarding_messages.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
         "scripts\\send_specific_onboarding.py": {
             "language": ".py",
             "functions": [
@@ -1138,6 +1106,47 @@
             "routes": [],
             "complexity": 5,
             "lint": []
+        },
+        "scripts\\send_single_onboarding.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        },
+        "scripts\\run_onboarding.py": {
+            "language": ".py",
+            "functions": [
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "src\\main.py": {
+            "language": ".py",
+            "functions": [
+                "print_banner",
+                "check_dependencies",
+                "show_menu",
+                "run_dream_os_gui",
+                "run_simple_gui",
+                "run_test_harness",
+                "run_coordinate_finder",
+                "run_diagnostic_test",
+                "show_documentation",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 34,
+            "lint": [
+                "High complexity"
+            ]
         },
         "scripts\\send_onboarding.py": {
             "language": ".py",
@@ -1149,15 +1158,27 @@
             "complexity": 5,
             "lint": []
         },
-        "scripts\\send_onboarding_message.py": {
+        "scripts\\onboarding_utils.py": {
             "language": ".py",
             "functions": [
-                "main"
+                "run_cli_command",
+                "load_agent_coordinates",
+                "get_agent_info",
+                "create_comprehensive_onboarding_message",
+                "create_simple_onboarding_message",
+                "send_onboarding_message",
+                "send_onboarding_to_all_agents",
+                "get_chunked_vs_comprehensive_comparison",
+                "print_onboarding_summary"
             ],
             "classes": {},
             "routes": [],
-            "complexity": 5,
-            "lint": []
+            "complexity": 34,
+            "lint": [
+                "Function create_comprehensive_onboarding_message >50 lines",
+                "Function get_chunked_vs_comprehensive_comparison >50 lines",
+                "High complexity"
+            ]
         },
         "src\\agent_cell_phone.py": {
             "language": ".py",
@@ -1312,7 +1333,7 @@
                 "High complexity"
             ]
         },
-        "src\\gui\\__init__.py": {
+        "src\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -1320,28 +1341,7 @@
             "complexity": 0,
             "lint": []
         },
-        "src\\main.py": {
-            "language": ".py",
-            "functions": [
-                "print_banner",
-                "check_dependencies",
-                "show_menu",
-                "run_dream_os_gui",
-                "run_simple_gui",
-                "run_test_harness",
-                "run_coordinate_finder",
-                "run_diagnostic_test",
-                "show_documentation",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 34,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "src\\__init__.py": {
+        "src\\gui\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -1429,6 +1429,43 @@
                 "High complexity"
             ]
         },
+        "src\\gui\\components\\custom_message_widget_qt.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_widget",
+                "set_message_content",
+                "get_message_content",
+                "clear_message",
+                "send_chunk_message_clicked",
+                "send_comprehensive_message_clicked"
+            ],
+            "classes": {
+                "CustomMessageWidget": {
+                    "methods": [
+                        "__init__",
+                        "setup_widget",
+                        "set_message_content",
+                        "get_message_content",
+                        "clear_message",
+                        "send_chunk_message_clicked",
+                        "send_comprehensive_message_clicked"
+                    ],
+                    "docstring": "Reusable custom message widget for onboarding",
+                    "base_classes": [
+                        "QWidget"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 16,
+            "lint": [
+                "Function setup_widget >50 lines",
+                "High complexity"
+            ]
+        },
         "src\\framework\\agent_autonomy_framework.py": {
             "language": ".py",
             "functions": [
@@ -1480,43 +1517,6 @@
                 "High complexity"
             ]
         },
-        "src\\gui\\components\\custom_message_widget_qt.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "setup_widget",
-                "set_message_content",
-                "get_message_content",
-                "clear_message",
-                "send_chunk_message_clicked",
-                "send_comprehensive_message_clicked"
-            ],
-            "classes": {
-                "CustomMessageWidget": {
-                    "methods": [
-                        "__init__",
-                        "setup_widget",
-                        "set_message_content",
-                        "get_message_content",
-                        "clear_message",
-                        "send_chunk_message_clicked",
-                        "send_comprehensive_message_clicked"
-                    ],
-                    "docstring": "Reusable custom message widget for onboarding",
-                    "base_classes": [
-                        "QWidget"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 16,
-            "lint": [
-                "Function setup_widget >50 lines",
-                "High complexity"
-            ]
-        },
         "src\\framework\\__init__.py": {
             "language": ".py",
             "functions": [],
@@ -1524,6 +1524,211 @@
             "routes": [],
             "complexity": 0,
             "lint": []
+        },
+        "src\\gui\\tabs\\__init__.py": {
+            "language": ".py",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0,
+            "lint": []
+        },
+        "src\\gui\\utils\\base_gui_controller.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "log_message",
+                "clear_log",
+                "save_log",
+                "select_all_agents",
+                "clear_selection",
+                "get_available_agents",
+                "execute_selected_agents_action",
+                "_default_agent_action",
+                "ping_selected_agents",
+                "get_status_selected_agents",
+                "resume_selected_agents",
+                "pause_selected_agents",
+                "sync_selected_agents",
+                "assign_task_selected_agents",
+                "broadcast_action",
+                "_default_broadcast_action",
+                "broadcast_message",
+                "broadcast_ping",
+                "broadcast_status",
+                "broadcast_resume",
+                "broadcast_task",
+                "setup_status_updates",
+                "update_agent_statuses",
+                "get_agent_status",
+                "send_message_to_agents",
+                "_send_message_via_coordinates",
+                "_send_message_via_framework",
+                "test_coordinates",
+                "init_ui",
+                "create_agent_widgets"
+            ],
+            "classes": {
+                "BaseGUIController": {
+                    "methods": [
+                        "__init__",
+                        "log_message",
+                        "clear_log",
+                        "save_log",
+                        "select_all_agents",
+                        "clear_selection",
+                        "get_available_agents",
+                        "execute_selected_agents_action",
+                        "_default_agent_action",
+                        "ping_selected_agents",
+                        "get_status_selected_agents",
+                        "resume_selected_agents",
+                        "pause_selected_agents",
+                        "sync_selected_agents",
+                        "assign_task_selected_agents",
+                        "broadcast_action",
+                        "_default_broadcast_action",
+                        "broadcast_message",
+                        "broadcast_ping",
+                        "broadcast_status",
+                        "broadcast_resume",
+                        "broadcast_task",
+                        "setup_status_updates",
+                        "update_agent_statuses",
+                        "get_agent_status",
+                        "send_message_to_agents",
+                        "_send_message_via_coordinates",
+                        "_send_message_via_framework",
+                        "test_coordinates",
+                        "init_ui",
+                        "create_agent_widgets"
+                    ],
+                    "docstring": "Base class for GUI controllers that provides shared functionality\nto eliminate code duplication across different GUI implementations.",
+                    "base_classes": [
+                        "ABC"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 85,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\gui\\utils\\coordination_utils.py": {
+            "language": ".py",
+            "functions": [
+                "create_coordination_utils",
+                "get_system_health",
+                "test_all_agents",
+                "broadcast_message",
+                "__init__",
+                "initialize_agent_cell_phone",
+                "get_system_coordinates",
+                "test_all_agents",
+                "_test_ping",
+                "_test_status",
+                "broadcast_system_message",
+                "send_coordination_command",
+                "sync_all_agents",
+                "resume_all_agents",
+                "verify_all_agents",
+                "get_system_health",
+                "assign_tasks_to_agents",
+                "get_agent_workloads",
+                "balance_workload",
+                "get_system_metrics",
+                "emergency_broadcast",
+                "system_maintenance_mode",
+                "get_agent_logs",
+                "clear_agent_logs"
+            ],
+            "classes": {
+                "CoordinationUtils": {
+                    "methods": [
+                        "__init__",
+                        "initialize_agent_cell_phone",
+                        "get_system_coordinates",
+                        "test_all_agents",
+                        "_test_ping",
+                        "_test_status",
+                        "broadcast_system_message",
+                        "send_coordination_command",
+                        "sync_all_agents",
+                        "resume_all_agents",
+                        "verify_all_agents",
+                        "get_system_health",
+                        "assign_tasks_to_agents",
+                        "get_agent_workloads",
+                        "balance_workload",
+                        "get_system_metrics",
+                        "emergency_broadcast",
+                        "system_maintenance_mode",
+                        "get_agent_logs",
+                        "clear_agent_logs"
+                    ],
+                    "docstring": "Utility class for agent coordination operations",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 82,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\gui\\components\\onboarding_dashboard.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_widget",
+                "initialize_components",
+                "refresh_dashboard",
+                "update_dashboard_ui",
+                "run_verification",
+                "show_verification_results",
+                "generate_report",
+                "auto_onboard_all",
+                "on_agent_double_click",
+                "show_agent_details",
+                "get_widget",
+                "refresh_thread",
+                "verification_thread",
+                "onboard_thread"
+            ],
+            "classes": {
+                "OnboardingDashboardWidget": {
+                    "methods": [
+                        "__init__",
+                        "setup_widget",
+                        "initialize_components",
+                        "refresh_dashboard",
+                        "update_dashboard_ui",
+                        "run_verification",
+                        "show_verification_results",
+                        "generate_report",
+                        "auto_onboard_all",
+                        "on_agent_double_click",
+                        "show_agent_details",
+                        "get_widget"
+                    ],
+                    "docstring": "Enhanced onboarding dashboard widget",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 56,
+            "lint": [
+                "Function setup_widget >50 lines",
+                "Function show_agent_details >50 lines",
+                "High complexity"
+            ]
         },
         "src\\gui\\components\\onboarding_components_qt.py": {
             "language": ".py",
@@ -1631,7 +1836,7 @@
                 "High complexity"
             ]
         },
-        "src\\gui\\tabs\\__init__.py": {
+        "src\\gui\\utils\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -1639,199 +1844,69 @@
             "complexity": 0,
             "lint": []
         },
-        "src\\gui\\components\\onboarding_dashboard.py": {
+        "src\\gui\\utils\\messaging_utils.py": {
             "language": ".py",
             "functions": [
+                "create_messaging_utils",
+                "send_quick_message",
+                "send_quick_command",
                 "__init__",
-                "setup_widget",
-                "initialize_components",
-                "refresh_dashboard",
-                "update_dashboard_ui",
-                "run_verification",
-                "show_verification_results",
-                "generate_report",
-                "auto_onboard_all",
-                "on_agent_double_click",
-                "show_agent_details",
-                "get_widget",
-                "refresh_thread",
-                "verification_thread",
-                "onboard_thread"
+                "initialize_agent_cell_phone",
+                "get_available_agents",
+                "get_available_commands",
+                "get_available_tags",
+                "send_message",
+                "send_command",
+                "ping_agent",
+                "get_agent_status",
+                "resume_agent",
+                "sync_agent",
+                "verify_agent",
+                "assign_task",
+                "broadcast_captain_message",
+                "get_system_status",
+                "test_connectivity",
+                "get_message_history",
+                "validate_message",
+                "validate_target",
+                "get_agent_info",
+                "switch_layout_mode",
+                "toggle_test_mode"
             ],
             "classes": {
-                "OnboardingDashboardWidget": {
+                "MessagingUtils": {
                     "methods": [
                         "__init__",
-                        "setup_widget",
-                        "initialize_components",
-                        "refresh_dashboard",
-                        "update_dashboard_ui",
-                        "run_verification",
-                        "show_verification_results",
-                        "generate_report",
-                        "auto_onboard_all",
-                        "on_agent_double_click",
-                        "show_agent_details",
-                        "get_widget"
+                        "initialize_agent_cell_phone",
+                        "get_available_agents",
+                        "get_available_commands",
+                        "get_available_tags",
+                        "send_message",
+                        "send_command",
+                        "ping_agent",
+                        "get_agent_status",
+                        "resume_agent",
+                        "sync_agent",
+                        "verify_agent",
+                        "assign_task",
+                        "broadcast_captain_message",
+                        "get_system_status",
+                        "test_connectivity",
+                        "get_message_history",
+                        "validate_message",
+                        "validate_target",
+                        "get_agent_info",
+                        "switch_layout_mode",
+                        "toggle_test_mode"
                     ],
-                    "docstring": "Enhanced onboarding dashboard widget",
+                    "docstring": "Utility class for agent messaging operations",
                     "base_classes": [],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 56,
-            "lint": [
-                "Function setup_widget >50 lines",
-                "Function show_agent_details >50 lines",
-                "High complexity"
-            ]
-        },
-        "src\\gui\\tabs\\agent_messenger_tab.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "setup_ui",
-                "initialize_messaging",
-                "on_type_change",
-                "send_chunk_message",
-                "send_comprehensive_message",
-                "handle_send_result",
-                "send_quick_command",
-                "clear_message",
-                "clear_log",
-                "log_message",
-                "refresh_status",
-                "update_status_display",
-                "test_connectivity",
-                "get_agent_info",
-                "switch_layout_mode",
-                "toggle_test_mode",
-                "send_thread",
-                "send_thread",
-                "send_thread",
-                "status_thread",
-                "test_thread",
-                "switch_thread",
-                "toggle_thread"
-            ],
-            "classes": {
-                "AgentMessengerTab": {
-                    "methods": [
-                        "__init__",
-                        "setup_ui",
-                        "initialize_messaging",
-                        "on_type_change",
-                        "send_chunk_message",
-                        "send_comprehensive_message",
-                        "handle_send_result",
-                        "send_quick_command",
-                        "clear_message",
-                        "clear_log",
-                        "log_message",
-                        "refresh_status",
-                        "update_status_display",
-                        "test_connectivity",
-                        "get_agent_info",
-                        "switch_layout_mode",
-                        "toggle_test_mode"
-                    ],
-                    "docstring": "Agent Messenger Tab for sending messages and commands to agents",
-                    "base_classes": [
-                        "ttk.Frame"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 71,
-            "lint": [
-                "Function setup_ui >50 lines",
-                "High complexity"
-            ]
-        },
-        "src\\gui\\utils\\base_gui_controller.py": {
-            "language": ".py",
-            "functions": [
-                "__init__",
-                "log_message",
-                "clear_log",
-                "save_log",
-                "select_all_agents",
-                "clear_selection",
-                "get_available_agents",
-                "execute_selected_agents_action",
-                "_default_agent_action",
-                "ping_selected_agents",
-                "get_status_selected_agents",
-                "resume_selected_agents",
-                "pause_selected_agents",
-                "sync_selected_agents",
-                "assign_task_selected_agents",
-                "broadcast_action",
-                "_default_broadcast_action",
-                "broadcast_message",
-                "broadcast_ping",
-                "broadcast_status",
-                "broadcast_resume",
-                "broadcast_task",
-                "setup_status_updates",
-                "update_agent_statuses",
-                "get_agent_status",
-                "send_message_to_agents",
-                "_send_message_via_coordinates",
-                "_send_message_via_framework",
-                "test_coordinates",
-                "init_ui",
-                "create_agent_widgets"
-            ],
-            "classes": {
-                "BaseGUIController": {
-                    "methods": [
-                        "__init__",
-                        "log_message",
-                        "clear_log",
-                        "save_log",
-                        "select_all_agents",
-                        "clear_selection",
-                        "get_available_agents",
-                        "execute_selected_agents_action",
-                        "_default_agent_action",
-                        "ping_selected_agents",
-                        "get_status_selected_agents",
-                        "resume_selected_agents",
-                        "pause_selected_agents",
-                        "sync_selected_agents",
-                        "assign_task_selected_agents",
-                        "broadcast_action",
-                        "_default_broadcast_action",
-                        "broadcast_message",
-                        "broadcast_ping",
-                        "broadcast_status",
-                        "broadcast_resume",
-                        "broadcast_task",
-                        "setup_status_updates",
-                        "update_agent_statuses",
-                        "get_agent_status",
-                        "send_message_to_agents",
-                        "_send_message_via_coordinates",
-                        "_send_message_via_framework",
-                        "test_coordinates",
-                        "init_ui",
-                        "create_agent_widgets"
-                    ],
-                    "docstring": "Base class for GUI controllers that provides shared functionality\nto eliminate code duplication across different GUI implementations.",
-                    "base_classes": [
-                        "ABC"
-                    ],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 85,
+            "complexity": 76,
             "lint": [
                 "High complexity"
             ]
@@ -1966,67 +2041,6 @@
                 "High complexity"
             ]
         },
-        "src\\gui\\utils\\onboarding_utils.py": {
-            "language": ".py",
-            "functions": [
-                "create_onboarding_utils",
-                "send_quick_onboarding",
-                "get_onboarding_progress",
-                "__init__",
-                "initialize_agent_cell_phone",
-                "get_onboarding_messages",
-                "_get_welcome_message",
-                "_get_system_overview_message",
-                "_get_communication_protocol_message",
-                "_get_roles_message",
-                "_get_best_practices_message",
-                "_get_getting_started_message",
-                "_get_troubleshooting_message",
-                "_get_quick_start_message",
-                "send_onboarding_message",
-                "send_all_onboarding_messages",
-                "onboard_all_agents",
-                "send_custom_onboarding_message",
-                "get_onboarding_status",
-                "get_all_onboarding_status",
-                "validate_onboarding_completion",
-                "get_onboarding_progress"
-            ],
-            "classes": {
-                "OnboardingUtils": {
-                    "methods": [
-                        "__init__",
-                        "initialize_agent_cell_phone",
-                        "get_onboarding_messages",
-                        "_get_welcome_message",
-                        "_get_system_overview_message",
-                        "_get_communication_protocol_message",
-                        "_get_roles_message",
-                        "_get_best_practices_message",
-                        "_get_getting_started_message",
-                        "_get_troubleshooting_message",
-                        "_get_quick_start_message",
-                        "send_onboarding_message",
-                        "send_all_onboarding_messages",
-                        "onboard_all_agents",
-                        "send_custom_onboarding_message",
-                        "get_onboarding_status",
-                        "get_all_onboarding_status",
-                        "validate_onboarding_completion",
-                        "get_onboarding_progress"
-                    ],
-                    "docstring": "Utility class for agent onboarding operations",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 64,
-            "lint": [
-                "High complexity"
-            ]
-        },
         "src\\gui\\tabs\\coordinator_tab.py": {
             "language": ".py",
             "functions": [
@@ -2106,45 +2120,70 @@
                 "High complexity"
             ]
         },
-        "src\\gui\\tabs\\onboarding_tab.py": {
+        "tests\\test_8_agent_coordinates.py": {
+            "language": ".py",
+            "functions": [
+                "test_8_agent_coordinates",
+                "test_coordinate_validation"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 13,
+            "lint": [
+                "Function test_8_agent_coordinates >50 lines",
+                "High complexity"
+            ]
+        },
+        "src\\gui\\tabs\\agent_messenger_tab.py": {
             "language": ".py",
             "functions": [
                 "__init__",
                 "setup_ui",
-                "initialize_onboarding",
-                "handle_send_request",
-                "send_specific_message",
-                "send_all_messages_to_agent",
-                "onboard_all_agents",
-                "send_custom_message",
+                "initialize_messaging",
+                "on_type_change",
+                "send_chunk_message",
+                "send_comprehensive_message",
                 "handle_send_result",
-                "on_log_clear",
+                "send_quick_command",
+                "clear_message",
+                "clear_log",
                 "log_message",
-                "load_checklist",
                 "refresh_status",
-                "get_agent_onboarding_status",
+                "update_status_display",
+                "test_connectivity",
+                "get_agent_info",
+                "switch_layout_mode",
+                "toggle_test_mode",
                 "send_thread",
-                "status_thread"
+                "send_thread",
+                "send_thread",
+                "status_thread",
+                "test_thread",
+                "switch_thread",
+                "toggle_thread"
             ],
             "classes": {
-                "OnboardingTab": {
+                "AgentMessengerTab": {
                     "methods": [
                         "__init__",
                         "setup_ui",
-                        "initialize_onboarding",
-                        "handle_send_request",
-                        "send_specific_message",
-                        "send_all_messages_to_agent",
-                        "onboard_all_agents",
-                        "send_custom_message",
+                        "initialize_messaging",
+                        "on_type_change",
+                        "send_chunk_message",
+                        "send_comprehensive_message",
                         "handle_send_result",
-                        "on_log_clear",
+                        "send_quick_command",
+                        "clear_message",
+                        "clear_log",
                         "log_message",
-                        "load_checklist",
                         "refresh_status",
-                        "get_agent_onboarding_status"
+                        "update_status_display",
+                        "test_connectivity",
+                        "get_agent_info",
+                        "switch_layout_mode",
+                        "toggle_test_mode"
                     ],
-                    "docstring": "Onboarding Manager Tab for managing agent onboarding using modular components",
+                    "docstring": "Agent Messenger Tab for sending messages and commands to agents",
                     "base_classes": [
                         "ttk.Frame"
                     ],
@@ -2153,139 +2192,69 @@
                 }
             },
             "routes": [],
-            "complexity": 59,
+            "complexity": 71,
             "lint": [
                 "Function setup_ui >50 lines",
                 "High complexity"
             ]
         },
-        "src\\gui\\utils\\coordination_utils.py": {
+        "src\\gui\\utils\\onboarding_utils.py": {
             "language": ".py",
             "functions": [
-                "create_coordination_utils",
-                "get_system_health",
-                "test_all_agents",
-                "broadcast_message",
+                "create_onboarding_utils",
+                "send_quick_onboarding",
+                "get_onboarding_progress",
                 "__init__",
                 "initialize_agent_cell_phone",
-                "get_system_coordinates",
-                "test_all_agents",
-                "_test_ping",
-                "_test_status",
-                "broadcast_system_message",
-                "send_coordination_command",
-                "sync_all_agents",
-                "resume_all_agents",
-                "verify_all_agents",
-                "get_system_health",
-                "assign_tasks_to_agents",
-                "get_agent_workloads",
-                "balance_workload",
-                "get_system_metrics",
-                "emergency_broadcast",
-                "system_maintenance_mode",
-                "get_agent_logs",
-                "clear_agent_logs"
+                "get_onboarding_messages",
+                "_get_welcome_message",
+                "_get_system_overview_message",
+                "_get_communication_protocol_message",
+                "_get_roles_message",
+                "_get_best_practices_message",
+                "_get_getting_started_message",
+                "_get_troubleshooting_message",
+                "_get_quick_start_message",
+                "send_onboarding_message",
+                "send_all_onboarding_messages",
+                "onboard_all_agents",
+                "send_custom_onboarding_message",
+                "get_onboarding_status",
+                "get_all_onboarding_status",
+                "validate_onboarding_completion",
+                "get_onboarding_progress"
             ],
             "classes": {
-                "CoordinationUtils": {
+                "OnboardingUtils": {
                     "methods": [
                         "__init__",
                         "initialize_agent_cell_phone",
-                        "get_system_coordinates",
-                        "test_all_agents",
-                        "_test_ping",
-                        "_test_status",
-                        "broadcast_system_message",
-                        "send_coordination_command",
-                        "sync_all_agents",
-                        "resume_all_agents",
-                        "verify_all_agents",
-                        "get_system_health",
-                        "assign_tasks_to_agents",
-                        "get_agent_workloads",
-                        "balance_workload",
-                        "get_system_metrics",
-                        "emergency_broadcast",
-                        "system_maintenance_mode",
-                        "get_agent_logs",
-                        "clear_agent_logs"
+                        "get_onboarding_messages",
+                        "_get_welcome_message",
+                        "_get_system_overview_message",
+                        "_get_communication_protocol_message",
+                        "_get_roles_message",
+                        "_get_best_practices_message",
+                        "_get_getting_started_message",
+                        "_get_troubleshooting_message",
+                        "_get_quick_start_message",
+                        "send_onboarding_message",
+                        "send_all_onboarding_messages",
+                        "onboard_all_agents",
+                        "send_custom_onboarding_message",
+                        "get_onboarding_status",
+                        "get_all_onboarding_status",
+                        "validate_onboarding_completion",
+                        "get_onboarding_progress"
                     ],
-                    "docstring": "Utility class for agent coordination operations",
+                    "docstring": "Utility class for agent onboarding operations",
                     "base_classes": [],
                     "maturity": "Core Asset",
                     "agent_type": "Utility"
                 }
             },
             "routes": [],
-            "complexity": 82,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "src\\gui\\utils\\messaging_utils.py": {
-            "language": ".py",
-            "functions": [
-                "create_messaging_utils",
-                "send_quick_message",
-                "send_quick_command",
-                "__init__",
-                "initialize_agent_cell_phone",
-                "get_available_agents",
-                "get_available_commands",
-                "get_available_tags",
-                "send_message",
-                "send_command",
-                "ping_agent",
-                "get_agent_status",
-                "resume_agent",
-                "sync_agent",
-                "verify_agent",
-                "assign_task",
-                "broadcast_captain_message",
-                "get_system_status",
-                "test_connectivity",
-                "get_message_history",
-                "validate_message",
-                "validate_target",
-                "get_agent_info",
-                "switch_layout_mode",
-                "toggle_test_mode"
-            ],
-            "classes": {
-                "MessagingUtils": {
-                    "methods": [
-                        "__init__",
-                        "initialize_agent_cell_phone",
-                        "get_available_agents",
-                        "get_available_commands",
-                        "get_available_tags",
-                        "send_message",
-                        "send_command",
-                        "ping_agent",
-                        "get_agent_status",
-                        "resume_agent",
-                        "sync_agent",
-                        "verify_agent",
-                        "assign_task",
-                        "broadcast_captain_message",
-                        "get_system_status",
-                        "test_connectivity",
-                        "get_message_history",
-                        "validate_message",
-                        "validate_target",
-                        "get_agent_info",
-                        "switch_layout_mode",
-                        "toggle_test_mode"
-                    ],
-                    "docstring": "Utility class for agent messaging operations",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 76,
+            "complexity": 64,
             "lint": [
                 "High complexity"
             ]
@@ -2350,7 +2319,155 @@
                 "High complexity"
             ]
         },
-        "src\\gui\\utils\\__init__.py": {
+        "src\\gui\\utils\\shared_operations.py": {
+            "language": ".py",
+            "functions": [
+                "create_shared_operations",
+                "quick_agent_action",
+                "quick_broadcast",
+                "__init__",
+                "_initialize_services",
+                "get_agent_status",
+                "get_all_agent_statuses",
+                "ping_agent",
+                "ping_all_agents",
+                "resume_agent",
+                "pause_agent",
+                "sync_agent",
+                "assign_task_to_agent",
+                "broadcast_message",
+                "broadcast_command",
+                "broadcast_system_message",
+                "broadcast_emergency",
+                "get_agent_coordinates",
+                "get_all_coordinates",
+                "update_agent_coordinates",
+                "save_coordinates",
+                "get_system_health",
+                "get_system_metrics",
+                "test_system_connectivity",
+                "_get_available_agents",
+                "validate_agent_id",
+                "get_agent_info",
+                "execute_agent_action"
+            ],
+            "classes": {
+                "SharedOperations": {
+                    "methods": [
+                        "__init__",
+                        "_initialize_services",
+                        "get_agent_status",
+                        "get_all_agent_statuses",
+                        "ping_agent",
+                        "ping_all_agents",
+                        "resume_agent",
+                        "pause_agent",
+                        "sync_agent",
+                        "assign_task_to_agent",
+                        "broadcast_message",
+                        "broadcast_command",
+                        "broadcast_system_message",
+                        "broadcast_emergency",
+                        "get_agent_coordinates",
+                        "get_all_coordinates",
+                        "update_agent_coordinates",
+                        "save_coordinates",
+                        "get_system_health",
+                        "get_system_metrics",
+                        "test_system_connectivity",
+                        "_get_available_agents",
+                        "validate_agent_id",
+                        "get_agent_info",
+                        "execute_agent_action"
+                    ],
+                    "docstring": "Shared operations class that provides common functionality used across\nmultiple GUI components and utilities.",
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 110,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "src\\gui\\tabs\\onboarding_tab.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "setup_ui",
+                "initialize_onboarding",
+                "handle_send_request",
+                "send_specific_message",
+                "send_all_messages_to_agent",
+                "onboard_all_agents",
+                "send_custom_message",
+                "handle_send_result",
+                "on_log_clear",
+                "log_message",
+                "load_checklist",
+                "refresh_status",
+                "get_agent_onboarding_status",
+                "send_thread",
+                "status_thread"
+            ],
+            "classes": {
+                "OnboardingTab": {
+                    "methods": [
+                        "__init__",
+                        "setup_ui",
+                        "initialize_onboarding",
+                        "handle_send_request",
+                        "send_specific_message",
+                        "send_all_messages_to_agent",
+                        "onboard_all_agents",
+                        "send_custom_message",
+                        "handle_send_result",
+                        "on_log_clear",
+                        "log_message",
+                        "load_checklist",
+                        "refresh_status",
+                        "get_agent_onboarding_status"
+                    ],
+                    "docstring": "Onboarding Manager Tab for managing agent onboarding using modular components",
+                    "base_classes": [
+                        "ttk.Frame"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 59,
+            "lint": [
+                "Function setup_ui >50 lines",
+                "High complexity"
+            ]
+        },
+        "tests\\diagnostic_test.py": {
+            "language": ".py",
+            "functions": [
+                "test_broadcast_with_delays"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": [
+                "Function test_broadcast_with_delays >50 lines"
+            ]
+        },
+        "tests\\test_special_chars.py": {
+            "language": ".py",
+            "functions": [
+                "test_special_chars"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 2,
+            "lint": []
+        },
+        "src\\utils\\__init__.py": {
             "language": ".py",
             "functions": [],
             "classes": {},
@@ -2457,6 +2574,41 @@
                 "High complexity"
             ]
         },
+        "tests\\test_inter_agent_framework.py": {
+            "language": ".py",
+            "functions": [
+                "test_agent_communication",
+                "test_agent_responses"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 9,
+            "lint": [
+                "Function test_agent_communication >50 lines"
+            ]
+        },
+        "tests\\test_harness.py": {
+            "language": ".py",
+            "functions": [
+                "test_send_message",
+                "test_broadcast",
+                "test_exec_mode",
+                "test_coordinate_loading",
+                "list_available_layouts",
+                "list_agents_in_layout",
+                "interactive_mode",
+                "demo_sequence",
+                "main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 43,
+            "lint": [
+                "Function interactive_mode >50 lines",
+                "Function main >50 lines",
+                "High complexity"
+            ]
+        },
         "src\\utils\\coordinate_finder.py": {
             "language": ".py",
             "functions": [
@@ -2503,158 +2655,6 @@
             "routes": [],
             "complexity": 50,
             "lint": [
-                "High complexity"
-            ]
-        },
-        "src\\utils\\__init__.py": {
-            "language": ".py",
-            "functions": [],
-            "classes": {},
-            "routes": [],
-            "complexity": 0,
-            "lint": []
-        },
-        "tests\\diagnostic_test.py": {
-            "language": ".py",
-            "functions": [
-                "test_broadcast_with_delays"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 5,
-            "lint": [
-                "Function test_broadcast_with_delays >50 lines"
-            ]
-        },
-        "src\\gui\\utils\\shared_operations.py": {
-            "language": ".py",
-            "functions": [
-                "create_shared_operations",
-                "quick_agent_action",
-                "quick_broadcast",
-                "__init__",
-                "_initialize_services",
-                "get_agent_status",
-                "get_all_agent_statuses",
-                "ping_agent",
-                "ping_all_agents",
-                "resume_agent",
-                "pause_agent",
-                "sync_agent",
-                "assign_task_to_agent",
-                "broadcast_message",
-                "broadcast_command",
-                "broadcast_system_message",
-                "broadcast_emergency",
-                "get_agent_coordinates",
-                "get_all_coordinates",
-                "update_agent_coordinates",
-                "save_coordinates",
-                "get_system_health",
-                "get_system_metrics",
-                "test_system_connectivity",
-                "_get_available_agents",
-                "validate_agent_id",
-                "get_agent_info",
-                "execute_agent_action"
-            ],
-            "classes": {
-                "SharedOperations": {
-                    "methods": [
-                        "__init__",
-                        "_initialize_services",
-                        "get_agent_status",
-                        "get_all_agent_statuses",
-                        "ping_agent",
-                        "ping_all_agents",
-                        "resume_agent",
-                        "pause_agent",
-                        "sync_agent",
-                        "assign_task_to_agent",
-                        "broadcast_message",
-                        "broadcast_command",
-                        "broadcast_system_message",
-                        "broadcast_emergency",
-                        "get_agent_coordinates",
-                        "get_all_coordinates",
-                        "update_agent_coordinates",
-                        "save_coordinates",
-                        "get_system_health",
-                        "get_system_metrics",
-                        "test_system_connectivity",
-                        "_get_available_agents",
-                        "validate_agent_id",
-                        "get_agent_info",
-                        "execute_agent_action"
-                    ],
-                    "docstring": "Shared operations class that provides common functionality used across\nmultiple GUI components and utilities.",
-                    "base_classes": [],
-                    "maturity": "Core Asset",
-                    "agent_type": "Utility"
-                }
-            },
-            "routes": [],
-            "complexity": 110,
-            "lint": [
-                "High complexity"
-            ]
-        },
-        "tests\\test_8_agent_coordinates.py": {
-            "language": ".py",
-            "functions": [
-                "test_8_agent_coordinates",
-                "test_coordinate_validation"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 13,
-            "lint": [
-                "Function test_8_agent_coordinates >50 lines",
-                "High complexity"
-            ]
-        },
-        "tests\\test_special_chars.py": {
-            "language": ".py",
-            "functions": [
-                "test_special_chars"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 2,
-            "lint": []
-        },
-        "tests\\test_inter_agent_framework.py": {
-            "language": ".py",
-            "functions": [
-                "test_agent_communication",
-                "test_agent_responses"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 9,
-            "lint": [
-                "Function test_agent_communication >50 lines"
-            ]
-        },
-        "tests\\test_harness.py": {
-            "language": ".py",
-            "functions": [
-                "test_send_message",
-                "test_broadcast",
-                "test_exec_mode",
-                "test_coordinate_loading",
-                "list_available_layouts",
-                "list_agents_in_layout",
-                "interactive_mode",
-                "demo_sequence",
-                "main"
-            ],
-            "classes": {},
-            "routes": [],
-            "complexity": 43,
-            "lint": [
-                "Function interactive_mode >50 lines",
-                "Function main >50 lines",
                 "High complexity"
             ]
         }

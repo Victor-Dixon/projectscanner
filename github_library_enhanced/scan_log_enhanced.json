@@ -1,0 +1,326 @@
+{
+  "scanned_repos": [
+    {
+      "name": "basicbot",
+      "unique_id": "Dadudekc_basicbot",
+      "private": false,
+      "scanned_at": "2025-07-31T23:45:05.006508"
+    },
+    {
+      "name": "DigitalDreamscape",
+      "unique_id": "Dadudekc_DigitalDreamscape",
+      "private": false,
+      "scanned_at": "2025-07-31T23:46:20.393962"
+    },
+    {
+      "name": "Dream.os",
+      "unique_id": "Dadudekc_Dreamos",
+      "private": false,
+      "scanned_at": "2025-07-31T23:47:44.244242"
+    },
+    {
+      "name": "DreamVault",
+      "unique_id": "Dadudekc_DreamVault",
+      "private": false,
+      "scanned_at": "2025-07-31T23:47:50.965666"
+    },
+    {
+      "name": "FocusForge",
+      "unique_id": "Dadudekc_FocusForge",
+      "private": false,
+      "scanned_at": "2025-07-31T23:47:55.613225"
+    },
+    {
+      "name": "gpt_automation",
+      "unique_id": "Dadudekc_gpt_automation",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:08.086578"
+    },
+    {
+      "name": "HCshinobi",
+      "unique_id": "Dadudekc_HCshinobi",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:16.628967"
+    },
+    {
+      "name": "Hive-Mind",
+      "unique_id": "Dadudekc_Hive-Mind",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:21.067993"
+    },
+    {
+      "name": "IT_help_desk",
+      "unique_id": "Dadudekc_IT_help_desk",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:27.021378"
+    },
+    {
+      "name": "LSTMmodel_trainer",
+      "unique_id": "Dadudekc_LSTMmodel_trainer",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:29.076001"
+    },
+    {
+      "name": "MeTuber",
+      "unique_id": "Dadudekc_MeTuber",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:40.426924"
+    },
+    {
+      "name": "network-scanner",
+      "unique_id": "Dadudekc_network-scanner",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:44.042773"
+    },
+    {
+      "name": "projectscanner",
+      "unique_id": "Dadudekc_projectscanner",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:52.712314"
+    },
+    {
+      "name": "prompt-library",
+      "unique_id": "Dadudekc_prompt-library",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:54.868878"
+    },
+    {
+      "name": "Side-projects",
+      "unique_id": "Dadudekc_Side-projects",
+      "private": false,
+      "scanned_at": "2025-07-31T23:48:59.409402"
+    },
+    {
+      "name": "socialmediamanager",
+      "unique_id": "Dadudekc_socialmediamanager",
+      "private": false,
+      "scanned_at": "2025-07-31T23:49:16.603513"
+    },
+    {
+      "name": "tbow-tactics",
+      "unique_id": "Dadudekc_tbow-tactics",
+      "private": false,
+      "scanned_at": "2025-07-31T23:49:18.030998"
+    },
+    {
+      "name": "trading-leads-bot",
+      "unique_id": "Dadudekc_trading-leads-bot",
+      "private": false,
+      "scanned_at": "2025-07-31T23:49:20.176444"
+    },
+    {
+      "name": "TROOP",
+      "unique_id": "Dadudekc_TROOP",
+      "private": false,
+      "scanned_at": "2025-07-31T23:49:23.453159"
+    },
+    {
+      "name": "Victor.os",
+      "unique_id": "Dadudekc_Victoros",
+      "private": false,
+      "scanned_at": "2025-07-31T23:51:42.687103"
+    },
+    {
+      "name": "agentproject",
+      "unique_id": "Dadudekc_agentproject_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:10.463618"
+    },
+    {
+      "name": "AI_Debugger_Assistant",
+      "unique_id": "Dadudekc_AI_Debugger_Assistant_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:21.793183"
+    },
+    {
+      "name": "bolt-project",
+      "unique_id": "Dadudekc_bolt-project_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:25.789560"
+    },
+    {
+      "name": "content",
+      "unique_id": "Dadudekc_content_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:31.084407"
+    },
+    {
+      "name": "DaDudekC",
+      "unique_id": "Dadudekc_DaDudekC_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:35.330543"
+    },
+    {
+      "name": "DaDudeKC-Website",
+      "unique_id": "Dadudekc_DaDudeKC-Website_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:41.636629"
+    },
+    {
+      "name": "FreeRideInvestor",
+      "unique_id": "Dadudekc_FreeRideInvestor_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:52.698136"
+    },
+    {
+      "name": "FreeWork",
+      "unique_id": "Dadudekc_FreeWork_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:53:57.641388"
+    },
+    {
+      "name": "ideas",
+      "unique_id": "Dadudekc_ideas_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:13.461541"
+    },
+    {
+      "name": "machinelearningmodelmaker",
+      "unique_id": "Dadudekc_machinelearningmodelmaker_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:20.418150"
+    },
+    {
+      "name": "machinelearningproject",
+      "unique_id": "Dadudekc_machinelearningproject_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:26.276858"
+    },
+    {
+      "name": "my-personal-templates",
+      "unique_id": "Dadudekc_my-personal-templates_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:30.414495"
+    },
+    {
+      "name": "my-resume",
+      "unique_id": "Dadudekc_my-resume_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:34.374926"
+    },
+    {
+      "name": "NewSims4ModProject",
+      "unique_id": "Dadudekc_NewSims4ModProject_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:38.913517"
+    },
+    {
+      "name": "osrsAIagent",
+      "unique_id": "Dadudekc_osrsAIagent_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:44.892166"
+    },
+    {
+      "name": "osrsbot",
+      "unique_id": "Dadudekc_osrsbot_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:48.067135"
+    },
+    {
+      "name": "practice",
+      "unique_id": "Dadudekc_practice_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:51.718814"
+    },
+    {
+      "name": "Resume-Showcase",
+      "unique_id": "Dadudekc_Resume-Showcase_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:54:57.114364"
+    },
+    {
+      "name": "self-evolving-ai",
+      "unique_id": "Dadudekc_self-evolving-ai_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:55:02.884750"
+    },
+    {
+      "name": "SmartStock-pro",
+      "unique_id": "Dadudekc_SmartStock-pro_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:55:07.951803"
+    },
+    {
+      "name": "TradingRobotPlug",
+      "unique_id": "Dadudekc_TradingRobotPlug_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:55:47.351235"
+    },
+    {
+      "name": "TradingRobotPlugWeb",
+      "unique_id": "Dadudekc_TradingRobotPlugWeb_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:55:56.532161"
+    },
+    {
+      "name": "TRPlugLibrary",
+      "unique_id": "Dadudekc_TRPlugLibrary_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:56:01.231196"
+    },
+    {
+      "name": "UltimateOptionsTradingRobot",
+      "unique_id": "Dadudekc_UltimateOptionsTradingRobot_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:56:09.396099"
+    },
+    {
+      "name": "ultimate_trading_intelligence",
+      "unique_id": "Dadudekc_ultimate_trading_intelligence_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:56:22.277983"
+    },
+    {
+      "name": "All-files-everything-",
+      "unique_id": "Datgurll_All-files-everything-",
+      "private": false,
+      "scanned_at": "2025-07-31T23:56:23.892661"
+    },
+    {
+      "name": "Email-Cleanup-App",
+      "unique_id": "PauGCO_Email-Cleanup-App_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:56:35.438271"
+    },
+    {
+      "name": "Auot_BLOGGER",
+      "unique_id": "QuianaSampson_Auot_BLOGGER_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:56:38.576502"
+    },
+    {
+      "name": "Auto_Blogger",
+      "unique_id": "QuianaSampson_Auto_Blogger_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:56:52.494814"
+    },
+    {
+      "name": "NightShift",
+      "unique_id": "QuianaSampson_NightShift_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:56:56.837856"
+    },
+    {
+      "name": "Sims4ModUpdaters",
+      "unique_id": "QuianaSampson_Sims4ModUpdaters_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:57:13.923551"
+    },
+    {
+      "name": "TradingRobotPlugWebTheme",
+      "unique_id": "QuianaSampson_TradingRobotPlugWebTheme_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:57:18.835700"
+    }
+  ],
+  "failed_repos": [
+    {
+      "name": "Digital-dreamscape",
+      "unique_id": "Datgurll_Digital-dreamscape_private",
+      "private": true,
+      "error": "Failed to clone repository: Cloning into 'temp_repos\\Datgurll_Digital-dreamscape_private\\Digital-dreamscape'...\nerror: invalid path 'Lore/illustrations/images/Preface: The Birth of the Digital Dreamscape.webp'\nfatal: unable to checkout working tree\nwarning: Clone succeeded, but checkout failed.\nYou can inspect what was checked out with 'git status'\nand retry with 'git restore --source=HEAD :/'\n\n",
+      "failed_at": "2025-07-31T23:56:28.594585"
+    }
+  ],
+  "last_scan": "2025-07-31T23:57:19.183760"
+}

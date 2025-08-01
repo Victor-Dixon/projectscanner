@@ -1,0 +1,136 @@
+{
+    "dadudekc website\\community\\forums.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "dadudekc website\\ar-vr\\VRContentManager.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_vr_content",
+            "create_vr_scene",
+            "save_vr_content",
+            "delete_vr_content",
+            "update_vr_scene",
+            "_get_content_path"
+        ],
+        "classes": {
+            "VRContentManager": {
+                "methods": [
+                    "__init__",
+                    "load_vr_content",
+                    "create_vr_scene",
+                    "save_vr_content",
+                    "delete_vr_content",
+                    "update_vr_scene",
+                    "_get_content_path"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 21,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "dadudekc website\\ai\\ChatbotService.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "train_chatbot",
+            "get_response"
+        ],
+        "classes": {
+            "ChatbotService": {
+                "methods": [
+                    "__init__",
+                    "train_chatbot",
+                    "get_response"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "dadudekc website\\ai\\ContentRecommender.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "load_data",
+            "train_and_evaluate",
+            "save_model",
+            "load_model"
+        ],
+        "classes": {
+            "ContentRecommender": {
+                "methods": [
+                    "__init__",
+                    "load_data",
+                    "train_and_evaluate",
+                    "save_model",
+                    "load_model"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 12,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "dadudekc website\\project structure setuper\\ProjectDirSetup.py": {
+        "language": ".py",
+        "functions": [
+            "parse_arguments",
+            "main",
+            "__init__",
+            "setup_logging",
+            "create_project_structure",
+            "show_directory_tree",
+            "load_structure",
+            "interactive_setup",
+            "execute"
+        ],
+        "classes": {
+            "DirectoryStructureCreator": {
+                "methods": [
+                    "__init__",
+                    "setup_logging",
+                    "create_project_structure",
+                    "show_directory_tree",
+                    "load_structure",
+                    "interactive_setup",
+                    "execute"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 25,
+        "lint": [
+            "High complexity"
+        ]
+    }
+}

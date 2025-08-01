@@ -1,0 +1,209 @@
+{
+    "project_root": "D:\\projectscanner\\temp_repos\\Dadudekc_LSTMmodel_trainer\\LSTMmodel_trainer",
+    "num_files_analyzed": 5,
+    "analysis_details": {
+        "src\\utils.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "plot_confusion_matrix"
+            ],
+            "classes": {
+                "PlotCanvas": {
+                    "methods": [
+                        "__init__",
+                        "plot_confusion_matrix"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "FigureCanvas"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 6,
+            "lint": []
+        },
+        "tests\\test_model_trainer_core.py": {
+            "language": ".py",
+            "functions": [
+                "setup_dummy_modules",
+                "test_run_linear_regression",
+                "test_missing_target_column",
+                "test_save_and_load_model",
+                "test_invalid_model_type",
+                "__init__",
+                "dropna",
+                "drop",
+                "__getitem__",
+                "__len__",
+                "reset_index",
+                "mean_squared_error",
+                "r2_score",
+                "train_test_split",
+                "fit",
+                "predict",
+                "mean",
+                "std"
+            ],
+            "classes": {
+                "DummyDataFrame": {
+                    "methods": [
+                        "__init__",
+                        "dropna",
+                        "drop",
+                        "__getitem__",
+                        "__len__",
+                        "reset_index"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                },
+                "DummyModel": {
+                    "methods": [
+                        "fit",
+                        "predict"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Prototype",
+                    "agent_type": "SignalAgent"
+                },
+                "ScoreList": {
+                    "methods": [
+                        "mean",
+                        "std"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "list"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 32,
+            "lint": [
+                "Function setup_dummy_modules >50 lines",
+                "High complexity"
+            ]
+        },
+        "src\\main.py": {
+            "language": ".py",
+            "functions": [
+                "__init__",
+                "run",
+                "__init__",
+                "init_ui",
+                "load_dataset",
+                "display_data",
+                "update_hyperparameter_fields",
+                "start_training",
+                "map_model_name_to_type",
+                "update_log",
+                "training_finished",
+                "save_model"
+            ],
+            "classes": {
+                "TrainingThread": {
+                    "methods": [
+                        "__init__",
+                        "run"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QThread"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                },
+                "MainWindow": {
+                    "methods": [
+                        "__init__",
+                        "init_ui",
+                        "load_dataset",
+                        "display_data",
+                        "update_hyperparameter_fields",
+                        "start_training",
+                        "map_model_name_to_type",
+                        "update_log",
+                        "training_finished",
+                        "save_model"
+                    ],
+                    "docstring": null,
+                    "base_classes": [
+                        "QMainWindow"
+                    ],
+                    "maturity": "Core Asset",
+                    "agent_type": "Utility"
+                }
+            },
+            "routes": [],
+            "complexity": 49,
+            "lint": [
+                "Function init_ui >50 lines",
+                "High complexity"
+            ]
+        },
+        "src\\model_trainer.py": {
+            "language": ".py",
+            "functions": [
+                "load_data_from_folder",
+                "preprocess_lstm_data",
+                "train_lstm_model",
+                "main",
+                "__init__",
+                "load_data",
+                "preprocess_data",
+                "select_model",
+                "train",
+                "evaluate",
+                "cross_validate_model",
+                "save_model",
+                "load_model",
+                "run"
+            ],
+            "classes": {
+                "ModelTrainer": {
+                    "methods": [
+                        "__init__",
+                        "load_data",
+                        "preprocess_data",
+                        "select_model",
+                        "train",
+                        "evaluate",
+                        "cross_validate_model",
+                        "save_model",
+                        "load_model",
+                        "run"
+                    ],
+                    "docstring": null,
+                    "base_classes": [],
+                    "maturity": "Core Asset",
+                    "agent_type": "ActionAgent"
+                }
+            },
+            "routes": [],
+            "complexity": 56,
+            "lint": [
+                "High complexity"
+            ]
+        },
+        "tests\\test_imports.py": {
+            "language": ".py",
+            "functions": [
+                "test_import_model_trainer",
+                "test_import_main"
+            ],
+            "classes": {},
+            "routes": [],
+            "complexity": 5,
+            "lint": []
+        }
+    }
+}

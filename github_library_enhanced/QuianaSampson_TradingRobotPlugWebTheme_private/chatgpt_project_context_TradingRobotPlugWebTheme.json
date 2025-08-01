@@ -1,0 +1,13 @@
+{
+    "project_root": "D:\\projectscanner\\temp_repos\\QuianaSampson_TradingRobotPlugWebTheme_private\\TradingRobotPlugWebTheme",
+    "num_files_analyzed": 1,
+    "analysis_details": {
+        "assets\\js\\main.js": {
+            "language": ".js",
+            "functions": [],
+            "classes": {},
+            "routes": [],
+            "complexity": 0
+        }
+    }
+}

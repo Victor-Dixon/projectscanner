@@ -1,0 +1,463 @@
+{
+    "Scripts\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "Scripts\\generate_and_publish_journal.py": {
+        "language": ".py",
+        "functions": [
+            "generate_and_publish_journal"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "Agents\\DebuggerAgent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "debug_task_function",
+            "generate_fix",
+            "test_fix"
+        ],
+        "classes": {
+            "DebuggerAgent": {
+                "methods": [
+                    "__init__",
+                    "debug_task_function",
+                    "generate_fix",
+                    "test_fix"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "GPT4Agent"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "Agents\\main.py": {
+        "language": ".py",
+        "functions": [
+            "main"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "Agents\\AgentCreator.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "create_agent",
+            "debug_task_function",
+            "journal_task_function",
+            "fetch_data_function",
+            "strategy_task_function",
+            "review_code_function"
+        ],
+        "classes": {
+            "AgentCreator": {
+                "methods": [
+                    "__init__",
+                    "create_agent",
+                    "debug_task_function",
+                    "journal_task_function",
+                    "fetch_data_function",
+                    "strategy_task_function",
+                    "review_code_function"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 17,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "Scripts\\enhance_journal_webpage.py": {
+        "language": ".py",
+        "functions": [
+            "modify_journal_html_for_readability",
+            "fetch_html_file",
+            "add_relevant_images",
+            "add_custom_fonts",
+            "update_background_image",
+            "enhance_webpage"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 20,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "1\\Scripts\\templete_renderer.py": {
+        "language": ".py",
+        "functions": [
+            "render_journal_entry"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "1\\Scripts\\generate_and_publish_journal.py": {
+        "language": ".py",
+        "functions": [
+            "fetch_git_commits",
+            "generate_journal_entry",
+            "publish_to_wordpress",
+            "get_journal_prompt"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 11,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "Agents\\TaskManagerAgent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "assign_task",
+            "analyze_task",
+            "find_agent_for_task"
+        ],
+        "classes": {
+            "TaskManagerAgent": {
+                "methods": [
+                    "__init__",
+                    "assign_task",
+                    "analyze_task",
+                    "find_agent_for_task"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 13,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "1\\Scripts\\entry_parser.py": {
+        "language": ".py",
+        "functions": [
+            "parse_journal_data",
+            "handle_missing_data"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "Agents\\GPT4Agent.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "perform_task",
+            "introduce"
+        ],
+        "classes": {
+            "GPT4Agent": {
+                "methods": [
+                    "__init__",
+                    "perform_task",
+                    "introduce"
+                ],
+                "docstring": null,
+                "base_classes": [],
+                "maturity": "Prototype",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "1\\Scripts\\data_fetcher.py": {
+        "language": ".py",
+        "functions": [
+            "fetch_journal_entry_data",
+            "publish_to_wordpress"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "1\\Scripts\\publisher.py": {
+        "language": ".py",
+        "functions": [
+            "publish_journal_to_wordpress"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "Scripts\\logger.py": {
+        "language": ".py",
+        "functions": [
+            "setup_logging"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 4,
+        "lint": []
+    },
+    "Scripts\\journal_generator.py": {
+        "language": ".py",
+        "functions": [
+            "generate_journal_entry"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "Scripts\\git_commits_fetcher.py": {
+        "language": ".py",
+        "functions": [
+            "fetch_git_commits"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 6,
+        "lint": []
+    },
+    "Scripts\\Journal\\funny.py": {
+        "language": ".py",
+        "functions": [
+            "trading_robot_plug",
+            "calculate_possible_models"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 10,
+        "lint": [
+            "Function trading_robot_plug >50 lines"
+        ]
+    },
+    "Scripts\\generate_journal_webpage.py": {
+        "language": ".py",
+        "functions": [
+            "fetch_journal_entry",
+            "extract_journal_sections_with_openai",
+            "generate_and_save_dalle_image",
+            "clean_text",
+            "format_html_paragraph",
+            "generate_journal_html",
+            "generate_html_section",
+            "create_image_prompt"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 27,
+        "lint": [
+            "Function extract_journal_sections_with_openai >50 lines",
+            "Function generate_journal_html >50 lines",
+            "High complexity"
+        ]
+    },
+    "Scripts\\Journal\\week 3\\catchups\\rename.py": {
+        "language": ".py",
+        "functions": [
+            "rename_files"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": []
+    },
+    "Scripts\\Journal\\Test1.py": {
+        "language": ".py",
+        "functions": [
+            "load_user",
+            "register",
+            "login",
+            "dashboard",
+            "logout"
+        ],
+        "classes": {
+            "User": {
+                "methods": [],
+                "docstring": null,
+                "base_classes": [
+                    "UserMixin",
+                    "db.Model"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [
+            {
+                "function": "register",
+                "method": "GET",
+                "path": "/register"
+            },
+            {
+                "function": "register",
+                "method": "POST",
+                "path": "/register"
+            },
+            {
+                "function": "login",
+                "method": "GET",
+                "path": "/login"
+            },
+            {
+                "function": "login",
+                "method": "POST",
+                "path": "/login"
+            },
+            {
+                "function": "dashboard",
+                "method": "ROUTE",
+                "path": "/dashboard"
+            },
+            {
+                "function": "logout",
+                "method": "ROUTE",
+                "path": "/logout"
+            }
+        ],
+        "complexity": 9,
+        "lint": []
+    },
+    "Scripts\\Tests\\test_git_commits_fetcher.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "Scripts\\Tests\\test_schedule_manager.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "Scripts\\modify_html_for_dadudekc.py": {
+        "language": ".py",
+        "functions": [
+            "modify_html_for_dadudekc"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 2,
+        "lint": [
+            "Function modify_html_for_dadudekc >50 lines"
+        ]
+    },
+    "Scripts\\schedule_manager.py": {
+        "language": ".py",
+        "functions": [
+            "schedule_journal_posting"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "Scripts\\test_journal_generator.py": {
+        "language": ".py",
+        "functions": [
+            "setUp",
+            "test_get_journal_prompt",
+            "test_generate_journal_entry",
+            "mock_generate_journal_entry"
+        ],
+        "classes": {
+            "TestJournalGenerator": {
+                "methods": [
+                    "setUp",
+                    "test_get_journal_prompt",
+                    "test_generate_journal_entry"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "unittest.TestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 8,
+        "lint": []
+    },
+    "Scripts\\notifier.py": {
+        "language": ".py",
+        "functions": [
+            "send_email_notification"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 3,
+        "lint": []
+    },
+    "Scripts\\test_wordpress_publisher.py": {
+        "language": ".py",
+        "functions": [
+            "test_successful_publish",
+            "test_publish_failure",
+            "test_publish_exception"
+        ],
+        "classes": {
+            "TestWordPressPublisher": {
+                "methods": [
+                    "test_successful_publish",
+                    "test_publish_failure",
+                    "test_publish_exception"
+                ],
+                "docstring": null,
+                "base_classes": [
+                    "unittest.TestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 7,
+        "lint": []
+    },
+    "Scripts\\wordpress_publisher.py": {
+        "language": ".py",
+        "functions": [
+            "publish_to_wordpress"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 5,
+        "lint": [
+            "Function publish_to_wordpress >50 lines"
+        ]
+    }
+}

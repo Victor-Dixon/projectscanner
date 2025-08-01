@@ -34,11 +34,41 @@ class EnhancedGitHubLibraryScanner:
         self.temp_dir = Path("temp_repos")
         self.temp_dir.mkdir(exist_ok=True)
         
+        # Load token from config if not provided
+        if not self.github_token:
+            self.github_token = self.load_github_token()
+        
         self.library_file = self.output_dir / "github_library_enhanced.json"
         self.scan_log_file = self.output_dir / "scan_log_enhanced.json"
         
         self.library = self.load_library()
         self.scan_log = self.load_scan_log()
+    
+    def load_github_token(self) -> Optional[str]:
+        """Load GitHub token from config file."""
+        try:
+            # Try new config format first
+            config_file = Path("config/github_config.json")
+            if config_file.exists():
+                with open(config_file, 'r', encoding='utf-8') as f:
+                    config = json.load(f)
+                
+                if 'token' in config:
+                    print(f"Token loaded from config: {config_file}")
+                    return config['token']
+            
+            # Fall back to old format
+            token_file = Path("config/github_token.txt")
+            if token_file.exists():
+                with open(token_file, 'r', encoding='utf-8') as f:
+                    token = f.read().strip()
+                    print(f"Token loaded from legacy file: {token_file}")
+                    return token
+                    
+        except Exception as e:
+            print(f"Warning: Could not load GitHub token: {e}")
+        
+        return None
     
     def load_library(self) -> Dict:
         """Load existing library data."""

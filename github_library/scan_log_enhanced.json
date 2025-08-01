@@ -271,6 +271,66 @@
       "unique_id": "Dadudekc_MLRobotmaker_private",
       "private": true,
       "scanned_at": "2025-07-31T23:12:41.002767"
+    },
+    {
+      "name": "SouthwestsSecretDjBoard",
+      "unique_id": "Dadudekc_SouthwestsSecretDjBoard",
+      "private": false,
+      "scanned_at": "2025-07-31T23:12:43.117462"
+    },
+    {
+      "name": "stocktwits-analyzer",
+      "unique_id": "Dadudekc_stocktwits-analyzer",
+      "private": false,
+      "scanned_at": "2025-07-31T23:12:59.177979"
+    },
+    {
+      "name": "stock_portfolio_manager",
+      "unique_id": "Dadudekc_stock_portfolio_manager",
+      "private": false,
+      "scanned_at": "2025-07-31T23:13:00.829327"
+    },
+    {
+      "name": "Streamertools",
+      "unique_id": "Dadudekc_Streamertools",
+      "private": false,
+      "scanned_at": "2025-07-31T23:13:05.021852"
+    },
+    {
+      "name": "Superpowered-TTRPG",
+      "unique_id": "Dadudekc_Superpowered-TTRPG",
+      "private": false,
+      "scanned_at": "2025-07-31T23:13:17.264854"
+    },
+    {
+      "name": "SWARM",
+      "unique_id": "Dadudekc_SWARM",
+      "private": false,
+      "scanned_at": "2025-07-31T23:13:47.413930"
+    },
+    {
+      "name": "tbow-tactics",
+      "unique_id": "Dadudekc_tbow-tactics",
+      "private": false,
+      "scanned_at": "2025-07-31T23:13:48.820109"
+    },
+    {
+      "name": "TBOWTactics",
+      "unique_id": "Dadudekc_TBOWTactics_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:13:52.131872"
+    },
+    {
+      "name": "Thea",
+      "unique_id": "Dadudekc_Thea",
+      "private": false,
+      "scanned_at": "2025-07-31T23:14:32.840751"
+    },
+    {
+      "name": "TheTradingRobotPlug",
+      "unique_id": "Dadudekc_TheTradingRobotPlug_private",
+      "private": true,
+      "scanned_at": "2025-07-31T23:15:07.480133"
     }
   ],
   "failed_repos": [
@@ -1247,6 +1307,76 @@
       "private": true,
       "error": "'FileProcessor' object has no attribute 'files'",
       "failed_at": "2025-07-31T23:12:41.002767"
+    },
+    {
+      "name": "SouthwestsSecretDjBoard",
+      "unique_id": "Dadudekc_SouthwestsSecretDjBoard",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:12:43.117462"
+    },
+    {
+      "name": "stocktwits-analyzer",
+      "unique_id": "Dadudekc_stocktwits-analyzer",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:12:59.177979"
+    },
+    {
+      "name": "stock_portfolio_manager",
+      "unique_id": "Dadudekc_stock_portfolio_manager",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:13:00.830328"
+    },
+    {
+      "name": "Streamertools",
+      "unique_id": "Dadudekc_Streamertools",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:13:05.022854"
+    },
+    {
+      "name": "Superpowered-TTRPG",
+      "unique_id": "Dadudekc_Superpowered-TTRPG",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:13:17.264854"
+    },
+    {
+      "name": "SWARM",
+      "unique_id": "Dadudekc_SWARM",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:13:47.413930"
+    },
+    {
+      "name": "tbow-tactics",
+      "unique_id": "Dadudekc_tbow-tactics",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:13:48.820109"
+    },
+    {
+      "name": "TBOWTactics",
+      "unique_id": "Dadudekc_TBOWTactics_private",
+      "private": true,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:13:52.131872"
+    },
+    {
+      "name": "Thea",
+      "unique_id": "Dadudekc_Thea",
+      "private": false,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:14:32.840751"
+    },
+    {
+      "name": "TheTradingRobotPlug",
+      "unique_id": "Dadudekc_TheTradingRobotPlug_private",
+      "private": true,
+      "error": "'FileProcessor' object has no attribute 'files'",
+      "failed_at": "2025-07-31T23:15:07.480133"
     }
   ],
   "last_scan": "2025-07-31T23:08:14.726096"

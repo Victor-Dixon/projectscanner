@@ -1,0 +1,216 @@
+{
+    "basicbot\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 0,
+        "lint": []
+    },
+    "tests\\__init__.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "basicbot\\config.py": {
+        "language": ".py",
+        "functions": [],
+        "classes": {},
+        "routes": [],
+        "complexity": 1,
+        "lint": []
+    },
+    "config.py": {
+        "language": ".py",
+        "functions": [
+            "get_env"
+        ],
+        "classes": {
+            "Config": {
+                "methods": [
+                    "get_env"
+                ],
+                "docstring": "Configuration settings for the Social Media Lead Generation tool.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 2,
+        "lint": []
+    },
+    "tests\\test_config.py": {
+        "language": ".py",
+        "functions": [
+            "test_social_media_credentials_exist",
+            "test_environment_variables_load",
+            "test_search_queries_are_valid",
+            "test_headless_mode_is_boolean",
+            "test_logging_directory_exists",
+            "test_chrome_profile_path"
+        ],
+        "classes": {
+            "TestConfig": {
+                "methods": [
+                    "test_social_media_credentials_exist",
+                    "test_environment_variables_load",
+                    "test_search_queries_are_valid",
+                    "test_headless_mode_is_boolean",
+                    "test_logging_directory_exists",
+                    "test_chrome_profile_path"
+                ],
+                "docstring": "Unit tests for config.py settings and environment variable handling.",
+                "base_classes": [
+                    "unittest.TestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 16,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "auto_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "init_db",
+            "save_lead",
+            "mark_draft_generated",
+            "generate_proposal",
+            "prepare_reply",
+            "get_driver",
+            "scrape_twitter",
+            "scrape_linkedin",
+            "scrape_reddit",
+            "scrape_upwork",
+            "run_scrapers"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 38,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "database.py": {
+        "language": ".py",
+        "functions": [
+            "__init__",
+            "_create_tables",
+            "insert_post",
+            "insert_comment",
+            "check_post_exists",
+            "check_comment_exists",
+            "close"
+        ],
+        "classes": {
+            "Database": {
+                "methods": [
+                    "__init__",
+                    "_create_tables",
+                    "insert_post",
+                    "insert_comment",
+                    "check_post_exists",
+                    "check_comment_exists",
+                    "close"
+                ],
+                "docstring": "Handles SQLite database operations for storing scraped data.",
+                "base_classes": [],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 17,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "tests\\test_database.py": {
+        "language": ".py",
+        "functions": [
+            "setUpClass",
+            "setUp",
+            "test_create_tables",
+            "test_insert_post",
+            "test_insert_duplicate_post",
+            "test_insert_comment",
+            "test_insert_duplicate_comment",
+            "test_check_post_exists",
+            "test_check_comment_exists",
+            "tearDownClass"
+        ],
+        "classes": {
+            "TestDatabase": {
+                "methods": [
+                    "setUpClass",
+                    "setUp",
+                    "test_create_tables",
+                    "test_insert_post",
+                    "test_insert_duplicate_post",
+                    "test_insert_comment",
+                    "test_insert_duplicate_comment",
+                    "test_check_post_exists",
+                    "test_check_comment_exists",
+                    "tearDownClass"
+                ],
+                "docstring": "Unit tests for Database functionality.",
+                "base_classes": [
+                    "unittest.TestCase"
+                ],
+                "maturity": "Core Asset",
+                "agent_type": "Utility"
+            }
+        },
+        "routes": [],
+        "complexity": 21,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "manual_scraper.py": {
+        "language": ".py",
+        "functions": [
+            "init_db",
+            "save_lead",
+            "generate_proposal",
+            "prepare_reply",
+            "get_driver",
+            "scrape_twitter",
+            "scrape_linkedin",
+            "scrape_reddit",
+            "scrape_upwork",
+            "run_scrapers"
+        ],
+        "classes": {},
+        "routes": [],
+        "complexity": 37,
+        "lint": [
+            "High complexity"
+        ]
+    },
+    "dashboard.py": {
+        "language": ".py",
+        "functions": [
+            "get_leads",
+            "index"
+        ],
+        "classes": {},
+        "routes": [
+            {
+                "function": "index",
+                "method": "ROUTE",
+                "path": "/"
+            }
+        ],
+        "complexity": 3,
+        "lint": []
+    }
+}
