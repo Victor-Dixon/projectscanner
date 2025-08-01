@@ -4,6 +4,7 @@ Test script for GitHub token management functionality.
 """
 
 import sys
+import json
 from pathlib import Path
 
 # Add src to path
@@ -11,25 +12,32 @@ sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 def test_token_management():
     """Test token management functionality."""
-    print("🧪 Testing GitHub Token Management...")
+    print("Testing GitHub Token Management...")
     
-    # Test token file creation
-    token_file = Path("config/github_token.txt")
-    token_file.parent.mkdir(exist_ok=True)
+    # Test new config format
+    config_file = Path("config/github_config.json")
+    config_file.parent.mkdir(exist_ok=True)
     
-    # Test saving token
-    test_token = "test_token_12345"
-    with open(token_file, 'w', encoding='utf-8') as f:
-        f.write(test_token)
+    # Test saving token in new format
+    test_config = {
+        "username": "testuser",
+        "token": "ghp_test12345678901234567890",
+        "setup_date": "2024-01-01T00:00:00",
+        "wizard_version": "1.0"
+    }
     
-    # Test loading token
-    with open(token_file, 'r', encoding='utf-8') as f:
-        loaded_token = f.read().strip()
+    with open(config_file, 'w', encoding='utf-8') as f:
+        json.dump(test_config, f, indent=2)
     
-    if loaded_token == test_token:
-        print("✅ Token save/load functionality works correctly!")
+    # Test loading token from new format
+    with open(config_file, 'r', encoding='utf-8') as f:
+        loaded_config = json.load(f)
+    
+    if (loaded_config["username"] == test_config["username"] and 
+        loaded_config["token"] == test_config["token"]):
+        print("✅ New config format save/load functionality works correctly!")
     else:
-        print("❌ Token save/load functionality failed!")
+        print("❌ New config format save/load functionality failed!")
         return False
     
     # Test analysis cache
@@ -43,7 +51,6 @@ def test_token_management():
     }
     
     cache_file = cache_dir / "testuser_analysis.json"
-    import json
     with open(cache_file, 'w', encoding='utf-8') as f:
         json.dump(test_analysis, f, indent=2)
     
@@ -57,9 +64,26 @@ def test_token_management():
         print("❌ Analysis cache functionality failed!")
         return False
     
+    # Test legacy format compatibility
+    token_file = Path("config/github_token.txt")
+    test_token = "test_token_12345"
+    with open(token_file, 'w', encoding='utf-8') as f:
+        f.write(test_token)
+    
+    # Test loading token from legacy format
+    with open(token_file, 'r', encoding='utf-8') as f:
+        loaded_token = f.read().strip()
+    
+    if loaded_token == test_token:
+        print("✅ Legacy token format compatibility works correctly!")
+    else:
+        print("❌ Legacy token format compatibility failed!")
+        return False
+    
     # Cleanup
-    token_file.unlink(missing_ok=True)
+    config_file.unlink(missing_ok=True)
     cache_file.unlink(missing_ok=True)
+    token_file.unlink(missing_ok=True)
     
     print("✅ All token management tests passed!")
     return True

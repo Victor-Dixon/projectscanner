@@ -9,26 +9,21 @@ import json
 from pathlib import Path
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import QThread, pyqtSignal
+from datetime import datetime
 
 class GitHubTokenWizard(QtWidgets.QWizard):
-    """Wizard for generating and setting up GitHub tokens."""
+    """GitHub Token Setup Wizard."""
     
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("🔐 GitHub Token Setup Wizard")
-        
-        # Set size for popup dialog
-        self.resize(800, 600)
-        
-        # Configure as modal dialog within parent application
+        self.setWindowTitle("GitHub Token Setup Wizard")
         self.setModal(True)
         
-        # Configure wizard
-        self.setWizardStyle(QtWidgets.QWizard.ModernStyle)
-        self.setOption(QtWidgets.QWizard.HaveHelpButton, True)
-        self.setOption(QtWidgets.QWizard.HaveFinishButtonOnEarlyPages, False)
+        # Initialize token and username storage
+        self.github_token = None
+        self.github_username = None
         
-        # Add pages
+        # Set up pages
         self.addPage(WelcomePage())
         self.addPage(TokenGenerationPage())
         self.addPage(TokenSetupPage())
@@ -36,50 +31,78 @@ class GitHubTokenWizard(QtWidgets.QWizard):
         self.addPage(CompletionPage())
         
         # Connect signals
-        self.helpRequested.connect(self.show_help)
         self.finished.connect(self.on_wizard_finished)
         
-        # Store token
-        self.github_token = None
-        self.github_username = None
-
+        # Set wizard properties
+        self.setWizardStyle(QtWidgets.QWizard.ModernStyle)
+        self.setOption(QtWidgets.QWizard.HaveHelpButton, True)
+        self.setOption(QtWidgets.QWizard.HaveFinishButtonOnEarlyPages, False)
+        self.setOption(QtWidgets.QWizard.NoBackButtonOnStartPage, True)
+        self.setOption(QtWidgets.QWizard.NoCancelButton, False)
+        
+        # Help button
+        self.helpRequested.connect(self.show_help)
+        
+        # Set size
+        self.resize(600, 500)
+        
+        # Center the wizard
+        if parent:
+            self.move(parent.geometry().center() - self.rect().center())
+    
     def show_help(self):
         """Show help information."""
         QtWidgets.QMessageBox.information(
             self, "Help",
-            "This wizard will help you create a GitHub Personal Access Token.\n\n"
-            "The token allows the Project Scanner to access your private repositories "
-            "and perform comprehensive analysis of your GitHub portfolio.\n\n"
-            "Your token will be stored securely and only used for repository scanning."
+            "🔐 GitHub Token Setup Help\n\n"
+            "This wizard helps you create a GitHub Personal Access Token.\n\n"
+            "The token allows the Project Scanner to access your private repositories.\n\n"
+            "Your token will be stored locally and never shared."
         )
-
+    
     def on_wizard_finished(self, result):
         """Handle wizard completion."""
         if result == QtWidgets.QWizard.Accepted:
+            # Get token and username from the setup page
+            setup_page = self.page(2)  # TokenSetupPage is at index 2
+            if hasattr(setup_page, 'token_edit') and hasattr(setup_page, 'username_edit'):
+                self.github_token = setup_page.token_edit.text().strip()
+                self.github_username = setup_page.username_edit.text().strip()
+            
             # Save token to config
             self.save_token_to_config()
             QtWidgets.QMessageBox.information(
                 self, "Setup Complete",
-                "✅ GitHub token setup completed successfully!\n\n"
+                "GitHub token setup completed successfully!\n\n"
                 "Your token has been saved and you can now scan private repositories."
             )
 
     def save_token_to_config(self):
         """Save token to configuration file."""
         if self.github_token and self.github_username:
-            config_dir = Path("config")
-            config_dir.mkdir(exist_ok=True)
-            
-            config_file = config_dir / "github_config.json"
-            config_data = {
-                "username": self.github_username,
-                "token": self.github_token,
-                "setup_date": str(Path().cwd()),
-                "wizard_version": "1.0"
-            }
-            
-            with open(config_file, 'w', encoding='utf-8') as f:
-                json.dump(config_data, f, indent=2)
+            try:
+                config_dir = Path("config")
+                config_dir.mkdir(exist_ok=True)
+                
+                config_file = config_dir / "github_config.json"
+                config_data = {
+                    "username": self.github_username,
+                    "token": self.github_token,
+                    "setup_date": str(datetime.now().isoformat()),
+                    "wizard_version": "1.0"
+                }
+                
+                with open(config_file, 'w', encoding='utf-8') as f:
+                    json.dump(config_data, f, indent=2)
+                
+                print(f"Token saved to: {config_file}")
+                
+            except Exception as e:
+                print(f"Error saving token: {e}")
+                QtWidgets.QMessageBox.warning(
+                    self, "Save Error",
+                    f"Could not save token to config file: {e}"
+                )
 
 
 class WelcomePage(QtWidgets.QWizardPage):

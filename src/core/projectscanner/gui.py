@@ -1132,12 +1132,29 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             QtWidgets.QMessageBox.critical(self, "Error", f"Failed to save token: {str(e)}")
 
     def load_github_token(self):
-        """Load GitHub token from secure file."""
+        """Load GitHub token from secure file or config."""
         try:
+            # Try new config format first
+            config_file = Path("config/github_config.json")
+            if config_file.exists():
+                with open(config_file, 'r', encoding='utf-8') as f:
+                    config = json.load(f)
+                
+                if 'token' in config:
+                    self.github_token_edit.setText(config['token'])
+                    print(f"Token loaded from config: {config_file}")
+                    return
+                
+                if 'username' in config:
+                    self.github_username_edit.setText(config['username'])
+            
+            # Fall back to old format
             if self.token_file.exists():
                 with open(self.token_file, 'r', encoding='utf-8') as f:
                     token = f.read().strip()
                     self.github_token_edit.setText(token)
+                    print(f"Token loaded from legacy file: {self.token_file}")
+                    
         except Exception as e:
             print(f"Warning: Could not load GitHub token: {e}")
 
