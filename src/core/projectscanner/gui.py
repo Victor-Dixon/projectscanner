@@ -511,6 +511,13 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         self.stop_processing_btn.setMinimumHeight(50)
         layout.addWidget(self.stop_processing_btn)
         
+        # Refresh GUI Button
+        self.refresh_gui_btn = QtWidgets.QPushButton("🔄 REFRESH GUI WITH EXISTING DATA")
+        self.refresh_gui_btn.setObjectName("refreshButton")
+        self.refresh_gui_btn.clicked.connect(self.refresh_gui_with_existing_data)
+        self.refresh_gui_btn.setMinimumHeight(50)
+        layout.addWidget(self.refresh_gui_btn)
+        
         # Progress section
         layout.addWidget(QtWidgets.QLabel("Progress:"))
         self.progress_text = QtWidgets.QTextEdit()
@@ -1014,6 +1021,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
     def github_library_finished(self, result: Dict):
         """Handle GitHub library scan completion."""
         try:
+            print(f"🔍 DEBUG: github_library_finished called with result: {result}")
             self.is_processing = False
             self.update_processing_controls()
             
@@ -1025,6 +1033,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                 root_item.takeChildren()
                 
                 if result.get('success', False):
+                    print(f"🔍 DEBUG: Scan was successful, updating GUI...")
                     # Add success status
                     status_item = QtWidgets.QTreeWidgetItem(["Status: Scan completed successfully!"])
                     root_item.addChild(status_item)
@@ -1050,11 +1059,15 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                     
                     # Update portfolio statistics
                     github_data = self.load_github_library_data()
+                    print(f"🔍 DEBUG: Loaded github_data with {len(github_data) if github_data else 0} repositories")
                     if github_data:
+                        print(f"🔍 DEBUG: Updating portfolio statistics...")
                         self.update_portfolio_statistics(github_data)
+                        print(f"🔍 DEBUG: Updating GitHub library display...")
                         self.update_github_library_display(github_data)
                         
                         # Automatically generate all analysis
+                        print(f"🔍 DEBUG: Generating all analysis...")
                         self.generate_all_analysis(github_data)
                     
                     self.update_progress("GitHub library scan completed successfully!")
@@ -1076,6 +1089,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                         f"Check the tabs for detailed analysis."
                     )
                 else:
+                    print(f"🔍 DEBUG: Scan failed with error: {result.get('error', 'Unknown error')}")
                     # Add error status
                     error_msg = result.get('error', 'Unknown error occurred')
                     status_item = QtWidgets.QTreeWidgetItem([f"Status: Scan failed - {error_msg}"])
@@ -1090,6 +1104,7 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
                     )
                 
         except Exception as e:
+            print(f"🔍 DEBUG: Error in github_library_finished: {e}")
             self.update_progress(f"Error handling GitHub library completion: {e}")
             self.status_bar.showMessage("Error processing results")
 
@@ -1603,6 +1618,51 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
             self.github_library_worker.wait()
         
         event.accept()
+
+    def refresh_gui_with_existing_data(self):
+        """Manually refresh GUI with existing scan data."""
+        try:
+            print("🔍 DEBUG: Manually refreshing GUI with existing data...")
+            
+            # Load existing GitHub data
+            github_data = self.load_github_library_data()
+            if github_data:
+                print(f"🔍 DEBUG: Found existing data with {len(github_data)} repositories")
+                
+                # Update portfolio statistics
+                self.update_portfolio_statistics(github_data)
+                
+                # Update GitHub library display
+                self.update_github_library_display(github_data)
+                
+                # Generate all analysis
+                self.generate_all_analysis(github_data)
+                
+                # Switch to Portfolio Stats tab
+                self.tabs.setCurrentIndex(1)
+                
+                self.update_progress("✅ GUI refreshed with existing scan data!")
+                self.status_bar.showMessage("GUI refreshed with existing data")
+                
+                QtWidgets.QMessageBox.information(
+                    self, "GUI Refreshed",
+                    f"GUI has been updated with existing scan data!\n\n"
+                    f"Found {len(github_data)} repositories\n\n"
+                    f"✅ Portfolio statistics updated\n"
+                    f"✅ GitHub library display updated\n"
+                    f"✅ All analysis generated\n\n"
+                    f"Check the tabs for detailed analysis."
+                )
+            else:
+                print("🔍 DEBUG: No existing scan data found")
+                QtWidgets.QMessageBox.warning(
+                    self, "No Data Found",
+                    "No existing scan data found. Please run a GitHub scan first."
+                )
+                
+        except Exception as e:
+            print(f"🔍 DEBUG: Error refreshing GUI: {e}")
+            self.update_progress(f"Error refreshing GUI: {e}")
 
     def update_portfolio_statistics(self, github_data: Dict):
         """Update portfolio statistics from GitHub data."""

@@ -515,7 +515,703 @@
       "scan_date": "2025-07-31T21:54:58.927365",
       "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp9keiwc1j\\TradingRobotPlugWebTheme'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp9keiwc1j/TradingRobotPlugWebTheme/.git/hooks/commit-msg.sample': No space left on device\n",
       "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_FreerideinvestorWebsite_private",
+      "repo_name": "FreerideinvestorWebsite",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:13:51.400179",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpt4ex71qv\\FreerideinvestorWebsite'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpt4ex71qv/FreerideinvestorWebsite/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_MLRobotmaker_private",
+      "repo_name": "MLRobotmaker",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:02.652928",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpybktjku5\\MLRobotmaker'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpybktjku5/MLRobotmaker/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_SouthwestsSecretDjBoard",
+      "repo_name": "SouthwestsSecretDjBoard",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:18.207699",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp3zafsz23\\SouthwestsSecretDjBoard'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp3zafsz23/SouthwestsSecretDjBoard/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_stocktwits-analyzer",
+      "repo_name": "stocktwits-analyzer",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:19.250663",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpp1q9akrl\\stocktwits-analyzer'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpp1q9akrl/stocktwits-analyzer/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_stock_portfolio_manager",
+      "repo_name": "stock_portfolio_manager",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:20.297215",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpkcenqktz\\stock_portfolio_manager'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpkcenqktz/stock_portfolio_manager/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Streamertools",
+      "repo_name": "Streamertools",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:21.342398",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmphm1aae5k\\Streamertools'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmphm1aae5k/Streamertools/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Superpowered-TTRPG",
+      "repo_name": "Superpowered-TTRPG",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:22.388148",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp8rrse5j7\\Superpowered-TTRPG'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp8rrse5j7/Superpowered-TTRPG/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_SWARM",
+      "repo_name": "SWARM",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:23.434554",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmptajvxsnk\\SWARM'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmptajvxsnk/SWARM/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_tbow-tactics",
+      "repo_name": "tbow-tactics",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:24.480377",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpvdr8psmd\\tbow-tactics'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpvdr8psmd/tbow-tactics/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TBOWTactics_private",
+      "repo_name": "TBOWTactics",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:25.528133",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpoy_6nvqx\\TBOWTactics'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpoy_6nvqx/TBOWTactics/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Thea",
+      "repo_name": "Thea",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:26.572861",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpe61smib7\\Thea'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpe61smib7/Thea/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TheTradingRobotPlug_private",
+      "repo_name": "TheTradingRobotPlug",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:27.620366",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpmu50gub7\\TheTradingRobotPlug'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpmu50gub7/TheTradingRobotPlug/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_trade_analyzer_private",
+      "repo_name": "trade_analyzer",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:28.904377",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpj57updwv\\trade_analyzer'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpj57updwv/trade_analyzer/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_trading-leads-bot",
+      "repo_name": "trading-leads-bot",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:29.951093",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpp12iryes\\trading-leads-bot'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpp12iryes/trading-leads-bot/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TradingRobotPlug_private",
+      "repo_name": "TradingRobotPlug",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:30.996218",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpit8lz1yz\\TradingRobotPlug'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpit8lz1yz/TradingRobotPlug/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TradingRobotPlugWeb_private",
+      "repo_name": "TradingRobotPlugWeb",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:32.042196",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpwiyxjp7w\\TradingRobotPlugWeb'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpwiyxjp7w/TradingRobotPlugWeb/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TROOP",
+      "repo_name": "TROOP",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:33.088030",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpbqs0cge2\\TROOP'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpbqs0cge2/TROOP/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TRPlugLibrary_private",
+      "repo_name": "TRPlugLibrary",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:34.132579",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpf0b4x00i\\TRPlugLibrary'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpf0b4x00i/TRPlugLibrary/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_UltimateOptionsTradingRobot_private",
+      "repo_name": "UltimateOptionsTradingRobot",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:35.178469",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpyd4sney7\\UltimateOptionsTradingRobot'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpyd4sney7/UltimateOptionsTradingRobot/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_ultimate_trading_intelligence_private",
+      "repo_name": "ultimate_trading_intelligence",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:36.225682",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpq51ldpo7\\ultimate_trading_intelligence'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpq51ldpo7/ultimate_trading_intelligence/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Victoros",
+      "repo_name": "Victor.os",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:37.270765",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp4dt8eqou\\Victor.os'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp4dt8eqou/Victor.os/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Datgurll_All-files-everything-",
+      "repo_name": "All-files-everything-",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:14:38.317203",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpac6tdmi4\\All-files-everything-'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpac6tdmi4/All-files-everything-/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Datgurll_Digital-dreamscape_private",
+      "repo_name": "Digital-dreamscape",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:39.536012",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp_69nn0pg\\Digital-dreamscape'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp_69nn0pg/Digital-dreamscape/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "PauGCO_Email-Cleanup-App_private",
+      "repo_name": "Email-Cleanup-App",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:40.579990",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmppyqeuzwp\\Email-Cleanup-App'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmppyqeuzwp/Email-Cleanup-App/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Auot_BLOGGER_private",
+      "repo_name": "Auot_BLOGGER",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:41.625645",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpk1hiz9x5\\Auot_BLOGGER'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpk1hiz9x5/Auot_BLOGGER/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Auto_Blogger_private",
+      "repo_name": "Auto_Blogger",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:42.669441",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpusvmi2ei\\Auto_Blogger'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpusvmi2ei/Auto_Blogger/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_NightShift_private",
+      "repo_name": "NightShift",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:43.716442",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpdbj0onio\\NightShift'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpdbj0onio/NightShift/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Sims4ModUpdaters_private",
+      "repo_name": "Sims4ModUpdaters",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:44.763289",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpj1c03dg1\\Sims4ModUpdaters'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpj1c03dg1/Sims4ModUpdaters/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_TradingRobotPlugWebTheme_private",
+      "repo_name": "TradingRobotPlugWebTheme",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:14:45.810656",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpffoobkh4\\TradingRobotPlugWebTheme'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpffoobkh4/TradingRobotPlugWebTheme/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_FreerideinvestorWebsite_private",
+      "repo_name": "FreerideinvestorWebsite",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:15.786171",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp8djm99jh\\FreerideinvestorWebsite'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp8djm99jh/FreerideinvestorWebsite/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_MLRobotmaker_private",
+      "repo_name": "MLRobotmaker",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:27.071346",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpft4010ww\\MLRobotmaker'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpft4010ww/MLRobotmaker/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_SouthwestsSecretDjBoard",
+      "repo_name": "SouthwestsSecretDjBoard",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:42.507799",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpzi3jpqwu\\SouthwestsSecretDjBoard'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpzi3jpqwu/SouthwestsSecretDjBoard/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_stocktwits-analyzer",
+      "repo_name": "stocktwits-analyzer",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:43.554314",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp5z7syq4s\\stocktwits-analyzer'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp5z7syq4s/stocktwits-analyzer/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_stock_portfolio_manager",
+      "repo_name": "stock_portfolio_manager",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:44.600991",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpqp_1xa_7\\stock_portfolio_manager'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpqp_1xa_7/stock_portfolio_manager/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Streamertools",
+      "repo_name": "Streamertools",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:45.646878",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmphqi5_mce\\Streamertools'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmphqi5_mce/Streamertools/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Superpowered-TTRPG",
+      "repo_name": "Superpowered-TTRPG",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:46.696846",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp35wajhl0\\Superpowered-TTRPG'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp35wajhl0/Superpowered-TTRPG/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_SWARM",
+      "repo_name": "SWARM",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:47.747324",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpr8ub7y1a\\SWARM'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpr8ub7y1a/SWARM/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_tbow-tactics",
+      "repo_name": "tbow-tactics",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:48.793366",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpc8s4zdxw\\tbow-tactics'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpc8s4zdxw/tbow-tactics/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TBOWTactics_private",
+      "repo_name": "TBOWTactics",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:49.839781",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp6i_9b4lw\\TBOWTactics'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp6i_9b4lw/TBOWTactics/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Thea",
+      "repo_name": "Thea",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:50.886081",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp3oxr7rsz\\Thea'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp3oxr7rsz/Thea/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TheTradingRobotPlug_private",
+      "repo_name": "TheTradingRobotPlug",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:51.933581",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpifw_87zj\\TheTradingRobotPlug'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpifw_87zj/TheTradingRobotPlug/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_trade_analyzer_private",
+      "repo_name": "trade_analyzer",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:53.162475",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp79bwogfo\\trade_analyzer'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp79bwogfo/trade_analyzer/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_trading-leads-bot",
+      "repo_name": "trading-leads-bot",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:54.211570",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpcax_6x_c\\trading-leads-bot'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpcax_6x_c/trading-leads-bot/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TradingRobotPlug_private",
+      "repo_name": "TradingRobotPlug",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:55.409306",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpkcywzyco\\TradingRobotPlug'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpkcywzyco/TradingRobotPlug/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TradingRobotPlugWeb_private",
+      "repo_name": "TradingRobotPlugWeb",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:56.460480",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp5i24srt7\\TradingRobotPlugWeb'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp5i24srt7/TradingRobotPlugWeb/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TROOP",
+      "repo_name": "TROOP",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:16:57.508863",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp322d_aid\\TROOP'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp322d_aid/TROOP/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TRPlugLibrary_private",
+      "repo_name": "TRPlugLibrary",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:58.559954",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpysp0xn73\\TRPlugLibrary'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpysp0xn73/TRPlugLibrary/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_UltimateOptionsTradingRobot_private",
+      "repo_name": "UltimateOptionsTradingRobot",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:16:59.606017",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpj2ni1_xz\\UltimateOptionsTradingRobot'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpj2ni1_xz/UltimateOptionsTradingRobot/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_ultimate_trading_intelligence_private",
+      "repo_name": "ultimate_trading_intelligence",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:00.653832",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmps9j378_v\\ultimate_trading_intelligence'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmps9j378_v/ultimate_trading_intelligence/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Victoros",
+      "repo_name": "Victor.os",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:17:01.700303",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpi0lquf1s\\Victor.os'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpi0lquf1s/Victor.os/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Datgurll_All-files-everything-",
+      "repo_name": "All-files-everything-",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:17:02.746250",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp0jlvckil\\All-files-everything-'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp0jlvckil/All-files-everything-/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Datgurll_Digital-dreamscape_private",
+      "repo_name": "Digital-dreamscape",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:03.970929",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpq43wbvig\\Digital-dreamscape'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpq43wbvig/Digital-dreamscape/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "PauGCO_Email-Cleanup-App_private",
+      "repo_name": "Email-Cleanup-App",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:05.017549",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpnatnznip\\Email-Cleanup-App'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpnatnznip/Email-Cleanup-App/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Auot_BLOGGER_private",
+      "repo_name": "Auot_BLOGGER",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:06.062303",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpa5p65bxl\\Auot_BLOGGER'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpa5p65bxl/Auot_BLOGGER/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Auto_Blogger_private",
+      "repo_name": "Auto_Blogger",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:07.108662",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpy7igx0uu\\Auto_Blogger'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpy7igx0uu/Auto_Blogger/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_NightShift_private",
+      "repo_name": "NightShift",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:08.154955",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpb80vjijx\\NightShift'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpb80vjijx/NightShift/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Sims4ModUpdaters_private",
+      "repo_name": "Sims4ModUpdaters",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:09.200962",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpwoer7zvw\\Sims4ModUpdaters'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpwoer7zvw/Sims4ModUpdaters/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_TradingRobotPlugWebTheme_private",
+      "repo_name": "TradingRobotPlugWebTheme",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:17:10.246303",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpdg9taayk\\TradingRobotPlugWebTheme'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpdg9taayk/TradingRobotPlugWebTheme/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_FreerideinvestorWebsite_private",
+      "repo_name": "FreerideinvestorWebsite",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:16.942023",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmppdel1jj8\\FreerideinvestorWebsite'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmppdel1jj8/FreerideinvestorWebsite/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_MLRobotmaker_private",
+      "repo_name": "MLRobotmaker",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:28.182266",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpf0fs50zq\\MLRobotmaker'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpf0fs50zq/MLRobotmaker/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_SouthwestsSecretDjBoard",
+      "repo_name": "SouthwestsSecretDjBoard",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:43.660413",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpwkf9xvx0\\SouthwestsSecretDjBoard'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpwkf9xvx0/SouthwestsSecretDjBoard/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_stocktwits-analyzer",
+      "repo_name": "stocktwits-analyzer",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:44.709154",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmplzo9y4kl\\stocktwits-analyzer'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmplzo9y4kl/stocktwits-analyzer/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_stock_portfolio_manager",
+      "repo_name": "stock_portfolio_manager",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:45.756977",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpy2uvfumx\\stock_portfolio_manager'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpy2uvfumx/stock_portfolio_manager/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Streamertools",
+      "repo_name": "Streamertools",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:46.804950",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp22p56594\\Streamertools'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp22p56594/Streamertools/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Superpowered-TTRPG",
+      "repo_name": "Superpowered-TTRPG",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:47.852985",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmps2w3pbi0\\Superpowered-TTRPG'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmps2w3pbi0/Superpowered-TTRPG/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_SWARM",
+      "repo_name": "SWARM",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:48.930606",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp9t4lqhus\\SWARM'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp9t4lqhus/SWARM/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_tbow-tactics",
+      "repo_name": "tbow-tactics",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:49.976876",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp4gmt8ht2\\tbow-tactics'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp4gmt8ht2/tbow-tactics/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TBOWTactics_private",
+      "repo_name": "TBOWTactics",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:51.023081",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp3nmhd5rr\\TBOWTactics'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp3nmhd5rr/TBOWTactics/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Thea",
+      "repo_name": "Thea",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:52.070440",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmprzrt9e1s\\Thea'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmprzrt9e1s/Thea/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TheTradingRobotPlug_private",
+      "repo_name": "TheTradingRobotPlug",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:53.134765",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp6vw7r4sw\\TheTradingRobotPlug'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp6vw7r4sw/TheTradingRobotPlug/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_trade_analyzer_private",
+      "repo_name": "trade_analyzer",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:54.370224",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpxgrqked_\\trade_analyzer'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpxgrqked_/trade_analyzer/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_trading-leads-bot",
+      "repo_name": "trading-leads-bot",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:55.451215",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpmjaobqzp\\trading-leads-bot'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpmjaobqzp/trading-leads-bot/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TradingRobotPlug_private",
+      "repo_name": "TradingRobotPlug",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:56.515038",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpa1n802rn\\TradingRobotPlug'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpa1n802rn/TradingRobotPlug/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TradingRobotPlugWeb_private",
+      "repo_name": "TradingRobotPlugWeb",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:57.577575",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmph2bp7ayv\\TradingRobotPlugWeb'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmph2bp7ayv/TradingRobotPlugWeb/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TROOP",
+      "repo_name": "TROOP",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:18:58.625094",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmppee9ekk2\\TROOP'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmppee9ekk2/TROOP/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_TRPlugLibrary_private",
+      "repo_name": "TRPlugLibrary",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:18:59.672713",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmphpxhiyi6\\TRPlugLibrary'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmphpxhiyi6/TRPlugLibrary/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_UltimateOptionsTradingRobot_private",
+      "repo_name": "UltimateOptionsTradingRobot",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:00.719663",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpvw2xo69t\\UltimateOptionsTradingRobot'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpvw2xo69t/UltimateOptionsTradingRobot/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_ultimate_trading_intelligence_private",
+      "repo_name": "ultimate_trading_intelligence",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:01.766928",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpql0grdah\\ultimate_trading_intelligence'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpql0grdah/ultimate_trading_intelligence/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Dadudekc_Victoros",
+      "repo_name": "Victor.os",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:19:02.815035",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpnghl2fdk\\Victor.os'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpnghl2fdk/Victor.os/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Datgurll_All-files-everything-",
+      "repo_name": "All-files-everything-",
+      "is_private": false,
+      "scan_date": "2025-07-31T22:19:03.861879",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp896uriuq\\All-files-everything-'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp896uriuq/All-files-everything-/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "Datgurll_Digital-dreamscape_private",
+      "repo_name": "Digital-dreamscape",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:05.105884",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpkxib5wwu\\Digital-dreamscape'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpkxib5wwu/Digital-dreamscape/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "PauGCO_Email-Cleanup-App_private",
+      "repo_name": "Email-Cleanup-App",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:06.153673",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp_klocdfi\\Email-Cleanup-App'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp_klocdfi/Email-Cleanup-App/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Auot_BLOGGER_private",
+      "repo_name": "Auot_BLOGGER",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:07.200961",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpq4fdyioo\\Auot_BLOGGER'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpq4fdyioo/Auot_BLOGGER/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Auto_Blogger_private",
+      "repo_name": "Auto_Blogger",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:08.248781",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpom61m6kp\\Auto_Blogger'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpom61m6kp/Auto_Blogger/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_NightShift_private",
+      "repo_name": "NightShift",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:09.296509",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpnqsx6hi5\\NightShift'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpnqsx6hi5/NightShift/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_Sims4ModUpdaters_private",
+      "repo_name": "Sims4ModUpdaters",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:10.343964",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmpyaa47o26\\Sims4ModUpdaters'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmpyaa47o26/Sims4ModUpdaters/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
+    },
+    {
+      "unique_name": "QuianaSampson_TradingRobotPlugWebTheme_private",
+      "repo_name": "TradingRobotPlugWebTheme",
+      "is_private": true,
+      "scan_date": "2025-07-31T22:19:11.390607",
+      "error": "Failed to clone repository: Cloning into 'C:\\Users\\USER\\AppData\\Local\\Temp\\tmp0bve023m\\TradingRobotPlugWebTheme'...\nerror: copy-fd: write returned: No space left on device\nfatal: cannot copy 'C:/Program Files/Git/mingw64/share/git-core/templates/hooks/commit-msg.sample' to 'C:/Users/USER/AppData/Local/Temp/tmp0bve023m/TradingRobotPlugWebTheme/.git/hooks/commit-msg.sample': No space left on device\n",
+      "status": "failed"
     }
   ],
-  "last_scan": "2025-07-31T21:53:13.336627"
+  "last_scan": "2025-07-31T22:18:02.693174"
 }
