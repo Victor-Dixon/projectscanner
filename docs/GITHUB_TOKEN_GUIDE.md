@@ -40,7 +40,7 @@ python github_library_scanner_private.py dadudekc --token ghp_xxxxxxxxxxxxxxxxxx
 python github_library_scanner_private.py YOUR_USERNAME --token YOUR_TOKEN --max-repos 50 --force-rescan
 ```
 
-### Security Best practice-projectss
+### Security Best practice-projects-projectss
 1. **Never commit tokens to Git**
 2. **Use environment variables**:
    ```bash

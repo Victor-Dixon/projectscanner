@@ -19,7 +19,7 @@
    - Trading automation market access
    - Ready for beta launch
 
-3. **project-ideas** (248 files) - CRITICAL
+3. **project-project-ideas** (248 files) - CRITICAL
    - Intellectual property repository
    - IP licensing revenue stream
    - Patent protection opportunities
@@ -111,7 +111,7 @@
 4. Add user authentication and accounts
 5. Deploy to cloud platform with monitoring
 
-#### 3. IP Extraction from project-ideas Repository ✅
+#### 3. IP Extraction from project-project-ideas Repository ✅
 **Status**: COMPLETED
 **Location**: `ip_extraction/`
 **Files Created**:

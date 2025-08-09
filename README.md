@@ -50,7 +50,7 @@ python run_analysis.py --github-analysis
 # Generate strategic plan
 python strategic_plan.py
 
-# Extract IP from project-ideas repository
+# Extract IP from project-project-ideas repository
 python extract_ip.py
 ```
 

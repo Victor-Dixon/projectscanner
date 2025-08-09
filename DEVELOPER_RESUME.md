@@ -67,7 +67,7 @@
 1. **Victor.os** (1,254 files) - Advanced operating system
 2. **Thea** (805 files) - Complex AI platform
 3. **SWARM** (719 files) - Multiplayer gaming system
-4. **project-ideas_private** (248 files) - Private project collection
+4. **project-project-ideas_private** (248 files) - Private project collection
 5. **Dream.os** (184 files) - Self-optimizing OS
 
 ### **Technology Stack**

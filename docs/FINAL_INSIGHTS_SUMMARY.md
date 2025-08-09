@@ -23,7 +23,7 @@ Based on analysis of your **64 GitHub repositories** containing **4,997 files**:
 1. **Victor.os** - 1,254 files (Massive operating system project)
 2. **Thea** - 805 files (Large AI/ML application)
 3. **SWARM** - 719 files (Complex automation system)
-4. **project-ideas_private** - 248 files (Private project-ideas repository)
+4. **project-project-ideas_private** - 248 files (Private project-project-ideas repository)
 5. **Dreamos** - 184 files (Dream operating system)
 
 ### **🧠 Most Complex Projects**
