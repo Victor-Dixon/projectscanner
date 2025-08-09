@@ -14,6 +14,7 @@ import shutil
 from pathlib import Path
 from typing import Dict, Optional, List, Any
 from datetime import datetime
+import re
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -241,7 +242,8 @@ class GitHubScanWorker(QThread):
             'languages': {},
             'frameworks': [],
             'dependencies': [],
-            'structure': {}
+            'structure': {},
+            'tasks': []
         }
         
         try:
@@ -266,11 +268,68 @@ class GitHubScanWorker(QThread):
             analysis['frameworks'] = self.detect_frameworks(repo_dir)
             analysis['dependencies'] = self.detect_dependencies(repo_dir)
             analysis['structure'] = self.analyze_structure(repo_dir)
+            # Extract task list items
+            analysis['tasks'] = self.extract_tasks(repo_dir)
             
         except Exception as e:
             self.progress.emit(f"Error analyzing {repo['name']}: {str(e)}")
         
         return analysis
+
+    def extract_tasks(self, repo_dir: Path) -> List[Dict[str, Any]]:
+        """Extract tasks from common task list markdown files.
+
+        Looks for markdown checkboxes (- [ ] / - [x]) and TODO/FIXME lines.
+        """
+        task_files: List[Path] = []
+        patterns = [
+            'PROJECT_CLEANUP_TASKS.md', 'MASTER_TASK_LIST.md', 'TASKS.md', 'tasks.md', 'TODO.md', 'todo.md',
+            'QUICK_ACTION_TASKS.md', '*task*.md', '*tasks*.md'
+        ]
+        for pat in patterns:
+            task_files.extend(repo_dir.rglob(pat))
+
+        tasks: List[Dict[str, Any]] = []
+        checkbox_re = r"^\s*[-*]\s+\[( |x|X)\]\s+(.*)$"
+        todo_re = r"^\s*(?:[-*]\s+)?(?:TODO|FIXME)[:\s]+(.*)$"
+
+        for file_path in task_files:
+            # Skip very large files
+            try:
+                if file_path.stat().st_size > 1024 * 1024:
+                    continue
+            except Exception:
+                continue
+            try:
+                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                    for idx, line in enumerate(f, start=1):
+                        line_stripped = line.rstrip('\n')
+                        m1 = re.match(checkbox_re, line_stripped)
+                        if m1:
+                            done = m1.group(1).lower() == 'x'
+                            desc = m1.group(2).strip()
+                            tasks.append({
+                                'type': 'checkbox',
+                                'done': done,
+                                'description': desc,
+                                'file': str(file_path.relative_to(repo_dir)),
+                                'line': idx,
+                            })
+                            continue
+                        m2 = re.match(todo_re, line_stripped, re.IGNORECASE)
+                        if m2:
+                            desc2 = m2.group(1).strip()
+                            tasks.append({
+                                'type': 'todo',
+                                'done': False,
+                                'description': desc2,
+                                'file': str(file_path.relative_to(repo_dir)),
+                                'line': idx,
+                            })
+            except Exception:
+                continue
+
+        return tasks
     
     def detect_languages(self, repo_dir: Path) -> Dict[str, int]:
         """Detect programming languages used in the repository."""
@@ -1948,6 +2007,35 @@ Detailed analysis and recommendations follow...
         
         # Store results for later use
         self.github_scan_results = result
+
+        # Populate tasks tab if available
+        try:
+            all_tasks = []
+            for r in result.get('scan_results', []):
+                repo_name = r.get('name')
+                tasks = (r.get('analysis', {}) or {}).get('tasks', [])
+                for t in tasks:
+                    t_entry = dict(repo=repo_name, **t)
+                    all_tasks.append(t_entry)
+
+            if all_tasks:
+                # If there is no dedicated tasks widget, show a summary in the reports preview
+                lines = [
+                    f"Tasks found across {len(set([t['repo'] for t in all_tasks]))} repositories: {len(all_tasks)} entries",
+                    ""
+                ]
+                for t in all_tasks[:200]:  # cap to avoid overflow
+                    status = "[x]" if t.get('done') else "[ ]"
+                    lines.append(f"- {status} {t.get('repo')}: {t.get('description')} ({t.get('file')}:{t.get('line')})")
+                summary_text = "\n".join(lines)
+                # Reuse report preview area
+                try:
+                    self.report_preview.setPlainText(summary_text)
+                    self.tab_widget.setCurrentWidget(self.reports_tab)
+                except Exception:
+                    pass
+        except Exception:
+            pass
     
     def github_scan_error(self, error_message: str):
         """Handle GitHub scan error."""
