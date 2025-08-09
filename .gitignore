@@ -1,0 +1,29 @@
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Project cache
+dependency_cache.json
+.dependency_cache.json
+
+# Secrets
+config/github_config.json
+
+# Temp and generated
+data/
+temp_repos/
+temp_scan/
+temp_github_scan/
+temp_github_deploy/
+github_library/
+github_library_enhanced/
+
+# Build artifacts
+dist/
+build/
