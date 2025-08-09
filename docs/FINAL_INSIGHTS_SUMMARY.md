@@ -23,14 +23,14 @@ Based on analysis of your **64 GitHub repositories** containing **4,997 files**:
 1. **Victor.os** - 1,254 files (Massive operating system project)
 2. **Thea** - 805 files (Large AI/ML application)
 3. **SWARM** - 719 files (Complex automation system)
-4. **ideas_private** - 248 files (Private ideas repository)
+4. **project-ideas_private** - 248 files (Private project-ideas repository)
 5. **Dreamos** - 184 files (Dream operating system)
 
 ### **🧠 Most Complex Projects**
 - **Agent_Cellphone** - High complexity automation
 - **Auto_Blogger** - Automated content generation
-- **basicbot** - Core automation framework
-- **DigitalDreamscape** - AI/ML dream processing
+- **basic-bot** - Core automation framework
+- **digital-dreamscape** - AI/ML dream processing
 - **Dreamos** - Operating system development
 
 ## 🎯 **Your Development Strengths**

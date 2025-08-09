@@ -1,10 +1,10 @@
-# ProjectScanner PRD
+# project-scanner PRD
 
 ## Purpose
-ProjectScanner is a lightweight tool for generating a structured overview of a codebase. It supports Python, Rust, JavaScript and TypeScript files and produces JSON reports suitable for other tools or language models.
+project-scanner is a lightweight tool for generating a structured overview of a codebase. It supports Python, Rust, JavaScript and TypeScript files and produces JSON reports suitable for other tools or language models.
 
 ## Problem Statement
-Developers often need quick insight into unfamiliar repositories. Manually exploring source files is time consuming. ProjectScanner automates static analysis so teams can rapidly understand project structure and feed the data into automation workflows.
+Developers often need quick insight into unfamiliar repositories. Manually exploring source files is time consuming. project-scanner automates static analysis so teams can rapidly understand project structure and feed the data into automation workflows.
 
 ## Solution Overview
 - Multi-language parsing using ASTs (Python) and optional tree-sitter parsers (Rust/JS/TS)

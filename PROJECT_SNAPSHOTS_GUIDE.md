@@ -5,12 +5,12 @@
 ### 📂 **Main Directory Structure:**
 
 ```
-projectscanner/
+project-scanner/
 ├── 📁 github_library/                    # Public repositories only
 │   ├── 📄 github_library.json           # Main library data
 │   ├── 📄 scan_log.json                 # Scan history
 │   ├── 📄 library_summary.json          # Summary statistics
-│   └── 📁 Dadudekc_[ProjectName]/       # Individual project snapshots
+│   └── 📁 dadudekc_[ProjectName]/       # Individual project snapshots
 │       ├── 📄 project_analysis_[ProjectName].json
 │       └── 📄 chatgpt_project_context_[ProjectName].json
 │
@@ -18,8 +18,8 @@ projectscanner/
 │   ├── 📄 github_library_enhanced.json  # Enhanced library data
 │   ├── 📄 scan_log_enhanced.json        # Enhanced scan history
 │   ├── 📄 enhanced_library_summary.json # Enhanced summary
-│   └── 📁 Dadudekc_[ProjectName]/       # Public project snapshots
-│   └── 📁 Dadudekc_[ProjectName]_private/ # Private project snapshots
+│   └── 📁 dadudekc_[ProjectName]/       # Public project snapshots
+│   └── 📁 dadudekc_[ProjectName]_private/ # Private project snapshots
 │       ├── 📄 project_analysis_[ProjectName].json
 │       └── 📄 chatgpt_project_context_[ProjectName].json
 │
@@ -44,7 +44,7 @@ projectscanner/
 Each repository gets its own directory with detailed analysis:
 
 ```
-📁 Dadudekc_ProjectName/
+📁 dadudekc_ProjectName/
 ├── 📄 project_analysis_ProjectName.json     # Detailed project analysis
 └── 📄 chatgpt_project_context_ProjectName.json # ChatGPT context data
 ```
@@ -52,8 +52,8 @@ Each repository gets its own directory with detailed analysis:
 ### 2. **🔐 Public vs Private Repository Organization**
 - **📁 github_library/** - Public repositories only
 - **📁 github_library_enhanced/** - Public + Private repositories
-  - Public repos: `Dadudekc_ProjectName/`
-  - Private repos: `Dadudekc_ProjectName_private/`
+  - Public repos: `dadudekc_ProjectName/`
+  - Private repos: `dadudekc_ProjectName_private/`
 
 ### 3. **💾 Analysis Caching System**
 - **📁 analysis_cache/** - Stores processed analysis results

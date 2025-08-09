@@ -8,7 +8,7 @@ We've created a **comprehensive skill analysis system** that transforms your Git
 - **Technology Stack Analysis**: Detects languages, frameworks, and tools from your codebase
 - **Expertise Area Mapping**: Categorizes projects by type (web, automation, AI/ML, gaming, etc.)
 - **Code Quality Metrics**: Analyzes complexity, maturity levels, and architectural patterns
-- **Development Practices**: Tracks testing, documentation, and project structure patterns
+- **Development practice-projectss**: Tracks testing, documentation, and project structure patterns
 
 ### **🧠 Knowledge Base Generator**
 - **Coding Patterns**: Extracts function and class patterns from your code

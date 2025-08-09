@@ -35,7 +35,7 @@ python run_analysis.py --skill-tree
 ## Project Structure
 
 ```
-projectscanner/
+project-scanner/
 ├── src/                    # Source code
 │   ├── core/              # Core scanner functionality
 │   ├── analyzers/         # Analysis tools

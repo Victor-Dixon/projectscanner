@@ -50,7 +50,7 @@
 1. **Victor.os** - 1,254 files
 2. **Thea** - 805 files
 3. **SWARM** - 719 files
-4. **ideas_private** - 248 files
+4. **project-ideas_private** - 248 files
 5. **Dreamos** - 184 files
 
 ## ⚠️ **Known Issues & Limitations**

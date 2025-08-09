@@ -1,5 +1,5 @@
 # 🚀 Developer Portfolio & Resume
-## DaDudekC - Full Stack Developer & AI Engineer
+## dadudekc - Full Stack Developer & AI Engineer
 
 ---
 
@@ -16,40 +16,40 @@
 
 ### 🤖 **AI/ML Development** (8 Projects)
 - **Agent_Cellphone** - AI-powered mobile automation
-- **DigitalDreamscape** - AI-driven creative platform
-- **gpt_automation** - OpenAI integration systems
-- **LSTMmodel_trainer** - Machine learning model development
-- **projectscanner** - Advanced code analysis tool
+- **digital-dreamscape** - AI-driven creative platform
+- **gpt-automation** - OpenAI integration systems
+- **lstm-model-trainer** - Machine learning model development
+- **project-scanner** - Advanced code analysis tool
 - **prompt-library** - AI prompt engineering
 - **Streamertools** - AI-powered streaming tools
 - **trading-leads-bot** - AI-driven trading automation
 
 ### ⚙️ **Automation & Bots** (10 Projects)
 - **Auto_Blogger** - Automated content generation
-- **basicbot** - Core bot framework
+- **basic-bot** - Core bot framework
 - **Dream.os** - Self-optimizing operating system
-- **gpt_automation** - GPT-powered automation
+- **gpt-automation** - GPT-powered automation
 - **Side-projects** - Various automation tools
 - **Streamertools** - Streaming automation
 - **trading-leads-bot** - Trading automation
-- **TROOP** - Team automation platform
+- **troop** - Team automation platform
 
 ### 🎮 **Gaming Development** (5 Projects)
-- **DigitalDreamscape** - Game development platform
+- **digital-dreamscape** - Game development platform
 - **Superpowered-TTRPG** - Tabletop RPG system
 - **SWARM** - Multiplayer gaming platform
 - **tbow-tactics** - Strategy game development
-- **TROOP** - Gaming team management
+- **troop** - Gaming team management
 
 ### 💰 **Financial Technology** (4 Projects)
 - **stocktwits-analyzer** - Social trading analysis
 - **stock_portfolio_manager** - Portfolio management
 - **trading-leads-bot** - Trading automation
-- **TROOP** - Financial team tools
+- **troop** - Financial team tools
 
 ### 💻 **Operating Systems** (6 Projects)
 - **Dream.os** - Self-optimizing OS for creators
-- **LSTMmodel_trainer** - ML training systems
+- **lstm-model-trainer** - ML training systems
 - **network-scanner** - Network analysis tools
 - **Streamertools** - System utilities
 - **trading-leads-bot** - Trading system
@@ -67,7 +67,7 @@
 1. **Victor.os** (1,254 files) - Advanced operating system
 2. **Thea** (805 files) - Complex AI platform
 3. **SWARM** (719 files) - Multiplayer gaming system
-4. **ideas_private** (248 files) - Private project collection
+4. **project-ideas_private** (248 files) - Private project collection
 5. **Dream.os** (184 files) - Self-optimizing OS
 
 ### **Technology Stack**
@@ -119,7 +119,7 @@
 2. **Victor.os** - OS with 2,140 complexity score  
 3. **SWARM** - Gaming platform with 1,081 complexity score
 4. **Dream.os** - Self-optimizing OS with 512 complexity score
-5. **MeTuber** - Content platform with 309 complexity score
+5. **me-tuber** - Content platform with 309 complexity score
 
 ### **🎯 Project Categories**
 - **AI/ML:** 27.6% of projects (8/29)
@@ -135,7 +135,7 @@
 ### **Technical Excellence**
 - Developed 64 projects across diverse domains
 - Created self-optimizing operating system (Dream.os)
-- Built advanced AI platforms (Thea, DigitalDreamscape)
+- Built advanced AI platforms (Thea, digital-dreamscape)
 - Implemented complex trading automation systems
 - Designed multiplayer gaming architecture (SWARM)
 
@@ -156,7 +156,7 @@
 
 ## 🎯 **Professional Summary**
 
-**DaDudekC** is an advanced full-stack developer and AI engineer with expertise spanning 64 projects across AI/ML, automation, operating systems, gaming, and financial technology. With a strong focus on Python development and complex system architecture, they have demonstrated exceptional ability in creating self-optimizing systems, AI-powered automation, and advanced gaming platforms.
+**dadudekc** is an advanced full-stack developer and AI engineer with expertise spanning 64 projects across AI/ML, automation, operating systems, gaming, and financial technology. With a strong focus on Python development and complex system architecture, they have demonstrated exceptional ability in creating self-optimizing systems, AI-powered automation, and advanced gaming platforms.
 
 **Key Strengths:**
 - **AI/ML Development:** 8 specialized projects with GPT integration and custom AI agents
@@ -174,7 +174,7 @@
 ---
 
 ## 📞 **Contact Information**
-- **GitHub:** [Dadudekc](https://github.com/Dadudekc)
+- **GitHub:** [dadudekc](https://github.com/dadudekc)
 - **Portfolio:** 64 projects (29 public + 35 private)
 - **Specializations:** AI/ML, Automation, Operating Systems, Gaming, Financial Tech
 - **Experience Level:** Advanced Developer with 4,997+ files analyzed

@@ -1,4 +1,4 @@
-# ProjectScanner Roadmap
+# project-scanner Roadmap
 
 ## 0.1 - MVP (Done)
 - Basic Python scanning with AST extraction

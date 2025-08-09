@@ -50,7 +50,7 @@ python run_analysis.py --github-analysis
 # Generate strategic plan
 python strategic_plan.py
 
-# Extract IP from ideas repository
+# Extract IP from project-ideas repository
 python extract_ip.py
 ```
 
@@ -66,7 +66,7 @@ python deploy_trading_platform.py
 ## 📁 Project Structure
 
 ```
-projectscanner/
+project-scanner/
 ├── src/                           # Core source code
 │   ├── core/                     # Core scanner functionality
 │   ├── analyzers/                # Analysis tools
@@ -90,8 +90,8 @@ projectscanner/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/projectscanner.git
-   cd projectscanner
+   git clone https://github.com/yourusername/project-scanner.git
+   cd project-scanner
    ```
 
 2. **Install dependencies**

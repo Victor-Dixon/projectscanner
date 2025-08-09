@@ -14,7 +14,7 @@ The current scanner only captures **public repositories**. To scan your **privat
 
 ### Step 2: Generate New Token
 1. Click **Generate new token** → **Generate new token (classic)**
-2. Give it a descriptive name like "ProjectScanner Library"
+2. Give it a descriptive name like "project-scanner Library"
 3. Set expiration (recommend 90 days for security)
 4. Select scopes:
    - ✅ **repo** (Full control of private repositories)
@@ -34,13 +34,13 @@ The current scanner only captures **public repositories**. To scan your **privat
 python github_library_scanner_private.py YOUR_USERNAME --token YOUR_TOKEN
 
 # Example
-python github_library_scanner_private.py Dadudekc --token ghp_xxxxxxxxxxxxxxxxxxxx
+python github_library_scanner_private.py dadudekc --token ghp_xxxxxxxxxxxxxxxxxxxx
 
 # Scan with options
 python github_library_scanner_private.py YOUR_USERNAME --token YOUR_TOKEN --max-repos 50 --force-rescan
 ```
 
-### Security Best Practices
+### Security Best practice-projectss
 1. **Never commit tokens to Git**
 2. **Use environment variables**:
    ```bash
@@ -68,7 +68,7 @@ python github_library_scanner_private.py YOUR_USERNAME --token YOUR_TOKEN --max-
 
 With a token, you'll see:
 ```
-🔍 Fetching repositories for user: Dadudekc
+🔍 Fetching repositories for user: dadudekc
 🔐 Using GitHub token for private repository access
 📦 Found 45 repositories
   • Public repositories: 28

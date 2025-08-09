@@ -1,4 +1,4 @@
-# TradingRobotPlugWeb Platform
+# trading-robot-plugWeb Platform
 
 ## Quick Start
 

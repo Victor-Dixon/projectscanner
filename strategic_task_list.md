@@ -14,7 +14,7 @@
 
 ### 2. Trading Platform Development
 **Revenue Potential: $100K-500K annually**
-- [ ] Deploy TradingRobotPlugWeb platform
+- [ ] Deploy trading-robot-plugWeb platform
 - [ ] Integrate with major exchanges (Binance, Coinbase)
 - [ ] Implement advanced trading algorithms
 - [ ] Add portfolio management features

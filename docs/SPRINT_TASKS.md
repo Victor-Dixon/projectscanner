@@ -1,6 +1,6 @@
 # Sprint Tasks
 
-This sprint aims to move ProjectScanner toward a beta-ready release. The tasks below mirror the beta checklist so future agents can pick up each item.
+This sprint aims to move project-scanner toward a beta-ready release. The tasks below mirror the beta checklist so future agents can pick up each item.
 
 ## High Priority
 - [ ] Bundle tree-sitter grammars for Rust and JavaScript

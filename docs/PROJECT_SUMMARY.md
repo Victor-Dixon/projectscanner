@@ -79,7 +79,7 @@ python launch.py organize
 ## 📁 New Project Structure
 
 ```
-projectscanner/
+project-scanner/
 ├── src/                    # Source code
 │   ├── core/              # Core scanner functionality
 │   ├── analyzers/         # Analysis tools
