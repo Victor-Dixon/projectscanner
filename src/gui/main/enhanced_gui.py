@@ -14,7 +14,6 @@ import shutil
 from pathlib import Path
 from typing import Dict, Optional, List, Any
 from datetime import datetime
-import re
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -242,8 +241,7 @@ class GitHubScanWorker(QThread):
             'languages': {},
             'frameworks': [],
             'dependencies': [],
-            'structure': {},
-            'tasks': []
+            'structure': {}
         }
         
         try:
@@ -268,68 +266,11 @@ class GitHubScanWorker(QThread):
             analysis['frameworks'] = self.detect_frameworks(repo_dir)
             analysis['dependencies'] = self.detect_dependencies(repo_dir)
             analysis['structure'] = self.analyze_structure(repo_dir)
-            # Extract task list items
-            analysis['tasks'] = self.extract_tasks(repo_dir)
             
         except Exception as e:
             self.progress.emit(f"Error analyzing {repo['name']}: {str(e)}")
         
         return analysis
-
-    def extract_tasks(self, repo_dir: Path) -> List[Dict[str, Any]]:
-        """Extract tasks from common task list markdown files.
-
-        Looks for markdown checkboxes (- [ ] / - [x]) and TODO/FIXME lines.
-        """
-        task_files: List[Path] = []
-        patterns = [
-            'PROJECT_CLEANUP_TASKS.md', 'MASTER_TASK_LIST.md', 'TASKS.md', 'tasks.md', 'TODO.md', 'todo.md',
-            'QUICK_ACTION_TASKS.md', '*task*.md', '*tasks*.md'
-        ]
-        for pat in patterns:
-            task_files.extend(repo_dir.rglob(pat))
-
-        tasks: List[Dict[str, Any]] = []
-        checkbox_re = r"^\s*[-*]\s+\[( |x|X)\]\s+(.*)$"
-        todo_re = r"^\s*(?:[-*]\s+)?(?:TODO|FIXME)[:\s]+(.*)$"
-
-        for file_path in task_files:
-            # Skip very large files
-            try:
-                if file_path.stat().st_size > 1024 * 1024:
-                    continue
-            except Exception:
-                continue
-            try:
-                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                    for idx, line in enumerate(f, start=1):
-                        line_stripped = line.rstrip('\n')
-                        m1 = re.match(checkbox_re, line_stripped)
-                        if m1:
-                            done = m1.group(1).lower() == 'x'
-                            desc = m1.group(2).strip()
-                            tasks.append({
-                                'type': 'checkbox',
-                                'done': done,
-                                'description': desc,
-                                'file': str(file_path.relative_to(repo_dir)),
-                                'line': idx,
-                            })
-                            continue
-                        m2 = re.match(todo_re, line_stripped, re.IGNORECASE)
-                        if m2:
-                            desc2 = m2.group(1).strip()
-                            tasks.append({
-                                'type': 'todo',
-                                'done': False,
-                                'description': desc2,
-                                'file': str(file_path.relative_to(repo_dir)),
-                                'line': idx,
-                            })
-            except Exception:
-                continue
-
-        return tasks
     
     def detect_languages(self, repo_dir: Path) -> Dict[str, int]:
         """Detect programming languages used in the repository."""
@@ -816,7 +757,6 @@ class EnhancedProjectScannerGUI(QMainWindow):
         self.setup_modern_ui()
         self.setup_styles()
         self.setup_menu()
-        self.setup_session_tracker()
         
         # Start real-time updates
         self.setup_real_time_updates()
@@ -1593,84 +1533,6 @@ class EnhancedProjectScannerGUI(QMainWindow):
         # About action
         about_action = help_menu.addAction('About')
         about_action.triggered.connect(self.show_about)
-
-    def setup_session_tracker(self):
-        """Setup a simple session timer with Start/End controls in the status bar."""
-        # State
-        self.session_active = False
-        self.session_start: Optional[datetime] = None
-        self.session_elapsed_seconds: int = 0
-
-        # Timer
-        self.session_timer = QTimer(self)
-        self.session_timer.setInterval(1000)
-        self.session_timer.timeout.connect(self.update_session_timer)
-
-        # UI widgets
-        self.session_label = QLabel("Session: 00:00:00")
-        self.session_label.setToolTip("Elapsed time for current session")
-
-        self.session_controls = QWidget()
-        controls_layout = QHBoxLayout(self.session_controls)
-        controls_layout.setContentsMargins(0, 0, 0, 0)
-
-        self.start_session_btn = QPushButton("Start Session")
-        self.start_session_btn.setToolTip("Start a new timing session")
-        self.start_session_btn.clicked.connect(self.start_session)
-        controls_layout.addWidget(self.start_session_btn)
-
-        self.end_session_btn = QPushButton("End Session")
-        self.end_session_btn.setToolTip("End the current session and freeze elapsed time")
-        self.end_session_btn.clicked.connect(self.end_session)
-        self.end_session_btn.setEnabled(False)
-        controls_layout.addWidget(self.end_session_btn)
-
-        # Status bar
-        status = QStatusBar()
-        self.setStatusBar(status)
-        status.addPermanentWidget(self.session_label)
-        status.addPermanentWidget(self.session_controls)
-
-    def start_session(self):
-        """Start a new session timer."""
-        self.session_active = True
-        self.session_start = datetime.now()
-        self.session_elapsed_seconds = 0
-        self.session_timer.start()
-        self.start_session_btn.setEnabled(False)
-        self.end_session_btn.setEnabled(True)
-        self.update_progress("Session started")
-
-    def end_session(self):
-        """End the current session timer and freeze time display."""
-        if not self.session_active:
-            return
-        self.session_active = False
-        # Final update
-        if self.session_start is not None:
-            delta = (datetime.now() - self.session_start).total_seconds()
-            self.session_elapsed_seconds = int(delta)
-        self.session_timer.stop()
-        self.start_session_btn.setEnabled(True)
-        self.end_session_btn.setEnabled(False)
-        self.update_session_label()
-        self.update_progress("Session ended")
-
-    def update_session_timer(self):
-        """Tick handler to update elapsed time every second while active."""
-        if not self.session_active or self.session_start is None:
-            return
-        delta = (datetime.now() - self.session_start).total_seconds()
-        self.session_elapsed_seconds = int(delta)
-        self.update_session_label()
-
-    def update_session_label(self):
-        """Refresh the session label using the current elapsed seconds."""
-        secs = max(0, int(self.session_elapsed_seconds))
-        h = secs // 3600
-        m = (secs % 3600) // 60
-        s = secs % 60
-        self.session_label.setText(f"Session: {h:02d}:{m:02d}:{s:02d}")
     
     def setup_real_time_updates(self):
         """Setup real-time updates for the dashboard."""
@@ -2007,35 +1869,6 @@ Detailed analysis and recommendations follow...
         
         # Store results for later use
         self.github_scan_results = result
-
-        # Populate tasks tab if available
-        try:
-            all_tasks = []
-            for r in result.get('scan_results', []):
-                repo_name = r.get('name')
-                tasks = (r.get('analysis', {}) or {}).get('tasks', [])
-                for t in tasks:
-                    t_entry = dict(repo=repo_name, **t)
-                    all_tasks.append(t_entry)
-
-            if all_tasks:
-                # If there is no dedicated tasks widget, show a summary in the reports preview
-                lines = [
-                    f"Tasks found across {len(set([t['repo'] for t in all_tasks]))} repositories: {len(all_tasks)} entries",
-                    ""
-                ]
-                for t in all_tasks[:200]:  # cap to avoid overflow
-                    status = "[x]" if t.get('done') else "[ ]"
-                    lines.append(f"- {status} {t.get('repo')}: {t.get('description')} ({t.get('file')}:{t.get('line')})")
-                summary_text = "\n".join(lines)
-                # Reuse report preview area
-                try:
-                    self.report_preview.setPlainText(summary_text)
-                    self.tab_widget.setCurrentWidget(self.reports_tab)
-                except Exception:
-                    pass
-        except Exception:
-            pass
     
     def github_scan_error(self, error_message: str):
         """Handle GitHub scan error."""
