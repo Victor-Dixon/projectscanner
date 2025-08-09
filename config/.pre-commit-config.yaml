@@ -1,0 +1,168 @@
+# Pre-commit configuration for Agent Policy Enforcement
+# This file enforces coding standards across all agent repositories
+
+repos:
+  # Code formatting
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        args: [--line-length=88, --skip-string-normalization]
+        language_version: python3
+
+  # Linting and code quality
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.270
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        additional_dependencies: [ruff[pycodestyle]]
+
+  # Import sorting
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.270
+    hooks:
+      - id: ruff-format
+        args: [--fix]
+
+  # Security checks
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        args: [-r, ., -f, json, -o, bandit-report.json]
+        exclude: ^tests/
+
+  # Type checking (optional but recommended)
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.4.1
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-requests, types-PyYAML]
+        args: [--ignore-missing-imports]
+
+  # Local custom hooks
+  - repo: local
+    hooks:
+      # Lines of Code Checker
+      - id: loc-checker
+        name: LOC Checker
+        entry: python scripts/loc_checker.py
+        language: python
+        stages: [commit]
+        args: [--max-loc=350, --gui-max-loc=500]
+        files: \.(py|js|ts|java|cpp|c|cs)$
+
+      # Cyclomatic Complexity Checker
+      - id: complexity-checker
+        name: Complexity Checker
+        entry: python scripts/complexity_checker.py
+        language: python
+        stages: [commit]
+        args: [--max-complexity=10, --class-max-complexity=15]
+        files: \.(py|js|ts|java|cpp|c|cs)$
+
+      # OOP Structure Checker
+      - id: oop-checker
+        name: OOP Structure Checker
+        entry: python scripts/oop_checker.py
+        language: python
+        stages: [commit]
+        files: \.py$
+
+      # Documentation Checker
+      - id: doc-checker
+        name: Documentation Checker
+        entry: python scripts/doc_checker.py
+        language: python
+        stages: [commit]
+        args: [--min-coverage=80]
+        files: \.py$
+
+      # Security Vulnerability Checker
+      - id: security-checker
+        name: Security Checker
+        entry: python scripts/security_checker.py
+        language: python
+        stages: [commit]
+        files: \.(py|js|ts|java|cpp|c|cs)$
+
+  # File size and structure checks
+  - repo: local
+    hooks:
+      # Large file detector
+      - id: large-file-checker
+        name: Large File Checker
+        entry: python scripts/large_file_checker.py
+        language: python
+        stages: [commit]
+        args: [--max-size=1MB]
+        files: \.(py|js|ts|java|cpp|c|cs|json|yaml|yml)$
+
+      # Duplicate code detector
+      - id: duplicate-checker
+        name: Duplicate Code Checker
+        entry: python scripts/duplicate_checker.py
+        language: python
+        stages: [commit]
+        args: [--min-lines=10]
+        files: \.(py|js|ts|java|cpp|c|cs)$
+
+  # Git hooks for repository structure
+  - repo: local
+    hooks:
+      # Ensure AGENTS.md exists
+      - id: agents-md-checker
+        name: AGENTS.md Checker
+        entry: python scripts/agents_md_checker.py
+        language: python
+        stages: [commit]
+        always_run: true
+
+      # Check for required files
+      - id: required-files-checker
+        name: Required Files Checker
+        entry: python scripts/required_files_checker.py
+        language: python
+        stages: [commit]
+        always_run: true
+
+  # Performance checks
+  - repo: local
+    hooks:
+      # Performance regression detector
+      - id: performance-checker
+        name: Performance Checker
+        entry: python scripts/performance_checker.py
+        language: python
+        stages: [commit]
+        files: \.py$
+
+  # Test coverage enforcement
+  - repo: local
+    hooks:
+      # Test coverage checker
+      - id: coverage-checker
+        name: Coverage Checker
+        entry: python scripts/coverage_checker.py
+        language: python
+        stages: [commit]
+        args: [--min-coverage=80]
+        files: \.py$
+
+# Global configuration
+default_language_version:
+  python: python3
+
+# Hook execution order
+# 1. Formatting (black, ruff)
+# 2. Linting (ruff, bandit)
+# 3. Type checking (mypy)
+# 4. Custom checks (LOC, complexity, OOP, etc.)
+# 5. Security checks
+# 6. Documentation checks
+# 7. Performance checks
+# 8. Test coverage checks
+
+# Failure handling
+fail_fast: false  # Run all hooks even if some fail 
