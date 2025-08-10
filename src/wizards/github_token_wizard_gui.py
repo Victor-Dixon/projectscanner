@@ -500,6 +500,51 @@ def main():
     
     # Set application style
     app.setStyle('Fusion')
+
+    # Apply dark theme for consistent readability
+    try:
+        from PyQt5.QtGui import QPalette, QColor
+        palette = QPalette()
+        base = QColor(26, 26, 26)
+        alt_base = QColor(45, 45, 45)
+        text = QColor(255, 255, 255)
+        mid = QColor(64, 64, 64)
+        highlight = QColor(0, 120, 212)
+        link = QColor(0, 150, 255)
+
+        palette.setColor(QPalette.Window, base)
+        palette.setColor(QPalette.WindowText, text)
+        palette.setColor(QPalette.Base, QColor(18, 18, 18))
+        palette.setColor(QPalette.AlternateBase, alt_base)
+        palette.setColor(QPalette.ToolTipBase, alt_base)
+        palette.setColor(QPalette.ToolTipText, text)
+        palette.setColor(QPalette.Text, text)
+        palette.setColor(QPalette.Button, alt_base)
+        palette.setColor(QPalette.ButtonText, text)
+        palette.setColor(QPalette.BrightText, QColor(255, 0, 0))
+        palette.setColor(QPalette.Highlight, highlight)
+        palette.setColor(QPalette.HighlightedText, QColor(255, 255, 255))
+        palette.setColor(QPalette.Link, link)
+        palette.setColor(QPalette.Dark, mid)
+        app.setPalette(palette)
+
+        # Minimal stylesheet to improve contrast for group boxes, tabs, inputs, and buttons
+        app.setStyleSheet('''
+            QMainWindow { background-color: #1a1a1a; color: #ffffff; }
+            QLabel { color: #ffffff; }
+            QGroupBox { color: #ffffff; border: 2px solid #404040; border-radius: 8px; margin-top: 1ex; padding-top: 10px; background: #2d2d2d; }
+            QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; }
+            QLineEdit, QTextEdit, QSpinBox { background: #1a1a1a; color: #ffffff; border: 2px solid #404040; border-radius: 6px; padding: 6px; selection-background-color: #0078d4; }
+            QTabWidget::pane { border: 2px solid #404040; border-radius: 8px; background: #2d2d2d; }
+            QTabBar::tab { background: #404040; border: 2px solid #404040; border-bottom: none; border-radius: 8px 8px 0px 0px; padding: 6px 12px; color: #ffffff; }
+            QTabBar::tab:selected { background: #2d2d2d; }
+            QPushButton { background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #404040, stop:1 #2d2d2d); border: 2px solid #404040; border-radius: 6px; padding: 8px 14px; color: #ffffff; font-weight: bold; }
+            QPushButton:hover { background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #505050, stop:1 #404040); border-color: #0078d4; }
+            QProgressBar { border: 2px solid #404040; border-radius: 6px; background: #1a1a1a; color: #ffffff; }
+            QProgressBar::chunk { background-color: #0078d4; }
+        ''')
+    except Exception:
+        pass
     
     # Create and show the wizard
     wizard = GitHubTokenWizardGUI()

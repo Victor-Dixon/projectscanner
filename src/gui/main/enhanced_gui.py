@@ -128,6 +128,254 @@ class GitHubScanWorker(QThread):
         except Exception as e:
             self.error.emit(f"GitHub scan failed: {str(e)}")
 
+    def get_user_repositories(self) -> List[Dict]:
+        """Get user repositories from GitHub API."""
+        try:
+            # Determine API endpoint
+            if self.token:
+                url = "https://api.github.com/user/repos"
+                headers = {'Authorization': f'token {self.token}'}
+            else:
+                url = f"https://api.github.com/users/{self.username}/repos"
+                headers = {}
+
+            all_repos = []
+            page = 1
+
+            while True:
+                params = {'page': page, 'per_page': 100}
+                response = requests.get(url, headers=headers, params=params)
+                response.raise_for_status()
+
+                repos = response.json()
+                if not repos:
+                    break
+
+                all_repos.extend(repos)
+                page += 1
+
+                # Rate limiting check
+                if 'X-RateLimit-Remaining' in response.headers:
+                    remaining = int(response.headers['X-RateLimit-Remaining'])
+                    if remaining < 10:
+                        self.progress.emit(f"Rate limit warning: {remaining} requests remaining")
+
+            return all_repos
+
+        except Exception as e:
+            raise Exception(f"Failed to fetch repositories: {str(e)}")
+
+    def filter_repositories(self, repos: List[Dict]) -> List[Dict]:
+        """Filter repositories based on scan settings."""
+        filtered = []
+
+        for repo in repos:
+            is_private = repo.get('private', False)
+
+            # Apply filters
+            if is_private and not self.scan_private:
+                continue
+            if not is_private and not self.scan_public:
+                continue
+
+            # Skip forks if deep analysis is disabled
+            if not self.deep_analysis and repo.get('fork', False):
+                continue
+
+            filtered.append(repo)
+
+        return filtered
+
+    def scan_repository(self, repo: Dict) -> Optional[Dict]:
+        """Scan a single repository."""
+        try:
+            repo_name = repo['name']
+            clone_url = repo['clone_url']
+
+            # Create temp directory for this repo
+            repo_temp_dir = self.temp_dir / repo_name
+            repo_temp_dir.mkdir(exist_ok=True)
+
+            # Clone repository
+            self.progress.emit(f"Cloning {repo_name}...")
+            clone_result = subprocess.run(
+                ['git', 'clone', clone_url, str(repo_temp_dir)],
+                capture_output=True,
+                text=True,
+                timeout=300  # 5 minute timeout
+            )
+
+            if clone_result.returncode != 0:
+                self.progress.emit(f"Failed to clone {repo_name}: {clone_result.stderr}")
+                return None
+
+            # Analyze repository
+            analysis = self.analyze_repository(repo, repo_temp_dir)
+
+            # Cleanup temp directory
+            shutil.rmtree(repo_temp_dir, ignore_errors=True)
+
+            return {
+                'name': repo_name,
+                'full_name': repo['full_name'],
+                'description': repo.get('description', ''),
+                'language': repo.get('language'),
+                'private': repo.get('private', False),
+                'fork': repo.get('fork', False),
+                'stars': repo.get('stargazers_count', 0),
+                'forks': repo.get('forks_count', 0),
+                'size': repo.get('size', 0),
+                'created_at': repo['created_at'],
+                'updated_at': repo['updated_at'],
+                'analysis': analysis
+            }
+
+        except Exception as e:
+            self.progress.emit(f"Error scanning {repo['name']}: {str(e)}")
+            return None
+
+    def analyze_repository(self, repo: Dict, repo_dir: Path) -> Dict:
+        """Analyze repository structure and content."""
+        analysis = {
+            'file_count': 0,
+            'total_lines': 0,
+            'languages': {},
+            'frameworks': [],
+            'dependencies': [],
+            'structure': {}
+        }
+
+        try:
+            # Count files and lines
+            for file_path in repo_dir.rglob('*'):
+                if file_path.is_file():
+                    analysis['file_count'] += 1
+
+                    # Skip large files and binary files
+                    if file_path.stat().st_size > 1024 * 1024:  # 1MB
+                        continue
+
+                    try:
+                        with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                            lines = f.readlines()
+                            analysis['total_lines'] += len(lines)
+                    except Exception:
+                        continue
+
+            # Detect languages and frameworks
+            analysis['languages'] = self.detect_languages(repo_dir)
+            analysis['frameworks'] = self.detect_frameworks(repo_dir)
+            analysis['dependencies'] = self.detect_dependencies(repo_dir)
+            analysis['structure'] = self.analyze_structure(repo_dir)
+
+        except Exception as e:
+            self.progress.emit(f"Error analyzing {repo['name']}: {str(e)}")
+
+        return analysis
+
+    def detect_languages(self, repo_dir: Path) -> Dict[str, int]:
+        languages: Dict[str, int] = {}
+        lang_extensions = {
+            '.py': 'Python', '.js': 'JavaScript', '.ts': 'TypeScript', '.java': 'Java', '.cpp': 'C++',
+            '.c': 'C', '.cs': 'C#', '.php': 'PHP', '.rb': 'Ruby', '.go': 'Go', '.rs': 'Rust', '.swift': 'Swift',
+            '.kt': 'Kotlin', '.scala': 'Scala', '.html': 'HTML', '.css': 'CSS', '.scss': 'SCSS', '.sass': 'Sass',
+            '.vue': 'Vue', '.jsx': 'React', '.tsx': 'React TypeScript'
+        }
+        for file_path in repo_dir.rglob('*'):
+            if file_path.is_file():
+                ext = file_path.suffix.lower()
+                if ext in lang_extensions:
+                    lang = lang_extensions[ext]
+                    languages[lang] = languages.get(lang, 0) + 1
+        return languages
+
+    def detect_frameworks(self, repo_dir: Path) -> List[str]:
+        frameworks: List[str] = []
+        framework_indicators = {
+            'requirements.txt': 'Python', 'package.json': 'Node.js', 'pom.xml': 'Maven', 'build.gradle': 'Gradle',
+            'Gemfile': 'Ruby', 'composer.json': 'PHP', 'Cargo.toml': 'Rust', 'go.mod': 'Go', 'package-lock.json': 'npm',
+            'yarn.lock': 'Yarn', 'angular.json': 'Angular', 'vue.config.js': 'Vue.js', 'next.config.js': 'Next.js',
+            'nuxt.config.js': 'Nuxt.js', 'tailwind.config.js': 'Tailwind CSS', 'webpack.config.js': 'Webpack', 'vite.config.js': 'Vite'
+        }
+        for indicator, framework in framework_indicators.items():
+            if (repo_dir / indicator).exists():
+                frameworks.append(framework)
+        return frameworks
+
+    def detect_dependencies(self, repo_dir: Path) -> List[str]:
+        dependencies: List[str] = []
+        req_file = repo_dir / 'requirements.txt'
+        if req_file.exists():
+            try:
+                with open(req_file, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith('#'):
+                            dependencies.append(f"Python: {line}")
+            except Exception:
+                pass
+        package_file = repo_dir / 'package.json'
+        if package_file.exists():
+            try:
+                with open(package_file, 'r') as f:
+                    data = json.load(f)
+                    deps = data.get('dependencies', {})
+                    for dep, version in deps.items():
+                        dependencies.append(f"npm: {dep}@{version}")
+            except Exception:
+                pass
+        return dependencies
+
+    def analyze_structure(self, repo_dir: Path) -> Dict:
+        structure = {
+            'has_readme': False, 'has_license': False, 'has_tests': False, 'has_docs': False, 'has_ci': False,
+            'main_directories': []
+        }
+        structure['has_readme'] = any(repo_dir.glob('README*'))
+        structure['has_license'] = any(repo_dir.glob('LICENSE*'))
+        structure['has_tests'] = any(repo_dir.glob('test*')) or any(repo_dir.glob('tests*'))
+        structure['has_docs'] = any(repo_dir.glob('doc*')) or any(repo_dir.glob('docs*'))
+        structure['has_ci'] = any(repo_dir.glob('.github*')) or any(repo_dir.glob('.gitlab*'))
+        for item in repo_dir.iterdir():
+            if item.is_dir() and not item.name.startswith('.'):
+                structure['main_directories'].append(item.name)
+        return structure
+
+    def generate_scan_summary(self, scan_results: List[Dict]) -> Dict:
+        if not scan_results:
+            return {}
+        summary = {
+            'total_repositories': len(scan_results),
+            'public_repos': sum(1 for r in scan_results if not r.get('private', False)),
+            'private_repos': sum(1 for r in scan_results if r.get('private', False)),
+            'total_stars': sum(r.get('stars', 0) for r in scan_results),
+            'total_forks': sum(r.get('forks', 0) for r in scan_results),
+            'languages': {}, 'frameworks': {}, 'avg_file_count': 0, 'avg_lines': 0
+        }
+        all_languages: Dict[str, int] = {}
+        all_frameworks: List[str] = []
+        total_files = 0
+        total_lines = 0
+        for repo in scan_results:
+            analysis = repo.get('analysis', {})
+            for lang, count in analysis.get('languages', {}).items():
+                all_languages[lang] = all_languages.get(lang, 0) + count
+            all_frameworks.extend(analysis.get('frameworks', []))
+            total_files += analysis.get('file_count', 0)
+            total_lines += analysis.get('total_lines', 0)
+        summary['languages'] = all_languages
+        summary['frameworks'] = list(set(all_frameworks))
+        summary['avg_file_count'] = total_files / len(scan_results) if scan_results else 0
+        summary['avg_lines'] = total_lines / len(scan_results) if scan_results else 0
+        return summary
+
+    def cleanup_temp_files(self):
+        try:
+            if self.temp_dir.exists():
+                shutil.rmtree(self.temp_dir)
+        except Exception as e:
+            self.progress.emit(f"Warning: Could not cleanup temp files: {str(e)}")
+
 
 class UnifiedScanWorker(QThread):
     """Background worker for local unified project scanning."""
@@ -173,328 +421,6 @@ class UnifiedScanWorker(QThread):
             })
         except Exception as e:
             self.error.emit(f"Unified scan failed: {str(e)}")
-    
-    def get_user_repositories(self) -> List[Dict]:
-        """Get user repositories from GitHub API."""
-        try:
-            # Determine API endpoint
-            if self.token:
-                url = "https://api.github.com/user/repos"
-                headers = {'Authorization': f'token {self.token}'}
-            else:
-                url = f"https://api.github.com/users/{self.username}/repos"
-                headers = {}
-            
-            all_repos = []
-            page = 1
-            
-            while True:
-                params = {'page': page, 'per_page': 100}
-                response = requests.get(url, headers=headers, params=params)
-                response.raise_for_status()
-                
-                repos = response.json()
-                if not repos:
-                    break
-                
-                all_repos.extend(repos)
-                page += 1
-                
-                # Rate limiting check
-                if 'X-RateLimit-Remaining' in response.headers:
-                    remaining = int(response.headers['X-RateLimit-Remaining'])
-                    if remaining < 10:
-                        self.progress.emit(f"Rate limit warning: {remaining} requests remaining")
-            
-            return all_repos
-            
-        except Exception as e:
-            raise Exception(f"Failed to fetch repositories: {str(e)}")
-    
-    def filter_repositories(self, repos: List[Dict]) -> List[Dict]:
-        """Filter repositories based on scan settings."""
-        filtered = []
-        
-        for repo in repos:
-            is_private = repo.get('private', False)
-            
-            # Apply filters
-            if is_private and not self.scan_private:
-                continue
-            if not is_private and not self.scan_public:
-                continue
-            
-            # Skip forks if deep analysis is disabled
-            if not self.deep_analysis and repo.get('fork', False):
-                continue
-                
-            filtered.append(repo)
-        
-        return filtered
-    
-    def scan_repository(self, repo: Dict) -> Optional[Dict]:
-        """Scan a single repository."""
-        try:
-            repo_name = repo['name']
-            clone_url = repo['clone_url']
-            
-            # Create temp directory for this repo
-            repo_temp_dir = self.temp_dir / repo_name
-            repo_temp_dir.mkdir(exist_ok=True)
-            
-            # Clone repository
-            self.progress.emit(f"Cloning {repo_name}...")
-            clone_result = subprocess.run(
-                ['git', 'clone', clone_url, str(repo_temp_dir)],
-                capture_output=True,
-                text=True,
-                timeout=300  # 5 minute timeout
-            )
-            
-            if clone_result.returncode != 0:
-                self.progress.emit(f"Failed to clone {repo_name}: {clone_result.stderr}")
-                return None
-            
-            # Analyze repository
-            analysis = self.analyze_repository(repo, repo_temp_dir)
-            
-            # Cleanup temp directory
-            shutil.rmtree(repo_temp_dir, ignore_errors=True)
-            
-            return {
-                'name': repo_name,
-                'full_name': repo['full_name'],
-                'description': repo.get('description', ''),
-                'language': repo.get('language'),
-                'private': repo.get('private', False),
-                'fork': repo.get('fork', False),
-                'stars': repo.get('stargazers_count', 0),
-                'forks': repo.get('forks_count', 0),
-                'size': repo.get('size', 0),
-                'created_at': repo['created_at'],
-                'updated_at': repo['updated_at'],
-                'analysis': analysis
-            }
-            
-        except Exception as e:
-            self.progress.emit(f"Error scanning {repo['name']}: {str(e)}")
-            return None
-    
-    def analyze_repository(self, repo: Dict, repo_dir: Path) -> Dict:
-        """Analyze repository structure and content."""
-        analysis = {
-            'file_count': 0,
-            'total_lines': 0,
-            'languages': {},
-            'frameworks': [],
-            'dependencies': [],
-            'structure': {}
-        }
-        
-        try:
-            # Count files and lines
-            for file_path in repo_dir.rglob('*'):
-                if file_path.is_file():
-                    analysis['file_count'] += 1
-                    
-                    # Skip large files and binary files
-                    if file_path.stat().st_size > 1024 * 1024:  # 1MB
-                        continue
-                    
-                    try:
-                        with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                            lines = f.readlines()
-                            analysis['total_lines'] += len(lines)
-                    except:
-                        continue
-            
-            # Detect languages and frameworks
-            analysis['languages'] = self.detect_languages(repo_dir)
-            analysis['frameworks'] = self.detect_frameworks(repo_dir)
-            analysis['dependencies'] = self.detect_dependencies(repo_dir)
-            analysis['structure'] = self.analyze_structure(repo_dir)
-            
-        except Exception as e:
-            self.progress.emit(f"Error analyzing {repo['name']}: {str(e)}")
-        
-        return analysis
-    
-    def detect_languages(self, repo_dir: Path) -> Dict[str, int]:
-        """Detect programming languages used in the repository."""
-        languages = {}
-        
-        # Common file extensions
-        lang_extensions = {
-            '.py': 'Python',
-            '.js': 'JavaScript',
-            '.ts': 'TypeScript',
-            '.java': 'Java',
-            '.cpp': 'C++',
-            '.c': 'C',
-            '.cs': 'C#',
-            '.php': 'PHP',
-            '.rb': 'Ruby',
-            '.go': 'Go',
-            '.rs': 'Rust',
-            '.swift': 'Swift',
-            '.kt': 'Kotlin',
-            '.scala': 'Scala',
-            '.html': 'HTML',
-            '.css': 'CSS',
-            '.scss': 'SCSS',
-            '.sass': 'Sass',
-            '.vue': 'Vue',
-            '.jsx': 'React',
-            '.tsx': 'React TypeScript'
-        }
-        
-        for file_path in repo_dir.rglob('*'):
-            if file_path.is_file():
-                ext = file_path.suffix.lower()
-                if ext in lang_extensions:
-                    lang = lang_extensions[ext]
-                    languages[lang] = languages.get(lang, 0) + 1
-        
-        return languages
-    
-    def detect_frameworks(self, repo_dir: Path) -> List[str]:
-        """Detect frameworks and libraries used."""
-        frameworks = []
-        
-        # Check for common framework indicators
-        framework_indicators = {
-            'requirements.txt': 'Python',
-            'package.json': 'Node.js',
-            'pom.xml': 'Maven',
-            'build.gradle': 'Gradle',
-            'Gemfile': 'Ruby',
-            'composer.json': 'PHP',
-            'Cargo.toml': 'Rust',
-            'go.mod': 'Go',
-            'package-lock.json': 'npm',
-            'yarn.lock': 'Yarn',
-            'angular.json': 'Angular',
-            'vue.config.js': 'Vue.js',
-            'next.config.js': 'Next.js',
-            'nuxt.config.js': 'Nuxt.js',
-            'tailwind.config.js': 'Tailwind CSS',
-            'webpack.config.js': 'Webpack',
-            'vite.config.js': 'Vite'
-        }
-        
-        for indicator, framework in framework_indicators.items():
-            if (repo_dir / indicator).exists():
-                frameworks.append(framework)
-        
-        return frameworks
-    
-    def detect_dependencies(self, repo_dir: Path) -> List[str]:
-        """Detect project dependencies."""
-        dependencies = []
-        
-        # Check Python requirements
-        req_file = repo_dir / 'requirements.txt'
-        if req_file.exists():
-            try:
-                with open(req_file, 'r') as f:
-                    for line in f:
-                        line = line.strip()
-                        if line and not line.startswith('#'):
-                            dependencies.append(f"Python: {line}")
-            except:
-                pass
-        
-        # Check Node.js dependencies
-        package_file = repo_dir / 'package.json'
-        if package_file.exists():
-            try:
-                with open(package_file, 'r') as f:
-                    data = json.load(f)
-                    deps = data.get('dependencies', {})
-                    for dep, version in deps.items():
-                        dependencies.append(f"npm: {dep}@{version}")
-            except:
-                pass
-        
-        return dependencies
-    
-    def analyze_structure(self, repo_dir: Path) -> Dict:
-        """Analyze repository structure."""
-        structure = {
-            'has_readme': False,
-            'has_license': False,
-            'has_tests': False,
-            'has_docs': False,
-            'has_ci': False,
-            'main_directories': []
-        }
-        
-        # Check for common files
-        structure['has_readme'] = any(repo_dir.glob('README*'))
-        structure['has_license'] = any(repo_dir.glob('LICENSE*'))
-        structure['has_tests'] = any(repo_dir.glob('test*')) or any(repo_dir.glob('tests*'))
-        structure['has_docs'] = any(repo_dir.glob('doc*')) or any(repo_dir.glob('docs*'))
-        structure['has_ci'] = any(repo_dir.glob('.github*')) or any(repo_dir.glob('.gitlab*'))
-        
-        # Get main directories
-        for item in repo_dir.iterdir():
-            if item.is_dir() and not item.name.startswith('.'):
-                structure['main_directories'].append(item.name)
-        
-        return structure
-    
-    def generate_scan_summary(self, scan_results: List[Dict]) -> Dict:
-        """Generate summary of scan results."""
-        if not scan_results:
-            return {}
-        
-        summary = {
-            'total_repositories': len(scan_results),
-            'public_repos': sum(1 for r in scan_results if not r.get('private', False)),
-            'private_repos': sum(1 for r in scan_results if r.get('private', False)),
-            'total_stars': sum(r.get('stars', 0) for r in scan_results),
-            'total_forks': sum(r.get('forks', 0) for r in scan_results),
-            'languages': {},
-            'frameworks': {},
-            'avg_file_count': 0,
-            'avg_lines': 0
-        }
-        
-        # Aggregate languages and frameworks
-        all_languages = {}
-        all_frameworks = []
-        
-        total_files = 0
-        total_lines = 0
-        
-        for repo in scan_results:
-            analysis = repo.get('analysis', {})
-            
-            # Aggregate languages
-            for lang, count in analysis.get('languages', {}).items():
-                all_languages[lang] = all_languages.get(lang, 0) + count
-            
-            # Aggregate frameworks
-            all_frameworks.extend(analysis.get('frameworks', []))
-            
-            # Aggregate metrics
-            total_files += analysis.get('file_count', 0)
-            total_lines += analysis.get('total_lines', 0)
-        
-        summary['languages'] = all_languages
-        summary['frameworks'] = list(set(all_frameworks))  # Remove duplicates
-        summary['avg_file_count'] = total_files / len(scan_results) if scan_results else 0
-        summary['avg_lines'] = total_lines / len(scan_results) if scan_results else 0
-        
-        return summary
-    
-    def cleanup_temp_files(self):
-        """Clean up temporary files."""
-        try:
-            if self.temp_dir.exists():
-                shutil.rmtree(self.temp_dir)
-        except Exception as e:
-            self.progress.emit(f"Warning: Could not cleanup temp files: {str(e)}")
 
 
 class AnalyticsWorker(QThread):
