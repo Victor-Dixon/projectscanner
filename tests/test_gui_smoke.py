@@ -10,8 +10,8 @@ from unittest.mock import Mock, patch
 import pytest
 
 
-@pytest.mark.skipif('PyQt5' not in sys.modules and False, reason="PyQt5 may be unavailable in CI")
 def test_smoke_gui_buttons_wired():
+    pytest.importorskip("PyQt5.QtWidgets", reason="PyQt5 may be unavailable in CI")
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 
     with patch('PyQt5.QtWidgets.QApplication'):
