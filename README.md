@@ -36,16 +36,16 @@ A comprehensive tool for analyzing codebases, scanning GitHub portfolios, and ge
 
 ### GUI Mode (Recommended)
 ```bash
-python run_gui.py
+python main.py --gui
 ```
 
 ### Command Line Analysis
 ```bash
-# Scan a single project
-python run_scanner.py /path/to/project
+# Quick scan a single project
+python main.py --quick-scan /path/to/project
 
-# Analyze GitHub portfolio
-python run_analysis.py --github-analysis
+# Unified scanner with context export
+python main.py --scan /path/to/project --export-context --split-by directory
 
 # Generate strategic plan
 python strategic_plan.py
@@ -110,7 +110,7 @@ project-scanner/
 
 4. **Launch the application**
    ```bash
-   python run_gui.py
+python main.py --gui
    ```
 
 ## 🎯 Strategic Analysis Workflow
