@@ -16,7 +16,7 @@ sys.path.insert(0, str(project_root))
 
 def analyze_github_library():
     """Analyze the GitHub library and extract insights."""
-    library_file = Path("github_library/github_library.json")
+    library_file = Path("github_library_enhanced/github_library_enhanced.json")
     
     if not library_file.exists():
         print("❌ GitHub library file not found. Run the scanner first.")

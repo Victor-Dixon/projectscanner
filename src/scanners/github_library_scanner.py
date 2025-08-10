@@ -46,7 +46,7 @@ def clone_repository(repo_url: str, temp_dir: Path) -> Path:
 class GitHubLibraryScanner:
     """Scans all repositories from a GitHub account and builds a library."""
     
-    def __init__(self, github_username: str, output_dir: str = "github_library"):
+    def __init__(self, github_username: str, output_dir: str = "github_library_enhanced"):
         self.github_username = github_username
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
@@ -55,7 +55,7 @@ class GitHubLibraryScanner:
         self.temp_dir = Path("temp_repos")
         self.temp_dir.mkdir(exist_ok=True)
         
-        self.library_file = self.output_dir / "github_library.json"
+        self.library_file = self.output_dir / "github_library_enhanced.json"
         self.scan_log_file = self.output_dir / "scan_log.json"
         
         self.library = self.load_library()
@@ -366,7 +366,7 @@ def main():
         sys.exit(1)
     
     username = sys.argv[1]
-    output_dir = sys.argv[2] if len(sys.argv) > 2 else "github_library"
+    output_dir = sys.argv[2] if len(sys.argv) > 2 else "github_library_enhanced"
     
     scanner = GitHubLibraryScanner(username, output_dir)
     scanner.scan_all_repositories()

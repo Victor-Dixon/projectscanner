@@ -17,6 +17,11 @@ def main():
     parser = argparse.ArgumentParser(description="Project Scanner - Portfolio Analysis Tool")
     parser.add_argument("--gui", action="store_true", help="Launch GUI mode")
     parser.add_argument("--scan", type=str, help="Scan specific project path")
+    parser.add_argument("--export-context", action="store_true", help="Export ChatGPT context after scan")
+    parser.add_argument("--split-by", choices=["directory", "language", "none"], default="directory", help="How to split context output")
+    parser.add_argument("--max-files-per-chunk", type=int, default=100, help="Max files per chunk when split-by=none")
+    parser.add_argument("--generate-init", action="store_true", help="Auto-generate __init__.py files after scan")
+    parser.add_argument("--quick-scan", type=str, help="Fast drop-in scan (writes project_analysis.json in target dir)")
     parser.add_argument("--analyze", action="store_true", help="Run portfolio analysis")
     parser.add_argument("--strategic", action="store_true", help="Generate strategic plan")
     
@@ -30,11 +35,29 @@ def main():
             print("GUI module not found. Please check installation.")
     elif args.scan:
         try:
-            from src.core.scanner.enhanced_project_scanner import EnhancedProjectScanner
-            scanner = EnhancedProjectScanner()
-            scanner.scan_project(args.scan)
-        except ImportError:
-            print("Scanner module not found. Please check installation.")
+            # Use unified scanner to cover all modes
+            from src.core.scanner.unified_scanner import UnifiedProjectScanner
+            target = Path(args.scan).resolve()
+            scanner = UnifiedProjectScanner(target)
+            report = scanner.scan_project(
+                export_context=args.export_context,
+                split_by=args.split_by,
+                max_files_per_chunk=args.max_files_per_chunk,
+                single_report_only=not args.export_context,
+                generate_init=args.generate_init,
+            )
+            print(f"\n✅ Scan complete. Results saved to: {report}")
+        except Exception as e:
+            print(f"Error running scan: {e}")
+    elif args.quick_scan:
+        try:
+            # Lightweight one-shot scanner for drop-in usage
+            from scripts.scanners.quick_scanner import ProjectScanner as QuickScanner
+            target = Path(args.quick_scan).resolve()
+            scanner = QuickScanner(project_root=target)
+            scanner.scan_project()
+        except Exception as e:
+            print(f"Error running quick scan: {e}")
     elif args.analyze:
         try:
             from src.core.analysis.analyze_portfolio import analyze_portfolio

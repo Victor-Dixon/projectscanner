@@ -84,7 +84,7 @@ class GitHubLibraryWorker(QThread):
     error = pyqtSignal(str)
     repo_progress = pyqtSignal(str, int, int)  # repo_name, current, total
 
-    def __init__(self, github_username: str, output_dir: str = "github_library", force_rescan: bool = False, max_repos: Optional[int] = None, github_token: Optional[str] = None):
+    def __init__(self, github_username: str, output_dir: str = "github_library_enhanced", force_rescan: bool = False, max_repos: Optional[int] = None, github_token: Optional[str] = None):
         super().__init__()
         self.github_username = github_username
         self.output_dir = output_dir
@@ -1917,13 +1917,13 @@ class ProjectScannerGUI(QtWidgets.QMainWindow):
         """Load GitHub library data for analysis."""
         try:
             # Try to load from enhanced library
-            library_file = Path("github_library/github_library_enhanced.json")
+            library_file = Path("github_library_enhanced/github_library_enhanced.json")
             if library_file.exists():
                 with open(library_file, 'r', encoding='utf-8') as f:
                     return json.load(f)
             
             # Fall back to regular library
-            library_file = Path("github_library/github_library.json")
+            library_file = Path("github_library_enhanced/github_library_enhanced.json")
             if library_file.exists():
                 with open(library_file, 'r', encoding='utf-8') as f:
                     return json.load(f)

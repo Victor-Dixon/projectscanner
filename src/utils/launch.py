@@ -95,7 +95,7 @@ def launch_github_analysis(username):
     print(f"Analyzing GitHub libraries for user: {username}")
     try:
         # Call the github scanner directly with the username
-        subprocess.run([sys.executable, "src/scanners/github_library_scanner.py", username], check=True)
+        subprocess.run([sys.executable, "src/scanners/github_library_scanner.py", username, "github_library_enhanced"], check=True)
     except subprocess.CalledProcessError as e:
         print(f"Error analyzing GitHub: {e}")
         sys.exit(1)

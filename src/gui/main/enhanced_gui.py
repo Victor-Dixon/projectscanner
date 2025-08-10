@@ -35,6 +35,7 @@ from PyQt5.QtCore import Qt, QSize, QRect
 
 # Import our comprehensive analysis modules
 from analyzers.comprehensive_project_analyzer import ComprehensiveProjectAnalyzer
+from core.scanner.unified_scanner import UnifiedProjectScanner
 # Quality modules (temporarily disabled for testing)
 # from quality.agents_md_checker import AgentsMDChecker
 # from quality.complexity_checker import ComplexityChecker
@@ -114,18 +115,64 @@ class GitHubScanWorker(QThread):
             
             self.progress.emit("GitHub scan completed successfully!")
             self.progress_value.emit(100)
-            
-                self.finished.emit({
+
+            self.finished.emit({
                 'type': 'github_scan',
                 'repositories_scanned': len(scan_results),
                 'total_repositories': len(repos),
                 'scan_results': scan_results,
                 'summary': summary,
                 'timestamp': datetime.now().isoformat()
-                })
-                
+            })
+            
         except Exception as e:
             self.error.emit(f"GitHub scan failed: {str(e)}")
+
+
+class UnifiedScanWorker(QThread):
+    """Background worker for local unified project scanning."""
+    progress = pyqtSignal(str)
+    progress_value = pyqtSignal(int)
+    finished = pyqtSignal(dict)
+    error = pyqtSignal(str)
+
+    def __init__(self, project_path: str, export_context: bool, split_by: str, max_files_per_chunk: int, generate_init: bool):
+        super().__init__()
+        self.project_path = project_path
+        self.export_context = export_context
+        self.split_by = split_by
+        self.max_files_per_chunk = max_files_per_chunk
+        self.generate_init = generate_init
+
+    def run(self):
+        try:
+            self.progress.emit("Starting unified project scan...")
+            self.progress_value.emit(5)
+
+            scanner = UnifiedProjectScanner(self.project_path)
+            self.progress.emit("Scanning files and analyzing code...")
+            self.progress_value.emit(25)
+
+            report_path = scanner.scan_project(
+                export_context=self.export_context,
+                split_by=self.split_by,
+                max_files_per_chunk=self.max_files_per_chunk,
+                single_report_only=not self.export_context,
+                generate_init=self.generate_init,
+            )
+
+            self.progress.emit("Finalizing outputs...")
+            self.progress_value.emit(90)
+
+            self.progress.emit("Unified scan completed successfully!")
+            self.progress_value.emit(100)
+
+            self.finished.emit({
+                'type': 'unified_scan',
+                'report_path': str(report_path)
+            })
+        except Exception as e:
+            self.error.emit(f"Unified scan failed: {str(e)}")
     
     def get_user_repositories(self) -> List[Dict]:
         """Get user repositories from GitHub API."""
@@ -532,7 +579,14 @@ class AnalyticsWorker(QThread):
 
 class ModernDashboard(QWidget):
     """Modern dashboard with real-time analytics."""
-    
+
+    # Signals for quick actions so parent window can handle them
+    scan_project = pyqtSignal()
+    portfolio_analysis = pyqtSignal()
+    quality_check = pyqtSignal()
+    generate_report = pyqtSignal()
+    strategic_plan = pyqtSignal()
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setup_ui()
@@ -621,14 +675,14 @@ class ModernDashboard(QWidget):
         
         # Action buttons
         actions = [
-            ("🔍 Scan Project", "Scan a new project for analysis"),
-            ("📊 Portfolio Analysis", "Analyze entire portfolio"),
-            ("⚡ Quality Check", "Run quality enforcement"),
-            ("📈 Generate Report", "Create comprehensive report"),
-            ("🎯 Strategic Plan", "Generate strategic recommendations")
+            ("🔍 Scan Project", "Scan a new project for analysis", self.scan_project),
+            ("📊 Portfolio Analysis", "Analyze entire portfolio", self.portfolio_analysis),
+            ("⚡ Quality Check", "Run quality enforcement", self.quality_check),
+            ("📈 Generate Report", "Create comprehensive report", self.generate_report),
+            ("🎯 Strategic Plan", "Generate strategic recommendations", self.strategic_plan)
         ]
         
-        for action_text, tooltip in actions:
+        for action_text, tooltip, signal in actions:
             btn = QPushButton(action_text)
             btn.setToolTip(tooltip)
             btn.setStyleSheet("""
@@ -648,6 +702,8 @@ class ModernDashboard(QWidget):
                     border-color: #0078d4;
                 }
             """)
+            # Wire button to emit the appropriate quick action signal
+            btn.clicked.connect(signal.emit)
             layout.addWidget(btn)
         
         layout.addStretch()
@@ -772,6 +828,12 @@ class EnhancedProjectScannerGUI(QMainWindow):
         
         # Dashboard tab
         self.dashboard = ModernDashboard()
+        # Connect quick action signals from dashboard to handlers in this window
+        self.dashboard.scan_project.connect(self.handle_quick_scan_project)
+        self.dashboard.portfolio_analysis.connect(self.handle_quick_portfolio_analysis)
+        self.dashboard.quality_check.connect(self.handle_quick_quality_check)
+        self.dashboard.generate_report.connect(self.handle_quick_generate_report)
+        self.dashboard.strategic_plan.connect(self.handle_quick_strategic_plan)
         self.tab_widget.addTab(self.dashboard, "📊 Dashboard")
         
         # Analysis tab
@@ -832,23 +894,35 @@ class EnhancedProjectScannerGUI(QMainWindow):
         path_layout.addWidget(browse_btn)
         options_layout.addLayout(path_layout, 1, 1)
         
-        # Advanced options
-        options_layout.addWidget(QLabel("Advanced Options:"), 2, 0)
-        advanced_layout = QHBoxLayout()
-        
-        self.deep_analysis_cb = QCheckBox("Deep Analysis")
-        self.deep_analysis_cb.setChecked(True)
-        advanced_layout.addWidget(self.deep_analysis_cb)
-        
-        self.quality_check_cb = QCheckBox("Quality Check")
-        self.quality_check_cb.setChecked(True)
-        advanced_layout.addWidget(self.quality_check_cb)
-        
-        self.generate_report_cb = QCheckBox("Generate Report")
-        self.generate_report_cb.setChecked(True)
-        advanced_layout.addWidget(self.generate_report_cb)
-        
-        options_layout.addLayout(advanced_layout, 2, 1)
+        # Unified scanner options
+        options_layout.addWidget(QLabel("Unified Scanner Options:"), 2, 0)
+        unified_layout = QGridLayout()
+
+        # Export context toggle
+        self.export_context_cb = QCheckBox("Export ChatGPT Context")
+        self.export_context_cb.setChecked(False)
+        unified_layout.addWidget(self.export_context_cb, 0, 0)
+
+        # Generate __init__ toggle
+        self.generate_init_cb = QCheckBox("Generate __init__.py")
+        self.generate_init_cb.setChecked(False)
+        unified_layout.addWidget(self.generate_init_cb, 0, 1)
+
+        # Split-by selector
+        unified_layout.addWidget(QLabel("Split Context By:"), 1, 0)
+        self.split_by_combo = QComboBox()
+        self.split_by_combo.addItems(["directory", "language", "none"])
+        self.split_by_combo.setCurrentText("directory")
+        unified_layout.addWidget(self.split_by_combo, 1, 1)
+
+        # Max files per chunk
+        unified_layout.addWidget(QLabel("Max Files Per Chunk (none):"), 2, 0)
+        self.max_files_chunk_spin = QSpinBox()
+        self.max_files_chunk_spin.setRange(10, 10000)
+        self.max_files_chunk_spin.setValue(100)
+        unified_layout.addWidget(self.max_files_chunk_spin, 2, 1)
+
+        options_layout.addLayout(unified_layout, 2, 1)
         
         layout.addWidget(options_group)
         
@@ -1611,15 +1685,35 @@ class EnhancedProjectScannerGUI(QMainWindow):
         self.analytics_worker.start()
     
     def start_general_analysis(self):
-        """Start general analysis."""
+        """Start unified scanner analysis based on GUI options."""
         project_path = self.path_input.text()
         if not project_path:
             QMessageBox.warning(self, "Warning", "Please select a project directory.")
             return
-        
-        # Implement general analysis
-        self.update_progress("Starting general analysis...")
-        self.update_progress("Analysis completed!")
+
+        export_context = self.export_context_cb.isChecked()
+        split_by = self.split_by_combo.currentText()
+        max_files_per_chunk = int(self.max_files_chunk_spin.value())
+        generate_init = self.generate_init_cb.isChecked()
+
+        self.analytics_worker = UnifiedScanWorker(
+            project_path=project_path,
+            export_context=export_context,
+            split_by=split_by,
+            max_files_per_chunk=max_files_per_chunk,
+            generate_init=generate_init,
+        )
+        self.analytics_worker.progress.connect(self.update_progress)
+        self.analytics_worker.progress_value.connect(self.progress_bar.setValue)
+        self.analytics_worker.finished.connect(self.unified_scan_finished)
+        self.analytics_worker.error.connect(self.analysis_error)
+
+        self.start_analysis_btn.setEnabled(False)
+        self.stop_analysis_btn.setEnabled(True)
+        self.progress_bar.setVisible(True)
+        self.progress_text.clear()
+
+        self.analytics_worker.start()
     
     def stop_analysis(self):
         """Stop the current analysis."""
@@ -1646,6 +1740,16 @@ class EnhancedProjectScannerGUI(QMainWindow):
         self.update_progress("Analysis completed successfully!")
         
         QMessageBox.information(self, "Analysis Complete", "Portfolio analysis completed successfully!")
+
+    def unified_scan_finished(self, result: Dict):
+        """Handle completion of unified scanner run."""
+        self.start_analysis_btn.setEnabled(True)
+        self.stop_analysis_btn.setEnabled(False)
+        self.progress_bar.setVisible(False)
+
+        report_path = result.get('report_path', '')
+        self.update_progress(f"Unified scan complete. Report: {report_path}")
+        QMessageBox.information(self, "Scan Complete", f"Unified scan finished.\nReport: {report_path}")
     
     def quality_analysis_finished(self, result: Dict):
         """Handle quality analysis completion."""
@@ -1726,6 +1830,28 @@ Detailed analysis and recommendations follow...
         elif analysis_type == 'quality':
             self.tab_widget.setCurrentIndex(2)  # Switch to quality tab
             self.start_quality_analysis()
+
+    # Quick action handlers
+    def handle_quick_scan_project(self):
+        self.tab_widget.setCurrentIndex(1)  # Analysis tab
+        self.start_general_analysis()
+
+    def handle_quick_portfolio_analysis(self):
+        self.tab_widget.setCurrentIndex(1)  # Analysis tab
+        self.start_portfolio_analysis()
+
+    def handle_quick_quality_check(self):
+        self.tab_widget.setCurrentIndex(2)  # Quality tab
+        self.start_quality_analysis()
+
+    def handle_quick_generate_report(self):
+        self.tab_widget.setCurrentIndex(3)  # Reports tab
+        self.generate_report()
+
+    def handle_quick_strategic_plan(self):
+        self.tab_widget.setCurrentIndex(1)  # Analysis tab
+        # Reuse general analysis to show activity
+        self.start_general_analysis()
     
     def export_results(self):
         """Export current results to file."""
