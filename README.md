@@ -86,6 +86,11 @@ project-scanner/
 └── strategic_task_list.md        # Strategic action plan
 ```
 
+## 🧩 Development Notes
+
+- Package initialization gracefully handles missing optional modules like
+  `scanner`, preventing import errors in minimal testing environments.
+
 ## 🔧 Installation
 
 1. **Clone the repository**
