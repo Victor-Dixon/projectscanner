@@ -66,3 +66,9 @@ You already have a package shell and some extracted responsibilities. The immedi
 - If you want fast progress with minimal risk: **restructure now**, but in phases.
 - Do **not** build another parallel scanner script.
 - Do **not** rewrite everything before restoring missing core modules.
+
+
+## Next up
+
+- Handoff plan and Phase 2 checklist: `docs/NEXT_UP.md`.
+- Operational usage + SSOT guardrails: `docs/USING_UPDATED_SCANNER.md`.
