@@ -66,6 +66,18 @@ class FileProcessor:
 
         if any(excluded in file_path.parts for excluded in default_exclude_dirs):
             return True
+
+        scanner_artifact_patterns = (
+            ".projectscanner_cache.json",
+            "project_analysis_",
+            "chatgpt_project_context_",
+        )
+
+        if file_abs.name == scanner_artifact_patterns[0] or any(
+            file_abs.name.startswith(pattern) and file_abs.suffix == ".json"
+            for pattern in scanner_artifact_patterns[1:]
+        ):
+            return True
         path_str = str(file_abs).lower().replace("\\", "/")
         if any(f"/{pattern}/" in path_str for pattern in venv_patterns):
             return True
