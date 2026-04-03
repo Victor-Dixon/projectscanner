@@ -1,74 +1,67 @@
 # Current State Assessment (No-BS)
 
+## Snapshot as of 2026-04-03
+
+This document reflects the **current repository state** and enforces SSOT assumptions for scanner execution and handoff planning.
+
 ## What we have right now
 
-### 1) Entrypoints are fragmented and inconsistent
-- `main.py` is the top-level entrypoint and offers GUI/scan/analyze/strategic modes, but it imports modules that are not present (for example `src.core.scanner.unified_scanner` and `scripts.scanners.quick_scanner`).
-- `src/core/projectscanner/cli.py` is a second CLI path that imports `ProjectScanner` from `core.projectscanner.scanner`, but `scanner.py` is not present in that package.
+### 1) SSOT scan target resolution is now implemented
+- `src/utils/run_scanner.py` now resolves scan targets in this order:
+  1. `--target` CLI override,
+  2. `repo_root/src` (SSOT default),
+  3. `repo_root` fallback.
+- Relative `--target` values are resolved against git repo root.
+- Non-existent targets fail fast with `FileNotFoundError`.
+- Legacy positional target is still accepted for compatibility, but `--target` is now the preferred interface.
 
-### 2) A partial package exists, but key modules are missing
-- Existing modules in `src/core/projectscanner/` are:
-  - `__init__.py`
-  - `bots.py`
-  - `cli.py`
-  - `file_processor.py`
-  - `report_generator.py`
-- `__init__.py` exports `ProjectScanner` and `LanguageAnalyzer`, but both are imported from files that do not exist (`scanner.py`, `language_analyzer.py`).
+### 2) Artifact-first CI snapshot workflow exists
+- `.github/workflows/scanner-snapshot.yml` is in place and runs on:
+  - push to `main`,
+  - pull requests to `main`,
+  - nightly schedule,
+  - manual dispatch.
+- Workflow behavior:
+  - determines scan mode from trigger,
+  - runs scanner against SSOT target (`./src`),
+  - writes `metadata.json`,
+  - uploads `snapshots/` as retained artifacts (90 days),
+  - posts PR comment summary for PR-triggered runs.
 
-### 3) Scanning support code is already somewhat modular
-You already have reusable building blocks:
-- File hashing/exclusion/cache touchpoints in `FileProcessor`.
-- Thread worker management in `bots.py`.
-- Report/context writing in `ReportGenerator`.
+### 3) SQLite ingestor is available for history and trends
+- `ingest_snapshot.py` ingests snapshot artifacts into `scanner_history.db`.
+- Schema currently includes:
+  - `snapshots` (commit/run metadata),
+  - `files` (file-level rollup + raw JSON),
+  - `issues` (rule/severity/file/message/line).
+- Idempotency is handled using unique constraints plus `INSERT OR IGNORE`/`INSERT OR REPLACE` patterns.
 
-This means the project is **not** a pure single-file scanner anymore; it is a **partially extracted package missing the orchestration core**.
+### 4) Core architecture status
+- Package SSOT remains `src/core/projectscanner/`.
+- CLI + utility wrappers should continue to delegate to package internals rather than introduce parallel scanner implementations.
+- Project has both operational and strategic docs, but execution and handoff must stay aligned to SSOT runtime paths.
 
-### 4) GitHub library scanner exists and depends on missing core scanner
-- `src/scanners/github_library_scanner.py` orchestrates clone + scan + summary behavior.
-- It imports `core.projectscanner.scanner.ProjectScanner` (missing), so this currently fails as soon as imports are resolved.
+## Risks / gaps still open
 
-### 5) Tests confirm package contract exists but implementation is incomplete
-- `tests/test_analyzer.py` expects:
-  - `LanguageAnalyzer`
-  - `ProjectScanner`
-  - scanner methods like `_maturity_level`, `_agent_type`, `scan_project`, context export.
-- Current `pytest` run fails during collection with `ModuleNotFoundError` for `core.projectscanner.scanner`.
+1. **Data contract hardening between scanner output and ingestor**
+   - `ingest_snapshot.py` assumes `analysis.json` has `files` and optional `issues` arrays with expected keys.
+   - Add explicit schema/version checks to avoid silent drift.
 
-## Straight answer: do we need to restructure for your proposed package split?
+2. **CI confidence depth**
+   - Workflow path is present, but more test coverage is needed for:
+     - mode derivation,
+     - metadata integrity,
+     - PR comment safety when fields are absent.
 
-**Yes — but this should be framed as a completion + cleanup restructure, not a from-scratch rewrite.**
-
-You already have a package shell and some extracted responsibilities. The immediate problem is:
-1. Missing SSOT scanner core modules.
-2. Conflicting/obsolete entrypoints.
-3. Imports and tests targeting interfaces that are currently absent.
-
-## Practical migration path (minimum disruption)
-
-1. **Stabilize SSOT package path first**
-   - Keep `src/core/projectscanner/` as SSOT for scanner engine internals.
-   - Add missing `scanner.py` and `language_analyzer.py` there first to restore current test/API contract.
-
-2. **Then align module boundaries to your target design**
-   - Keep thin CLI wrapper.
-   - Move internals into submodules (`analyzers/`, `cache/`, `git/`, `reports/`) once behavior parity exists.
-
-3. **Unify entrypoints after core is stable**
-   - Decide one canonical runtime path (`python -m ...` or `main.py` wrapper).
-   - Make all other launchers call that one path only.
-
-4. **Batch wrapper should stay orchestration-only**
-   - Wrapper loops over targets and aggregates output.
-   - Scanner package remains reusable engine.
+3. **Trend query ergonomics**
+   - Ingest path exists; no dedicated query/report utilities yet.
 
 ## Decision
 
-- If you want fast progress with minimal risk: **restructure now**, but in phases.
-- Do **not** build another parallel scanner script.
-- Do **not** rewrite everything before restoring missing core modules.
+- **Phase 1/2 bridge is now real**: we have SSOT scan targeting + artifact production + local historical ingestion.
+- **Next phase should be TDD-first stabilization and query/report enablement**, not another scanner rewrite.
 
+## Immediate handoff pointers
 
-## Next up
-
-- Handoff plan and Phase 2 checklist: `docs/NEXT_UP.md`.
-- Operational usage + SSOT guardrails: `docs/USING_UPDATED_SCANNER.md`.
+- Implementation details and operational sequence: `docs/NEXT_UP.md`.
+- Usage and SSOT guidance: `docs/USING_UPDATED_SCANNER.md`.
