@@ -1,14 +1,11 @@
 import builtins
 import json
-import json
 import sys
 import threading
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from core.projectscanner.language_analyzer import LanguageAnalyzer
-from core.projectscanner.file_processor import FileProcessor
-from core.projectscanner.scanner import ProjectScanner
+from core.projectscanner import FileProcessor, LanguageAnalyzer, ProjectScanner
 
 
 def test_analyze_python_extracts_functions_classes_and_routes():
@@ -84,4 +81,3 @@ def test_generate_init_and_chatgpt_export(tmp_path):
     assert context_file.exists()
     data = json.loads(context_file.read_text())
     assert data["num_files_analyzed"] >= 1
-

@@ -12,7 +12,7 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from core.projectscanner.scanner import ProjectScanner
+from core.projectscanner import ProjectScanner
 
 def main():
     parser = argparse.ArgumentParser(description="Project Scanner CLI")
