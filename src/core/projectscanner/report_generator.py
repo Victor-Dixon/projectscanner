@@ -28,7 +28,7 @@ class ReportGenerator:
                 pass
         return {}
 
-    def save_report(self):
+    def save_report(self) -> Dict[str, Dict]:
         report_path = self.output_dir / self.analysis_file
         existing_report = self.load_existing_report(report_path)
         merged = {**existing_report, **self.analysis}
@@ -38,6 +38,7 @@ class ReportGenerator:
             logger.info("✅ Merged analysis saved to: %s", report_path)
         except Exception as exc:  # pragma: no cover
             logger.error("❌ Error writing analysis report: %s", exc)
+        return merged
 
     def generate_init_files(self, overwrite: bool = True):
         for file, result in self.analysis.items():

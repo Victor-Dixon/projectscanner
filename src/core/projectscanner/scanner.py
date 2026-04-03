@@ -137,11 +137,12 @@ class ProjectScanner:
         total_files = len(files)
 
         if total_files == 0:
-            self.report_generator.save_report()
+            merged_analysis = self.report_generator.save_report()
             if export_context:
+                self.report_generator.analysis = merged_analysis
                 self.report_generator.export_chatgpt_context(split_by=split_output_by, max_files_per_chunk=max_files_per_chunk)
             self._save_cache()
-            return self.analysis
+            return merged_analysis
 
         processed = 0
         with ThreadPoolExecutor(max_workers=self.workers) as executor:
@@ -159,11 +160,12 @@ class ProjectScanner:
                     self.cache[relative_path] = cache_entry
 
         self.report_generator.analysis = self.analysis
-        self.report_generator.save_report()
+        merged_analysis = self.report_generator.save_report()
         if export_context:
+            self.report_generator.analysis = merged_analysis
             self.report_generator.export_chatgpt_context(split_by=split_output_by, max_files_per_chunk=max_files_per_chunk)
         self._save_cache()
-        return self.analysis
+        return merged_analysis
 
     def categorize_agents(self) -> Dict[str, Dict]:
         for file_result in self.analysis.values():

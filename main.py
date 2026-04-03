@@ -38,11 +38,13 @@ def main():
             from core.projectscanner import ProjectScanner
             target = Path(args.scan).resolve()
             scanner = ProjectScanner(project_root=target)
-            scanner.scan_project()
+            scanner.scan_project(
+                export_context=args.export_context,
+                split_output_by=args.split_by,
+                max_files_per_chunk=args.max_files_per_chunk,
+            )
             if args.generate_init:
                 scanner.generate_init_files()
-            if args.export_context:
-                scanner.export_chatgpt_context()
             print(f"\n✅ Scan complete. Results saved to: {scanner.output_dir}")
         except Exception as e:
             print(f"Error running scan: {e}")
