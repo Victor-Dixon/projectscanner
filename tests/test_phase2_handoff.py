@@ -47,3 +47,20 @@ def test_main_uses_ssot_imports():
     assert "from core.projectscanner import ProjectScanner" in main_text
     assert "src.core.scanner.unified_scanner" not in main_text
     assert "scripts.scanners.quick_scanner" not in main_text
+
+
+def test_no_direct_scanner_module_imports():
+    python_files = list(Path("src").rglob("*.py")) + list(Path("tests").rglob("*.py"))
+    banned_imports = (
+        "from core.projectscanner.scanner import ProjectScanner",
+        "from core.projectscanner.language_analyzer import LanguageAnalyzer",
+    )
+    allowed_files = {"tests/test_phase2_handoff.py"}
+
+    for file_path in python_files:
+        relative = file_path.as_posix()
+        if relative in allowed_files:
+            continue
+        content = file_path.read_text(encoding="utf-8")
+        for banned_import in banned_imports:
+            assert banned_import not in content, f"{relative} uses non-SSOT import: {banned_import}"
