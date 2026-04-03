@@ -18,7 +18,7 @@ from datetime import datetime
 src_path = Path(__file__).parent.parent
 sys.path.insert(0, str(src_path))
 
-from core.projectscanner.scanner import ProjectScanner
+from core.projectscanner import ProjectScanner
 
 
 def clone_repository(repo_url: str, temp_dir: Path) -> Path:
