@@ -8,20 +8,34 @@ from .language_analyzer import LanguageAnalyzer
 
 logger = logging.getLogger(__name__)
 
-class FileProcessor:
-    """Handles file hashing, ignoring and caching."""
 
-    def __init__(self, project_root: Path, cache: Dict, cache_lock: threading.Lock, additional_ignore_dirs: set):
+class FileProcessor:
+    """SSOT file processing with cheap cache validation (mtime + size first)."""
+
+    def __init__(
+        self,
+        project_root: Path,
+        cache: Dict,
+        cache_lock: threading.Lock,
+        additional_ignore_dirs: set,
+        max_file_size_bytes: int = 10 * 1024 * 1024,
+        hash_on_change: bool = False,
+    ):
         self.project_root = project_root
         self.cache = cache
         self.cache_lock = cache_lock
         self.additional_ignore_dirs = additional_ignore_dirs
+        self.max_file_size_bytes = max_file_size_bytes
+        self.hash_on_change = hash_on_change
 
     def hash_file(self, file_path: Path) -> str:
         try:
+            hasher = hashlib.md5()
             with file_path.open("rb") as f:
-                return hashlib.md5(f.read()).hexdigest()
-        except Exception:  # pragma: no cover - I/O errors
+                for chunk in iter(lambda: f.read(65536), b""):
+                    hasher.update(chunk)
+            return hasher.hexdigest()
+        except Exception:  # pragma: no cover
             return ""
 
     def should_exclude(self, file_path: Path) -> bool:
@@ -35,14 +49,10 @@ class FileProcessor:
         default_exclude_dirs = {
             "__pycache__", "node_modules", "migrations", "build",
             "target", ".git", "coverage", "chrome_profile",
+            "runtime", "logs",
         } | venv_patterns
 
         file_abs = file_path.resolve()
-        try:
-            if file_abs == Path(__file__).resolve():
-                return True
-        except NameError:  # pragma: no cover
-            pass
 
         for ignore in self.additional_ignore_dirs:
             ignore_path = Path(ignore)
@@ -54,44 +64,48 @@ class FileProcessor:
             except ValueError:
                 continue
 
-        try:
-            if any(p.name == "pyvenv.cfg" for p in file_abs.parents):
-                return True
-            for parent in file_abs.parents:
-                if (parent / "bin" / "activate").exists() or (parent / "Scripts" / "activate.bat").exists():
-                    return True
-        except (OSError, PermissionError):
-            pass
-
         if any(excluded in file_path.parts for excluded in default_exclude_dirs):
             return True
-        path_str = str(file_abs).lower()
-        if any(f"/{pattern}/" in path_str.replace("\\", "/") for pattern in venv_patterns):
+        path_str = str(file_abs).lower().replace("\\", "/")
+        if any(f"/{pattern}/" in path_str for pattern in venv_patterns):
             return True
         return False
 
     def process_file(self, file_path: Path, language_analyzer: LanguageAnalyzer) -> Optional[tuple]:
-        file_hash_val = self.hash_file(file_path)
+        if self.should_exclude(file_path):
+            return None
+
+        try:
+            stat_result = file_path.stat()
+        except OSError:
+            return None
+
+        if stat_result.st_size > self.max_file_size_bytes:
+            return None
+
         relative_path = str(file_path.relative_to(self.project_root))
+        mtime = stat_result.st_mtime
+        size = stat_result.st_size
+
         with self.cache_lock:
-            if relative_path in self.cache and self.cache[relative_path].get("hash") == file_hash_val:
+            cached = self.cache.get(relative_path, {})
+            if cached.get("mtime") == mtime and cached.get("size") == size:
                 return None
+
         try:
             with file_path.open("r", encoding="utf-8") as f:
                 source_code = f.read()
             analysis_result = language_analyzer.analyze_file(file_path, source_code)
-            with self.cache_lock:
-                self.cache[relative_path] = {"hash": file_hash_val}
-            return (relative_path, analysis_result)
+            cache_entry = {"mtime": mtime, "size": size}
+            if self.hash_on_change:
+                cache_entry["hash"] = self.hash_file(file_path)
+            return (relative_path, analysis_result, cache_entry)
         except SyntaxError as exc:
-            # Handle syntax errors more gracefully - these are expected in real projects
             logger.debug("⚠️ Syntax error in %s: %s", file_path.name, exc.msg)
             return None
         except UnicodeDecodeError as exc:
-            # Handle encoding issues gracefully
             logger.debug("⚠️ Encoding issue in %s: %s", file_path.name, exc.reason)
             return None
         except Exception as exc:  # pragma: no cover
-            # Only log unexpected errors
             logger.error("❌ Unexpected error analyzing %s: %s", file_path, exc)
             return None

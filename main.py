@@ -35,26 +35,22 @@ def main():
             print("GUI module not found. Please check installation.")
     elif args.scan:
         try:
-            # Use unified scanner to cover all modes
-            from src.core.scanner.unified_scanner import UnifiedProjectScanner
+            from core.projectscanner import ProjectScanner
             target = Path(args.scan).resolve()
-            scanner = UnifiedProjectScanner(target)
-            report = scanner.scan_project(
-                export_context=args.export_context,
-                split_by=args.split_by,
-                max_files_per_chunk=args.max_files_per_chunk,
-                single_report_only=not args.export_context,
-                generate_init=args.generate_init,
-            )
-            print(f"\n✅ Scan complete. Results saved to: {report}")
+            scanner = ProjectScanner(project_root=target)
+            scanner.scan_project()
+            if args.generate_init:
+                scanner.generate_init_files()
+            if args.export_context:
+                scanner.export_chatgpt_context()
+            print(f"\n✅ Scan complete. Results saved to: {scanner.output_dir}")
         except Exception as e:
             print(f"Error running scan: {e}")
     elif args.quick_scan:
         try:
-            # Lightweight one-shot scanner for drop-in usage
-            from scripts.scanners.quick_scanner import ProjectScanner as QuickScanner
+            from core.projectscanner import ProjectScanner
             target = Path(args.quick_scan).resolve()
-            scanner = QuickScanner(project_root=target)
+            scanner = ProjectScanner(project_root=target)
             scanner.scan_project()
         except Exception as e:
             print(f"Error running quick scan: {e}")
