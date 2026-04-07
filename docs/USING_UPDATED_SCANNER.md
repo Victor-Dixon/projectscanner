@@ -47,3 +47,23 @@ python main.py --quick-scan /path/to/project
 - New scanner behaviors should be added under `src/core/projectscanner/`.
 - Entrypoints should call package-level imports:
   - `from core.projectscanner import ProjectScanner, LanguageAnalyzer`
+
+
+## Snapshot ingest contract + trend delta
+- Snapshot ingest now validates `metadata.json` and `analysis.json` before any DB write.
+- Required metadata keys: `commit_sha`, `timestamp`, `scan_mode`.
+- Required analysis shape: top-level object with `files` list; optional `issues` must be a list.
+- Modes are normalized via SSOT mapping (`src/core/projectscanner/workflow_mode.py`) before persistence.
+
+### Ingest snapshots
+```bash
+python ingest_snapshot.py /path/to/snapshot --repo my-repo
+```
+
+### Trend/delta report
+```bash
+python ingest_snapshot.py --trend --repo my-repo
+python ingest_snapshot.py --trend --repo my-repo --current-commit <sha> --previous-commit <sha>
+```
+
+The trend command compares two snapshots and reports deltas for `total_files` and `issue_count`.

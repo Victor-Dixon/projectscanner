@@ -1,6 +1,15 @@
 # Next Up (Agent Handoff)
 
 ## Current status
+## Phase 3 completion update (2026-04-06)
+- Pre-write validation added for `metadata.json` + `analysis.json` before ingest DB writes.
+- Workflow mode mapping centralized in `src/core/projectscanner/workflow_mode.py` and used by workflow via `src/utils/resolve_scan_mode.py`.
+- Ingestion edge-case tests added for first insert, duplicate insert, missing files, and invalid/missing required fields.
+- Trend delta command added: `python ingest_snapshot.py --trend` (supports explicit commit selection).
+- Documentation synchronized with contract and CLI behavior.
+
+---
+
 The project now has the minimum SSOT operational chain in place:
 - scanner target resolution from repo root with CLI override support,
 - artifact-first CI snapshots with metadata,

@@ -28,17 +28,10 @@ jobs:
       - name: Run scanner
         id: scan
         run: |
-          if [[ "${{ github.event_name }}" == "schedule" ]]; then
-            MODE="nightly"
-          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            MODE="pr"
-          elif [[ "${{ github.ref_type }}" == "tag" ]]; then
-            MODE="release"
-          elif [[ "${{ github.ref_name }}" == "main" ]]; then
-            MODE="main"
-          else
-            MODE="manual"
-          fi
+          MODE=$(python src/utils/resolve_scan_mode.py \
+            --event-name "${{ github.event_name }}" \
+            --ref-type "${{ github.ref_type }}" \
+            --ref-name "${{ github.ref_name }}")
 
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           SNAPSHOT_DIR="snapshots/${GITHUB_REF_NAME}-${TIMESTAMP}-${GITHUB_SHA::8}"
