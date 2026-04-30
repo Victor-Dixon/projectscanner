@@ -1,3 +1,10 @@
+"""
+MODULE: test_gui_tab_updates
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Test script to verify GUI tab updates are working properly.
@@ -10,7 +17,16 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
+# Concept: TODO - Explain the core idea behind test_gui_tab_updates
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 70 lines > 30 limit)
 def test_gui_tab_updates():
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Test that GUI tabs update properly after GitHub scan."""
     print("🧪 GUI Tab Update Test")
     print("=" * 50)
@@ -83,3 +99,6 @@ def test_gui_tab_updates():
 
 if __name__ == "__main__":
     test_gui_tab_updates() 
+# Concept: TODO - Purpose of test_gui_tab_updates
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

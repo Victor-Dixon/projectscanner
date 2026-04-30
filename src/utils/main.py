@@ -1,3 +1,10 @@
+"""
+MODULE: main
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Project Scanner - Main Entry Point

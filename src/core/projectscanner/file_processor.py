@@ -1,3 +1,10 @@
+"""
+MODULE: file_processor
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 import hashlib
 import logging
 import threading
@@ -12,7 +19,15 @@ logger = logging.getLogger(__name__)
 class FileProcessor:
     """SSOT file processing with cheap cache validation (mtime + size first)."""
 
+    # Concept: TODO - Explain the core idea behind __init__
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def __init__(
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         self,
         project_root: Path,
         cache: Dict,
@@ -28,7 +43,15 @@ class FileProcessor:
         self.max_file_size_bytes = max_file_size_bytes
         self.hash_on_change = hash_on_change
 
+    # Concept: TODO - Explain the core idea behind hash_file
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def hash_file(self, file_path: Path) -> str:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         try:
             hasher = hashlib.md5()
             with file_path.open("rb") as f:
@@ -38,7 +61,16 @@ class FileProcessor:
         except Exception:  # pragma: no cover
             return ""
 
+    # Concept: TODO - Explain the core idea behind should_exclude
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 47 lines > 30 limit)
     def should_exclude(self, file_path: Path) -> bool:
+    # Concept: TODO - Purpose of should_exclude
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         venv_patterns = {
             "venv", "env", ".env", ".venv", "virtualenv",
             "ENV", "VENV", ".ENV", ".VENV",
@@ -83,7 +115,16 @@ class FileProcessor:
             return True
         return False
 
+    # Concept: TODO - Explain the core idea behind process_file
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 41 lines > 30 limit)
     def process_file(self, file_path: Path, language_analyzer: LanguageAnalyzer) -> Optional[tuple]:
+    # Concept: TODO - Purpose of process_file
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         if self.should_exclude(file_path):
             return None
 

@@ -1,3 +1,10 @@
+"""
+MODULE: loc_checker
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Lines of Code (LOC) Checker for Agent Policy Enforcement
@@ -14,12 +21,25 @@ from typing import Dict, List, Tuple
 class LOCChecker:
     """Enforces LOC limits for agent-generated code."""
     
+    # Concept: TODO - Explain the core idea behind __init__
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def __init__(self, max_loc: int = 350, gui_max_loc: int = 500):
         self.max_loc = max_loc
         self.gui_max_loc = gui_max_loc
         self.violations = []
         
+    # Concept: TODO - Explain the core idea behind count_lines
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def count_lines(self, file_path: Path) -> int:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         """Count non-empty lines in a file."""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -32,7 +52,15 @@ class LOCChecker:
             print(f"Error reading {file_path}: {e}")
             return 0
     
+    # Concept: TODO - Explain the core idea behind is_gui_file
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def is_gui_file(self, file_path: Path) -> bool:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         """Determine if file is a GUI component."""
         gui_indicators = [
             'gui', 'ui', 'view', 'window', 'dialog', 'form',
@@ -59,8 +87,16 @@ class LOCChecker:
         
         return False
     
+    # Concept: TODO - Explain the core idea behind check_file
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def check_file(self, file_path: Path) -> Tuple[bool, int, int]:
         """Check if file meets LOC requirements."""
+    # Concept: TODO - Purpose of is_gui_file
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         if not file_path.exists():
             return False, 0, 0
         
@@ -70,7 +106,15 @@ class LOCChecker:
         
         return loc_count <= max_allowed, loc_count, max_allowed
     
+    # Concept: TODO - Explain the core idea behind check_directory
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def check_directory(self, directory: Path) -> List[Dict]:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         """Check all Python files in directory."""
         violations = []
         
@@ -91,8 +135,17 @@ class LOCChecker:
         
         return violations
     
-    def run(self, paths: List[str]) -> int:
+    # Concept: TODO - Explain the core idea behind run
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 44 lines > 30 limit)
+    def execute_scan(self, paths: List[str]) -> int:
         """Run LOC check on specified paths."""
+    # Concept: TODO - Purpose of check_directory
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         all_violations = []
         
         for path_str in paths:
@@ -134,8 +187,16 @@ class LOCChecker:
         return 0
 
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def main():
     """Main entry point for LOC checker."""
+    # Concept: TODO - Purpose of execute_scan
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
     parser = argparse.ArgumentParser(description="Check Lines of Code limits")
     parser.add_argument("paths", nargs="+", help="Files or directories to check")
     parser.add_argument("--max-loc", type=int, default=350, 
@@ -153,3 +214,6 @@ def main():
 
 if __name__ == "__main__":
     main() 
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

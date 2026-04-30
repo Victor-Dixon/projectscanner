@@ -1,3 +1,10 @@
+"""
+MODULE: agents_md_checker
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 AGENTS.md Checker for Agent Policy Enforcement
@@ -12,10 +19,23 @@ from pathlib import Path
 class AgentsMDChecker:
     """Checks for AGENTS.md file in repository."""
     
+    # Concept: TODO - Explain the core idea behind __init__
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def __init__(self):
         self.violations = []
     
+    # Concept: TODO - Explain the core idea behind check_repository
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def check_repository(self, repo_path: Path) -> bool:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         """Check if AGENTS.md exists in repository."""
         agents_md_path = repo_path / "AGENTS.md"
         
@@ -44,8 +64,17 @@ class AgentsMDChecker:
         
         return True
     
-    def run(self, paths: list) -> int:
+    # Concept: TODO - Explain the core idea behind run
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 33 lines > 30 limit)
+    def run_check(self, paths: list) -> int:
         """Run AGENTS.md check on specified paths."""
+    # Concept: TODO - Purpose of check_repository
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         all_violations = []
         
         for path_str in paths:
@@ -76,8 +105,16 @@ class AgentsMDChecker:
         return 0
 
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def main():
     """Main entry point for AGENTS.md checker."""
+    # Concept: TODO - Purpose of run_check
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
     parser = argparse.ArgumentParser(description="Check for AGENTS.md files")
     parser.add_argument("paths", nargs="+", help="Directories to check")
     
@@ -91,3 +128,6 @@ def main():
 
 if __name__ == "__main__":
     main() 
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

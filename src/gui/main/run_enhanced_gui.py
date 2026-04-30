@@ -1,3 +1,10 @@
+"""
+MODULE: run_enhanced_gui
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Enhanced Project Scanner GUI Launcher
@@ -8,7 +15,15 @@ import sys
 import os
 from pathlib import Path
 
+# Concept: TODO - Explain the core idea behind check_dependencies
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def check_dependencies():
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Check if required dependencies are available."""
     missing_deps = []
     
@@ -37,8 +52,16 @@ def check_dependencies():
     
     return True
 
+# Concept: TODO - Explain the core idea behind check_analysis_modules
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def check_analysis_modules():
     """Check if enhanced analysis modules are available."""
+# Concept: TODO - Purpose of check_dependencies
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     missing_modules = []
     
     modules = [
@@ -63,8 +86,17 @@ def check_analysis_modules():
     
     return True
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 37 lines > 30 limit)
 def main():
     """Main launcher function."""
+# Concept: TODO - Purpose of check_analysis_modules
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     print("🚀 Enhanced Project Scanner GUI Launcher")
     print("=" * 50)
     
@@ -100,3 +132,6 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main()) 
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

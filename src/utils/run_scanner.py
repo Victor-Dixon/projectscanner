@@ -1,3 +1,10 @@
+"""
+MODULE: run_scanner
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """Project Scanner CLI runner with repo-root SSOT target resolution."""
 
@@ -13,7 +20,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from core.projectscanner import ProjectScanner
 
 
+# Concept: TODO - Explain the core idea behind get_repo_root
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def get_repo_root() -> str:
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Return absolute path to git repo root, or fallback to current working directory."""
     try:
         return subprocess.check_output(
@@ -25,6 +40,11 @@ def get_repo_root() -> str:
         return os.getcwd()
 
 
+# Concept: TODO - Explain the core idea behind resolve_target_path
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def resolve_target_path(args_target: str | None = None) -> str:
     """
     Resolve scan target path with the following priority:
@@ -32,6 +52,9 @@ def resolve_target_path(args_target: str | None = None) -> str:
     2. repo_root/src (SSOT default)
     3. repo_root fallback
     """
+# Concept: TODO - Purpose of resolve_target_path
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     repo_root = get_repo_root()
 
     if args_target:
@@ -51,7 +74,16 @@ def resolve_target_path(args_target: str | None = None) -> str:
     return target
 
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 46 lines > 30 limit)
 def main() -> None:
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     parser = argparse.ArgumentParser(description="Project Scanner CLI")
     parser.add_argument(
         "project_path",
@@ -80,7 +112,15 @@ def main() -> None:
 
     scanner = ProjectScanner(project_root=scan_target, output_dir=args.output)
 
+    # Concept: TODO - Explain the core idea behind progress_callback
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def progress_callback(message: str) -> None:
+    # Concept: TODO - Purpose of progress_callback
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         if args.verbose:
             print(message)
 

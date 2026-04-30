@@ -1,3 +1,10 @@
+"""
+MODULE: report_generator
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 import datetime as dt
 import json
 import logging
@@ -11,7 +18,15 @@ logger = logging.getLogger(__name__)
 class ReportGenerator:
     """SSOT report and context export helpers."""
 
+    # Concept: TODO - Explain the core idea behind __init__
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def __init__(self, project_root: Path, analysis: Dict[str, Dict], output_dir: Path | None = None):
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         self.project_root = Path(project_root).resolve()
         self.output_dir = Path(output_dir).resolve() if output_dir else self.project_root
         self.analysis = analysis
@@ -19,7 +34,15 @@ class ReportGenerator:
         self.analysis_file = f"project_analysis_{name}.json"
         self.context_file = f"chatgpt_project_context_{name}.json"
 
+    # Concept: TODO - Explain the core idea behind load_existing_report
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def load_existing_report(self, report_path: Path) -> Dict:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         if report_path.exists():
             try:
                 with report_path.open("r", encoding="utf-8") as f:
@@ -28,7 +51,15 @@ class ReportGenerator:
                 pass
         return {}
 
+    # Concept: TODO - Explain the core idea behind save_report
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def save_report(self) -> Dict[str, Dict]:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         report_path = self.output_dir / self.analysis_file
         existing_report = self.load_existing_report(report_path)
         merged = {**existing_report, **self.analysis}
@@ -40,7 +71,15 @@ class ReportGenerator:
             logger.error("❌ Error writing analysis report: %s", exc)
         return merged
 
+    # Concept: TODO - Explain the core idea behind generate_init_files
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def generate_init_files(self, overwrite: bool = True):
+    # Concept: TODO - Purpose of generate_init_files
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         for file, result in self.analysis.items():
             if result.get("language") != ".py":
                 continue
@@ -55,7 +94,15 @@ class ReportGenerator:
             except Exception as exc:  # pragma: no cover
                 logger.error("❌ Could not create %s: %s", init_file, exc)
 
+    # Concept: TODO - Explain the core idea behind export_bare_repo_metadata
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def export_bare_repo_metadata(self, run_git: Callable[..., tuple[int, str]]) -> None:
+    # Concept: TODO - Purpose of export_bare_repo_metadata
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         code1, commit_count = run_git(self.project_root, "rev-list", "--count", "--all")
         code2, last_commit = run_git(self.project_root, "log", "-1", "--format=%ci")
         code3, branches = run_git(self.project_root, "for-each-ref", "refs/heads", "--format=%(refname:short)")
@@ -71,7 +118,15 @@ class ReportGenerator:
         out = self.output_dir / "bare_repo_metadata.json"
         out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
+    # Concept: TODO - Explain the core idea behind load_existing_chatgpt_context
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def load_existing_chatgpt_context(self, context_path: Path) -> Dict:
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         if context_path.exists():
             try:
                 with context_path.open("r", encoding="utf-8") as f:
@@ -80,7 +135,16 @@ class ReportGenerator:
                 pass
         return {}
 
+    # Concept: TODO - Explain the core idea behind export_chatgpt_context
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 39 lines > 30 limit)
     def export_chatgpt_context(
+    # Concept: TODO - Purpose of export_chatgpt_context
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         self,
         template_path: str = None,
         output_path: str | None = None,
@@ -117,7 +181,15 @@ class ReportGenerator:
         except Exception as exc:  # pragma: no cover
             logger.error("❌ Error rendering Jinja template: %s", exc)
 
+    # Concept: TODO - Explain the core idea behind _export_context_chunks
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def _export_context_chunks(self, split_by: str = "directory", max_files_per_chunk: int = 100) -> None:
+    # Concept: TODO - Purpose of _export_context_chunks
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         reports_dir = self.output_dir / "runtime" / "reports"
         reports_dir.mkdir(parents=True, exist_ok=True)
         items = list(self.analysis.items())

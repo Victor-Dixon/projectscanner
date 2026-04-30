@@ -1,3 +1,10 @@
+"""
+MODULE: deploy_agent_policy
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Agent Policy Deployment Script
@@ -16,7 +23,15 @@ from typing import Dict, List, Tuple
 class AgentPolicyDeployer:
     """Deploys agent policy framework across repositories."""
     
+    # Concept: TODO - Explain the core idea behind __init__
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def __init__(self, github_library_path: str):
+    # Concept: TODO
+    # Trade-off: TODO
+    # Execution: TODO
         self.github_library_path = Path(github_library_path)
         self.template_files = [
             "AGENTS.md",
@@ -36,7 +51,15 @@ class AgentPolicyDeployer:
             'skipped_repos': 0
         }
     
+    # Concept: TODO - Explain the core idea behind get_repository_list
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def get_repository_list(self) -> List[Path]:
+    # Concept: TODO - Purpose of get_repository_list
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation details
         """Get list of all repositories from github_library."""
         repos = []
         
@@ -51,8 +74,20 @@ class AgentPolicyDeployer:
         
         return repos
     
+    # Concept: TODO - Explain the core idea behind copy_template_files
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 43 lines > 30 limit)
     def copy_template_files(self, repo_path: Path) -> bool:
         """Copy template files to repository."""
+    # Concept: TODO - get_repository_list
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation
+    # Concept: TODO - Purpose of get_repository_list
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         try:
             # Create scripts directory if it doesn't exist
             scripts_dir = repo_path / "scripts"
@@ -92,8 +127,17 @@ class AgentPolicyDeployer:
             print(f"   ❌ Error copying files: {e}")
             return False
     
+    # Concept: TODO - Explain the core idea behind install_pre_commit_hooks
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 36 lines > 30 limit)
     def install_pre_commit_hooks(self, repo_path: Path) -> bool:
         """Install pre-commit hooks in repository."""
+    # Concept: TODO - Purpose of copy_template_files
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         try:
             # Check if pre-commit is installed
             result = subprocess.run(
@@ -126,8 +170,17 @@ class AgentPolicyDeployer:
             print(f"   ❌ Error installing pre-commit hooks: {e}")
             return False
     
+    # Concept: TODO - Explain the core idea behind create_requirements_txt
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 48 lines > 30 limit)
     def create_requirements_txt(self, repo_path: Path) -> bool:
         """Create or update requirements.txt with necessary dependencies."""
+    # Concept: TODO - Purpose of install_pre_commit_hooks
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         try:
             requirements_file = repo_path / "requirements.txt"
             
@@ -172,8 +225,17 @@ class AgentPolicyDeployer:
             print(f"   ❌ Error updating requirements.txt: {e}")
             return False
     
+    # Concept: TODO - Explain the core idea behind update_readme
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 61 lines > 30 limit)
     def update_readme(self, repo_path: Path) -> bool:
         """Update README.md with agent policy information."""
+    # Concept: TODO - Purpose of create_requirements_txt
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         try:
             readme_file = repo_path / "README.md"
             
@@ -216,6 +278,9 @@ pre-commit run --all-files
 ---
 *This repository is part of the Agent Policy Enforcement Framework.*
 """
+    # Concept: TODO - Purpose of update_readme
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
             
             # Write README
             with open(readme_file, 'w') as f:
@@ -228,7 +293,15 @@ pre-commit run --all-files
             print(f"   ❌ Error updating README.md: {e}")
             return False
     
+    # Concept: TODO - Explain the core idea behind deploy_to_repository
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def deploy_to_repository(self, repo_path: Path) -> bool:
+    # Concept: TODO - Purpose of deploy_to_repository
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation details
         """Deploy agent policy framework to a single repository."""
         print(f"📁 Processing: {repo_path.name}")
         
@@ -256,8 +329,20 @@ pre-commit run --all-files
             print(f"   ❌ Error deploying to {repo_path.name}: {e}")
             return False
     
-    def run(self, dry_run: bool = False) -> int:
+    # Concept: TODO - Explain the core idea behind run
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 42 lines > 30 limit)
+    def execute_deployment(self, dry_run: bool = False) -> int:
         """Deploy agent policy framework to all repositories."""
+    # Concept: TODO - deploy_to_repository
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation
+    # Concept: TODO - Purpose of deploy_to_repository
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         repos = self.get_repository_list()
         
         if not repos:
@@ -297,8 +382,16 @@ pre-commit run --all-files
         return 0
 
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def main():
     """Main entry point for agent policy deployment."""
+    # Concept: TODO - Purpose of execute_deployment
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
     parser = argparse.ArgumentParser(description="Deploy agent policy framework")
     parser.add_argument("--github-library", default="github_library",
                        help="Path to GitHub library directory")
@@ -315,3 +408,6 @@ def main():
 
 if __name__ == "__main__":
     main() 
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

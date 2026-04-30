@@ -1,3 +1,10 @@
+"""
+MODULE: demo_gui
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Demo script showing how to use the enhanced ProjectScanner GUI features.
@@ -14,7 +21,16 @@ from projectscanner.gui import ProjectScannerGUI, ScanWorker, GitHubScanner
 from PyQt5 import QtWidgets
 
 
+# Concept: TODO - Explain the core idea behind demo_scan_local_directory
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 50 lines > 30 limit)
 def demo_scan_local_directory():
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Demonstrate scanning a local directory."""
     print("Demo: Scanning local directory")
     
@@ -25,14 +41,32 @@ def demo_scan_local_directory():
     worker = ScanWorker(project_path)
     
     # Connect signals to see progress
+    # Concept: TODO - Explain the core idea behind on_progress
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def on_progress(message):
         print(f"Progress: {message}")
     
+    # Concept: TODO - Explain the core idea behind on_finished
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def on_finished(result):
         print(f"Scan finished! Found {len(result['analysis_data'])} files")
         print(f"Results saved to: {result['analysis_file']}")
     
+    # Concept: TODO - Explain the core idea behind on_error
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def on_error(error):
+    # Concept: TODO - Purpose of on_error
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         print(f"Scan error: {error}")
     
     worker.progress.connect(on_progress)
@@ -48,7 +82,15 @@ def demo_scan_local_directory():
     return worker
 
 
+# Concept: TODO - Explain the core idea behind demo_github_cloning
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def demo_github_cloning():
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Demonstrate GitHub repository cloning."""
     print("\nDemo: GitHub repository cloning")
     
@@ -77,8 +119,20 @@ def demo_github_cloning():
         print(f"Error cloning repository: {e}")
 
 
+# Concept: TODO - Explain the core idea behind demo_gui_features
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 35 lines > 30 limit)
 def demo_gui_features():
     """Demonstrate GUI features."""
+# Concept: TODO - Purpose of demo_github_cloning
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
+# Concept: TODO - Purpose of demo_github_cloning
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     print("\nDemo: GUI Features")
     
     # Create GUI application
@@ -120,3 +174,6 @@ if __name__ == "__main__":
     
     # Demo 3: GUI features
     demo_gui_features() 
+# Concept: TODO - Purpose of demo_gui_features
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

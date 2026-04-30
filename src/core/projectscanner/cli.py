@@ -1,3 +1,10 @@
+"""
+MODULE: cli
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 import argparse
 import json
 import logging
@@ -8,7 +15,16 @@ from .scanner import ProjectScanner
 logger = logging.getLogger(__name__)
 
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 56 lines > 30 limit)
 def main():
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
     parser = argparse.ArgumentParser(

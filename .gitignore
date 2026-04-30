@@ -27,3 +27,27 @@ github_library_enhanced/
 # Build artifacts
 dist/
 build/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated reports
+*.json
+*.md
+*.txt
+
+# Runtime files
+runtime/
+
+# Temporary scripts (optional - only if you don't want to commit them)
+fix_*.py
+add_*.py
+*_temp.py
+test_*.py
+*_test.py
+
+# Investigation tools
+investigate_*.sh
+track_*.sh
+

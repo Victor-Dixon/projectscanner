@@ -1,3 +1,10 @@
+"""
+MODULE: run_analysis
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Project Scanner - Analysis Entry Point
@@ -12,7 +19,16 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 33 lines > 30 limit)
 def main():
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     parser = argparse.ArgumentParser(description="Project Scanner Analysis Tools")
     parser.add_argument("--skill-tree", action="store_true", help="Generate skill tree")
     parser.add_argument("--github-analysis", action="store_true", help="Run GitHub analysis")

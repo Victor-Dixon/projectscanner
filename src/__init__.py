@@ -1,1 +1,8 @@
+"""
+MODULE: __init__
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 # Project Scanner Source Package 

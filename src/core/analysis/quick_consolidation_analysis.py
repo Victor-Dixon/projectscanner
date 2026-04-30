@@ -1,3 +1,10 @@
+"""
+MODULE: quick_consolidation_analysis
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Quick analysis of which projects should be consolidated based on similarity.
@@ -6,7 +13,16 @@ Quick analysis of which projects should be consolidated based on similarity.
 import json
 from pathlib import Path
 
+# Concept: TODO - Explain the core idea behind quick_consolidation_analysis
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 114 lines > 30 limit)
 def quick_consolidation_analysis():
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Quick analysis of consolidation candidates."""
     
     # Load duplicate analysis
@@ -123,3 +139,6 @@ def quick_consolidation_analysis():
 
 if __name__ == "__main__":
     quick_consolidation_analysis() 
+# Concept: TODO - Purpose of quick_consolidation_analysis
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

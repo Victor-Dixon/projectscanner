@@ -1,3 +1,10 @@
+"""
+MODULE: test_gui
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Test script to verify the GUI launches correctly.
@@ -8,7 +15,16 @@ import subprocess
 import time
 from pathlib import Path
 
+# Concept: TODO - Explain the core idea behind test_gui_launch
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 32 lines > 30 limit)
 def test_gui_launch():
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Test that the GUI launches without errors."""
     print("🧪 Testing GUI launch...")
     
@@ -41,8 +57,16 @@ def test_gui_launch():
         print(f"❌ Error testing GUI: {e}")
         return False
 
+# Concept: TODO - Explain the core idea behind test_launcher
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def test_launcher():
     """Test the launcher script."""
+# Concept: TODO - Purpose of test_gui_launch
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     print("🧪 Testing launcher script...")
     
     try:
@@ -64,8 +88,16 @@ def test_launcher():
         print(f"❌ Launcher script failed: {e}")
         return False
 
+# Concept: TODO - Explain the core idea behind test_scanner
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def test_scanner():
     """Test the scanner functionality."""
+# Concept: TODO - Purpose of test_launcher
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     print("🧪 Testing scanner functionality...")
     
     try:
@@ -90,8 +122,17 @@ def test_scanner():
         print(f"❌ Error testing scanner: {e}")
         return False
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 32 lines > 30 limit)
 def main():
     """Run all tests."""
+# Concept: TODO - Purpose of test_scanner
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
     print("🚀 Project Scanner - Test Suite")
     print("=" * 40)
     
@@ -122,3 +163,6 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main()) 
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

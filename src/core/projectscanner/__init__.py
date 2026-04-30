@@ -1,9 +1,9 @@
-"""ProjectScanner package."""
-from .scanner import ProjectScanner
-from .language_analyzer import LanguageAnalyzer
-from .file_processor import FileProcessor
-from .report_generator import ReportGenerator
-from .bots import BotWorker, MultibotManager
+"""
+MODULE: __init__
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES
+AGENTIC INSTRUCTIONS
+"""
 
 try:
     from .gui import AnalysisViewer

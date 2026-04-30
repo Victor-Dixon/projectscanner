@@ -1,3 +1,10 @@
+"""
+MODULE: complexity_checker
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Cyclomatic Complexity Checker for Agent Policy Enforcement
@@ -14,12 +21,25 @@ from typing import Dict, List, Tuple
 class ComplexityChecker:
     """Enforces cyclomatic complexity limits for agent-generated code."""
     
+    # Concept: TODO - Explain the core idea behind __init__
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def __init__(self, max_complexity: int = 10, class_max_complexity: int = 15):
         self.max_complexity = max_complexity
         self.class_max_complexity = class_max_complexity
         self.violations = []
     
+    # Concept: TODO - Explain the core idea behind calculate_complexity
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def calculate_complexity(self, node: ast.AST) -> int:
+    # Concept: TODO - Purpose of calculate_complexity
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation details
         """Calculate cyclomatic complexity of an AST node."""
         complexity = 1  # Base complexity
         
@@ -41,8 +61,23 @@ class ComplexityChecker:
         
         return complexity
     
+    # Concept: TODO - Explain the core idea behind analyze_file
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 66 lines > 30 limit)
     def analyze_file(self, file_path: Path) -> List[Dict]:
         """Analyze complexity of all functions and classes in a file."""
+    # Concept: TODO - calculate_complexity
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation
+    # Concept: TODO - Purpose of calculate_complexity
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
+    # Concept: TODO - Purpose of calculate_complexity
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         violations = []
         
         try:
@@ -105,8 +140,16 @@ class ComplexityChecker:
         
         return violations
     
+    # Concept: TODO - Explain the core idea behind check_directory
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
     def check_directory(self, directory: Path) -> List[Dict]:
         """Check all Python files in directory."""
+    # Concept: TODO - Purpose of analyze_file
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
         all_violations = []
         
         for file_path in directory.rglob("*.py"):
@@ -119,7 +162,16 @@ class ComplexityChecker:
         
         return all_violations
     
-    def run(self, paths: List[str]) -> int:
+    # Concept: TODO - Explain the core idea behind run
+    # Trade-off: TODO - Document any trade-offs or design decisions
+    # Execution: TODO - Describe how this function works at a high level
+
+
+    # TODO: Split this function (currently 57 lines > 30 limit)
+    def execute_scan(self, paths: List[str]) -> int:
+    # Concept: TODO - Purpose of execute_scan
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation details
         """Run complexity check on specified paths."""
         all_violations = []
         
@@ -178,8 +230,22 @@ class ComplexityChecker:
         return 0
 
 
+# Concept: TODO - Explain the core idea behind main
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
 def main():
     """Main entry point for complexity checker."""
+    # Concept: TODO - execute_scan
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation
+    # Concept: TODO - Purpose of execute_scan
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
+    # Concept: TODO - Purpose of execute_scan
+    # Trade-off: TODO - Design decisions
+    # Execution: TODO - Implementation approach
     parser = argparse.ArgumentParser(description="Check cyclomatic complexity")
     parser.add_argument("paths", nargs="+", help="Files or directories to check")
     parser.add_argument("--max-complexity", type=int, default=10,
@@ -200,3 +266,6 @@ def main():
 
 if __name__ == "__main__":
     main() 
+# Concept: TODO - Purpose of main
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach

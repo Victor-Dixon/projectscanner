@@ -9,7 +9,8 @@ Description:
 Features:
     - Interactive CLI menu (no flags required)
     - Direct CLI support (for automation)
-    - Local project discovery + analysis
+    - Local project discovery + analysis with detailed info (type, scale, entry points)
+    - JSON output for agent integration (--list --json)
     - GitHub public + private repo fetching
     - Pagination support (fetch ALL repos)
     - Clean markdown report output
@@ -18,7 +19,12 @@ Usage:
     Interactive:
         python run.py
 
-    CLI:
+    CLI (project listing):
+        python run.py --list
+        python run.py --list --json
+        python run.py --list --base-dir ~/projects
+
+    CLI (full scan and report):
         python run.py . --github YOUR_USERNAME
 
 Environment:
@@ -26,6 +32,7 @@ Environment:
 """
 
 import argparse
+import json
 import os
 import subprocess
 import sys
@@ -136,11 +143,86 @@ def _is_project_dir(path: Path) -> bool:
     return False
 
 
+def _detect_project_type_and_scale(project_path: Path) -> tuple:
+    """Return (type, scale, entry_points). Mimics workspace.sh logic."""
+    type_map = {
+        '.py': 'Python project',
+        '.js': 'JavaScript project',
+        '.ts': 'TypeScript project',
+        '.html': 'Web application',
+        '.rs': 'Rust project',
+        '.go': 'Go project',
+        '.java': 'Java project',
+        '.kt': 'Kotlin project',
+        '.cpp': 'C++ project',
+        '.c': 'C project',
+    }
+    # Count files by extension
+    ext_counts = {}
+    total_files = 0
+    for ext in type_map:
+        ext_counts[ext] = len(list(project_path.rglob(f'*{ext}')))
+        total_files += ext_counts[ext]
+    
+    # Dominant extension
+    dominant_ext = max(ext_counts, key=ext_counts.get) if ext_counts else None
+    proj_type = type_map.get(dominant_ext, 'Unknown project')
+    
+    # Scale: lightweight (<50 files), medium-scale (50-200), large-scale (>200)
+    if total_files < 50:
+        scale = 'lightweight'
+    elif total_files < 200:
+        scale = 'medium-scale'
+    else:
+        scale = 'large-scale'
+    
+    # Entry points: common entry files
+    entry_candidates = ['main.py', 'run.py', 'app.py', 'index.js', 'index.ts', 'package.json', 'Dockerfile', 'docker-compose.yml']
+    entry_points = [f for f in entry_candidates if (project_path / f).exists()]
+    
+    # Special: if no entry found and it's Python, check for any .py file
+    if not entry_points and dominant_ext == '.py':
+        py_files = list(project_path.glob('*.py'))
+        if py_files:
+            entry_points = [py_files[0].name]
+    
+    return proj_type, scale, entry_points
+
+
 # ---------------------------------------------------------------------------
-# LOCAL SCANNING
+# LOCAL SCANNING (Detailed for --list)
+# ---------------------------------------------------------------------------
+
+def scan_local_detailed(root_path: str) -> List[Dict]:
+    """Scan local directory and return detailed project info (type, scale, entry points)."""
+    root = Path(root_path).expanduser().resolve()
+    projects = []
+    
+    if not root.exists():
+        print(f"[error] Path does not exist: {root}", file=sys.stderr)
+        return []
+    
+    for child in root.iterdir():
+        if child.is_dir() and not child.name.startswith('.') and _is_project_dir(child):
+            proj_type, scale, entry_points = _detect_project_type_and_scale(child)
+            projects.append({
+                "name": child.name,
+                "type": proj_type,
+                "scale": scale,
+                "entry_points": entry_points,
+                "path": str(child),
+                "last_updated": _git_last_commit_date(child) or _fs_last_modified(child),
+                "description": _read_description(child),
+            })
+    return projects
+
+
+# ---------------------------------------------------------------------------
+# LOCAL SCANNING (Original for report)
 # ---------------------------------------------------------------------------
 
 def scan_local(root_path: str) -> List[Dict]:
+    """Original scan_local for markdown report (simpler)."""
     root = Path(root_path).resolve()
     projects = []
 
@@ -171,12 +253,11 @@ def scan_local(root_path: str) -> List[Dict]:
 
 
 # ---------------------------------------------------------------------------
-# GITHUB SCANNING (FIXED)
+# GITHUB SCANNING
 # ---------------------------------------------------------------------------
 
 def scan_github(username: str, token: Optional[str]) -> List[Dict]:
     import urllib.request
-    import json
 
     repos = []
     page = 1
@@ -185,7 +266,6 @@ def scan_github(username: str, token: Optional[str]) -> List[Dict]:
 
     while True:
         if token:
-            # ✅ FIXED: visibility=all + affiliation=owner
             url = f"https://api.github.com/user/repos?visibility=all&affiliation=owner&per_page=100&page={page}"
         else:
             url = f"https://api.github.com/users/{username}/repos?per_page=100&page={page}"
@@ -252,14 +332,43 @@ def generate_report(projects: List[Dict], output="projects_report.md"):
 
 def main():
     parser = argparse.ArgumentParser(description="ProjectScanner CLI")
-    parser.add_argument("local_path", nargs="?", default=None)
-    parser.add_argument("--github", default=None)
-    parser.add_argument("--token", default=os.environ.get("GITHUB_TOKEN"))
-    parser.add_argument("--output", default="projects_report.md")
+    parser.add_argument("local_path", nargs="?", default=None,
+                        help="Local path to scan (for report mode)")
+    parser.add_argument("--github", default=None,
+                        help="GitHub username to fetch repos from")
+    parser.add_argument("--token", default=os.environ.get("GITHUB_TOKEN"),
+                        help="GitHub personal access token (or set GITHUB_TOKEN env)")
+    parser.add_argument("--output", default="projects_report.md",
+                        help="Output markdown file name")
+    
+    # NEW arguments for project listing (detailed)
+    parser.add_argument("--list", action="store_true",
+                        help="List projects in a directory (detailed: type, scale, entry points)")
+    parser.add_argument("--json", action="store_true",
+                        help="Output JSON (use with --list)")
+    parser.add_argument("--base-dir", default=str(Path.home()),
+                        help="Root directory to scan for projects (default: home)")
 
     args = parser.parse_args()
 
-    # Interactive fallback
+    # --- NEW: --list mode (detailed listing) ---
+    if args.list:
+        projects = scan_local_detailed(args.base_dir)
+        if args.json:
+            output = {
+                "projects": projects,
+                "total_count": len(projects),
+                "scan_timestamp": datetime.now(timezone.utc).isoformat()
+            }
+            print(json.dumps(output, indent=2))
+        else:
+            # Human-readable table (like workspace list)
+            for p in projects:
+                entry_str = ", ".join(p["entry_points"]) if p["entry_points"] else "No clear entry point detected"
+                print(f"{p['name']} :: {p['type']} ({p['scale']}). Entry: {entry_str}")
+        return
+
+    # --- Original interactive / report mode ---
     if not args.local_path and not args.github:
         user = interactive_menu()
         args.local_path = user["local"]

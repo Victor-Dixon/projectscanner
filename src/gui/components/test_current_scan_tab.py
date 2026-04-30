@@ -1,3 +1,10 @@
+"""
+MODULE: test_current_scan_tab
+ARCHITECTURE PATTERN: 
+LEARNING OBJECTIVES: 
+AGENTIC INSTRUCTIONS: 
+"""
+
 #!/usr/bin/env python3
 """
 Test script for current scan tab functionality.
@@ -10,7 +17,16 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
+# Concept: TODO - Explain the core idea behind test_current_scan_tab
+# Trade-off: TODO - Document any trade-offs or design decisions
+# Execution: TODO - Describe how this function works at a high level
+
+
+# TODO: Split this function (currently 38 lines > 30 limit)
 def test_current_scan_tab():
+# Concept: TODO
+# Trade-off: TODO
+# Execution: TODO
     """Test current scan tab functionality."""
     print("🚀 Current Scan Tab Test")
     print("=" * 40)
@@ -51,3 +67,6 @@ def test_current_scan_tab():
 
 if __name__ == "__main__":
     test_current_scan_tab() 
+# Concept: TODO - Purpose of test_current_scan_tab
+# Trade-off: TODO - Design decisions
+# Execution: TODO - Implementation approach
