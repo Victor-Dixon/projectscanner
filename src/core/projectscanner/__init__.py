@@ -1,21 +1,11 @@
-"""
-MODULE: __init__
-ARCHITECTURE PATTERN: 
-LEARNING OBJECTIVES
-AGENTIC INSTRUCTIONS
-"""
+"""Public compatibility surface for the ProjectScanner core package."""
 
-try:
-    from .gui import AnalysisViewer
-except Exception:  # pragma: no cover - optional dependency
-    AnalysisViewer = None
+from .file_processor import FileProcessor
+from .language_analyzer import LanguageAnalyzer
+from .scanner import ProjectScanner
 
 __all__ = [
-    "ProjectScanner",
-    "LanguageAnalyzer",
     "FileProcessor",
-    "ReportGenerator",
-    "BotWorker",
-    "MultibotManager",
-    "AnalysisViewer",
+    "LanguageAnalyzer",
+    "ProjectScanner",
 ]
