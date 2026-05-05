@@ -33,8 +33,6 @@ __pycache__/
 *.pyc
 
 # Generated reports
-*.json
-*.md
 *.txt
 
 # Runtime files
@@ -51,3 +49,8 @@ test_*.py
 investigate_*.sh
 track_*.sh
 
+# ProjectScanner local/generated reports
+.projectscanner_cache.json
+chatgpt_project_context_projectscanner.json
+project_analysis_projectscanner.json
+projects_report.md
