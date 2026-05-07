@@ -40,7 +40,7 @@ jobs:
             MODE="manual"
           fi
 
-          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H-%M-%SZ")
           SNAPSHOT_DIR="snapshots/${GITHUB_REF_NAME}-${TIMESTAMP}-${GITHUB_SHA::8}"
           mkdir -p "$SNAPSHOT_DIR"
 
