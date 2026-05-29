@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Dict, Optional
 
 from .language_analyzer import LanguageAnalyzer
+from .path_exclusions import should_exclude_path
 
 logger = logging.getLogger(__name__)
 
@@ -68,52 +69,11 @@ class FileProcessor:
 
     # TODO: Split this function (currently 47 lines > 30 limit)
     def should_exclude(self, file_path: Path) -> bool:
-    # Concept: TODO - Purpose of should_exclude
-    # Trade-off: TODO - Design decisions
-    # Execution: TODO - Implementation approach
-        venv_patterns = {
-            "venv", "env", ".env", ".venv", "virtualenv",
-            "ENV", "VENV", ".ENV", ".VENV",
-            "python-env", "python-venv", "py-env", "py-venv",
-            "envs", "conda-env", ".conda-env",
-            ".poetry/venv", ".poetry-venv",
-        }
-        default_exclude_dirs = {
-            "__pycache__", "node_modules", "migrations", "build",
-            "target", ".git", "coverage", "chrome_profile",
-            "runtime", "logs",
-        } | venv_patterns
-
-        file_abs = file_path.resolve()
-
-        for ignore in self.additional_ignore_dirs:
-            ignore_path = Path(ignore)
-            if not ignore_path.is_absolute():
-                ignore_path = (self.project_root / ignore_path).resolve()
-            try:
-                file_abs.relative_to(ignore_path)
-                return True
-            except ValueError:
-                continue
-
-        if any(excluded in file_path.parts for excluded in default_exclude_dirs):
-            return True
-
-        scanner_artifact_patterns = (
-            ".projectscanner_cache.json",
-            "project_analysis_",
-            "chatgpt_project_context_",
+        return should_exclude_path(
+            file_path,
+            self.project_root,
+            self.additional_ignore_dirs,
         )
-
-        if file_abs.name == scanner_artifact_patterns[0] or any(
-            file_abs.name.startswith(pattern) and file_abs.suffix == ".json"
-            for pattern in scanner_artifact_patterns[1:]
-        ):
-            return True
-        path_str = str(file_abs).lower().replace("\\", "/")
-        if any(f"/{pattern}/" in path_str for pattern in venv_patterns):
-            return True
-        return False
 
     # Concept: TODO - Explain the core idea behind process_file
     # Trade-off: TODO - Document any trade-offs or design decisions

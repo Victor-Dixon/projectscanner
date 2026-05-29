@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "projectscanner_intelligence_packet.v1",
+  "title": "ProjectScanner Intelligence Packet",
+  "description": "Normalized repo intelligence substrate for governed autonomous lanes, LLM workers, and DreamVault governance.",
+  "type": "object",
+  "required": [
+    "schema",
+    "repo",
+    "repo_root",
+    "generated_at",
+    "dirty_classes",
+    "risk_level",
+    "recommended_action",
+    "candidate_lanes"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "const": "projectscanner_intelligence_packet.v1"
+    },
+    "repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "git": {
+      "type": "object",
+      "properties": {
+        "is_repo": { "type": "boolean" },
+        "branch": { "type": "string" },
+        "dirty_count": { "type": "integer", "minimum": 0 },
+        "untracked_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "dirty_classes": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "technology": {
+      "type": "object",
+      "properties": {
+        "languages": { "type": "object", "additionalProperties": { "type": "integer" } },
+        "markers": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "topology": {
+      "type": "object",
+      "properties": {
+        "depth": { "type": "integer" },
+        "top_level_dirs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "experiment_boundary": {
+      "type": "object",
+      "properties": {
+        "is_experiment": { "type": "boolean" },
+        "signals": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "recommended_action": {
+      "type": "string"
+    },
+    "candidate_lanes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "ownership": {
+      "type": "object",
+      "properties": {
+        "canonical_owner": { "type": "string" },
+        "owns": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "manifest_path": {
+      "type": "string"
+    },
+    "scan_artifact": {
+      "type": "string"
+    }
+  }
+}
