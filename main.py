@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-Project Scanner - Main Entry Point
+Project Scanner - Main Entry Point (legacy GUI/scan shim).
 
-This is the main entry point for the Project Scanner application.
+Prefer canonical CLIs:
+  python scripts/intelligence/emit_intelligence.py <repo> --packet-only
+  python src/utils/run_scanner.py --target <repo>
 """
 
 import sys

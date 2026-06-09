@@ -8,9 +8,13 @@ Seeded after dirty zero-score cleanup and full regression pass.
 
 ## Notes
 
-- Canonical scanner source remains under src/core/projectscanner/.
-- Overlay scanner experiment is archived under archive/untracked_overlay_20260505/.
-- Current regression gate: pytest -q.
+- Canonical scanner source remains under `src/core/projectscanner/`.
+- **One scanner:** portfolio repos must not host a duplicate core; DreamVault and control-plane repos invoke this repo via subprocess.
+- **Run intelligence packet:** `python scripts/intelligence/emit_intelligence.py <repo_root> --packet-only`
+- **Run full scan:** `python src/utils/run_scanner.py --target <repo_root>`
+- Overlay experiment is archived under `archive/untracked_overlay_20260505/` (historical only).
+- Regression gate: `pytest -q`
+- File cache: `.projectscanner_cache.json` (legacy `dependency_cache.json` at repo root is auto-quarantined).
 
 
 ## Project Intelligence Export

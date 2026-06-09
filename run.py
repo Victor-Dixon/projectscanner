@@ -2,6 +2,10 @@
 """
 ProjectScanner - Unified Entry Point
 
+Canonical CLIs (prefer these for automation):
+  python scripts/intelligence/emit_intelligence.py <repo> --packet-only
+  python src/utils/run_scanner.py --target <repo>
+
 Description:
     Scans local repositories and GitHub repositories, then generates
     a unified markdown report of all projects.

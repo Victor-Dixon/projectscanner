@@ -101,9 +101,13 @@ class FileProcessor:
         size = stat_result.st_size
 
         with self.cache_lock:
-            cached = self.cache.get(relative_path, {})
-            if cached.get("mtime") == mtime and cached.get("size") == size:
-                return None
+            cached = self.cache.get(relative_path)
+            if cached:
+                try:
+                    if float(cached.get("mtime")) == mtime and int(cached.get("size")) == size:
+                        return None
+                except (TypeError, ValueError):
+                    del self.cache[relative_path]
 
         try:
             with file_path.open("r", encoding="utf-8") as f:

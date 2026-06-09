@@ -5,38 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 from typing import FrozenSet, Iterable, Tuple
 
+from .file_cache import SCAN_EXCLUDE_DIR_NAMES
+
 # Directory names excluded anywhere under the scan root (relative segments).
-GLOBAL_EXCLUDE_DIR_NAMES: FrozenSet[str] = frozenset(
-    {
-        "__pycache__",
-        "node_modules",
-        "migrations",
-        "build",
-        "target",
-        ".git",
-        "coverage",
-        "chrome_profile",
-        "logs",
-        # Virtualenv / env folder names
-        "venv",
-        "env",
-        ".env",
-        ".venv",
-        "virtualenv",
-        "ENV",
-        "VENV",
-        ".ENV",
-        ".VENV",
-        "python-env",
-        "python-venv",
-        "py-env",
-        "py-venv",
-        "envs",
-        "conda-env",
-        ".conda-env",
-        ".poetry",
-    }
-)
+GLOBAL_EXCLUDE_DIR_NAMES: FrozenSet[str] = SCAN_EXCLUDE_DIR_NAMES
 
 # Under `<scan_root>/runtime/<name>/...` these subtrees are skipped on full-repo walks.
 RUNTIME_GENERATED_SUBDIR_NAMES: FrozenSet[str] = frozenset(
@@ -68,6 +40,8 @@ VENV_PATH_MARKERS: FrozenSet[str] = frozenset(
 
 SCANNER_ARTIFACT_NAMES: Tuple[str, ...] = (
     ".projectscanner_cache.json",
+    "dependency_cache.json",
+    ".dependency_cache.json",
     "project_analysis_",
     "chatgpt_project_context_",
 )

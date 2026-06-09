@@ -17,10 +17,7 @@ Seeded after dirty zero-score cleanup and full regression pass.
 ## DreamPlan Alignment
 
 ### Runtime Governance
-- [ ] Register active lanes in DreamVault dreamboard before starting major work.
-- [ ] Use `dreamrun` for operator-visible terminal execution when available.
 - [ ] Keep repo work scoped to declared lane ownership.
-- [ ] Record blockers, salvage candidates, and promotion ideas with `dreamboard add`.
 
 ### Cleanup / Stability
 - [ ] Remove generated caches before committing.
@@ -30,3 +27,9 @@ Seeded after dirty zero-score cleanup and full regression pass.
 
 ### Next Operating Step
 - [ ] Review this repo’s active purpose: keep, productize, salvage, or retire.
+
+## Prioritized (scanner audit)
+
+- [ ] **P0** Fix failing pytest gate (`pytest -q`) before next scanner release.
+- [ ] **P1** Document overlay retirement criteria for archive/untracked_overlay_20260505.
+- [ ] **P1** Refresh PROJECT_STRUCTURE_TREE.md after src/core/projectscanner changes.

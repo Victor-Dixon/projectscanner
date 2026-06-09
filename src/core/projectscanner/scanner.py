@@ -33,6 +33,7 @@ import threading
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Set, Tuple, Union
 
+from .file_cache import SCAN_EXCLUDE_DIR_NAMES, load_file_cache, save_file_cache
 from .file_processor import FileProcessor
 from .language_analyzer import LanguageAnalyzer
 from .report_generator import ReportGenerator
@@ -70,6 +71,8 @@ class ProjectScanner:
         max_file_size_mb: int = 10,
         hash_on_change: bool = False,
         workers: Optional[int] = None,
+        no_cache: bool = False,
+        refresh_cache: bool = False,
     ) -> None:
         """
         Initialize the scanner.
@@ -80,6 +83,8 @@ class ProjectScanner:
             max_file_size_mb: Maximum file size to process (larger files are skipped).
             hash_on_change: If True, re‑hash files on every run to detect changes.
             workers: Number of parallel worker threads (auto‑tuned if None).
+            no_cache: Ignore on-disk cache for this run (do not load or save).
+            refresh_cache: Delete canonical cache before scanning.
         """
         self.project_root = Path(project_root).resolve()
         self.is_bare = self._is_bare_repo(self.project_root)
@@ -87,9 +92,13 @@ class ProjectScanner:
         self.output_dir = self._resolve_output_dir(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
+        self.no_cache = no_cache
         self.cache_lock = threading.Lock()
         self.cache_path = self.output_dir / ".projectscanner_cache.json"
-        self.cache: Dict[str, Dict[str, str]] = self._load_cache()
+        if no_cache:
+            self.cache = {}
+        else:
+            self.cache = load_file_cache(self.output_dir, refresh=refresh_cache)
 
         self.additional_ignore_dirs: Set[str] = set()
         self.analysis: Dict[str, Dict] = {}
@@ -173,36 +182,10 @@ class ProjectScanner:
     # Execution: TODO - Describe how this function works at a high level
 
 
-    def _load_cache(self) -> Dict[str, Dict[str, str]]:
-    # Concept: TODO
-    # Trade-off: TODO
-    # Execution: TODO
-        """Load cache from disk. Return empty dict if file missing or corrupt."""
-        if not self.cache_path.exists():
-            return {}
-        try:
-            with self.cache_path.open("r", encoding="utf-8") as f:
-                data = json.load(f)
-            return data if isinstance(data, dict) else {}
-        except Exception:
-            logger.warning("Could not load cache from %s, starting fresh", self.cache_path)
-            return {}
-
-    # Concept: TODO - Explain the core idea behind _save_cache
-    # Trade-off: TODO - Document any trade-offs or design decisions
-    # Execution: TODO - Describe how this function works at a high level
-
-
     def _save_cache(self) -> None:
-    # Concept: TODO
-    # Trade-off: TODO
-    # Execution: TODO
-        """Write in‑memory cache to disk."""
-        try:
-            with self.cache_path.open("w", encoding="utf-8") as f:
-                json.dump(self.cache, f, indent=2)
-        except Exception as exc:
-            logger.error("❌ Failed to save cache: %s", exc)
+        """Write in‑memory cache to disk (canonical path, pruned)."""
+        if not self.no_cache:
+            save_file_cache(self.output_dir, self.cache)
 
     # ------------------------- Core Scan Flow (No Stubs) -------------------------
     # Concept: TODO - Explain the core idea behind _collect_files
@@ -215,12 +198,13 @@ class ProjectScanner:
     # Trade-off: TODO
     # Execution: TODO
         """Walk the project root and collect all supported files, respecting ignores."""
+        walk_ignore = set(self.additional_ignore_dirs) | set(SCAN_EXCLUDE_DIR_NAMES)
         return list(
             iter_scan_files(
                 self.project_root,
                 self.SUPPORTED_EXTENSIONS,
                 self.file_processor,
-                self.additional_ignore_dirs,
+                walk_ignore,
             )
         )
 
@@ -416,7 +400,11 @@ class ProjectScanner:
         if not files:
             return self._finalize_report(export_context, split_output_by, max_files_per_chunk)
 
+        logger.info("Scanning %d files under %s", len(files), self.project_root)
         results = self._run_parallel_scan(files, progress_callback)
+        skipped = len(files) - len(results)
+        if skipped:
+            logger.info("Cache fast-path skipped %d unchanged files", skipped)
         self._merge_results(results)
 
         if build_graph:

@@ -48,9 +48,24 @@ def main():
         default=None,
         help="Directory to store generated JSON reports.",
     )
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Do not load or save the incremental file cache for this run.",
+    )
+    parser.add_argument(
+        "--refresh-cache",
+        action="store_true",
+        help="Delete canonical cache before scanning (rebuild from scratch).",
+    )
     args = parser.parse_args()
 
-    scanner = ProjectScanner(project_root=args.project_root, output_dir=args.output_dir)
+    scanner = ProjectScanner(
+        project_root=args.project_root,
+        output_dir=args.output_dir,
+        no_cache=args.no_cache,
+        refresh_cache=args.refresh_cache,
+    )
     scanner.additional_ignore_dirs = set(args.ignore)
 
     scanner.scan_project()

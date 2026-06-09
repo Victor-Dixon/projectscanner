@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+
+from core.projectscanner.file_cache import SCAN_EXCLUDE_DIR_NAMES, quarantine_legacy_caches
 
 from .dirty_classifier import aggregate_dirty_classes, classify_path, git_status_paths
 from .generated_classifier import detect_experiment_boundary, runtime_noise_ratio
@@ -126,47 +129,31 @@ def _detect_technology(repo_root: Path) -> dict[str, Any]:
     if not scan_roots:
         scan_roots = [repo_root]
 
-    skip_dir_names = {
-        ".git",
-        "node_modules",
-        "__pycache__",
-        ".venv",
-        "venv",
-        ".pytest_cache",
-        ".mypy_cache",
-        "dist",
-        "build",
-        "logs",
-        "runtime",
-        "data",
-        "temp_repos",
-        "temp_scan",
-        "temp_github_scan",
-        "temp_github_deploy",
-    }
+    skip_dir_names = set(SCAN_EXCLUDE_DIR_NAMES)
 
     for base in scan_roots:
-        for path in base.rglob("*"):
-            try:
-                if path.is_dir() and path.name in skip_dir_names:
+        for dirpath, dirnames, filenames in os.walk(base, topdown=True):
+            dirnames[:] = [d for d in dirnames if d not in skip_dir_names]
+            for fname in filenames:
+                path = Path(dirpath) / fname
+                try:
+                    if not path.is_file():
+                        continue
+                except OSError:
                     continue
-                if not path.is_file():
+
+                rel = str(path.relative_to(repo_root)).replace("\\", "/")
+                if any(seg in rel for seg in ("/.git/", "/node_modules/", "/__pycache__/")):
                     continue
-            except OSError:
-                continue
 
-            rel = str(path.relative_to(repo_root)).replace("\\", "/")
-            if any(seg in rel for seg in ("/.git/", "/node_modules/", "/__pycache__/")):
-                continue
-
-            ext = path.suffix.lower()
-            if ext in ext_map:
-                key = ext_map[ext]
-                langs[key] = langs.get(key, 0) + 1
-            for marker, label in marker_files.items():
-                if rel == marker or rel.startswith(marker + "/"):
-                    if label not in markers:
-                        markers.append(label)
+                ext = path.suffix.lower()
+                if ext in ext_map:
+                    key = ext_map[ext]
+                    langs[key] = langs.get(key, 0) + 1
+                for marker, label in marker_files.items():
+                    if rel == marker or rel.startswith(marker + "/"):
+                        if label not in markers:
+                            markers.append(label)
     return {"languages": dict(sorted(langs.items(), key=lambda x: -x[1])), "markers": sorted(markers)}
 
 
@@ -248,6 +235,7 @@ class IntelligencePacketBuilder:
         self.repo_root = Path(repo_root).resolve()
 
     def build(self) -> dict[str, Any]:
+        quarantine_legacy_caches(self.repo_root)
         repo_name = self.repo_root.name
         dirty_paths, status_stats = git_status_paths(self.repo_root)
         dirty_classes = aggregate_dirty_classes(dirty_paths)
@@ -255,6 +243,8 @@ class IntelligencePacketBuilder:
         git_meta = _git_meta(self.repo_root)
         git_meta["dirty_count"] = status_stats["dirty_count"]
         git_meta["untracked_count"] = status_stats["untracked_count"]
+        if status_stats.get("truncated"):
+            git_meta["git_status_truncated"] = True
 
         risk = _derive_risk(dirty_classes, experiment)
         scan_artifact = _load_scan_artifact(self.repo_root)
