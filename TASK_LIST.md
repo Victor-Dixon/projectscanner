@@ -5,17 +5,21 @@
 - [x] Done
 
 ## Objectives
-- Unify scanners into one engine with presets (quick, standard, full)
-- Integrate the unified scanner into the GUI (progress, cancel, options)
-- Make `main.py` the canonical entry; keep a simple quick-scan path
+- **Productize** the repo: thin product (~100 files), fat scan targets (15k+ files OK)
+- Unify CLI into `projectscanner` with subcommands (scan, export, ingest)
+- Unify scanners into one engine with presets (quick, standard, full) — defer engine rewrite until CLI stable
+- Quarantine or fix GUI (optional `[gui]` extra); do not block v0.1 on GUI
 - Improve docs and quick start for Windows/Linux/macOS
-- Add tests and CI for scanner correctness and performance
-- Prepare packaging/release artifacts
+- Add tests and CI for scanner correctness and output contracts
+- Prepare packaging/release artifacts for v0.1
 
 ## Milestones
-- [ ] Scanner unification (core engine + presets)
-- [ ] GUI integration (analysis tab + options)
-- [ ] CLI/docs polish and quick start
+- [x] Phase 0: Product definition (PRD, ROADMAP, PRODUCTION_READINESS)
+- [ ] Phase 1: CLI unification + root cleanup
+- [ ] Phase 2: Packaging (`pip install -e .`, console script)
+- [ ] Phase 3: Output contracts + ingest hardening
+- [ ] Scanner unification (core engine + presets) — after CLI stable
+- [ ] GUI integration (optional extra) — v0.2 candidate
 - [ ] v0.1 Beta release
 
 ## Tasks
