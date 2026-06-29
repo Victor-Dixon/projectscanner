@@ -74,3 +74,44 @@ The current regression gate is:
 ```bash
 pytest -q
 ```
+
+<!-- DREAMVAULT_PORTFOLIO_README:BEGIN schema=v1 generated="2026-06-29T02:03:43Z" -->
+## Portfolio status
+
+**Portfolio scanner and authority graph** — Toolbelt scanner for repo discovery, authority graphs, duplicate detection, and portfolio/consolidation intelligence.
+
+| Field | Value |
+|---|---|
+| **Canonical ID** | `projectscanner` |
+| **Bucket** | toolbelt |
+| **Action** | keep_as_toolbelt |
+| **GitHub** | [projectscanner](https://github.com/Victor-Dixon/projectscanner) |
+
+### Repository inventory
+
+*Filesystem scan at `2026-06-29T02:03:43Z` — regenerate via `python runtime/scripts/sync_portfolio_readmes_001.py`.*
+
+| Signal | Value |
+|---|---|
+| Python files | 80 |
+| Test files | 8 |
+| CI workflows | 2 |
+| runtime/tasks YAML | 0 |
+| pyproject.toml | yes |
+| package.json | no |
+| tests/ directory | yes |
+| Git branch | master |
+| Working tree | dirty |
+
+**Top-level directories:** .github, archive, config, docs, projectscanner, scripts, src, tests
+
+**Top-level files:** .gitignore, AGENTS.md, CONSOLIDATION_MANIFEST.md, LICENSE, MASTER_TASK_LIST.md, MASTER_TASK_LOG.md, NEXT_UP.md, PRD.md, PRODUCTION_READINESS.md, PROJECT_STRUCTURE_TREE.md, README.md, ROADMAP.md, TASK_LIST.md, __init__.py, build_project_artifacts.py, final_comment_fix.py, fix_bad_names.sh, github_sources.py, ingest_snapshot.py, launch_gui.bat, launch_gui.sh, main.py, mark_long_functions.py, project_artifact_standards.py
+
+### Consolidation signals
+
+- No consolidation flags from inventory.
+
+### Run / verify
+
+- `pip install -e .` then `pytest -q` (if tests present).
+<!-- DREAMVAULT_PORTFOLIO_README:END schema=v1 generated="2026-06-29T02:03:43Z" -->
