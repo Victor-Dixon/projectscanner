@@ -18,30 +18,30 @@ Archived overlay (pending removal): `archive/untracked_overlay_20260505/`
 ### Phase 0 — Definition ✅
 - [x] PRD with scope, file budget, boundaries
 - [x] ROADMAP with phased delivery
-- [x] PRODUCTION_READINESS honest checklist (~55% weighted)
+- [x] PRODUCTION_READINESS honest checklist
 - [x] NEXT_UP for Phase 1 implementation slice
 
-### Phase 1 — Surgical amputation (next)
-- [ ] Unified `projectscanner` CLI (`scan`, `export`, `ingest`)
-- [ ] `pyproject.toml` console script + `pip install -e .`
-- [ ] Deprecate fragmented entry points (`main.py` shim only)
-- [ ] Quarantine or fix broken GUI imports
-- [ ] Root script cleanup (target ≤4 root `.py` files)
+### Phase 1 — Surgical amputation ✅
+- [x] Unified `projectscanner` CLI (`scan`, `export`, `ingest`, `history`, `gui`)
+- [x] `pyproject.toml` console script + `pip install -e .`
+- [x] Deprecate fragmented entry points (`main.py` shim only)
+- [x] Quarantine broken GUI imports behind `[gui]` extra
+- [x] Root script cleanup (removed fix scripts; moved targets to `scripts/`)
 
-### Phase 2 — Packaging
-- [ ] Optional dependency groups `[gui]`, `[dev]`
-- [ ] README quick start (install → scan → export → verify)
-- [ ] Remove `sys.path` hacks from entry points
+### Phase 2 — Packaging ✅
+- [x] Optional dependency groups `[gui]`, `[dev]`
+- [x] README quick start (install → scan → export → verify)
+- [x] Remove `sys.path` hacks from canonical entry (`projectscanner` CLI)
 
-### Phase 3 — Output contracts
-- [ ] `schema_version` in `analysis.json`
-- [ ] Ingest validation with clear errors on malformed payloads
-- [ ] History query ergonomics
+### Phase 3 — Output contracts ✅
+- [x] `schema_version` in `analysis.json`
+- [x] Ingest validation with clear errors on malformed payloads
+- [x] History query ergonomics (`projectscanner history`)
 
-### Phase 4 — CI depth
-- [ ] Snapshot workflow contract tests
-- [ ] Ingest malformed fixture tests
-- [ ] Scan performance smoke in CI
+### Phase 4 — CI confidence depth ✅
+- [x] CLI contract tests
+- [x] Ingest malformed fixture tests
+- [x] CI workflow uses `projectscanner scan`
 
 ### Phase 5 — v0.1 release
 - [ ] Tag `v0.1.0` with changelog

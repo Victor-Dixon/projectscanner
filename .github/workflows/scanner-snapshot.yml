@@ -45,9 +45,7 @@ jobs:
           mkdir -p "$SNAPSHOT_DIR"
 
           START=$(date +%s)
-          python src/utils/run_scanner.py \
-            --target ./src \
-            --output "$SNAPSHOT_DIR"
+          projectscanner scan ./src --output "$SNAPSHOT_DIR"
           END=$(date +%s)
           DURATION=$((END - START))
 

@@ -24,7 +24,48 @@ The scanner helps answer:
 - Which repos should be archived, promoted, or reviewed?
 - What documentation or verification is missing?
 
+## Quick start
+
+```bash
+pip install -e ".[dev]"
+projectscanner scan ./src --output /tmp/ps-out
+test -f /tmp/ps-out/analysis.json
+pytest -q
+```
+
+### Commands
+
+```bash
+# Scan a repo (writes project_analysis_*.json + analysis.json contract)
+projectscanner scan /path/to/repo --output /tmp/scan-out
+
+# Export portfolio intelligence for DreamVault
+projectscanner export \
+  --projects-root "$HOME/projects" \
+  --out-root "$HOME/projects/DreamVault/data/intelligence/repos_from_projectscanner"
+
+# Ingest a CI snapshot into local history
+projectscanner ingest ./snapshots/some-run --repo projectscanner
+
+# View recent ingested snapshots
+projectscanner history --last 10
+
+# Optional GUI (requires PyQt5)
+pip install -e ".[gui]"
+projectscanner gui
+```
+
+`main.py` remains as a deprecated shim for one release cycle.
+
 ## Export Project Intelligence
+
+```bash
+projectscanner export \
+  --projects-root "$HOME/projects" \
+  --out-root "$HOME/projects/DreamVault/data/intelligence/repos_from_projectscanner"
+```
+
+Legacy script (deprecated):
 
 ```bash
 python scripts/export_project_intelligence.py \

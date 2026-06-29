@@ -5,8 +5,22 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "projectscanner"
 version = "0.1.0"
-description = "Project scanning and repo inventory tooling"
+description = "Repo intelligence scanner for Dream.OS portfolios"
+readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []
 
-[tool.setuptools]
-py-modules = []
+[project.optional-dependencies]
+gui = ["PyQt5>=5.15.0"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+projectscanner = "projectscanner.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]

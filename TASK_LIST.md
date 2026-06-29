@@ -15,12 +15,12 @@
 
 ## Milestones
 - [x] Phase 0: Product definition (PRD, ROADMAP, PRODUCTION_READINESS)
-- [ ] Phase 1: CLI unification + root cleanup
-- [ ] Phase 2: Packaging (`pip install -e .`, console script)
-- [ ] Phase 3: Output contracts + ingest hardening
-- [ ] Scanner unification (core engine + presets) — after CLI stable
+- [x] Phase 1: CLI unification + root cleanup
+- [x] Phase 2: Packaging (`pip install -e .`, console script)
+- [x] Phase 3: Output contracts + ingest hardening
+- [ ] Scanner unification (core engine + presets) — v0.2
 - [ ] GUI integration (optional extra) — v0.2 candidate
-- [ ] v0.1 Beta release
+- [ ] v0.1 Beta release (tag pending archive policy)
 
 ## Tasks
 - [ ] Implement `src/core/scanner/unified_scanner.py` with options:
