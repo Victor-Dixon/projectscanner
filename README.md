@@ -1,30 +1,97 @@
 # ProjectScanner
 
-ProjectScanner is a repo intelligence and cleanup tool for Dream.OS.
+ProjectScanner is a Python repository scanning and inventory intelligence tool. It scans local project folders and selected GitHub repositories, extracts lightweight file structure, exports JSON reports and ChatGPT-oriented context, and records repository documentation/cleanup signals for downstream planning.
 
-It scans local project folders, classifies repositories, exports structured intelligence, and generates cleanup recommendations before destructive repo changes happen.
+Suggested GitHub repository description:
 
-## What This Proves
+> Repository intelligence tooling for scanning local and GitHub projects, exporting code structure/context, and supporting Dream.OS/DreamVault cleanup and consolidation workflows.
 
-- Repo discovery and classification
-- Cleanup planning before deletion
-- Machine-readable project intelligence exports
-- DreamVault integration
-- Regression-gated automation workflows
+## Why this exists
 
-## Core Use Case
+ProjectScanner exists to produce evidence before repository cleanup, consolidation, promotion, or follow-up automation. In the documented Dream.OS boundary, ProjectScanner is a generator: it emits scan and inventory artifacts, while DreamVault owns durable portfolio governance and decision records.
 
-Use ProjectScanner when a workspace has too many repos, duplicate variants, stale experiments, or unclear promotion candidates.
+## Domain
 
-The scanner helps answer:
+Core domain: software repository scanning and repository inventory intelligence.
 
-- Which repos are active?
-- Which repos are stale?
-- Which repos are variants of the same system?
-- Which repos should be archived, promoted, or reviewed?
-- What documentation or verification is missing?
+Subdomains:
 
-## Export Project Intelligence
+- Local source tree scanning.
+- Language-level structure extraction.
+- Report and ChatGPT context generation.
+- GitHub repository inventory and scan target generation.
+- Portfolio docs-gap and cleanup signal export.
+- Quality/rules checks.
+- CI snapshot artifact generation and SQLite history ingestion.
+
+See the complete domain model in [`docs/DOMAIN_MODEL.md`](docs/DOMAIN_MODEL.md).
+
+## What it solves
+
+ProjectScanner helps answer evidence-backed questions such as:
+
+- What files, languages, functions, classes, routes, and complexity signals exist in a repository?
+- What reports and LLM context can be generated from a source tree?
+- Which repositories have required documentation markers?
+- Which local or GitHub repositories are ready to be scanned?
+- Which scan artifacts are present or missing?
+- Which follow-up work is needed before scanner outputs can support trend analysis?
+
+## Current implementation
+
+Canonical scanner source:
+
+```text
+src/core/projectscanner/
+```
+
+Important supporting modules:
+
+- `src/core/model/project_snapshot.py` - snapshot dataclass.
+- `src/core/pipeline/orchestrator.py` - partial scan/analyze/quality orchestration.
+- `src/core/rules/` and `src/quality/` - contract and quality checks.
+- `scan_targets.py` and `github_sources.py` - scan target and GitHub inventory helpers.
+- `src/scanners/github_library_scanner.py` - GitHub REST/clone/scan flow.
+- `scripts/export_project_intelligence.py` - filesystem/git/docs-marker export.
+- `src/utils/run_scanner.py` and `ingest_snapshot.py` - CI scan runner and SQLite ingestor.
+
+Archived overlay scanner experiments remain under:
+
+```text
+archive/untracked_overlay_20260505/
+```
+
+## Known Unknowns and incomplete areas
+
+These are intentionally not described as working features:
+
+- Enhanced GUI launch paths reference missing modules.
+- Scanner output and `ingest_snapshot.py` do not yet share a complete documented `analysis.json` schema.
+- Dependency graph generation expects imports that the current analyzer does not emit.
+- Agent categorization expects class detail dictionaries that the current analyzer does not emit.
+- `PipelineOrchestrator.analyze()` and `.quality()` reference functions that are not currently present.
+
+## Common usage
+
+Install the package in editable mode:
+
+```bash
+pip install -e .
+```
+
+Run a local scan:
+
+```bash
+python main.py --scan /path/to/project --export-context
+```
+
+Run the CI-oriented scanner wrapper:
+
+```bash
+python src/utils/run_scanner.py --target ./src --output ./snapshots/manual
+```
+
+Export portfolio intelligence from a projects directory:
 
 ```bash
 python scripts/export_project_intelligence.py \
@@ -32,7 +99,7 @@ python scripts/export_project_intelligence.py \
   --out-root "$HOME/projects/DreamVault/data/intelligence/repos_from_projectscanner"
 ```
 
-Expected outputs:
+Expected portfolio export files per repository:
 
 ```text
 repo_analysis.json
@@ -43,75 +110,23 @@ docs_gap_report.md
 
 ## Verification
 
-Run the regression gate:
+Current regression gate:
 
 ```bash
 pytest -q
 ```
 
-## Dream.OS Role
+## Documentation map
 
-ProjectScanner is a generator.
+- [`docs/DOMAIN_MODEL.md`](docs/DOMAIN_MODEL.md) - core domain, subdomains, entities, relationships, data flow, integrations, and feature mapping.
+- [`docs/REPOSITORY_AUDIT.md`](docs/REPOSITORY_AUDIT.md) - architecture, folder structure, documentation audit, stale docs, naming issues, and gaps.
+- [`PRD.md`](PRD.md) - requirements derived from current implementation.
+- [`ROADMAP.md`](ROADMAP.md) - completed, current, and remaining work.
+- [`MASTER_TASK_LIST.md`](MASTER_TASK_LIST.md) - canonical task inventory.
+- [`MASTER_TASK_LOG.md`](MASTER_TASK_LOG.md) - chronological task log.
+- [`NEXT_UP.md`](NEXT_UP.md) - active handoff for the next work slice.
+- [`AGENTS.md`](AGENTS.md) - repository-specific agent operating rules.
 
-It writes repo intelligence into DreamVault, where other tools and agents can consume the results for planning, cleanup, promotion, and status reporting.
+## Current status
 
-## Current Status
-
-Baseline scanner source remains under:
-
-```text
-src/core/projectscanner/
-```
-
-Archived overlay experiments remain under:
-
-```text
-archive/untracked_overlay_20260505/
-```
-
-The current regression gate is:
-
-```bash
-pytest -q
-```
-
-<!-- DREAMVAULT_PORTFOLIO_README:BEGIN schema=v1 generated="2026-06-29T02:03:43Z" -->
-## Portfolio status
-
-**Portfolio scanner and authority graph** — Toolbelt scanner for repo discovery, authority graphs, duplicate detection, and portfolio/consolidation intelligence.
-
-| Field | Value |
-|---|---|
-| **Canonical ID** | `projectscanner` |
-| **Bucket** | toolbelt |
-| **Action** | keep_as_toolbelt |
-| **GitHub** | [projectscanner](https://github.com/Victor-Dixon/projectscanner) |
-
-### Repository inventory
-
-*Filesystem scan at `2026-06-29T02:03:43Z` — regenerate via `python runtime/scripts/sync_portfolio_readmes_001.py`.*
-
-| Signal | Value |
-|---|---|
-| Python files | 80 |
-| Test files | 8 |
-| CI workflows | 2 |
-| runtime/tasks YAML | 0 |
-| pyproject.toml | yes |
-| package.json | no |
-| tests/ directory | yes |
-| Git branch | master |
-| Working tree | dirty |
-
-**Top-level directories:** .github, archive, config, docs, projectscanner, scripts, src, tests
-
-**Top-level files:** .gitignore, AGENTS.md, CONSOLIDATION_MANIFEST.md, LICENSE, MASTER_TASK_LIST.md, MASTER_TASK_LOG.md, NEXT_UP.md, PRD.md, PRODUCTION_READINESS.md, PROJECT_STRUCTURE_TREE.md, README.md, ROADMAP.md, TASK_LIST.md, __init__.py, build_project_artifacts.py, final_comment_fix.py, fix_bad_names.sh, github_sources.py, ingest_snapshot.py, launch_gui.bat, launch_gui.sh, main.py, mark_long_functions.py, project_artifact_standards.py
-
-### Consolidation signals
-
-- No consolidation flags from inventory.
-
-### Run / verify
-
-- `pip install -e .` then `pytest -q` (if tests present).
-<!-- DREAMVAULT_PORTFOLIO_README:END schema=v1 generated="2026-06-29T02:03:43Z" -->
+ProjectScanner is an active toolbelt repository with a working core scanner and context export path. The next documented work is snapshot contract stabilization: align CI scan artifacts with SQLite ingestion, add schema validation, and cover that behavior with tests.

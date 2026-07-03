@@ -1,67 +1,74 @@
-# Current State Assessment (No-BS)
+# Current State Assessment
 
-## Snapshot as of 2026-04-03
+Last synchronized: 2026-07-03
 
-This document reflects the **current repository state** and enforces SSOT assumptions for scanner execution and handoff planning.
+## What this project is
+
+ProjectScanner is repository scanning and inventory intelligence tooling. It scans local and selected GitHub repositories, exports code structure/context artifacts, and supports Dream.OS/DreamVault cleanup and consolidation workflows with evidence.
+
+## Domain
+
+Core domain: software repository scanning and repository inventory intelligence.
+
+See `docs/DOMAIN_MODEL.md` for the full domain model.
 
 ## What we have right now
 
-### 1) SSOT scan target resolution is now implemented
-- `src/utils/run_scanner.py` now resolves scan targets in this order:
-  1. `--target` CLI override,
-  2. `repo_root/src` (SSOT default),
-  3. `repo_root` fallback.
-- Relative `--target` values are resolved against git repo root.
-- Non-existent targets fail fast with `FileNotFoundError`.
-- Legacy positional target is still accepted for compatibility, but `--target` is now the preferred interface.
+### 1) Canonical scanner package
 
-### 2) Artifact-first CI snapshot workflow exists
-- `.github/workflows/scanner-snapshot.yml` is in place and runs on:
-  - push to `main`,
-  - pull requests to `main`,
-  - nightly schedule,
-  - manual dispatch.
-- Workflow behavior:
-  - determines scan mode from trigger,
-  - runs scanner against SSOT target (`./src`),
-  - writes `metadata.json`,
-  - uploads `snapshots/` as retained artifacts (90 days),
-  - posts PR comment summary for PR-triggered runs.
+- Source of truth: `src/core/projectscanner/`.
+- `ProjectScanner` composes `FileProcessor`, `LanguageAnalyzer`, and `ReportGenerator`.
+- Supported scan outputs include JSON analysis reports and optional ChatGPT context exports.
+- Current regression coverage verifies analyzer behavior, exclusions, context export, chunking, bare repo metadata, and SSOT imports.
 
-### 3) SQLite ingestor is available for history and trends
-- `ingest_snapshot.py` ingests snapshot artifacts into `scanner_history.db`.
-- Schema currently includes:
-  - `snapshots` (commit/run metadata),
-  - `files` (file-level rollup + raw JSON),
-  - `issues` (rule/severity/file/message/line).
-- Idempotency is handled using unique constraints plus `INSERT OR IGNORE`/`INSERT OR REPLACE` patterns.
+### 2) Repository inventory and portfolio utilities
 
-### 4) Core architecture status
-- Package SSOT remains `src/core/projectscanner/`.
-- CLI + utility wrappers should continue to delegate to package internals rather than introduce parallel scanner implementations.
-- Project has both operational and strategic docs, but execution and handoff must stay aligned to SSOT runtime paths.
+- `github_sources.py` and `scan_targets.py` model GitHub/local scan target discovery and manifests.
+- `src/scanners/github_library_scanner.py` can fetch public GitHub repo metadata, clone repositories, and delegate analysis to `ProjectScanner`.
+- `scripts/export_project_intelligence.py` exports filesystem/git/docs-marker intelligence bundles and is covered by tests.
+- `project_artifact_standards.py` checks for expected artifact bundle files.
 
-## Risks / gaps still open
+### 3) Quality and contract tooling
 
-1. **Data contract hardening between scanner output and ingestor**
-   - `ingest_snapshot.py` assumes `analysis.json` has `files` and optional `issues` arrays with expected keys.
-   - Add explicit schema/version checks to avoid silent drift.
+- `src/core/rules/` contains the contract engine and rule strategies.
+- `src/quality/` contains standalone AGENTS.md, complexity, LOC, and contract CLI tooling.
+- These tools exist, but much of this surface has limited pytest coverage.
 
-2. **CI confidence depth**
-   - Workflow path is present, but more test coverage is needed for:
-     - mode derivation,
-     - metadata integrity,
-     - PR comment safety when fields are absent.
+### 4) CI and snapshot history
 
-3. **Trend query ergonomics**
-   - Ingest path exists; no dedicated query/report utilities yet.
+- `.github/workflows/scanner-snapshot.yml` and `src/utils/run_scanner.py` provide a CI-oriented scan path.
+- `ingest_snapshot.py` ingests `metadata.json` and `analysis.json` into SQLite.
+- Current gap: the scanner runner and ingestor do not yet share a fully aligned, documented artifact schema.
 
-## Decision
+### 5) GUI status
 
-- **Phase 1/2 bridge is now real**: we have SSOT scan targeting + artifact production + local historical ingestion.
-- **Next phase should be TDD-first stabilization and query/report enablement**, not another scanner rewrite.
+- GUI-related entry points exist.
+- Referenced enhanced GUI modules are missing from the current tree.
+- GUI behavior is Unknown/incomplete and should not be documented as a working feature until code and tests support it.
 
-## Immediate handoff pointers
+## Current risks and gaps
 
-- Implementation details and operational sequence: `docs/NEXT_UP.md`.
-- Usage and SSOT guidance: `docs/USING_UPDATED_SCANNER.md`.
+1. Snapshot data contract drift between scanner output and SQLite ingestion.
+2. Missing validation for snapshot metadata and analysis payloads.
+3. GUI entry points reference missing modules.
+4. Dependency graph and agent categorization expect analyzer fields that are not currently emitted.
+5. Pipeline analyze/quality methods reference missing functions.
+6. Several stable utility modules need tests before stronger guarantees are made.
+
+## What has been completed
+
+- Documentation-first domain model and repository audit.
+- Required lifecycle doc synchronization.
+- Explicit Unknowns for incomplete features.
+- Current authoritative documentation map.
+
+## What remains
+
+- Snapshot schema stabilization.
+- Additional tests for ingestion and stable utilities.
+- GUI support decision.
+- Analyzer enrichment/support decision for graph and categorization features.
+
+## What should be worked on next
+
+Follow root `NEXT_UP.md`: stabilize the snapshot artifact contract between CI scanner output and `ingest_snapshot.py`.

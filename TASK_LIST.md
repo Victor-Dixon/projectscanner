@@ -1,47 +1,27 @@
-# Project Scanner – Task List
+# Historical Task List
 
-## Status legend
-- [ ] Open
-- [x] Done
+Last synchronized: 2026-07-03
 
-## Objectives
-- Unify scanners into one engine with presets (quick, standard, full)
-- Integrate the unified scanner into the GUI (progress, cancel, options)
-- Make `main.py` the canonical entry; keep a simple quick-scan path
-- Improve docs and quick start for Windows/Linux/macOS
-- Add tests and CI for scanner correctness and performance
-- Prepare packaging/release artifacts
+This file is retained as a historical pointer only. The canonical task inventory is [`MASTER_TASK_LIST.md`](MASTER_TASK_LIST.md), and the active handoff is [`NEXT_UP.md`](NEXT_UP.md).
 
-## Milestones
-- [ ] Scanner unification (core engine + presets)
-- [ ] GUI integration (analysis tab + options)
-- [ ] CLI/docs polish and quick start
-- [ ] v0.1 Beta release
+## Why this file is not authoritative
 
-## Tasks
-- [ ] Implement `src/core/scanner/unified_scanner.py` with options:
-  - export_context, split_by (directory|language|none), max_files_per_chunk
-  - split_tests, generate_init, single vs merged outputs
-- [ ] Refactor wrappers to use unified engine:
-  - `scripts/scanners/quick_scanner.py`
-  - `scripts/scanners/standard_scanner.py`
-  - `scripts/scanners/full_scanner.py`
-- [ ] Extend `main.py --scan` flags to mirror unified engine options; keep `--quick-scan`
-- [ ] Wire GUI “Scan Project” to unified scanner in a background worker (progress/cancel)
-- [ ] Add GUI toggles for export/splitting/init generation; show output location on completion
-- [ ] Add unit tests (ignore rules, cache, move detection, merging, context export)
-- [ ] Add CI workflow (lint + tests on PRs)
-- [ ] Update README: install, `python main.py --gui`, `--quick-scan`, full scan examples
-- [ ] Add Windows `.bat` and POSIX `.sh` convenience launchers (optional)
-- [ ] Draft release notes for v0.1
+The previous contents described a planned `src/core/scanner/unified_scanner.py` and `scripts/scanners/*` wrappers. Current tests and documentation establish `src/core/projectscanner/` as the scanner source of truth and explicitly avoid parallel scanner implementations.
 
-## Next steps
-- Implement the unified scanner and refactor wrappers
-- Hook the GUI Analysis tab to the quick preset; add advanced options
-- Extend `main.py --scan` with flags and update README examples
-- Write core unit tests and enable CI
+## Current project summary
 
-## Links
-- GitHub repository: https://github.com/Dadudekc/projectscanner
+ProjectScanner is repository scanning and inventory intelligence tooling in the software repository analysis domain. It exists to produce machine-readable evidence about local and GitHub repositories before cleanup, consolidation, promotion, or automation decisions.
 
+## Completed
 
+- Core scanner/report/context path exists under `src/core/projectscanner/`.
+- Required lifecycle docs have been synchronized.
+- Domain model and repository audit have been added.
+
+## What remains
+
+See `MASTER_TASK_LIST.md`.
+
+## What should be worked on next
+
+See `NEXT_UP.md`.

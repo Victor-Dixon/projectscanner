@@ -1,8 +1,15 @@
-# 🤖 Template Agent Repository
+# Template Agent Repository
 
-This is a template repository that follows the **Agent Policy & Enforcement Framework** for creating high-quality, maintainable agent-generated code.
+Last synchronized: 2026-07-03
 
-## 📋 Quick Start
+This is portfolio template material, not ProjectScanner runtime documentation. For the current ProjectScanner domain model, architecture, and next work, use:
+
+- `docs/DOMAIN_MODEL.md`
+- `docs/REPOSITORY_AUDIT.md`
+- `docs/CODEBASE_OVERVIEW.md`
+- `NEXT_UP.md`
+
+## Quick Start
 
 ```bash
 # Clone this template
@@ -17,7 +24,7 @@ pre-commit install
 # Start developing!
 ```
 
-## 🏗️ Project Structure
+## Template Project Structure
 
 ```
 your-agent-name/
@@ -34,7 +41,7 @@ your-agent-name/
 └── README.md          # This file
 ```
 
-## 🎯 Code Standards
+## Template Code Standards
 
 ### **MANDATORY REQUIREMENTS**
 - ✅ **OOP**: All code must be class-based
@@ -48,7 +55,7 @@ your-agent-name/
 - **Bandit**: Security scanning
 - **Custom checks**: LOC, complexity, OOP structure
 
-## 🚀 Development Workflow
+## Template Development Workflow
 
 ### 1. **Setup Environment**
 ```bash
@@ -71,9 +78,9 @@ pre-commit install
 # Run checks manually
 pre-commit run --all-files
 
-# Run specific checks
-python scripts/loc_checker.py src/
-python scripts/complexity_checker.py src/
+# In ProjectScanner, equivalent checkers live under src/quality/
+python src/quality/loc_checker.py src/
+python src/quality/complexity_checker.py src/
 python scripts/oop_checker.py src/
 ```
 
@@ -90,7 +97,7 @@ coverage run -m pytest tests/
 coverage report
 ```
 
-## 📊 Quality Metrics
+## Template Quality Metrics
 
 ### **Target Scores**
 - **Test Coverage**: ≥ 80%
@@ -103,7 +110,7 @@ coverage report
 - CI/CD pipeline validation
 - Regular quality reports
 
-## 🔧 Customization
+## Customization
 
 ### **Repository-Specific Rules**
 Edit `AGENTS.md` to add repository-specific guidelines:
@@ -131,7 +138,7 @@ Modify `.pre-commit-config.yaml` to add custom hooks:
       stages: [commit]
 ```
 
-## 📖 Documentation
+## Documentation
 
 ### **Required Documentation**
 - [ ] `AGENTS.md`: Policy guidelines
@@ -146,7 +153,7 @@ Modify `.pre-commit-config.yaml` to add custom hooks:
 - [ ] Complex logic must have inline comments
 - [ ] Architecture decisions must be documented
 
-## 🚨 Violation Handling
+## Violation Handling
 
 ### **Pre-commit Blocks**
 - Code cannot be committed if it violates standards
@@ -164,7 +171,7 @@ Modify `.pre-commit-config.yaml` to add custom hooks:
 3. **Third Violation**: Code freeze until compliance
 4. **Persistent Issues**: Architecture review required
 
-## 🎓 Best Practices
+## Best Practices
 
 ### **Class Design**
 ```python
@@ -209,7 +216,7 @@ class TestExampleAgent:
         assert len(result) == 2
 ```
 
-## 📞 Support
+## Support
 
 ### **Getting Help**
 - **Technical Issues**: Create GitHub issue with `[AGENT-POLICY]` label
@@ -224,7 +231,7 @@ class TestExampleAgent:
 
 ---
 
-## ✅ Compliance Checklist
+## Compliance Checklist
 
 - [ ] All code is class-based
 - [ ] LOC limits are respected

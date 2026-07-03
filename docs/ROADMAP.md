@@ -1,32 +1,7 @@
-# Project Scanner Roadmap
+# ProjectScanner Roadmap Pointer
 
-## Completed
-### 0.1 MVP
-- Basic Python scanning with AST extraction
-- Simple CLI and JSON report generation
+Last synchronized: 2026-07-03
 
-### 0.2 Caching & Concurrency
-- Incremental caching of file hashes
-- Multithreaded file processing via BotWorker threads
+The canonical roadmap is the root [`ROADMAP.md`](../ROADMAP.md).
 
-### 0.3 Multi-language Support
-- Optional tree-sitter parsers for Rust, JavaScript and TypeScript
-- Initial complexity metrics
-
-### 0.4 GUI & Agent Categorisation
-- PyQt5 viewer for analysis files
-- Maturity level and agent type tagging for Python classes
-- ChatGPT context export
-
-## In Progress
-### 0.5 Packaging & Plugins
-- Bundle tree-sitter grammar libraries for easier setup
-- Plugin architecture for additional languages
-- Improve complexity metrics and provide lint suggestions
-- Add more CLI options for custom report locations
-
-## Future
-### 0.6 Integration & Automation
-- Integration with code hosting platforms (GitHub/GitLab)
-- Automatic scheduling to scan large monorepos
-- Richer web UI for browsing reports
+This file previously contained a historical versioned roadmap that described features and paths that are not all supported by the current repository. Use the root roadmap, `docs/DOMAIN_MODEL.md`, and `docs/REPOSITORY_AUDIT.md` for current status.

@@ -1,18 +1,42 @@
 # Validation Report
 
-## Test Results
+Last synchronized: 2026-07-03
 
+## Project
+
+ProjectScanner is repository scanning and inventory intelligence tooling in the software repository analysis domain.
+
+## Current validation result
+
+Command run during this documentation synchronization:
+
+```bash
+python3 -m pytest -q
 ```
+
+Result:
+
+```text
+14 passed, 1 skipped, 1 warning
+```
+
+## Why this file is historical
+
+Previous contents referenced `project_scanner.py`, an old output filename, and an old test count. Those details are superseded by this report and by the current docs:
+
+- `README.md`
+- `docs/DOMAIN_MODEL.md`
+- `docs/REPOSITORY_AUDIT.md`
+- `MASTER_TASK_LOG.md`
+
+## Standard validation gate
+
+The repository-level regression gate remains:
+
+```bash
 pytest -q
 ```
-All tests pass (3 passed) with a few deprecation warnings from the Python `ast` module.
 
-## Manual CLI Run
+## Current next work
 
-```
-python project_scanner.py --project-root . --no-chatgpt-context
-```
-The scanner processed this repository and produced `project_analysis_project-scanner.json`.
-
-Overall the core functionality works as expected. Rust and JavaScript parsing requires tree-sitter libraries which are not bundled, so those languages fall back to no-op parsing unless installed.
-
+Stabilize the snapshot artifact contract between CI scanner output and `ingest_snapshot.py`.

@@ -1,26 +1,25 @@
-# Sprint Tasks
+# Historical Sprint Tasks
 
-This sprint aims to move project-scanner toward a beta-ready release. The tasks below mirror the beta checklist so future agents can pick up each item.
+Last synchronized: 2026-07-03
 
-## High Priority
-- [ ] Bundle tree-sitter grammars for Rust and JavaScript
-- [ ] Implement initial plugin architecture for additional languages
-- [x] Expand complexity metrics and provide lint suggestions
-- [x] Add CLI option to specify custom output directory
-- [ ] Expand unit & integration test coverage for CLI and caching logic
-- [ ] Verify agent categorisation is included in reports
-- [x] Validate `__init__.py` generation toggle works
-- [x] Ensure ChatGPT context export succeeds
-- [ ] Update documentation for new CLI flags and plugin usage
+This file is historical and not the active task tracker. Use root `MASTER_TASK_LIST.md` for the canonical backlog and root `NEXT_UP.md` for the next work slice.
 
-## Medium Priority
-- [ ] Document setup of optional GUI in README
-- [ ] Provide example GitHub Actions workflow for automated scanning
-- [ ] Perform performance check on a medium-size project
-- [ ] Test the PyQt5 viewer with sample reports
+## Current project
 
-## Low Priority
-- [ ] Research additional language parsers (e.g., Go, Java)
-- [ ] Explore further complexity metrics or linter integration
-- [ ] Final release checklist once all tests pass
+ProjectScanner is repository scanning and inventory intelligence tooling in the software repository analysis domain.
 
+## Current completed work
+
+- Core scanner/report/context path exists under `src/core/projectscanner/`.
+- Documentation has been synchronized around an implementation-backed domain model.
+
+## Current remaining work
+
+- Stabilize snapshot artifacts and SQLite ingestion.
+- Add tests for ingestion and stable utility surfaces.
+- Resolve GUI support status.
+- Resolve dependency graph and agent categorization support status.
+
+## Next work
+
+See `NEXT_UP.md`.

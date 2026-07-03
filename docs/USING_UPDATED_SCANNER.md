@@ -1,21 +1,43 @@
-# Using the Updated SSOT Scanner
+# Using ProjectScanner
 
-## What changed
-- The SSOT scanner path is `src/core/projectscanner/`.
-- `ProjectScanner` now supports:
-  - cheap cache validation (`mtime` + `size`)
-  - optional hash-on-change cache enrichment
-  - parallel file processing
-  - bare-repo metadata mode
-  - context chunk exports (`directory`, `language`, `none`)
+Last synchronized: 2026-07-03
 
-## Direct usage (Python)
+## What this project is
+
+ProjectScanner is repository scanning and inventory intelligence tooling in the software repository analysis domain.
+
+## Source of truth
+
+The canonical scanner path is:
+
+```text
+src/core/projectscanner/
+```
+
+New scanner behavior should be added there rather than in parallel scanner engines.
+
+## Supported scanner behavior
+
+`ProjectScanner` currently supports:
+
+- local source tree scans,
+- cheap cache validation with `mtime` and `size`,
+- optional hash-on-change cache enrichment,
+- parallel file processing,
+- bare Git repository metadata mode,
+- JSON analysis report output,
+- ChatGPT context export,
+- context chunk exports by `directory`, `language`, or `none`,
+- optional `__init__.py` generation for Python package directories.
+
+## Direct Python usage
+
 ```python
 from core.projectscanner import ProjectScanner
 
 scanner = ProjectScanner(
     project_root="/path/to/project",
-    output_dir="/path/to/reports",   # optional
+    output_dir="/path/to/reports",
     max_file_size_mb=10,
     hash_on_change=False,
     workers=16,
@@ -23,27 +45,62 @@ scanner = ProjectScanner(
 
 scanner.additional_ignore_dirs = {"vendor", "archive"}
 scanner.scan_project(
-    split_output_by="directory",      # directory | language | none
+    split_output_by="directory",
     max_files_per_chunk=200,
     export_context=True,
 )
 ```
 
 ## CLI usage via `main.py`
+
 ```bash
 python main.py --scan /path/to/project --export-context --generate-init
 python main.py --quick-scan /path/to/project
 ```
 
-## High-value rollout plan
-1. Keep all wrappers importing from `core.projectscanner` only.
-2. Use `hash_on_change=False` first for speed; enable if collision-proofing is needed.
-3. Start with `split_output_by=directory` and `max_files_per_chunk=100`.
-4. For large batch scans, tune `workers` based on disk throughput (8–32 typical).
-5. For bare mirrors (`*.git`), run metadata scan and skip source expectations.
+## CI-oriented runner
 
-## SSOT guardrails
-- Do not create parallel scanner engines in `scripts/`.
-- New scanner behaviors should be added under `src/core/projectscanner/`.
-- Entrypoints should call package-level imports:
-  - `from core.projectscanner import ProjectScanner, LanguageAnalyzer`
+```bash
+python src/utils/run_scanner.py --target ./src --output ./snapshots/manual --mode manual
+```
+
+Target resolution order:
+
+1. `--target` override,
+2. `repo_root/src`,
+3. `repo_root` fallback.
+
+Relative targets are resolved against the git repository root. Non-existent targets raise `FileNotFoundError`.
+
+## Portfolio intelligence export
+
+```bash
+python scripts/export_project_intelligence.py \
+  --projects-root "$HOME/projects" \
+  --out-root "$HOME/projects/DreamVault/data/intelligence/repos_from_projectscanner"
+```
+
+Expected files per repository:
+
+```text
+repo_analysis.json
+chatgpt_context.json
+cleanup_recommendations.json
+docs_gap_report.md
+```
+
+## Known incomplete surfaces
+
+- `python main.py --gui` currently imports missing enhanced GUI modules.
+- `ingest_snapshot.py` expects a normalized `analysis.json` schema that the scanner runner does not yet emit directly.
+- Dependency graph and agent categorization are not complete scanner-output guarantees with the current analyzer output.
+
+## Verification
+
+```bash
+pytest -q
+```
+
+## What remains
+
+The next work is snapshot contract stabilization. See root `NEXT_UP.md`.
