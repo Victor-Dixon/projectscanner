@@ -84,7 +84,10 @@ def iter_scan_files(
 
         for filename in files:
             file_path = root_path / filename
-            if file_path.suffix.lower() in supported_extensions:
+            if (
+                file_path.suffix.lower() in supported_extensions
+                and not file_processor.should_exclude(file_path)
+            ):
                 yield file_path
 
 

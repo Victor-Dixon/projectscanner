@@ -54,3 +54,12 @@ track_*.sh
 chatgpt_project_context_projectscanner.json
 project_analysis_projectscanner.json
 projects_report.md
+
+# Local runtime/environment artifacts
+.dreamos/
+.venv/
+logs/
+output/
+test_output/
+project_analysis*.json
+test_analysis.json
