@@ -6,6 +6,26 @@ Baseline Dream.OS project artifact.
 
 Seeded after dirty zero-score cleanup and full regression pass.
 
+## Install / Quickstart
+
+```bash
+cd projectscanner
+python -m pip install -r requirements.txt
+pytest -q
+```
+
+Minimal scan after install:
+
+```bash
+python src/utils/run_scanner.py --target <repo_root>
+```
+
+Intelligence packet only:
+
+```bash
+python scripts/intelligence/emit_intelligence.py <repo_root> --packet-only
+```
+
 ## Notes
 
 - Canonical scanner source remains under `src/core/projectscanner/`.
