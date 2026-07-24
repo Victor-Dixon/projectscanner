@@ -13,6 +13,7 @@ from project_artifact_standards import (
     load_targets,
     summarize_artifact_standards,
 )
+from scan_targets import as_target_dict
 
 
 def utc_now() -> str:
@@ -24,7 +25,8 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
 
 
-def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, Any]]:
+def artifact_payloads_for_target(target: dict[str, Any] | Any) -> dict[str, dict[str, Any]]:
+    target = as_target_dict(target)
     source_type = target.get("source_type", "unknown")
     name = target.get("name") or target.get("repo") or "unknown"
     local_path = target.get("local_path", "")

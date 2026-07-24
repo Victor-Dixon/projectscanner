@@ -3,10 +3,13 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
+
+from scan_targets import as_target_dict
 
 
-ROOT = Path.home() / "projects" / "projectscanner"
+# Repo-relative SSOT (fixes silent empty target loads from ~/projects/projectscanner).
+ROOT = Path(__file__).resolve().parent
 ARTIFACT_ROOT = ROOT / "runtime" / "project_artifacts"
 GITHUB_TARGETS = ROOT / "runtime" / "targets" / "github_scan_targets_latest.json"
 LOCAL_TARGETS = ROOT / "runtime" / "targets" / "local_scan_targets_latest.json"
@@ -43,7 +46,9 @@ def safe_name(value: str) -> str:
     return value.replace("/", "__").replace(" ", "_")
 
 
-def expected_dir_for_target(target: dict[str, Any]) -> Path:
+def expected_dir_for_target(target: Mapping[str, Any] | Any) -> Path:
+    """Accept ScanTarget or dict — AttributeError guard for four-target scans."""
+    target = as_target_dict(target)
     source_type = target.get("source_type", "unknown")
 
     if source_type == "github":
@@ -52,7 +57,7 @@ def expected_dir_for_target(target: dict[str, Any]) -> Path:
         return ARTIFACT_ROOT / "github" / owner / repo
 
     name = target.get("repo") or target.get("name") or Path(target.get("local_path", "unknown")).name
-    return ARTIFACT_ROOT / "local" / safe_name(name)
+    return ARTIFACT_ROOT / "local" / safe_name(str(name))
 
 
 def load_targets() -> list[dict[str, Any]]:
@@ -60,16 +65,18 @@ def load_targets() -> list[dict[str, Any]]:
 
     for path in [GITHUB_TARGETS, LOCAL_TARGETS]:
         data = load_json(path, {"targets": []})
-        targets.extend(data.get("targets", []))
+        for item in data.get("targets", []):
+            targets.append(as_target_dict(item))
 
     return targets
 
 
-def check_artifact_standards(targets: list[dict[str, Any]] | None = None) -> list[ArtifactStandardResult]:
+def check_artifact_standards(targets: list[Any] | None = None) -> list[ArtifactStandardResult]:
     targets = targets if targets is not None else load_targets()
     results: list[ArtifactStandardResult] = []
 
-    for target in targets:
+    for raw in targets:
+        target = as_target_dict(raw)
         expected_dir = expected_dir_for_target(target)
         present = []
         missing = []
@@ -82,8 +89,8 @@ def check_artifact_standards(targets: list[dict[str, Any]] | None = None) -> lis
 
         results.append(
             ArtifactStandardResult(
-                project=target.get("name", target.get("repo", "unknown")),
-                source_type=target.get("source_type", "unknown"),
+                project=str(target.get("name", target.get("repo", "unknown"))),
+                source_type=str(target.get("source_type", "unknown")),
                 expected_dir=str(expected_dir),
                 missing_files=missing,
                 present_files=present,
