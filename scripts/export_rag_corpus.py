@@ -90,18 +90,20 @@ def build_record(repo: Path, path: Path, authority: str, max_bytes: int) -> dict
     relative = path.relative_to(repo).as_posix()
     raw = path.read_bytes()
     text, truncated = read_text(path, max_bytes=max_bytes)
-    digest = sha256_bytes(raw)
+    source_digest = sha256_bytes(raw)
+    content_digest = sha256_bytes(text.encode("utf-8"))
     provenance = repo_provenance(repo)
 
     return {
         "schema_version": SCHEMA_VERSION,
-        "document_id": f"sha256:{digest}",
+        "document_id": f"sha256:{source_digest}",
         "repo": repo.name,
         "path": relative,
         "type": path.suffix.lower().lstrip("."),
         "domain": classify_domain(repo.name, relative),
         "authority": authority,
-        "content_sha256": digest,
+        "source_sha256": source_digest,
+        "content_sha256": content_digest,
         "content": text,
         "truncated": truncated,
         "terminology": terminology_hits(text),

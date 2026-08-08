@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -31,7 +32,8 @@ def test_discover_files_excludes_generated_and_binary_paths(tmp_path: Path) -> N
 def test_export_repo_writes_provenance_rich_jsonl(tmp_path: Path) -> None:
     repo = tmp_path / "DreamOS"
     repo.mkdir()
-    (repo / "README.md").write_text("Dream.OS uses ProjectScanner.", encoding="utf-8")
+    source = "Dream.OS uses ProjectScanner."
+    (repo / "README.md").write_text(source, encoding="utf-8")
     output = tmp_path / "corpus.jsonl"
 
     count = export_repo(repo, output, authority="canonical_source", max_bytes=1024)
@@ -46,16 +48,19 @@ def test_export_repo_writes_provenance_rich_jsonl(tmp_path: Path) -> None:
     assert record["domain"] == "dreamos_core"
     assert record["authority"] == "canonical_source"
     assert record["document_id"].startswith("sha256:")
+    assert record["source_sha256"] == hashlib.sha256(source.encode("utf-8")).hexdigest()
+    assert record["content_sha256"] == hashlib.sha256(record["content"].encode("utf-8")).hexdigest()
     assert record["terminology"]["Dream.OS"] == "DreamOS"
     assert record["terminology"]["ProjectScanner"] == "projectscanner"
     assert set(record["provenance"]) == {"branch", "head", "remote"}
     assert record["truncated"] is False
 
 
-def test_export_repo_marks_truncated_content(tmp_path: Path) -> None:
+def test_export_repo_marks_truncated_content_and_hashes_exported_text(tmp_path: Path) -> None:
     repo = tmp_path / "DreamOS"
     repo.mkdir()
-    (repo / "notes.md").write_text("abcdefghij", encoding="utf-8")
+    source = "abcdefghij"
+    (repo / "notes.md").write_text(source, encoding="utf-8")
     output = tmp_path / "corpus.jsonl"
 
     export_repo(repo, output, authority="canonical_docs", max_bytes=4)
@@ -63,4 +68,21 @@ def test_export_repo_marks_truncated_content(tmp_path: Path) -> None:
 
     assert record["content"] == "abcd"
     assert record["truncated"] is True
-    assert len(record["content_sha256"]) == 64
+    assert record["source_sha256"] == hashlib.sha256(source.encode("utf-8")).hexdigest()
+    assert record["content_sha256"] == hashlib.sha256(b"abcd").hexdigest()
+    assert record["document_id"] == f"sha256:{record['source_sha256']}"
+
+
+def test_export_repo_hashes_decoded_replacement_text_for_non_utf8_source(tmp_path: Path) -> None:
+    repo = tmp_path / "DreamOS"
+    repo.mkdir()
+    raw = b"hello\xffworld"
+    (repo / "legacy.txt").write_bytes(raw)
+    output = tmp_path / "corpus.jsonl"
+
+    export_repo(repo, output, authority="canonical_source", max_bytes=1024)
+    record = json.loads(output.read_text(encoding="utf-8").strip())
+
+    assert record["source_sha256"] == hashlib.sha256(raw).hexdigest()
+    assert record["content_sha256"] == hashlib.sha256(record["content"].encode("utf-8")).hexdigest()
+    assert record["document_id"] == f"sha256:{record['source_sha256']}"
