@@ -1,0 +1,35 @@
+name: RAG Contract
+
+on:
+  pull_request:
+    paths:
+      - "scripts/export_rag_corpus.py"
+      - "tests/test_export_rag_corpus.py"
+      - ".github/workflows/rag-contract.yml"
+  push:
+    paths:
+      - "scripts/export_rag_corpus.py"
+      - "tests/test_export_rag_corpus.py"
+      - ".github/workflows/rag-contract.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  rag-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pytest
+        run: python -m pip install --upgrade pip pytest
+
+      - name: Run focused RAG exporter tests
+        run: python -m pytest -q tests/test_export_rag_corpus.py
