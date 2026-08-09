@@ -86,13 +86,20 @@ def repo_provenance(repo: Path) -> dict[str, str]:
     }
 
 
-def build_record(repo: Path, path: Path, authority: str, max_bytes: int) -> dict:
+def build_record(
+    repo: Path,
+    path: Path,
+    authority: str,
+    max_bytes: int,
+    provenance: dict[str, str] | None = None,
+) -> dict:
     relative = path.relative_to(repo).as_posix()
     raw = path.read_bytes()
     text, truncated = read_text(path, max_bytes=max_bytes)
     source_digest = sha256_bytes(raw)
     content_digest = sha256_bytes(text.encode("utf-8"))
-    provenance = repo_provenance(repo)
+    if provenance is None:
+        provenance = repo_provenance(repo)
 
     return {
         "schema_version": SCHEMA_VERSION,
@@ -113,10 +120,17 @@ def build_record(repo: Path, path: Path, authority: str, max_bytes: int) -> dict
 
 def export_repo(repo: Path, output: Path, authority: str, max_bytes: int) -> int:
     files = discover_files(repo)
+    provenance = repo_provenance(repo)
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("w", encoding="utf-8") as handle:
         for path in files:
-            record = build_record(repo, path, authority=authority, max_bytes=max_bytes)
+            record = build_record(
+                repo,
+                path,
+                authority=authority,
+                max_bytes=max_bytes,
+                provenance=provenance,
+            )
             handle.write(json.dumps(record, sort_keys=True) + "\n")
     return len(files)
 
