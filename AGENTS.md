@@ -58,4 +58,4 @@ pytest -q
 
 ## Next recommended work
 
-Follow `NEXT_UP.md`: stabilize the snapshot artifact contract between CI scanner output and `ingest_snapshot.py`, add validation tests, then update docs with any contract changes.
+Follow the five-or-fewer immediate actions in `NEXT_UP.md`. Record newly discovered work in `MASTER_TASK_LIST.md` and completed history in `MASTER_TASK_LOG.md`.

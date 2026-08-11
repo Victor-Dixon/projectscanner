@@ -129,4 +129,4 @@ pytest -q
 
 ## Current status
 
-ProjectScanner is an active toolbelt repository with a working core scanner and context export path. The next documented work is snapshot contract stabilization: align CI scan artifacts with SQLite ingestion, add schema validation, and cover that behavior with tests.
+ProjectScanner is an active toolbelt repository with a working core scanner and context export path. `NEXT_UP.md` now limits the immediate handoff to five verification and policy actions; the complete strategic inventory remains in `MASTER_TASK_LIST.md`.

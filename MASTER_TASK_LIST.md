@@ -2,81 +2,78 @@
 
 Last synchronized: 2026-08-11
 
-## Project
+## Purpose
 
-ProjectScanner is repository scanning and inventory intelligence tooling in the software repository analysis domain. It exists to generate evidence about local and GitHub repositories before cleanup, consolidation, promotion, or automation decisions.
+This file is the canonical backlog and strategic inventory: it answers **what work exists?** Completed history belongs in `MASTER_TASK_LOG.md`; no more than five immediate actions belong in `NEXT_UP.md`.
+
+ProjectScanner produces repository-scanning and inventory evidence for cleanup, consolidation, promotion, and automation decisions. The scanner source of truth is `src/core/projectscanner/`; archived or removed implementations are not alternate engines.
 
 ## Canonical references
 
+- Active handoff: `NEXT_UP.md`
+- Completed history: `MASTER_TASK_LOG.md`
 - Domain model: `docs/DOMAIN_MODEL.md`
 - Repository audit: `docs/REPOSITORY_AUDIT.md`
-- PRD: `PRD.md`
-- Roadmap: `ROADMAP.md`
-- Active handoff: `NEXT_UP.md`
-- Agent instructions: `AGENTS.md`
+- Requirements and roadmap: `PRD.md` and `ROADMAP.md`
+- Operating rules: `AGENTS.md`
 
-## Completed
+## Strategic inventory by domain
 
-- [x] Preserve canonical scanner source under `src/core/projectscanner/`.
-- [x] Document archived overlay experiment under `archive/untracked_overlay_20260505/`.
-- [x] Verify regression gate is `pytest -q`.
-- [x] Implement local scanner, file processor, language analyzer, and report generator.
-- [x] Implement JSON reports and ChatGPT context export/chunking.
-- [x] Implement bare Git repository metadata export.
-- [x] Implement filesystem/git/docs-marker portfolio export.
-- [x] Implement GitHub inventory, scan target, and GitHub library scanner utilities.
-- [x] Implement contract rules and quality checker tools.
-- [x] Implement CI scanner runner and SQLite snapshot ingestor.
-- [x] Audit repository documentation against implementation.
-- [x] Create complete domain model.
-- [x] Synchronize required lifecycle docs.
-- [x] Mark incomplete/Unknown feature areas explicitly.
+### Canonical scanner core
 
-## In progress
+- [ ] Verify the current `src/core/projectscanner/` path against the regression suite and document which scanner behaviors have direct test coverage.
+- [ ] Keep all scanner behavior changes in the canonical package; do not revive the standalone, enhanced, or archived overlay scanners as parallel engines.
+- [ ] Decide whether dependency-graph output is supported; if retained, emit and test the required import data.
+- [ ] Decide whether agent categorization is supported; if retained, emit and test the required class-detail data.
+- [ ] Add focused coverage for `ProjectSnapshot` and stable scanner utilities where current behavior lacks regression tests.
 
-- [ ] Stabilize snapshot artifact contract between CI scanner output and `ingest_snapshot.py`.
+### CLI, reporting, and export
 
-## Open tasks
+- [ ] Verify public CLI flags, JSON report generation, context export, and chunking against tests and current documentation.
+- [ ] Document supported report and context schemas, including compatibility expectations for downstream consumers.
+- [ ] Add test-backed examples for the quality and contract CLIs before promoting them in user documentation.
+- [ ] Verify GitHub inventory, bare-repository metadata, scan-target, and project-intelligence exports with external commands mocked where appropriate.
 
-### Snapshot contract
+### RAG and knowledge activation
 
-- [ ] Define the expected snapshot directory contents.
-- [ ] Define required `metadata.json` fields.
-- [ ] Define required `analysis.json` fields.
-- [ ] Add metadata validation before database writes.
-- [ ] Add analysis payload validation before database writes.
-- [ ] Align `src/utils/run_scanner.py` output with the ingest schema or add a documented normalization step.
-- [ ] Add tests for missing metadata and analysis files.
-- [ ] Add tests for malformed metadata.
-- [ ] Add tests for malformed analysis payloads.
-- [ ] Add tests for duplicate snapshot ingest behavior.
-- [ ] Add tests for file and issue row fidelity.
+- [ ] Confirm the normalized RAG corpus export contract against current Dream Suite retrieval needs.
+- [ ] Verify repository provenance, source digest, exported-content digest, normalization, and JSONL determinism end to end.
+- [ ] Define which knowledge artifacts are durable inputs, reproducible outputs, or transient runtime data.
+- [ ] Document ownership and handoff boundaries between ProjectScanner generation and downstream indexing or retrieval systems.
 
-### Coverage for stable utilities
+### Generated analysis asset policy
 
-- [ ] Add tests for `ProjectSnapshot`.
-- [ ] Add tests for `PipelineOrchestrator.scan()`.
-- [ ] Add tests for `ContractEngine` default rules and scoring.
-- [ ] Add tests for `scan_targets.py`.
-- [ ] Add tests for `project_artifact_standards.py`.
-- [ ] Add tests for `github_sources.py` with command execution mocked.
+- [ ] Inventory committed and ignored analysis outputs and classify each family as source, promoted evidence, reproducible artifact, or cleanup candidate.
+- [ ] Preserve generated/runtime scan outputs only when an explicit promotion rule identifies an owner, purpose, and refresh policy.
+- [ ] Keep large historical generated datasets out of product-history claims unless their behavior is independently verified.
+- [ ] Document retention, naming, and ignore rules for snapshots, reports, contexts, caches, and portfolio exports.
 
-### Incomplete feature decisions
+### Pipeline and CI verification
 
-- [ ] Decide whether enhanced GUI is supported.
-- [ ] If GUI is supported, restore or implement missing GUI modules.
-- [ ] If GUI is not supported, update entry points and docs accordingly.
-- [ ] Decide whether dependency graph output is supported.
-- [ ] Decide whether agent categorization on real scan output is supported.
-- [ ] Resolve `PipelineOrchestrator.analyze()` missing `run_analysis` integration.
-- [ ] Resolve `PipelineOrchestrator.quality()` missing quality function integrations.
+- [ ] Define and version the snapshot directory contract between `src/utils/run_scanner.py` and `ingest_snapshot.py`.
+- [ ] Validate required `metadata.json` and `analysis.json` fields before database writes.
+- [ ] Test missing or malformed files, duplicate ingestion, and file/issue row fidelity.
+- [ ] Resolve or explicitly defer the missing `PipelineOrchestrator.analyze()` and `.quality()` integrations.
+- [ ] Preserve incremental Ruff enforcement while establishing a deliberate plan for legacy lint debt.
+- [ ] Decide and document the remote/upstream policy for the local `work` branch.
 
-### Documentation maintenance
+### Removed legacy GUI and history
 
-- [ ] Keep historical docs clearly labeled as non-authoritative.
-- [ ] Add quality/contract CLI examples after expected output is test-covered.
-- [ ] Add contributor guide if repository workflow needs expand beyond current `AGENTS.md`.
+- [ ] Reconcile documentation and launch references that still imply the removed enhanced GUI is available.
+- [ ] Decide whether ProjectScanner is intentionally headless or whether a new GUI is justified by current requirements.
+- [ ] If a GUI is approved, design it against the canonical scanner API rather than restoring a parallel historical implementation.
+- [ ] Keep legacy GUI, token wizard, portfolio-analysis, and enhanced-scanner claims labeled historical or **Needs verification**.
 
-## What should be worked on next
+### Documentation and planning standardization
 
-Run the `NEXT_UP.md` handoff: stabilize the snapshot artifact contract and add validation tests before changing downstream behavior.
+- [ ] Keep `MASTER_TASK_LIST.md` as backlog, `MASTER_TASK_LOG.md` as completed history, and `NEXT_UP.md` as the immediate handoff.
+- [ ] Review the seven **Needs verification** history lanes and record corrections append-only in the master task log.
+- [ ] Keep `README.md`, `PRD.md`, `ROADMAP.md`, domain/audit docs, and agent instructions synchronized when contracts or support decisions change.
+- [ ] Keep historical planning documents clearly labeled non-authoritative and pointing to the root canonical planning set.
+
+### Dream.OS and Dream Suite integration
+
+- [ ] Confirm current Dream.OS/Dream Suite consumers, required artifact formats, and transfer locations.
+- [ ] Preserve the boundary that ProjectScanner generates repository evidence while durable portfolio governance is owned downstream.
+- [ ] Define compatibility checks for Dream Suite ingestion before describing an integration as active.
+- [ ] Reconcile legacy DreamVault terminology with the current Dream Suite architecture and ownership model.
