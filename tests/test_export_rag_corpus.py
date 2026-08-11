@@ -3,12 +3,14 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts.export_rag_corpus import (
     SCHEMA_VERSION,
     classify_domain,
     discover_files,
     export_repo,
+    repo_provenance,
 )
 
 
@@ -54,6 +56,20 @@ def test_export_repo_writes_provenance_rich_jsonl(tmp_path: Path) -> None:
     assert record["terminology"]["ProjectScanner"] == "projectscanner"
     assert set(record["provenance"]) == {"branch", "head", "remote"}
     assert record["truncated"] is False
+
+
+def test_export_repo_resolves_provenance_once_per_repo(tmp_path: Path) -> None:
+    repo = tmp_path / "DreamOS"
+    repo.mkdir()
+    (repo / "one.md").write_text("one", encoding="utf-8")
+    (repo / "two.md").write_text("two", encoding="utf-8")
+    output = tmp_path / "corpus.jsonl"
+
+    with patch("scripts.export_rag_corpus.repo_provenance", wraps=repo_provenance) as mocked:
+        count = export_repo(repo, output, authority="canonical_source", max_bytes=1024)
+
+    assert count == 2
+    assert mocked.call_count == 1
 
 
 def test_export_repo_marks_truncated_content_and_hashes_exported_text(tmp_path: Path) -> None:
