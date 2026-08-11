@@ -1,4 +1,4 @@
-# ProjectScanner NextUp Pointer
+# ProjectScanner Next Up Pointer
 
 Last synchronized: 2026-07-03
 
