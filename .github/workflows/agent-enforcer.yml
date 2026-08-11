@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
         
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -19,10 +21,34 @@ jobs:
           pip install ruff radon wily
           pip install pre-commit
           
-      - name: Run Ruff (linting)
+      - name: Run Ruff on changed Python files
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BASE_SHA: ${{ github.event.before }}
         run: |
-          echo "🔍 Running Ruff linter..."
-          ruff check . --output-format=github
+          echo "🔍 Running Ruff on changed Python files..."
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            base_sha="$PR_BASE_SHA"
+          else
+            base_sha="$PUSH_BASE_SHA"
+          fi
+
+          if [ -z "$base_sha" ] || [[ "$base_sha" =~ ^0+$ ]]; then
+            mapfile -t python_files < <(git ls-files '*.py')
+          else
+            mapfile -t python_files < <(
+              git diff --name-only --diff-filter=ACMR "$base_sha" "$GITHUB_SHA" -- '*.py'
+            )
+          fi
+
+          if [ "${#python_files[@]}" -eq 0 ]; then
+            echo "✅ No changed Python files to lint"
+            exit 0
+          fi
+
+          printf 'Linting %s\n' "${python_files[@]}"
+          ruff check --output-format=github -- "${python_files[@]}"
           
       - name: Check cyclomatic complexity
         run: |
@@ -47,14 +73,15 @@ jobs:
       - name: Check for required files
         run: |
           echo "🔍 Checking for required policy files..."
-          required_files=("AGENTS.md" ".pre-commit-config.yaml")
           missing_files=()
-          
-          for file in "${required_files[@]}"; do
-            if [ ! -f "$file" ]; then
-              missing_files+=("$file")
-            fi
-          done
+
+          if [ ! -f "AGENTS.md" ]; then
+            missing_files+=("AGENTS.md")
+          fi
+
+          if [ ! -f ".pre-commit-config.yaml" ] && [ ! -f "config/.pre-commit-config.yaml" ]; then
+            missing_files+=(".pre-commit-config.yaml or config/.pre-commit-config.yaml")
+          fi
           
           if [ ${#missing_files[@]} -ne 0 ]; then
             echo "❌ Missing required files: ${missing_files[*]}"
