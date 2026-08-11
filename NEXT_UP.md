@@ -10,7 +10,7 @@ The scanner source of truth is `src/core/projectscanner/`. Do not restore remove
 
 ## Immediate actions
 
-1. **Verify the canonical scanner path.** Run the current tests against `src/core/projectscanner/`, map tested behavior to the supported scanner surface, and record gaps without changing scanner behavior during the verification pass.
+1. **Stabilize the snapshot contract on the canonical scanner path.** Treat the snapshot-contract work called out by `ROADMAP.md`, `PRD.md`, `docs/DOMAIN_MODEL.md`, and `docs/REPOSITORY_AUDIT.md` as the first execution lane. Run the current snapshot/scanner tests against `src/core/projectscanner/`, map tested behavior to the supported scanner surface, and record gaps before broadening scope.
 2. **Classify generated analysis assets.** Inventory representative committed and ignored outputs, then classify each family as source, promoted evidence, reproducible artifact, or cleanup candidate.
 3. **Confirm RAG and export integration.** Compare the normalized corpus and project-intelligence exports with current Dream Suite needs, including provenance, digest, schema, ownership, and handoff expectations.
 4. **Reconcile removed legacy GUI references.** Find documentation and entry points that imply the removed enhanced GUI is shipped; label them historical, remove stale claims, or record a support decision.
@@ -18,6 +18,7 @@ The scanner source of truth is `src/core/projectscanner/`. Do not restore remove
 
 ## Exit criteria for this handoff
 
+- Snapshot-contract stabilization remains the first execution lane until its verification evidence is recorded.
 - Each action produces evidence, a documented decision, or a scoped backlog update.
 - No removed legacy implementation is presented as currently shipped.
 - Generated assets and Dream Suite integration claims have explicit ownership and verification status.
