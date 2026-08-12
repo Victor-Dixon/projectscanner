@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Deprecated entry point. Install and use ``projectscanner`` instead."""
 
 from __future__ import annotations
