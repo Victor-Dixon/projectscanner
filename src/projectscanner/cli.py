@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
-from core.projectscanner import ProjectScanner
+from core.projectscanner import ProjectScanner, build_snapshot_analysis
 from projectscanner.export_intelligence import export_portfolio
 from projectscanner.history import fetch_recent_snapshots, file_count_delta, format_history_table
 from projectscanner.ingest import SnapshotValidationError, ingest_snapshot
@@ -28,10 +29,16 @@ def _cmd_scan(args: argparse.Namespace) -> int:
     if args.generate_init:
         scanner.generate_init_files()
 
+    contract_path = scanner.output_dir / "analysis.json"
+    contract_path.write_text(
+        json.dumps(build_snapshot_analysis(scanner.analysis), indent=2),
+        encoding="utf-8",
+    )
+
     out = scanner.output_dir
     print(f"Scan complete. Results saved to: {out}")
     print(f"  - {scanner.report_generator.analysis_file}")
-    print(f"  - analysis.json")
+    print("  - analysis.json")
     return 0
 
 
