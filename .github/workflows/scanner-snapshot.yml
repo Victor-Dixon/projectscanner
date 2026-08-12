@@ -2,10 +2,10 @@ name: Scanner Snapshot
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     tags: ['v*']
   pull_request:
-    branches: [main]
+    branches: [master]
   schedule:
     - cron: '0 2 * * *'
   workflow_dispatch:
@@ -22,8 +22,18 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install scanner
-        run: pip install -e .
+      - name: Install scanner and test dependencies
+        run: pip install -e '.[dev]'
+
+      - name: Run focused productization and RAG regression tests
+        run: >-
+          pytest -q
+          tests/test_cli.py
+          tests/test_snapshot_contract.py
+          tests/test_phase2_handoff.py
+          tests/test_export_project_intelligence.py
+          tests/test_export_rag_corpus.py
+          tests/test_scanner_snapshot_workflow.py
 
       - name: Run scanner
         id: scan
@@ -34,8 +44,8 @@ jobs:
             MODE="pr"
           elif [[ "${{ github.ref_type }}" == "tag" ]]; then
             MODE="release"
-          elif [[ "${{ github.ref_name }}" == "main" ]]; then
-            MODE="main"
+          elif [[ "${{ github.ref_name }}" == "master" ]]; then
+            MODE="master"
           else
             MODE="manual"
           fi
