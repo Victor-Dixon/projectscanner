@@ -8,9 +8,10 @@ import sys
 from pathlib import Path
 
 from core.projectscanner import ProjectScanner, build_snapshot_analysis
-from projectscanner.export_intelligence import export_portfolio
-from projectscanner.history import fetch_recent_snapshots, file_count_delta, format_history_table
-from projectscanner.ingest import SnapshotValidationError, ingest_snapshot
+
+from .export_intelligence import export_portfolio
+from .history import fetch_recent_snapshots, file_count_delta, format_history_table
+from .ingest import SnapshotValidationError, ingest_snapshot
 
 
 def _cmd_scan(args: argparse.Namespace) -> int:
