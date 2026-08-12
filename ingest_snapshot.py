@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Backward-compatible wrapper for ``projectscanner ingest``."""
 
 from __future__ import annotations
