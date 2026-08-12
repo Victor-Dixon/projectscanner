@@ -16,6 +16,11 @@ DOMAIN_MODEL_CANDIDATES = ("DOMAIN_MODEL.md", "docs/DOMAIN_MODEL.md")
 _SYNC_RE = re.compile(r"^Last synchronized:\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
 _NUMBERED_RE = re.compile(r"^\s*\d+\.\s+(.+?)\s*$", re.MULTILINE)
 _BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
+_POINTER_MARKERS = (
+    "non-canonical compatibility pointer",
+    "non-canonical pointer",
+    "compatibility pointer",
+)
 
 
 def _read(path: Path) -> str:
@@ -47,6 +52,11 @@ def _active_lane(actions: list[str]) -> str | None:
     return match.group(1).rstrip(".") if match else actions[0].rstrip(".")
 
 
+def _is_pointer(text: str) -> bool:
+    lowered = text.lower()
+    return any(marker in lowered for marker in _POINTER_MARKERS)
+
+
 def inspect_planning_contract(repo: Path, *, generated_at: datetime | None = None) -> dict:
     """Return a deterministic planning-contract record for one repository."""
     repo = repo.resolve()
@@ -67,6 +77,9 @@ def inspect_planning_contract(repo: Path, *, generated_at: datetime | None = Non
     for name, present in presence.items():
         if not present:
             findings.append({"severity": "error", "code": "missing_required_file", "path": name})
+            continue
+        if _is_pointer(contents[name]):
+            findings.append({"severity": "warning", "code": "required_file_is_pointer", "path": name})
 
     if domain_model is None:
         findings.append({"severity": "error", "code": "missing_domain_model", "path": "DOMAIN_MODEL.md"})
