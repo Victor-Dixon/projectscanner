@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import subprocess
-from pathlib import Path
 
 import pytest
 
@@ -84,7 +83,7 @@ def test_ingest_accepts_valid_snapshot(tmp_path, monkeypatch):
 
 
 @pytest.mark.skipif(
-    subprocess.run(["which", "projectscanner"], capture_output=True).returncode != 0,
+    subprocess.run(["which", "projectscanner"], capture_output=True, check=False).returncode != 0,
     reason="console script not installed",
 )
 def test_console_script_installed():
