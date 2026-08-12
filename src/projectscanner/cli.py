@@ -12,6 +12,7 @@ from core.projectscanner import ProjectScanner, build_snapshot_analysis
 from .export_intelligence import export_portfolio
 from .history import fetch_recent_snapshots, file_count_delta, format_history_table
 from .ingest import SnapshotValidationError, ingest_snapshot
+from .planning_contract import inspect_planning_contract
 
 
 def _cmd_scan(args: argparse.Namespace) -> int:
@@ -53,6 +54,31 @@ def _cmd_export(args: argparse.Namespace) -> int:
     print(f"REPOS={result['repos']}")
     print(f"OUT_ROOT={result['out_root']}")
     return 0
+
+
+def _cmd_planning(args: argparse.Namespace) -> int:
+    target = Path(args.path).resolve()
+    if not target.is_dir():
+        print(f"Error: planning path does not exist: {target}", file=sys.stderr)
+        return 1
+
+    result = inspect_planning_contract(target)
+    if args.output:
+        output = Path(args.output).resolve()
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    if args.json:
+        print(json.dumps(result, indent=2, sort_keys=True))
+    else:
+        print(f"PLANNING_CONTRACT={result['contract_status']}")
+        print(f"REPO={result['repo']}")
+        print(f"ACTIVE_LANE={result['active_lane'] or 'Unknown'}")
+        print(f"FINDINGS={len(result['findings'])}")
+        if args.output:
+            print(f"OUTPUT={Path(args.output).resolve()}")
+
+    return 1 if result["contract_status"] == "FAIL" else 0
 
 
 def _cmd_ingest(args: argparse.Namespace) -> int:
@@ -141,6 +167,12 @@ def build_parser() -> argparse.ArgumentParser:
     export.add_argument("--out-root", required=True)
     export.add_argument("--repos", nargs="*", default=None)
     export.set_defaults(func=_cmd_export)
+
+    planning = subparsers.add_parser("planning", help="Validate the fleet planning contract")
+    planning.add_argument("path", help="Repository path to validate")
+    planning.add_argument("--output", "-o", help="Write normalized contract JSON")
+    planning.add_argument("--json", action="store_true", help="Print normalized JSON")
+    planning.set_defaults(func=_cmd_planning)
 
     ingest = subparsers.add_parser("ingest", help="Ingest a CI snapshot into SQLite history")
     ingest.add_argument("snapshot_dir", help="Directory with metadata.json and analysis.json")
