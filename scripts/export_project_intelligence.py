@@ -7,7 +7,13 @@ import argparse
 import warnings
 from pathlib import Path
 
-from projectscanner.export_intelligence import export_portfolio
+from projectscanner.export_intelligence import (
+    docs_score as docs_score,
+    export_portfolio,
+    markers as markers,
+    scan_repo as scan_repo,
+    write_bundle as write_bundle,
+)
 
 warnings.warn(
     "scripts/export_project_intelligence.py is deprecated; use `projectscanner export`.",
@@ -33,9 +39,6 @@ def main() -> int:
     print(f"OUT_ROOT={result['out_root']}")
     return 0
 
-
-# Re-export helpers used by tests
-from projectscanner.export_intelligence import docs_score, markers, scan_repo, write_bundle  # noqa: E402
 
 if __name__ == "__main__":
     raise SystemExit(main())
