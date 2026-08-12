@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from scripts.scan_targets import make_github_target, write_target_manifest
+from scan_targets import make_github_target, write_target_manifest
 
 
 TARGETS_DIR = Path("runtime") / "targets"
