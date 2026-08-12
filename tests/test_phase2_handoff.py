@@ -42,11 +42,11 @@ def test_bare_repo_metadata_export(tmp_path):
     assert payload["type"] == "bare_repo_metadata"
 
 
-def test_main_uses_ssot_imports():
+def test_main_is_deprecated_shim():
     main_text = Path("main.py").read_text(encoding="utf-8")
-    assert "from core.projectscanner import ProjectScanner" in main_text
+    assert "projectscanner.cli" in main_text
+    assert "DeprecationWarning" in main_text
     assert "src.core.scanner.unified_scanner" not in main_text
-    assert "scripts.scanners.quick_scanner" not in main_text
 
 
 def test_no_direct_scanner_module_imports():

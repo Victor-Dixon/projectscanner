@@ -42,8 +42,9 @@ runtime/
 fix_*.py
 add_*.py
 *_temp.py
-test_*.py
-*_test.py
+
+# Build artifacts
+*.egg-info/
 
 # Investigation tools
 investigate_*.sh
