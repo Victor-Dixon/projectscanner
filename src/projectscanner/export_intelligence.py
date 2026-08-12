@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 DOC_KEYS = ["readme", "prd", "roadmap", "master_task_list", "next_up"]
@@ -46,7 +46,7 @@ def scan_repo(repo: Path) -> dict:
     return {
         "name": repo.name,
         "path": str(repo),
-        "generated": datetime.now(timezone.utc).isoformat(),
+        "generated": datetime.now(UTC).isoformat(),
         "is_git": (repo / ".git").exists(),
         "branch": run(["git", "branch", "--show-current"], repo) or "NO_BRANCH",
         "head": run(["git", "rev-parse", "--short=8", "HEAD"], repo) or "NO_HEAD",
