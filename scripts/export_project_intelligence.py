@@ -7,13 +7,13 @@ import argparse
 import warnings
 from pathlib import Path
 
-from projectscanner.export_intelligence import (
-    docs_score as docs_score,
-    export_portfolio,
-    markers as markers,
-    scan_repo as scan_repo,
-    write_bundle as write_bundle,
-)
+from projectscanner import export_intelligence as _export_intelligence
+
+export_portfolio = _export_intelligence.export_portfolio
+docs_score = _export_intelligence.docs_score
+markers = _export_intelligence.markers
+scan_repo = _export_intelligence.scan_repo
+write_bundle = _export_intelligence.write_bundle
 
 warnings.warn(
     "scripts/export_project_intelligence.py is deprecated; use `projectscanner export`.",
