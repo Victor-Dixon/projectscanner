@@ -14,7 +14,7 @@ REQUIRED_PLANNING_FILES = (
 )
 DOMAIN_MODEL_CANDIDATES = ("DOMAIN_MODEL.md", "docs/DOMAIN_MODEL.md")
 _SYNC_RE = re.compile(r"^Last synchronized:\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
-_NUMBERED_RE = re.compile(r"^\s*\d+\.\s+(.+?)\s*$", re.MULTILINE)
+_NUMBERED_START_RE = re.compile(r"^\s*\d+\.\s+(.+?)\s*$")
 _BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
 _POINTER_MARKERS = (
     "non-canonical compatibility pointer",
@@ -42,7 +42,22 @@ def _section(text: str, heading: str) -> str:
 
 def _next_actions(text: str) -> list[str]:
     section = _section(text, "Immediate actions")
-    return [match.strip() for match in _NUMBERED_RE.findall(section)]
+    actions: list[str] = []
+    current: list[str] = []
+    for raw_line in section.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        match = _NUMBERED_START_RE.match(raw_line)
+        if match:
+            if current:
+                actions.append(" ".join(current))
+            current = [match.group(1).strip()]
+        elif current:
+            current.append(line)
+    if current:
+        actions.append(" ".join(current))
+    return actions
 
 
 def _active_lane(actions: list[str]) -> str | None:
