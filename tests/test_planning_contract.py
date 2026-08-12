@@ -93,6 +93,66 @@ def test_planning_contract_warns_when_required_file_is_pointer(tmp_path: Path) -
     ]
 
 
+def test_planning_contract_normalizes_multiline_actions(tmp_path: Path) -> None:
+    _write_complete_planning_set(tmp_path)
+    _write(
+        tmp_path,
+        "NEXT_UP.md",
+        "# Next\n\nLast synchronized: 2026-08-12\n\n"
+        "## Immediate actions\n\n"
+        "1. Fix the dependency gap so\n"
+        "   pytest can run cleanly.\n"
+        "2. Verify the next provider path.\n",
+    )
+
+    result = inspect_planning_contract(tmp_path)
+
+    assert result["contract_status"] == "PASS"
+    assert result["next_actions"][0] == "Fix the dependency gap so pytest can run cleanly."
+
+
+def test_planning_contract_prefers_explicit_next_lane(tmp_path: Path) -> None:
+    _write_complete_planning_set(tmp_path)
+    _write(
+        tmp_path,
+        "NEXT_UP.md",
+        "# Next\n\nLast synchronized: 2026-08-12\n\n"
+        "`NEXT_LANE=social_workflow_verification_and_boundary_audit_v1`\n\n"
+        "## Immediate actions\n\n"
+        "1. Verify the approval flow.\n",
+    )
+
+    result = inspect_planning_contract(tmp_path)
+
+    assert result["contract_status"] == "PASS"
+    assert result["active_lane"] == "social_workflow_verification_and_boundary_audit_v1"
+
+
+def test_planning_contract_keeps_active_lane_when_queue_heading_drifts(tmp_path: Path) -> None:
+    _write_complete_planning_set(tmp_path)
+    _write(
+        tmp_path,
+        "NEXT_UP.md",
+        "# Next\n\nLast synchronized: 2026-08-12\n\n"
+        "## Active lane\n\n"
+        "`swarm_planner_reconciliation_20260808` — reconcile planner truth.\n\n"
+        "## Immediate queue\n\n"
+        "1. Remove stale lane claims.\n",
+    )
+
+    result = inspect_planning_contract(tmp_path)
+
+    assert result["contract_status"] == "WARN"
+    assert result["active_lane"] == "swarm_planner_reconciliation_20260808"
+    assert result["findings"] == [
+        {
+            "severity": "warning",
+            "code": "missing_immediate_actions",
+            "path": "NEXT_UP.md",
+        }
+    ]
+
+
 def test_portfolio_bundle_contains_planning_contract(tmp_path: Path) -> None:
     repo = tmp_path / "demo-repo"
     repo.mkdir()
