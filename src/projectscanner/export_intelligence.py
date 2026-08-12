@@ -7,6 +7,8 @@ import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
 
+from .planning_contract import inspect_planning_contract
+
 DOC_KEYS = ["readme", "prd", "roadmap", "master_task_list", "next_up"]
 
 
@@ -63,6 +65,7 @@ def scan_repo(repo: Path) -> dict:
 
 def write_bundle(repo: Path, out_root: Path) -> None:
     analysis = scan_repo(repo)
+    planning = inspect_planning_contract(repo)
     out = out_root / repo.name
     out.mkdir(parents=True, exist_ok=True)
 
@@ -75,13 +78,23 @@ def write_bundle(repo: Path, out_root: Path) -> None:
             "file_count": analysis["file_count"],
             "docs_score": analysis["docs_score"],
             "missing_docs": analysis["missing_docs"],
+            "planning_contract_status": planning["contract_status"],
+            "active_lane": planning["active_lane"],
+            "planning_findings": planning["findings"],
         },
         "operator_guidance": {
-            "safe_next_action": "docs_refresh" if analysis["missing_docs"] else "maintain",
+            "safe_next_action": (
+                "planning_reconciliation"
+                if planning["contract_status"] != "PASS"
+                else "docs_refresh"
+                if analysis["missing_docs"]
+                else "maintain"
+            ),
             "guardrails": [
                 "No destructive cleanup without a promotion manifest.",
                 "Commit only scoped artifacts per lane.",
                 "Verify with tests or file checks before commit.",
+                "Flag planning contradictions; do not silently rewrite authority files.",
             ],
         },
     }
@@ -89,13 +102,22 @@ def write_bundle(repo: Path, out_root: Path) -> None:
     recommendations = {
         "repo": analysis["name"],
         "recommended_next_classes": (
-            ["docs_refresh"] if analysis["missing_docs"] else ["no_docs_gap_detected"]
+            ["planning_reconciliation"]
+            if planning["contract_status"] != "PASS"
+            else ["docs_refresh"]
+            if analysis["missing_docs"]
+            else ["no_docs_gap_detected"]
         ),
         "missing_docs": analysis["missing_docs"],
-        "risk": "medium" if analysis["dirty"] else "low",
+        "planning_contract_status": planning["contract_status"],
+        "planning_findings": planning["findings"],
+        "risk": "medium" if analysis["dirty"] or planning["findings"] else "low",
     }
 
     (out / "repo_analysis.json").write_text(json.dumps(analysis, indent=2, sort_keys=True) + "\n")
+    (out / "planning_contract.json").write_text(
+        json.dumps(planning, indent=2, sort_keys=True) + "\n"
+    )
     (out / "chatgpt_context.json").write_text(json.dumps(context, indent=2, sort_keys=True) + "\n")
     (out / "cleanup_recommendations.json").write_text(
         json.dumps(recommendations, indent=2, sort_keys=True) + "\n"
@@ -103,7 +125,9 @@ def write_bundle(repo: Path, out_root: Path) -> None:
     (out / "docs_gap_report.md").write_text(
         f"# {analysis['name']} Docs Gap Report\n\n"
         f"- Docs score: {analysis['docs_score']}\n"
-        f"- Missing docs: {', '.join(analysis['missing_docs']) or 'none'}\n\n"
+        f"- Missing docs: {', '.join(analysis['missing_docs']) or 'none'}\n"
+        f"- Planning contract: {planning['contract_status']}\n"
+        f"- Active lane: {planning['active_lane'] or 'Unknown'}\n\n"
         "DOCS_GAP_REPORT=PASS\n"
     )
 
@@ -120,9 +144,11 @@ def export_portfolio(
             if p.is_dir() and not p.name.startswith(".") and p.name != "_ARCHIVE"
         ]
 
+    exported = 0
     for name in sorted(repos, key=str.lower):
         repo = projects_root / name
         if repo.is_dir():
             write_bundle(repo, out_root)
+            exported += 1
 
-    return {"repos": len(repos), "out_root": str(out_root)}
+    return {"repos": exported, "out_root": str(out_root)}
