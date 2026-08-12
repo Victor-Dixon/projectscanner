@@ -1,0 +1,194 @@
+{
+  "schema_version": "dreamos.fleet-portfolio.v1",
+  "audit_date": "2026-08-12",
+  "source_contract": "dreamos.fleet-planning.v1",
+  "membership_rule": "repository exposes root NEXT_UP.md in the active GitHub audit",
+  "summary": {
+    "repos": 18,
+    "pass": 12,
+    "fail": 6
+  },
+  "public_projection_status": "BLOCKED_UNTIL_FLEET_RECONCILIATION_CLOSE",
+  "repos": [
+    {
+      "repo_key": "github:victor-dixon/agent_cellphone",
+      "repo": "Agent_Cellphone",
+      "contract_status": "PASS",
+      "active_lane": null,
+      "findings": "full default authority set confirmed; legacy NextUp.md also exists but root NEXT_UP.md is present",
+      "head": "72f4499752ad764454e598cc8759dda5e38f7812",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/Agent_Cellphone/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/agentproject",
+      "repo": "agentproject",
+      "contract_status": "PASS",
+      "active_lane": null,
+      "findings": "full default authority set confirmed",
+      "head": "ba7c278c60fdb68cbd8463453738134f41460e51",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/agentproject/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/agenttools",
+      "repo": "AgentTools",
+      "contract_status": "PASS",
+      "active_lane": "Verify reusable marketing/API/MCP promotion candidates",
+      "findings": "none",
+      "head": "78944943835ffcf5ef6f34ef78b26d466e649aba",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/AgentTools/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/ai_debugger_assistant",
+      "repo": "AI_Debugger_Assistant",
+      "contract_status": "PASS",
+      "active_lane": null,
+      "findings": "active planning set and root DOMAIN_MODEL.md confirmed",
+      "head": "cc22fd57e0042d1dc8eb540a3d47adcc013b2e65",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/AI_Debugger_Assistant/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/dream.os-core",
+      "repo": "Dream.os-Core",
+      "contract_status": "PASS",
+      "active_lane": "Fix the PyYAML test dependency/environment gap so pytest --ssot-mode -q can run cleanly in the supported environment.",
+      "findings": "none — lower-case root domain_model.md is now explicitly declared by PLANNING_CONTRACT.json",
+      "head": "6a01b746201cc2f562136e9e7f9997c6adf5dc20",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/Dream.os-Core/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/dreamos-brain",
+      "repo": "dreamos-brain",
+      "contract_status": "FAIL",
+      "active_lane": null,
+      "findings": "active NEXT_UP exists, but execution log is nested at docs/MASTER_TASK_LOG.md and no v1 domain-model authority was found; explicit manifest needed",
+      "head": "95c6ad2aee71733acced28e95884e3fb35469053",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/dreamos-brain/blob/main/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/dreamvault",
+      "repo": "DreamVault",
+      "contract_status": "PASS",
+      "active_lane": null,
+      "findings": "full default authority set confirmed",
+      "head": "bc0bccf986e3ce2e20716623b4bc4c0b26d233e9",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/DreamVault/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/flowr",
+      "repo": "Flowr",
+      "contract_status": "FAIL",
+      "active_lane": null,
+      "findings": "NEXT_UP and task log confirmed; no v1 domain-model authority found in audit",
+      "head": "b61fbd19961d70ca6590b792b18850fb70bce2bc",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/Flowr/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/focusforge",
+      "repo": "FocusForge",
+      "contract_status": "FAIL",
+      "active_lane": null,
+      "findings": "task list/log/NEXT_UP confirmed; no v1 domain-model authority found",
+      "head": "1a78cdc9b2ad8733d7868c67fb3e031d04dd3798",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/FocusForge/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/github-architect-bot",
+      "repo": "github-architect-bot",
+      "contract_status": "PASS",
+      "active_lane": null,
+      "findings": "root task list/log/NEXT_UP and docs/DOMAIN_MODEL.md confirmed",
+      "head": "93614b2f121df53314be72ff375ce26cdb9911d3",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/github-architect-bot/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/homeschool_mastery",
+      "repo": "HomeSchool_Mastery",
+      "contract_status": "FAIL",
+      "active_lane": null,
+      "findings": "root task list/log/NEXT_UP confirmed; no v1 domain-model authority found",
+      "head": "322f7b01c076a6592d3c4bd48403d6bb6982d9c7",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/HomeSchool_Mastery/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/network-scanner",
+      "repo": "network-scanner",
+      "contract_status": "FAIL",
+      "active_lane": null,
+      "findings": "NEXT_UP and task list/log confirmed; no v1 domain-model authority found",
+      "head": "72323b46845f5c1d4bae19b96dd80f4aa46baa4d",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/network-scanner/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/osrs",
+      "repo": "osrs",
+      "contract_status": "PASS",
+      "active_lane": null,
+      "findings": "full default authority set confirmed",
+      "head": "69d20cd6ddd3cd99ed66913d2064152183e3c36c",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/osrs/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/projectscanner",
+      "repo": "projectscanner",
+      "contract_status": "PASS",
+      "active_lane": "Stabilize the snapshot contract on the canonical scanner path",
+      "findings": "none",
+      "head": "a59ff25b0585ea7f7dc6496a92929732fdb305f5",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/projectscanner/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/socialmediamanager",
+      "repo": "socialmediamanager",
+      "contract_status": "PASS",
+      "active_lane": "social_workflow_verification_and_boundary_audit_v1",
+      "findings": "none",
+      "head": "9075613999880222fb26b61e1db75221dd751770",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/socialmediamanager/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/thea",
+      "repo": "Thea",
+      "contract_status": "PASS",
+      "active_lane": null,
+      "findings": "task authority and docs/DOMAIN_MODEL.md confirmed",
+      "head": "7304a726b8585fca5b6604e9e190a9eea32ce69a",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/Thea/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/tradingrobotplug",
+      "repo": "TradingRobotPlug",
+      "contract_status": "FAIL",
+      "active_lane": null,
+      "findings": "active NEXT_UP and task list/log exist; no v1 domain-model authority found",
+      "head": "ed1fbc20ca0ab3ee254824e19548070d67c86bd2",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/TradingRobotPlug/blob/master/NEXT_UP.md"
+    },
+    {
+      "repo_key": "github:victor-dixon/websites",
+      "repo": "websites",
+      "contract_status": "PASS",
+      "active_lane": "swarm_planner_reconciliation_20260808",
+      "findings": "none",
+      "head": "f2798157b653deed114a0bf5ef399198e6256241",
+      "scanner_schema": "dreamos.fleet-planning.v1",
+      "source": "https://github.com/Victor-Dixon/websites/blob/master/NEXT_UP.md"
+    }
+  ]
+}
