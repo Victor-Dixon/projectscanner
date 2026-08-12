@@ -69,19 +69,7 @@ class ReportGenerator:
             logger.info("✅ Merged analysis saved to: %s", report_path)
         except Exception as exc:  # pragma: no cover
             logger.error("❌ Error writing analysis report: %s", exc)
-        self.save_snapshot_contract(merged)
         return merged
-
-    def save_snapshot_contract(self, merged: Dict[str, Dict] | None = None) -> Path:
-        """Write CI/ingest-compatible ``analysis.json`` with schema version."""
-        from .snapshot_contract import build_snapshot_analysis
-
-        payload_source = merged if merged is not None else self.analysis
-        payload = build_snapshot_analysis(payload_source)
-        contract_path = self.output_dir / "analysis.json"
-        contract_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-        logger.info("✅ Snapshot contract saved to: %s", contract_path)
-        return contract_path
 
     # Concept: TODO - Explain the core idea behind generate_init_files
     # Trade-off: TODO - Document any trade-offs or design decisions
