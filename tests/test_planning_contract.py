@@ -2,7 +2,8 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
-from projectscanner.export_intelligence import write_bundle
+from projectscanner.export_intelligence import export_portfolio, write_bundle
+from projectscanner.notion_projection import build_upsert_plan, desired_rows
 from projectscanner.planning_contract import SCHEMA_VERSION, inspect_planning_contract
 
 
@@ -55,15 +56,15 @@ def test_planning_contract_reports_missing_authority_files(tmp_path: Path) -> No
 
 
 def test_planning_contract_warns_on_date_drift_and_action_overflow(tmp_path: Path) -> None:
-    _write(tmp_path, "MASTER_TASK_LIST.md", "Last synchronized: 2026-08-11\n")
-    _write(tmp_path, "MASTER_TASK_LOG.md", "Last synchronized: 2026-08-12\n")
+    _write(tmp_path, "MASTER_TASK_LIST.md", "Updated: 2026-08-11\n")
+    _write(tmp_path, "MASTER_TASK_LOG.md", "Updated: 2026-08-12\n")
     actions = "\n".join(f"{idx}. Task {idx}" for idx in range(1, 7))
     _write(
         tmp_path,
         "NEXT_UP.md",
-        f"Last synchronized: 2026-08-12\n\n## Immediate actions\n\n{actions}\n",
+        f"Updated: 2026-08-12\n\n## Immediate actions\n\n{actions}\n",
     )
-    _write(tmp_path, "DOMAIN_MODEL.md", "Last synchronized: 2026-08-12\n")
+    _write(tmp_path, "DOMAIN_MODEL.md", "Updated: 2026-08-12\n")
 
     result = inspect_planning_contract(tmp_path)
 
@@ -72,7 +73,7 @@ def test_planning_contract_warns_on_date_drift_and_action_overflow(tmp_path: Pat
     assert codes == {"planning_sync_date_drift", "too_many_immediate_actions"}
 
 
-def test_planning_contract_warns_when_required_file_is_pointer(tmp_path: Path) -> None:
+def test_planning_contract_warns_when_selected_authority_is_pointer(tmp_path: Path) -> None:
     _write_complete_planning_set(tmp_path)
     _write(
         tmp_path,
@@ -91,6 +92,46 @@ def test_planning_contract_warns_when_required_file_is_pointer(tmp_path: Path) -
             "path": "MASTER_TASK_LOG.md",
         }
     ]
+
+
+def test_manifest_preserves_custom_authority_without_pointer_warning(tmp_path: Path) -> None:
+    _write(tmp_path, "MASTER_TASK_LIST.md", "# Tasks\n\nUpdated: 2026-08-12\n")
+    _write(
+        tmp_path,
+        "MASTER_TASK_LOG.md",
+        "# POINTER\n\nStatus: Non-canonical compatibility pointer\n",
+    )
+    _write(tmp_path, "docs/root/MASTER_TASK_LOG.md", "# Log\n\nUpdated: 2026-08-12\n")
+    _write(
+        tmp_path,
+        "NEXT_UP.md",
+        "# Next\n\nUpdated: 2026-08-12\n\n"
+        "## Immediate actions\n\n1. Verify promotion candidates.\n",
+    )
+    _write(tmp_path, "docs/architecture/DOMAIN_MODEL.md", "# Domain\n\nUpdated: 2026-08-12\n")
+    _write(
+        tmp_path,
+        "PLANNING_CONTRACT.json",
+        json.dumps(
+            {
+                "schema_version": SCHEMA_VERSION,
+                "repo_key": "github:victor-dixon/agenttools",
+                "authority": {
+                    "master_task_list": "MASTER_TASK_LIST.md",
+                    "master_task_log": "docs/root/MASTER_TASK_LOG.md",
+                    "next_up": "NEXT_UP.md",
+                    "domain_model": "docs/architecture/DOMAIN_MODEL.md",
+                },
+            }
+        ),
+    )
+
+    result = inspect_planning_contract(tmp_path)
+
+    assert result["contract_status"] == "PASS"
+    assert result["repo_key"] == "github:victor-dixon/agenttools"
+    assert result["authority"]["master_task_log"] == "docs/root/MASTER_TASK_LOG.md"
+    assert all(item["code"] != "required_file_is_pointer" for item in result["findings"])
 
 
 def test_planning_contract_normalizes_multiline_actions(tmp_path: Path) -> None:
@@ -128,7 +169,7 @@ def test_planning_contract_prefers_explicit_next_lane(tmp_path: Path) -> None:
     assert result["active_lane"] == "social_workflow_verification_and_boundary_audit_v1"
 
 
-def test_planning_contract_keeps_active_lane_when_queue_heading_drifts(tmp_path: Path) -> None:
+def test_planning_contract_accepts_queue_heading_alias(tmp_path: Path) -> None:
     _write_complete_planning_set(tmp_path)
     _write(
         tmp_path,
@@ -142,14 +183,47 @@ def test_planning_contract_keeps_active_lane_when_queue_heading_drifts(tmp_path:
 
     result = inspect_planning_contract(tmp_path)
 
-    assert result["contract_status"] == "WARN"
+    assert result["contract_status"] == "PASS"
     assert result["active_lane"] == "swarm_planner_reconciliation_20260808"
-    assert result["findings"] == [
-        {
-            "severity": "warning",
-            "code": "missing_immediate_actions",
-            "path": "NEXT_UP.md",
-        }
+    assert result["action_heading"] == "Immediate queue"
+    assert result["findings"] == []
+
+
+def test_planning_contract_reads_now_lane_and_nested_actions(tmp_path: Path) -> None:
+    _write_complete_planning_set(tmp_path)
+    _write(
+        tmp_path,
+        "NEXT_UP.md",
+        "# Next\n\nLast synchronized: 2026-08-12\n\n"
+        "## NOW — Finish imported-test runner\n\n"
+        "### Actions\n\n"
+        "1. Read classification.\n"
+        "2. Run offline verification.\n",
+    )
+
+    result = inspect_planning_contract(tmp_path)
+
+    assert result["contract_status"] == "PASS"
+    assert result["active_lane"] == "Finish imported-test runner"
+    assert result["action_heading"] == "Actions"
+
+
+def test_planning_contract_reads_numbered_heading_queue(tmp_path: Path) -> None:
+    _write_complete_planning_set(tmp_path)
+    body = (
+        "# Next\n\nLast synchronized: 2026-08-12\n\n"
+        "## Do these next, in order\n\n"
+        "### 1) Clarify canonical product direction\n\nEvidence.\n"
+        "### 2) Run manual QA checklist\n\nEvidence.\n"
+    )
+    _write(tmp_path, "NEXT_UP.md", body)
+
+    result = inspect_planning_contract(tmp_path)
+
+    assert result["contract_status"] == "PASS"
+    assert result["next_actions"] == [
+        "Clarify canonical product direction",
+        "Run manual QA checklist",
     ]
 
 
@@ -162,7 +236,7 @@ def test_portfolio_bundle_contains_planning_contract(tmp_path: Path) -> None:
     _write(repo, "ROADMAP.md", "# Roadmap\n")
     out_root = tmp_path / "out"
 
-    write_bundle(repo, out_root)
+    record = write_bundle(repo, out_root)
 
     planning = json.loads((out_root / repo.name / "planning_contract.json").read_text())
     context = json.loads((out_root / repo.name / "chatgpt_context.json").read_text())
@@ -170,3 +244,93 @@ def test_portfolio_bundle_contains_planning_contract(tmp_path: Path) -> None:
     assert planning["active_lane"] == "Stabilize fleet planning contract"
     assert context["current_state"]["planning_contract_status"] == "PASS"
     assert context["operator_guidance"]["safe_next_action"] == "maintain"
+    assert record["repo_key"] == "local:demo-repo"
+
+
+def test_export_portfolio_writes_sorted_fleet_index(tmp_path: Path) -> None:
+    root = tmp_path / "projects"
+    out = tmp_path / "out"
+    for name in ("Zulu", "alpha"):
+        repo = root / name
+        repo.mkdir(parents=True)
+        _write_complete_planning_set(repo)
+        _write(repo, "README.md", f"# {name}\n")
+        _write(repo, "PRD.md", "# PRD\n")
+        _write(repo, "ROADMAP.md", "# Roadmap\n")
+
+    result = export_portfolio(root, out)
+    index = json.loads((out / "portfolio_index.json").read_text(encoding="utf-8"))
+
+    assert result["repos"] == 2
+    assert result["active_repos"] == 2
+    assert index["active_repo_count"] == 2
+    assert [row["repo_key"] for row in index["repos"]] == ["local:alpha", "local:zulu"]
+
+
+def _portfolio_fixture() -> dict:
+    return {
+        "schema_version": "dreamos.portfolio-index.v1",
+        "repos": [
+            {
+                "repo_key": "github:victor-dixon/projectscanner",
+                "planning_schema": SCHEMA_VERSION,
+                "repo": "projectscanner",
+                "fleet_state": "active",
+                "contract_status": "PASS",
+                "active_lane": "fleet_planning_reconciliation_v1",
+                "findings": [],
+                "branch": "master",
+                "head_sha": "abc123",
+                "source": "https://github.com/Victor-Dixon/projectscanner/blob/master/NEXT_UP.md",
+            }
+        ],
+    }
+
+
+def test_notion_upsert_adopts_legacy_row_then_becomes_noop() -> None:
+    portfolio = _portfolio_fixture()
+    existing = [
+        {
+            "id": "page-1",
+            "properties": {
+                "Repo": "projectscanner",
+                "Contract Status": "WARN",
+                "Active Lane": "old",
+                "Findings": "old",
+                "Branch": "master",
+                "Head SHA": "old",
+                "Scanner Schema": "old",
+                "Source": "",
+            },
+        }
+    ]
+
+    first = build_upsert_plan(portfolio, existing)
+
+    assert first["counts"] == {"create": 0, "update": 1, "noop": 0, "conflict": 0}
+    updated_properties = first["updates"][0]["properties"]
+    assert updated_properties["Repo Key"] == "github:victor-dixon/projectscanner"
+    assert updated_properties["Scanner Schema"] == SCHEMA_VERSION
+
+    second = build_upsert_plan(
+        portfolio,
+        [{"id": "page-1", "properties": updated_properties}],
+    )
+
+    assert second["counts"] == {"create": 0, "update": 0, "noop": 1, "conflict": 0}
+
+
+def test_notion_duplicate_repo_keys_are_conflicts() -> None:
+    portfolio = _portfolio_fixture()
+    props = desired_rows(portfolio)[0]
+
+    plan = build_upsert_plan(
+        portfolio,
+        [
+            {"id": "one", "properties": props},
+            {"id": "two", "properties": props},
+        ],
+    )
+
+    assert plan["counts"]["conflict"] == 1
+    assert plan["counts"]["update"] == 0
