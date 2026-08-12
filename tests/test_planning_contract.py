@@ -72,6 +72,27 @@ def test_planning_contract_warns_on_date_drift_and_action_overflow(tmp_path: Pat
     assert codes == {"planning_sync_date_drift", "too_many_immediate_actions"}
 
 
+def test_planning_contract_warns_when_required_file_is_pointer(tmp_path: Path) -> None:
+    _write_complete_planning_set(tmp_path)
+    _write(
+        tmp_path,
+        "MASTER_TASK_LOG.md",
+        "# Log\n\nLast synchronized: 2026-08-12\n\n"
+        "Status: Non-canonical compatibility pointer\n",
+    )
+
+    result = inspect_planning_contract(tmp_path)
+
+    assert result["contract_status"] == "WARN"
+    assert result["findings"] == [
+        {
+            "severity": "warning",
+            "code": "required_file_is_pointer",
+            "path": "MASTER_TASK_LOG.md",
+        }
+    ]
+
+
 def test_portfolio_bundle_contains_planning_contract(tmp_path: Path) -> None:
     repo = tmp_path / "demo-repo"
     repo.mkdir()
