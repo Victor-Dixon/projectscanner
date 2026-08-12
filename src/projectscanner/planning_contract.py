@@ -16,6 +16,7 @@ DOMAIN_MODEL_CANDIDATES = ("DOMAIN_MODEL.md", "docs/DOMAIN_MODEL.md")
 _SYNC_RE = re.compile(r"^Last synchronized:\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
 _NUMBERED_START_RE = re.compile(r"^\s*\d+\.\s+(.+?)\s*$")
 _BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
+_NEXT_LANE_RE = re.compile(r"^`?NEXT_LANE=([^`\n]+)`?\s*$", re.MULTILINE)
 _POINTER_MARKERS = (
     "non-canonical compatibility pointer",
     "non-canonical pointer",
@@ -60,7 +61,22 @@ def _next_actions(text: str) -> list[str]:
     return actions
 
 
-def _active_lane(actions: list[str]) -> str | None:
+def _declared_active_lane(text: str) -> str | None:
+    next_lane = _NEXT_LANE_RE.search(text)
+    if next_lane:
+        return next_lane.group(1).strip()
+
+    section = _section(text, "Active lane").strip()
+    if not section:
+        return None
+    first_line = section.splitlines()[0].strip()
+    return first_line.split(" — ", 1)[0].strip("` ") or None
+
+
+def _active_lane(text: str, actions: list[str]) -> str | None:
+    declared = _declared_active_lane(text)
+    if declared:
+        return declared
     if not actions:
         return None
     match = _BOLD_RE.search(actions[0])
@@ -86,7 +102,8 @@ def inspect_planning_contract(repo: Path, *, generated_at: datetime | None = Non
     if domain_model:
         sync_dates[domain_model] = _sync_date(_read(repo / domain_model))
 
-    actions = _next_actions(contents.get("NEXT_UP.md", ""))
+    next_up_text = contents.get("NEXT_UP.md", "")
+    actions = _next_actions(next_up_text)
     findings: list[dict[str, str]] = []
 
     for name, present in presence.items():
@@ -125,7 +142,7 @@ def inspect_planning_contract(repo: Path, *, generated_at: datetime | None = Non
         "required_files": presence,
         "domain_model": domain_model,
         "sync_dates": sync_dates,
-        "active_lane": _active_lane(actions),
+        "active_lane": _active_lane(next_up_text, actions),
         "next_actions": actions,
         "findings": findings,
     }
