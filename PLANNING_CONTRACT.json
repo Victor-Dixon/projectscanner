@@ -1,0 +1,18 @@
+{
+  "schema_version": "dreamos.fleet-planning.v1",
+  "repo_key": "github:victor-dixon/projectscanner",
+  "authority": {
+    "master_task_list": "MASTER_TASK_LIST.md",
+    "master_task_log": "MASTER_TASK_LOG.md",
+    "next_up": "NEXT_UP.md",
+    "domain_model": "docs/DOMAIN_MODEL.md"
+  },
+  "next_up": {
+    "action_headings": ["Immediate actions"]
+  },
+  "sync_date_paths": [
+    "MASTER_TASK_LIST.md",
+    "MASTER_TASK_LOG.md",
+    "NEXT_UP.md"
+  ]
+}
