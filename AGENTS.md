@@ -1,6 +1,6 @@
 # ProjectScanner Agent Instructions
 
-Last synchronized: 2026-07-03
+Last synchronized: 2026-08-13
 
 ## Project identity
 
@@ -14,30 +14,9 @@ ProjectScanner is repository scanning and inventory intelligence tooling. It bel
 - Requirements: `PRD.md`.
 - Roadmap: `ROADMAP.md`.
 - Canonical task list: `MASTER_TASK_LIST.md`.
+- Verified completed history: `MASTER_TASK_LOG.md`.
 - Current handoff: `NEXT_UP.md`.
 - Historical overlay experiment: `archive/untracked_overlay_20260505/`.
-
-## Current implementation status
-
-Implemented:
-
-- Local project scanning.
-- Lightweight Python/JS/TS/Rust structure extraction.
-- JSON report generation.
-- ChatGPT context export and chunking.
-- Bare Git repository metadata export.
-- GitHub inventory and scan target helpers.
-- Portfolio docs-gap export.
-- Contract rules and quality checker tools.
-- CI scanner wrapper and SQLite ingestor.
-
-Incomplete or Unknown:
-
-- Enhanced GUI availability; current launch paths reference missing modules.
-- Stable scanner-to-ingestor snapshot schema.
-- Dependency graph completeness; analyzer does not currently emit imports.
-- Agent categorization completeness; analyzer does not currently emit class detail dictionaries.
-- Pipeline analyze/quality enrichment.
 
 ## Working rules
 
@@ -56,6 +35,17 @@ Current regression gate:
 pytest -q
 ```
 
-## Next recommended work
+## Standard Repository Working Contract
+1. Read `AGENTS.md`, `NEXT_UP.md`, `MASTER_TASK_LIST.md`, `MASTER_TASK_LOG.md`, any repo SSOT/state manifest, branch/HEAD, and relevant tests before editing.
+2. Work one bounded lane with explicit **TARGET, ACTION, VERIFY, COMMIT**. Do not mix unrelated cleanup, features, migrations, or speculative rewrites.
+3. Use Fast TDD: smallest acceptance/contract test, smallest safe change, targeted verification, then broad verification.
+4. When repo state changes, update `NEXT_UP.md` and `MASTER_TASK_LIST.md` in the same lane, plus the execution-state SSOT when present.
+5. Append `MASTER_TASK_LOG.md` only after verification proves closure. Never record planned or merely implemented work as completed.
+6. For non-trivial work, create/update `runtime/tasks/*.yaml` with objective, scope, acceptance, verification, holds, and next lane when supported.
+7. Trust but verify: targeted tests, repo validators, `git diff --check`, and final status/diff review. PASS/COMPLETE/promoted/merged claims require evidence.
+8. Salvage before destructive cleanup. Classify variants/donor material before delete/reset/rewrite; preserve canonical scanner source unless evidence proves it stale.
+9. End code or repo-structure work with a clean scoped commit. Planning-only work still requires synchronized task surfaces and verification.
+10. Leave the next executable step in `NEXT_UP.md` with its verification gate so the next agent does not rediscover the lane.
 
-Follow the five-or-fewer immediate actions in `NEXT_UP.md`. Record newly discovered work in `MASTER_TASK_LIST.md` and completed history in `MASTER_TASK_LOG.md`.
+### Canonical Planning Names
+Fleet-standard root planning files are `NEXT_UP.md`, `MASTER_TASK_LIST.md`, and `MASTER_TASK_LOG.md`. Legacy aliases or nested policy notes must not become competing execution authorities.
