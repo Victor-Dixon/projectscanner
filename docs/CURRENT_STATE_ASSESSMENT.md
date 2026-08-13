@@ -24,17 +24,19 @@ This document reflects the **current repository state** and enforces SSOT assump
 - Workflow behavior:
   - determines scan mode from trigger,
   - runs scanner against SSOT target (`./src`),
+  - writes normalized `analysis.json` using `projectscanner.snapshot.v1`,
   - writes `metadata.json`,
   - uploads `snapshots/` as retained artifacts (90 days),
   - posts PR comment summary for PR-triggered runs.
 
 ### 3) SQLite ingestor is available for history and trends
 - `ingest_snapshot.py` ingests snapshot artifacts into `scanner_history.db`.
+- Snapshot validation now runs before DB writes. Missing files, missing required metadata fields, malformed analysis payloads, missing `files` arrays, and bad schema versions fail fast.
 - Schema currently includes:
   - `snapshots` (commit/run metadata),
   - `files` (file-level rollup + raw JSON),
   - `issues` (rule/severity/file/message/line).
-- Idempotency is handled using unique constraints plus `INSERT OR IGNORE`/`INSERT OR REPLACE` patterns.
+- Idempotency is handled using unique constraints plus `INSERT OR IGNORE`/`INSERT OR REPLACE` patterns; duplicate issue rows are refreshed for repeat ingest of the same snapshot.
 
 ### 4) Core architecture status
 - Package SSOT remains `src/core/projectscanner/`.
@@ -43,9 +45,9 @@ This document reflects the **current repository state** and enforces SSOT assump
 
 ## Risks / gaps still open
 
-1. **Data contract hardening between scanner output and ingestor**
-   - `ingest_snapshot.py` assumes `analysis.json` has `files` and optional `issues` arrays with expected keys.
-   - Add explicit schema/version checks to avoid silent drift.
+1. **Data contract breadth**
+   - The stable contract currently covers snapshot metadata, file rollups, issue rows, schema versioning, and duplicate ingest behavior.
+   - Unknown: downstream dependency graph and agent categorization consumers may need additional normalized fields beyond `raw`.
 
 2. **CI confidence depth**
    - Workflow path is present, but more test coverage is needed for:

@@ -47,7 +47,8 @@ jobs:
           START=$(date +%s)
           python src/utils/run_scanner.py \
             --target ./src \
-            --output "$SNAPSHOT_DIR"
+            --output "$SNAPSHOT_DIR" \
+            --mode "$MODE"
           END=$(date +%s)
           DURATION=$((END - START))
 

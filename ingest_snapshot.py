@@ -6,12 +6,17 @@ import json
 import sqlite3
 from pathlib import Path
 
+from src.core.projectscanner.snapshot_contract import (
+    validate_analysis_payload,
+    validate_metadata,
+)
+
 DB_PATH = Path("scanner_history.db")
 
 
-def init_db() -> sqlite3.Connection:
+def init_db(db_path: Path = DB_PATH) -> sqlite3.Connection:
     """Initialize DB schema and indexes."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(db_path)
     conn.executescript(
         """
         CREATE TABLE IF NOT EXISTS snapshots (
@@ -59,21 +64,28 @@ def init_db() -> sqlite3.Connection:
     return conn
 
 
-def ingest_snapshot(snapshot_dir: Path, repo_name: str = "default") -> None:
+def ingest_snapshot(
+    snapshot_dir: Path,
+    repo_name: str = "default",
+    *,
+    db_path: Path = DB_PATH,
+) -> None:
     """Ingest one snapshot directory that contains metadata.json + analysis.json."""
     metadata_path = snapshot_dir / "metadata.json"
     analysis_path = snapshot_dir / "analysis.json"
 
-    if not metadata_path.exists() or not analysis_path.exists():
-        raise FileNotFoundError(f"Missing metadata or analysis in {snapshot_dir}")
+    if not metadata_path.exists():
+        raise FileNotFoundError(f"Missing metadata.json in {snapshot_dir}")
+    if not analysis_path.exists():
+        raise FileNotFoundError(f"Missing analysis.json in {snapshot_dir}")
 
     with metadata_path.open("r", encoding="utf-8") as f:
-        metadata = json.load(f)
+        metadata = validate_metadata(json.load(f))
 
     with analysis_path.open("r", encoding="utf-8") as f:
-        analysis = json.load(f)
+        analysis = validate_analysis_payload(json.load(f))
 
-    conn = init_db()
+    conn = init_db(db_path)
     cursor = conn.cursor()
 
     cursor.execute(
@@ -88,7 +100,7 @@ def ingest_snapshot(snapshot_dir: Path, repo_name: str = "default") -> None:
             metadata["commit_sha"],
             metadata.get("branch"),
             metadata.get("timestamp"),
-            analysis.get("total_files", 0),
+            analysis["total_files"],
             metadata.get("scanner_version"),
             metadata.get("scan_mode"),
             metadata.get("duration_seconds"),
@@ -107,7 +119,9 @@ def ingest_snapshot(snapshot_dir: Path, repo_name: str = "default") -> None:
             raise RuntimeError("Unable to resolve snapshot id after insert.")
         snapshot_id = existing[0]
 
-    for file_data in analysis.get("files", []):
+    cursor.execute("DELETE FROM issues WHERE snapshot_id = ?", (snapshot_id,))
+
+    for file_data in analysis["files"]:
         cursor.execute(
             """
             INSERT OR REPLACE INTO files
@@ -120,14 +134,14 @@ def ingest_snapshot(snapshot_dir: Path, repo_name: str = "default") -> None:
                 file_data.get("path"),
                 file_data.get("language"),
                 file_data.get("hash"),
-                file_data.get("functions", 0),
-                file_data.get("classes", 0),
+                file_data.get("functions_count", 0),
+                file_data.get("classes_count", 0),
                 file_data.get("loc", 0),
-                json.dumps(file_data),
+                json.dumps(file_data, sort_keys=True),
             ),
         )
 
-    for issue in analysis.get("issues", []):
+    for issue in analysis["issues"]:
         cursor.execute(
             """
             INSERT INTO issues
@@ -149,7 +163,7 @@ def ingest_snapshot(snapshot_dir: Path, repo_name: str = "default") -> None:
 
     print(
         f"Ingested snapshot {metadata['commit_sha'][:8]} "
-        f"({metadata.get('scan_mode')}) - {analysis.get('total_files', 0)} files"
+        f"({metadata.get('scan_mode')}) - {analysis['total_files']} files"
     )
 
 
@@ -157,9 +171,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Ingest scanner snapshots into SQLite")
     parser.add_argument("snapshot_dir", help="Path to snapshot directory")
     parser.add_argument("--repo", default="default", help="Repository name")
+    parser.add_argument("--db", default=str(DB_PATH), help="SQLite database path")
     args = parser.parse_args()
 
-    ingest_snapshot(Path(args.snapshot_dir), args.repo)
+    ingest_snapshot(Path(args.snapshot_dir), args.repo, db_path=Path(args.db))
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ AGENTIC INSTRUCTIONS:
 """Project Scanner CLI runner with repo-root SSOT target resolution."""
 
 import argparse
+import json
 import os
 import subprocess
 import sys
@@ -18,6 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from core.projectscanner import ProjectScanner
+from core.projectscanner.snapshot_contract import normalize_analysis_payload
 
 
 # Concept: TODO - Explain the core idea behind get_repo_root
@@ -124,8 +126,12 @@ def main() -> None:
         if args.verbose:
             print(message)
 
-    scanner.scan_project(progress_callback=progress_callback)
+    analysis = scanner.scan_project(progress_callback=progress_callback)
+    normalized = normalize_analysis_payload(analysis, project_root=Path(scan_target))
+    analysis_path = Path(args.output).resolve() / "analysis.json"
+    analysis_path.write_text(json.dumps(normalized, indent=2), encoding="utf-8")
     print("Scan completed successfully!")
+    print(f"Snapshot analysis written: {analysis_path}")
 
 
 if __name__ == "__main__":

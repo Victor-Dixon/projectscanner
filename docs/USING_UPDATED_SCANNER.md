@@ -8,6 +8,7 @@
   - parallel file processing
   - bare-repo metadata mode
   - context chunk exports (`directory`, `language`, `none`)
+- `src/utils/run_scanner.py` now emits normalized `analysis.json` for snapshot ingestion while preserving the legacy `project_analysis_<target>.json` report.
 
 ## Direct usage (Python)
 ```python
@@ -34,6 +35,49 @@ scanner.scan_project(
 python main.py --scan /path/to/project --export-context --generate-init
 python main.py --quick-scan /path/to/project
 ```
+
+## Snapshot Directory Contract
+
+Snapshot directories are the handoff boundary between CI scanner output and SQLite ingestion.
+
+Required files:
+- `metadata.json`
+- `analysis.json`
+
+Required `metadata.json` fields:
+- `commit_sha`
+- `timestamp`
+- `scan_mode`
+
+Optional metadata fields currently preserved by ingestion:
+- `branch`
+- `scanner_version`
+- `duration_seconds`
+- `workflow_run_id`
+
+Required `analysis.json` fields:
+- `schema`: must be `projectscanner.snapshot.v1`
+- `total_files`: integer count of normalized file rows
+- `files`: list of file objects with at least `path`
+- `issues`: list of issue objects; each issue must include `rule`
+
+Normalized file objects include:
+- `path`
+- `language`
+- `hash`
+- `functions_count`
+- `classes_count`
+- `loc`
+- `raw`
+
+CI writes metadata and the scanner wrapper writes `analysis.json`:
+
+```bash
+python src/utils/run_scanner.py --target ./src --output "$SNAPSHOT_DIR" --mode "$MODE"
+python ingest_snapshot.py "$SNAPSHOT_DIR" --repo projectscanner
+```
+
+Duplicate ingests for the same `repo + commit_sha` are idempotent: the snapshot row is reused, file rows are replaced, and issue rows are refreshed.
 
 ## High-value rollout plan
 1. Keep all wrappers importing from `core.projectscanner` only.
