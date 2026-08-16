@@ -62,7 +62,14 @@ def test_ingest_accepts_valid_snapshot(tmp_path, monkeypatch):
     snapshot = tmp_path / "snap"
     snapshot.mkdir()
     (snapshot / "metadata.json").write_text(
-        json.dumps({"commit_sha": "abc123def456", "scan_mode": "pr", "timestamp": "2026-01-01"}),
+        json.dumps(
+            {
+                "schema_version": "1.0",
+                "commit_sha": "abc123def456",
+                "scan_mode": "pr",
+                "timestamp": "2026-01-01",
+            }
+        ),
         encoding="utf-8",
     )
     (snapshot / "analysis.json").write_text(
