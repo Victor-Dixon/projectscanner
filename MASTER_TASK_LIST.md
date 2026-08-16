@@ -1,6 +1,6 @@
 # ProjectScanner Master Task List
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-08-16
 
 ## Purpose
 
@@ -50,7 +50,7 @@ ProjectScanner produces repository-scanning and inventory evidence for cleanup, 
 
 ### Pipeline and CI verification
 
-- [ ] Define and version the snapshot directory contract between `src/utils/run_scanner.py` and `ingest_snapshot.py`.
+- [ ] **ACTIVE — Stabilize the versioned snapshot directory contract between scanner CI output and ingestion.** Require supported metadata/analysis schema versions, consistent `total_files`, and validation before SQLite writes on branch `feat/snapshot-contract-validation-20260816`.
 - [ ] Validate required `metadata.json` and `analysis.json` fields before database writes.
 - [ ] Test missing or malformed files, duplicate ingestion, and file/issue row fidelity.
 - [ ] Resolve or explicitly defer the missing `PipelineOrchestrator.analyze()` and `.quality()` integrations.

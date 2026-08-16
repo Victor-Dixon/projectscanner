@@ -1,6 +1,6 @@
 # ProjectScanner Next Up
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-08-16
 
 ## Purpose
 
@@ -10,7 +10,7 @@ The scanner source of truth is `src/core/projectscanner/`. Do not restore remove
 
 ## Immediate actions
 
-1. **Stabilize the snapshot contract on the canonical scanner path.** Treat the snapshot-contract work called out by `ROADMAP.md`, `PRD.md`, `docs/DOMAIN_MODEL.md`, and `docs/REPOSITORY_AUDIT.md` as the first execution lane. Run the current snapshot/scanner tests against `src/core/projectscanner/`, map tested behavior to the supported scanner surface, and record gaps before broadening scope.
+1. **ACTIVE — Stabilize the snapshot contract on the canonical scanner path.** Branch `feat/snapshot-contract-validation-20260816` now pins supported metadata/analysis schema versions, requires `total_files` consistency, and validates those contracts before SQLite writes. Exact-head CI must pass before this lane can close.
 2. **Classify generated analysis assets.** Inventory representative committed and ignored outputs, then classify each family as source, promoted evidence, reproducible artifact, or cleanup candidate.
 3. **Confirm RAG and export integration.** Compare the normalized corpus and project-intelligence exports with current Dream Suite needs, including provenance, digest, schema, ownership, and handoff expectations.
 4. **Reconcile removed legacy GUI references.** Find documentation and entry points that imply the removed enhanced GUI is shipped; label them historical, remove stale claims, or record a support decision.
