@@ -1,6 +1,15 @@
 name: Agent Enforcer
 
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+
+concurrency:
+  group: agent-enforcer-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   enforce:
@@ -127,4 +136,4 @@ jobs:
           echo "   - Cyclomatic Complexity (≤10 functions, ≤15 classes)"
           echo "   - Lines of Code (≤350 core, ≤500 GUI)"
           echo "   - OOP Structure (class-based, SRP)"
-          echo "   - Required Files (AGENTS.md, .pre-commit-config.yaml)" 
+          echo "   - Required Files (AGENTS.md, .pre-commit-config.yaml)"
