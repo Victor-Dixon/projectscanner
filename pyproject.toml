@@ -14,6 +14,9 @@ dependencies = []
 [project.optional-dependencies]
 gui = ["PyQt5>=5.15.0"]
 dev = ["pytest>=8.0"]
+hygiene = [
+    "we-are-swarm-agenttools @ git+https://github.com/Victor-Dixon/AgentTools.git@959681dbeca5191d2e0e333feeb5b6229437c0a0",
+]
 
 [project.scripts]
 projectscanner = "projectscanner.cli:main"
