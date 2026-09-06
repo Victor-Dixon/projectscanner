@@ -10,6 +10,7 @@ from pathlib import Path
 from core.projectscanner import ProjectScanner, build_snapshot_analysis
 
 from .export_intelligence import export_portfolio
+from .fleet_hygiene import FleetHygieneError, build_fleet_hygiene_snapshot
 from .history import fetch_recent_snapshots, file_count_delta, format_history_table
 from .ingest import SnapshotValidationError, ingest_snapshot
 from .planning_contract import inspect_planning_contract
@@ -79,6 +80,41 @@ def _cmd_planning(args: argparse.Namespace) -> int:
             print(f"OUTPUT={Path(args.output).resolve()}")
 
     return 1 if result["contract_status"] == "FAIL" else 0
+
+
+def _cmd_hygiene(args: argparse.Namespace) -> int:
+    target = Path(args.path).resolve()
+    try:
+        result = build_fleet_hygiene_snapshot(
+            target,
+            canonical_branch=args.canonical_branch,
+        )
+    except FleetHygieneError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 1
+
+    if args.output:
+        output = Path(args.output).resolve()
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    if args.json:
+        print(json.dumps(result, indent=2, sort_keys=True))
+    else:
+        branches = result["branches"]
+        worktrees = result["worktrees"]
+        print("FLEET_HYGIENE=PASS")
+        print(f"REPO={result['repo']['name']}")
+        print(f"CANONICAL_BRANCH={result['repo']['canonical_branch']}")
+        print(f"LOCAL_BRANCHES={branches['local_count']}")
+        print(f"REMOTE_BRANCHES={branches['remote_count']}")
+        print(f"WORKTREES={worktrees['count']}")
+        print(f"DIRTY_WORKTREES={worktrees['dirty_count']}")
+        print("MUTATIONS_MADE=NO")
+        if args.output:
+            print(f"OUTPUT={Path(args.output).resolve()}")
+
+    return 0
 
 
 def _cmd_ingest(args: argparse.Namespace) -> int:
@@ -173,6 +209,20 @@ def build_parser() -> argparse.ArgumentParser:
     planning.add_argument("--output", "-o", help="Write normalized contract JSON")
     planning.add_argument("--json", action="store_true", help="Print normalized JSON")
     planning.set_defaults(func=_cmd_planning)
+
+    hygiene = subparsers.add_parser(
+        "hygiene",
+        help="Inspect branch and worktree hygiene without mutating Git state",
+    )
+    hygiene.add_argument("path", nargs="?", default=".", help="Repository path to inspect")
+    hygiene.add_argument(
+        "--canonical-branch",
+        default=None,
+        help="Override canonical branch discovery (for example master or main)",
+    )
+    hygiene.add_argument("--output", "-o", help="Write fleet hygiene snapshot JSON")
+    hygiene.add_argument("--json", action="store_true", help="Print normalized snapshot JSON")
+    hygiene.set_defaults(func=_cmd_hygiene)
 
     ingest = subparsers.add_parser("ingest", help="Ingest a CI snapshot into SQLite history")
     ingest.add_argument("snapshot_dir", help="Directory with metadata.json and analysis.json")
