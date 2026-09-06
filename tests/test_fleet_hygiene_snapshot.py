@@ -91,6 +91,6 @@ def test_snapshot_rejects_non_git_path(tmp_path):
     try:
         build_fleet_hygiene_snapshot(target)
     except RuntimeError as exc:
-        assert "not a Git worktree" in str(exc)
+        assert "not a git repository" in str(exc).lower()
     else:
         raise AssertionError("expected non-git path to be rejected")
