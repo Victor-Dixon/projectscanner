@@ -56,6 +56,7 @@ def test_snapshot_inventory_reports_branch_and_dirty_worktree_evidence(tmp_path)
     assert by_name["feat/demo"]["ahead_of_canonical"] == 1
     assert by_name["feat/demo"]["behind_canonical"] == 0
     assert by_name["feat/demo"]["merged_to_canonical"] is False
+    assert snapshot["signals"]["noncanonical_local_branch_count"] == 2
 
     worktrees = snapshot["worktrees"]
     assert worktrees["count"] == 2
@@ -80,8 +81,32 @@ def test_snapshot_auto_resolves_remote_default_branch(tmp_path):
     snapshot = build_fleet_hygiene_snapshot(clone)
 
     assert snapshot["repo"]["canonical_branch"] == "master"
+    assert snapshot["repo"]["canonical_ref"] == "refs/remotes/origin/master"
     assert snapshot["branches"]["remote_count"] == 1
     assert [row["name"] for row in snapshot["branches"]["remote"]] == ["master"]
+
+
+def test_remote_only_canonical_does_not_hide_local_noncanonical_branch(tmp_path):
+    source = tmp_path / "source"
+    _init_repo(source)
+
+    bare = tmp_path / "remote.git"
+    subprocess.run(["git", "clone", "--bare", str(source), str(bare)], check=True, capture_output=True, text=True)
+
+    clone = tmp_path / "clone"
+    subprocess.run(["git", "clone", str(bare), str(clone)], check=True, capture_output=True, text=True)
+    _git(clone, "remote", "set-head", "origin", "-a")
+    _git(clone, "checkout", "-b", "feat/local")
+    _git(clone, "branch", "-D", "master")
+
+    snapshot = build_fleet_hygiene_snapshot(clone)
+
+    assert snapshot["repo"]["canonical_branch"] == "master"
+    assert snapshot["repo"]["canonical_ref"] == "refs/remotes/origin/master"
+    assert snapshot["branches"]["local_count"] == 1
+    assert snapshot["branches"]["remote_count"] == 1
+    assert snapshot["signals"]["noncanonical_local_branch_count"] == 1
+    assert snapshot["signals"]["noncanonical_remote_branch_count"] == 0
 
 
 def test_snapshot_rejects_non_git_path(tmp_path):
