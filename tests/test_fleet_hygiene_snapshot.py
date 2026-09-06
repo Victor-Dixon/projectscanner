@@ -1,15 +1,11 @@
-"""Tests for branch/worktree fleet hygiene evidence."""
+"""Tests for branch/worktree fleet hygiene intelligence."""
 
 from __future__ import annotations
 
 import subprocess
 from pathlib import Path
 
-from projectscanner.fleet_hygiene import (
-    SCHEMA,
-    build_fleet_hygiene_snapshot,
-    parse_worktree_porcelain,
-)
+from projectscanner.fleet_hygiene import SCHEMA, build_fleet_hygiene_snapshot
 
 
 def _git(repo: Path, *args: str) -> str:
@@ -31,35 +27,6 @@ def _init_repo(repo: Path) -> None:
     (repo / "README.md").write_text("baseline\n", encoding="utf-8")
     _git(repo, "add", "README.md")
     _git(repo, "commit", "-m", "baseline")
-
-
-def test_parse_worktree_porcelain_handles_flags_and_reasons():
-    text = """worktree /repo
-HEAD abc123
-branch refs/heads/master
-
-worktree /repo-wt
-HEAD def456
-detached
-locked operator hold
-
-"""
-    rows = parse_worktree_porcelain(text)
-    assert rows == [
-        {
-            "path": "/repo",
-            "head": "abc123",
-            "branch_ref": "refs/heads/master",
-            "branch": "master",
-        },
-        {
-            "path": "/repo-wt",
-            "head": "def456",
-            "detached": True,
-            "locked": True,
-            "locked_reason": "operator hold",
-        },
-    ]
 
 
 def test_snapshot_inventory_reports_branch_and_dirty_worktree_evidence(tmp_path):
@@ -97,6 +64,24 @@ def test_snapshot_inventory_reports_branch_and_dirty_worktree_evidence(tmp_path)
     assert dirty["branch"] == "fix/worktree"
     assert dirty["dirty_total"] == 1
     assert dirty["dirty_classes"]["source_code"] == 1
+
+
+def test_snapshot_auto_resolves_remote_default_branch(tmp_path):
+    source = tmp_path / "source"
+    _init_repo(source)
+
+    bare = tmp_path / "remote.git"
+    subprocess.run(["git", "clone", "--bare", str(source), str(bare)], check=True, capture_output=True, text=True)
+
+    clone = tmp_path / "clone"
+    subprocess.run(["git", "clone", str(bare), str(clone)], check=True, capture_output=True, text=True)
+    _git(clone, "remote", "set-head", "origin", "-a")
+
+    snapshot = build_fleet_hygiene_snapshot(clone)
+
+    assert snapshot["repo"]["canonical_branch"] == "master"
+    assert snapshot["branches"]["remote_count"] == 1
+    assert [row["name"] for row in snapshot["branches"]["remote"]] == ["master"]
 
 
 def test_snapshot_rejects_non_git_path(tmp_path):
