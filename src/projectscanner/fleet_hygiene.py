@@ -66,13 +66,21 @@ def _canonical_ref(
     override: str | None,
 ) -> tuple[str, str]:
     local, remote = _branch_lookup(branches)
+    remote_name = remote_default.get("remote") or branches.get("remote") or "origin"
 
     def resolve(name: str) -> tuple[str, str] | None:
-        normalized = name.removeprefix("origin/")
-        if normalized in local:
-            return normalized, str(local[normalized]["ref"])
+        remote_prefix = f"{remote_name}/"
+        explicitly_remote = name.startswith(remote_prefix)
+        normalized = name.removeprefix(remote_prefix)
+
+        # Fleet hygiene treats the remote-tracking ref as canonical authority when
+        # it exists. This matters for clean exact-SHA/detached runtime checkouts,
+        # where a local canonical branch may intentionally lag the synchronized
+        # remote-tracking authority.
         if normalized in remote:
             return normalized, str(remote[normalized]["ref"])
+        if not explicitly_remote and normalized in local:
+            return normalized, str(local[normalized]["ref"])
         return None
 
     if override:
@@ -240,8 +248,12 @@ def build_fleet_hygiene_snapshot(
         "branches": branches,
         "worktrees": worktrees,
         "signals": {
-            "noncanonical_local_branch_count": max(0, branches["local_count"] - 1),
-            "noncanonical_remote_branch_count": max(0, branches["remote_count"] - 1),
+            "noncanonical_local_branch_count": sum(
+                1 for row in branches["local"] if not row["is_canonical"]
+            ),
+            "noncanonical_remote_branch_count": sum(
+                1 for row in branches["remote"] if not row["is_canonical"]
+            ),
             "local_only_branch_count": branches["local_only_count"],
             "merged_noncanonical_local_count": branches["merged_noncanonical_local_count"],
             "merged_noncanonical_remote_count": branches["merged_noncanonical_remote_count"],
