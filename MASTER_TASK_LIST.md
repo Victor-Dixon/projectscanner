@@ -56,13 +56,14 @@ ProjectScanner produces repository-scanning and inventory evidence for cleanup, 
 - [ ] Resolve or explicitly defer the missing `PipelineOrchestrator.analyze()` and `.quality()` integrations.
 - [ ] Preserve incremental Ruff enforcement while establishing a deliberate plan for legacy lint debt.
 - [ ] Decide and document the remote/upstream policy for the local `work` branch.
+- [ ] `projectscanner_ci_cost_001`: Review and promote evidence-only CI runner/cost intelligence after broad regression, representative real-repo evidence, and authority checks. Focused implementation has 20 focused local tests passing; production acceptance remains unclaimed. Next governed lane: `ci_cost_fleet_reconciliation_001`.
 
 ### Removed legacy GUI and history
 
 - [ ] Reconcile documentation and launch references that still imply the removed enhanced GUI is available.
 - [ ] Decide whether ProjectScanner is intentionally headless or whether a new GUI is justified by current requirements.
 - [ ] If a GUI is approved, design it against the canonical scanner API rather than restoring a parallel historical implementation.
-- [ ] Keep legacy GUI, token wizard, portfolio-analysis, and enhanced-scanner claims labeled historical or **Needs verification**.
+- [ ] Keep legacy GUI, token wizard, portfolio-analysis, enhanced-scanner claims labeled historical or **Needs verification**.
 
 ### Documentation and planning standardization
 

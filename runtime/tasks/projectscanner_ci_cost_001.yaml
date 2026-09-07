@@ -1,0 +1,43 @@
+schema: dreamos.task.v1
+id: projectscanner_ci_cost_001
+repo: projectscanner
+lane: ci_cost_intelligence
+priority: P1
+status: needs_review
+objective: >
+  Add evidence-only CI runner and cost intelligence to the existing ProjectScanner
+  CLI so the fleet can identify hosted-minute exposure and review safe migration
+  opportunities without duplicating governance or execution systems.
+scope:
+  - static workflow, runner, trigger, permission, and advisory-job inventory
+  - conservative duplicate-execution findings with source provenance
+  - optional measured billing evidence; no inferred dollars or savings
+  - single-repo and portfolio JSON reports
+  - focused tests and documented public CLI
+acceptance:
+  - id: AC001
+    requirement: Hosted, self-hosted, and unresolved placements remain distinct.
+    verification: tests/test_ci_cost.py
+  - id: AC002
+    requirement: Malformed or unsafe input fails closed without executing workflow code.
+    verification: tests/test_ci_cost.py
+  - id: AC003
+    requirement: CLI and portfolio report paths preserve existing command contracts.
+    verification: tests/test_ci_cost_cli.py
+  - id: AC004
+    requirement: Billing numbers require measured values and explicit provenance.
+    verification: tests/test_ci_cost.py
+  - id: AC005
+    requirement: Existing repository regression and exact-head review gates pass.
+    verification: pytest -q
+holds:
+  - no workflow, runner, service, deployment, or billing-account mutation
+  - no hosted CI rerun merely to validate this feature
+  - no master merge or production promotion without separate authority
+  - preserve existing ProjectScanner PRs and salvage branches
+  - no assumed savings, runner health, or required-check equivalence
+next_lane: ci_cost_fleet_reconciliation_001
+completion_condition: >
+  Close implementation after scoped tests and clean commit, but keep production
+  acceptance open until broad regression, representative real-repo evidence,
+  and governed integration review are recorded.

@@ -16,6 +16,10 @@ The scanner source of truth is `src/core/projectscanner/`. Do not restore remove
 4. **Reconcile removed legacy GUI references.** Find documentation and entry points that imply the removed enhanced GUI is shipped; label them historical, remove stale claims, or record a support decision.
 5. **Decide local branch provenance policy.** Determine whether `work` should track a remote branch and document the upstream, push, and pull-request policy without changing remote state during the decision pass.
 
+## CI cost intelligence review lane
+
+`projectscanner_ci_cost_001` is an additive review lane, not a replacement for the priorities above. Inspect the scoped commit and run the full repository regression suite. Generate representative reports from verified current checkouts, reconcile actual hosted usage with authoritative billing, and obtain DreamVault approval before proposing workflow migrations. Required-check identity, runner trust, and release gates are mandatory. No production mutation or merge is authorized by this handoff.
+
 ## Exit criteria for this handoff
 
 - Snapshot-contract stabilization remains the first execution lane until its verification evidence is recorded.

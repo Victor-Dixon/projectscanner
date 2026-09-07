@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "projectscanner.ci-cost.v1",
+  "title": "ProjectScanner CI Cost Evidence V1",
+  "type": "object",
+  "required": [
+    "schema",
+    "repo",
+    "repo_root",
+    "generated_at",
+    "evidence_complete",
+    "sources",
+    "workflows",
+    "summary",
+    "findings",
+    "usage",
+    "governance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "projectscanner.ci-cost.v1"
+    },
+    "repo": {
+      "type": "string"
+    },
+    "repo_root": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_complete": {
+      "type": "boolean"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "workflow_count",
+        "job_count",
+        "github_hosted_jobs",
+        "self_hosted_jobs",
+        "unknown_or_delegated_jobs"
+      ],
+      "properties": {
+        "workflow_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "workflow_files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "job_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "github_hosted_jobs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "github_hosted_possible_jobs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "self_hosted_jobs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown_or_delegated_jobs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "finding_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "usage": {
+      "type": "object",
+      "required": [
+        "availability"
+      ],
+      "properties": {
+        "availability": {
+          "enum": [
+            "unavailable",
+            "provided"
+          ]
+        },
+        "billable_minutes": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "billed_usd": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "authority",
+        "migration_authorized"
+      ],
+      "properties": {
+        "authority": {
+          "const": "evidence_only"
+        },
+        "migration_authorized": {
+          "const": false
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
