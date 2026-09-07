@@ -1,0 +1,30 @@
+task_id: snapshot_contract_validation_20260816
+repo: Victor-Dixon/projectscanner
+lane: snapshot_contract_stabilization
+status: ACTIVE
+objective: >-
+  Stabilize the versioned snapshot artifact contract between scanner CI output
+  and SQLite ingestion so unsupported or internally inconsistent payloads are
+  rejected before database writes.
+scope:
+  - src/core/projectscanner/snapshot_contract.py
+  - tests/test_snapshot_contract.py
+  - .github/workflows/scanner-snapshot.yml
+  - MASTER_TASK_LIST.md
+  - NEXT_UP.md
+acceptance:
+  - metadata.json declares the supported metadata schema version
+  - metadata validation rejects unsupported schema versions
+  - analysis validation rejects unsupported schema versions
+  - analysis total_files, when present, equals the number of files entries
+  - malformed snapshots fail validation before SQLite writes
+verification:
+  - pytest -q tests/test_snapshot_contract.py tests/test_scanner_snapshot_workflow.py
+  - pytest -q
+  - exact-head GitHub Actions Scanner Snapshot workflow
+holds:
+  - do not broaden into duplicate-ingestion or row-fidelity work in this slice
+  - do not claim completion before exact-head CI succeeds
+  - do not append MASTER_TASK_LOG.md until verification proves closure
+next_lane: >-
+  Test missing/malformed snapshot files, duplicate ingestion, and file/issue row fidelity.

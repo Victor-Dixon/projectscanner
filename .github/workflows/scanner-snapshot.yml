@@ -85,6 +85,7 @@ jobs:
 
           cat > "$SNAPSHOT_DIR/metadata.json" << EOF
           {
+            "schema_version": "1.0",
             "commit_sha": "${{ github.sha }}",
             "branch": "${{ github.ref_name }}",
             "timestamp": "$TIMESTAMP",
