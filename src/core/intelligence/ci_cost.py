@@ -10,12 +10,12 @@ import hashlib
 import json
 import math
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 SCHEMA = "projectscanner.ci-cost.v1"
-HOSTED = re.compile(r"^(?:ubuntu|windows|macos)-(?:latest|[0-9][A-Za-z0-9.\-]*|slim)$", re.I)
+HOSTED = re.compile(r"^(?:ubuntu|windows|macos)-(?:latest|[0-9][A-Za-z0-9.\-]*|slim)$", re.IGNORECASE)
 MATRIX = re.compile(r"^\$\{\{\s*matrix\.([A-Za-z_][A-Za-z0-9_-]*)\s*\}\}$")
 MAX_WORKFLOW_BYTES = 1_048_576
 
@@ -36,7 +36,7 @@ def _loader():
         for key, values in yaml.SafeLoader.yaml_implicit_resolvers.items()
     }
     WorkflowLoader.add_implicit_resolver(
-        "tag:yaml.org,2002:bool", re.compile(r"^(?:true|false)$", re.I), list("tTfF")
+        "tag:yaml.org,2002:bool", re.compile(r"^(?:true|false)$", re.IGNORECASE), list("tTfF")
     )
 
     def unique_mapping(loader, node):
@@ -65,7 +65,7 @@ def _load_workflow(text: str) -> dict[str, Any]:
     except yaml.YAMLError as exc:
         raise ValueError("invalid workflow YAML") from exc
     if not isinstance(result, dict):
-        raise ValueError("workflow root must be a mapping")
+        raise TypeError("workflow root must be a mapping")
     return result
 
 
@@ -303,7 +303,7 @@ def inspect_ci(repo_root: Path | str, *, source_ref: str | None = None,
                 record = _inspect_workflow(rel, data)
                 records.append(record)
                 findings.extend(record["findings"])
-            except (OSError, UnicodeError, ValueError) as exc:
+            except (OSError, UnicodeError, TypeError, ValueError) as exc:
                 findings.append(_finding("WORKFLOW_PARSE_ERROR", rel, "workflow",
                     {"error_type": type(exc).__name__}, "Inspect the workflow manually; CI inventory is incomplete.", "high"))
     elif workflow_dir.exists():
@@ -316,7 +316,7 @@ def inspect_ci(repo_root: Path | str, *, source_ref: str | None = None,
     unknown = job_count - hosted - self_hosted
     possible = sum(j["runner"]["github_hosted_possible"] for w in records for j in w["jobs"])
     report = {"schema": SCHEMA, "repo": root.name, "repo_root": str(root),
-              "source_ref": source_ref, "generated_at": datetime.now(timezone.utc).isoformat(),
+              "source_ref": source_ref, "generated_at": datetime.now(UTC).isoformat(),
               "evidence_complete": not any(f["code"] in {"WORKFLOW_DIRECTORY_SYMLINK", "WORKFLOW_PARSE_ERROR"} for f in findings),
               "sources": sources, "workflows": records,
               "summary": {"workflow_count": len(records), "workflow_files": workflow_files, "job_count": job_count,
@@ -373,7 +373,7 @@ def inspect_portfolio(projects_root: Path | str, repos: list[str] | None = None,
             raise FileNotFoundError(f"repository is unavailable: {name}")
         records.append(inspect_ci(repo))
     return {"schema": "projectscanner.ci-portfolio.v1",
-            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "generated_at": datetime.now(UTC).isoformat(),
             "projects_root": str(root), "repo_count": len(records), "repos": records,
             "summary": {"github_hosted_jobs": sum(r["summary"]["github_hosted_jobs"] for r in records),
                         "self_hosted_jobs": sum(r["summary"]["self_hosted_jobs"] for r in records),
