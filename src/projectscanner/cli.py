@@ -35,14 +35,23 @@ def _hydrate_current_analysis(scanner: ProjectScanner, current_paths: list[str])
     )
 
 
+def _canonicalize(value: Any) -> Any:
+    """Recursively canonicalize mappings while preserving semantic list order."""
+    if isinstance(value, dict):
+        return {key: _canonicalize(value[key]) for key in sorted(value)}
+    if isinstance(value, list):
+        return [_canonicalize(item) for item in value]
+    return value
+
+
 def _canonical_analysis(analysis: dict[str, Any]) -> dict[str, Any]:
-    """Canonicalize top-level paths and dependency graph ordering for stable artifacts."""
-    ordered = {key: analysis[key] for key in sorted(analysis)}
+    """Canonicalize scan output and dependency graph importer ordering."""
+    ordered = _canonicalize(analysis)
     graph = ordered.get("__dependency_graph__")
     if isinstance(graph, dict):
         ordered["__dependency_graph__"] = {
             key: sorted(value) if isinstance(value, list) else value
-            for key, value in sorted(graph.items())
+            for key, value in graph.items()
         }
     return ordered
 
