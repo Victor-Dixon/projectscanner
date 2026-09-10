@@ -1,6 +1,6 @@
 # ProjectScanner Master Task List
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-09-09
 
 ## Purpose
 
@@ -16,6 +16,45 @@ ProjectScanner produces repository-scanning and inventory evidence for cleanup, 
 - Repository audit: `docs/REPOSITORY_AUDIT.md`
 - Requirements and roadmap: `PRD.md` and `ROADMAP.md`
 - Operating rules: `AGENTS.md`
+
+## Assignment-ready execution lanes
+
+Task shape:
+
+`- [ ] TASK_ID | PRIORITY | STATUS | Title`
+
+Statuses: `READY`, `ACTIVE`, `BLOCKED`, `COMPLETE`.
+
+- [ ] PSC-HYGIENE-001 | P0 | ACTIVE | Land the existing fleet branch/worktree sensor lane from PR #22 as the canonical observational foundation for branch retirement evidence; do not create a duplicate branch inventory implementation.
+- [ ] PSC-INTEL-001 | P0 | ACTIVE | Land the existing portfolio evidence/artifact-role lane from PR #23 so ProjectScanner normalizes repo planning evidence and defines artifact authority without becoming planner authority.
+- [ ] PSC-RETIRE-001 | P0 | BLOCKED | Add deterministic branch retirement classification consuming canonical sensor facts and emitting `FAST_PATH`, `FORENSIC_PATH`, `KEEP`, or `UNKNOWN`; blocked on accepted PSC-HYGIENE-001 and PSC-INTEL-001 foundations.
+- [ ] PSC-CONTEXT-001 | P0 | BLOCKED | Extend existing repo analysis, intelligence packet, ChatGPT context, and RAG projection with branch-retirement summaries without creating another standalone branch-cleanup JSON family; blocked on PSC-RETIRE-001.
+- [ ] PSC-FLEET-001 | P1 | BLOCKED | Run ProjectScanner across the governed repo fleet to produce planning-drift and branch-retirement evidence for downstream DreamVault reconciliation; blocked on PSC-CONTEXT-001.
+
+### Artifact authority hierarchy
+
+Use existing artifacts as layers rather than peers:
+
+1. `project_analysis_<repo>.json` / `chatgpt_project_context_<repo>.json` — deep scanner evidence and compatibility context.
+2. `repo_analysis.json` — current repo/runtime facts; extend this layer with branch telemetry where appropriate.
+3. `planning_contract.json` — repository planning/NEXT_UP authority.
+4. ProjectScanner intelligence packet / portfolio index — normalized operational evidence.
+5. `chatgpt_context.json` — compact model-facing projection, never source of truth.
+6. RAG corpus — searchable detailed and historical evidence.
+7. Notion/DreamVault — human projection and downstream governance/assignment authority respectively.
+
+Do not introduce `branch_cleanup.json`, `branch_manifest.json`, or equivalent new artifact families unless a concrete machine boundary later proves they are necessary.
+
+### Branch retirement policy target
+
+ProjectScanner observes and classifies; it does not delete branches.
+
+- `FAST_PATH`: no open PR, not default/protected, no unique forward history, no active worktree, no live dependency, and exact branch/head evidence is current.
+- `FORENSIC_PATH`: unique history, live dependency, or materially ambiguous evidence requires one bounded inspection/salvage decision.
+- `KEEP`: active/open/protected/default or otherwise currently required branch.
+- `UNKNOWN`: required evidence is unavailable or stale; do not infer deletion safety.
+
+Heavy manifests and retention workflows are reserved for genuinely unique/live/ambiguous branches rather than ordinary merged or fully-contained branches.
 
 ## Strategic inventory by domain
 
