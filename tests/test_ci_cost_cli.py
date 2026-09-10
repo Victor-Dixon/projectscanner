@@ -11,7 +11,7 @@ import pytest
 
 
 def _cli(monkeypatch):
-    # The real CLI is loaded unchanged. Only unrelated legacy imports are stubbed.
+    # The real CLI is loaded unchanged. Only unrelated package integrations are stubbed.
     package = types.ModuleType("projectscanner")
     package.__path__ = []
     monkeypatch.setitem(sys.modules, "projectscanner", package)
@@ -21,13 +21,17 @@ def _cli(monkeypatch):
     monkeypatch.setitem(sys.modules, "core.projectscanner", core)
     for name, exports in {
         "export_intelligence": ["export_portfolio"],
+        "fleet_hygiene": ["FleetHygieneError", "build_fleet_hygiene_snapshot"],
         "history": ["fetch_recent_snapshots", "file_count_delta", "format_history_table"],
         "ingest": ["ingest_snapshot"],
         "planning_contract": ["inspect_planning_contract"],
     }.items():
         module = types.ModuleType("projectscanner." + name)
         for export in exports:
-            setattr(module, export, lambda *args, **kwargs: None)
+            if export == "FleetHygieneError":
+                setattr(module, export, type("FleetHygieneError", (RuntimeError,), {}))
+            else:
+                setattr(module, export, lambda *args, **kwargs: None)
         if name == "ingest":
             module.SnapshotValidationError = type("SnapshotValidationError", (ValueError,), {})
         monkeypatch.setitem(sys.modules, module.__name__, module)
