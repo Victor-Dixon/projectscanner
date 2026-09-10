@@ -1,34 +1,38 @@
 # ProjectScanner Next Up
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-09-09
 
 ## Purpose
 
-This file is the immediate handoff only. The canonical backlog is `MASTER_TASK_LIST.md`, and completed history is recorded in `MASTER_TASK_LOG.md`.
-
-The scanner source of truth is `src/core/projectscanner/`. Do not restore removed scanner or GUI implementations as parallel engines, and mark unverified behavior as Unknown.
+Immediate executable/dependency queue only. `MASTER_TASK_LIST.md` owns stable task identity and strategic inventory.
 
 ## Immediate actions
 
-1. **Stabilize the snapshot contract on the canonical scanner path.** Treat the snapshot-contract work called out by `ROADMAP.md`, `PRD.md`, `docs/DOMAIN_MODEL.md`, and `docs/REPOSITORY_AUDIT.md` as the first execution lane. Run the current snapshot/scanner tests against `src/core/projectscanner/`, map tested behavior to the supported scanner surface, and record gaps before broadening scope.
-2. **Classify generated analysis assets.** Inventory representative committed and ignored outputs, then classify each family as source, promoted evidence, reproducible artifact, or cleanup candidate.
-3. **Confirm RAG and export integration.** Compare the normalized corpus and project-intelligence exports with current Dream Suite needs, including provenance, digest, schema, ownership, and handoff expectations.
-4. **Reconcile removed legacy GUI references.** Find documentation and entry points that imply the removed enhanced GUI is shipped; label them historical, remove stale claims, or record a support decision.
-5. **Decide local branch provenance policy.** Determine whether `work` should track a remote branch and document the upstream, push, and pull-request policy without changing remote state during the decision pass.
+1. `PSC-INTEL-001 | P0 | READY` — Consolidate the artifact pipeline around the canonical hierarchy.
+   - Keep deep scan and current repo scan as distinct evidence inputs.
+   - Make `planning_contract.json` the normalized repository-planning evidence surface.
+   - Make `projectscanner_intelligence_packet.v1` the canonical compact operational evidence packet.
+   - Keep `chatgpt_context.json` as a bounded projection, not authority.
+   - Downgrade legacy context/cleanup artifacts to compatibility/advisory roles rather than peer authority.
 
-## Exit criteria for this handoff
+2. `PSC-BRANCH-001 | P0 | BLOCKED` — Add branch intelligence using `FAST_PATH`, `FORENSIC_PATH`, and `UNRESOLVED`.
+   - Dependency: PSC-INTEL-001.
+   - Emit evidence only; DreamVault owns deletion/promotion governance.
 
-- Snapshot-contract stabilization remains the first execution lane until its verification evidence is recorded.
-- Each action produces evidence, a documented decision, or a scoped backlog update.
-- No removed legacy implementation is presented as currently shipped.
-- Generated assets and Dream Suite integration claims have explicit ownership and verification status.
-- Any discovered work is added to `MASTER_TASK_LIST.md`; completed work is appended to `MASTER_TASK_LOG.md`.
-- `pytest -q` remains the regression gate for any later implementation change.
+3. `PSC-PLAN-001 | P0 | BLOCKED` — Normalize stable task IDs, status, dependencies and NEXT_UP membership from repository-owned planning.
+   - Dependency: PSC-INTEL-001.
+   - Fail closed on malformed/unknown planning; never invent task identity.
 
-## References
+4. `PSC-PACKET-001 | P0 | BLOCKED` — Join deep scan + repo facts + planning evidence into the canonical intelligence packet with provenance/version checks.
+   - Dependencies: PSC-INTEL-001, PSC-BRANCH-001, PSC-PLAN-001.
 
-- Canonical task inventory: `MASTER_TASK_LIST.md`
-- Completed history: `MASTER_TASK_LOG.md`
-- Domain model: `docs/DOMAIN_MODEL.md`
-- Repository audit: `docs/REPOSITORY_AUDIT.md`
-- Agent instructions: `AGENTS.md`
+5. `PSC-CONSUMER-001 | P1 | BLOCKED` — Verify DreamVault/Dream.OS consumption and authority boundaries.
+   - Dependency: PSC-PACKET-001.
+
+## Exit criteria
+
+- One documented artifact hierarchy; no ambiguous peer authority.
+- Branch evidence supports FAST_PATH vs FORENSIC_PATH without authorizing mutation.
+- Planning evidence preserves stable source task IDs/status/dependencies/NEXT_UP.
+- DreamVault remains governance/ranking authority.
+- `pytest -q` remains the implementation regression gate; planning changes alone do not claim implementation completion.
