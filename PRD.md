@@ -27,11 +27,31 @@ ProjectScanner is an evidence producer. It does not own DreamVault portfolio gov
 | GitHub/local inventory helpers | `github_sources.py`, `scan_targets.py` | Supported |
 | Portfolio intelligence export | `projectscanner export` | Supported/tested |
 | Planning contract inspection | `projectscanner planning` | Supported/tested |
-| Branch/worktree hygiene evidence | `projectscanner hygiene` | Supported/tested/read-only |
+| Branch/worktree hygiene evidence | `projectscanner hygiene` | Supported/tested/read-only; requires the `[hygiene]` install extra |
 | Snapshot validation | versioned metadata/analysis contract | Supported/tested |
 | SQLite snapshot ingestion | `projectscanner ingest` | Supported/tested/idempotent |
 | Snapshot history | `projectscanner history` | Supported/tested |
 | HQ portfolio evidence v2 | `projectscanner.portfolio_index_v2` | Supported/tested/evidence-only |
+
+## Installation contract
+
+The base editable install supports scan/export/planning/ingest/history:
+
+```bash
+pip install -e .
+```
+
+The full supported headless surface, including branch/worktree hygiene evidence, requires the pinned AgentTools integration:
+
+```bash
+pip install -e '.[hygiene]'
+```
+
+Development/full-regression environments use:
+
+```bash
+pip install -e '.[dev,hygiene]'
+```
 
 ## Functional requirements
 
@@ -41,7 +61,7 @@ ProjectScanner must scan supported source/documentation files while honoring exc
 
 ### FR2 — Emit reviewable evidence
 
-Generated analysis and context artifacts must be deterministic enough for regression testing and must preserve the boundary between observed evidence and downstream decisions.
+Generated analysis and context artifacts must be deterministic enough for regression testing and must preserve the boundary between observed evidence and downstream decisions. Re-scanning an unchanged current tree into the same output location must not erase cached file evidence, and deleted files must not persist in current artifacts.
 
 ### FR3 — Maintain a versioned snapshot contract
 
@@ -53,7 +73,7 @@ A repeated `(repo, commit_sha)` ingestion must not accumulate duplicate child ro
 
 ### FR5 — Keep hygiene observational
 
-Branch/worktree hygiene output may classify current Git evidence but must not itself delete branches or mutate repositories.
+Branch/worktree hygiene output may classify current Git evidence but must not itself delete branches or mutate repositories. The command requires the `[hygiene]` dependency set; a base install is not claimed to provide this optional AgentTools-backed surface.
 
 ### FR6 — Keep portfolio v2 non-authoritative
 
@@ -82,4 +102,4 @@ These surfaces require a new explicit objective before implementation work is ju
 
 ## Production status
 
-The supported headless surface is production-ready as of 2026-09-10. See `PRODUCTION_READINESS.md` for the verification boundary and `MASTER_TASK_LIST.md` / `NEXT_UP.md` for executable repository state.
+The supported headless surface is production-ready as of 2026-09-10 when installed with the dependency set required for the invoked command. See `PRODUCTION_READINESS.md` for the verification boundary and `MASTER_TASK_LIST.md` / `NEXT_UP.md` for executable repository state.
