@@ -63,9 +63,9 @@ archive/untracked_overlay_20260505/
 
 ## Supported boundary and deferred surfaces
 
-The production command surface is intentionally headless. The supported `projectscanner` CLI exposes scanning, export, planning inspection, branch/worktree hygiene inspection, snapshot ingestion, and history. Legacy GUI sources remain in the repository for historical salvage but are not advertised or supported by the production CLI.
+The production command surface is intentionally headless. The supported `projectscanner` CLI exposes scanning, export, planning inspection, branch/worktree hygiene inspection, snapshot ingestion, and history. The `hygiene` command requires the optional `[hygiene]` dependency set because it consumes the pinned AgentTools evidence library. Legacy GUI sources remain in the repository for historical salvage but are not advertised or supported by the production CLI.
 
-The versioned snapshot path now enforces schema version compatibility before database writes and reconciles repeated `(repo, commit_sha)` ingestion without accumulating stale file or issue rows.
+The versioned snapshot path enforces schema version compatibility before database writes and reconciles repeated `(repo, commit_sha)` ingestion without accumulating stale file or issue rows. Supported CLI scans also reconcile cached unchanged files and deleted files against the current source set before emitting deterministic report, snapshot, and context artifacts.
 
 The following remain explicitly unsupported/incomplete rather than being presented as working features:
 
@@ -73,18 +73,38 @@ The following remain explicitly unsupported/incomplete rather than being present
 - Agent categorization expects class detail dictionaries that the current analyzer does not emit.
 - `PipelineOrchestrator.analyze()` and `.quality()` still reference incomplete enrichment integrations.
 
-## Common usage
+## Installation
 
-Install the package in editable mode:
+For scanning, export, planning, ingestion, and history without branch/worktree hygiene support:
 
 ```bash
 pip install -e .
 ```
 
+For the full supported headless CLI, including `projectscanner hygiene`:
+
+```bash
+pip install -e '.[hygiene]'
+```
+
+The full CI/development verification environment is:
+
+```bash
+pip install -e '.[dev,hygiene]'
+```
+
+## Common usage
+
 Run a local scan:
 
 ```bash
 projectscanner scan /path/to/project --output ./scan-output
+```
+
+Inspect branch/worktree hygiene after installing the `[hygiene]` extra:
+
+```bash
+projectscanner hygiene /path/to/project --json
 ```
 
 Run the CI-oriented scanner wrapper:
@@ -131,4 +151,4 @@ pytest -q
 
 ## Current status
 
-ProjectScanner is an active headless toolbelt repository with a working scanner, context/export path, branch/worktree evidence surface, versioned snapshot contract, and idempotent SQLite ingestion. Unsupported legacy or enrichment surfaces are kept outside the production command contract until they are independently verified.
+ProjectScanner is an active headless toolbelt repository with a working scanner, context/export path, branch/worktree evidence surface, versioned snapshot contract, idempotent SQLite ingestion, and portfolio evidence index. Unsupported legacy or enrichment surfaces are kept outside the production command contract until independently verified.

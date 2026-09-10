@@ -1,34 +1,30 @@
 # ProjectScanner Next Up
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-09-10
 
-## Purpose
+## Authority
 
-This file is the immediate handoff only. The canonical backlog is `MASTER_TASK_LIST.md`, and completed history is recorded in `MASTER_TASK_LOG.md`.
+This file is the bounded executable projection of `MASTER_TASK_LIST.md`.
 
-The scanner source of truth is `src/core/projectscanner/`. Do not restore removed scanner or GUI implementations as parallel engines, and mark unverified behavior as Unknown.
+## Immediate queue
 
-## Immediate actions
+**EMPTY — no canonical READY or ACTIVE task.**
 
-1. **Stabilize the snapshot contract on the canonical scanner path.** Treat the snapshot-contract work called out by `ROADMAP.md`, `PRD.md`, `docs/DOMAIN_MODEL.md`, and `docs/REPOSITORY_AUDIT.md` as the first execution lane. Run the current snapshot/scanner tests against `src/core/projectscanner/`, map tested behavior to the supported scanner surface, and record gaps before broadening scope.
-2. **Classify generated analysis assets.** Inventory representative committed and ignored outputs, then classify each family as source, promoted evidence, reproducible artifact, or cleanup candidate.
-3. **Confirm RAG and export integration.** Compare the normalized corpus and project-intelligence exports with current Dream Suite needs, including provenance, digest, schema, ownership, and handoff expectations.
-4. **Reconcile removed legacy GUI references.** Find documentation and entry points that imply the removed enhanced GUI is shipped; label them historical, remove stale claims, or record a support decision.
-5. **Decide local branch provenance policy.** Determine whether `work` should track a remote branch and document the upstream, push, and pull-request policy without changing remote state during the decision pass.
+The 2026-09-10 production-readiness mission closed the executable ProjectScanner lanes for snapshot contracts, ingestion determinism, supported CLI surface, full-suite CI, and portfolio evidence v2.
 
-## Exit criteria for this handoff
+Deferred legacy/enrichment ideas remain `BACKLOG` in `MASTER_TASK_LIST.md` and must not be executed unless a new concrete objective explicitly promotes one.
 
-- Snapshot-contract stabilization remains the first execution lane until its verification evidence is recorded.
-- Each action produces evidence, a documented decision, or a scoped backlog update.
-- No removed legacy implementation is presented as currently shipped.
-- Generated assets and Dream Suite integration claims have explicit ownership and verification status.
-- Any discovered work is added to `MASTER_TASK_LIST.md`; completed work is appended to `MASTER_TASK_LOG.md`.
-- `pytest -q` remains the regression gate for any later implementation change.
+## Next assignment rule
 
-## References
+A future worker must stop rather than invent work when this queue is empty. A new lane requires an explicit objective plus a stable task ID promoted to `READY` or `ACTIVE` in `MASTER_TASK_LIST.md`.
 
-- Canonical task inventory: `MASTER_TASK_LIST.md`
-- Completed history: `MASTER_TASK_LOG.md`
-- Domain model: `docs/DOMAIN_MODEL.md`
-- Repository audit: `docs/REPOSITORY_AUDIT.md`
-- Agent instructions: `AGENTS.md`
+## Verification baseline
+
+Any future implementation PR must pass:
+
+```text
+pytest -q
+Agent Enforcer
+```
+
+at its exact head before merge.

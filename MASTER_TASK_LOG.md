@@ -1,6 +1,6 @@
 # ProjectScanner Master Task Log
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-09-10
 
 ## Purpose and historical boundary
 
@@ -374,3 +374,65 @@ The canonical scanner source is `src/core/projectscanner/`. Earlier standalone s
 
 - commits: `409945c` `fix(rag): cache repo provenance during corpus export (#12)`; `86c2d00` `fix(ci): enforce Ruff without charging PRs for legacy debt (#13)`; `f57cda9` `docs(planning): refresh ProjectScanner next up timestamp`; `6c519b0` `docs(planning): refresh ProjectScanner master task sync date`
 - PRs: `#12` and `#13`, visible in commit subjects
+
+### 2026-09-10 - Branch/worktree evidence sensor foundation
+
+#### Completed
+
+- `PSC-HYGIENE-001`: landed the canonical observational branch/worktree evidence sensor while preserving ProjectScanner's non-mutation boundary.
+
+#### Evidence
+
+- PR: `#22`
+- reviewed head: `506b9e99bc3a9430ac97fc4e143476b637bbf265`
+- merge commit: `b57ef64fb7415504d212c56c1b3ca1ed38f87ccc`
+
+### 2026-09-10 - Versioned snapshot contract
+
+#### Completed
+
+- `PSC-SNAPSHOT-001`: enforced supported metadata and analysis schema versions before ingestion.
+- Added validation for malformed/inconsistent `analysis.total_files` and emitted the supported metadata schema version from Scanner Snapshot CI.
+
+#### Evidence
+
+- PR: `#26`
+- merge commit: `302ffd56a2265adc426146143319976b88525387`
+
+### 2026-09-10 - Idempotent snapshot ingestion
+
+#### Completed
+
+- `PSC-INGEST-001`: made repeated `(repo, commit_sha)` ingestion deterministic and row-idempotent.
+- Snapshot metadata refreshes on re-ingest; file and issue child rows are reconciled to current state; transaction failures roll back.
+
+#### Evidence
+
+- PR: `#27`
+- merge commit: `22cfc115fdc18508315a0fc36de188aaf945d9c5`
+
+### 2026-09-10 - Headless production surface and full regression gate
+
+#### Completed
+
+- `PSC-SURFACE-001`: removed the unsupported production GUI command/extra while retaining legacy source for salvage.
+- Promoted the repository's stated full `pytest -q` suite into Scanner Snapshot CI rather than relying on a curated subset.
+
+#### Evidence
+
+- PR: `#31`
+- merge commit: `7316ee0ba81d3524880782c0c47fd5df78768829`
+- exact-head Scanner Snapshot and Agent Enforcer: PASS before merge
+
+### 2026-09-10 - Portfolio evidence index v2
+
+#### Completed
+
+- `PSC-PORTFOLIO-001`: reconstructed the useful unique work from stale PR #23 on current `master` instead of merging the stale branch wholesale.
+- Added `dreamos.portfolio-index.v2`, normalized task evidence, fail-closed NEXT_UP projection checks, artifact-role typing, and optional deep-analysis-library references without granting ProjectScanner planner or mutation authority.
+
+#### Evidence
+
+- replacement PR: `#32`
+- original stale PR: `#23` closed after salvage
+- merge commit: `645f219414b5bdf6010f256b606d5cf1dddb41df`

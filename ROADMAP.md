@@ -1,95 +1,61 @@
 # ProjectScanner Roadmap
 
-Last synchronized: 2026-07-03
+Last synchronized: 2026-09-10
 
-## What this project is
+## Mission
 
-ProjectScanner is repository scanning and inventory intelligence tooling for local and GitHub projects. It belongs to the software repository analysis domain and produces machine-readable evidence for cleanup, consolidation, promotion, and automation workflows.
+ProjectScanner is headless repository-intelligence tooling. Its supported job is to produce tested, machine-readable evidence; it is not a planner, governance system, mutation executor, or GUI product.
 
-## Why it exists
+## Completed production baseline
 
-The project exists so operators and agents can reason from scan artifacts instead of assumptions when reviewing repositories.
+### Scanner and reporting
 
-## Completed
+- Canonical scanner source under `src/core/projectscanner/`.
+- Local scanning with file exclusion, size, and cache handling.
+- Python structure analysis plus lightweight JS/TS/Rust extraction.
+- JSON reports and ChatGPT-context export/chunking.
+- Bare Git metadata and init-file generation.
+- GitHub/local inventory and scan-target helpers.
 
-### Core scanner baseline
+### Snapshot and history contract
 
-- Canonical scanner source established under `src/core/projectscanner/`.
-- Local project scanning implemented through `ProjectScanner`.
-- File exclusion, size limit, and cache handling implemented in `FileProcessor`.
-- Python analysis implemented with `ast`.
-- Lightweight JS/TS and Rust extraction implemented with regex.
-- JSON report generation implemented.
-- ChatGPT context export and context chunking implemented.
-- Bare Git repository metadata export implemented.
-- `__init__.py` generation implemented.
+- Versioned `metadata.json` and `analysis.json` contract.
+- Schema-version enforcement before database writes.
+- CI metadata version emission.
+- Malformed-input regression coverage.
+- Idempotent `(repo, commit_sha)` ingestion.
+- Exact file/issue row reconciliation and transactional rollback.
 
-### Inventory and portfolio support
+### Repository intelligence
 
-- GitHub repository library scan flow implemented in `src/scanners/github_library_scanner.py`.
-- GitHub CLI inventory and scan target manifest helpers implemented in `github_sources.py` and `scan_targets.py`.
-- Artifact standard checks implemented in `project_artifact_standards.py`.
-- Filesystem/git/docs-marker portfolio export implemented in `scripts/export_project_intelligence.py`.
+- Planning-contract inspection.
+- Read-only branch/worktree hygiene evidence.
+- Portfolio intelligence v1 export.
+- Additive `dreamos.portfolio-index.v2` with normalized task inventory, fail-closed projection checks, typed artifact roles, and explicit DreamVault authority boundary.
 
-### Quality and automation support
+### Production discipline
 
-- Contract rule engine and rule subclasses implemented under `src/core/rules/`.
-- Standalone quality checkers implemented under `src/quality/`.
-- CI scanner wrapper implemented in `src/utils/run_scanner.py`.
-- SQLite snapshot ingestor implemented in `ingest_snapshot.py`.
-- GitHub Actions workflows exist for scanner snapshots and agent enforcement.
+- Supported product boundary is intentionally headless.
+- Broken GUI command/extra removed from the production CLI/package surface while legacy source remains available for salvage.
+- Full `pytest -q` is now the Scanner Snapshot CI regression gate.
+- Agent Enforcer remains the second exact-head gate.
+- Stale snapshot, planner, productization, revenue, and portfolio PRs were either reconstructed on current master or closed without blind merge.
 
-### Documentation synchronization
+## Deferred — not executable by default
 
-- Domain model documented in `docs/DOMAIN_MODEL.md`.
-- Repository audit documented in `docs/REPOSITORY_AUDIT.md`.
-- Required lifecycle docs updated: `PRD.md`, `ROADMAP.md`, `MASTER_TASK_LIST.md`, `MASTER_TASK_LOG.md`, `NEXT_UP.md`, and `AGENTS.md`.
+These are possible future product decisions, not current readiness blockers:
 
-## Current state
+- legacy GUI restoration;
+- PipelineOrchestrator analysis/quality enrichment;
+- dependency-graph enrichment;
+- agent categorization enrichment;
+- tree-sitter parsing;
+- additional commercial packaging.
 
-The working core is the local scanner/report/context path. The repository also contains inventory, quality, and snapshot-history utilities, but some integration seams are incomplete.
+A deferred item must not become active merely because code or historical documentation exists. It requires a concrete user/operator objective and promotion to `READY` or `ACTIVE` in `MASTER_TASK_LIST.md`.
 
-Known incomplete areas:
+## Next work
 
-- Snapshot artifact schema mismatch between scanner output and `ingest_snapshot.py`.
-- GUI launch paths reference missing modules.
-- Dependency graph and agent categorization expect analyzer fields that are not currently emitted.
-- `PipelineOrchestrator.analyze()` and `.quality()` reference missing module-level functions.
+There is currently **no executable ProjectScanner lane**. `NEXT_UP.md` is intentionally empty after the 2026-09-10 production-readiness closure.
 
-## Roadmap
-
-### Phase 1: Snapshot contract stabilization
-
-- Define the expected snapshot directory schema.
-- Add validation for `metadata.json`.
-- Add validation for `analysis.json`.
-- Align CI scanner output with the ingest schema or add a documented normalization step.
-- Add tests for missing files, malformed payloads, duplicate snapshots, and file/issue row fidelity.
-
-### Phase 2: Coverage for stable utility surfaces
-
-- Add tests for `ProjectSnapshot` and `PipelineOrchestrator.scan()`.
-- Add tests for `ContractEngine` default rule loading and scoring.
-- Add tests for `scan_targets.py` and `project_artifact_standards.py`.
-- Add tests for `github_sources.py` with command calls mocked.
-
-### Phase 3: Resolve incomplete feature seams
-
-- Decide whether dependency graph and agent categorization should become supported scanner outputs.
-- If supported, enrich analyzer output and tests accordingly.
-- If not supported, remove or clearly mark unsupported code paths.
-- Decide GUI support status; either restore missing GUI modules or document GUI as unsupported.
-
-### Phase 4: Contributor and operations polish
-
-- Add a dedicated contributor guide if maintainers need one.
-- Add examples for quality and contract CLI usage after tests stabilize expected output.
-- Keep root lifecycle docs synchronized with domain and audit docs.
-
-## What remains
-
-The highest-risk remaining work is not a new scanner engine. It is stabilizing contracts between existing components, especially CI scan artifacts and SQLite ingestion.
-
-## What should be worked on next
-
-Follow `NEXT_UP.md`: snapshot contract stabilization with tests first.
+Future work should begin with a new bounded objective rather than another repository-wide cleanup pass.

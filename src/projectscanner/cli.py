@@ -6,6 +6,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 from core.projectscanner import ProjectScanner, build_snapshot_analysis
 
@@ -16,6 +17,58 @@ from .ingest import SnapshotValidationError, ingest_snapshot
 from .planning_contract import inspect_planning_contract
 
 
+def _current_scan_paths(scanner: ProjectScanner) -> list[str]:
+    """Return the current supported source paths in deterministic order."""
+    return sorted(str(path.relative_to(scanner.project_root)) for path in scanner._collect_files())
+
+
+def _hydrate_current_analysis(scanner: ProjectScanner, current_paths: list[str]) -> None:
+    """Reuse prior analysis only for files that still exist in the current scan set."""
+    report_path = scanner.output_dir / scanner.report_generator.analysis_file
+    existing = scanner.report_generator.load_existing_report(report_path)
+    scanner.analysis.update(
+        {
+            path: existing[path]
+            for path in current_paths
+            if path in existing and isinstance(existing[path], dict)
+        }
+    )
+
+
+def _canonicalize(value: Any) -> Any:
+    """Recursively canonicalize mappings while preserving semantic list order."""
+    if isinstance(value, dict):
+        return {key: _canonicalize(value[key]) for key in sorted(value)}
+    if isinstance(value, list):
+        return [_canonicalize(item) for item in value]
+    return value
+
+
+def _canonical_analysis(analysis: dict[str, Any]) -> dict[str, Any]:
+    """Canonicalize scan output and dependency graph importer ordering."""
+    ordered = _canonicalize(analysis)
+    graph = ordered.get("__dependency_graph__")
+    if isinstance(graph, dict):
+        ordered["__dependency_graph__"] = {
+            key: sorted(value) if isinstance(value, list) else value
+            for key, value in graph.items()
+        }
+    return ordered
+
+
+def _write_scan_artifacts(scanner: ProjectScanner, analysis: dict[str, Any]) -> None:
+    report_path = scanner.output_dir / scanner.report_generator.analysis_file
+    report_path.write_text(
+        json.dumps(analysis, indent=4, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    contract_path = scanner.output_dir / "analysis.json"
+    contract_path.write_text(
+        json.dumps(build_snapshot_analysis(analysis), indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
 def _cmd_scan(args: argparse.Namespace) -> int:
     target = Path(args.path).resolve()
     if not target.exists():
@@ -24,19 +77,28 @@ def _cmd_scan(args: argparse.Namespace) -> int:
 
     output_dir = Path(args.output).resolve() if args.output else None
     scanner = ProjectScanner(project_root=target, output_dir=output_dir)
+    current_paths = _current_scan_paths(scanner)
+    _hydrate_current_analysis(scanner, current_paths)
+
     scanner.scan_project(
-        export_context=args.export_context,
+        export_context=False,
         split_output_by=args.split_by,
         max_files_per_chunk=args.max_files_per_chunk,
     )
     if args.generate_init:
         scanner.generate_init_files()
 
-    contract_path = scanner.output_dir / "analysis.json"
-    contract_path.write_text(
-        json.dumps(build_snapshot_analysis(scanner.analysis), indent=2),
-        encoding="utf-8",
-    )
+    analysis = _canonical_analysis(scanner.analysis)
+    scanner.analysis.clear()
+    scanner.analysis.update(analysis)
+    scanner.report_generator.analysis = scanner.analysis
+    _write_scan_artifacts(scanner, scanner.analysis)
+
+    if args.export_context:
+        scanner.report_generator.export_chatgpt_context(
+            split_by=args.split_by,
+            max_files_per_chunk=args.max_files_per_chunk,
+        )
 
     out = scanner.output_dir
     print(f"Scan complete. Results saved to: {out}")

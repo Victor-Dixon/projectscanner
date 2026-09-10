@@ -1,158 +1,121 @@
 # ProjectScanner Repository Audit
 
-Last synchronized: 2026-07-03
+Last synchronized: 2026-09-10
 
-## Audit scope
+## Audit verdict
 
-This audit covers the repository architecture, folder structure, documentation set, naming, undocumented features, and known implementation/documentation mismatches. Findings are derived from files in this repository only.
+ProjectScanner now has a bounded, supportable **headless production surface**. The repository should not be described as a fully integrated scanner platform or GUI application; it should be described as repository-intelligence tooling with verified CLI scan/export/planning/hygiene/snapshot-history capabilities.
 
-## What this project is
+## Canonical architecture
 
-ProjectScanner is a repository scanning and inventory intelligence tool. It belongs to the software repository analysis domain. It solves the problem of producing machine-readable evidence about repository contents, documentation markers, scan targets, and quality signals before cleanup, consolidation, promotion, or downstream automation.
+| Layer | Authority / role |
+| --- | --- |
+| `src/core/projectscanner/` | canonical scanner engine |
+| `src/projectscanner/` | supported package CLI, ingestion/history, planning/hygiene and portfolio evidence surfaces |
+| `.github/workflows/scanner-snapshot.yml` | full repository pytest gate plus scanner snapshot proof |
+| `.github/workflows/agent-enforcer.yml` | changed-code quality/policy enforcement |
+| `MASTER_TASK_LIST.md` | canonical ProjectScanner task inventory |
+| `NEXT_UP.md` | bounded immediate queue; empty is a valid terminal state |
+| DreamVault | downstream governance/ranking authority |
+| Dream.OS/CPC/runtime | authorized mutation/execution authority |
 
-## Architecture
+## Production-readiness findings closed
 
-Current architecture is a Python package plus supporting top-level utilities.
+### Snapshot interchange
 
-| Layer | Paths | Notes |
-| --- | --- | --- |
-| Core scanner package | `src/core/projectscanner/` | Canonical scanner implementation. Wrappers should delegate here. |
-| Canonical model/pipeline | `src/core/model/`, `src/core/pipeline/` | Snapshot dataclass and orchestrator exist, but some enrichment paths are incomplete. |
-| Rules and quality | `src/core/rules/`, `src/quality/` | Contract rules and standalone quality checkers. |
-| External repo scanning | `src/scanners/`, `github_sources.py`, `scan_targets.py` | GitHub REST/CLI inventory and scan target generation. |
-| Portfolio export | `scripts/export_project_intelligence.py` | Separate filesystem/git/docs-marker export path. |
-| CI/snapshot history | `.github/workflows/`, `src/utils/run_scanner.py`, `ingest_snapshot.py` | CI scan runner and SQLite ingestor; schema alignment remains incomplete. |
-| GUI | `src/gui/`, `main.py` | GUI launch surface exists, but referenced enhanced GUI modules are missing. |
-| Tests | `tests/` | Regression coverage for analyzer, context export, GitHub library summary, export bundles, phase handoff, GUI import expectations, and workflow text checks. |
-| Archive | `archive/untracked_overlay_20260505/` | Archived scanner overlay experiment; not active source. |
+Closed.
 
-## Folder structure
+- scanner output uses a versioned analysis contract;
+- metadata and analysis schema versions are enforced before ingestion;
+- malformed payloads fail closed;
+- `analysis.total_files` must agree with the actual file rows;
+- CI metadata emits the supported schema version.
 
-Authoritative high-level structure:
+### SQLite ingestion
 
-```text
-.
-├── .github/workflows/          # CI workflows
-├── archive/                    # Archived overlay experiment
-├── config/                     # Supporting config files
-├── docs/                       # Domain, audit, usage, and historical docs
-├── scripts/                    # Portfolio intelligence export script
-├── src/
-│   ├── core/projectscanner/    # Canonical scanner
-│   ├── core/model/             # ProjectSnapshot data model
-│   ├── core/pipeline/          # PipelineOrchestrator
-│   ├── core/rules/             # Contract rules
-│   ├── deployment/agents/      # Agent policy deployment utility
-│   ├── gui/                    # GUI launch/test surfaces; incomplete
-│   ├── quality/                # Quality checker CLIs
-│   ├── scanners/               # GitHub library scanner
-│   └── utils/                  # Scanner runner utilities
-├── tests/                      # Pytest regression tests
-├── github_sources.py           # GitHub CLI inventory helper
-├── ingest_snapshot.py          # SQLite snapshot ingestor
-├── main.py                     # Top-level CLI/GUI entry point
-├── project_artifact_standards.py
-├── scan_targets.py
-└── run.py
+Closed.
+
+- one snapshot row is retained per `(repo, commit_sha)`;
+- repeated ingestion refreshes metadata;
+- file and issue rows are reconciled as current sets;
+- repeated ingestion does not accumulate duplicate issues;
+- transaction failure rolls back rather than leaving a partial reconciliation.
+
+### Repeated scanner execution
+
+Closed for the supported public CLI.
+
+- unchanged cached files are hydrated from the prior current report before scanning;
+- deleted files are filtered out of the current file set;
+- emitted analysis/report/context artifacts use canonical path ordering;
+- repeated scans against the same unchanged tree and output directory are regression-tested for stable artifacts;
+- `--split-by none` chunk membership is driven from canonical ordering.
+
+### GUI exposure
+
+Closed by narrowing the support boundary.
+
+The production CLI no longer advertises the missing enhanced GUI implementation or a GUI package extra. Legacy GUI source remains available for historical salvage, but it is not a supported product surface.
+
+### Regression gate
+
+Closed.
+
+The Scanner Snapshot workflow runs the repository's stated `pytest -q` regression suite rather than a hand-picked subset. Agent Enforcer remains a separate changed-code policy/quality gate.
+
+### Portfolio evidence v2
+
+Closed as an additive evidence capability.
+
+`dreamos.portfolio-index.v2` normalizes repository task evidence, validates NEXT_UP projection, classifies artifact roles, and preserves DreamVault as governance/planning authority. It does not rank, execute, or mutate tasks.
+
+## Remaining code that is intentionally not production scope
+
+These are deferred capabilities, not active defects in the supported headless product boundary:
+
+- legacy GUI implementation experiments;
+- dependency-graph completeness where import evidence is not emitted;
+- agent categorization where class-detail evidence is not emitted;
+- `PipelineOrchestrator.analyze()` and `.quality()` enrichment stages;
+- historical wrappers and scripts that are superseded by package CLI commands;
+- speculative revenue/productization documents without a concrete promoted objective.
+
+Their presence does not create an autonomous assignment.
+
+## Documentation authority
+
+Current required sources are aligned around the same boundary:
+
+- `README.md`
+- `PRD.md`
+- `ROADMAP.md`
+- `PRODUCTION_READINESS.md`
+- `docs/DOMAIN_MODEL.md`
+- `docs/REPOSITORY_AUDIT.md`
+- `docs/CURRENT_STATE_ASSESSMENT.md`
+- `MASTER_TASK_LIST.md`
+- `NEXT_UP.md`
+
+Historical documentation may remain for provenance but cannot override these current sources.
+
+## Verification
+
+Required code-change gate:
+
+```bash
+pytest -q
 ```
 
-## Existing documentation
+Required PR evidence additionally includes Scanner Snapshot and Agent Enforcer on the exact candidate head. Review findings must be resolved or the affected capability must be removed from the supported claim before merge.
 
-Authoritative current documentation:
+## Current planning state
 
-- `README.md` - repository entry point.
-- `docs/DOMAIN_MODEL.md` - complete domain model.
-- `docs/REPOSITORY_AUDIT.md` - this audit.
-- `PRD.md` - product requirements and implementation-backed scope.
-- `ROADMAP.md` - completed/current/remaining roadmap.
-- `MASTER_TASK_LIST.md` - canonical task inventory.
-- `MASTER_TASK_LOG.md` - chronological task log.
-- `NEXT_UP.md` - active handoff.
-- `AGENTS.md` - repository-specific agent instructions.
-- `docs/CODEBASE_OVERVIEW.md` - implementation map.
-- `docs/USING_UPDATED_SCANNER.md` - usage guide.
-- `docs/CURRENT_STATE_ASSESSMENT.md` - current status snapshot.
-- `CONSOLIDATION_MANIFEST.md` - project boundaries in the Dream.OS/DreamVault context.
+There is no canonical READY/ACTIVE ProjectScanner task after the production-readiness reconciliation represented by the current authority set.
 
-Historical or non-authoritative documentation:
-
-- `TASK_LIST.md` - superseded by `MASTER_TASK_LIST.md`.
-- `docs/ROADMAP.md` and `docs/NEXT_UP.md` - pointers to root canonical docs.
-- `docs/DARK_MODE_ENHANCEMENT.md`, `docs/ORGANIZATION_SUMMARY.md`, `docs/FINAL_ORGANIZATION_SUMMARY.md`, and `docs/validation_report.md` - historical notes, not current implementation evidence.
-- `docs/strategic/AGENTS.md`, `docs/guides/AGENT_POLICY_DEPLOYMENT_GUIDE.md`, and `docs/template-agent-repo/README.md` - portfolio policy/template material, not ProjectScanner runtime documentation.
-
-## Missing or incomplete documentation
-
-| Gap | Current status | Required next action |
-| --- | --- | --- |
-| Snapshot artifact schema | Current docs now identify scanner/ingestor mismatch | Define schema and add validation tests before documenting as stable |
-| GUI status | Current docs now mark GUI as incomplete/Unknown | Decide whether to restore GUI implementation or document it as unsupported |
-| ContractEngine/quality usage examples | Mentioned in domain model and overview | Add focused examples after tests define expected CLI output |
-| Analyzer enrichment contract | Current docs mark imports/class details mismatch | Either implement analyzer fields or remove unsupported claims from code docstrings |
-| Contributor guide | No dedicated `CONTRIBUTING.md` | Optional future doc once active workflows stabilize |
-
-## Dead or outdated documentation found
-
-The audit found prior docs that described absent paths such as root `scanner.py`, root `gui.py`, `src/core/scanner/unified_scanner.py`, `project_scanner.py`, root `.pre-commit-config.yaml`, and `scripts/scanners/*`. Those claims are now superseded by the canonical docs listed above. Historical files are retained only as historical context and should not be used to infer current behavior.
-
-## Naming inconsistencies found and resolved in docs
-
-| Inconsistency | Current standard |
-| --- | --- |
-| `ProjectScanner`, `projectscanner`, `project-scanner`, `Project Scanner` | Use `ProjectScanner` for product/tool name and `projectscanner` for package/repository id. |
-| `PRODUCT_REQUIREMENTS_DOCUMENT.md` vs `PRD.md` | Use `PRD.md`. |
-| Multiple active roadmaps/task lists | Use root `ROADMAP.md`, `MASTER_TASK_LIST.md`, and `NEXT_UP.md` as canonical. |
-| `src/core/scanner/` or root `scanner.py` | Use `src/core/projectscanner/`. |
-| `scripts/loc_checker.py` / `scripts/complexity_checker.py` | Use `src/quality/loc_checker.py` and `src/quality/complexity_checker.py`. |
-| GUI described as working | Current docs mark GUI implementation as incomplete unless missing modules are restored. |
-
-## Features that were undocumented or underdocumented
-
-- Bare Git repository metadata export.
-- Context chunk export modes: `directory`, `language`, and `none`.
-- `ScanTarget` manifests and GitHub clone/fetch planning.
-- Artifact standard checks for `scan_target.json`, `analysis.json`, `context.json`, `next_up.json`, and `health.json`.
-- SQLite snapshot ingestion and its current schema assumptions.
-- Standalone portfolio intelligence export under `scripts/export_project_intelligence.py`.
-- Contract rules under `src/core/rules/`.
-
-## Documentation that no longer matched implementation
-
-- Older codebase overview described `project_scanner.py`, `project-scanner/`, root `gui.py`, and tree-sitter parser behavior. The current overview has been rewritten.
-- Historical GUI and dark mode docs claimed working enhanced GUI behavior that cannot be validated from current files.
-- Previous task list proposed a new unified scanner path that is explicitly disallowed by current SSOT tests.
-- Previous structure tree listed files and directories that no longer exist. It has been replaced with a high-level current tree.
-- Previous validation report claimed three passing tests and an old CLI command; current verification uses `pytest -q`.
-
-## Feature-to-domain coverage
-
-Every major feature now maps to a domain area in `docs/DOMAIN_MODEL.md`:
-
-- Core scanning and reports -> core scanning/report generation.
-- Context export -> report generation/LLM context export.
-- GitHub repo scanning and target manifests -> GitHub inventory.
-- Portfolio intelligence bundles -> portfolio export.
-- Snapshot workflow and SQLite ingestion -> CI snapshots/history.
-- Contract rules and quality checkers -> quality/contracts.
-- GUI -> GUI subdomain, status incomplete/Unknown.
-
-## Completed synchronization work
-
-- Created a complete implementation-backed domain model.
-- Created this repository audit.
-- Replaced placeholder lifecycle docs with current content.
-- Marked Unknowns instead of guessing implementation intent.
-- Standardized active documentation around `ProjectScanner`, `projectscanner`, and `src/core/projectscanner/`.
-- Converted duplicate/stale docs into pointers or historical notes where appropriate.
-
-## Remaining work
-
-- Implement and test snapshot schema validation.
-- Resolve scanner output versus ingestor schema mismatch.
-- Decide and document the GUI support status after code changes.
-- Add targeted tests for currently untested stable tooling.
-- Keep generated or historical docs clearly labeled if they are retained.
+`NEXT_UP.md` is intentionally empty. Future automation must stop at that boundary rather than deriving assignments from old prose, closed PRs, dormant branches, or deferred code.
 
 ## Next recommended work
 
-Follow `NEXT_UP.md`: stabilize the snapshot artifact contract between CI scanner output and SQLite ingestion with tests first.
+None from existing ProjectScanner planning authority.
+
+A future lane should begin only from a new concrete objective or from explicitly salvaged unique branch work that is reviewed and promoted into canonical planning authority.
