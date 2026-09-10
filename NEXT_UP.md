@@ -1,38 +1,20 @@
 # ProjectScanner Next Up
 
 Last synchronized: 2026-09-09
+SSOT: `MASTER_TASK_LIST.md`
 
-## Purpose
+## Immediate queue
 
-Immediate executable/dependency queue only. `MASTER_TASK_LIST.md` owns stable task identity and strategic inventory.
+1. `PSC-INTEL-001 | P0 | READY` — Consolidate ProjectScanner outputs into the canonical artifact hierarchy and one-way ownership/derivation contract.
+2. `PSC-BRANCH-001 | P0 | BLOCKED` — Extend `repo_analysis.json` with branch evidence and FAST_PATH/FORENSIC_PATH/UNRESOLVED classification inputs after PSC-INTEL-001.
+3. `PSC-PLAN-001 | P0 | BLOCKED` — Normalize stable repo-owned task/status/dependency/NEXT_UP authority into `planning_contract.json` after PSC-INTEL-001.
+4. `PSC-PACKET-001 | P0 | BLOCKED` — Build/verify `projectscanner_intelligence_packet.v1` after branch + planning normalization.
+5. `PSC-CONSUMER-001 | P0 | BLOCKED` — Verify ChatGPT/RAG/portfolio outputs derive from the canonical packet.
 
-## Immediate actions
+## Guardrails
 
-1. `PSC-INTEL-001 | P0 | READY` — Consolidate the artifact pipeline around the canonical hierarchy.
-   - Keep deep scan and current repo scan as distinct evidence inputs.
-   - Make `planning_contract.json` the normalized repository-planning evidence surface.
-   - Make `projectscanner_intelligence_packet.v1` the canonical compact operational evidence packet.
-   - Keep `chatgpt_context.json` as a bounded projection, not authority.
-   - Downgrade legacy context/cleanup artifacts to compatibility/advisory roles rather than peer authority.
-
-2. `PSC-BRANCH-001 | P0 | BLOCKED` — Add branch intelligence using `FAST_PATH`, `FORENSIC_PATH`, and `UNRESOLVED`.
-   - Dependency: PSC-INTEL-001.
-   - Emit evidence only; DreamVault owns deletion/promotion governance.
-
-3. `PSC-PLAN-001 | P0 | BLOCKED` — Normalize stable task IDs, status, dependencies and NEXT_UP membership from repository-owned planning.
-   - Dependency: PSC-INTEL-001.
-   - Fail closed on malformed/unknown planning; never invent task identity.
-
-4. `PSC-PACKET-001 | P0 | BLOCKED` — Join deep scan + repo facts + planning evidence into the canonical intelligence packet with provenance/version checks.
-   - Dependencies: PSC-INTEL-001, PSC-BRANCH-001, PSC-PLAN-001.
-
-5. `PSC-CONSUMER-001 | P1 | BLOCKED` — Verify DreamVault/Dream.OS consumption and authority boundaries.
-   - Dependency: PSC-PACKET-001.
-
-## Exit criteria
-
-- One documented artifact hierarchy; no ambiguous peer authority.
-- Branch evidence supports FAST_PATH vs FORENSIC_PATH without authorizing mutation.
-- Planning evidence preserves stable source task IDs/status/dependencies/NEXT_UP.
-- DreamVault remains governance/ranking authority.
-- `pytest -q` remains the implementation regression gate; planning changes alone do not claim implementation completion.
+- ProjectScanner generates normalized evidence; DreamVault owns governance/ranking; DreamOS/CPC owns authorized mutation.
+- Do not restore removed scanner/GUI implementations as parallel engines.
+- Do not treat `cleanup_recommendations.json`, legacy ChatGPT exports, generated queues, or historical prose as canonical planning authority.
+- `UNRESOLVED` branch evidence is fail-closed and cannot support deletion.
+- Deferred snapshot/RAG/legacy/CI work remains HOLD until the canonical intelligence hierarchy is established.
