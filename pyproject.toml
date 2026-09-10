@@ -16,6 +16,7 @@ dev = ["pytest>=8.0"]
 hygiene = [
     "we-are-swarm-agenttools @ git+https://github.com/Victor-Dixon/AgentTools.git@f29f2ab24683e725e1e65f698c5434f04b791313",
 ]
+ci = ["PyYAML>=6.0,<7"]
 
 [project.scripts]
 projectscanner = "projectscanner.cli:main"

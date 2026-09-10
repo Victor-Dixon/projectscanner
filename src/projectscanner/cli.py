@@ -179,6 +179,42 @@ def _cmd_hygiene(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_ci_cost(args: argparse.Namespace) -> int:
+    """Emit evidence-only CI runner/cost intelligence without mutating workflows."""
+    from core.intelligence.ci_cost import inspect_ci, inspect_portfolio, write_ci_report
+
+    try:
+        if args.projects_root and args.path:
+            raise ValueError("choose a repository path or --projects-root, not both")
+        if args.repos is not None and not args.projects_root:
+            raise ValueError("--repos requires --projects-root")
+
+        usage = None
+        if args.usage_json:
+            usage = json.loads(Path(args.usage_json).read_text(encoding="utf-8"))
+
+        if args.projects_root:
+            result = inspect_portfolio(Path(args.projects_root), repos=args.repos, usage=usage)
+            complete = all(item["evidence_complete"] for item in result["repos"])
+        else:
+            result = inspect_ci(Path(args.path or Path.cwd()), usage=usage)
+            complete = result["evidence_complete"]
+
+        if args.output:
+            write_ci_report(result, Path(args.output))
+        if args.json or not args.output:
+            print(json.dumps(result, indent=2, sort_keys=True))
+        else:
+            print(f"CI_COST_SCAN={'PASS' if complete else 'INCOMPLETE'}")
+            print(f"OUTPUT={Path(args.output).resolve()}")
+            print(f"GITHUB_HOSTED_JOBS={result['summary']['github_hosted_jobs']}")
+            print(f"UNKNOWN_OR_DELEGATED_JOBS={result['summary']['unknown_or_delegated_jobs']}")
+        return 0 if complete else 3
+    except (json.JSONDecodeError, OSError, ValueError, RuntimeError) as exc:
+        print(f"CI_COST_SCAN=BLOCKED: {exc}", file=sys.stderr)
+        return 2
+
+
 def _cmd_ingest(args: argparse.Namespace) -> int:
     try:
         result = ingest_snapshot(
@@ -254,6 +290,15 @@ def build_parser() -> argparse.ArgumentParser:
     hygiene.add_argument("--output", "-o", help="Write fleet hygiene snapshot JSON")
     hygiene.add_argument("--json", action="store_true", help="Print normalized snapshot JSON")
     hygiene.set_defaults(func=_cmd_hygiene)
+
+    ci_cost = subparsers.add_parser("ci-cost", help="Read-only CI runner and cost evidence")
+    ci_cost.add_argument("path", nargs="?", help="Repository path (defaults to current directory)")
+    ci_cost.add_argument("--projects-root", help="Inventory direct child repositories")
+    ci_cost.add_argument("--repos", nargs="*", default=None, help="Selected child repository names")
+    ci_cost.add_argument("--usage-json", help="Optional explicit measured usage evidence")
+    ci_cost.add_argument("--output", "-o", help="Write JSON report")
+    ci_cost.add_argument("--json", action="store_true", help="Print full JSON")
+    ci_cost.set_defaults(func=_cmd_ci_cost)
 
     ingest = subparsers.add_parser("ingest", help="Ingest a CI snapshot into SQLite history")
     ingest.add_argument("snapshot_dir", help="Directory with metadata.json and analysis.json")
