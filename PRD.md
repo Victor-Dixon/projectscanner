@@ -1,144 +1,85 @@
 # ProjectScanner PRD
 
-Last synchronized: 2026-07-03
+Last synchronized: 2026-09-10
 
 ## Product summary
 
-ProjectScanner is repository scanning and inventory intelligence tooling. It scans local source trees and selected GitHub repositories, extracts lightweight code structure, writes JSON reports and ChatGPT-oriented context exports, and surfaces repository documentation/cleanup signals for downstream planning.
+ProjectScanner is a **headless repository scanning and inventory-intelligence tool**. It converts repository state into machine-readable evidence for cleanup, consolidation, promotion, and downstream automation decisions.
 
-## Why it exists
+ProjectScanner is an evidence producer. It does not own DreamVault portfolio governance, planner ranking, or downstream mutation authority.
 
-ProjectScanner exists to provide evidence before repository cleanup, consolidation, promotion, or automation decisions. It reduces guesswork by turning repository contents and documentation markers into machine-readable artifacts.
+## Supported users
 
-## Domain
+- Operators or agents scanning local repositories.
+- Dream.OS/DreamVault workflows consuming repository evidence.
+- Developers maintaining scanner, export, hygiene, snapshot, and history tooling.
 
-Core domain: software repository scanning and repository inventory intelligence.
+## Supported capabilities
 
-Subdomains:
-
-- Local project scanning.
-- Language-level structure extraction.
-- Report and LLM context generation.
-- GitHub inventory and scan target generation.
-- Portfolio documentation-gap export.
-- Quality/rules checks.
-- CI snapshot and SQLite history ingestion.
-
-The full domain model is maintained in `docs/DOMAIN_MODEL.md`.
-
-## Users
-
-Evidence from repository documentation identifies these users:
-
-- Operators or agents that need to scan local repositories.
-- Dream.OS/DreamVault workflows that consume generated repository intelligence.
-- Developers maintaining scanner, quality, target, and snapshot tooling.
-
-Unknown:
-
-- Any public end-user persona beyond repository operators/agents and maintainers.
-
-## Problems solved
-
-- Generate file-level analysis for supported source and documentation files.
-- Export scanner results as JSON reports.
-- Export ChatGPT-compatible context files and optional context chunks.
-- Identify documentation marker gaps across repositories.
-- Build GitHub/local scan target manifests.
-- Check expected project artifact completeness.
-- Provide quality/rules checks for repository source.
-- Capture bare Git repository metadata when no working tree is available.
-
-## Current product capabilities
-
-| Capability | Implementation | Status |
+| Capability | Surface | Status |
 | --- | --- | --- |
-| Local source tree scan | `src/core/projectscanner/` | Implemented |
-| Python functions/classes/routes/complexity | `LanguageAnalyzer` with `ast` | Implemented and tested |
-| JS/TS/Rust lightweight extraction | `LanguageAnalyzer` regex analyzers | Implemented |
-| File exclusions and cache | `FileProcessor` | Implemented |
-| JSON analysis reports | `ReportGenerator.save_report()` | Implemented |
-| ChatGPT context export/chunking | `ReportGenerator.export_chatgpt_context()` | Implemented and tested |
-| Bare repo metadata export | `ReportGenerator.export_bare_repo_metadata()` | Implemented and tested |
-| `__init__.py` generation | `ReportGenerator.generate_init_files()` | Implemented and tested |
-| GitHub repository library scan | `GitHubLibraryScanner` | Implemented; summary tested |
-| GitHub inventory/scan targets | `github_sources.py`, `scan_targets.py` | Implemented |
-| Portfolio docs-gap export | `scripts/export_project_intelligence.py` | Implemented and tested |
-| Quality contract rules | `src/core/rules/`, `src/quality/` | Implemented; limited tests |
-| CI scanner wrapper | `src/utils/run_scanner.py` | Implemented |
-| SQLite snapshot ingestion | `ingest_snapshot.py` | Implemented, schema alignment incomplete |
-
-## Explicit Unknowns and non-requirements
-
-The following are not currently product guarantees:
-
-- Enhanced GUI availability. Current GUI entry points reference missing modules.
-- A stable scanner-to-ingestor `analysis.json` contract. The ingestor expects a normalized schema that the scanner runner does not currently emit.
-- Dependency graph completeness. The graph builder expects imports, but the analyzer does not emit imports.
-- Agent categorization completeness. Categorization expects class details not emitted by the analyzer.
-- Fully integrated `PipelineOrchestrator.analyze()` and `.quality()` stages.
-- Tree-sitter parsing. Current analyzer uses Python `ast` and regex for JS/TS/Rust.
+| Local source scan | `projectscanner scan` / `src/core/projectscanner/` | Supported |
+| Python structure analysis | `LanguageAnalyzer` | Supported/tested |
+| Lightweight JS/TS/Rust extraction | `LanguageAnalyzer` | Supported |
+| JSON analysis output | `ReportGenerator` / snapshot contract | Supported |
+| ChatGPT context export/chunking | `ReportGenerator` | Supported/tested |
+| Bare repo metadata | `ReportGenerator` | Supported/tested |
+| GitHub/local inventory helpers | `github_sources.py`, `scan_targets.py` | Supported |
+| Portfolio intelligence export | `projectscanner export` | Supported/tested |
+| Planning contract inspection | `projectscanner planning` | Supported/tested |
+| Branch/worktree hygiene evidence | `projectscanner hygiene` | Supported/tested/read-only |
+| Snapshot validation | versioned metadata/analysis contract | Supported/tested |
+| SQLite snapshot ingestion | `projectscanner ingest` | Supported/tested/idempotent |
+| Snapshot history | `projectscanner history` | Supported/tested |
+| HQ portfolio evidence v2 | `projectscanner.portfolio_index_v2` | Supported/tested/evidence-only |
 
 ## Functional requirements
 
-### FR1: Scan supported files in a local project
+### FR1 — Scan repositories deterministically
 
-ProjectScanner must recursively scan supported file extensions while excluding virtual environments, `.git`, runtime outputs, scanner artifacts, and configured ignore directories.
+ProjectScanner must scan supported source/documentation files while honoring exclusions, file-size limits, and configured ignore paths.
 
-### FR2: Produce deterministic lightweight analysis
+### FR2 — Emit reviewable evidence
 
-The scanner must emit per-file analysis with at least:
+Generated analysis and context artifacts must be deterministic enough for regression testing and must preserve the boundary between observed evidence and downstream decisions.
 
-- `language`
-- `functions`
-- `classes`
-- `routes`
-- `complexity`
-- `lint`
+### FR3 — Maintain a versioned snapshot contract
 
-### FR3: Generate reports and context
+CI snapshot metadata and normalized analysis must declare supported schema versions. Ingestion must reject malformed or unsupported payloads before database mutation.
 
-The scanner must write JSON analysis reports and optionally ChatGPT context exports. Context chunking must support current implemented modes: `directory`, `language`, and `none`.
+### FR4 — Reconcile repeated ingestion safely
 
-### FR4: Handle bare Git repositories
+A repeated `(repo, commit_sha)` ingestion must not accumulate duplicate child rows. Snapshot metadata, files, and issues must reconcile to the latest validated artifact as one transaction.
 
-When a bare Git repository is scanned, ProjectScanner must skip working-tree file analysis and emit bare repository metadata.
+### FR5 — Keep hygiene observational
 
-### FR5: Support repository inventory workflows
+Branch/worktree hygiene output may classify current Git evidence but must not itself delete branches or mutate repositories.
 
-The project must support scan target manifests, GitHub inventory, artifact completeness checks, and portfolio docs-gap exports using the existing modules.
+### FR6 — Keep portfolio v2 non-authoritative
 
-### FR6: Preserve Dream.OS/DreamVault boundaries
+The v2 index may normalize repository planning evidence and assignable projections, but DreamVault remains planner/governance authority.
 
-ProjectScanner emits evidence and reports. DreamVault remains the documented durable governance and decision-record system.
+### FR7 — Fail closed on planning drift
 
-### FR7: Keep documentation synchronized
+When recognized `NEXT_UP` task evidence conflicts with canonical repository task evidence, ProjectScanner must emit no assignable candidate replacement of its own.
 
-Required lifecycle docs must describe the current implementation, completed work, remaining work, and next work without inventing features.
+### FR8 — Verify the whole supported repository
 
-## Non-functional requirements
+Implementation PRs must pass the full repository `pytest -q` gate plus Agent Enforcer at the exact PR head before merge.
 
-- Verification gate: `pytest -q`.
-- Canonical scanner source: `src/core/projectscanner/`.
-- Avoid introducing parallel scanner engines.
-- Keep generated/runtime scan outputs out of durable source unless explicitly promoted.
-- Mark uncertain behavior as Unknown in documentation.
+## Explicit non-requirements
 
-## Current completed work
+The following are preserved or deferred but are **not** part of the supported production product:
 
-- Core scanner, analyzer, file processor, report generator, and context export exist.
-- Tests cover core analyzer behavior, exclusions, context export, context chunking, bare repo metadata, SSOT imports, portfolio export bundles, GitHub library summary, and workflow text checks.
-- Required documentation has been synchronized around the current domain model and repository audit.
+- legacy GUI availability;
+- complete dependency-graph enrichment;
+- agent categorization enrichment;
+- `PipelineOrchestrator.analyze()` / `.quality()` enrichment;
+- tree-sitter parsing;
+- planner ranking or mutation authority.
 
-## Remaining work
+These surfaces require a new explicit objective before implementation work is justified.
 
-- Define and test a stable snapshot artifact schema.
-- Align CI scanner output with `ingest_snapshot.py`.
-- Add validation for `metadata.json` and `analysis.json` before SQLite writes.
-- Decide GUI support status and update code/docs accordingly.
-- Add tests for currently untested stable utility surfaces.
-- Resolve analyzer output gaps if dependency graph and agent categorization are intended to be supported features.
+## Production status
 
-## Next work
-
-See `NEXT_UP.md`. The active next slice is snapshot contract stabilization between CI scanner artifacts and SQLite ingestion.
+The supported headless surface is production-ready as of 2026-09-10. See `PRODUCTION_READINESS.md` for the verification boundary and `MASTER_TASK_LIST.md` / `NEXT_UP.md` for executable repository state.
