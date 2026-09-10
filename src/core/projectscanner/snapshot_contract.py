@@ -59,9 +59,18 @@ def build_snapshot_analysis(analysis: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _validate_schema_version(data: dict[str, Any], expected: str, label: str) -> None:
+    version = data.get("schema_version")
+    if version != expected:
+        raise SnapshotValidationError(
+            f"{label}.schema_version must equal supported version {expected!r}"
+        )
+
+
 def validate_metadata_payload(data: Any) -> None:
     if not isinstance(data, dict):
         raise SnapshotValidationError("metadata must be a JSON object")
+    _validate_schema_version(data, METADATA_SCHEMA_VERSION, "metadata")
     if "commit_sha" not in data:
         raise SnapshotValidationError("metadata missing required field: commit_sha")
     if not isinstance(data["commit_sha"], str) or not data["commit_sha"].strip():
@@ -71,6 +80,7 @@ def validate_metadata_payload(data: Any) -> None:
 def validate_analysis_payload(data: Any) -> None:
     if not isinstance(data, dict):
         raise SnapshotValidationError("analysis must be a JSON object")
+    _validate_schema_version(data, ANALYSIS_SCHEMA_VERSION, "analysis")
     if "files" not in data:
         raise SnapshotValidationError("analysis missing required field: files")
     if not isinstance(data["files"], list):
@@ -80,6 +90,14 @@ def validate_analysis_payload(data: Any) -> None:
             raise SnapshotValidationError(f"analysis.files[{index}] must be an object")
         if "path" not in entry:
             raise SnapshotValidationError(f"analysis.files[{index}] missing required field: path")
+    if "total_files" in data:
+        total_files = data["total_files"]
+        if not isinstance(total_files, int) or isinstance(total_files, bool):
+            raise SnapshotValidationError("analysis.total_files must be an integer")
+        if total_files != len(data["files"]):
+            raise SnapshotValidationError(
+                "analysis.total_files must equal the number of analysis.files entries"
+            )
     issues = data.get("issues", [])
     if issues is not None and not isinstance(issues, list):
         raise SnapshotValidationError("analysis.issues must be an array when present")
