@@ -1,79 +1,32 @@
 # ProjectScanner Master Task List
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-09-10
 
-## Purpose
+## Authority
 
-This file is the canonical backlog and strategic inventory: it answers **what work exists?** Completed history belongs in `MASTER_TASK_LOG.md`; no more than five immediate actions belong in `NEXT_UP.md`.
+This file is the canonical repository task inventory. `NEXT_UP.md` is the bounded executable projection. `MASTER_TASK_LOG.md` remains historical evidence.
 
-ProjectScanner produces repository-scanning and inventory evidence for cleanup, consolidation, promotion, and automation decisions. The scanner source of truth is `src/core/projectscanner/`; archived or removed implementations are not alternate engines.
+ProjectScanner is a **headless repository-intelligence producer**. It scans and normalizes evidence; DreamVault owns portfolio governance/ranking and downstream authorized mutation remains outside ProjectScanner.
 
-## Canonical references
+## Canonical task inventory
 
-- Active handoff: `NEXT_UP.md`
-- Completed history: `MASTER_TASK_LOG.md`
-- Domain model: `docs/DOMAIN_MODEL.md`
-- Repository audit: `docs/REPOSITORY_AUDIT.md`
-- Requirements and roadmap: `PRD.md` and `ROADMAP.md`
-- Operating rules: `AGENTS.md`
+- PSC-HYGIENE-001 | P0 | COMPLETE | Branch/worktree evidence sensor foundation landed in PR #22.
+- PSC-SNAPSHOT-001 | P0 | COMPLETE | Versioned scanner-to-ingestor snapshot contract enforced in PR #26.
+- PSC-INGEST-001 | P0 | COMPLETE | Snapshot ingestion made idempotent with row-fidelity regression coverage in PR #27.
+- PSC-SURFACE-001 | P0 | COMPLETE | Supported headless CLI boundary established and full `pytest -q` promoted to CI in PR #31.
+- PSC-PORTFOLIO-001 | P0 | COMPLETE | HQ-ready portfolio evidence index v2 salvaged onto current master in PR #32.
+- PSC-PIPELINE-001 | P2 | BACKLOG | Legacy `PipelineOrchestrator` enrichment remains outside the supported production surface; promote only with a concrete consumer requirement.
+- PSC-GUI-001 | P2 | BACKLOG | Legacy GUI source is preserved for salvage but is not a supported production feature.
+- PSC-GRAPH-001 | P2 | BACKLOG | Dependency-graph enrichment is unsupported until analyzer import evidence and tests justify it.
+- PSC-AGENTCAT-001 | P2 | BACKLOG | Agent categorization is unsupported until analyzer class-detail evidence and tests justify it.
 
-## Strategic inventory by domain
+## Execution policy
 
-### Canonical scanner core
+- `COMPLETE` rows are terminal historical/current-state records and must not be re-assigned.
+- `BACKLOG` rows are non-executable until explicitly promoted to `READY` or `ACTIVE` by a concrete requirement.
+- Do not recreate GUI, pipeline, graph, or categorization work merely to make dormant code look complete.
+- Any future implementation change must pass the full `pytest -q` Scanner Snapshot gate and Agent Enforcer at the exact PR head.
 
-- [ ] Verify the current `src/core/projectscanner/` path against the regression suite and document which scanner behaviors have direct test coverage.
-- [ ] Keep all scanner behavior changes in the canonical package; do not revive the standalone, enhanced, or archived overlay scanners as parallel engines.
-- [ ] Decide whether dependency-graph output is supported; if retained, emit and test the required import data.
-- [ ] Decide whether agent categorization is supported; if retained, emit and test the required class-detail data.
-- [ ] Add focused coverage for `ProjectSnapshot` and stable scanner utilities where current behavior lacks regression tests.
+## Current terminal state
 
-### CLI, reporting, and export
-
-- [ ] Verify public CLI flags, JSON report generation, context export, and chunking against tests and current documentation.
-- [ ] Document supported report and context schemas, including compatibility expectations for downstream consumers.
-- [ ] Add test-backed examples for the quality and contract CLIs before promoting them in user documentation.
-- [ ] Verify GitHub inventory, bare-repository metadata, scan-target, and project-intelligence exports with external commands mocked where appropriate.
-
-### RAG and knowledge activation
-
-- [ ] Confirm the normalized RAG corpus export contract against current Dream Suite retrieval needs.
-- [ ] Verify repository provenance, source digest, exported-content digest, normalization, and JSONL determinism end to end.
-- [ ] Define which knowledge artifacts are durable inputs, reproducible outputs, or transient runtime data.
-- [ ] Document ownership and handoff boundaries between ProjectScanner generation and downstream indexing or retrieval systems.
-
-### Generated analysis asset policy
-
-- [ ] Inventory committed and ignored analysis outputs and classify each family as source, promoted evidence, reproducible artifact, or cleanup candidate.
-- [ ] Preserve generated/runtime scan outputs only when an explicit promotion rule identifies an owner, purpose, and refresh policy.
-- [ ] Keep large historical generated datasets out of product-history claims unless their behavior is independently verified.
-- [ ] Document retention, naming, and ignore rules for snapshots, reports, contexts, caches, and portfolio exports.
-
-### Pipeline and CI verification
-
-- [ ] Define and version the snapshot directory contract between `src/utils/run_scanner.py` and `ingest_snapshot.py`.
-- [ ] Validate required `metadata.json` and `analysis.json` fields before database writes.
-- [ ] Test missing or malformed files, duplicate ingestion, and file/issue row fidelity.
-- [ ] Resolve or explicitly defer the missing `PipelineOrchestrator.analyze()` and `.quality()` integrations.
-- [ ] Preserve incremental Ruff enforcement while establishing a deliberate plan for legacy lint debt.
-- [ ] Decide and document the remote/upstream policy for the local `work` branch.
-
-### Removed legacy GUI and history
-
-- [ ] Reconcile documentation and launch references that still imply the removed enhanced GUI is available.
-- [ ] Decide whether ProjectScanner is intentionally headless or whether a new GUI is justified by current requirements.
-- [ ] If a GUI is approved, design it against the canonical scanner API rather than restoring a parallel historical implementation.
-- [ ] Keep legacy GUI, token wizard, portfolio-analysis, and enhanced-scanner claims labeled historical or **Needs verification**.
-
-### Documentation and planning standardization
-
-- [ ] Keep `MASTER_TASK_LIST.md` as backlog, `MASTER_TASK_LOG.md` as completed history, and `NEXT_UP.md` as the immediate handoff.
-- [ ] Review the seven **Needs verification** history lanes and record corrections append-only in the master task log.
-- [ ] Keep `README.md`, `PRD.md`, `ROADMAP.md`, domain/audit docs, and agent instructions synchronized when contracts or support decisions change.
-- [ ] Keep historical planning documents clearly labeled non-authoritative and pointing to the root canonical planning set.
-
-### Dream.OS and Dream Suite integration
-
-- [ ] Confirm current Dream.OS/Dream Suite consumers, required artifact formats, and transfer locations.
-- [ ] Preserve the boundary that ProjectScanner generates repository evidence while durable portfolio governance is owned downstream.
-- [ ] Define compatibility checks for Dream Suite ingestion before describing an integration as active.
-- [ ] Reconcile legacy DreamVault terminology with the current Dream Suite architecture and ownership model.
+There are no canonical `READY` or `ACTIVE` ProjectScanner tasks after the 2026-09-10 production-readiness reconciliation. Future work begins from a new explicit objective, not from stale prose inventory.
