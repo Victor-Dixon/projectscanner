@@ -7,8 +7,6 @@ import sys
 import types
 from pathlib import Path
 
-import pytest
-
 
 def _cli(monkeypatch):
     # The real CLI is loaded unchanged. Only unrelated package integrations are stubbed.
