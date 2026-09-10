@@ -1,79 +1,110 @@
 # ProjectScanner Master Task List
 
-Last synchronized: 2026-08-11
+Last synchronized: 2026-09-09
 
 ## Purpose
 
-This file is the canonical backlog and strategic inventory: it answers **what work exists?** Completed history belongs in `MASTER_TASK_LOG.md`; no more than five immediate actions belong in `NEXT_UP.md`.
+ProjectScanner is the canonical repository evidence generator for Dream.OS portfolio intelligence. It answers what is in a repository and what its observable repository/planning state is. It does not rank portfolio work, grant execution authority, or make destructive governance decisions.
 
-ProjectScanner produces repository-scanning and inventory evidence for cleanup, consolidation, promotion, and automation decisions. The scanner source of truth is `src/core/projectscanner/`; archived or removed implementations are not alternate engines.
+Completed history belongs in `MASTER_TASK_LOG.md`; no more than five immediate actions belong in `NEXT_UP.md`.
 
-## Canonical references
+Every executable lane MUST have a stable `PSC-*` task ID. Prose domains below are non-executable context until normalized.
 
-- Active handoff: `NEXT_UP.md`
-- Completed history: `MASTER_TASK_LOG.md`
-- Domain model: `docs/DOMAIN_MODEL.md`
-- Repository audit: `docs/REPOSITORY_AUDIT.md`
-- Requirements and roadmap: `PRD.md` and `ROADMAP.md`
-- Operating rules: `AGENTS.md`
+## Canonical artifact hierarchy
 
-## Strategic inventory by domain
+```text
+repository source
+   |-- deep source scan -> project_analysis_<repo>.json
+   |-- runtime/git scan -> repo_analysis.json
+   +---------------------------+
+                               v
+                    planning_contract.json
+                               v
+             projectscanner_intelligence_packet.v1
+                               v
+                     chatgpt_context.json
+                        /              \
+                       v                v
+                  RAG index       portfolio_index.json
+```
 
-### Canonical scanner core
+Artifact responsibilities:
 
-- [ ] Verify the current `src/core/projectscanner/` path against the regression suite and document which scanner behaviors have direct test coverage.
-- [ ] Keep all scanner behavior changes in the canonical package; do not revive the standalone, enhanced, or archived overlay scanners as parallel engines.
-- [ ] Decide whether dependency-graph output is supported; if retained, emit and test the required import data.
-- [ ] Decide whether agent categorization is supported; if retained, emit and test the required class-detail data.
-- [ ] Add focused coverage for `ProjectSnapshot` and stable scanner utilities where current behavior lacks regression tests.
+- `project_analysis_<repo>.json`: deep code/content evidence.
+- `repo_analysis.json`: current repository/runtime/git/branch facts.
+- `planning_contract.json`: normalized repository-owned task/NEXT_UP evidence; never portfolio ranking authority.
+- `projectscanner_intelligence_packet.v1`: compact normalized operational evidence joining deep + current facts.
+- `chatgpt_context.json`: bounded AI handoff projection, not authority.
+- RAG: retrieval/index layer.
+- `portfolio_index.json`: fleet summary, not task-selection authority.
+- legacy `chatgpt_project_context_<repo>.json`: compatibility/deep-analysis export; not canonical operational handoff.
+- `cleanup_recommendations.json`: advisory only; absorb into normalized evidence over time rather than treat as peer authority.
 
-### CLI, reporting, and export
+## Canonical task ledger
 
-- [ ] Verify public CLI flags, JSON report generation, context export, and chunking against tests and current documentation.
-- [ ] Document supported report and context schemas, including compatibility expectations for downstream consumers.
-- [ ] Add test-backed examples for the quality and contract CLIs before promoting them in user documentation.
-- [ ] Verify GitHub inventory, bare-repository metadata, scan-target, and project-intelligence exports with external commands mocked where appropriate.
+- [ ] PSC-INTEL-001 | P0 | READY | Consolidate artifact production around the canonical hierarchy above and eliminate peer-authority ambiguity.
+- [ ] PSC-BRANCH-001 | P0 | BLOCKED | Add normalized branch intelligence with FAST_PATH/FORENSIC_PATH evidence fields to `repo_analysis.json` and the intelligence packet | depends on PSC-INTEL-001.
+- [ ] PSC-PLAN-001 | P0 | BLOCKED | Normalize stable task IDs/status/dependencies/NEXT_UP evidence into `planning_contract.json` without inventing tasks | depends on PSC-INTEL-001.
+- [ ] PSC-PACKET-001 | P0 | BLOCKED | Make the intelligence packet join deep scan + repo facts + planning contract with provenance/version checks | depends on PSC-INTEL-001, PSC-BRANCH-001, PSC-PLAN-001.
+- [ ] PSC-CONSUMER-001 | P1 | BLOCKED | Verify DreamVault/Dream.OS consumers against the canonical packet and fail closed on schema/authority drift | depends on PSC-PACKET-001.
+- [ ] PSC-SNAPSHOT-001 | P1 | HOLD | Stabilize snapshot directory/ingestion contract and validate metadata/analysis before writes.
+- [ ] PSC-RAG-001 | P1 | HOLD | Verify normalized RAG export provenance/determinism against current Dream.OS retrieval needs.
+- [ ] PSC-LEGACY-001 | P2 | HOLD | Reconcile removed GUI/legacy scanner references without restoring parallel engines.
+- [ ] PSC-CI-001 | P1 | HOLD | Map canonical scanner behavior to focused regression/CLI/export coverage.
 
-### RAG and knowledge activation
+## Branch intelligence contract
 
-- [ ] Confirm the normalized RAG corpus export contract against current Dream Suite retrieval needs.
-- [ ] Verify repository provenance, source digest, exported-content digest, normalization, and JSONL determinism end to end.
-- [ ] Define which knowledge artifacts are durable inputs, reproducible outputs, or transient runtime data.
-- [ ] Document ownership and handoff boundaries between ProjectScanner generation and downstream indexing or retrieval systems.
+ProjectScanner emits evidence; it does not authorize deletion.
 
-### Generated analysis asset policy
+For each non-canonical branch, normalized evidence should include at minimum:
 
-- [ ] Inventory committed and ignored analysis outputs and classify each family as source, promoted evidence, reproducible artifact, or cleanup candidate.
-- [ ] Preserve generated/runtime scan outputs only when an explicit promotion rule identifies an owner, purpose, and refresh policy.
-- [ ] Keep large historical generated datasets out of product-history claims unless their behavior is independently verified.
-- [ ] Document retention, naming, and ignore rules for snapshots, reports, contexts, caches, and portfolio exports.
+- branch/ref and exact head SHA;
+- canonical branch/head;
+- merge base/ancestry where meaningful;
+- ahead/behind or equivalent containment evidence;
+- unique commit/file counts and bounded inventory references;
+- open PR/protection/retention facts when available;
+- `classification_path`: `FAST_PATH`, `FORENSIC_PATH`, or `UNRESOLVED`;
+- `classification_reason` and evidence references;
+- unique-surface dispositions when forensic: `PROMOTE`, `RETAIN`, `REJECT_WITH_EVIDENCE`, `UNKNOWN`;
+- `delete_eligible` as an evidence-derived candidate flag only, never mutation authority.
 
-### Pipeline and CI verification
+FAST_PATH is appropriate only for proven containment/equivalence/supersession. Unique or ambiguous content routes to FORENSIC_PATH. `UNKNOWN` blocks a clean-delete recommendation.
 
-- [ ] Define and version the snapshot directory contract between `src/utils/run_scanner.py` and `ingest_snapshot.py`.
-- [ ] Validate required `metadata.json` and `analysis.json` fields before database writes.
-- [ ] Test missing or malformed files, duplicate ingestion, and file/issue row fidelity.
-- [ ] Resolve or explicitly defer the missing `PipelineOrchestrator.analyze()` and `.quality()` integrations.
-- [ ] Preserve incremental Ruff enforcement while establishing a deliberate plan for legacy lint debt.
-- [ ] Decide and document the remote/upstream policy for the local `work` branch.
+## Planning representation contract
 
-### Removed legacy GUI and history
+ProjectScanner must represent repository-owned planning cleanly:
 
-- [ ] Reconcile documentation and launch references that still imply the removed enhanced GUI is available.
-- [ ] Decide whether ProjectScanner is intentionally headless or whether a new GUI is justified by current requirements.
-- [ ] If a GUI is approved, design it against the canonical scanner API rather than restoring a parallel historical implementation.
-- [ ] Keep legacy GUI, token wizard, portfolio-analysis, and enhanced-scanner claims labeled historical or **Needs verification**.
+- stable task ID;
+- priority;
+- status (`READY`, `ACTIVE`, `BLOCKED`, `COMPLETE`, `HOLD` where supported by the source repo);
+- dependencies;
+- whether the task appears in canonical NEXT_UP;
+- source file/ref/digest/provenance;
+- parser errors/drift as explicit invalid/unknown evidence.
 
-### Documentation and planning standardization
+ProjectScanner MUST NOT manufacture missing task IDs, rerank portfolio work, reinterpret HOLD/BLOCKED as executable, or turn advisory cleanup recommendations into tasks.
 
-- [ ] Keep `MASTER_TASK_LIST.md` as backlog, `MASTER_TASK_LOG.md` as completed history, and `NEXT_UP.md` as the immediate handoff.
-- [ ] Review the seven **Needs verification** history lanes and record corrections append-only in the master task log.
-- [ ] Keep `README.md`, `PRD.md`, `ROADMAP.md`, domain/audit docs, and agent instructions synchronized when contracts or support decisions change.
-- [ ] Keep historical planning documents clearly labeled non-authoritative and pointing to the root canonical planning set.
+## Non-executable strategic inventory
 
-### Dream.OS and Dream Suite integration
+These remain valid capability domains but cannot be assigned until promoted to a stable `PSC-*` row:
 
-- [ ] Confirm current Dream.OS/Dream Suite consumers, required artifact formats, and transfer locations.
-- [ ] Preserve the boundary that ProjectScanner generates repository evidence while durable portfolio governance is owned downstream.
-- [ ] Define compatibility checks for Dream Suite ingestion before describing an integration as active.
-- [ ] Reconcile legacy DreamVault terminology with the current Dream Suite architecture and ownership model.
+- canonical scanner regression coverage and optional dependency/agent analysis;
+- CLI/report/context schema verification;
+- generated analysis retention/ignore policy;
+- RAG/knowledge ownership and handoff;
+- snapshot/ingestion hardening;
+- legacy GUI/history documentation cleanup;
+- documentation synchronization and Dream.OS consumer compatibility.
+
+## Completion gate
+
+ProjectScanner is planning/intelligence-standardized when:
+
+- canonical artifact hierarchy is implemented and documented;
+- branch facts use the FAST_PATH/FORENSIC_PATH vocabulary;
+- repository planning emits stable task identities without invention;
+- intelligence packet provenance joins deep/current/planning evidence;
+- DreamVault can consume the packet while retaining governance/ranking authority;
+- legacy peer artifacts are compatibility/advisory surfaces rather than competing authority;
+- current executable queue is five items or fewer.
