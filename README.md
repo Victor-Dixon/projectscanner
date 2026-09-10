@@ -53,7 +53,7 @@ Important supporting modules:
 - `scan_targets.py` and `github_sources.py` - scan target and GitHub inventory helpers.
 - `src/scanners/github_library_scanner.py` - GitHub REST/clone/scan flow.
 - `scripts/export_project_intelligence.py` - filesystem/git/docs-marker export.
-- `src/utils/run_scanner.py` and `ingest_snapshot.py` - CI scan runner and SQLite ingestor.
+- `src/utils/run_scanner.py` and `src/projectscanner/ingest.py` - CI scan runner and SQLite ingestor.
 
 Archived overlay scanner experiments remain under:
 
@@ -61,15 +61,17 @@ Archived overlay scanner experiments remain under:
 archive/untracked_overlay_20260505/
 ```
 
-## Known Unknowns and incomplete areas
+## Supported boundary and deferred surfaces
 
-These are intentionally not described as working features:
+The production command surface is intentionally headless. The supported `projectscanner` CLI exposes scanning, export, planning inspection, branch/worktree hygiene inspection, snapshot ingestion, and history. Legacy GUI sources remain in the repository for historical salvage but are not advertised or supported by the production CLI.
 
-- Enhanced GUI launch paths reference missing modules.
-- Scanner output and `ingest_snapshot.py` do not yet share a complete documented `analysis.json` schema.
+The versioned snapshot path now enforces schema version compatibility before database writes and reconciles repeated `(repo, commit_sha)` ingestion without accumulating stale file or issue rows.
+
+The following remain explicitly unsupported/incomplete rather than being presented as working features:
+
 - Dependency graph generation expects imports that the current analyzer does not emit.
 - Agent categorization expects class detail dictionaries that the current analyzer does not emit.
-- `PipelineOrchestrator.analyze()` and `.quality()` reference functions that are not currently present.
+- `PipelineOrchestrator.analyze()` and `.quality()` still reference incomplete enrichment integrations.
 
 ## Common usage
 
@@ -82,7 +84,7 @@ pip install -e .
 Run a local scan:
 
 ```bash
-python main.py --scan /path/to/project --export-context
+projectscanner scan /path/to/project --output ./scan-output
 ```
 
 Run the CI-oriented scanner wrapper:
@@ -129,4 +131,4 @@ pytest -q
 
 ## Current status
 
-ProjectScanner is an active toolbelt repository with a working core scanner and context export path. `NEXT_UP.md` now limits the immediate handoff to five verification and policy actions; the complete strategic inventory remains in `MASTER_TASK_LIST.md`.
+ProjectScanner is an active headless toolbelt repository with a working scanner, context/export path, branch/worktree evidence surface, versioned snapshot contract, and idempotent SQLite ingestion. Unsupported legacy or enrichment surfaces are kept outside the production command contract until they are independently verified.
