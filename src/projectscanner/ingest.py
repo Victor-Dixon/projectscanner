@@ -81,6 +81,55 @@ def load_snapshot(snapshot_dir: Path) -> tuple[dict, dict]:
     return metadata, analysis
 
 
+def _upsert_snapshot_row(
+    cursor: sqlite3.Cursor,
+    *,
+    repo_name: str,
+    metadata: dict,
+    analysis: dict,
+) -> int:
+    cursor.execute(
+        "SELECT id FROM snapshots WHERE repo = ? AND commit_sha = ?",
+        (repo_name, metadata["commit_sha"]),
+    )
+    existing = cursor.fetchone()
+    values = (
+        metadata.get("branch"),
+        metadata.get("timestamp"),
+        analysis.get("total_files", len(analysis.get("files", []))),
+        metadata.get("scanner_version"),
+        metadata.get("scan_mode"),
+        metadata.get("duration_seconds"),
+        metadata.get("workflow_run_id"),
+    )
+
+    if existing is not None:
+        snapshot_id = int(existing[0])
+        cursor.execute(
+            """
+            UPDATE snapshots
+            SET branch = ?, scanned_at = ?, total_files = ?, scanner_version = ?,
+                scan_mode = ?, duration_seconds = ?, workflow_run_id = ?
+            WHERE id = ?
+            """,
+            (*values, snapshot_id),
+        )
+        return snapshot_id
+
+    cursor.execute(
+        """
+        INSERT INTO snapshots
+        (repo, commit_sha, branch, scanned_at, total_files, scanner_version,
+         scan_mode, duration_seconds, workflow_run_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (repo_name, metadata["commit_sha"], *values),
+    )
+    if cursor.lastrowid is None:
+        raise RuntimeError("Unable to resolve snapshot id after insert.")
+    return int(cursor.lastrowid)
+
+
 def ingest_snapshot(
     snapshot_dir: Path,
     repo_name: str = "default",
@@ -89,78 +138,64 @@ def ingest_snapshot(
     metadata, analysis = load_snapshot(snapshot_dir)
     db = db_path or DEFAULT_DB_PATH
     conn = init_db(db)
-    cursor = conn.cursor()
 
-    cursor.execute(
-        """
-        INSERT OR IGNORE INTO snapshots
-        (repo, commit_sha, branch, scanned_at, total_files, scanner_version,
-         scan_mode, duration_seconds, workflow_run_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        (
-            repo_name,
-            metadata["commit_sha"],
-            metadata.get("branch"),
-            metadata.get("timestamp"),
-            analysis.get("total_files", len(analysis.get("files", []))),
-            metadata.get("scanner_version"),
-            metadata.get("scan_mode"),
-            metadata.get("duration_seconds"),
-            metadata.get("workflow_run_id"),
-        ),
-    )
-
-    snapshot_id = cursor.lastrowid
-    if not snapshot_id:
-        cursor.execute(
-            "SELECT id FROM snapshots WHERE repo = ? AND commit_sha = ?",
-            (repo_name, metadata["commit_sha"]),
-        )
-        row = cursor.fetchone()
-        if row is None:
-            raise RuntimeError("Unable to resolve snapshot id after insert.")
-        snapshot_id = row[0]
-
-    for file_data in analysis.get("files", []):
-        cursor.execute(
-            """
-            INSERT OR REPLACE INTO files
-            (snapshot_id, path, language, file_hash, functions_count,
-             classes_count, loc_estimate, raw_json)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                snapshot_id,
-                file_data.get("path"),
-                file_data.get("language"),
-                file_data.get("hash"),
-                file_data.get("functions", 0),
-                file_data.get("classes", 0),
-                file_data.get("loc", 0),
-                json.dumps(file_data),
-            ),
+    try:
+        cursor = conn.cursor()
+        snapshot_id = _upsert_snapshot_row(
+            cursor,
+            repo_name=repo_name,
+            metadata=metadata,
+            analysis=analysis,
         )
 
-    for issue in analysis.get("issues", []):
-        cursor.execute(
-            """
-            INSERT INTO issues
-            (snapshot_id, rule, severity, file_path, message, line_start)
-            VALUES (?, ?, ?, ?, ?, ?)
-            """,
-            (
-                snapshot_id,
-                issue.get("rule"),
-                issue.get("severity"),
-                issue.get("file_path"),
-                issue.get("message"),
-                issue.get("line_start"),
-            ),
-        )
+        # Reconcile child rows as a set. Re-ingesting the same repo/commit is
+        # therefore row-idempotent and cannot accumulate stale issues.
+        cursor.execute("DELETE FROM files WHERE snapshot_id = ?", (snapshot_id,))
+        cursor.execute("DELETE FROM issues WHERE snapshot_id = ?", (snapshot_id,))
 
-    conn.commit()
-    conn.close()
+        for file_data in analysis.get("files", []):
+            cursor.execute(
+                """
+                INSERT INTO files
+                (snapshot_id, path, language, file_hash, functions_count,
+                 classes_count, loc_estimate, raw_json)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    snapshot_id,
+                    file_data.get("path"),
+                    file_data.get("language"),
+                    file_data.get("hash"),
+                    file_data.get("functions", 0),
+                    file_data.get("classes", 0),
+                    file_data.get("loc", 0),
+                    json.dumps(file_data),
+                ),
+            )
+
+        for issue in analysis.get("issues", []):
+            cursor.execute(
+                """
+                INSERT INTO issues
+                (snapshot_id, rule, severity, file_path, message, line_start)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    snapshot_id,
+                    issue.get("rule"),
+                    issue.get("severity"),
+                    issue.get("file_path"),
+                    issue.get("message"),
+                    issue.get("line_start"),
+                ),
+            )
+
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
 
     return {
         "commit_sha": metadata["commit_sha"],
