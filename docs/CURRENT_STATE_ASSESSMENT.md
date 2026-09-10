@@ -1,74 +1,102 @@
 # Current State Assessment
 
-Last synchronized: 2026-07-03
+Last synchronized: 2026-09-10
 
-## What this project is
+## Current verdict
 
-ProjectScanner is repository scanning and inventory intelligence tooling. It scans local and selected GitHub repositories, exports code structure/context artifacts, and supports Dream.OS/DreamVault cleanup and consolidation workflows with evidence.
+ProjectScanner has a **production-ready bounded headless surface** for repository scanning and intelligence workflows.
 
-## Domain
+That statement is intentionally scoped. It does not certify the legacy GUI, incomplete pipeline enrichment stages, or every historical utility as production-ready.
 
-Core domain: software repository scanning and repository inventory intelligence.
+## Supported now
 
-See `docs/DOMAIN_MODEL.md` for the full domain model.
+### Scanner CLI
 
-## What we have right now
+The public `projectscanner` command supports:
 
-### 1) Canonical scanner package
+- `scan`
+- `export`
+- `planning`
+- `hygiene`
+- `ingest`
+- `history`
 
-- Source of truth: `src/core/projectscanner/`.
-- `ProjectScanner` composes `FileProcessor`, `LanguageAnalyzer`, and `ReportGenerator`.
-- Supported scan outputs include JSON analysis reports and optional ChatGPT context exports.
-- Current regression coverage verifies analyzer behavior, exclusions, context export, chunking, bare repo metadata, and SSOT imports.
+The GUI command is not part of the supported surface.
 
-### 2) Repository inventory and portfolio utilities
+### Scan artifacts
 
-- `github_sources.py` and `scan_targets.py` model GitHub/local scan target discovery and manifests.
-- `src/scanners/github_library_scanner.py` can fetch public GitHub repo metadata, clone repositories, and delegate analysis to `ProjectScanner`.
-- `scripts/export_project_intelligence.py` exports filesystem/git/docs-marker intelligence bundles and is covered by tests.
-- `project_artifact_standards.py` checks for expected artifact bundle files.
+Supported CLI scans emit current repository evidence rather than stale cache residue:
 
-### 3) Quality and contract tooling
+- unchanged cached files retain their analysis;
+- deleted files are excluded from current artifacts;
+- report/snapshot/context paths are emitted in canonical order;
+- repeated unchanged scans against the same output directory are regression-tested for stable artifacts;
+- optional context chunk membership is deterministic for the same current analysis set.
 
-- `src/core/rules/` contains the contract engine and rule strategies.
-- `src/quality/` contains standalone AGENTS.md, complexity, LOC, and contract CLI tooling.
-- These tools exist, but much of this surface has limited pytest coverage.
+### Snapshot and history contract
 
-### 4) CI and snapshot history
+- metadata schema version is enforced;
+- analysis schema version is enforced;
+- malformed or inconsistent payloads fail before database writes;
+- repeated `(repo, commit_sha)` ingestion is idempotent;
+- file and issue child rows are reconciled to current snapshot state;
+- transaction failures roll back.
 
-- `.github/workflows/scanner-snapshot.yml` and `src/utils/run_scanner.py` provide a CI-oriented scan path.
-- `ingest_snapshot.py` ingests `metadata.json` and `analysis.json` into SQLite.
-- Current gap: the scanner runner and ingestor do not yet share a fully aligned, documented artifact schema.
+### Repository/fleet intelligence
 
-### 5) GUI status
+- planning contracts are inspected without inventing tasks;
+- branch/worktree hygiene evidence is observational only;
+- portfolio intelligence export remains evidence generation;
+- `dreamos.portfolio-index.v2` adds normalized task evidence and fail-closed NEXT_UP projection while preserving DreamVault as planner/governance authority.
 
-- GUI-related entry points exist.
-- Referenced enhanced GUI modules are missing from the current tree.
-- GUI behavior is Unknown/incomplete and should not be documented as a working feature until code and tests support it.
+## Verification state
 
-## Current risks and gaps
+The repository regression contract is:
 
-1. Snapshot data contract drift between scanner output and SQLite ingestion.
-2. Missing validation for snapshot metadata and analysis payloads.
-3. GUI entry points reference missing modules.
-4. Dependency graph and agent categorization expect analyzer fields that are not currently emitted.
-5. Pipeline analyze/quality methods reference missing functions.
-6. Several stable utility modules need tests before stronger guarantees are made.
+```bash
+pytest -q
+```
 
-## What has been completed
+Pull-request verification also requires:
 
-- Documentation-first domain model and repository audit.
-- Required lifecycle doc synchronization.
-- Explicit Unknowns for incomplete features.
-- Current authoritative documentation map.
+```text
+Scanner Snapshot = PASS
+Agent Enforcer   = PASS
+review findings  = resolved or affected claim removed
+```
 
-## What remains
+The full suite replaced the earlier curated-subset gate so dormant regressions are visible rather than silently excluded.
 
-- Snapshot schema stabilization.
-- Additional tests for ingestion and stable utilities.
-- GUI support decision.
-- Analyzer enrichment/support decision for graph and categorization features.
+## Explicitly deferred / unsupported
+
+The following remain outside the current production guarantee:
+
+- legacy GUI implementation and launch experiments;
+- complete dependency-graph semantics where analyzer import evidence is absent;
+- agent categorization where analyzer class-detail evidence is absent;
+- `PipelineOrchestrator.analyze()` and `.quality()` enrichment stages;
+- speculative commercialization/revenue lanes without concrete validation.
+
+These items are not READY work merely because code or historical documentation exists.
+
+## Planning state
+
+The canonical production-readiness lanes have been completed or reconciled. `NEXT_UP.md` intentionally contains no READY/ACTIVE ProjectScanner task.
+
+This means:
+
+```text
+NO CANONICAL ASSIGNMENT
+        -> STOP
+```
+
+A worker must not recreate completed snapshot work from older documents, closed PRs, or dormant branches.
 
 ## What should be worked on next
 
-Follow root `NEXT_UP.md`: stabilize the snapshot artifact contract between CI scanner output and `ingest_snapshot.py`.
+Nothing from existing ProjectScanner planning authority.
+
+A next lane requires one of:
+
+1. a new concrete objective explicitly promoted into canonical planning authority; or
+2. unique branch work that is inspected, salvaged, verified against current master, and then explicitly promoted.
