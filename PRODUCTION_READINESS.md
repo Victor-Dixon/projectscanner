@@ -1,50 +1,62 @@
 # ProjectScanner Production Readiness
 
-Last synchronized: 2026-07-03
+Last synchronized: 2026-09-10
 
-## Project
+## Verdict
 
-ProjectScanner is repository scanning and inventory intelligence tooling for local and GitHub projects. It belongs to the software repository analysis domain.
+`SUPPORTED_HEADLESS_SURFACE=PRODUCTION_READY`
 
-## Current readiness summary
+This verdict is intentionally scoped. ProjectScanner is production-ready for its supported headless repository-intelligence surface; preserved legacy GUI and speculative enrichment modules are not included in that support claim.
 
-ProjectScanner has a working core local scanner/report/context path, but the repository should not be described as production-ready as a fully integrated scanner platform. Several integration seams remain incomplete and are documented as Unknown or partial.
+## Supported production surface
 
-## Ready surfaces
-
-- Local project scanning through `ProjectScanner`.
-- Lightweight language analysis for Python, JS/TS, and Rust.
-- JSON report generation.
-- ChatGPT context export and chunking.
+- Local project scanning through `ProjectScanner` and `projectscanner scan`.
+- Lightweight Python, JS/TS, and Rust structure analysis.
+- JSON report and ChatGPT-context export/chunking.
 - Bare Git repository metadata export.
-- Portfolio docs-marker export.
-- GitHub inventory/scan target helper modules.
-- Contract and quality checker tooling as standalone utilities.
+- GitHub inventory and scan-target helpers.
+- Planning-contract inspection.
+- Read-only branch/worktree hygiene evidence.
+- Versioned `analysis.json` / `metadata.json` snapshot contract.
+- Fail-closed snapshot validation before SQLite writes.
+- Idempotent SQLite ingestion keyed by `(repo, commit_sha)` with exact child-row reconciliation.
+- Snapshot history queries.
+- Portfolio evidence index v1 and additive HQ-ready v2 evidence projection.
 
-## Not ready / incomplete surfaces
+## Production verification gate
 
-- Enhanced GUI launch path; missing referenced modules.
-- Stable scanner-to-ingestor snapshot schema.
-- SQLite ingestion validation.
-- Dependency graph output as a complete feature.
-- Agent categorization on current analyzer output.
-- Pipeline analyze/quality enrichment.
-
-## Current verification gate
+Scanner Snapshot CI now runs the repository's full gate:
 
 ```bash
 pytest -q
 ```
 
-## Production-readiness requirements before stronger claims
+Agent Enforcer is the second exact-head merge gate.
 
-- [ ] Snapshot schema is documented and validated.
-- [ ] CI scanner output and SQLite ingestion are aligned.
-- [ ] Ingestion has tests for malformed inputs and idempotency.
-- [ ] GUI status is resolved and documented.
-- [ ] Dependency graph and agent categorization are either implemented with tests or removed from supported-feature docs.
-- [ ] Stable utility surfaces have tests.
+The first promoted full-suite run on PR #31 completed with 63 passing tests. PR #32 then added two portfolio-index regression tests under the same full-suite gate.
 
-## What remains
+## Closed readiness requirements
 
-See `MASTER_TASK_LIST.md` for the canonical backlog and `NEXT_UP.md` for the immediate next work.
+- [x] Snapshot schema is versioned, emitted by CI, and validated before ingestion.
+- [x] CI scanner output and SQLite ingestion share the same contract.
+- [x] Malformed payload, duplicate-ingest, and row-fidelity behavior have regression coverage.
+- [x] GUI status is resolved: ProjectScanner production is intentionally headless; legacy GUI source is preserved but unsupported.
+- [x] Dependency graph and agent categorization are removed from the supported-feature claim and remain deferred backlog only.
+- [x] The supported repository surface is covered by the full regression suite rather than a curated CI subset.
+- [x] Portfolio evidence v2 is additive and explicitly non-authoritative for planning/execution.
+
+## Explicitly unsupported / deferred
+
+These are not production guarantees and do not block the supported headless release:
+
+- legacy GUI source under `src/gui/`;
+- `PipelineOrchestrator.analyze()` / `.quality()` enrichment;
+- dependency-graph completeness;
+- agent categorization completeness;
+- tree-sitter parsing.
+
+They must not be advertised as supported without a new requirement and focused verification.
+
+## Operational rule
+
+`MASTER_TASK_LIST.md` and `NEXT_UP.md` define executable repository work. As of this synchronization, there is no `READY` or `ACTIVE` ProjectScanner task. Workers must not manufacture follow-up implementation merely because dormant legacy code exists.
