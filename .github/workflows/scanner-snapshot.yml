@@ -28,21 +28,11 @@ jobs:
       - name: Install scanner and test dependencies
         run: pip install -e '.[dev,hygiene]'
 
-      - name: Run focused productization, planning, RAG, and hygiene regression tests
+      - name: Run full regression suite
         shell: bash
         run: |
           set +e
-          pytest -q \
-            tests/test_cli.py \
-            tests/test_fleet_hygiene_snapshot.py \
-            tests/test_ingest.py \
-            tests/test_snapshot_contract.py \
-            tests/test_phase2_handoff.py \
-            tests/test_export_project_intelligence.py \
-            tests/test_export_rag_corpus.py \
-            tests/test_planning_contract.py \
-            tests/test_scanner_snapshot_workflow.py \
-            --tb=short --junitxml=pytest-results.xml 2>&1 | tee pytest-output.txt
+          pytest -q --tb=short --junitxml=pytest-results.xml 2>&1 | tee pytest-output.txt
           status=${PIPESTATUS[0]}
           tail -n 160 pytest-output.txt > pytest-tail.txt
           exit "$status"
