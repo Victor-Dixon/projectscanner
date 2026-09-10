@@ -146,37 +146,6 @@ def _cmd_history(args: argparse.Namespace) -> int:
     return 0
 
 
-def _cmd_gui(_: argparse.Namespace) -> int:
-    try:
-        import PyQt5  # noqa: F401
-    except ImportError:
-        print(
-            "GUI requires optional dependencies. Install with:\n"
-            "  pip install 'projectscanner[gui]'",
-            file=sys.stderr,
-        )
-        return 1
-
-    try:
-        from gui.main import run_gui
-    except ImportError:
-        try:
-            from gui.main.run_gui import main as run_gui_main
-
-            run_gui_main()
-            return 0
-        except ImportError as exc:
-            print(f"GUI module unavailable: {exc}", file=sys.stderr)
-            return 1
-
-    if hasattr(run_gui, "main"):
-        run_gui.main()
-    else:
-        print("GUI launcher found but exposes no main() entry point.", file=sys.stderr)
-        return 1
-    return 0
-
-
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="projectscanner",
@@ -234,9 +203,6 @@ def build_parser() -> argparse.ArgumentParser:
     history.add_argument("--db", default=None, help="SQLite database path")
     history.add_argument("--last", type=int, default=10)
     history.set_defaults(func=_cmd_history)
-
-    gui = subparsers.add_parser("gui", help="Launch optional GUI (requires [gui] extra)")
-    gui.set_defaults(func=_cmd_gui)
 
     return parser
 

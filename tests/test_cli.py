@@ -10,11 +10,12 @@ import pytest
 from projectscanner.cli import build_parser, main
 
 
-def test_cli_help_lists_subcommands():
+def test_cli_help_lists_supported_subcommands():
     parser = build_parser()
     help_text = parser.format_help()
-    for command in ("scan", "export", "planning", "hygiene", "ingest", "history", "gui"):
+    for command in ("scan", "export", "planning", "hygiene", "ingest", "history"):
         assert command in help_text
+    assert "gui" not in help_text
 
 
 def test_scan_writes_analysis_json(tmp_path):
