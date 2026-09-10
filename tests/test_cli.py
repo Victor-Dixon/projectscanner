@@ -13,7 +13,7 @@ from projectscanner.cli import build_parser, main
 def test_cli_help_lists_subcommands():
     parser = build_parser()
     help_text = parser.format_help()
-    for command in ("scan", "export", "ingest", "history", "gui"):
+    for command in ("scan", "export", "planning", "hygiene", "ingest", "history", "gui"):
         assert command in help_text
 
 
@@ -36,6 +36,44 @@ def test_scan_writes_analysis_json(tmp_path):
 def test_scan_missing_path_returns_error(tmp_path):
     code = main(["scan", str(tmp_path / "missing")])
     assert code == 1
+
+
+def test_hygiene_cli_writes_snapshot(tmp_path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    subprocess.run(["git", "-C", str(repo), "init"], check=True, capture_output=True)
+    subprocess.run(
+        ["git", "-C", str(repo), "config", "user.email", "cli@example.invalid"],
+        check=True,
+        capture_output=True,
+    )
+    subprocess.run(
+        ["git", "-C", str(repo), "config", "user.name", "CLI Test"],
+        check=True,
+        capture_output=True,
+    )
+    subprocess.run(["git", "-C", str(repo), "branch", "-M", "master"], check=True, capture_output=True)
+    (repo / "README.md").write_text("demo\n", encoding="utf-8")
+    subprocess.run(["git", "-C", str(repo), "add", "README.md"], check=True, capture_output=True)
+    subprocess.run(["git", "-C", str(repo), "commit", "-m", "baseline"], check=True, capture_output=True)
+
+    out = tmp_path / "hygiene.json"
+    code = main(
+        [
+            "hygiene",
+            str(repo),
+            "--canonical-branch",
+            "master",
+            "--output",
+            str(out),
+        ]
+    )
+
+    assert code == 0
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    assert payload["schema"] == "projectscanner_fleet_hygiene_snapshot.v1"
+    assert payload["repo"]["canonical_branch"] == "master"
+    assert payload["policy"]["scanner_mutations_made"] is False
 
 
 def test_history_empty_db(tmp_path, monkeypatch):

@@ -26,14 +26,15 @@ jobs:
           python-version: '3.11'
 
       - name: Install scanner and test dependencies
-        run: pip install -e '.[dev]'
+        run: pip install -e '.[dev,hygiene]'
 
-      - name: Run focused productization, planning, and RAG regression tests
+      - name: Run focused productization, planning, RAG, and hygiene regression tests
         shell: bash
         run: |
           set +e
           pytest -q \
             tests/test_cli.py \
+            tests/test_fleet_hygiene_snapshot.py \
             tests/test_snapshot_contract.py \
             tests/test_phase2_handoff.py \
             tests/test_export_project_intelligence.py \
