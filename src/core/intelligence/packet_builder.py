@@ -11,7 +11,10 @@ from typing import Any
 from .dirty_classifier import aggregate_dirty_classes, git_status_paths
 from .generated_classifier import detect_experiment_boundary, runtime_noise_ratio
 from .manifest_paths import PACKET_SCHEMA, packet_path_for_repo
-from .packet_validation import intelligence_packet_canonical_sha256, validate_intelligence_packet
+from .packet_validation import (
+    intelligence_packet_canonical_sha256,
+    validate_intelligence_packet,
+)
 
 # Lane derivation from dirty-class dominance
 LANE_MAP: dict[str, list[str]] = {
