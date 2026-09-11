@@ -9,7 +9,6 @@ import hashlib
 import logging
 import threading
 from pathlib import Path
-from typing import Dict, Optional
 
 from .language_analyzer import LanguageAnalyzer
 from .path_exclusions import should_exclude_path
@@ -23,7 +22,7 @@ class FileProcessor:
     def __init__(
         self,
         project_root: Path,
-        cache: Dict,
+        cache: dict,
         cache_lock: threading.Lock,
         additional_ignore_dirs: set,
         max_file_size_bytes: int = 10 * 1024 * 1024,
@@ -43,13 +42,13 @@ class FileProcessor:
                 for chunk in iter(lambda: file_handle.read(65536), b""):
                     hasher.update(chunk)
             return hasher.hexdigest()
-        except Exception:  # pragma: no cover
+        except Exception:  # noqa: BLE001  # preserve legacy fail-soft hashing
             return ""
 
     def should_exclude(self, file_path: Path) -> bool:
         return should_exclude_path(file_path, self.project_root, self.additional_ignore_dirs)
 
-    def process_file(self, file_path: Path, language_analyzer: LanguageAnalyzer) -> Optional[tuple]:
+    def process_file(self, file_path: Path, language_analyzer: LanguageAnalyzer) -> tuple | None:
         if self.should_exclude(file_path):
             return None
 
@@ -84,6 +83,6 @@ class FileProcessor:
         except UnicodeDecodeError as exc:
             logger.debug("⚠️ Encoding issue in %s: %s", file_path.name, exc.reason)
             return None
-        except Exception as exc:  # pragma: no cover
+        except Exception as exc:  # noqa: BLE001  # preserve legacy per-file isolation
             logger.error("❌ Unexpected error analyzing %s: %s", file_path, exc)
             return None
