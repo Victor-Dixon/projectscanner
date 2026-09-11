@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-import json
-import re
-import subprocess
 from dataclasses import asdict, dataclass, fields
 from datetime import UTC, datetime
+import json
 from pathlib import Path
+import re
+import subprocess
 from typing import Any
 from urllib.parse import urlparse
 
