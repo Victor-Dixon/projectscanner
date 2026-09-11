@@ -9,13 +9,13 @@ from pathlib import Path
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_ROOT / "src"))
 
-from core.intelligence.dirty_classifier import aggregate_dirty_classes, classify_path  # noqa: E402
-from core.intelligence.packet_builder import IntelligencePacketBuilder  # noqa: E402
-from core.intelligence.packet_validation import (  # noqa: E402
+from core.intelligence.dirty_classifier import aggregate_dirty_classes, classify_path
+from core.intelligence.packet_builder import IntelligencePacketBuilder
+from core.intelligence.packet_validation import (
     intelligence_packet_canonical_sha256,
     validate_intelligence_packet,
 )
-from core.intelligence.repo_graph import RepoGraphBuilder  # noqa: E402
+from core.intelligence.repo_graph import RepoGraphBuilder
 
 
 def test_classify_runtime_state():
@@ -48,11 +48,19 @@ def test_build_packet_shape_and_validation(monkeypatch, tmp_path):
     repo = _make_minimal_repo(tmp_path)
     monkeypatch.setattr(
         "core.intelligence.packet_builder.git_status_paths",
-        lambda _repo_root: (["src/main.py", "tests/test_x.py"], {"dirty_count": 1, "untracked_count": 1}),
+        lambda _repo_root: (
+            ["src/main.py", "tests/test_x.py"],
+            {"dirty_count": 1, "untracked_count": 1},
+        ),
     )
     monkeypatch.setattr(
         "core.intelligence.packet_builder._git_meta",
-        lambda _repo_root: {"is_repo": False, "branch": "", "dirty_count": 0, "untracked_count": 0},
+        lambda _repo_root: {
+            "is_repo": False,
+            "branch": "",
+            "dirty_count": 0,
+            "untracked_count": 0,
+        },
     )
 
     packet = IntelligencePacketBuilder(repo).build()
@@ -72,7 +80,12 @@ def test_write_packet_is_deterministic_and_self_hashes(monkeypatch, tmp_path):
     )
     monkeypatch.setattr(
         "core.intelligence.packet_builder._git_meta",
-        lambda _repo_root: {"is_repo": False, "branch": "", "dirty_count": 0, "untracked_count": 0},
+        lambda _repo_root: {
+            "is_repo": False,
+            "branch": "",
+            "dirty_count": 0,
+            "untracked_count": 0,
+        },
     )
 
     builder = IntelligencePacketBuilder(repo)
