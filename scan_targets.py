@@ -1,9 +1,9 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 import json
 import re
 import subprocess
-from collections.abc import Mapping
 from dataclasses import asdict, dataclass, fields
 from datetime import UTC, datetime
 from pathlib import Path
