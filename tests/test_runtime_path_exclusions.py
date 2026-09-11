@@ -1,5 +1,5 @@
-from pathlib import Path
 import threading
+from pathlib import Path
 
 from core.projectscanner.file_processor import FileProcessor
 
