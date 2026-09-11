@@ -8,9 +8,13 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from .dirty_classifier import aggregate_dirty_classes, classify_path, git_status_paths
+from .dirty_classifier import aggregate_dirty_classes, git_status_paths
 from .generated_classifier import detect_experiment_boundary, runtime_noise_ratio
 from .manifest_paths import PACKET_SCHEMA, packet_path_for_repo
+from .packet_validation import (
+    intelligence_packet_canonical_sha256,
+    validate_intelligence_packet,
+)
 
 # Lane derivation from dirty-class dominance
 LANE_MAP: dict[str, list[str]] = {
@@ -123,9 +127,8 @@ def _detect_technology(repo_root: Path) -> dict[str, Any]:
             key = ext_map[ext]
             langs[key] = langs.get(key, 0) + 1
         for marker, label in marker_files.items():
-            if rel == marker or rel.startswith(marker + "/"):
-                if label not in markers:
-                    markers.append(label)
+            if (rel == marker or rel.startswith(marker + "/")) and label not in markers:
+                markers.append(label)
     return {"languages": dict(sorted(langs.items(), key=lambda x: -x[1])), "markers": sorted(markers)}
 
 
@@ -237,13 +240,15 @@ class IntelligencePacketBuilder:
         }
         if scan_artifact:
             packet["scan_artifact"] = str(scan_artifact)
+        validate_intelligence_packet(packet)
+        packet["canonical_sha256"] = intelligence_packet_canonical_sha256(packet)
         return packet
 
     def write(self, out_path: Path | None = None) -> Path:
         packet = self.build()
         target = out_path or packet_path_for_repo(self.repo_root)
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json.dumps(packet, indent=2), encoding="utf-8")
+        target.write_text(json.dumps(packet, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         return target
 
 

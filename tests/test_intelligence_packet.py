@@ -6,14 +6,16 @@ import json
 import sys
 from pathlib import Path
 
-import pytest
-
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_ROOT / "src"))
 
-from core.intelligence.dirty_classifier import aggregate_dirty_classes, classify_path  # noqa: E402
-from core.intelligence.packet_builder import IntelligencePacketBuilder  # noqa: E402
-from core.intelligence.repo_graph import RepoGraphBuilder  # noqa: E402
+from core.intelligence.dirty_classifier import aggregate_dirty_classes, classify_path
+from core.intelligence.packet_builder import IntelligencePacketBuilder
+from core.intelligence.packet_validation import (
+    intelligence_packet_canonical_sha256,
+    validate_intelligence_packet,
+)
+from core.intelligence.repo_graph import RepoGraphBuilder
 
 
 def test_classify_runtime_state():
@@ -32,29 +34,73 @@ def test_aggregate_dirty_classes():
     assert counts["generated_reports"] == 1
 
 
-def test_build_packet_for_projectscanner(tmp_path):
-    # Use real projectscanner root when available
-    root = _ROOT
-    builder = IntelligencePacketBuilder(root)
-    packet = builder.build()
+def _make_minimal_repo(tmp_path: Path) -> Path:
+    repo = tmp_path / "sample_repo"
+    (repo / "src").mkdir(parents=True)
+    (repo / "src" / "main.py").write_text("print('hi')\n", encoding="utf-8")
+    (repo / "tests").mkdir(parents=True)
+    (repo / "tests" / "test_x.py").write_text("def test_x():\n    assert True\n", encoding="utf-8")
+    (repo / "runtime" / "state").mkdir(parents=True)
+    return repo
+
+
+def test_build_packet_shape_and_validation(monkeypatch, tmp_path):
+    repo = _make_minimal_repo(tmp_path)
+    monkeypatch.setattr(
+        "core.intelligence.packet_builder.git_status_paths",
+        lambda _repo_root: (
+            ["src/main.py", "tests/test_x.py"],
+            {"dirty_count": 1, "untracked_count": 1},
+        ),
+    )
+    monkeypatch.setattr(
+        "core.intelligence.packet_builder._git_meta",
+        lambda _repo_root: {
+            "is_repo": False,
+            "branch": "",
+            "dirty_count": 0,
+            "untracked_count": 0,
+        },
+    )
+
+    packet = IntelligencePacketBuilder(repo).build()
+    validate_intelligence_packet(packet)
     assert packet["schema"] == "projectscanner_intelligence_packet.v1"
-    assert packet["repo"] == root.name
-    assert "dirty_classes" in packet
-    assert packet["risk_level"] in ("low", "medium", "high", "critical")
+    assert packet["repo"] == repo.name
     assert isinstance(packet["candidate_lanes"], list)
+    assert isinstance(packet.get("canonical_sha256"), str)
+    assert len(packet["canonical_sha256"]) == 64
 
 
-def test_write_packet(tmp_path):
-    builder = IntelligencePacketBuilder(_ROOT)
-    out = builder.write(tmp_path / "runtime" / "state" / "intelligence_packet.v1.json")
-    assert out.is_file()
+def test_write_packet_is_deterministic_and_self_hashes(monkeypatch, tmp_path):
+    repo = _make_minimal_repo(tmp_path)
+    monkeypatch.setattr(
+        "core.intelligence.packet_builder.git_status_paths",
+        lambda _repo_root: (["src/main.py"], {"dirty_count": 1, "untracked_count": 0}),
+    )
+    monkeypatch.setattr(
+        "core.intelligence.packet_builder._git_meta",
+        lambda _repo_root: {
+            "is_repo": False,
+            "branch": "",
+            "dirty_count": 0,
+            "untracked_count": 0,
+        },
+    )
+
+    builder = IntelligencePacketBuilder(repo)
+    out = builder.write(repo / "runtime" / "state" / "intelligence_packet.v1.json")
     data = json.loads(out.read_text(encoding="utf-8"))
-    assert data["schema"] == "projectscanner_intelligence_packet.v1"
+    validate_intelligence_packet(data)
+    assert data["canonical_sha256"] == intelligence_packet_canonical_sha256(data)
+
+    first = builder.build()
+    second = builder.build()
+    assert first["canonical_sha256"] == second["canonical_sha256"]
 
 
 def test_repo_graph_builder():
-    builder = RepoGraphBuilder(_ROOT)
-    graph = builder.build()
+    graph = RepoGraphBuilder(_ROOT).build()
     assert graph["schema"] == "projectscanner_repo_graph.v1"
     assert "DreamVault" in graph["nodes"]
     assert "projectscanner" in graph["nodes"]
