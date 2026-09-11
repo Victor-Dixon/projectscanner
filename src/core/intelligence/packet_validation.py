@@ -8,7 +8,6 @@ from typing import Any
 
 from .manifest_paths import PACKET_SCHEMA
 
-
 REQUIRED_TOP_LEVEL_KEYS: tuple[str, ...] = (
     "schema",
     "repo",
@@ -37,27 +36,35 @@ def validate_intelligence_packet(packet: dict[str, Any]) -> None:
     if missing:
         raise ValueError(f"missing required keys: {missing}")
 
-    if not isinstance(packet.get("repo"), str) or not packet["repo"]:
-        raise ValueError("repo must be non-empty string")
-    if not isinstance(packet.get("repo_root"), str) or not packet["repo_root"]:
-        raise ValueError("repo_root must be non-empty string")
-    if not isinstance(packet.get("generated_at"), str) or not packet["generated_at"]:
-        raise ValueError("generated_at must be non-empty string")
-    if not isinstance(packet.get("manifest_path"), str) or not packet["manifest_path"]:
-        raise ValueError("manifest_path must be non-empty string")
+    if not isinstance(packet.get("repo"), str):
+        raise TypeError("repo must be a string")
+    if not packet["repo"]:
+        raise ValueError("repo must be non-empty")
+    if not isinstance(packet.get("repo_root"), str):
+        raise TypeError("repo_root must be a string")
+    if not packet["repo_root"]:
+        raise ValueError("repo_root must be non-empty")
+    if not isinstance(packet.get("generated_at"), str):
+        raise TypeError("generated_at must be a string")
+    if not packet["generated_at"]:
+        raise ValueError("generated_at must be non-empty")
+    if not isinstance(packet.get("manifest_path"), str):
+        raise TypeError("manifest_path must be a string")
+    if not packet["manifest_path"]:
+        raise ValueError("manifest_path must be non-empty")
 
     if not isinstance(packet.get("git"), dict):
-        raise ValueError("git must be an object")
+        raise TypeError("git must be an object")
     if not isinstance(packet.get("dirty_classes"), dict):
-        raise ValueError("dirty_classes must be an object")
+        raise TypeError("dirty_classes must be an object")
     if not isinstance(packet.get("technology"), dict):
-        raise ValueError("technology must be an object")
+        raise TypeError("technology must be an object")
     if not isinstance(packet.get("topology"), dict):
-        raise ValueError("topology must be an object")
+        raise TypeError("topology must be an object")
     if not isinstance(packet.get("experiment_boundary"), dict):
-        raise ValueError("experiment_boundary must be an object")
+        raise TypeError("experiment_boundary must be an object")
     if not isinstance(packet.get("candidate_lanes"), list):
-        raise ValueError("candidate_lanes must be a list")
+        raise TypeError("candidate_lanes must be a list")
 
     risk = packet.get("risk_level")
     if risk not in ("low", "medium", "high", "critical"):
