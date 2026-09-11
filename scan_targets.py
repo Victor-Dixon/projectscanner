@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 import subprocess
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass, fields
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 from urllib.parse import urlparse
 
 
@@ -72,7 +72,7 @@ def as_scan_target(target: ScanTarget | Mapping[str, Any]) -> ScanTarget:
 
 
 def utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def slug(value: str) -> str:
@@ -93,7 +93,7 @@ def parse_github_repo(value: str) -> tuple[str, str, str]:
         owner, repo = rest.split("/", 1)
         return owner, repo, f"https://github.com/{owner}/{repo}.git"
 
-    if raw.startswith("http://") or raw.startswith("https://"):
+    if raw.startswith(("http://", "https://")):
         parsed = urlparse(raw)
         parts = [p for p in parsed.path.strip("/").split("/") if p]
         if len(parts) < 2 or "github.com" not in parsed.netloc.lower():
@@ -235,6 +235,7 @@ def materialize_github_target(
             text=True,
             capture_output=True,
             timeout=timeout,
+            check=False,
         )
         result["commands"].append(
             {
