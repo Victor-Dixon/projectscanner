@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -13,10 +13,11 @@ from project_artifact_standards import (
     load_targets,
     summarize_artifact_standards,
 )
+from scan_targets import as_target_dict
 
 
 def utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
@@ -24,12 +25,12 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
 
 
-def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, Any]]:
+def artifact_payloads_for_target(target: dict[str, Any] | Any) -> dict[str, dict[str, Any]]:
+    target = as_target_dict(target)
     source_type = target.get("source_type", "unknown")
     name = target.get("name") or target.get("repo") or "unknown"
     local_path = target.get("local_path", "")
     status = target.get("status", "unknown")
-
     now = utc_now()
 
     scan_target = {
@@ -37,7 +38,6 @@ def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, 
         "generated_at": now,
         "target": target,
     }
-
     analysis = {
         "artifact_schema": "projectscanner.analysis.v1",
         "generated_at": now,
@@ -57,7 +57,6 @@ def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, 
             "attach stale/noise classification",
         ],
     }
-
     context = {
         "artifact_schema": "projectscanner.context.v1",
         "generated_at": now,
@@ -72,7 +71,6 @@ def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, 
             "repo": target.get("repo", ""),
         },
     }
-
     next_up = {
         "artifact_schema": "projectscanner.next_up.v1",
         "generated_at": now,
@@ -92,7 +90,6 @@ def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, 
             },
         ],
     }
-
     health = {
         "artifact_schema": "projectscanner.health.v1",
         "generated_at": now,
@@ -109,7 +106,6 @@ def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, 
             "git_repo_present": bool(local_path and (Path(local_path) / ".git").exists()),
         },
     }
-
     return {
         "scan_target.json": scan_target,
         "analysis.json": analysis,
@@ -122,18 +118,15 @@ def artifact_payloads_for_target(target: dict[str, Any]) -> dict[str, dict[str, 
 def build_project_artifacts() -> dict[str, Any]:
     targets = load_targets()
     written = []
-
     for target in targets:
         artifact_dir = expected_dir_for_target(target)
         payloads = artifact_payloads_for_target(target)
-
         for filename in REQUIRED_ARTIFACTS:
             write_json(artifact_dir / filename, payloads[filename])
             written.append(str(artifact_dir / filename))
 
     results = check_artifact_standards(targets)
     summary = summarize_artifact_standards(results)
-
     report = {
         "generated_at": utc_now(),
         "target_count": len(targets),
@@ -142,17 +135,14 @@ def build_project_artifacts() -> dict[str, Any]:
         "standard_summary": summary,
         "written": written,
     }
-
     out = Path("runtime/tasks/build_project_artifacts_report.json")
     write_json(out, report)
-
     return report
 
 
 def main() -> int:
     report = build_project_artifacts()
     summary = report["standard_summary"]
-
     print(f"ARTIFACT_ROOT={report['artifact_root']}")
     print(f"TARGET_COUNT={report['target_count']}")
     print(f"FILES_WRITTEN={report['files_written']}")

@@ -1,18 +1,19 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 import subprocess
-from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from collections.abc import Mapping
+from dataclasses import asdict, dataclass, fields
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-
+# Repo-relative runtime paths (do not hardcode ~/projects/projectscanner).
+_REPO_ROOT = Path(__file__).resolve().parent
 PROJECTS_ROOT = Path.home() / "projects"
-RUNTIME_DIR = Path("runtime")
+RUNTIME_DIR = _REPO_ROOT / "runtime"
 TARGETS_DIR = RUNTIME_DIR / "targets"
 CACHE_DIR = RUNTIME_DIR / "github_cache"
 ARTIFACTS_DIR = RUNTIME_DIR / "project_artifacts"
@@ -32,8 +33,45 @@ class ScanTarget:
     metadata: dict[str, Any]
 
 
+_SCAN_TARGET_FIELD_NAMES = {f.name for f in fields(ScanTarget)}
+
+
+def as_target_dict(target: ScanTarget | Mapping[str, Any]) -> dict[str, Any]:
+    """Normalize ScanTarget or mapping to a plain dict."""
+    if isinstance(target, ScanTarget):
+        return asdict(target)
+    if isinstance(target, Mapping):
+        return dict(target)
+    raise TypeError(f"unsupported scan target type: {type(target)!r}")
+
+
+def as_scan_target(target: ScanTarget | Mapping[str, Any]) -> ScanTarget:
+    """Normalize ScanTarget or mapping to ScanTarget."""
+    if isinstance(target, ScanTarget):
+        return target
+    if isinstance(target, Mapping):
+        payload = {k: target.get(k) for k in _SCAN_TARGET_FIELD_NAMES}
+        payload.setdefault("metadata", {})
+        for key in (
+            "target_id",
+            "source_type",
+            "name",
+            "local_path",
+            "github_url",
+            "owner",
+            "repo",
+            "branch",
+            "status",
+        ):
+            payload[key] = str(payload.get(key) or "")
+        if not isinstance(payload.get("metadata"), dict):
+            payload["metadata"] = {}
+        return ScanTarget(**payload)  # type: ignore[arg-type]
+    raise TypeError(f"unsupported scan target type: {type(target)!r}")
+
+
 def utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def slug(value: str) -> str:
@@ -46,24 +84,15 @@ def slug(value: str) -> str:
 
 
 def parse_github_repo(value: str) -> tuple[str, str, str]:
-    """
-    Returns owner, repo, normalized HTTPS URL.
-
-    Accepts:
-    - https://github.com/owner/repo
-    - https://github.com/owner/repo.git
-    - git@github.com:owner/repo.git
-    - owner/repo
-    """
+    """Return owner, repo, normalized HTTPS URL."""
     raw = value.strip()
 
     if raw.startswith("git@github.com:"):
-        rest = raw.removeprefix("git@github.com:")
-        rest = rest.removesuffix(".git")
+        rest = raw.removeprefix("git@github.com:").removesuffix(".git")
         owner, repo = rest.split("/", 1)
         return owner, repo, f"https://github.com/{owner}/{repo}.git"
 
-    if raw.startswith("http://") or raw.startswith("https://"):
+    if raw.startswith(("http://", "https://")):
         parsed = urlparse(raw)
         parts = [p for p in parsed.path.strip("/").split("/") if p]
         if len(parts) < 2 or "github.com" not in parsed.netloc.lower():
@@ -150,10 +179,11 @@ def write_target_manifest(targets: list[ScanTarget], out_path: Path) -> Path:
 
 def read_target_manifest(path: Path) -> list[ScanTarget]:
     raw = json.loads(path.read_text(encoding="utf-8"))
-    return [ScanTarget(**item) for item in raw.get("targets", [])]
+    return [as_scan_target(item) for item in raw.get("targets", [])]
 
 
-def github_clone_or_fetch_plan(target: ScanTarget) -> list[str]:
+def github_clone_or_fetch_plan(target: ScanTarget | Mapping[str, Any]) -> list[str]:
+    target = as_scan_target(target)
     if target.source_type != "github":
         raise ValueError("clone/fetch plan only supports github targets")
 
@@ -174,14 +204,14 @@ def github_clone_or_fetch_plan(target: ScanTarget) -> list[str]:
             "git pull --ff-only",
         ]
 
-    return [
-        f"# BLOCKED: {local_path!s} exists but is not a git repo",
-    ]
+    return [f"# BLOCKED: {local_path!s} exists but is not a git repo"]
 
 
-def materialize_github_target(target: ScanTarget, *, execute: bool = False, timeout: int = 120) -> dict[str, Any]:
+def materialize_github_target(
+    target: ScanTarget | Mapping[str, Any], *, execute: bool = False, timeout: int = 120
+) -> dict[str, Any]:
+    target = as_scan_target(target)
     plan = github_clone_or_fetch_plan(target)
-
     result: dict[str, Any] = {
         "target_id": target.target_id,
         "execute": execute,
@@ -198,13 +228,13 @@ def materialize_github_target(target: ScanTarget, *, execute: bool = False, time
             result["ok"] = False
             result["commands"].append({"command": command, "returncode": 1, "stdout": "", "stderr": "blocked"})
             break
-
         completed = subprocess.run(
             command,
             shell=True,
             text=True,
             capture_output=True,
             timeout=timeout,
+            check=False,
         )
         result["commands"].append(
             {
@@ -217,17 +247,18 @@ def materialize_github_target(target: ScanTarget, *, execute: bool = False, time
         if completed.returncode != 0:
             result["ok"] = False
             break
-
     return result
 
 
-def artifact_dir_for_target(target: ScanTarget) -> Path:
+def artifact_dir_for_target(target: ScanTarget | Mapping[str, Any]) -> Path:
+    target = as_scan_target(target)
     if target.source_type == "github":
         return ARTIFACTS_DIR / "github" / target.owner / target.repo
     return ARTIFACTS_DIR / "local" / slug(target.name)
 
 
-def target_summary(target: ScanTarget) -> dict[str, Any]:
+def target_summary(target: ScanTarget | Mapping[str, Any]) -> dict[str, Any]:
+    target = as_scan_target(target)
     artifact_dir = artifact_dir_for_target(target)
     return {
         "target_id": target.target_id,
