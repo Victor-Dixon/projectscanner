@@ -1,17 +1,17 @@
 """
 MODULE: file_processor
-ARCHITECTURE PATTERN: 
-LEARNING OBJECTIVES: 
-AGENTIC INSTRUCTIONS: 
+ARCHITECTURE PATTERN:
+LEARNING OBJECTIVES:
+AGENTIC INSTRUCTIONS:
 """
 
 import hashlib
 import logging
 import threading
 from pathlib import Path
-from typing import Dict, Optional
 
 from .language_analyzer import LanguageAnalyzer
+from .path_exclusions import should_exclude_path
 
 logger = logging.getLogger(__name__)
 
@@ -19,18 +19,10 @@ logger = logging.getLogger(__name__)
 class FileProcessor:
     """SSOT file processing with cheap cache validation (mtime + size first)."""
 
-    # Concept: TODO - Explain the core idea behind __init__
-    # Trade-off: TODO - Document any trade-offs or design decisions
-    # Execution: TODO - Describe how this function works at a high level
-
-
     def __init__(
-    # Concept: TODO
-    # Trade-off: TODO
-    # Execution: TODO
         self,
         project_root: Path,
-        cache: Dict,
+        cache: dict,
         cache_lock: threading.Lock,
         additional_ignore_dirs: set,
         max_file_size_bytes: int = 10 * 1024 * 1024,
@@ -43,88 +35,20 @@ class FileProcessor:
         self.max_file_size_bytes = max_file_size_bytes
         self.hash_on_change = hash_on_change
 
-    # Concept: TODO - Explain the core idea behind hash_file
-    # Trade-off: TODO - Document any trade-offs or design decisions
-    # Execution: TODO - Describe how this function works at a high level
-
-
     def hash_file(self, file_path: Path) -> str:
-    # Concept: TODO
-    # Trade-off: TODO
-    # Execution: TODO
         try:
             hasher = hashlib.md5()
-            with file_path.open("rb") as f:
-                for chunk in iter(lambda: f.read(65536), b""):
+            with file_path.open("rb") as file_handle:
+                for chunk in iter(lambda: file_handle.read(65536), b""):
                     hasher.update(chunk)
             return hasher.hexdigest()
-        except Exception:  # pragma: no cover
+        except Exception:  # noqa: BLE001  # preserve legacy fail-soft hashing
             return ""
 
-    # Concept: TODO - Explain the core idea behind should_exclude
-    # Trade-off: TODO - Document any trade-offs or design decisions
-    # Execution: TODO - Describe how this function works at a high level
-
-
-    # TODO: Split this function (currently 47 lines > 30 limit)
     def should_exclude(self, file_path: Path) -> bool:
-    # Concept: TODO - Purpose of should_exclude
-    # Trade-off: TODO - Design decisions
-    # Execution: TODO - Implementation approach
-        venv_patterns = {
-            "venv", "env", ".env", ".venv", "virtualenv",
-            "ENV", "VENV", ".ENV", ".VENV",
-            "python-env", "python-venv", "py-env", "py-venv",
-            "envs", "conda-env", ".conda-env",
-            ".poetry/venv", ".poetry-venv",
-        }
-        default_exclude_dirs = {
-            "__pycache__", "node_modules", "migrations", "build",
-            "target", ".git", "coverage", "chrome_profile",
-            "runtime", "logs",
-        } | venv_patterns
+        return should_exclude_path(file_path, self.project_root, self.additional_ignore_dirs)
 
-        file_abs = file_path.resolve()
-
-        for ignore in self.additional_ignore_dirs:
-            ignore_path = Path(ignore)
-            if not ignore_path.is_absolute():
-                ignore_path = (self.project_root / ignore_path).resolve()
-            try:
-                file_abs.relative_to(ignore_path)
-                return True
-            except ValueError:
-                continue
-
-        if any(excluded in file_path.parts for excluded in default_exclude_dirs):
-            return True
-
-        scanner_artifact_patterns = (
-            ".projectscanner_cache.json",
-            "project_analysis_",
-            "chatgpt_project_context_",
-        )
-
-        if file_abs.name == scanner_artifact_patterns[0] or any(
-            file_abs.name.startswith(pattern) and file_abs.suffix == ".json"
-            for pattern in scanner_artifact_patterns[1:]
-        ):
-            return True
-        path_str = str(file_abs).lower().replace("\\", "/")
-        if any(f"/{pattern}/" in path_str for pattern in venv_patterns):
-            return True
-        return False
-
-    # Concept: TODO - Explain the core idea behind process_file
-    # Trade-off: TODO - Document any trade-offs or design decisions
-    # Execution: TODO - Describe how this function works at a high level
-
-
-    # TODO: Split this function (currently 41 lines > 30 limit)
-    def process_file(self, file_path: Path, language_analyzer: LanguageAnalyzer) -> Optional[tuple]:
-    # Concept: TODO - Purpose of process_file
-    # Trade-off: TODO - Design decisions
-    # Execution: TODO - Implementation approach
+    def process_file(self, file_path: Path, language_analyzer: LanguageAnalyzer) -> tuple | None:
         if self.should_exclude(file_path):
             return None
 
@@ -146,8 +70,8 @@ class FileProcessor:
                 return None
 
         try:
-            with file_path.open("r", encoding="utf-8") as f:
-                source_code = f.read()
+            with file_path.open("r", encoding="utf-8") as file_handle:
+                source_code = file_handle.read()
             analysis_result = language_analyzer.analyze_file(file_path, source_code)
             cache_entry = {"mtime": mtime, "size": size}
             if self.hash_on_change:
@@ -159,6 +83,6 @@ class FileProcessor:
         except UnicodeDecodeError as exc:
             logger.debug("⚠️ Encoding issue in %s: %s", file_path.name, exc.reason)
             return None
-        except Exception as exc:  # pragma: no cover
+        except Exception as exc:  # noqa: BLE001  # preserve legacy per-file isolation
             logger.error("❌ Unexpected error analyzing %s: %s", file_path, exc)
             return None
