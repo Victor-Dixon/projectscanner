@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Emit intelligence packet and ecosystem repo graph for a target repo."""
 
 from __future__ import annotations
@@ -12,12 +11,12 @@ from pathlib import Path
 _ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(_ROOT / "src"))
 
-from core.intelligence.packet_builder import build_intelligence_packet  # noqa: E402
-from core.intelligence.packet_validation import (  # noqa: E402
+from core.intelligence.packet_builder import build_intelligence_packet
+from core.intelligence.packet_validation import (
     intelligence_packet_canonical_sha256,
     validate_intelligence_packet,
 )
-from core.intelligence.repo_graph import build_repo_graph  # noqa: E402
+from core.intelligence.repo_graph import build_repo_graph
 
 
 def main() -> int:
