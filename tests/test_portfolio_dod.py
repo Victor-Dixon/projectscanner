@@ -139,5 +139,5 @@ def test_registry_files_are_valid_json_objects():
 def test_load_json_rejects_non_object(tmp_path):
     bad = tmp_path / "bad.json"
     bad.write_text("[1, 2]", encoding="utf-8")
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         load_json(bad)
