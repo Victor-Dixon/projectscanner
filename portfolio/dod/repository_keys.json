@@ -1,0 +1,30 @@
+{
+  "schema_version": "dreamos.portfolio-repository-keys.v1",
+  "repositories": [
+    "AgentTools",
+    "AutoDream.Os",
+    "Dream.os",
+    "Agent_Cellphone",
+    "Agent_Cellphone_V2_Repository",
+    "AI_Debugger_Assistant",
+    "Thea",
+    "bolt-project",
+    "ProfessorSama",
+    "SmartStock-pro",
+    "contract-leads",
+    "prompt-library",
+    "TROOP",
+    "TradingRobots",
+    "self-evolving-ai",
+    "osrs",
+    "osrsAIagent",
+    "Flowr",
+    "Agents",
+    "FocusForge",
+    "Dream.os-Core",
+    "DreamVault",
+    "socialmediamanager",
+    "TradingRobotPlug",
+    "network-scanner"
+  ]
+}
