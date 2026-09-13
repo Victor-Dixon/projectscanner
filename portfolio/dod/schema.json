@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dream.OS Repository Definition of Done",
+  "type": "object",
+  "required": ["schema_version", "repository", "mvp", "done_when", "evidence_policy"],
+  "properties": {
+    "schema_version": {"const": "dreamos.repository-dod.v1"},
+    "repository": {"type": "string", "minLength": 1},
+    "mvp": {"type": "string", "minLength": 1},
+    "done_when": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "specialized_done": {"type": "array", "items": {"type": "string"}},
+    "evidence_policy": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "status": {"enum": ["DONE", "DONE_WITH_INTENTIONAL_KEEP", "BLOCKED", "HOLD", "NOT_READY"]}
+  },
+  "additionalProperties": false
+}

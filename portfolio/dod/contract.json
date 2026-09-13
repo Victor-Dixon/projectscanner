@@ -1,0 +1,18 @@
+{
+  "schema_version": "dreamos.portfolio-dod.v1",
+  "portfolio_size": 25,
+  "statuses": ["DONE", "DONE_WITH_INTENTIONAL_KEEP", "BLOCKED", "HOLD", "NOT_READY"],
+  "common_requirements": [
+    "canonical_state_verified",
+    "portfolio_identity_verified",
+    "planning_authority_reconciled",
+    "all_nondefault_refs_classified",
+    "unique_work_accounted_for",
+    "relevant_tests_green",
+    "runtime_or_deployment_evidence_satisfied_when_applicable",
+    "planner_state_reconciled",
+    "completion_receipt_written"
+  ],
+  "profile_file": "profiles.json",
+  "membership_file": "repository_keys.json"
+}

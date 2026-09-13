@@ -1,0 +1,30 @@
+{
+  "schema_version": "dreamos.portfolio-mvp.v1",
+  "profiles": {
+    "AgentTools": {"mvp": "Reliable agent and tool execution primitives.", "evidence_source": "needs current repo review"},
+    "AutoDream.Os": {"mvp": "A working automation workflow for its defined product boundary.", "evidence_source": "needs current repo review"},
+    "Dream.os": {"mvp": "A working Dream.OS application/runtime surface.", "evidence_source": "needs current repo review"},
+    "Agent_Cellphone": {"mvp": "A supported agent-device automation workflow.", "evidence_source": "current repo plus prior audit"},
+    "Agent_Cellphone_V2_Repository": {"mvp": "A supported V2 agent-device runtime workflow.", "evidence_source": "needs current repo review"},
+    "AI_Debugger_Assistant": {"mvp": "An evidence-backed code inspection and debugging workflow.", "evidence_source": "current repo plus prior audit"},
+    "Thea": {"mvp": "A working canonical AI/agent capability.", "evidence_source": "current repo plus prior audit"},
+    "bolt-project": {"mvp": "A working application primary workflow.", "evidence_source": "needs current repo review"},
+    "ProfessorSama": {"mvp": "A working primary product or agent workflow.", "evidence_source": "needs current repo review"},
+    "SmartStock-pro": {"mvp": "A working market-analysis primary workflow.", "evidence_source": "needs current repo review"},
+    "contract-leads": {"mvp": "A working lead and contract workflow.", "evidence_source": "needs current repo review"},
+    "prompt-library": {"mvp": "A canonical reusable prompt collection with provenance.", "evidence_source": "needs current repo review"},
+    "TROOP": {"mvp": "A working primary product workflow.", "evidence_source": "current repo plus prior audit"},
+    "TradingRobots": {"mvp": "A bounded automation codebase with explicit supported behavior.", "evidence_source": "needs current repo review"},
+    "self-evolving-ai": {"mvp": "A bounded self-improvement agent loop with observable behavior.", "evidence_source": "needs current repo review"},
+    "osrs": {"mvp": "A working OSRS-related primary workflow.", "evidence_source": "current repo plus prior audit"},
+    "osrsAIagent": {"mvp": "A bounded OSRS AI-agent workflow.", "evidence_source": "needs current repo review"},
+    "Flowr": {"mvp": "A working Flowr primary workflow.", "evidence_source": "current repo plus prior audit"},
+    "Agents": {"mvp": "A usable agent framework/runtime workflow.", "evidence_source": "needs current repo review"},
+    "FocusForge": {"mvp": "A working focus/productivity primary workflow.", "evidence_source": "current repo plus prior audit"},
+    "Dream.os-Core": {"mvp": "A dependable governed message-driven runtime through verification and closeout.", "evidence_source": "current PRD, roadmap, task list, and live branch audit"},
+    "DreamVault": {"mvp": "A durable portfolio intelligence and governance control plane.", "evidence_source": "current repository governance audit"},
+    "socialmediamanager": {"mvp": "A controlled content workflow with approval and publish-ready states.", "evidence_source": "current repository audit"},
+    "TradingRobotPlug": {"mvp": "A bounded automation codebase with explicit supported behavior.", "evidence_source": "current repository policy audit"},
+    "network-scanner": {"mvp": "A reliable scanning workflow with explicit scope controls.", "evidence_source": "current repo plus prior audit"}
+  }
+}
