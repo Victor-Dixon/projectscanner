@@ -1,6 +1,6 @@
-"""Evaluate repository evidence against a small, explicit Definition-of-Done contract.
+"""Evaluate repository evidence against an explicit Definition-of-Done contract.
 
-The evaluator is intentionally evidence-only. It does not rank work, approve mutations,
+The evaluator is evidence-only. It does not rank work, approve mutations,
 delete branches, or become a second planner.
 """
 
@@ -13,46 +13,36 @@ from typing import Any
 STATUS_DONE = "DONE"
 STATUS_DONE_WITH_KEEP = "DONE_WITH_INTENTIONAL_KEEP"
 STATUS_BLOCKED = "BLOCKED"
-STATUS_HOLD = "HOLD"
 STATUS_NOT_READY = "NOT_READY"
 
 
-def load_registry(path: Path) -> dict[str, Any]:
-    """Load and minimally validate a DoD registry."""
+def load_json(path: Path) -> dict[str, Any]:
     data = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict) or not isinstance(data.get("schema_version"), str):
-        raise ValueError("invalid DoD registry")
-    if not isinstance(data.get("common_done_requirements"), list):
-        raise ValueError("registry missing common_done_requirements")
+    if not isinstance(data, dict):
+        raise ValueError(f"expected JSON object: {path}")
     return data
 
 
-def evaluate_definition_of_done(
-    profile: dict[str, Any],
-    evidence: dict[str, Any],
-) -> dict[str, Any]:
-    """Return a deterministic evidence-only DoD evaluation.
-
-    Missing evidence is a finding, never an implicit pass. The evaluator accepts
-    boolean evidence for common and specialized requirements and leaves policy
-    decisions to the caller.
-    """
+def evaluate_definition_of_done(profile: dict[str, Any], evidence: dict[str, Any]) -> dict[str, Any]:
+    """Return a deterministic evidence-only DoD evaluation."""
     requirements = list(profile.get("done_when", []))
     specialized = list(profile.get("specialized_done", []))
+    keys = list(dict.fromkeys(requirements + specialized))
     checks: dict[str, dict[str, Any]] = {}
 
-    for key in requirements + specialized:
+    for key in keys:
         value = evidence.get(key)
         checks[key] = {
             "status": "PASS" if value is True else "FAIL" if value is False else "UNKNOWN",
             "evidence": value,
         }
 
-    failed = sorted(key for key, item in checks.items() if item["status"] == "FAIL")
-    unknown = sorted(key for key, item in checks.items() if item["status"] == "UNKNOWN")
-
-    if failed or unknown:
-        status = STATUS_BLOCKED if failed else STATUS_NOT_READY
+    failed = sorted(k for k, item in checks.items() if item["status"] == "FAIL")
+    unknown = sorted(k for k, item in checks.items() if item["status"] == "UNKNOWN")
+    if failed:
+        status = STATUS_BLOCKED
+    elif unknown:
+        status = STATUS_NOT_READY
     else:
         status = STATUS_DONE_WITH_KEEP if evidence.get("intentional_keep") else STATUS_DONE
 
@@ -70,18 +60,19 @@ def evaluate_definition_of_done(
 
 
 def evaluate_from_registry(
-    registry_path: Path,
+    contract_path: Path,
+    profiles_path: Path,
     repository: str,
     evidence: dict[str, Any],
 ) -> dict[str, Any]:
-    """Evaluate one named repository profile from a registry."""
-    registry = load_registry(registry_path)
-    raw = registry.get("profiles", {}).get(repository)
-    if raw is None:
-        raise KeyError(f"no DoD profile for repository: {repository}")
+    """Evaluate one named repository using the portfolio contract and profile."""
+    contract = load_json(contract_path)
+    profiles = load_json(profiles_path).get("profiles", {})
+    raw = profiles.get(repository)
     if not isinstance(raw, dict):
-        raise ValueError(f"invalid DoD profile for repository: {repository}")
+        raise KeyError(f"no DoD profile for repository: {repository}")
+
     profile = dict(raw)
     profile["repository"] = repository
-    profile["done_when"] = registry["common_done_requirements"]
+    profile["done_when"] = contract.get("common_requirements", [])
     return evaluate_definition_of_done(profile, evidence)
